@@ -46,7 +46,8 @@ def extract_text_pypdf(pdf_path):
 
 def is_japanese(text):
     for char in text:
-        if "HIRAGANA" in unicodedata.name(char, "") or "CJK" in unicodedata.name(char, ""):
+        name = unicodedata.name(char, "")
+        if "HIRAGANA" in name or "KATAKANA" in name or "CJK" in name:
             return True
     return False
 
@@ -96,7 +97,6 @@ def classify_line(line):
     if re.match(r'^Tip', line): return "GARBAGE", None
     if re.match(r'^F\s*\d+', line): return "GARBAGE", None
     if line.startswith("Words to Use") or line == "基本": return "GARBAGE", None
-    # Filter chapter headers that look like simple numbers but are at end
     if re.match(r'^Chapter\s*\d+', line, re.IGNORECASE): return "GARBAGE", None
 
     # ID Only
@@ -109,25 +109,23 @@ def classify_line(line):
         return "ID_JAPANESE", (match_id_jp.group(1), match_id_jp.group(2))
 
     # ID + English (Answer Line)
-    match_id_en = re.match(r'^(\d+(?:-\d+)?)\s+([a-zA-Z"\'].*)$', line) # Added quote support
+    match_id_en = re.match(r'^(\d+(?:-\d+)?)\s+([a-zA-Z"\'].*)$', line)
     if match_id_en:
         return "ID_ENGLISH", (match_id_en.group(1), match_id_en.group(2))
 
-    # Question Line Detection (Improved)
-    # Must explicitly look for blanks ( ) or （ ）
-    if re.search(r'[\(（]\s*[\)）]', line): 
+    # Question Line
+    # Must contain parens OR just be English text with holes? 
+    # Let's rely on paren detection for now, but be loose about spaces
+    if re.search(r'[\(（].*?[\)）]', line): 
         return "QUESTION_LINE", line
-    
-    # Or matches typical question pattern? 
-    # Example: "My father often ( ) ( )."
-    # The previous regex catches logical blanks.
-    # What if using underscores?
     
     if is_japanese(line):
         return "JAPANESE_LINE", line
         
-    # Default to English Text (Explanation or part of Question?)
-    # If line is short English text, might be Q without blanks? No, Q must have blanks.
+    # Valid English text that didn't match ID_ENGLISH or Q_LINE
+    # This could be:
+    # 1. Broken Question line (e.g. `My father often` (next line `( ) ( )`))
+    # 2. Explanation text
     return "ENGLISH_TEXT", line
 
 def parse_lines_v3(text):
@@ -155,7 +153,6 @@ def parse_lines_v3(text):
             
             current_item = {'id': raw_id, 'ja': '', 'en_full':'', 'question':'', 'expl': []}
             if japanese_buffer:
-                 # If JA buffer exists, assign to this item (e.g. JA appearing before ID)
                  current_item['ja'] = " ".join(japanese_buffer)
                  japanese_buffer = []
 
@@ -175,7 +172,6 @@ def parse_lines_v3(text):
                 japanese_buffer.append(data)
                 
         elif kind == "QUESTION_LINE":
-            # If current item is 'done' (has en_full), this must be new Orphan Q
             if current_item and current_item['en_full']:
                 if current_item: items.append(current_item)
                 ja_text = " ".join(japanese_buffer)
@@ -184,9 +180,6 @@ def parse_lines_v3(text):
             
             elif current_item:
                 if current_item['question']:
-                     # Already has Q? Maybe multi-line Q?
-                     # Or previous item missed END signal.
-                     # Treat as new Orphan if no ID match pending?
                      current_item['question'] += " " + data
                 else:
                     current_item['question'] = data
@@ -194,7 +187,6 @@ def parse_lines_v3(text):
                         current_item['ja'] = " ".join(japanese_buffer)
                         japanese_buffer = []
             else:
-                # Totally Orphan
                 ja_text = " ".join(japanese_buffer)
                 current_item = {'id': 'PENDING', 'ja': ja_text, 'en_full':'', 'question': data, 'expl': []}
                 japanese_buffer = []
@@ -206,24 +198,33 @@ def parse_lines_v3(text):
                 current_item['en_full'] = text
                 
             elif current_item and current_item['id'] == 'PENDING':
-                # Retroactively assign ID
                 current_item['id'] = new_id
                 current_item['en_full'] = text
                 
             else:
                 if current_item: items.append(current_item)
-                # If mismatch, start new item with this ID
-                # Try to use buffer if any
                 ja_text = " ".join(japanese_buffer)
                 current_item = {'id': new_id, 'ja': ja_text, 'en_full': text, 'question':'', 'expl': []}
                 japanese_buffer = []
 
         elif kind == "ENGLISH_TEXT":
+            # Can be part of Question or Explanation
             if current_item and current_item['en_full']:
                  current_item['expl'].append(data)
-            elif current_item and current_item['question'] and not current_item['en_full']:
-                 # Maybe continuation of Question?
-                 pass
+            elif current_item and not current_item['en_full']:
+                 # Likely part of Question (e.g. English Sentence with blanks split on lines)
+                 # Or Text before blanks.
+                 if current_item['question']:
+                     current_item['question'] += " " + data
+                 else:
+                     # Start of question?
+                     current_item['question'] = data
+            elif not current_item:
+                 # Orphan English text.
+                 # Part of Orphan Q?
+                 ja_text = " ".join(japanese_buffer)
+                 current_item = {'id': 'PENDING', 'ja': ja_text, 'en_full':'', 'question': data, 'expl': []}
+                 japanese_buffer = []
 
     if current_item:
         items.append(current_item)
@@ -236,19 +237,12 @@ def parse_lines_v3(text):
         q = item['question']
         f = item['en_full']
         
-        if not q:
-            # Fallback: assume Question is missing blanks?
-            # Or assume Full Sentence IS the question (e.g. translation quiz?)
-            # But the user wants Flashcards with blanks.
-            # We can try to generate blanks?
-            # For now, mark as ???
-            ans = "???"
-            # However, if we have Japanese, we can still show it.
-        else:
+        ans = "???"
+        if q:
             ans = find_answer_part(q, f)
         
         if not ans or ans not in f:
-             ans = f # Default to full sentence as answer
+             ans = f 
              item['en'] = f
         else:
              item['answer'] = ans
@@ -256,6 +250,9 @@ def parse_lines_v3(text):
              item['answer'] = ans 
              
         item['explanation'] = "\n".join(item['expl']).strip()
+        
+        # Cleanup JA (remove noise)
+        item['ja'] = item['ja'].strip()
         
         final_items.append({
             'id': item['id'],
@@ -301,7 +298,7 @@ def get_chapter_number(filename):
     return 999
 
 def main():
-    print("--- Insight App Generator V3.1 (Lenient Q-Detect) ---")
+    print("--- Insight App Generator V3.2 (Loose English) ---")
     setup_directories()
     
     files = list(PDF_DIR.glob("*.pdf"))
@@ -355,7 +352,7 @@ def main():
 
     print("Deploying...")
     run_command("git add .")
-    run_command('git commit -m "Update parsing logic V3.1 (Lenient Question Detection)"', cwd=os.getcwd())
+    run_command('git commit -m "Update parsing logic V3.2 (Robust English Check)"', cwd=os.getcwd())
     run_command("git push origin main", cwd=os.getcwd())
 
 if __name__ == "__main__":
