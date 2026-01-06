@@ -4,6 +4,7 @@ import re
 import sys
 import shutil
 import subprocess
+import unicodedata
 from pathlib import Path
 from pypdf import PdfReader
 
@@ -69,8 +70,6 @@ def parse_pdf_content(text):
     Parse raw PDF text into structured data.
     This is a heuristic approach. Adjust regex based on actual PDF format.
     """
-    # Placeholder logic: just returning raw text as 'content'
-    # In a real scenario, we'd use regex to find 'English:', 'Japanese:', etc.
     return {
         "content": text.replace("\n", "<br>")
     }
@@ -81,12 +80,9 @@ def generate_html(data, chapter_title):
         with open(TEMPLATE_FILE, "r", encoding="utf-8") as f:
             template = f.read()
         
-        # Simple string replacement for now. 
-        # For more complex templates, use jinja2.
         html = template.replace("{{ content }}", data.get("content", ""))
         html = html.replace("{{ title }}", chapter_title)
         
-        # If template has specific fields like {{ english }}, replace them if present in data
         for key, value in data.items():
             html = html.replace(f"{{{{ {key} }}}}", str(value))
             
@@ -101,16 +97,21 @@ def get_github_pages_url():
     if not url:
         return None
     
-    # Convert git@github.com:user/repo.git to https://user.github.io/repo/
-    # or https://github.com/user/repo.git to https://user.github.io/repo/
-    
-    # Simple regex to extract user and repo
     match = re.search(r"[:/]([\w-]+)/([\w.-]+?)(\.git)?$", url)
     if match:
         user = match.group(1)
         repo = match.group(2)
         return f"https://{user}.github.io/{repo}/"
     return None
+
+def get_chapter_number(filename):
+    """Extract chapter number from filename, handling wide chars."""
+    # Normalize to NFKC to convert full-width numbers to ascii
+    normalized = unicodedata.normalize('NFKC', filename)
+    match = re.search(r'(\d+)', normalized)
+    if match:
+        return int(match.group(1))
+    return 99999 # Sort to end if no number found
 
 def main():
     print("--- Starting Auto-Deployment Script ---")
@@ -120,28 +121,36 @@ def main():
     
     # 2. Process PDFs
     generated_files = []
-    pdf_files = sorted(list(PDF_DIR.glob("*.pdf")))
+    # Sort files naturally (1, 2, ... 10) instead of ASCII (1, 10, 2...)
+    pdf_files = list(PDF_DIR.glob("*.pdf"))
+    pdf_files.sort(key=lambda x: get_chapter_number(x.name))
     
     if not pdf_files:
         print("No PDF files found in pdfs/ folder.")
     
-    for i, pdf_file in enumerate(pdf_files):
+    for pdf_file in pdf_files:
         print(f"Processing {pdf_file.name}...")
         raw_text = extract_text_from_pdf(pdf_file)
         data = parse_pdf_content(raw_text)
         
-        # Determine output filename
-        # Start with chapter-01.html
-        chapter_num = i + 1
-        output_filename = f"chapter-{chapter_num:02d}.html"
+        # Use the number from filename if possible, otherwise list index
+        chapter_id = get_chapter_number(pdf_file.name)
+        if chapter_id == 99999:
+             # Fallback if no number in filename (shouldn't happen with current files)
+             chapter_id = len(generated_files) + 1
+             
+        
+        output_filename = f"chapter-{chapter_id:02d}.html"
         output_path = DOCS_DIR / output_filename
         
-        html_content = generate_html(data, f"Chapter {chapter_num}")
+        chapter_title = f"Chapter {chapter_id}"
+        
+        html_content = generate_html(data, chapter_title)
         
         with open(output_path, "w", encoding="utf-8") as f:
             f.write(html_content)
         
-        generated_files.append((output_filename, f"Chapter {chapter_num}"))
+        generated_files.append((output_filename, chapter_title))
         print(f"Saved {output_filename}")
 
     # 3. Create Index Page
@@ -158,7 +167,7 @@ def main():
     # 4. Git Deployment
     print("Committing and pushing to Git...")
     run_command("git add .")
-    run_command('git commit -m "Auto-generated apps"')
+    run_command('git commit -m "Auto-generated apps from latest PDFs"')
     run_command(f"git push origin {GITHUB_PAGES_BRANCH}")
     
     # 5. Output URLs
