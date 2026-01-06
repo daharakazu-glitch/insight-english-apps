@@ -1,5 +1,5 @@
 
-# Restoring V2 logic (known good baseline)
+# V4.1: Enhanced V2 extracting with "Look Back" for Japanese
 import os
 import re
 import sys
@@ -47,8 +47,12 @@ def extract_text_pypdf(pdf_path):
 
 def is_japanese(text):
     for char in text:
-        if "HIRAGANA" in unicodedata.name(char, "") or "CJK" in unicodedata.name(char, ""):
-            return True
+        try:
+            name = unicodedata.name(char, "")
+            if "HIRAGANA" in name or "KATAKANA" in name or "CJK" in name:
+                return True
+        except:
+             pass
     return False
 
 def find_answer_part(question, full_sentence):
@@ -97,6 +101,9 @@ def parse_chapter_text(text):
     current_item = {}
     state = "FIND_ID" 
     
+    # Buffer for lines that appear before an ID
+    pre_id_buffer = []
+
     def save_current():
         if current_item.get('id') and current_item.get('en_full'):
             q = current_item.get('question', '')
@@ -113,8 +120,13 @@ def parse_chapter_text(text):
             expl = "\n".join(current_item.get('explanation_lines', [])).strip()
             current_item['explanation'] = expl
             
-            # Use 'answer' as Japanese fallback if JA is empty? No.
-            
+            # Ensure JA is not empty if possible
+            if not current_item['ja'] and pre_id_buffer:
+                 # Check if buffer has Japanese
+                 ja_lines = [l for l in pre_id_buffer if is_japanese(l)]
+                 if ja_lines:
+                     current_item['ja'] = " ".join(ja_lines)
+
             cleanup = {k:v for k,v in current_item.items() if k in ['id', 'ja', 'en', 'answer', 'explanation']}
             items.append(cleanup)
 
@@ -124,20 +136,39 @@ def parse_chapter_text(text):
         
         id_match = re.match(r'^(\d+(-\d+)?)(.*)$', line)
         
+        # Check if line identifies as strict ID start
+        is_id_line = False
         if id_match:
+             # Ensure matched ID is not just a year or number in text
+             # e.g. "2024 is..."
+             # Heuristic: ID must be small number or ID format
+             matched_id = id_match.group(1).strip()
+             rest = id_match.group(3).strip()
+             if len(matched_id) < 6: # IDs are usually small
+                  is_id_line = True
+        
+        if is_id_line:
             matched_id = id_match.group(1).strip()
             rest = id_match.group(3).strip()
             
             # Transition Logic
+            is_repeated_id = False
             if current_item and current_item.get('id') == matched_id:
+                is_repeated_id = True
+            
+            if is_repeated_id:
+                 # It's the Answer line!
                 if len(rest) > 5 and not is_japanese(rest):
                     current_item['en_full'] = rest
                     state = "EXPLANATION"
+                    pre_id_buffer = [] # Clear buffer
                     continue
                 else:
                     state = "POST_ID_SEARCH"
+                    pre_id_buffer = []
                     continue
             
+            # Start NEW item
             if current_item:
                 save_current()
             
@@ -147,10 +178,22 @@ def parse_chapter_text(text):
                 'ja': '',
                 'question': ''
             }
+            
+            # Retroactively check buffer for Japanese!
+            if pre_id_buffer:
+                 ja_candidates = [l for l in pre_id_buffer if is_japanese(l) and not l.startswith("Tip")]
+                 # Take the last relevant Japanese lines?
+                 if ja_candidates:
+                      current_item['ja'] = " ".join(ja_candidates)
+                 pre_id_buffer = []
+
             state = "JAPANESE"
             continue
             
-        if not current_item: continue
+        # Not an ID line
+        if not current_item: 
+             pre_id_buffer.append(line)
+             continue
         
         if state == "JAPANESE":
             if line.startswith("Words to Use") or line == "基本":
@@ -166,23 +209,33 @@ def parse_chapter_text(text):
                 current_item['question'] = line
                 state = "WAITING_FOR_FULL_SENTENCE"
             else:
+                # English text appearing here might be Question without blanks?
+                # Or garbage.
+                # Or maybe Japanese was missing and this is start of Question?
+                pre_id_buffer.append(line) # Keep in buffer just in case
                 pass
 
         elif state == "WAITING_FOR_FULL_SENTENCE":
+            pre_id_buffer.append(line) # Buffer lines between Question and Answer ID
             pass
 
         elif state == "POST_ID_SEARCH":
             if re.match(r'^F\s*\d+', line) or line.startswith("Tip"):
                 continue
             if is_japanese(line):
-                continue
+                 pre_id_buffer.append(line) # Weird to see JA here
+                 continue
             if len(line) > 2:
                 current_item['en_full'] = line
                 state = "EXPLANATION"
         
         elif state == "EXPLANATION":
-             if line == "Words to Use": continue
+             if line == "Words to Use": 
+                  pre_id_buffer = []
+                  continue
              current_item['explanation_lines'].append(line)
+             # Also buffer for next ID
+             pre_id_buffer.append(line)
 
     if current_item:
         save_current()
@@ -223,7 +276,7 @@ def get_chapter_number(filename):
     return 999
 
 def main():
-    print("--- Insight App Generator V4 (Restored V2 + fixes) ---")
+    print("--- Insight App Generator V4.1 (Retroactive JA) ---")
     setup_directories()
     
     files = list(PDF_DIR.glob("*.pdf"))
@@ -278,7 +331,7 @@ def main():
 
     print("Deploying...")
     run_command("git add .")
-    run_command('git commit -m "Restore V2 logic to ensure high extraction count"', cwd=os.getcwd())
+    run_command('git commit -m "Update parsing V4.1 with Retroactive Japanese detection"', cwd=os.getcwd())
     run_command("git push origin main", cwd=os.getcwd())
 
 if __name__ == "__main__":
