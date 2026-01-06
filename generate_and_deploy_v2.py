@@ -3,10 +3,8 @@ import os
 import re
 import sys
 import json
-import shutil
 import subprocess
 import unicodedata
-import difflib
 from pathlib import Path
 from pypdf import PdfReader
 
@@ -14,10 +12,8 @@ from pypdf import PdfReader
 PDF_DIR = Path("pdfs")
 DOCS_DIR = Path("docs")
 TEMPLATE_FILE = Path("template.html")
-GITHUB_PAGES_BRANCH = "main"
 
 def run_command(command, cwd=None):
-    """Running shell commands with error handling."""
     try:
         result = subprocess.run(
             command,
@@ -31,14 +27,11 @@ def run_command(command, cwd=None):
         return result.stdout.strip()
     except subprocess.CalledProcessError as e:
         print(f"Error running command: {command}")
-        print(e.stderr)
         return None
 
 def setup_directories():
     if not DOCS_DIR.exists():
         DOCS_DIR.mkdir()
-    if not PDF_DIR.exists():
-        PDF_DIR.mkdir()
 
 def extract_text_pypdf(pdf_path):
     try:
@@ -58,37 +51,22 @@ def is_japanese(text):
     return False
 
 def clean_text(text):
+    # Remove "Tip" or other garbage common in these PDFs
     return text.strip()
 
 def find_answer_part(question, full_sentence):
-    """
-    Compare Question (with blanks) and Full Sentence to find the answer.
-    Question: "The train (a ) ( ) ( ) ( ) 20 minutes late."
-    Full: "The train arrived at Tokyo Station 20 minutes late."
-    Returns: "arrived at Tokyo Station"
-    """
-    # Normalize
     q = re.sub(r'\s+', ' ', question).strip()
     f = re.sub(r'\s+', ' ', full_sentence).strip()
     
-    # Simple heuristic: Split by the blank part
-    # We look for the part of Q before the first '(' and after the last ')'
-    
-    # Find start index of blank area
     start_match = re.search(r'[\(（]', q)
     end_match = re.search(r'[\)）][^\)）]*$', q)
     
     if not start_match:
-        return None # No blanks found
+        return None
         
     prefix = q[:start_match.start()].strip()
     suffix = ""
     if end_match:
-        # The suffix starts after the LAST closing parenthesis in the group
-        # But end_match finds the last closing parenthesis
-        suffix = q[end_match.end()-1:].strip() 
-        # Wait, regex `[\)）][^\)）]*$` matches the last closing paren and everything after.
-        # So we take text after that match's start index + 1
         last_paren_index = -1
         for i, char in enumerate(q):
             if char in [')', '）']:
@@ -96,23 +74,18 @@ def find_answer_part(question, full_sentence):
         if last_paren_index != -1:
              suffix = q[last_paren_index+1:].strip()
 
-    # Now find prefix and suffix in Full Sentence
-    # This is tricky because of potential OCR typos or minor differences
-    # We will try to find the indices
-    
     start_idx = 0
     if prefix:
-        # Fuzzy match or exact match? Try exact first.
         try:
+             # Try to find prefix. If multiple, it's tricky, but let's assume valid sentence.
+             # Use a window to avoid matching random words appearing before
              start_idx = f.index(prefix) + len(prefix)
         except ValueError:
-             # Fallback: maybe just look for the first few words?
              pass
     
     end_idx = len(f)
     if suffix:
         try:
-            # Rfind suffix
              found = f.rfind(suffix)
              if found != -1:
                  end_idx = found
@@ -128,159 +101,161 @@ def parse_chapter_text(text):
     
     current_item = {}
     state = "FIND_ID" 
-    # States: FIND_ID, JAPANESE, QUESTION, FULL_SENTENCE, EXPLANATION
     
-    # Helper to save current item
     def save_current():
         if current_item.get('id') and current_item.get('en_full'):
-            # Calculate answer
             q = current_item.get('question', '')
             f = current_item.get('en_full', '')
             ans = find_answer_part(q, f)
             
-            # Formatting en field: "The train {arrived at} Tokyo..."
-            # If answer found, replace it in full sentence with {answer}
             if ans and ans in f:
                 current_item['answer'] = ans
                 current_item['en'] = f.replace(ans, f"{{{ans}}}")
             else:
-                 # Fallback if logic fails
+                 # heuristic fallback: if no blanks detected, maybe sentence is answer?
+                 # Or just use the full sentence
                  current_item['answer'] = "???"
-                 current_item['en'] = f + " {???}"
+                 current_item['en'] = f
             
-            # Clean explanation
             expl = "\n".join(current_item.get('explanation_lines', [])).strip()
             current_item['explanation'] = expl
             
-            # Remove temporary fields
             cleanup = {k:v for k,v in current_item.items() if k in ['id', 'ja', 'en', 'answer', 'explanation']}
             items.append(cleanup)
 
-    
     for i, line in enumerate(lines):
         line = line.strip()
         if not line: continue
         
-        # Check if line is a new ID (Digits only)
-        # Sometimes ID is "1056" or "1056-1"
+        # ID detection: 
+        # "1056" or "1056-1" or "1-1" or "2"
+        # Must be careful not to match simple numbers inside text.
+        # We assume ID is usually on its own line or at start of line
         id_match = re.match(r'^(\d+(-\d+)?)$', line)
         
         if id_match:
-            # Start new item
+            # If we are already building an item:
+            # 1. It could be the START of a NEW item.
+            # 2. It could be the REPEAT of the CURRENT ID (looking for full sentence).
+            
+            matched_id = id_match.group(1)
+            
+            if current_item and current_item.get('id') == matched_id:
+                # It is the repeated ID!
+                # Check if there is text on this line
+                content = line[len(matched_id):].strip()
+                if len(content) > 5 and not is_japanese(content):
+                    # Case A: ID and Sentence on same line (Chapter 24)
+                    current_item['en_full'] = content
+                    state = "EXPLANATION"
+                    continue
+                else:
+                    # Case B: ID is alone, Sentence is on next lines (Chapter 1)
+                    state = "POST_ID_SEARCH"
+                    continue
+            
+            # Start NEW item
             if current_item:
                 save_current()
+            
             current_item = {
-                'id': id_match.group(1),
-                'explanation_lines': []
+                'id': matched_id,
+                'explanation_lines': [],
+                'ja': '',
+                'question': ''
             }
             state = "JAPANESE"
             continue
             
         if not current_item: continue
         
-        # State Machine Logic
         if state == "JAPANESE":
-            # Skip noise like "基本", "Tip" (heuristic: strict Japanese check)
-            # If line seems to be the Japanese question
-            if is_japanese(line) and len(line) > 2:
-                current_item['ja'] = line
-                state = "QUESTION"
-            elif len(line) < 5 and is_japanese(line): # Likely a tag like "基本"
-                pass 
+            # Skip "Words to Use", "基本", "Tip"
+            if line.startswith("Words to Use") or line == "基本":
+                continue
+            
+            if is_japanese(line):
+                # Accumulate Japanese text (sometimes multiline?)
+                if current_item['ja']:
+                     current_item['ja'] += " " + line
+                else:
+                     current_item['ja'] = line
+            
+            elif '(' in line or '（' in line:
+                # English question found
+                current_item['question'] = line
+                state = "WAITING_FOR_FULL_SENTENCE"
             else:
-                # Could be english garbage or tags
                 pass
-                
-        elif state == "QUESTION":
-            # Looking for English with parens OR just determining it's the question line
-            # Heuristic: Contains '(' or '（' and is mostly ascii/english
-            if '(' in line or '（' in line:
-                 current_item['question'] = line
-                 state = "FULL_SENTENCE"
-            else:
-                 # Check if we accidentally skipped to Full Sentence (no blanks?)
-                 # Or maybe Japanese was multiline?
-                 pass
 
-        elif state == "FULL_SENTENCE":
-            # Looking for line starting with ID or just the sentence
-            # Text often repeats ID: "1056 The train..."
-            # Remove ID if present
-            if line.startswith(current_item['id']):
-                line_content = line[len(current_item['id']):].strip()
-                current_item['en_full'] = line_content
+        elif state == "WAITING_FOR_FULL_SENTENCE":
+            # In this state, we might see garbage before the ID repeats
+            # or we might see the ID repeat.
+            # We assume ID detection block above handles the transition.
+            # We just ignore stuff here unless it looks like valid English continuation?
+            pass
+
+        elif state == "POST_ID_SEARCH":
+            # We found the repeated ID, now looking for the English sentence.
+            # Skip "F 023" type codes
+            if re.match(r'^F\s*\d+', line) or line.startswith("Tip"):
+                continue
+            
+            # If line is Japanese, it's not the English sentence.
+            if is_japanese(line):
+                continue
+                
+            # Assume first English/valid line is the sentence
+            if len(line) > 2:
+                current_item['en_full'] = line
                 state = "EXPLANATION"
-            else:
-                # Maybe ID isn't repeated? If it looks like English and matches question start...
-                # For now assume ID is usually there as per sample
-                # If not, treat as explanation or garbage?
-                # Sample showed: "1056 The train arrived..."
-                pass
-                
+        
         elif state == "EXPLANATION":
-             # Collect everything until next ID
-             # Skip "Tip" garbage
-             if "Tip" in line and len(line) < 20: 
-                 pass
-             else:
-                 current_item['explanation_lines'].append(line)
+             # Stop if we hit a known "Tip" block if it's just noise, 
+             # but often Tip is part of explanation.
+             # But "Tip" usually appears BEFORE the breakdown in Chapter 1?
+             # In Chapter 1: 
+             # ...
+             # My father often shops online.
+             # ▶ explanation...
+             # shop online ...
+             
+             # In Chapter 24:
+             # explanation...
+             # 1057 ... (New ID)
+             
+             # Just collect everything.
+             # Filter out "Words to Use" if valid start
+             if line == "Words to Use": continue
+             current_item['explanation_lines'].append(line)
 
-    # Save last item
     if current_item:
         save_current()
         
     return items
 
-
 def generate_app(chapter_num, items):
+    if not TEMPLATE_FILE.exists():
+         print("Error: template.html not found")
+         return ""
+         
     with open(TEMPLATE_FILE, "r", encoding="utf-8") as f:
         template = f.read()
     
-    # 1. Update Title and Subtitle
-    # "学習用サイト（28章 その他の重要熟語）"
-    # Replace (28章...) with (Chapter X)
-    # The template has hardcoded title, we should regex replace it
-    
     chapter_title_text = f"Chapter {chapter_num}"
-    
-    # Replace title tag
     template = re.sub(r'<title>.*?</title>', f'<title>Insight App - {chapter_title_text}</title>', template)
-    
-    # Replace h2 subtitle
-    # <h2 id="app-subtitle" ...>学習用サイト（28章 ...）</h2>
-    # We replace inner text
     template = re.sub(
         r'<h2 id="app-subtitle"([^>]*)>.*?</h2>', 
         f'<h2 id="app-subtitle"\\1>学習用サイト（{chapter_title_text}）</h2>', 
         template
     )
     
-    # 2. Inject Data
     json_data = json.dumps(items, ensure_ascii=False, indent=4)
-    # Be careful with substitution if the template uses `const chapterData = [...]`
-    # We'll use a direct string replacement of the VARIABLE definition
-    
-    # Regex to find `const chapterData = [ ... ];` (multiline)
-    # Note: The template likely has `const chapterData = [`
-    pattern = r'const chapterData = \[\s*\{.*?\}\s*\];'
-    # This regex is risky for large matching.
-    # Better: find `const chapterData = [` and the closing `];`
-    
     start_marker = "const chapterData = ["
     end_marker = "];"
     
     start_idx = template.find(start_marker)
     if start_idx != -1:
-         # Find the matching closing bracket? or just next semicolon?
-         # Since it's JS, finding the corresponding `];` is safest
-         # But simpler: replace the whole block if we can find the range.
-         # Let's assume the template provided is clean.
-         
-         # actually, let's just use string replacement of the example data block
-         # or just inject after the marker.
-         
-         # Find where the array ends.
-         # A robust way is to replace everything between `const chapterData = [` and the first `];` that follows.
          end_idx = template.find(end_marker, start_idx)
          if end_idx != -1:
              new_code = f"const chapterData = {json_data};"
@@ -295,7 +270,7 @@ def get_chapter_number(filename):
     return 999
 
 def main():
-    print("--- Insight App Generator V2 ---")
+    print("--- Insight App Generator V2.1 (Unified) ---")
     setup_directories()
     
     files = list(PDF_DIR.glob("*.pdf"))
@@ -306,9 +281,6 @@ def main():
     for pdf_file in files:
         print(f"Processing {pdf_file.name}...")
         raw_text = extract_text_pypdf(pdf_file)
-        
-        # Debug: Dump text for first file if needed
-        # print(raw_text[:500])
         
         items = parse_chapter_text(raw_text)
         print(f"Extracted {len(items)} items.")
@@ -325,10 +297,8 @@ def main():
         generated_links.append((output_name, f"Chapter {chap_num}"))
         print(f"Saved {output_name}")
 
-    # Re-generate Index
     print("Updating Index...")
     index_path = DOCS_DIR / "index.html"
-    
     list_items = ""
     for fname, title in generated_links:
         list_items += f'<li class="mb-2"><a href="{fname}" class="text-blue-600 hover:underline">{title}</a></li>'
@@ -355,12 +325,10 @@ def main():
     with open(index_path, "w", encoding="utf-8") as f:
         f.write(index_html)
 
-    # Deploy
     print("Deploying...")
     run_command("git add .")
-    run_command('git commit -m "Update apps with V2 parser and new template"')
-    run_command("git push origin main")
-    
+    run_command('git commit -m "Update parsing logic to fix incomplete chapters"', cwd=os.getcwd())
+    run_command("git push origin main", cwd=os.getcwd())
     print("Done!")
 
 if __name__ == "__main__":
