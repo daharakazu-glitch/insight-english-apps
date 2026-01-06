@@ -158,46 +158,382 @@
     <script>
         const chapterData = [
     {
+        "id": "832",
+        "ja": "",
+        "answer": "I hope so.",
+        "en": "“Is Sara coming?” “{I hope so.}”",
+        "explanation": "so ʮͦͷΑ͏ʹʯ―副詞\n▶ 先行するthat 節の肯定の内容をso で代用する場合がある。➡File99\nこの問題文のso はI hope that Sara is coming. のthat節の代用。"
+    },
+    {
+        "id": "833",
+        "ja": "",
+        "answer": "I hope not.",
+        "en": "“Is Sara still sick?” “{I hope not.}”",
+        "explanation": "not ʮʜͰͳ͍ʯ―副詞\n▶ 先行するthat 節の否定の内容をnot で代用する場合がある。➡File99\nこの問題文のnot はI hope that Sara is not sick. のthat節の代用。"
+    },
+    {
+        "id": "834-1",
+        "ja": "家に帰らないといけない。",
+        "answer": "???",
+        "en": "I have to go home.",
+        "explanation": "go homeΔʯ\n▶ この場合のhome は副詞なのでto などの前置詞は不要。  go to home"
+    },
+    {
+        "id": "834-2",
+        "ja": "帰り道で昔の友達に会って，楽しいおしゃべりをした。",
+        "answer": "on the [my] way home",
+        "en": "I met an old friend {on the [my] way home} and we had a nice chat.",
+        "explanation": "on the [one’s] way home୐్தͰʯ\n⇧「 家 へ（home）の 道（the way）の 途 上 で（on）」\n▶  … way to home は誤り。➡File100"
+    },
+    {
+        "id": "835",
+        "ja": "視野を広げるために私は外国へ行きたいです。",
+        "answer": "???",
+        "en": "I would like to go abroad to broaden my horizons.",
+        "explanation": "go abroad͘ʯ\n▶ abroad は副詞なのでto などの前置詞は不要。  go to abroad ➡File100\nbroaden one’s horizons͛Δʯ＝expand one’s horizons"
+    },
+    {
+        "id": "836",
+        "ja": "",
+        "answer": "I’m in",
+        "en": "“Do you want to join us?” “Sure, {I’m in}.”",
+        "explanation": "inՃͯ͠ʯ⇔outՃͰʯ\n▶ in は前置詞の用法だけではなく，単独で副詞の働きをすることがある。"
+    },
+    {
+        "id": "837",
+        "ja": "彼は今，外出中です。",
+        "answer": "out",
+        "en": "He is {out} right now.",
+        "explanation": "outͰʯ―副詞。 「外に （out）い る（is） ⭢ 外出中」ということ。\nright now  ͙͢ʯ\nway / abroad\nݱ（前置詞は不要）File 100\ngo home（  go to home）Δʯɹ  get homeʮՈʹண͘ʯ\ncome homeͬͯ͘Δʯɹ  walk homeΔʯ\ndrive homeΔʯɹ  stay homeʮՈʹ͍Δʯ\non the [one’s] way home୐్தͰʯɹ  go abroad͘ʯ\ntravel abroad͢Δʯɹ  study abroad͢Δʯ\nlive abroadʹॅΉʯɹ  work abroadͰಇ͘ʯ\ngo overseas͘ʯɹ  go downtown͘ʯ\ngo upstairs͘ʯɹ  go downstairs͘ʯ\nstay indoorsʮ԰಺Ͱա͢͝ʯɹ  eat outdoorsΛ͢Δʯ\nlive next door (to A)ʮʢA ͷ ʣྡ ʹ ॅ Ήʯ\nthat節の肯定の内容をso で代用\nI think so. / I suppose so. / I guess so. / I expect so.͏ɻʯ\nI believe so.ʮͦ͏৴͍ͯ͡Δɻʯɹ  I hope so.͏ɻʯ\nI’m afraid so. / I fear so.೦ͳ͕Βͦ͏ͩɻʯ\nthat節の否定の内容をnot で代用\nI guess not. / I believe not.Θͳ͍ɻʯ\nI hope not.͏ɻʯ\nI’m afraid not. / I fear not.೦ͳ͕Βͦ͏Ͱ͸ͳ͍ɻʯ"
+    },
+    {
+        "id": "838",
+        "ja": "彼女はいつも安全のために明かりをつけっぱなしにしておく。",
+        "answer": "on",
+        "en": "She always keeps the lights {on} for security.",
+        "explanation": "on ʮʢςϨϏɾর໌ͳͲ͕ʣ͍ͭͯʯ⇔ oﬀʮʢςϨϏɾর໌ͳͲ͕ʣফ͑ͯʯ\n▶ このon は前置詞ではなく副詞。➡Grasp30 – p.379\nfor security / for safety ʮ҆શͷͨΊʹʯ"
+    },
+    {
+        "id": "839",
+        "ja": "",
+        "answer": "oﬀ",
+        "en": "Make sure all the lights are {oﬀ}.",
+        "explanation": "off ʮʢςϨϏɾর໌ͳͲ͕ʣফ͑ͯʯ⇔ onʮʢςϨϏɾর໌ͳͲ͕ʣ͍ͭͯʯ\nmake sure (that) …  ᶃʮ…͔ΊΔʯ ᶄʮඞͣ…͢ΔΑ͏ʹ͢Δʯ"
+    },
+    {
+        "id": "840",
+        "ja": "夏休みが終わった。",
+        "answer": "is over",
+        "en": "The summer vacation {is over}.",
+        "explanation": "over ʮऴΘͬͯʯ\n▶ 「 休みが 終わった」⭢「 休みは今終 わ っ て（over）いる状態である（is）」 と 考 え る 。\nbe動詞を過去形にしないこと。"
+    },
+    {
         "id": "841",
         "ja": "祖父は3 年 前 に亡くなった。",
         "answer": "???",
         "en": "My grandfather died three years ago.",
-        "explanation": "My grandfather has been dead for three years.  ➡30\nؒظʴago͔Βʣʙલʹʯ\n▶ ～ ago は過去形と共に使う。現在を基準にした過去の時点を表す。\n➡Grasp27, File101\n842 数年前に会ったことがあったので，彼女のことは覚え ていた。\nI remembered her because I  her a few .\nTip  ɻ ɻ"
+        "explanation": "My grandfather has been dead for three years.  ➡30\nؒظʴago͔Βʣʙલʹʯ\n▶ ～ ago は過去形と共に使う。現在を基準にした過去の時点を表す。\n➡Grasp27, File101"
+    },
+    {
+        "id": "842",
+        "ja": "",
+        "answer": "???",
+        "en": "I remembered her because I had met her a few years before.",
+        "explanation": "ؒظʴbefore఺͔Βʣʙલʹʯ\n▶ ～ before は過去完了形と共に使う。過去のある時点を基準にした過去の時点を\n表す。➡Grasp27, File101"
+    },
+    {
+        "id": "843",
+        "ja": "",
+        "answer": "before",
+        "en": "I have visited Kinkaku-ji Temple {before}.",
+        "explanation": "͏beforeʮҎલʹʯ―副詞\n▶ 過去形・現在完了形・過去完了形と共に使う。➡File101  通例，文末に置く。\nbefore S′ʴV′ʮ…͢Δલʹɼ…͠ͳ͍͏ͪʹʯ―接続詞  ➡237-1"
+    },
+    {
+        "id": "844",
+        "ja": "",
+        "answer": "have not seen him since",
+        "en": "I {have not seen him since}.",
+        "explanation": "͏(ever) sinceʮͦΕҎདྷʢͣͬͱʣʯ―副詞\n▶ 現在完了形・過去完了形と共に使う。➡File101\n伝えたい内容を強調したいときにever を付ける。\n(ever) since S′ʴV′ʮ…ͯ͠Ҏ དྷʢͣͬͱʣʯ―接続詞\n(ever) since AʮA Ҏདྷʢͣͬͱʣʯ―前置詞\nmeet / see\nago / before / since๏File 101\na week ago（１週間前）\n［過去形と共に使う］\na week before（その１週間前）\n［過去完了形と共に使う］\nGrasp ～ ago ͱ ～ before27"
     },
     {
         "id": "845-1",
         "ja": "私 たちはそのコンサ ートのチケットをすでに買ってある。",
         "answer": "already",
         "en": "We have {already} bought tickets for the concert.",
-        "explanation": "already ʮ͢Ͱʹʢ…ͨ͠ʣʯ\n▶ 肯定文で「すでに（…した）」という完了を表す。➡File102\n完了形で使うことが多いが，他の時制でも使う。\n845-2 そのコンサ ートのチケットをもう買ったのですか。\nHave you (        ) bought tickets for the concert?\nTip  ͪΛද͢ʮ΋͏ʯ͸ ʁ ͪΛද͢ʮ΋͏ʯ͸ ʁ\n845-2 Have you already bought tickets for the concert?\nalready ʮ΋͏ʢ…ͨ͠ͷ͔ʣʯ\n▶ 疑問文で「もう（…したのか）」という驚きの気持ちを表す。➡File102"
+        "explanation": "already ʮ͢Ͱʹʢ…ͨ͠ʣʯ\n▶ 肯定文で「すでに（…した）」という完了を表す。➡File102\n完了形で使うことが多いが，他の時制でも使う。"
+    },
+    {
+        "id": "845-2",
+        "ja": "",
+        "answer": "already",
+        "en": "Have you {already} bought tickets for the concert?",
+        "explanation": "already ʮ΋͏ʢ…ͨ͠ͷ͔ʣʯ\n▶ 疑問文で「もう（…したのか）」という驚きの気持ちを表す。➡File102"
     },
     {
         "id": "846-1",
         "ja": "ちょっと待って。まだ準備ができていない。",
         "answer": "not ready yet",
         "en": "Wait a minute. I’m {not ready yet}.",
-        "explanation": "not … yetʮ·ͩ ʜ͍ͯ͠ͳ͍ ʯ\n▶ 否定文でyet を使い，「まだ…していな い」という未完了を表す。➡File102\nどの時制・完了形でも使う。yet は 文 末 にくることが 多 い 。\n846-2 「もう準備できた？」 「まだだって言ったでしょ ！」\n“Are you ready (        )?” “I told you I’m not!”\nTip  ͸ ʁ ͸ ʁ\n846-2 “Are you ready yet?” “I told you I’m not!”\nyet ʮ΋͏ʢ…͔ʣʯ\n▶ 疑問文で「もう（…か）」を表す。この意味ではyet は文末に置く。➡File102"
+        "explanation": "not … yetʮ·ͩ ʜ͍ͯ͠ͳ͍ ʯ\n▶ 否定文でyet を使い，「まだ…していな い」という未完了を表す。➡File102\nどの時制・完了形でも使う。yet は 文 末 にくることが 多 い 。"
+    },
+    {
+        "id": "846-2",
+        "ja": "",
+        "answer": "yet",
+        "en": "“Are you ready {yet}?” “I told you I’m not!”",
+        "explanation": "yet ʮ΋͏ʢ…͔ʣʯ\n▶ 疑問文で「もう（…か）」を表す。この意味ではyet は文末に置く。➡File102"
+    },
+    {
+        "id": "846-3",
+        "ja": "発展 彼は待つように言ったけど， 私 はとに かくそ の 場 を 離 れ た 。",
+        "answer": "???",
+        "en": "He told me to wait, (and) yet I left anyway.",
+        "explanation": "(and) yet …ʮ͕ͩʜɼ͔͠͠ʜʯ\n＝but …\n▶ and yet のyet は副詞だが，and を省略すると接続詞扱いになる。"
     },
     {
         "id": "847",
         "ja": "コンテストで１位を受賞したなんて今でも信じられない。",
         "answer": "still",
         "en": "I {still} can’t believe I won first prize in the contest.",
-        "explanation": "still΋ͳ͓ʯ\n▶ 継続を表す。➡File102  どの時制・完了形でも使う。\nwin /f_irst prize ʮ̍ҐʹͳΔɼ༏উ͢Δʯ―first の前に冠詞は不要。\n848 彼らはたいていテキストメッセ ー ジで やり取りしている。\nThey communicate (m     ) by text message.\nTip  ʮ͍͍ͨͯ ʮ͍͍ͨͯʹʹ͸ʁ͸ʁ\n848 They communicate mostly by text message.\nmostly ʮ ओ ʹʢ＝mainlyʣɼ ͨ ͍ ͯ ͍ ʯ\nmost΋ʯ➡File103\ntext messageଳి࿩ͷʣςΩετϝοηʔδɼγϣʔτϝʔϧʯ\n849 インフルエンザは感染力が非常に高い。\nInfluenza is (h      ) contagious.\nTip  ͸ ʁ ͸ ʁ\n849 Influenza is highly contagious.\nhighly ʮඇৗʹʯ＝very\nhigh͘ʯ➡File103\ncontagiousછੑͷʯ＝infectious\nnot\nalready / yet / still๏ -lyࢺFile 102 File 103\n326 327\nSelf\nCheck\n復習\n1 2 3 4 5 6 7 8 9 10音読\nmost΋ʯ\nmostlyʮओʹɼ͍͍ͨͯʯ\nhigh͘ʯ\nhighlyʮඇৗʹʯ\nprettyʯ\nprettilyʮ͖Ε͍ʹʯ\nsharp͕ʣ͖͔ͬΓʯ\nsharplyʹɼӶ͘ʯ\nhard໋ʹʯ\nhardlyʮ΄ͱΜͲʜͳ͍ʯ➡401\nlateʮ஗͘ʯ\nlatelyʯ\nnear͘ʹʯ\nnearlyʮ΄ͱΜͲʜɼ΋͏গ͠Ͱʜ͢Δͱ͜Ζʯ\n肯定文 否定文 疑問文\nalready ͢ Ͱ ʹʢ ʜ ͠ ͨ ʣ ʢ΋͏ʣ ΋ ͏ʢ ʜ ͠ ͨ ͷ ͔ ʣ［驚き］\nyet  ʢ·ͩʣ\n· ͩʢ ʜ ͯ͠ ͍ ͳ ͍ ʣ\n΋ ͏ʢ ʜ ͔ ʣ\nstill · ͩʢ ʜ ͯ͠ ͍ Δ ʣ · ͩʢ ʜ ͯ͠ ͍ Δ ͷ ͔ ʣ\n副詞の語法"
+        "explanation": "still΋ͳ͓ʯ\n▶ 継続を表す。➡File102  どの時制・完了形でも使う。\nwin /f_irst prize ʮ̍ҐʹͳΔɼ༏উ͢Δʯ―first の前に冠詞は不要。"
+    },
+    {
+        "id": "848",
+        "ja": "",
+        "answer": "mostly",
+        "en": "They communicate {mostly} by text message.",
+        "explanation": "mostly ʮ ओ ʹʢ＝mainlyʣɼ ͨ ͍ ͯ ͍ ʯ\nmost΋ʯ➡File103\ntext messageଳి࿩ͷʣςΩετϝοηʔδɼγϣʔτϝʔϧʯ"
+    },
+    {
+        "id": "849",
+        "ja": "",
+        "answer": "highly",
+        "en": "Influenza is {highly} contagious.",
+        "explanation": "highly ʮඇৗʹʯ＝very\nhigh͘ʯ➡File103\ncontagiousછੑͷʯ＝infectious\nnot\nalready / yet / still๏ -lyࢺFile 102 File 103"
+    },
+    {
+        "id": "850",
+        "ja": "ケンは試験に向けて懸命に勉強している。",
+        "answer": "hard",
+        "en": "Ken has been studying {hard} for his exams.",
+        "explanation": "hard໋ʹʯ―hard には形容詞「難しい」だけでなく，副詞の用法もある。\nhardly ʮ΄ͱΜͲ…ͳ͍ʯ＝scarcely  ➡401, File103 – p.327"
+    },
+    {
+        "id": "851",
+        "ja": "結果はなかなか良かった。",
+        "answer": "pretty good",
+        "en": "The results were {pretty good}.",
+        "explanation": "prettyɼͳ͔ͳ͔ʯ＝quite ＝rather\nprettily ʮ͖Ε͍ʹʯ➡File103 – p.327"
+    },
+    {
+        "id": "852",
+        "ja": "",
+        "answer": "???",
+        "en": "Let’s meet here at four (o’clock) sharp.",
+        "explanation": "at ʴࠁ࣌ʴsharp͖͔ͬΓʹʯ\nsharplyʹɼӶ͘ʯ➡File103 – p.327"
+    },
+    {
+        "id": "853-1",
+        "ja": "",
+        "answer": "far [much] too expensive",
+        "en": "That new smartphone is {far [much] too expensive}.",
+        "explanation": "▶「ఔ౓」ࢺは修飾する語句の直前に置く。\n副詞 far [much, way] が too expensive を修飾する表現。\nfar too ʴʧ\nmuch too ʴʧ\nway too ʴʧ"
+    },
+    {
+        "id": "853-2",
+        "ja": "",
+        "answer": "much too young",
+        "en": "Sara is {much too young} to get married.",
+        "explanation": "▶ 〈much too＋形容詞 ［副詞］ 〉 「あま りにも～すぎる」 too much young ➡853-1\nget married͢Δʯ"
+    },
+    {
+        "id": "854-1",
+        "ja": "",
+        "answer": "almost [nearly] impossible",
+        "en": "It is {almost [nearly] impossible} to imagine life without electricity.",
+        "explanation": "almost ʴʧ\nnearly ʴʧ    ʮ΄ͱΜͲʙʯ\nwithout electricityͳ͠Ͱʯ"
+    },
+    {
+        "id": "854-2",
+        "ja": "",
+        "answer": "I haven’t seen her since we graduated from kindergarten, which is",
+        "en": "{I haven’t seen her since we graduated from kindergarten, which is}",
+        "explanation": "nearly [almost] ten years ago.\n▶ 〈nearly＋形容詞 ［副詞］ 〉 「ほとんど～ （近く） 」 。➡854-1  この場合のten はyears\nを修飾する形容詞。which は関係代名詞の非限定用法で，we graduated from\nkindergarten という節を受けている。 「卒園した」 ＝ 「１ ０年近く前」\nkindergarten ʮ༮ஓԂʯ"
+    },
+    {
+        "id": "855-1",
+        "ja": "",
+        "answer": "almost [nearly] drowned",
+        "en": "When I was a child, I {almost [nearly] drowned} in the sea.",
+        "explanation": "almost ʴࢺ\nnearly ʴࢺ    ʮ΋͏গ͠Ͱʜ͢Δͱ͜Ζʯ\n▶ almost もnearly も， 「完全にはその状態に達してはいない」ことを表す。\ndrown͵ʯ"
+    },
+    {
+        "id": "855-2",
+        "ja": "",
+        "answer": "nearly [almost] missed",
+        "en": "I fell asleep on the train and {nearly [almost] missed} my stop.",
+        "explanation": "▶ 〈nearly [almost]＋動詞〉 「危う く ［も う少しで］ …するところ」➡855-1\nfall asleep ʮ຾ΓʹམͪΔɼ৸ೖΔʯ\nmiss one’s stopʮ৐Γա͢͝ʯ⇦「停留所 （stop）を と ら え 損 な う（miss）」\nsharp / expensive / impossible / drown / miss\nʮ͋·Γʹ΋ʙ͗͢Δʯ\n―way too ～ は口語でよく使われる。"
+    },
+    {
+        "id": "856",
+        "ja": "",
+        "answer": "barely survive",
+        "en": "He could {barely survive} on the little food he had.",
+        "explanation": "barely  ᶃʮ ͔ Ζ͏͡ ͯ ʯ ᶄʮ ΄ ͱ Μ Ͳ ʜ ͳ ͍ʢ＝hardlyʣʯ\n▶ barely の後には動詞や形容詞がくる。\nThe elderly person could barely stand.［後ろに動詞］\n＝ The elderly person was barely able to stand.［後ろに形容詞］\n（ そ の お 年 寄 り は 立 っ て い る の が や っ と だ っ た 。）\nsurvive on A ʮAʢ৯ྉͳͲʣͰੜ͖ԆͼΔɼAʢগͳ͍ऩೖͳͲʣͰԿͱ͔΍͍ͬͯ͘ʯ\nthe little A ʮগͳ͍͚ΕͲશ෦ͷAɼͳ͚ͳ͠ͷAʯ＝what little A  ➡209"
+    },
+    {
+        "id": "857",
+        "ja": "",
+        "answer": "narrowly avoided",
+        "en": "We {narrowly avoided} a car accident.",
+        "explanation": "narrowly ʴࢺʮ͔Ζ͏ͯ͡ʜ͢Δʯ\n＝barelyʴࢺ\navoid an accidentΛආ͚Δʯ"
+    },
+    {
+        "id": "858",
+        "ja": "",
+        "answer": "badly",
+        "en": "Schools {badly} need more teachers.",
+        "explanation": "badly ʮͻͲ͘ɼେ͍ʹʯ\n＝awfully ＝terribly  ➡File104"
+    },
+    {
+        "id": "859",
+        "ja": "",
+        "answer": "Fortunately",
+        "en": "{Fortunately}, it was sunny on the day of the excursion.",
+        "explanation": "Fortunately, S ʴVӡʹ΋ʜʯ＝Luckily, SʴV\n＝It is fortunate that S′ʴV′\n▶ 文全体を修飾する副詞。文全体を修飾する副詞には話し手の判断や気持ちを\n表すものがある。➡File105\nexcursion ʮԕ଍ʯ"
+    },
+    {
+        "id": "860",
+        "ja": "",
+        "answer": "Unfortunately, I missed the train this morning and was late for",
+        "en": "{Unfortunately, I missed the train this morning and was late for}",
+        "explanation": "school.\nUnfortunately, S ʴV೦ͳ͕Βʜʯ\nmiss ʮʢ৐Γ෺ʣʹ৐Γ஗ΕΔʯ⇔⇔ catch͏ʯ\nbe late for A ʮA ʹ஗ΕΔʯ⇔⇔ be in time for AʮA͏ʯ"
+    },
+    {
+        "id": "861",
+        "ja": "",
+        "answer": "Interestingly",
+        "en": "{Interestingly}, it costs about 3 yen to make a 1-yen coin.",
+        "explanation": "Interestingly, S ʴVຯਂ͍͜ͱʹʜʯ\n＝It is interesting that S′ʴV′\ncost  ɾඅ༻ʣ͕͔͔Δʯ\nsurvive / avoid\nluckily / fortunatelyӡʹ΋ʯɹ  unfortunatelyʮෆӡʹ΋ʯ\nclearly / obviously / evidentlyʮ໌Β͔ʹʯɹ  surely͔ʹʯ\nnaturallyʮ౰વɼ΋ͪΖΜʯɹ  foolishly͔ʹ΋ʯ\nsurprisingly͘΂͖͜ͱʹʯɹ  interestinglyຯਂ͍͜ͱʹʯ\napparentlyʮͲ͏΍ΒʜΒ͍͠ʯ\nabsolutelyʮઈରʹʯɹ  completely / entirely / utterlyશʹɼ·ͬͨ͘ʯ\ngreatlyʮେ͍ʹʯɹ  awfully / terriblyʮͱͯ΋ɼͻͲ͘ʯ\nvery / much / tooʮͱͯ΋ʯɹ  quite / ratherʯɹ  fullyʮे෼ʹʯ\nreallyʮຊ౰ʹʯɹ  fairlyͱʯɹ  somewhatʮ͍͘ͿΜʯ\nslightlyʮΘ͔ͣʹʯɹ  hardly / scarcelyʮ΄ͱΜͲʜͳ͍ʯ➡401\nࢺFile 105File 104"
+    },
+    {
+        "id": "862",
+        "ja": "",
+        "answer": "respectively",
+        "en": "Ken and Sara are 16 and 17 years old {respectively}.",
+        "explanation": "respectively ʮͦΕͧΕʹʯ\nrespective ʮͦΕͧΕͷʯ\n▶ respectively を使う ときは，それぞれに「対応するもの」が伴う。この問題文で\nはKen と16 (years old)，Sara と17 years old がそれぞれ対応している。"
+    },
+    {
+        "id": "863",
+        "ja": "",
+        "answer": "fast asleep",
+        "en": "My sister was {fast asleep} when the phone rang.",
+        "explanation": "fast asleep\nsound asleep    ʮ͙ͬ͢Γ຾ͬͯɼख़ਭͯ͠ʯ\n▶ このfast / sound はいずれも副詞。"
+    },
+    {
+        "id": "864-1",
+        "ja": "",
+        "answer": "something else",
+        "en": "I don’t want coffee. I’d like {something else} to drink, please.",
+        "explanation": "else ʮͦͷ΄͔ʹʯ―副詞\n▶ else は，something / anything / someone / anyone / no one や who / what\nなどの後に続けて「そのほかに」という意味を表す。"
+    },
+    {
+        "id": "864-2",
+        "ja": "",
+        "answer": "Who else",
+        "en": "“{Who else} is coming to the meeting?” “Ken.”",
+        "explanation": "▶ who の後にelse「そのほかに」が続く形。応答文は，Ken (is coming). の\nis coming が省略されている。\nwho else ʮ΄͔ʹ୭͔ʯ"
+    },
+    {
+        "id": "865",
+        "ja": "",
+        "answer": "anywhere",
+        "en": "Did you go {anywhere} interesting during the holidays?",
+        "explanation": "anywhere ʮͲ͔͜ʹɼͲ͜ʹ΋ʢ…ͳ͍ʣɼͲ͜ʹͰ΋ʯ\n▶ 形容詞 （interesting）が 副 詞（anywhere）を 修 飾 す る ま れ な ケ ー ス 。\nduring the holidaysʹʯ"
     },
     {
         "id": "866",
         "ja": "私たちはこれ以上，これらの問題を無視するこ とはできない。",
         "answer": "???",
         "en": "We cannot ignore these problems any longer [anymore].",
-        "explanation": "We can no longer ignore these problems.\nnot ʙ any longer [anymore]ʮ΋͸΍ʙͳ͍ʯ＝no longer\nignore͢Δʯ\n867 私が留学したい理由は 3 つある。第一に，私は異文化を体験したい。第二に，英語\nを練習したい。最後に，新しい友達をつく りたい。\nThere are three reasons I want to study abroad. (        ), I want to\nexperience a different culture. (        ), I want to practice my English.\n(        ), I want to make new friends.\nTip  ༿ɻ ༿ɻ\n867 There are three reasons I want to study abroad. First, I want to\nexperience a different culture. Second, I want to practice my\nEnglish. Finally, I want to make new friends.\n▶ 867～876の副詞は文章の中で༿（σΟείʔεϚʔΧʔ）とし て 使 う\nことができる。つなぎの言葉を効果的に使うと，論理的でわかりやすい文章を書く\nことができ る。読むときにも，つなぎの言葉に着目すると文のつながりや論理の\n展開が理解しやすく なる。➡自由英作文の論理パターン ―巻末\n/f_irst ＝/f_irstlyʮୈҰʹʯ\nsecond ＝secondlyʮୈೋʹʯ\nthird ＝thirdlyʹʯ\n/f_inally ＝lastlyʹʯ\n▶ 列挙を表すつなぎの言葉。\nasleep / something\n332 333\nSelf\nCheck\n復習\n1 2 3 4 5 6 7 8 9 10音読\n副詞の語法"
+        "explanation": "We can no longer ignore these problems.\nnot ʙ any longer [anymore]ʮ΋͸΍ʙͳ͍ʯ＝no longer\nignore͢Δʯ"
+    },
+    {
+        "id": "867",
+        "ja": "を練習したい。最後に，新しい友達をつく りたい。",
+        "answer": "First",
+        "en": "There are three reasons I want to study abroad. {First}, I want to",
+        "explanation": "experience a different culture. Second, I want to practice my\nEnglish. Finally, I want to make new friends.\n▶ 867～876の副詞は文章の中で༿（σΟείʔεϚʔΧʔ）とし て 使 う\nことができる。つなぎの言葉を効果的に使うと，論理的でわかりやすい文章を書く\nことができ る。読むときにも，つなぎの言葉に着目すると文のつながりや論理の\n展開が理解しやすく なる。➡自由英作文の論理パターン ―巻末\n/f_irst ＝/f_irstlyʮୈҰʹʯ\nsecond ＝secondlyʮୈೋʹʯ\nthird ＝thirdlyʹʯ\n/f_inally ＝lastlyʹʯ\n▶ 列挙を表すつなぎの言葉。\nasleep / something"
+    },
+    {
+        "id": "868-1",
+        "ja": "",
+        "answer": "Besides",
+        "en": "I’m learning English at school. {Besides}, I listen to English radio",
+        "explanation": "programs every morning.\nbesides ʮͦͷ্ʯ＝what’s more ＝also\n▶ 追加を表すつなぎの言葉。会話や比較的カジュアルな文章で使うことが多い。\nbesides AʮA ʹՃ͑ͯʯ―beside AʮA ͷͦ͹ʹʯ➡764"
+    },
+    {
+        "id": "868-2",
+        "ja": "いい方法でもある。",
+        "answer": "Moreover [Furthermore], it is",
+        "en": "Volunteering benefits the community. {Moreover [Furthermore], it is}",
+        "explanation": "a great way to meet new people.\nmoreover\nfurthermore    ʮͦͷ্ɼ͞Βʹ͸ʯ＝in addition\n▶ 追加を表すつなぎの言葉。書き言葉や公式な文書で使うことが多い。\nvolunteer  ʮϘϥϯςΟΞΛ͢Δʯ\n―volunteering で「ボランティアをすること」の意味になる。\nbene/f_it  ʮʙʹརӹΛ༩͑Δʯ\ncommunityձʯ"
     },
     {
         "id": "869",
         "ja": "私は毎日バランスの取れた食事をし ている。しかしながら，自分へのごほうびによく アイスクリームを食べてしまう。",
         "answer": "However",
         "en": "I eat a balanced diet every day. {However}, I often treat myself to ice",
-        "explanation": "cream.\nhowever ʮ͔͠͠ͳ͕Βʯ\n▶ 逆接を表す。  But, S＋V .  butは接続詞なので，普通はコンマを付けない。\nBut で文を始めることは正式な文書では避けられることが多い。\na balanced dietʯ\ntreat A to BʮA ʹB Λ͓͝Δʯ\n870 誰もが 平 和を望んでいる。それにもかかわらず，世界の多くの地域で戦争が続いて\nいる。\nEveryone wants peace. (N      ), wars continue in many parts of the\nworld.\nTip  ͸ʁ ͸ʁ\n870 Everyone wants peace. Nevertheless [Nonetheless], wars continue in\nmany parts of the world.\nnevertheless\nnonetheless    ʮͦΕʹ΋͔͔ΘΒͣɼͦΕͰ΋΍͸Γʯ＝still ＝even so\n▶ 逆接を表すつなぎの言葉。\n871 石油価格が急騰した。それに応じて，ガソリンも高くなった。\nOil prices rose sharply. (A      ), gas became more expensive.\nTip  ʮͦΕʹԠͯ͡ ʮͦΕʹԠͯ͡ʹʹ͢Δɻ͢Δɻsosoɻɻ\n871 Oil prices rose sharply. Accordingly, gas became more expensive.\naccordingly ʮ͕ͨͬͯ͠ʯ＝therefore ＝so\n▶ 結果を表すつなぎの言葉。同意語のso は「したがって」を表す最も日常的な\n表現。\noil pricesʯ\ngas / gasoline / petrolʮΨιϦϯʯ\n872 これらの統計は誤解を招く ものであり，したがって混乱を招く。\nThese statistics are misleading and (t      ) confusing.\nTip  ͸ʁ ͸ʁ"
+        "explanation": "cream.\nhowever ʮ͔͠͠ͳ͕Βʯ\n▶ 逆接を表す。  But, S＋V .  butは接続詞なので，普通はコンマを付けない。\nBut で文を始めることは正式な文書では避けられることが多い。\na balanced dietʯ\ntreat A to BʮA ʹB Λ͓͝Δʯ"
+    },
+    {
+        "id": "870",
+        "ja": "いる。",
+        "answer": "Nevertheless [Nonetheless], wars continue in",
+        "en": "Everyone wants peace. {Nevertheless [Nonetheless], wars continue in}",
+        "explanation": "many parts of the world.\nnevertheless\nnonetheless    ʮͦΕʹ΋͔͔ΘΒͣɼͦΕͰ΋΍͸Γʯ＝still ＝even so\n▶ 逆接を表すつなぎの言葉。"
+    },
+    {
+        "id": "871",
+        "ja": "",
+        "answer": "Accordingly",
+        "en": "Oil prices rose sharply. {Accordingly}, gas became more expensive.",
+        "explanation": "accordingly ʮ͕ͨͬͯ͠ʯ＝therefore ＝so\n▶ 結果を表すつなぎの言葉。同意語のso は「したがって」を表す最も日常的な\n表現。\noil pricesʯ\ngas / gasoline / petrolʮΨιϦϯʯ"
+    },
+    {
+        "id": "872",
+        "ja": "",
+        "answer": "therefore",
+        "en": "These statistics are misleading and {therefore} confusing.",
+        "explanation": "therefore\nthus                   ʮͦΕΏ͑ɼ͕ͨͬͯ͠ʯ\nhence\n▶ 結果を表すつなぎの言葉。thus /ð%s/ とhence は硬い表現。\nstatisticsʯ― 「統計」は複数扱い， 「統計学」は単数扱い。\nmisleadingղΛট͖΍͍͢ʯ―形容詞\nconfusingཚͤ͞Δʯ―形容詞\nmoreover / therefore"
+    },
+    {
+        "id": "873",
+        "ja": "",
+        "answer": "consequently affects human",
+        "en": "Pollution harms the environment and {consequently affects human}",
+        "explanation": "health.\nconsequentlyՌʯ＝as a result ＝as a consequence\n▶ 結果を表すつなぎの言葉。\nharm AʮA΅͢ʯ＝do harm to A ＝do A harm\naﬀect AʮA͢Δʯ＝in/f_luence A ＝have an eﬀect on A"
+    },
+    {
+        "id": "874",
+        "ja": "",
+        "answer": "especially",
+        "en": "I love Kyoto, {especially} in the fall.",
+        "explanation": "especially\nparticularly    ʮಛʹʯ＝in particular\n▶ 強調を表すつなぎの言葉。\nin (the) fallʮळʹʯ＝in (the) autumn"
+    },
+    {
+        "id": "875",
+        "ja": "",
+        "answer": "Instead",
+        "en": "I didn’t go to the park. {Instead}, I stayed home and read one of my",
+        "explanation": "favorite books.\ninstead ʮ୅ΘΓʹʯ\ninstead of A ʮA ͷ୅ΘΓʹʯ＝in place of A  ➡1362\nstay (at) homeʮՈʹ͍Δʯ⇔⇔ go outʮ֎ग़͢Δʯ"
+    },
+    {
+        "id": "876",
+        "ja": "",
+        "answer": "Otherwise",
+        "en": "Children need a variety of experiences. {Otherwise} they will have a",
+        "explanation": "narrow view of things.\notherwise ʮ͞΋ͳ͚Ε͹ʯ\nhave a variety of experiencesΛ͢Δʯ\nhave a narrow view of things͍ʯ\n˱˱have a broad view of things͍ʯ\n▶ otherwise には，ᶃ「͞΋ͳ͚Ε͹」のほかにも，ᶄ「ͦ͏Ͱͳ͚Ε͹」 （仮定\n法過去） ，ᶅ「ʣͦ͏Ͱͳ͔ͬͨͳΒ」 （仮定法過去完了） ，ᶆ「ҧͬͨ;\n͏ʹ」，ᶇ「ͦͷ΄͔ͷ఺Ͱ͸」などの意味がある。\nᶃ I will leave early to catch the bus. Otherwise I will miss it.\n（バスに間に合うように早く出発します。さもなければバ ス に 乗 り 遅 れ ま す 。）\nOtherwise ＝If I don’t leave early …（も し早く出発しなければ…）\nᶄ You had better leave early to catch the bus. Otherwise you would miss it.\n（あなたはバスに間に合うように早く出発したほうがいい。そうでなければバスに乗り\n遅れ る で し ょう 。）［仮定法過去］\nOtherwise ＝If you didn’t leave early …（仮に早く出発しないと したら…）\nᶅ We left early to catch the bus. Otherwise we would have missed it.\n（私たちはバスに間に合うように早く出発した。そうでなかったならバスに乗り遅れて\nい た だ ろ う 。）［仮定法過去完了］\nOtherwise ＝If we hadn’t left early …（仮に早く出発しなかったと したら…）\nᶆ I thought it was impossible, but Sara thought otherwise.\n（私はそれは不可能だと思ったが，サラはそうではないと［違ったふうに］考 え た 。）\nᶇ This room is small, but otherwise perfect.\n（この部屋は狭いが，そのほかの点では申 し 分 な い 。）\nconsequently"
     }
 ];
 

@@ -51,7 +51,6 @@ def is_japanese(text):
     return False
 
 def clean_text(text):
-    # Remove "Tip" or other garbage common in these PDFs
     return text.strip()
 
 def find_answer_part(question, full_sentence):
@@ -77,8 +76,6 @@ def find_answer_part(question, full_sentence):
     start_idx = 0
     if prefix:
         try:
-             # Try to find prefix. If multiple, it's tricky, but let's assume valid sentence.
-             # Use a window to avoid matching random words appearing before
              start_idx = f.index(prefix) + len(prefix)
         except ValueError:
              pass
@@ -112,8 +109,6 @@ def parse_chapter_text(text):
                 current_item['answer'] = ans
                 current_item['en'] = f.replace(ans, f"{{{ans}}}")
             else:
-                 # heuristic fallback: if no blanks detected, maybe sentence is answer?
-                 # Or just use the full sentence
                  current_item['answer'] = "???"
                  current_item['en'] = f
             
@@ -128,33 +123,44 @@ def parse_chapter_text(text):
         if not line: continue
         
         # ID detection: 
-        # "1056" or "1056-1" or "1-1" or "2"
-        # Must be careful not to match simple numbers inside text.
-        # We assume ID is usually on its own line or at start of line
-        id_match = re.match(r'^(\d+(-\d+)?)$', line)
+        # Match '1056' or '1056-1' followed by optional text
+        # Group 1: ID
+        # Group 3: Rest of line
+        id_match = re.match(r'^(\d+(-\d+)?)(.*)$', line)
         
         if id_match:
-            # If we are already building an item:
-            # 1. It could be the START of a NEW item.
-            # 2. It could be the REPEAT of the CURRENT ID (looking for full sentence).
+            matched_id = id_match.group(1).strip()
+            # If the rest starts with '-', it might be '1-1' where first part '1' matched.
+            # But the regex `\d+(-\d+)?` is greedy, so `1-1` should be fully matched by group 1.
+            # Example: "1056 The train..." -> ID="1056", Rest=" The train..."
+            # Example: "1-1" -> ID="1-1", Rest=""
             
-            matched_id = id_match.group(1)
+            rest = id_match.group(3).strip()
             
+            # Special check: if 'rest' starts with '-' (e.g. line was "1-1"),
+            # regex might have parsed "1" as ID and "-1" as rest if greedy failed?
+            # Actually standard regex behavior: `\d+(-\d+)?` will try to match `-1`.
+            
+            # Transition Logic
             if current_item and current_item.get('id') == matched_id:
-                # It is the repeated ID!
-                # Check if there is text on this line
-                content = line[len(matched_id):].strip()
-                if len(content) > 5 and not is_japanese(content):
-                    # Case A: ID and Sentence on same line (Chapter 24)
-                    current_item['en_full'] = content
+                # Repeated ID found
+                if len(rest) > 5 and not is_japanese(rest):
+                    # Start of sentence found on same line (Chapter 24 style)
+                    current_item['en_full'] = rest
                     state = "EXPLANATION"
                     continue
                 else:
-                    # Case B: ID is alone, Sentence is on next lines (Chapter 1)
+                    # ID alone (Chapter 1 style), Sentence follows
                     state = "POST_ID_SEARCH"
                     continue
             
             # Start NEW item
+            # Only if it looks like a valid new ID start.
+            # Sometimes random numbers appear in text.
+            # But usually we are in "EXPLANATION" state or "FIND_ID".
+            
+            # If we are in "WAITING_FOR_FULL_SENTENCE" and see a NEW ID, we likely failed the previous item.
+            # But we save what we have (it will be filtered out by save_current because en_full is missing).
             if current_item:
                 save_current()
             
@@ -170,62 +176,34 @@ def parse_chapter_text(text):
         if not current_item: continue
         
         if state == "JAPANESE":
-            # Skip "Words to Use", "基本", "Tip"
             if line.startswith("Words to Use") or line == "基本":
                 continue
             
             if is_japanese(line):
-                # Accumulate Japanese text (sometimes multiline?)
                 if current_item['ja']:
                      current_item['ja'] += " " + line
                 else:
                      current_item['ja'] = line
             
             elif '(' in line or '（' in line:
-                # English question found
                 current_item['question'] = line
                 state = "WAITING_FOR_FULL_SENTENCE"
             else:
                 pass
 
         elif state == "WAITING_FOR_FULL_SENTENCE":
-            # In this state, we might see garbage before the ID repeats
-            # or we might see the ID repeat.
-            # We assume ID detection block above handles the transition.
-            # We just ignore stuff here unless it looks like valid English continuation?
             pass
 
         elif state == "POST_ID_SEARCH":
-            # We found the repeated ID, now looking for the English sentence.
-            # Skip "F 023" type codes
             if re.match(r'^F\s*\d+', line) or line.startswith("Tip"):
                 continue
-            
-            # If line is Japanese, it's not the English sentence.
             if is_japanese(line):
                 continue
-                
-            # Assume first English/valid line is the sentence
             if len(line) > 2:
                 current_item['en_full'] = line
                 state = "EXPLANATION"
         
         elif state == "EXPLANATION":
-             # Stop if we hit a known "Tip" block if it's just noise, 
-             # but often Tip is part of explanation.
-             # But "Tip" usually appears BEFORE the breakdown in Chapter 1?
-             # In Chapter 1: 
-             # ...
-             # My father often shops online.
-             # ▶ explanation...
-             # shop online ...
-             
-             # In Chapter 24:
-             # explanation...
-             # 1057 ... (New ID)
-             
-             # Just collect everything.
-             # Filter out "Words to Use" if valid start
              if line == "Words to Use": continue
              current_item['explanation_lines'].append(line)
 
@@ -270,7 +248,7 @@ def get_chapter_number(filename):
     return 999
 
 def main():
-    print("--- Insight App Generator V2.1 (Unified) ---")
+    print("--- Insight App Generator V2.2 (Regex Fix) ---")
     setup_directories()
     
     files = list(PDF_DIR.glob("*.pdf"))
@@ -326,8 +304,9 @@ def main():
         f.write(index_html)
 
     print("Deploying...")
+    # Clean check
     run_command("git add .")
-    run_command('git commit -m "Update parsing logic to fix incomplete chapters"', cwd=os.getcwd())
+    run_command('git commit -m "Fix parsing regression for Chapter 24"', cwd=os.getcwd())
     run_command("git push origin main", cwd=os.getcwd())
     print("Done!")
 
