@@ -46,9 +46,12 @@ def extract_text_pypdf(pdf_path):
 
 def is_japanese(text):
     for char in text:
-        name = unicodedata.name(char, "")
-        if "HIRAGANA" in name or "KATAKANA" in name or "CJK" in name:
-            return True
+        try:
+            name = unicodedata.name(char, "")
+            if "HIRAGANA" in name or "KATAKANA" in name or "CJK" in name:
+                return True
+        except:
+            pass
     return False
 
 def find_answer_part(question, full_sentence):
@@ -113,19 +116,16 @@ def classify_line(line):
     if match_id_en:
         return "ID_ENGLISH", (match_id_en.group(1), match_id_en.group(2))
 
-    # Question Line
-    # Must contain parens OR just be English text with holes? 
-    # Let's rely on paren detection for now, but be loose about spaces
+    # Question Detection
+    # 1. Contains blanks
     if re.search(r'[\(（].*?[\)）]', line): 
         return "QUESTION_LINE", line
     
+    # 2. Japanese
     if is_japanese(line):
         return "JAPANESE_LINE", line
         
-    # Valid English text that didn't match ID_ENGLISH or Q_LINE
-    # This could be:
-    # 1. Broken Question line (e.g. `My father often` (next line `( ) ( )`))
-    # 2. Explanation text
+    # 3. English Text (Potential Question part or Explanation)
     return "ENGLISH_TEXT", line
 
 def parse_lines_v3(text):
@@ -133,6 +133,7 @@ def parse_lines_v3(text):
     items = []
     current_item = None
     japanese_buffer = [] 
+    english_buffer = [] # Buffer for multi-line English/Questions
     
     for line in lines:
         kind, data = classify_line(line)
@@ -170,6 +171,7 @@ def parse_lines_v3(text):
                 current_item['expl'].append(data)
             else:
                 japanese_buffer.append(data)
+                english_buffer = [] # Reset English buffer if new JA starts
                 
         elif kind == "QUESTION_LINE":
             if current_item and current_item['en_full']:
@@ -196,62 +198,75 @@ def parse_lines_v3(text):
             
             if current_item and current_item['id'] == new_id:
                 current_item['en_full'] = text
+                # Also, if we have english_buffer, maybe it was the Question?
+                if english_buffer and not current_item['question']:
+                     current_item['question'] = " ".join(english_buffer)
+                     english_buffer = []
                 
             elif current_item and current_item['id'] == 'PENDING':
                 current_item['id'] = new_id
                 current_item['en_full'] = text
+                if english_buffer and not current_item['question']:
+                     current_item['question'] = " ".join(english_buffer)
+                     english_buffer = []
                 
             else:
                 if current_item: items.append(current_item)
                 ja_text = " ".join(japanese_buffer)
-                current_item = {'id': new_id, 'ja': ja_text, 'en_full': text, 'question':'', 'expl': []}
+                q_text = " ".join(english_buffer) if english_buffer else ''
+                current_item = {'id': new_id, 'ja': ja_text, 'en_full': text, 'question': q_text, 'expl': []}
                 japanese_buffer = []
+                english_buffer = []
 
         elif kind == "ENGLISH_TEXT":
-            # Can be part of Question or Explanation
+            # If we are in "Explanation Mode" (after Full English), append to Expl
             if current_item and current_item['en_full']:
                  current_item['expl'].append(data)
-            elif current_item and not current_item['en_full']:
-                 # Likely part of Question (e.g. English Sentence with blanks split on lines)
-                 # Or Text before blanks.
-                 if current_item['question']:
-                     current_item['question'] += " " + data
+            
+            # If we are building a Question (before Full English)
+            else:
+                 # It might be a broken Question line OR valid Question without blanks
+                 if current_item and current_item['question']:
+                      current_item['question'] += " " + data
+                 elif current_item:
+                      english_buffer.append(data)
                  else:
-                     # Start of question?
-                     current_item['question'] = data
-            elif not current_item:
-                 # Orphan English text.
-                 # Part of Orphan Q?
-                 ja_text = " ".join(japanese_buffer)
-                 current_item = {'id': 'PENDING', 'ja': ja_text, 'en_full':'', 'question': data, 'expl': []}
-                 japanese_buffer = []
+                      # Orphan English
+                      english_buffer.append(data)
 
     if current_item:
         items.append(current_item)
 
     final_items = []
     for item in items:
+        # Filter Pending
         if not item['id'] or item['id'] == 'PENDING': continue
         if not item['en_full']: continue 
         
         q = item['question']
         f = item['en_full']
         
-        ans = "???"
-        if q:
-            ans = find_answer_part(q, f)
+        # Heuristic: If Q is empty but we have Full Sentence, try to guess unique blanks?
+        # NO, user wants to see blanks.
+        # If Q is empty, maybe English Buffer was the question?
+        # We handled english_buffer above.
         
-        if not ans or ans not in f:
-             ans = f 
-             item['en'] = f
+        # If Q still empty, use a placeholder
+        if not q:
+            ans = "???"
+            item['en'] = f
         else:
-             item['answer'] = ans
-             item['en'] = f.replace(ans, f"{{{ans}}}")
-             item['answer'] = ans 
-             
-        item['explanation'] = "\n".join(item['expl']).strip()
+            ans = find_answer_part(q, f)
+            if not ans:
+                # If finding answer failed, maybe Q has no blanks?
+                # or formatting issue.
+                ans = f
+                item['en'] = f
+            else:
+                item['en'] = f.replace(ans, f"{{{ans}}}")
         
-        # Cleanup JA (remove noise)
+        item['answer'] = ans 
+        item['explanation'] = "\n".join(item['expl']).strip()
         item['ja'] = item['ja'].strip()
         
         final_items.append({
@@ -298,7 +313,7 @@ def get_chapter_number(filename):
     return 999
 
 def main():
-    print("--- Insight App Generator V3.2 (Loose English) ---")
+    print("--- Insight App Generator V3.3 (Max Robust) ---")
     setup_directories()
     
     files = list(PDF_DIR.glob("*.pdf"))
@@ -352,7 +367,7 @@ def main():
 
     print("Deploying...")
     run_command("git add .")
-    run_command('git commit -m "Update parsing logic V3.2 (Robust English Check)"', cwd=os.getcwd())
+    run_command('git commit -m "Update parsing logic V3.3 (Max Robust)"', cwd=os.getcwd())
     run_command("git push origin main", cwd=os.getcwd())
 
 if __name__ == "__main__":
