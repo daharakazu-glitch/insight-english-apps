@@ -51,16 +51,13 @@ def is_japanese(text):
     return False
 
 def find_answer_part(question, full_sentence):
-    # Normalize
     q = re.sub(r'\s+', ' ', question).strip()
     f = re.sub(r'\s+', ' ', full_sentence).strip()
     
-    # Locate blanks
     start_match = re.search(r'[\(（]', q)
     end_match = re.search(r'[\)）][^\)）]*$', q)
     
     if not start_match:
-        # Fallback: compare strings visually?
         return None
         
     prefix = q[:start_match.start()].strip()
@@ -76,11 +73,8 @@ def find_answer_part(question, full_sentence):
     start_idx = 0
     if prefix:
         try:
-             # Find prefix in full sentence
-             # Use safe index
              start_idx = f.index(prefix) + len(prefix)
         except ValueError:
-             # Fuzzy match?
              pass
     
     end_idx = len(f)
@@ -93,80 +87,53 @@ def find_answer_part(question, full_sentence):
              pass
              
     answer = f[start_idx:end_idx].strip()
-    # Cleanup answer (punctuation?)
     return answer
 
 def classify_line(line):
     line = line.strip()
     if not line: return "EMPTY", None
     
-    # Garbage Filter
     if re.match(r'^Tip', line): return "GARBAGE", None
     if re.match(r'^F\s*\d+', line): return "GARBAGE", None
     if line.startswith("Words to Use") or line == "基本": return "GARBAGE", None
+    # Filter chapter headers that look like simple numbers but are at end
     if re.match(r'^Chapter\s*\d+', line, re.IGNORECASE): return "GARBAGE", None
 
-    # ID Patterns
-    # 1. ID Only: "1056", "1-1", "-1"
+    # ID Only
     if re.match(r'^(\d+(?:-\d+)?)$', line) or re.match(r'^(-\d+)(?:＝)?$', line):
-        return "ID_ONLY", line.split('＝')[0] # Remove ＝ if exists
+        return "ID_ONLY", line.split('＝')[0]
 
-    # 2. ID + Japanese: "1059 私は..."
-    # Must contain Japanese char
+    # ID + Japanese
     match_id_jp = re.match(r'^(\d+(?:-\d+)?)\s+([^a-zA-Z].*)$', line)
     if match_id_jp and is_japanese(match_id_jp.group(2)):
         return "ID_JAPANESE", (match_id_jp.group(1), match_id_jp.group(2))
 
-    # 3. ID + English: "1059 I felt..." (Answer Line)
-    match_id_en = re.match(r'^(\d+(?:-\d+)?)\s+([a-zA-Z].*)$', line)
+    # ID + English (Answer Line)
+    match_id_en = re.match(r'^(\d+(?:-\d+)?)\s+([a-zA-Z"\'].*)$', line) # Added quote support
     if match_id_en:
         return "ID_ENGLISH", (match_id_en.group(1), match_id_en.group(2))
 
-    # Content Patterns
-    if '(' in line or '（' in line:
-        # Heuristic: mostly English?
-        # If it has Japanese, it might be Japanese text with parens.
-        # Questions usually have ( ) blanks.
-        if re.search(r'[\(（]\s*[\)）]', line): # Empty parens
-             return "QUESTION_LINE", line
+    # Question Line Detection (Improved)
+    # Must explicitly look for blanks ( ) or （ ）
+    if re.search(r'[\(（]\s*[\)）]', line): 
+        return "QUESTION_LINE", line
+    
+    # Or matches typical question pattern? 
+    # Example: "My father often ( ) ( )."
+    # The previous regex catches logical blanks.
+    # What if using underscores?
     
     if is_japanese(line):
         return "JAPANESE_LINE", line
         
+    # Default to English Text (Explanation or part of Question?)
+    # If line is short English text, might be Q without blanks? No, Q must have blanks.
     return "ENGLISH_TEXT", line
 
 def parse_lines_v3(text):
     lines = text.split('\n')
     items = []
-    
-    # State tracking
     current_item = None
-    
-    # We maintain a list of items.
-    # Logic:
-    # We Iterate.
-    # If we see ID_HEADER (ID_ONLY or ID_JAPANESE):
-    #    Start New Item.
-    #    If ID_JAPANESE, fill JA.
-    #
-    # If we see JAPANESE_LINE:
-    #    If current_item has no JA, append.
-    #    Else, maybe it's part of multi-line JA.
-    #
-    # If we see QUESTION_LINE:
-    #    If current_item, set Q.
-    #    If NO current_item (Orphan), CREATE PROVISIONAL ITEM (Id=??).
-    #    Link JAPANESE_LINE from *buffer*?
-    #
-    # If we see ID_ENGLISH:
-    #    Find item with this ID.
-    #    Set FullEn.
-    #    If current_item is Provisional (no ID), and this ID matches proximity, merge.
-    #
-    # If we see ENGLISH_TEXT:
-    #    Likely Explanation if we have a FullEn.
-    
-    # Buffer for "Floating Japanese" (Japanese lines that appear before a Q/ID)
     japanese_buffer = [] 
     
     for line in lines:
@@ -176,151 +143,120 @@ def parse_lines_v3(text):
             continue
 
         if kind == "ID_ONLY":
-            # Start Item
-            if current_item:
-                items.append(current_item)
+            if current_item: items.append(current_item)
             
-            # Use data as ID
             raw_id = data
-            # Handle "-1" case (sub-item)
             if raw_id.startswith('-'):
-                # Look at previous ID
                 if items:
                     prev_id = items[-1]['id']
-                    # e.g. prev=1064, this=-1 -> 1064-1?
-                    # Or prev=1064, this=-1 -> 1064-1.
-                    # Usually "1064" is header, "-1" follows.
-                    # We need the parent.
-                    base_id = prev_id.split('-')[0]
-                    full_id = f"{base_id}{raw_id}"
-                    current_item = {'id': full_id, 'ja': '', 'en_full':'', 'question':'', 'expl': []}
-                else:
-                    # No parent? Just use as is.
-                    current_item = {'id': raw_id, 'ja': '', 'en_full':'', 'question':'', 'expl': []}
-            else:
-                current_item = {'id': raw_id, 'ja': '', 'en_full':'', 'question':'', 'expl': []}
+                    if 'PENDING' not in prev_id:
+                        base_id = prev_id.split('-')[0]
+                        raw_id = f"{base_id}{raw_id}"
             
-            # If we had buffered Japanese, add it?
-            # Usually ID comes *before* Japanese.
-            japanese_buffer = []
+            current_item = {'id': raw_id, 'ja': '', 'en_full':'', 'question':'', 'expl': []}
+            if japanese_buffer:
+                 # If JA buffer exists, assign to this item (e.g. JA appearing before ID)
+                 current_item['ja'] = " ".join(japanese_buffer)
+                 japanese_buffer = []
 
         elif kind == "ID_JAPANESE":
-            if current_item:
-                items.append(current_item)
-            
-            # data is (id, jp_text)
+            if current_item: items.append(current_item)
             current_item = {'id': data[0], 'ja': data[1], 'en_full':'', 'question':'', 'expl': []}
-            japanese_buffer = []
+            if japanese_buffer:
+                current_item['ja'] = " ".join(japanese_buffer) + " " + current_item['ja']
+                japanese_buffer = []
 
         elif kind == "JAPANESE_LINE":
-            # If we have a current item and no Question yet, it's JA.
-            if current_item and not current_item['question']:
+            if current_item and not current_item['question'] and not current_item['en_full']:
                 current_item['ja'] += (" " + data if current_item['ja'] else data)
             elif current_item and current_item['en_full']:
-                # Japanese appearing after Full English? Likely Expl.
-                current_item['expl'].append(data) # Explanation can contain Japanese
+                current_item['expl'].append(data)
             else:
-                # No current item? Or current item already has Q?
-                # Maybe it's a floating Japanese line for the *next* Q (Orphan Q case).
                 japanese_buffer.append(data)
                 
         elif kind == "QUESTION_LINE":
-            if current_item:
-                # Check if current item already has Q?
+            # If current item is 'done' (has en_full), this must be new Orphan Q
+            if current_item and current_item['en_full']:
+                if current_item: items.append(current_item)
+                ja_text = " ".join(japanese_buffer)
+                current_item = {'id': 'PENDING', 'ja': ja_text, 'en_full':'', 'question': data, 'expl': []}
+                japanese_buffer = []
+            
+            elif current_item:
                 if current_item['question']:
-                    # New Q for same ID? (Rare, or maybe -1 case missed)
-                    # Or maybe previous item wasn't closed properly.
-                    # Treat as Orphan if we accept multiple Qs.
-                    # Let's verify if 'question' is empty.
-                    pass
+                     # Already has Q? Maybe multi-line Q?
+                     # Or previous item missed END signal.
+                     # Treat as new Orphan if no ID match pending?
+                     current_item['question'] += " " + data
                 else:
                     current_item['question'] = data
-                    # Should we consume japanese_buffer?
-                    # Ideally JA was already added.
                     if not current_item['ja'] and japanese_buffer:
                         current_item['ja'] = " ".join(japanese_buffer)
                         japanese_buffer = []
-                    continue
-
-            # ORPHAN Q Handling
-            if not current_item or current_item.get('en_full'): # If current is 'done' (has full answer)
-                 # Create provisional
-                 ja_text = " ".join(japanese_buffer)
-                 current_item = {'id': 'PENDING', 'ja': ja_text, 'en_full':'', 'question': data, 'expl': []}
-                 japanese_buffer = []
-            elif current_item and not current_item['question']:
-                 current_item['question'] = data
+            else:
+                # Totally Orphan
+                ja_text = " ".join(japanese_buffer)
+                current_item = {'id': 'PENDING', 'ja': ja_text, 'en_full':'', 'question': data, 'expl': []}
+                japanese_buffer = []
 
         elif kind == "ID_ENGLISH":
-            # content is (id, text)
             new_id, text = data
             
-            # Check if this matches Current Item
             if current_item and current_item['id'] == new_id:
                 current_item['en_full'] = text
                 
             elif current_item and current_item['id'] == 'PENDING':
-                # RESOLVE Pending Item
+                # Retroactively assign ID
                 current_item['id'] = new_id
                 current_item['en_full'] = text
                 
             else:
-                # ID mismatch.
-                # Maybe we missed the header?
-                # But we have the Answer.
                 if current_item: items.append(current_item)
-                
-                # Start new item with Answer? (No JA/Q?)
-                # Wait, if we missed Header, do we have content?
-                # If we have buffered Japanese/Q?
-                
-                # Try to find if we have an Orphan Q in items list? (Unlikely)
-                
-                # Just create item.
-                current_item = {'id': new_id, 'ja': '', 'en_full': text, 'question':'', 'expl': []}
-            
-            japanese_buffer = []
+                # If mismatch, start new item with this ID
+                # Try to use buffer if any
+                ja_text = " ".join(japanese_buffer)
+                current_item = {'id': new_id, 'ja': ja_text, 'en_full': text, 'question':'', 'expl': []}
+                japanese_buffer = []
 
         elif kind == "ENGLISH_TEXT":
-            # Likely Explanation.
             if current_item and current_item['en_full']:
                  current_item['expl'].append(data)
-            else:
-                 # Maybe part of Q? or part of JA (katakana)?
+            elif current_item and current_item['question'] and not current_item['en_full']:
+                 # Maybe continuation of Question?
                  pass
 
     if current_item:
         items.append(current_item)
 
-    # Post-Process Items
     final_items = []
     for item in items:
-        # Validate Valid Item
         if not item['id'] or item['id'] == 'PENDING': continue
         if not item['en_full']: continue 
-        # Calculate Answer
+        
         q = item['question']
         f = item['en_full']
         
-        # If Q missing, maybe F is enough? (Not ideal)
         if not q:
+            # Fallback: assume Question is missing blanks?
+            # Or assume Full Sentence IS the question (e.g. translation quiz?)
+            # But the user wants Flashcards with blanks.
+            # We can try to generate blanks?
+            # For now, mark as ???
             ans = "???"
-            # Try heuristic?
+            # However, if we have Japanese, we can still show it.
         else:
             ans = find_answer_part(q, f)
         
         if not ans or ans not in f:
-             # Fallback
-             ans = f
+             ans = f # Default to full sentence as answer
              item['en'] = f
         else:
              item['answer'] = ans
              item['en'] = f.replace(ans, f"{{{ans}}}")
-             item['answer'] = ans # Ensure string
+             item['answer'] = ans 
              
         item['explanation'] = "\n".join(item['expl']).strip()
         
-        # Cleanup
         final_items.append({
             'id': item['id'],
             'ja': item['ja'],
@@ -365,7 +301,7 @@ def get_chapter_number(filename):
     return 999
 
 def main():
-    print("--- Insight App Generator V3.0 (Robust) ---")
+    print("--- Insight App Generator V3.1 (Lenient Q-Detect) ---")
     setup_directories()
     
     files = list(PDF_DIR.glob("*.pdf"))
@@ -376,7 +312,6 @@ def main():
     for pdf_file in files:
         print(f"Processing {pdf_file.name}...")
         raw_text = extract_text_pypdf(pdf_file)
-        
         items = parse_lines_v3(raw_text)
         print(f"Extracted {len(items)} items.")
         
@@ -388,9 +323,7 @@ def main():
         
         with open(output_path, "w", encoding="utf-8") as f:
             f.write(html_content)
-            
         generated_links.append((output_name, f"Chapter {chap_num}"))
-        print(f"Saved {output_name}")
 
     print("Updating Index...")
     index_path = DOCS_DIR / "index.html"
@@ -422,7 +355,7 @@ def main():
 
     print("Deploying...")
     run_command("git add .")
-    run_command('git commit -m "Update parsing logic V3 (Robust)"', cwd=os.getcwd())
+    run_command('git commit -m "Update parsing logic V3.1 (Lenient Question Detection)"', cwd=os.getcwd())
     run_command("git push origin main", cwd=os.getcwd())
 
 if __name__ == "__main__":
