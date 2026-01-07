@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Tinos:wght@700&display=swap');
-        
+
         body {
-            background-color: #007BFF; /* ビビットなブルー */
+            background-color: #007BFF;
+            /* ビビットなブルー */
             font-family: 'Noto Sans JP', sans-serif;
         }
 
@@ -17,12 +19,15 @@
         .font-english {
             font-family: 'Tinos', 'Times New Roman', serif;
             font-weight: 700;
-            font-size: 1.25rem; /* 20px */
-            line-height: 1.75rem; /* 28px */
+            font-size: 1.25rem;
+            /* 20px */
+            line-height: 1.75rem;
+            /* 28px */
         }
 
         .answer-span {
-            color: #DC2626; /* 赤色 */
+            color: #DC2626;
+            /* 赤色 */
             font-weight: 700;
             display: none;
         }
@@ -40,7 +45,7 @@
         .show-answer .underline-span {
             display: none;
         }
-        
+
         .explanation {
             display: none;
             white-space: pre-wrap;
@@ -57,22 +62,27 @@
             cursor: pointer;
             transition: all 0.2s ease-in-out;
         }
+
         .btn-primary {
             background-color: #3b82f6;
             color: white;
         }
+
         .btn-primary:hover {
             background-color: #2563eb;
         }
+
         .btn-secondary {
             background-color: #6b7280;
             color: white;
         }
+
         .btn-secondary:hover {
             background-color: #4b5563;
         }
     </style>
 </head>
+
 <body class="text-gray-800">
 
     <div id="app-container" class="container mx-auto p-4 md:p-8 max-w-4xl">
@@ -83,23 +93,27 @@
 
         <main class="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg mb-28">
             <div class="flex justify-between items-center mb-6">
-                 <!-- PDF Control Section -->
-                 <div class="flex-1 mr-4">
+                <!-- PDF Control Section -->
+                <div class="flex-1 mr-4">
                     <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
                         <h3 class="font-bold text-sm md:text-base mb-2">選択した問題でPDFを作成</h3>
                         <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
                             <div class="flex items-center">
-                                <input type="checkbox" id="select-all-checkbox" class="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
-                                <label for="select-all-checkbox" class="ml-2 text-sm font-medium text-gray-700 cursor-pointer">すべて選択 / 解除</label>
+                                <input type="checkbox" id="select-all-checkbox"
+                                    class="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                                <label for="select-all-checkbox"
+                                    class="ml-2 text-sm font-medium text-gray-700 cursor-pointer">すべて選択 / 解除</label>
                             </div>
-                            <button id="open-pdf-modal-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow text-sm transition-transform transform hover:scale-105">
+                            <button id="open-pdf-modal-btn"
+                                class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow text-sm transition-transform transform hover:scale-105">
                                 PDF作成メニュー
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <button id="start-quiz-btn" class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-lg shadow transition-transform transform hover:scale-105 whitespace-nowrap">
+                <button id="start-quiz-btn"
+                    class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-lg shadow transition-transform transform hover:scale-105 whitespace-nowrap">
                     ランダムテスト
                 </button>
             </div>
@@ -111,11 +125,16 @@
     </div>
 
     <!-- Control Panel -->
-    <div id="control-panel" class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md p-4 border-t-2 border-gray-200 shadow-2xl flex justify-center items-center space-x-2 md:space-x-4">
-        <button id="toggle-answer-btn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">表示/非表示</button>
-        <button id="play-sound-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">音声再生</button>
-        <button id="record-btn" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">録音評価</button>
-        <button id="toggle-explanation-btn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">解説</button>
+    <div id="control-panel"
+        class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md p-4 border-t-2 border-gray-200 shadow-2xl flex justify-center items-center space-x-2 md:space-x-4">
+        <button id="toggle-answer-btn"
+            class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">表示/非表示</button>
+        <button id="play-sound-btn"
+            class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">音声再生</button>
+        <button id="record-btn"
+            class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">録音評価</button>
+        <button id="toggle-explanation-btn"
+            class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">解説</button>
     </div>
 
     <!-- Message/Score Modal -->
@@ -124,11 +143,12 @@
             <!-- Message content will be populated by JS -->
         </div>
     </div>
-    
+
     <!-- Quiz Modal -->
     <div id="quiz-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-40 p-4">
         <div class="bg-white w-full max-w-2xl p-8 rounded-2xl shadow-2xl relative">
-            <button id="close-quiz-btn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-3xl font-bold">&times;</button>
+            <button id="close-quiz-btn"
+                class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-3xl font-bold">&times;</button>
             <div id="quiz-content">
                 <!-- Quiz content will be populated by JS -->
             </div>
@@ -136,17 +156,24 @@
     </div>
 
     <!-- PDF Download Modal -->
-    <div id="pdf-modal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center z-50">
+    <div id="pdf-modal"
+        class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center z-50">
         <div class="relative mx-auto p-5 border w-11/12 md:w-1/2 lg:w-1/3 shadow-lg rounded-md bg-white">
             <div class="mt-3 text-center">
                 <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">ダウンロードするPDFの種類を選択</h3>
                 <div class="mt-2 space-y-3">
-                    <button id="download-list-btn" class="btn btn-primary w-full justify-start text-left">1. 完全なリスト (熟語・意味・例文)</button>
-                    <button id="download-en-quiz-btn" class="btn btn-primary w-full justify-start text-left">2. 熟語テスト (英語を解答)</button>
-                    <button id="download-ja-quiz-btn" class="btn btn-primary w-full justify-start text-left">3. 熟語テスト (意味を解答)</button>
-                    <button id="download-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">4. 熟語テスト (混合)</button>
-                    <button id="download-sentence-quiz-btn" class="btn btn-primary w-full justify-start text-left">5. 例文の穴埋め問題</button>
-                    <button id="download-sentence-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">6. 例文の混合問題 (穴埋め/和訳)</button>
+                    <button id="download-list-btn" class="btn btn-primary w-full justify-start text-left">1. 完全なリスト
+                        (熟語・意味・例文)</button>
+                    <button id="download-en-quiz-btn" class="btn btn-primary w-full justify-start text-left">2. 熟語テスト
+                        (英語を解答)</button>
+                    <button id="download-ja-quiz-btn" class="btn btn-primary w-full justify-start text-left">3. 熟語テスト
+                        (意味を解答)</button>
+                    <button id="download-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">4. 熟語テスト
+                        (混合)</button>
+                    <button id="download-sentence-quiz-btn" class="btn btn-primary w-full justify-start text-left">5.
+                        例文の穴埋め問題</button>
+                    <button id="download-sentence-mixed-quiz-btn"
+                        class="btn btn-primary w-full justify-start text-left">6. 例文の混合問題 (穴埋め/和訳)</button>
                 </div>
                 <div class="mt-6">
                     <button id="close-modal-btn" class="btn btn-secondary w-full">キャンセル</button>
@@ -158,268 +185,340 @@
     <script>
         const chapterData = [
     {
-        "id": "1",
-        "ja": "2 3 4 5 6 7 8 9 10音読 群前置詞 2 3 4 5 6 7 8 9 10音読 群前置詞 2 3 4 5 6 7 8 9 10音読 群前置詞 2 3 4 5 6 7 8 9 10音読 群前置詞 2 3 4 5 6 7 8 9 10音読 群前置詞",
+        "id": "27",
+        "ja": "章　群前置詞  QR ☚ 音読用動画　別解など",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
-        "question": "Self Check"
+        "question": ""
     },
     {
-        "id": "27",
-        "ja": "群前置詞 ◀\t音読用動画 別解など 27章 群前置詞 熟語編 ｜  27章 群前置詞 ② 熟語編 ｜  27章 群前置詞 ③ 熟語編 ｜  27章 群前置詞 ④ 熟語編 ｜  27章 群前置詞 ⑤",
+        "id": "474",
+        "ja": "● 熟語編｜27章",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
-        "question": "①"
+        "question": ""
+    },
+    {
+        "id": "476",
+        "ja": "● 熟語編｜27章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "478",
+        "ja": "● 熟語編｜27章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "480",
+        "ja": "● 熟語編｜27章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "1330-1",
+        "ja": "残念ながら，経済的な事情から大学進学をあきらめた生徒もいる。 because of A　　　　　「Aの理由で，Aのために」 due to A　　　　　　―because ofが最も一般的。due toはやや硬い表現で公的 owing to A          　な文書などで使われる。accountは「理由」の意味。 ！ これらの群前置詞の後には名詞がくる。S’＋V’を含む節がくることはない。 ○ financial situation「経済的な事情」",
+        "en": "college {because of }their financial situation. {on account of} A",
+        "answer": "because of, on account of",
+        "explanation": "Tip 「経済的な事情から＝経済的な事情のために」。理由を表す群前置詞を使う。\n▶ in front of, next toのように２つ以上の語がまとまって１つの前置詞の働きをするものを群前置詞と呼ぶ。群前置詞を使った前置詞句の多くは副詞句＝修飾語句(M)になるが，形容詞句として補語(C)になったり名詞を修飾したりするものもある。",
+        "question": "Unfortunately, some students have given up on the idea of going to Unfortunately, some students have given up on the idea of going to"
+    },
+    {
+        "id": "1330-2",
+        "ja": "地球温暖化により，世界の平均気温が上昇している。 ○ average global temperatures「世界の平均気温」",
+        "en": "Average global temperatures are rising {due to global warming}.",
+        "answer": "due to global warming",
+        "explanation": "Tip 「～により → ～の理由で，～のために」を表す表現は？\n▶ due to A「Aの理由で，Aのために」➡ 1330-1",
+        "question": "Average global temperatures are rising (d   ) (    ) (g   ) (w   )."
     },
     {
         "id": "1331",
-        "ja": "AIの進歩のおかげで，もはや外国語を翻訳するのは難し く ない。",
-        "en": "{Thanks to advances in AI, it is no longer difficult to translate foreign languages. translate ʮʙΛ຋༁͢Δʯ―interpretʮʙΛղऍ͢ΔɼʙΛ௨༁͢Δʯ}",
-        "answer": "Thanks to advances in AI, it is no longer difficult to translate foreign languages. translate ʮʙΛ຋༁͢Δʯ―interpretʮʙΛղऍ͢ΔɼʙΛ௨༁͢Δʯ",
-        "explanation": "",
-        "question": "(T      ) (        ) (a      ) in AI, it is no longer difficult to translate foreign languages."
+        "ja": "AIの進歩のおかげで，もはや外国語を翻訳するのは難しくない。 thanks to A「Aのおかげで」 ○ translate「～を翻訳する」―interpret「～を解釈する, ～を通訳する」",
+        "en": "{Thanks to advances} in AI, it is no longer difficult to translate foreign languages.",
+        "answer": "Thanks to advances",
+        "explanation": "Tip 「～のおかげで」を表す表現は？",
+        "question": "(T   ) (    ) (a   ) in AI, it is no longer difficult to translate foreign"
     },
     {
         "id": "1332",
-        "ja": "食料不足のために多くの 人々が 飢えている。 for want of A    ʮA ͷෆ଍ͷͨΊʹʯ―lack もwant も「不足」の意味。",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Many people are starving (f      ) (l      ) (        ) (        ). Many people are starving for lack of food. for lack of A be lacking in A ＝lack AʮA͚͍ͯΔʯ➡919 starve͑Δʯ"
+        "ja": "食料不足のために多くの人々が飢えている。 for want of A    「Aの不足のために」―lackもwantも「不足」の意味。 ＋ be lacking in A＝lack A「Aが欠けている」➡ 919 ○ starve「飢える」",
+        "en": "Many people are starving {for lack of food}. {for lack of} A",
+        "answer": "for lack of food, for lack of",
+        "explanation": "Tip 「～の不足のために」を表す表現は？",
+        "question": "Many people are starving (f   ) (l   ) (    ) (    )."
     },
     {
         "id": "1333",
-        "ja": "発展 宿題や部活があっ て，私はとても忙しい。 homework ʮ॓୊ʯ― 数えられない名詞",
-        "en": "???",
-        "answer": "???",
+        "ja": "宿題や部活があって，私はとても忙しい。 発展     Tip 「宿題や部活があって＝宿題やら部活やらで」 what with A and B「AやらBやらで」 ○ homework「宿題」―数えられない名詞",
+        "en": "{What with homework and club activities}, I’m very busy.",
+        "answer": "What with homework and club activities",
         "explanation": "",
-        "question": "( homework / with / club activities / and / what ), I’m very busy. What with homework and club activities, I’m very busy."
+        "question": "( homework / with / club activities / and / what ), I’m very busy."
     },
     {
         "id": "1334",
-        "ja": "その基金は被害者を救済する目的で設立された。",
-        "en": "The fund was established {for the purpose of helping the victims. for the purpose of doing on purposeҙʹʯ➡1284 fundʯ establish AʮA Λઃཱ͢Δʯ＝found A ＝set up A victimऀʯ}",
-        "answer": "for the purpose of helping the victims. for the purpose of doing on purposeҙʹʯ➡1284 fundʯ establish AʮA Λઃཱ͢Δʯ＝found A ＝set up A victimऀʯ",
-        "explanation": "",
-        "question": "The fund was established (        ) (        ) (p      ) (        ) (h      ) the victims."
+        "ja": "その基金は被害者を救済する目的で設立された。 with a view to doing　      「～する目的で」＝in order to do ＋ on purpose「わざと，故意に」➡ 1284 ○ fund「基金」 ○ establish A「Aを設立する」＝found A＝set up A ○ victim「犠牲者，被害者」",
+        "en": "The fund was established {for the purpose of helping} the victims. {for the purpose of} do{ing}",
+        "answer": "for the purpose of helping, for the purpose of, ing",
+        "explanation": "Tip 「～する目的で」を表す表現は？「救済する目的で＝助ける目的で」",
+        "question": "The fund was established (    ) (    ) (p   ) (    ) (h   ) the victims."
     },
     {
         "id": "1335",
-        "ja": "父は健康のために酒をやめた。 for A’s sake               ʮAʢͱ͍͏໨తʣͷͨΊʹʯ―sake「ため，目的」 ―because of が最も一般的。due to はやや硬い表現で公 的な文書などで使われる。account は「理由」の意味。 復習",
-        "en": "{be / age / expectations}",
-        "answer": "be / age / expectations",
-        "explanation": "",
-        "question": "My father gave up drinking (        ) (        ) (s      ) (        ) his (h      ). My father gave up drinking for the sake of his health. for the sake of A give up doing ʮʙ͢ΔͷΛ͖͋ΒΊΔʯ➡480-1 472 473"
+        "ja": "父は健康のために酒をやめた。 群前置詞 ① ● 473 for A’s sake         「A(という目的)のために」―sake「ため，目的」 ○ give up doing「～するのをあきらめる」➡ 480-1",
+        "en": "My father gave up drinking {for the sake of }his {health}. {for the sake of }A",
+        "answer": "for the sake of, health, for the sake of",
+        "explanation": "Tip 「～の(目的の)ために」を表す表現は？",
+        "question": "My father gave up drinking (    ) (    ) (s   ) (    ) his (h   )."
     },
     {
         "id": "1336",
-        "ja": "彼らは解雇されるのを恐れて声を上げなかった。",
-        "en": "They didn’t speak up for fear of being fired. for fear of doingΕͯʯ―fear は「恐れ」の意味。 for fear (that) …ʮ…͢Δͱ͍͚ͳ͍͔Βɼ…͠ͳ͍Α͏ʹʯ➡271 speak up  Λड़΂Δɼ੠Λ্͛Δʯ be /f_ired / get /f_ired͞ΕΔʯ⇔⇔ be hired / get hired༻͞ΕΔʯ 1337-1 基本 私としては，この件についてこれ以上言う こ とはない。 (        ) (        ) (m     ), I have nothing more to say on the subject. 1337-1 As for me, I have nothing more to say on the subject. as for A as to A      ʮAͯ͠ʯ＝regarding A ＝concerning A",
-        "answer": "for fear of being fired. for fear of doingΕͯʯ―fear は「恐れ」の意味。 for fear that …ʮ…͢Δͱ͍͚ͳ͍͔Βɼ…͠ͳ͍Α͏ʹʯ➡271 speak up Λड़΂Δɼ੠Λ্͛Δʯ be /f_ired / get /f_ired͞ΕΔʯ⇔⇔ be hired / get hired༻͞ΕΔʯ 1337-1 基本 私としては，この件についてこれ以上言う こ とはない。     m , I have nothing more to say on the subject. 1337-1 As for me, I have nothing more to say on the subject. as for A as to A ʮAͯ͠ʯ＝regarding A ＝concerning A",
-        "explanation": "▶ 特定の話題を導入するときに使う表現。通例，as for は文頭で使う。\nAs for me, …ͯ͠͸ʯ―  As to me, とは言わない。\nhave nothing more to say͏͜ͱ͸ͳ͍ʯ\n1337-2 その提案に関して，いく つか変更を提案したいと思います。\n(W     ) (        ) (        ) the proposal, we would like to suggest a few\nchanges.\n1337-2 With regard to the proposal, we would like to suggest a few\nchanges.\nwith regard to A ＝in regard to A\nwith respect to A ＝in respect of A    ʮAͯ͠ʯ\n＝regarding A ＝concerning A\nas regards A ʮAͯ͠ɼA࿈ͯ͠ʯ\nin relation to A  ᶃʮA࿈͠ ͯʯᶄ ʮA ʹ ൺ ΂ ͯʢ＝compared to Aʣʯ",
-        "question": "They didn’t speak up (        ) (        ) (        ) (b      ) fired."
+        "ja": "彼らは解雇されるのを恐れて声を上げなかった。 for fear of doing「～するのを恐れて」―fearは「恐れ」の意味。 ＋ for fear (that) …「…するといけないから，…しないように」➡ 271 ○ speak up ①「大きい声で言う」②「はっきり意見を述べる，声を上げる」 ○ be fired / get fired「解雇される」⇔ be hired / get hired「雇用される」",
+        "en": "They didn’t speak up {for fear of being} fired.",
+        "answer": "for fear of being",
+        "explanation": "Tip 「～するのを恐れて」を表す表現は？「恐れ」を意味する名詞を使う。",
+        "question": "They didn’t speak up (    ) (    ) (    ) (b   ) fired."
+    },
+    {
+        "id": "1337-1",
+        "ja": "私としては，この件についてこれ以上言うことはない。 as to A     「Aに関して」＝regarding A＝concerning A As for me, …「私としては，私に関しては」― × As to me, とは言わない。 ○ have nothing more to say「これ以上言うことはない」",
+        "en": "{As for me}, I have nothing more to say on the subject. {as for }A",
+        "answer": "As for me, as for",
+        "explanation": "▶ 特定の話題を導入するときに使う表現。通例，as forは文頭で使う。",
+        "question": "(    ) (    ) (m   ), I have nothing more to say on the subject."
+    },
+    {
+        "id": "1337-2",
+        "ja": "その提案に関して，いくつか変更を提案したいと思います。 with respect to A＝in respect of A    「Aに関して」 ＋ as regards A「Aに関して，Aに関連して」 ＋ in relation to A ①「Aに関連して」②「Aに比べて(＝compared to A)」",
+        "en": "{With regard to }the proposal, we would like to suggest a few changes. {with regard to }A＝{in regard to }A",
+        "answer": "With regard to, with regard to, in regard to",
+        "explanation": "Tip 「～に関して」を表す表現は？\n＝regarding A＝concerning A",
+        "question": "(W   ) (    ) (    ) the proposal, we would like to suggest a few changes."
     },
     {
         "id": "1338",
-        "ja": "年齢，人種，性別に関係なく，誰もが平等な機会を持つべきだ。",
-        "en": "Everyone should have equal opportunities, regardless of age, race, or gender. regardless of A ʮAͳ͘ʯ＝irrespective of A race  ૸ʯ ᶄʮਓछʯ genderձతɾจԽతʣੑผʯ",
-        "answer": "regardless of age, race, or gender. regardless of A ʮAͳ͘ʯ＝irrespective of A race ૸ʯ ᶄʮਓछʯ genderձతɾจԽతʣੑผʯ",
-        "explanation": "",
-        "question": "Everyone should have equal opportunities, (r      ) (        ) (        ), race, or gender."
+        "ja": "年齢，人種，性別に関係なく，誰もが平等な機会を持つべきだ。 regardless of A「Aに関係なく」＝irrespective of A ○ race ①「競走」②「人種」 ○ gender「(社会的・文化的)性別」",
+        "en": "Everyone should have equal opportunities, {regardless of age}, race, or gender.",
+        "answer": "regardless of age",
+        "explanation": "Tip 「～に関係なく」を表す表現は？",
+        "question": "Everyone should have equal opportunities, (r   ) (    ) (    ), race, or gender."
     },
     {
         "id": "1339",
-        "ja": "他の多くの先進国と比べると，日本の給与は低い。 ⇧「A と の（with）比 較（comparison）に お い て（in）／ よ っ て（by）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "(I      ) (        ) (w     ) many other developed countries, salaries in Japan are low. In comparison with many other developed countries, salaries in Japan are low. in [by] comparison with AʮA ͱൺ΂Δͱʯ ＝compared to [with] A developed countryʯ⇔⇔ developing countryʯ salaryྉʯ"
+        "ja": "他の多くの先進国と比べると，日本の給与は低い。 in [by] comparison with A「Aと比べると」 ⇧「Aとの(with)比較(comparison)において(in)／よって(by)」 ○ developed country「先進国」⇔ developing country「発展途上国」 ○ salary「給料」",
+        "en": "{In comparison with }many other developed countries, salaries in Japan are low.",
+        "answer": "In comparison with",
+        "explanation": "Tip 「～と比べると」を表す表現は？\n＝compared to [with] A",
+        "question": "(I   ) (    ) (w   ) many other developed countries, salaries in Japan are low."
     },
     {
         "id": "1340",
-        "ja": "給料が生活費に比 例して上 がっていない 。 ⇧「A に 対 す る（to）割 合（proportion）に お い て（in）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Salaries have not risen (        ) (p      ) (        ) the cost of living. Salaries have not risen in proportion to the cost of living. in proportion to A ʮA ʹൺ ྫͯ͠ʯ the cost of livingඅʯ"
+        "ja": "給料が生活費に比例して上がっていない。 in proportion to A「Aに比例して」 ⇧「Aに対する(to)割合(proportion)において(in)」 ○ the cost of living「生活費」",
+        "en": "Salaries have not risen {in proportion to }the cost of living.",
+        "answer": "in proportion to",
+        "explanation": "Tip 「～に比例して」を表す表現は？",
+        "question": "Salaries have not risen (    ) (p   ) (    ) the cost of living."
     },
     {
         "id": "1341",
-        "ja": "予 想 に反して，日本は準決勝に進んだ。 ⇧「A に 対 し て（to）反 対 で（contrary）」 復習",
-        "en": "age / fault / danger 1342-1 基本 高齢にもかかわらず，彼は毎朝5キロ走っ ている。 (I      ) (        ) (        ) his (        ), he runs 5 km every morning. ͢Δɻ͢Δɻ 1342-1 In spite of his age, he runs 5 km every morning. in spite of A with all A             ʮA ʹ΋͔͔ΘΒͣʯ＝despite A for all A in spite of one ’s ageྸʹ΋͔͔ΘΒͣʯ 1342-2 発展 欠点はあるが，彼はみんなに好かれている。 (W     ) (        ) his (f      ), everyone likes him. 1342-2 With all his faults, everyone likes him.",
-        "answer": "age / fault / danger 1342-1 基本 高齢にもかかわらず，彼は毎朝5キロ走っ ている。 I      his  , he runs 5 km every morning. ͢Δɻ͢Δɻ 1342-1 In spite of his age, he runs 5 km every morning. in spite of A with all A ʮA ʹ΋͔͔ΘΒͣʯ＝despite A for all A in spite of one ’s ageྸʹ΋͔͔ΘΒͣʯ 1342-2 発展 欠点はあるが，彼はみんなに好かれている。 W    his f , everyone likes him. 1342-2 With all his faults, everyone likes him.",
-        "explanation": "▶ with all A 「A にもかかわらず」➡1342-1\nfault  ఺ʯ―発音は /f4\\lt/\nwith all one ’s faults఺͕͋Δ͕ʯ",
-        "question": "(C      ) (        ) (e      ), Japan made it to the semifinals. Contrary to expectations, Japan made it to the semifinals. contrary to A ʮAʹɼA ʹ൓ͯ͠ʯ contrary to expectations ʮ༧ ૝ ʹ൓ͯ͠ʯ make it  ͏ʯ semi/f_inalউʯ―/f_inalউʯ 474 475 Self Check"
+        "ja": "予想に反して，日本は準決勝に進んだ。 群前置詞 ② ● 475 contrary to A「Aとは逆に，Aに反して」 ⇧「Aに対して(to)反対で(contrary)」 ○ contrary to expectations「予想に反して」 ○ make it ①「うまくいく」②「都合がつく」③「間に合う」 ○ semifinal「準決勝」―final「決勝」",
+        "en": "{Contrary to expectations}, Japan made it to the semifinals.",
+        "answer": "Contrary to expectations",
+        "explanation": "Tip 「～に反して」を表す表現は？",
+        "question": "(C   ) (    ) (e   ), Japan made it to the semifinals."
+    },
+    {
+        "id": "1342-1",
+        "ja": "高齢にもかかわらず，彼は毎朝5キロ走っている。 「高齢」は「年齢」を意味する名詞で表現する。 with all A        「Aにもかかわらず」＝despite A ○ in spite of one’s age「高齢にもかかわらず」",
+        "en": "{In spite of }his {age}, he runs 5 km every morning. {in spite of }A {for all} A",
+        "answer": "In spite of, age, in spite of, for all",
+        "explanation": "",
+        "question": "(I   ) (    ) (    ) his (    ), he runs 5 km every morning."
+    },
+    {
+        "id": "1342-2",
+        "ja": "欠点はあるが，彼はみんなに好かれている。 発展     Tip 「欠点はあるが → 彼の欠点にもかかわらず」 ○ fault ①「(誤り・落ち度の)責任」②「欠点」―発音は/〇〇/ ○ with all one’s faults「～には欠点があるが」",
+        "en": "{With all }his {faults}, everyone likes him.",
+        "answer": "With all, faults",
+        "explanation": "▶ with all A「Aにもかかわらず」➡ 1342-1",
+        "question": "(W   ) (    ) his (f   ), everyone likes him."
     },
     {
         "id": "1343",
-        "ja": "コストの面では，中古車の購入は良い選択肢となる。",
-        "en": "{In terms of cost, buying a used car can be a good option.}",
-        "answer": "In terms of cost, buying a used car can be a good option.",
-        "explanation": "▶ 複数形のterms は「観点」のほかに「間柄」 「条件」の意味もある。➡687\n単数形のterm には「専門用語」 「期間」 「学期」などの意味がある。\nused carंʯ⇔⇔ new carʮ৽ंʯ\noptionʯ",
-        "question": "(        ) (t      ) (        ) (        ), buying a used car can be a good option."
+        "ja": "コストの面では，中古車の購入は良い選択肢となる。 in terms of A「Aの観点では」 単数形のtermには「専門用語」「期間」「学期」などの意味がある。 ○ used car「中古車」⇔ new car「新車」 ○ option「選択肢」",
+        "en": "{In terms of cost}, buying a used car can be a good option.",
+        "answer": "In terms of cost",
+        "explanation": "Tip 「コストの面では」は，「コストという観点においては」と表現する。\n▶ 複数形のtermsは「観点」のほかに「間柄」「条件」の意味もある。➡ 687",
+        "question": "(    ) (t   ) (    ) (    ), buying a used car can be a good option."
     },
     {
         "id": "1344",
-        "ja": "多くの人が仕事を求めて田舎から都会へと移り住む。",
-        "en": "Many people move from rural to urban areas in search of work. in search of A ʮA Λ୳ͯ͠ʯ move  ᶃʮಈ͘ʯ ᶄʮҾͬӽ͢ʯ―move to AʮAʢ৔ॴʣ΁Ҿͬӽ͢ʯ ruralͷʯ⇔⇔ urbanʮ౎ձͷʯ",
-        "answer": "in search of work. in search of A ʮA Λ୳ͯ͠ʯ move ᶃʮಈ͘ʯ ᶄʮҾͬӽ͢ʯ―move to AʮAʢ৔ॴʣ΁Ҿͬӽ͢ʯ ruralͷʯ⇔⇔ urbanʮ౎ձͷʯ",
-        "explanation": "",
-        "question": "Many people move from rural to urban areas (        ) (s      ) (        ) work."
+        "ja": "多くの人が仕事を求めて田舎から都会へと移り住む。 in search of A「Aを探して」 ○ move ①「動く」②「引っ越す」―move to A「A(場所)へ引っ越す」 ○ rural「田舎の」⇔ urban「都会の」",
+        "en": "Many people move from rural to urban areas {in search of }work.",
+        "answer": "in search of",
+        "explanation": "Tip 「仕事を求めて → 仕事を探して」。「探すこと」を意味する名詞を使って表現する。",
+        "question": "Many people move from rural to urban areas (    ) (s   ) (    ) work."
     },
     {
         "id": "1345",
-        "ja": "危険に直面し ても彼は冷静だった。 ⇧「A の（of）正 面(the face) に あ っ て（in）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "He stayed calm (        ) (        ) (f      ) (        ) (        ). He stayed calm in the face of danger. in the face of A ʮA೉ͳͲʣʹ௚ ໘ͯ͠ʯ"
+        "ja": "危険に直面しても彼は冷静だった。 in the face of A「A(困難など)に直面して」 ⇧「Aの(of)正面(the face)にあって(in)」 ○ stay calm「冷静でいる」⇔ get upset「取り乱す」",
+        "en": "He stayed calm {in the face of danger}.",
+        "answer": "in the face of danger",
+        "explanation": "Tip 「～に直面して」を表す表現は？",
+        "question": "He stayed calm (    ) (    ) (f   ) (    ) (    )."
     },
     {
         "id": "1346",
-        "ja": "その男性は高いビルの方向を指さしている。 ⇧「A の（of）方 向(the direction) 内 に（in）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "The man is pointing (        ) (        ) (        ) (        ) the tall building. The man is pointing in the direction of the tall building. in the direction of A ʮAʹʯ point  ͢͞ʯ"
+        "ja": "その男性は高いビルの方向を指さしている。 in the direction of A「Aの方向に」 ⇧「Aの(of)方向(the direction)内に(in)」 ○ point ① 名詞「論点，要点，地点」② 動詞「指さす」",
+        "en": "The man is pointing {in the direction of }the tall building.",
+        "answer": "in the direction of",
+        "explanation": "Tip 「～の方向に」を表す表現は？",
+        "question": "The man is pointing (    ) (    ) (    ) (    ) the tall building."
     },
     {
         "id": "1347",
-        "ja": "彼らの側に何らかの誤解があるに違いない。",
-        "en": "There must be some misunderstanding on their part. on A’s part on the part of A    ʮA ଆͷʯ",
-        "answer": "on their part. on A’s part on the part of A ʮA ଆͷʯ",
-        "explanation": "▶ 日本語訳では「彼らの側に」となっているが，on their part「彼らの側の」\nが形容詞句の働きをして，直前のmisunderstanding を後置修飾している。\nmisunderstandingղʯ",
-        "question": "There must be some misunderstanding (        ) (        ) (p      )."
+        "ja": "彼らの側に何らかの誤解があるに違いない。 on the part of A    「A側の」 ○ misunderstanding「誤解」",
+        "en": "There must be some misunderstanding {on their part}. {on }A’s {part}",
+        "answer": "on their part, on, part",
+        "explanation": "Tip 「～側の」を表す表現は？\n▶ 日本語訳では「彼らの側に」となっているが，on their part「彼らの側の」が形容詞句の働きをして，直前のmisunderstandingを後置修飾している。",
+        "question": "There must be some misunderstanding (    ) (    ) (p   )."
     },
     {
         "id": "1348",
-        "ja": "チ ームを 代 表して，皆さんのご支援に感謝いたします。 ⇧「A の（of）味 方(behalf) で（on）」 復習",
-        "en": "{health / project}",
-        "answer": "health / project",
+        "ja": "チームを代表して，皆さんのご支援に感謝いたします。 群前置詞 ③ ● 477 on behalf of A「Aを代表して」 ⇧「Aの(of)味方(behalf)で(on)」 ○ thank A for B「BのことでAに感謝する」",
+        "en": "{On behalf of }the {team}, I’d like to thank you for your support.",
+        "answer": "On behalf of, team",
         "explanation": "",
-        "question": "(        ) (        ) (        ) the (        ), I’d like to thank you for your support. On behalf of the team, I’d like to thank you for your support. on behalf of A ʮA Λ୅දͯ͠ʯ 476 477 Self Check"
+        "question": "(    ) (    ) (    ) the (    ), I’d like to thank you for your support."
     },
     {
         "id": "1349",
-        "ja": "健康を犠牲にし て働き過ぎてはいけない。 ⇧「A の（of）出 費（the expense） ／費用 （the cost）で（at）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "We should not work too hard (        ) (        ) (e      ) (        ) our (h      ). We should not work too hard at the expense of our health. at the expense of A at the cost of A             ʮAਜ਼ʹͯ͠ʯ"
+        "ja": "健康を犠牲にして働き過ぎてはいけない。 at the cost of A  　    「Aを犠牲にして」 ⇧「Aの(of)出費(the expense)／費用(the cost)で(at)」",
+        "en": "We should not work too hard {at the expense of }our {health}. {at the expense of }A",
+        "answer": "at the expense of, health, at the expense of",
+        "explanation": "Tip 「～を犠牲にして」を表す表現は？「出費」を表す名詞を使う。",
+        "question": "We should not work too hard (    ) (    ) (e   ) (    ) our (h   )."
     },
     {
         "id": "1350",
-        "ja": "彼らは合衆国経由でブラジルに行く計画だ。 ⇧「A の（of） 道／方法 （way）を 使 っ て（by）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "They plan to go to Brazil (        ) (        ) (        ) the United States. They plan to go to Brazil by way of the United States. by way of A ʮA༝ͯ͠ʯ＝via A plan to doը͢Δʯ"
+        "ja": "彼らは合衆国経由でブラジルに行く計画だ。 by way of A「Aを経由して」＝via A ⇧「Aの(of)道／方法(way)を使って(by)」 ○ plan to do「～することを計画する」",
+        "en": "They plan to go to Brazil {by way of }the United States.",
+        "answer": "by way of",
+        "explanation": "Tip 「～を経由して」を表す表現は？",
+        "question": "They plan to go to Brazil (    ) (    ) (    ) the United States."
     },
     {
         "id": "1351",
-        "ja": "その大学は小論文試験と面接で学生を選抜する。 ⇧「A の（of）手 段（means）に よっ て（by）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "The college selects students (        ) (m     ) (        ) an essay test and an interview. The college selects students by means of an essay test and an interview. by means of A ʮA Λ༻͍ͯʯ＝using ＝through select ʮʙΛબͿɼʙΛબൈ͢Δʯ essayจɼখ࿦จʯ interview ʮ໘઀ʯ"
+        "ja": "その大学は小論文試験と面接で学生を選抜する。 by means of A「Aを用いて」＝using＝through ⇧「Aの(of)手段(means)によって(by)」 ○ select「～を選ぶ，～を選抜する」 ○ essay「作文，小論文」 ○ interview「面接」",
+        "en": "The college selects students {by means of} an essay test and an",
+        "answer": "by means of",
+        "explanation": "Tip 「小論文試験と面接で」は「小論文試験と面接という手段によって」と表現する。\ninterview.",
+        "question": "The college selects students (    ) (m   ) (    ) an essay test and an interview."
     },
     {
         "id": "1352",
-        "ja": "私たちの市は，より良い公共交通機関の選択肢を 必 要としている。",
-        "en": "Our city is {in need of better public transportation options.}",
-        "answer": "in need of better public transportation options.",
-        "explanation": "▶ 1352～1357の群前置詞は，be 動詞の後にきて補語（C）になったり，名詞の\n後にきて形容詞句と して名詞を修飾したりすることが多い。\nin need of A ʮA Λඞཁͱͯ͠ʯ＝in want of\nbe in needʧ Λඞཁͱ͠ ͍ͯΔʯ＝need help [food, money]\npublic transportationʯ",
-        "question": "Our city is (        ) (n      ) (        ) better public transportation options."
+        "ja": "私たちの市は，より良い公共交通機関の選択肢を必要としている。 in need of A「Aを必要として」＝in want of ＋ be in need「助け[食料，お金]を必要としている」＝need help [food, money] ○ public transportation「公共交通機関」",
+        "en": "Our city is {in need of} better public transportation options.",
+        "answer": "in need of",
+        "explanation": "Tip 「～を必要として」を表す表現は？\n▶ 1352～1357の群前置詞は，be動詞の後にきて補語(C)になったり，名詞の後にきて形容詞句として名詞を修飾したりすることが多い。",
+        "question": "Our city is (    ) (n   ) (    ) better public transportation options."
     },
     {
         "id": "1353",
-        "ja": "「その計画に賛成で す か 。」「 い い え ， 反 対 で す 。」",
-        "en": "“Are you {in favor of the plan?” “No, I’m against it.” in favor of A ʮA੒ͯ͠ʯ＝for A ⇧「A の（of）支 持（favor）の 中 に（in）」 ⇔ against AʮA ʹ൓ ରͯ͠ʯ➡752}",
-        "answer": "in favor of the plan?” “No, I’m against it.” in favor of A ʮA੒ͯ͠ʯ＝for A ⇧「A の（of）支 持（favor）の 中 に（in）」 ⇔ against AʮA ʹ൓ ରͯ͠ʯ➡752",
-        "explanation": "▶ in favor of the plan 「計画に賛成して」という前置詞句を補語 （C）と 考 え る 。",
-        "question": "“Are you (        ) (f      ) (        ) the (        )?” “No, I’m against it.”"
+        "ja": "「その計画に賛成ですか。」「いいえ，反対です。」 in favor of A「Aに賛成して」＝for A ⇧「Aの(of)支持(favor)の中に(in)」 ⇔ against A「Aに反対して」➡ 752",
+        "en": "“Are you {in favor of }the {plan}?” “No, I’m against it.”",
+        "answer": "in favor of, plan",
+        "explanation": "Tip 「～に賛成して」を表す表現は？\n▶ in favor of the plan「計画に賛成して」という前置詞句を補語(C)と考える。",
+        "question": "“Are you (    ) (f   ) (    ) the (    )?” “No, I’m against it.”"
     },
     {
         "id": "1354",
-        "ja": "私がこのプ ロジェクトを 担 当しています。 ⇧「A の（of）責 任（charge）の 中 に（in）」",
-        "en": "???",
-        "answer": "???",
+        "ja": "私がこのプロジェクトを担当しています。 in charge of A「Aを担当して」 ⇧「Aの(of)責任(charge)の中に(in)」 ＋ take charge of A「Aを担当する」",
+        "en": "I’m {in charge of }this {project}.",
+        "answer": "in charge of, project",
         "explanation": "",
-        "question": "I’m (        ) (c      ) (        ) this (        ). I’m in charge of this project. in charge of A ʮA Λ୲౰ͯ͠ʯ take charge of A ʮA Λ୲౰͢Δʯ"
+        "question": "I’m (    ) (c   ) (    ) this (    )."
     },
     {
         "id": "1355",
-        "ja": "発展 農家はしばしば天候に翻弄される。",
-        "en": "Farmers are often {at the mercy of the weather. at the mercy of A ʮA ͷͳ͕͢··ʹʯ}",
-        "answer": "at the mercy of the weather. at the mercy of A ʮA ͷͳ͕͢··ʹʯ",
-        "explanation": "▶ mercy は「慈悲」の意味だが，この表現に限っては「支配」の意味を持つ。\nfarmer ʮ೶Ոʯ―farmʮ೶৔ʯ",
-        "question": "Farmers are often (        ) (        ) (        ) (        ) the weather."
+        "ja": "農家はしばしば天候に翻弄される。 発展     Tip 「天候に翻弄される＝天候のなすがままだ」と表現する。 at the mercy of A「Aのなすがままに」 ○ farmer「農家」―farm「農場」",
+        "en": "Farmers are often {at the mercy of }the weather.",
+        "answer": "at the mercy of",
+        "explanation": "▶ mercyは「慈悲」の意味だが，この表現に限っては「支配」の意味を持つ。",
+        "question": "Farmers are often (    ) (    ) (    ) (    ) the weather."
     },
     {
         "id": "1356",
-        "ja": "発展 彼女は今にも泣きそうだった。 ⇧「A の（of） ふち ［端］ （the verge/brink）の 上 で（on）」 復習",
-        "en": "{article / meeting}",
-        "answer": "article / meeting",
+        "ja": "彼女は今にも泣きそうだった。 発展     Tip 「今にも～しそうで」を表す表現は？「ふち，端」を意味する名詞を使う。 群前置詞 ④ ● 479 on the brink of A    「今にもAしそうで」 ⇧「Aの(of)ふち[端](the verge/brink)の上で(on)」 ＋ be on the point of doing「まさに～しようとしている」➡ 1196",
+        "en": "She was {on the verge of }tears. {on the verge of }A",
+        "answer": "on the verge of, on the verge of",
         "explanation": "",
-        "question": "She was (        ) (        ) (v      ) (        ) tears. She was on the verge of tears. on the verge of A be on the point of doing ʮ·͞ʹʙ͠Α͏ͱ͍ͯ͠Δʯ➡1196 478 479 Self Check"
+        "question": "She was (    ) (    ) (v   ) (    ) tears."
     },
     {
         "id": "1357",
-        "ja": "「隣の席 は 空 い て い ま す か 。」 「はい，空いています。どうぞ遠慮なくお使いください。 」",
-        "en": "“Is the seat {next to you free?” “Yes, it is. Please feel free to use it.” next to A ᶃʮA ͷྡʹʢ＝beside Aʣʯ ᶄʮ ΄ ͱ Μ ͲAʢ＝almost A ＝all but Aʣʯ ⇧「A の隣 ⭢ ほとんどA」}",
-        "answer": "next to you free?” “Yes, it is. Please feel free to use it.” next to A ᶃʮA ͷྡʹʢ＝beside Aʣʯ ᶄʮ ΄ ͱ Μ ͲAʢ＝almost A ＝all but Aʣʯ ⇧「A の隣 ⭢ ほとんどA」",
-        "explanation": "▶ next to you 「あなたの隣の」という前置詞句が形容詞句の働きをして，直前\nのthe seat「席」を後置修飾している。\nnext to impossible ʮ΄ͱΜͲෆՄೳʯ＝almost impossible\nnext to nothing ʮ΄ͱΜͲԿ΋ʙͳ͍ʯ＝almost nothing\nfree͍͍ͯΔʯ\nfeel free to do ʮԕྀͳ͘ʙ͢Δʯ",
-        "question": "“Is the seat (        ) (        ) you free?” “Yes, it is. Please feel free to use it.”"
+        "ja": "「隣の席は空いていますか。」 「はい，空いています。どうぞ遠慮なくお使いください。」 next to A ①「Aの隣に(＝beside A)」②「ほとんどA(＝almost A＝all but A)」 ⇧「Aの隣 → ほとんどA」 ＋ next to impossible「ほとんど不可能」＝almost impossible ＋ next to nothing「ほとんど何も～ない」＝almost nothing ○ free「自由な, 無料の, ひまな，空いている」 ○ feel free to do「遠慮なく～する」",
+        "en": "“Is the seat {next to} you free?”",
+        "answer": "next to",
+        "explanation": "Tip 「～の隣に」を表す表現が，「～の隣の」の意味で形容詞句として使われる。\n“Yes, it is. Please feel free to use it.”\n▶ next to you「あなたの隣の」という前置詞句が形容詞句の働きをして，直前のthe seat「席」を後置修飾している。",
+        "question": "“Yes, it is. Please feel free to use it.”"
     },
     {
         "id": "1358",
-        "ja": "私が最近読んだある記事によると，イン ドの人口は現在14億人を超え ている。",
-        "en": "According to an article I read recently, India’s population is currently over 1.4 billion. according to A  ᶃʮA ʹ ΑΔ ͱ ʯ ᶄʮAըɾεέδϡʔϧʣʹैͬͯʯ articleʯ currently͸ʯ＝at the present time ＝at present billion ʮ10 ԯʯ―millionʮ100 ສʯ",
-        "answer": "According to an article I read recently, India’s population is currently over 1.4 billion. according to A ᶃʮA ʹ ΑΔ ͱ ʯ ᶄʮAըɾεέδϡʔϧʣʹैͬͯʯ articleʯ currently͸ʯ＝at the present time ＝at present billion ʮ10 ԯʯ―millionʮ100 ສʯ",
-        "explanation": "",
-        "question": "(A      ) (        ) an (        ) I read recently, India’s population is currently over 1.4 billion."
+        "ja": "私が最近読んだある記事によると，インドの人口は現在14億人を超えている。 according to A ①「Aによると」②「A (計画・スケジュール)に従って」 ○ article「記事」 ○ currently「現在は」＝at the present time＝at present ○ billion「10億」―million「100万」",
+        "en": "{According to }an {article} I read recently, India’s population is currently",
+        "answer": "According to, article",
+        "explanation": "Tip 「～によると」を表す表現は？\nover 1.4 billion.",
+        "question": "(A   ) (    ) an (    ) I read recently, India’s population is"
     },
     {
         "id": "1359",
-        "ja": "標識の指示に従って駐 車してください 。",
-        "en": "Park your car in accordance with the instructions on the sign. in accordance with A ʮA ʹैͬͯʯ instructionʯ sign  ʮʙʹॺ໊͢Δʯ",
-        "answer": "in accordance with the instructions on the sign. in accordance with A ʮA ʹैͬͯʯ instructionʯ sign ʮʙʹॺ໊͢Δʯ",
-        "explanation": "",
-        "question": "Park your car (        ) (        ) (        ) the instructions on the sign."
+        "ja": "標識の指示に従って駐車してください。 in accordance with A「Aに従って」 ○ instruction「指示」 ○ sign ① 名詞「印，標識，兆候」② 動詞「～に署名する」",
+        "en": "Park your car {in accordance with} the instructions on the sign.",
+        "answer": "in accordance with",
+        "explanation": "Tip 「～に従って」を表す表現は？",
+        "question": "Park your car (    ) (    ) (    ) the instructions on the sign."
     },
     {
         "id": "1360",
-        "ja": "私は会議の前に書類を準備します。",
-        "en": "I’ll prepare the documents {prior to the meeting. prior to A ʮA ΑΓલʹʯ＝before A prepare ʮʙΛ४උ͢Δʯ―prepare for AʮA ͷ४උΛ͢Δʯ document ʮॻྨʯ―materialྉʯ}",
-        "answer": "prior to the meeting. prior to A ʮA ΑΓલʹʯ＝before A prepare ʮʙΛ४උ͢Δʯ―prepare for AʮA ͷ४උΛ͢Δʯ document ʮॻྨʯ―materialྉʯ",
-        "explanation": "",
-        "question": "I’ll prepare the documents (p      ) (        ) the (        )."
+        "ja": "私は会議の前に書類を準備します。 prior to A「Aより前に」＝before A ○ prepare「～を準備する」―prepare for A「Aの準備をする」 ○ document「書類」―material「資料」",
+        "en": "I’ll prepare the documents {prior to }the {meeting}.",
+        "answer": "prior to, meeting",
+        "explanation": "Tip  before「～より前に」と同じ意味を表す熟語は？",
+        "question": "I’ll prepare the documents (p   ) (    ) the (    )."
     },
     {
         "id": "1361",
-        "ja": "英 語 のレッスンのお返しに，私は彼女に日本語を教え ている。",
-        "en": "I teach her Japanese {in return for English lessons. in return for A ʮA ͷ͓ฦ͠ʹʯ in return ʮ͓ฦ͠ʹʯ}",
-        "answer": "in return for English lessons. in return for A ʮA ͷ͓ฦ͠ʹʯ in return ʮ͓ฦ͠ʹʯ",
-        "explanation": "",
-        "question": "I teach her Japanese (        ) (r      ) (        ) English lessons."
+        "ja": "英語のレッスンのお返しに，私は彼女に日本語を教えている。 in return for A「Aのお返しに」 ＋ in return「お返しに」",
+        "en": "I teach her Japanese {in return for }English lessons.",
+        "answer": "in return for",
+        "explanation": "Tip 「～のお返しに」を表す表現は？「返却」を意味する名詞を使う。",
+        "question": "I teach her Japanese (    ) (r   ) (    ) English lessons."
     },
     {
         "id": "1362",
-        "ja": "車を運転するのではなく，公共交通機関を利用すべきだ。",
-        "en": "We should use public transportation {instead of (driving)} cars.",
-        "answer": "instead of (driving)",
-        "explanation": "▶ 「車の代わりに…」と考えてdriving を省略してもよい。\ninstead of A ʮA ͷ୅ΘΓʹʯ＝in place of A\nMy family uses margarine instead of butter.\n（我が家ではバターの代わりにマ ー ガ リ ン を 使 う 。）\ninstead ʮ୅ΘΓʹʯ➡875",
-        "question": "We should use public transportation  cars."
+        "ja": "車を運転するのではなく，公共交通機関を利用すべきだ。 instead of doing「～するのではなく」 instead of A「Aの代わりに」＝in place of A （我が家ではバターの代わりにマーガリンを使う。） ＋ instead「代わりに」➡ 875",
+        "en": "My family uses margarine {instead of }butter.",
+        "answer": "instead of",
+        "explanation": "▶「車の代わりに…」と考えてdrivingを省略してもよい。",
+        "question": "We should use public transportation instead of driving cars. We should use public transportation instead of (driving) cars."
     },
     {
         "id": "1363",
-        "ja": "私はあなた以外にカナダ人を一人も知らない。",
-        "en": "I {don’t know any Canadians other than you. other than A ʮA Ҏ֎ʹʢ…ͳ͍ʣɼA Λআ͍ͯʢ…ͳ͍ʣʯ}",
-        "answer": "don’t know any Canadians other than you. other than A ʮA Ҏ֎ʹʢ…ͳ͍ʣɼA Λআ͍ͯʢ…ͳ͍ʣʯ",
-        "explanation": "▶ 否定文で使う。\n480 481\nSelf\nCheck\n復習",
-        "question": "I (        ) know any Canadians (o      ) (        ) (        )."
+        "ja": "私はあなた以外にカナダ人を一人も知らない。 群前置詞 ⑤ ● 481 other than A「A以外に(…ない)，Aを除いて(…ない)」",
+        "en": "I {don’t} know any Canadians {other than you}.",
+        "answer": "don’t, other than you",
+        "explanation": "Tip  「～以外に(…ない)，～を除いて(…ない)」を表す表現は？\n▶ 否定文で使う。",
+        "question": "I (    ) know any Canadians (o   ) (    ) (    )."
     }
 ];
 
@@ -433,7 +532,7 @@
             recognition.lang = 'en-US';
             recognition.interimResults = false;
         }
-        
+
         // --- Voice Synthesis Setup ---
         let synthesisVoice = null;
 
@@ -441,10 +540,10 @@
             const voices = speechSynthesis.getVoices();
             // 優先順位: Google US English -> Microsoft Zira/David -> その他英語
             synthesisVoice = voices.find(voice => voice.name === 'Google US English') ||
-                             voices.find(voice => voice.name.includes('Google') && voice.lang.includes('en-US')) ||
-                             voices.find(voice => voice.name.includes('Microsoft') && voice.lang.includes('en-US')) ||
-                             voices.find(voice => voice.lang === 'en-US') ||
-                             voices.find(voice => voice.lang.startsWith('en'));
+                voices.find(voice => voice.name.includes('Google') && voice.lang.includes('en-US')) ||
+                voices.find(voice => voice.name.includes('Microsoft') && voice.lang.includes('en-US')) ||
+                voices.find(voice => voice.lang === 'en-US') ||
+                voices.find(voice => voice.lang.startsWith('en'));
         }
 
         // 音声リストがロードされたら設定を実行
@@ -467,7 +566,7 @@
         const quizModal = document.getElementById('quiz-modal');
         const closeQuizBtn = document.getElementById('close-quiz-btn');
         const quizContent = document.getElementById('quiz-content');
-        
+
         const selectAllCheckbox = document.getElementById('select-all-checkbox');
         const pdfModal = document.getElementById('pdf-modal');
         const openPdfModalBtn = document.getElementById('open-pdf-modal-btn');
@@ -517,7 +616,7 @@
                 `;
                 sentenceList.appendChild(sentenceDiv);
             });
-            
+
             // Add click listener to each sentence item
             document.querySelectorAll('.sentence-item').forEach(item => {
                 item.addEventListener('click', (e) => {
@@ -544,15 +643,15 @@
                     }
                 });
             });
-            
+
             // Select the first sentence by default
             if (sentenceList.firstChild) {
-                 sentenceList.firstChild.click();
+                sentenceList.firstChild.click();
             }
         }
-        
+
         // --- PDF / Print Logic ---
-        
+
         function openPrintWindow(bodyContent, title) {
             const htmlContent = `
                 <!DOCTYPE html>
@@ -604,7 +703,7 @@
             printWindow.document.write(htmlContent);
             printWindow.document.close();
             setTimeout(() => {
-                printWindow.focus(); 
+                printWindow.focus();
                 printWindow.print();
             }, 250);
         }
@@ -619,32 +718,32 @@
                 .map(id => chapterData.find(item => item.id === id))
                 .filter(Boolean)
                 .sort((a, b) => {
-                     // Handle IDs like "1382-1" vs "1382-2"
-                     const aParts = a.id.split('-').map(s => parseInt(s) || 0);
-                     const bParts = b.id.split('-').map(s => parseInt(s) || 0);
-                     if (aParts[0] !== bParts[0]) return aParts[0] - bParts[0];
-                     return (aParts[1] || 0) - (bParts[1] || 0);
+                    // Handle IDs like "1382-1" vs "1382-2"
+                    const aParts = a.id.split('-').map(s => parseInt(s) || 0);
+                    const bParts = b.id.split('-').map(s => parseInt(s) || 0);
+                    if (aParts[0] !== bParts[0]) return aParts[0] - bParts[0];
+                    return (aParts[1] || 0) - (bParts[1] || 0);
                 });
         }
-        
+
         function getUniqueItems(items) {
-             const uniqueMap = new Map();
-             items.forEach(item => {
-                 // Use answer as key to deduplicate same phrases
-                 if (!uniqueMap.has(item.answer)) {
-                     uniqueMap.set(item.answer, item);
-                 }
-             });
-             return Array.from(uniqueMap.values()).sort((a, b) => {
-                 const aId = parseInt(a.id.split('-')[0]);
-                 const bId = parseInt(b.id.split('-')[0]);
-                 return aId - bId;
-             });
+            const uniqueMap = new Map();
+            items.forEach(item => {
+                // Use answer as key to deduplicate same phrases
+                if (!uniqueMap.has(item.answer)) {
+                    uniqueMap.set(item.answer, item);
+                }
+            });
+            return Array.from(uniqueMap.values()).sort((a, b) => {
+                const aId = parseInt(a.id.split('-')[0]);
+                const bId = parseInt(b.id.split('-')[0]);
+                return aId - bId;
+            });
         }
 
 
         // --- Message & Sound Functions ---
-        
+
         function showMessage(htmlContent, duration = null) {
             messageContent.innerHTML = htmlContent;
             messageModal.classList.remove('hidden');
@@ -668,7 +767,7 @@
 
             // 連続再生を防ぐために一度キャンセル
             speechSynthesis.cancel();
-            
+
             let textToSpeak = activeSentenceElement.dataset.fullSentence;
             // 念のため不要な記号を除去
             textToSpeak = textToSpeak.replace(/[{}]/g, '');
@@ -681,7 +780,7 @@
                 utterance.voice = synthesisVoice;
             }
 
-            utterance.rate = 1.0; 
+            utterance.rate = 1.0;
             utterance.pitch = 1.0;
 
             speechSynthesis.speak(utterance);
@@ -698,7 +797,7 @@
             }
 
             showMessage('<p class="text-2xl">マイクに向かって話してください...</p><div class="animate-pulse text-red-500 text-4xl mt-4">●</div>');
-            
+
             recognition.start();
 
             recognition.onresult = (event) => {
@@ -709,20 +808,20 @@
             recognition.onerror = (event) => {
                 showMessage(`<p>エラーが発生しました: ${event.error}</p>`, 3000);
             };
-            
+
             recognition.onend = () => {
-                 if (messageModal.classList.contains('hidden') === false && messageContent.innerHTML.includes('マイクに')) {
+                if (messageModal.classList.contains('hidden') === false && messageContent.innerHTML.includes('マイクに')) {
                     messageModal.classList.add('hidden');
-                 }
+                }
             };
         }
-        
+
         function evaluatePronunciation(transcript) {
             const originalText = activeSentenceElement.dataset.fullSentence;
 
             const cleanOrig = originalText.toLowerCase().replace(/[^\w\s]/g, '').split(' ');
             const cleanTrans = transcript.toLowerCase().replace(/[^\w\s]/g, '').split(' ');
-            
+
             let matches = 0;
             cleanOrig.forEach(word => {
                 if (cleanTrans.includes(word)) {
@@ -731,7 +830,7 @@
             });
 
             const similarity = matches / cleanOrig.length;
-            
+
             let score;
             if (similarity > 0.9) {
                 score = 95 + Math.floor(Math.random() * 5);
@@ -744,7 +843,7 @@
             } else {
                 score = 70 + Math.floor(Math.random() * 10);
             }
-            
+
             if (score === 100 && Math.random() < 0.3) score = 99;
 
             const messageHtml = `
@@ -761,8 +860,8 @@
 
         function startQuiz() {
             if (chapterData.length < 10) {
-                 showMessage('<p>クイズを作成するには、文が10個以上必要です。</p>', 3000);
-                 return;
+                showMessage('<p>クイズを作成するには、文が10個以上必要です。</p>', 3000);
+                return;
             }
 
             const shuffled = [...chapterData].sort(() => 0.5 - Math.random());
@@ -787,8 +886,9 @@
                     .map(item => item.answer);
 
                 const options = [correctAnswer, ...incorrectAnswers].sort(() => 0.5 - Math.random());
-                
-                const questionSentence = question.en.replace(`{${question.answer}}`, ' (______) ');
+
+                // Use regex to replace ALL {answer} parts with (______)
+                const questionSentence = question.en.replace(/\{.*?\}/g, ' (______) ');
 
                 quizContent.innerHTML = `
                     <h3 class="text-2xl font-bold mb-2">問題 ${currentQuestionIndex + 1}/10</h3>
@@ -808,7 +908,7 @@
                             button.classList.add('bg-red-400', 'text-white');
                             document.querySelector(`.quiz-option[data-answer="${CSS.escape(correctAnswer)}"]`).classList.add('bg-green-400', 'text-white');
                         }
-                        
+
                         setTimeout(() => {
                             currentQuestionIndex++;
                             showQuestion();
@@ -853,12 +953,12 @@
                 explanationDiv.style.display = 'block';
             }
         });
-        
+
         playSoundBtn.addEventListener('click', playSound);
         recordBtn.addEventListener('click', handleRecording);
         startQuizBtn.addEventListener('click', startQuiz);
         closeQuizBtn.addEventListener('click', () => quizModal.classList.add('hidden'));
-        
+
         // Select All Logic
         selectAllCheckbox.addEventListener('change', (e) => {
             const isChecked = e.target.checked;
@@ -872,7 +972,7 @@
 
         // PDF Modal Logic
         openPdfModalBtn.addEventListener('click', () => {
-             if (selectedSentences.size === 0) {
+            if (selectedSentences.size === 0) {
                 showMessage('<p>PDFを作成する問題を選択してください。</p>', 3000);
                 return;
             }
@@ -894,10 +994,10 @@
         // 1. 完全なリスト
         document.getElementById('download-list-btn').addEventListener('click', () => {
             const items = getSelectedItems();
-            if(!items) return;
+            if (!items) return;
             // リスト作成の場合は重複があっても良いが、見やすくするために熟語ベースでユニークにするか、
             // そのままID順で並べるか。ここではID順ですべて表示する。
-            
+
             const listItems = items.map(item => {
                 // Remove { } for clean display
                 const cleanEn = item.en.replace(/[{}]/g, '');
@@ -906,7 +1006,7 @@
                     <span style="font-size:0.9em; color:#555;">Ex: ${cleanEn} / ${item.ja}</span>
                 </li>`;
             }).join('');
-            
+
             openPrintWindow(`<ul class="list-container">${listItems}</ul>`, '重要熟語リスト');
             pdfModal.classList.add('hidden');
         });
@@ -914,14 +1014,14 @@
         // 2. 英語を解答
         document.getElementById('download-en-quiz-btn').addEventListener('click', () => {
             const items = getUniqueItems(getSelectedItems());
-            
-            const quizItems = items.map(item => 
+
+            const quizItems = items.map(item =>
                 `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')} : ____________________</span></li>`
             ).join('');
-            const answerItems = items.map(item => 
+            const answerItems = items.map(item =>
                 `<li><span class="inline-content">${item.answer}</span></li>`
             ).join('');
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (英語を解答)');
             pdfModal.classList.add('hidden');
@@ -930,14 +1030,14 @@
         // 3. 意味を解答
         document.getElementById('download-ja-quiz-btn').addEventListener('click', () => {
             const items = getUniqueItems(getSelectedItems());
-            
-            const quizItems = items.map(item => 
+
+            const quizItems = items.map(item =>
                 `<li><span class="inline-content"><strong>${item.answer}</strong> : ____________________</span></li>`
             ).join('');
-            const answerItems = items.map(item => 
+            const answerItems = items.map(item =>
                 `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')}</span></li>`
             ).join('');
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (意味を解答)');
             pdfModal.classList.add('hidden');
@@ -948,7 +1048,7 @@
             const items = getUniqueItems(getSelectedItems());
             let quizItems = '';
             let answerItems = '';
-            
+
             items.forEach(item => {
                 if (Math.random() > 0.5) {
                     // 日本語 -> 英語
@@ -960,7 +1060,7 @@
                     answerItems += `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')}</span></li>`;
                 }
             });
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (混合)');
             pdfModal.classList.add('hidden');
@@ -969,14 +1069,14 @@
         // 5. 例文穴埋め
         document.getElementById('download-sentence-quiz-btn').addEventListener('click', () => {
             const items = getSelectedItems(); // 例文問題なので重複（文脈違い）も含める
-            
+
             const quizItems = items.map(item => {
                 // Replace {answer} with underscore
                 const blankSentence = item.en.replace(`{${item.answer}}`, '____________________');
                 return `<li>${blankSentence}<br><span style="font-size:0.9em;">(${item.ja})</span></li>`;
             }).join('');
-            
-            const answerItems = items.map(item => 
+
+            const answerItems = items.map(item =>
                 `<li>${item.answer}</li>`
             ).join('');
 
@@ -990,7 +1090,7 @@
             const items = getSelectedItems();
             let quizItems = '';
             let answerItems = '';
-            
+
             const instruction = '<p style="border:1px solid #ccc; padding:10px; margin-bottom:20px;">指示：空所には適切な語句を補い、下線部がある文は下線部の意味を日本語で答えなさい。</p>';
 
             items.forEach(item => {
@@ -1019,4 +1119,5 @@
         });
     </script>
 </body>
+
 </html>

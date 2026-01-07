@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Tinos:wght@700&display=swap');
-        
+
         body {
-            background-color: #007BFF; /* ビビットなブルー */
+            background-color: #007BFF;
+            /* ビビットなブルー */
             font-family: 'Noto Sans JP', sans-serif;
         }
 
@@ -17,12 +19,15 @@
         .font-english {
             font-family: 'Tinos', 'Times New Roman', serif;
             font-weight: 700;
-            font-size: 1.25rem; /* 20px */
-            line-height: 1.75rem; /* 28px */
+            font-size: 1.25rem;
+            /* 20px */
+            line-height: 1.75rem;
+            /* 28px */
         }
 
         .answer-span {
-            color: #DC2626; /* 赤色 */
+            color: #DC2626;
+            /* 赤色 */
             font-weight: 700;
             display: none;
         }
@@ -40,7 +45,7 @@
         .show-answer .underline-span {
             display: none;
         }
-        
+
         .explanation {
             display: none;
             white-space: pre-wrap;
@@ -57,22 +62,27 @@
             cursor: pointer;
             transition: all 0.2s ease-in-out;
         }
+
         .btn-primary {
             background-color: #3b82f6;
             color: white;
         }
+
         .btn-primary:hover {
             background-color: #2563eb;
         }
+
         .btn-secondary {
             background-color: #6b7280;
             color: white;
         }
+
         .btn-secondary:hover {
             background-color: #4b5563;
         }
     </style>
 </head>
+
 <body class="text-gray-800">
 
     <div id="app-container" class="container mx-auto p-4 md:p-8 max-w-4xl">
@@ -83,23 +93,27 @@
 
         <main class="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg mb-28">
             <div class="flex justify-between items-center mb-6">
-                 <!-- PDF Control Section -->
-                 <div class="flex-1 mr-4">
+                <!-- PDF Control Section -->
+                <div class="flex-1 mr-4">
                     <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
                         <h3 class="font-bold text-sm md:text-base mb-2">選択した問題でPDFを作成</h3>
                         <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
                             <div class="flex items-center">
-                                <input type="checkbox" id="select-all-checkbox" class="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
-                                <label for="select-all-checkbox" class="ml-2 text-sm font-medium text-gray-700 cursor-pointer">すべて選択 / 解除</label>
+                                <input type="checkbox" id="select-all-checkbox"
+                                    class="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                                <label for="select-all-checkbox"
+                                    class="ml-2 text-sm font-medium text-gray-700 cursor-pointer">すべて選択 / 解除</label>
                             </div>
-                            <button id="open-pdf-modal-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow text-sm transition-transform transform hover:scale-105">
+                            <button id="open-pdf-modal-btn"
+                                class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow text-sm transition-transform transform hover:scale-105">
                                 PDF作成メニュー
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <button id="start-quiz-btn" class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-lg shadow transition-transform transform hover:scale-105 whitespace-nowrap">
+                <button id="start-quiz-btn"
+                    class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-lg shadow transition-transform transform hover:scale-105 whitespace-nowrap">
                     ランダムテスト
                 </button>
             </div>
@@ -111,11 +125,16 @@
     </div>
 
     <!-- Control Panel -->
-    <div id="control-panel" class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md p-4 border-t-2 border-gray-200 shadow-2xl flex justify-center items-center space-x-2 md:space-x-4">
-        <button id="toggle-answer-btn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">表示/非表示</button>
-        <button id="play-sound-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">音声再生</button>
-        <button id="record-btn" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">録音評価</button>
-        <button id="toggle-explanation-btn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">解説</button>
+    <div id="control-panel"
+        class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md p-4 border-t-2 border-gray-200 shadow-2xl flex justify-center items-center space-x-2 md:space-x-4">
+        <button id="toggle-answer-btn"
+            class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">表示/非表示</button>
+        <button id="play-sound-btn"
+            class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">音声再生</button>
+        <button id="record-btn"
+            class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">録音評価</button>
+        <button id="toggle-explanation-btn"
+            class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">解説</button>
     </div>
 
     <!-- Message/Score Modal -->
@@ -124,11 +143,12 @@
             <!-- Message content will be populated by JS -->
         </div>
     </div>
-    
+
     <!-- Quiz Modal -->
     <div id="quiz-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-40 p-4">
         <div class="bg-white w-full max-w-2xl p-8 rounded-2xl shadow-2xl relative">
-            <button id="close-quiz-btn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-3xl font-bold">&times;</button>
+            <button id="close-quiz-btn"
+                class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-3xl font-bold">&times;</button>
             <div id="quiz-content">
                 <!-- Quiz content will be populated by JS -->
             </div>
@@ -136,17 +156,24 @@
     </div>
 
     <!-- PDF Download Modal -->
-    <div id="pdf-modal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center z-50">
+    <div id="pdf-modal"
+        class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center z-50">
         <div class="relative mx-auto p-5 border w-11/12 md:w-1/2 lg:w-1/3 shadow-lg rounded-md bg-white">
             <div class="mt-3 text-center">
                 <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">ダウンロードするPDFの種類を選択</h3>
                 <div class="mt-2 space-y-3">
-                    <button id="download-list-btn" class="btn btn-primary w-full justify-start text-left">1. 完全なリスト (熟語・意味・例文)</button>
-                    <button id="download-en-quiz-btn" class="btn btn-primary w-full justify-start text-left">2. 熟語テスト (英語を解答)</button>
-                    <button id="download-ja-quiz-btn" class="btn btn-primary w-full justify-start text-left">3. 熟語テスト (意味を解答)</button>
-                    <button id="download-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">4. 熟語テスト (混合)</button>
-                    <button id="download-sentence-quiz-btn" class="btn btn-primary w-full justify-start text-left">5. 例文の穴埋め問題</button>
-                    <button id="download-sentence-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">6. 例文の混合問題 (穴埋め/和訳)</button>
+                    <button id="download-list-btn" class="btn btn-primary w-full justify-start text-left">1. 完全なリスト
+                        (熟語・意味・例文)</button>
+                    <button id="download-en-quiz-btn" class="btn btn-primary w-full justify-start text-left">2. 熟語テスト
+                        (英語を解答)</button>
+                    <button id="download-ja-quiz-btn" class="btn btn-primary w-full justify-start text-left">3. 熟語テスト
+                        (意味を解答)</button>
+                    <button id="download-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">4. 熟語テスト
+                        (混合)</button>
+                    <button id="download-sentence-quiz-btn" class="btn btn-primary w-full justify-start text-left">5.
+                        例文の穴埋め問題</button>
+                    <button id="download-sentence-mixed-quiz-btn"
+                        class="btn btn-primary w-full justify-start text-left">6. 例文の混合問題 (穴埋め/和訳)</button>
                 </div>
                 <div class="mt-6">
                     <button id="close-modal-btn" class="btn btn-secondary w-full">キャンセル</button>
@@ -158,516 +185,580 @@
     <script>
         const chapterData = [
     {
-        "id": "1",
-        "ja": "2 3 4 5 6 7 8 9 10音読 ◀\t音読用動画 別解など 形容詞の語法 2 3 4 5 6 7 8 9 10音読 形容詞の語法 2 3 4 5 6 7 8 9 10音読 形容詞の語法 2 3 4 5 6 7 8 9 10音読 形容詞の語法 2 3 4 5 6 7 8 9 10音読 形容詞の語法 2 3 4 5 6 7 8 9 10音読 形容詞の語法 2 3 4 5 6 7 8 9 10音読 形容詞の語法 2 3 4 5 6 7 8 9 10音読 形容詞の語法",
+        "id": "20",
+        "ja": "章　形容詞の語法  QR ☚ 音読用動画　別解など",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
-        "question": "ࢺFile 91 lateࢺFile 93File 92 ࢺFile 94 Self Check ࢺ File 98 File 97"
+        "question": ""
     },
     {
-        "id": "20",
-        "ja": "形容詞の語法 ① 20章 形容詞の語法 語法編 ｜  20章 形容詞の語法 ② 語法編 ｜  20章 形容詞の語法 ③ 語法編 ｜  20章 形容詞の語法 ④ 語法編 ｜  20章 形容詞の語法 ⑤ 語法編 ｜  20章 形容詞の語法 ⑥ 形容詞の語法 ⑦語法編 ｜  20章 語法編 ｜  20章 形容詞の語法 ⑧",
+        "id": "308",
+        "ja": "● 語法編｜20章",
         "en": "???",
-        "answer": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "310",
+        "ja": "● 語法編｜20章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "312",
+        "ja": "● 語法編｜20章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "314",
+        "ja": "● 語法編｜20章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "316",
+        "ja": "● 語法編｜20章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "318",
+        "ja": "● 語法編｜20章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "320",
+        "ja": "● 語法編｜20章",
+        "en": "???",
+        "answer": "",
         "explanation": "",
         "question": ""
     },
     {
         "id": "777",
-        "ja": "彼は存命の最も偉大な芸術家の１人だ。",
-        "en": "He is one of the greatest {living artists.}",
-        "answer": "living artists.",
-        "explanation": "▶ beautiful flowers のよ うに形容詞 （beautiful）が 名 詞（flowers） を直接修飾する\n用法を形容詞のఆ༻๏と呼ぶ。多くの場合，形容詞は名詞を前から修飾する。\nliving ʮੜ͖͍ͯΔʙʯ―限定用法で使う。\nall living things ʮੜ͖ͱ͠ੜ͚Δ΋ͷʯ",
-        "question": "He is one of the greatest (        ) (        )."
+        "ja": "彼は存命の最も偉大な芸術家の１人だ。 living「生きている～」―限定用法で使う。 ＋ all living things「生きとし生けるもの」",
+        "en": "He is one of the greatest {living artists}.",
+        "answer": "living artists",
+        "explanation": "▶ beautiful flowersのように形容詞(beautiful)が名詞(flowers)を直接修飾する用法を形容詞の限定用法と呼ぶ。多くの場合，形容詞は名詞を前から修飾する。",
+        "question": "He is one of the greatest (    ) (    )."
     },
     {
         "id": "778",
-        "ja": "何か新しいことをやってみたい 。",
-        "en": "I want to try {something new. something ʴࢺ}",
-        "answer": "something new. something ʴࢺ",
-        "explanation": "▶ something を形容詞で修飾するときは， 〈something＋形容詞〉 の語順にする。",
-        "question": "I want to try ."
+        "ja": "何か新しいことをやってみたい。 something＋形容詞",
+        "en": "I want to try {something new}.",
+        "answer": "something new",
+        "explanation": "▶ somethingを形容詞で修飾するときは，〈something＋形容詞〉の語順にする。",
+        "question": "I want to try something new."
     },
     {
         "id": "779",
-        "ja": "私の祖父母はみんな健在です。",
-        "en": "All of my grandparents {are alive and well.}",
-        "answer": "are alive and well.",
-        "explanation": "▶ The flower is beautiful. のよ うに，形容詞を補語（C）として使う用法を形容詞の\nঀड़༻๏と呼ぶ。779～783 で使われている形容詞は叙述用法のみで使う。alive\nは叙述用法の形容詞。well も叙述用法の形容詞で「健康で」の意味。➡File91\nalive ʮੜ͖ͯʯ―叙述用法で使う。限定用法では使わない。  an alive dog",
-        "question": "All of my grandparents (        ) (        ) and well."
+        "ja": "私の祖父母はみんな健在です。 「生きて」を表す叙述用法の形容詞は？ alive「生きて」―叙述用法で使う。限定用法では使わない。× an alive dog",
+        "en": "All of my grandparents {are alive} and well.",
+        "answer": "are alive",
+        "explanation": "F 314 ▶ The flower is beautiful.のように，形容詞を補語(C)として使う用法を形容詞の叙述用法と呼ぶ。779～783で使われている形容詞は叙述用法のみで使う。aliveは叙述用法の形容詞。wellも叙述用法の形容詞で「健康で」の意味。➡ File 91",
+        "question": "All of my grandparents (    ) (    ) and well."
     },
     {
         "id": "780",
-        "ja": "母と私は多くの点で似ている。",
-        "en": "＝ My mother and I {are alike in many ways. My mother and I resemble each other in many ways. alikeͯʢ＝similarʣʯ―alike は叙述用法で使う。}",
-        "answer": "are alike in many ways. My mother and I resemble each other in many ways. alikeͯʢ＝similarʣʯ―alike は叙述用法で使う。",
-        "explanation": "▶ S are alike はʮS͍ͯΔʯの意味でS に置いた名詞同士が互いに似ている\nことを表すのに対し，S is [are] like A はʮS ͸A͍ͯΔʯという意味を表す。\nresemble AʮA͍ͯΔʯ➡601",
-        "question": "My mother and I (        ) (        ) in many ways."
+        "ja": "母と私は多くの点で似ている。 alike「似て(＝similar)」―alikeは叙述用法で使う。 ○ in many ways「多くの点で」 ○ resemble A「Aに似ている」➡ 601",
+        "en": "My mother and I {are alike }in many ways. ＝My mother and I{ resemble each other} in many ways.",
+        "answer": "are alike, resemble each other",
+        "explanation": "Tip 「似て」を表す叙述用法の形容詞は？ resemble each otherと同じ意味を表す。\n▶ S are alikeは「Sは似ている」の意味でSに置いた名詞同士が互いに似ていることを表すのに対し，S is [are] like Aは「SはAに似ている」という意味を表す。",
+        "question": "My mother and I (    ) (    ) in many ways."
     },
     {
         "id": "781",
-        "ja": "父が遅く帰っ てきた時，私はまだ起きていた。 awake͖͍ͯͯʯ⇔ asleepʮ຾ͬͯʯ―叙述用法で使う。",
-        "en": "???",
-        "answer": "???",
+        "ja": "父が遅く帰ってきた時，私はまだ起きていた。 awake「目が覚めて，起きていて」⇔ asleep「眠って」―叙述用法で使う。 ○ come home late「遅く帰ってくる」⇔ come home early「早く帰ってくる」",
+        "en": "I {was still awake} when my father came home late.",
+        "answer": "was still awake",
         "explanation": "",
-        "question": "I (        ) (s      ) (        ) when my father came home late. I was still awake when my father came home late. come home lateͬͯ͘Δʯ⇔⇔ come home earlyͬͯ͘Δʯ"
+        "question": "I (    ) (s   ) (    ) when my father came home late."
     },
     {
         "id": "782-1",
-        "ja": "地震が起きた時，私は眠っていた。 asleep ʮ຾ͬͯʯ⇔ awakeΊͯʯ―どちらも叙述用法で使う。",
-        "en": "???",
-        "answer": "???",
+        "ja": "地震が起きた時，私は眠っていた。 asleep「眠って」⇔ awake「目が覚めて」―どちらも叙述用法で使う。 ○ occur / happen「(地震などが)起こる」",
+        "en": "I {was }asleep when the earthquake occurred. I {was asleep }when the earthquake occurred.",
+        "answer": "was, was asleep",
         "explanation": "",
-        "question": "I was  when the earthquake occurred. I was asleep when the earthquake occurred. occur / happen͜Δʯ"
+        "question": ""
     },
     {
         "id": "782-2",
-        "ja": "電車で本を読んでいるうちに眠ってしまった。 while doingʹʯ―  during doing は誤り。",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "I (f      ) (        ) while reading on the train. I fell asleep while reading on the train. fall asleep ʮ຾ΓʹམͪΔɼ৸ೖΔʯ―fallʴCʹʣʙʹͳΔʯ"
+        "ja": "電車で本を読んでいるうちに眠ってしまった。 fall asleep「寝入る，眠りに落ちる」―fall＋C「(急に)～になる」 ○ while doing「～している間に」― × during doingは誤り。",
+        "en": "I {fell asleep} while reading on the train.",
+        "answer": "fell asleep",
+        "explanation": "Tip 「眠ってしまった → 眠りに落ちた」と表現する。",
+        "question": "I (f   ) (    ) while reading on the train."
     },
     {
         "id": "783",
-        "ja": "勉強しようとしてるんだから，どうかほうっておいてくれ な い？",
-        "en": "I’m trying to study, so could you please {leave me alone? leave A aloneʮA ΛҰ ਓ ʹ͓ͯ͘͠ɼA Λ΄͏͓ͬͯ͘ʯ}",
-        "answer": "leave me alone? leave A aloneʮA ΛҰ ਓ ʹ͓ͯ͘͠ɼA Λ΄͏͓ͬͯ͘ʯ",
-        "explanation": "▶ 後半はalone が 補 語（C）のSVOC の文。このalone は形容詞。\nartist / still / fall\naliveʮੜ͖ͯʯɹ  alikeͯʯɹ  awakeΊͯʯɹ  asleepʮ຾ͬͯʯ\nashamedʮஏͯ͡ʯɹ  afraidΕͯʯɹ  aware͍ͮͯʯ\n306 307\nSelf\nCheck\n復習",
-        "question": "I’m trying to study, so could you please (        ) (        ) (a      )?"
+        "ja": "勉強しようとしてるんだから，どうかほうっておいてくれない？ 形容詞の語法 ① ● 307 leave A alone「Aを一人にしておく，Aをほうっておく」",
+        "en": "I’m trying to study, so could you please {leave me alone}?",
+        "answer": "leave me alone",
+        "explanation": "Tip 「～をほうっておく」を表す表現は？\n▶ 後半はaloneが補語(C)のSVOCの文。このaloneは形容詞。",
+        "question": "I’m trying to study, so could you please (    ) (    ) (a   )?"
     },
     {
         "id": "784-1",
-        "ja": "現時点では，それ以上の情報はない。",
-        "en": "We don’t have any more information {at the present time.}",
-        "answer": "at the present time.",
-        "explanation": "▶ 形容詞の中には限定用法と叙述用法で意味が異なるものがある。➡File92\nat presentͷͱ͜Ζ͸ʯ＝currently  ➡1252",
-        "question": "We don’t have any more information (        ) (        ) (        ) (        )."
+        "ja": "現時点では，それ以上の情報はない。 present ①「(限定用法で)現在の～」②「(叙述用法で)出席して」➡ 784-2 at the present time「現時点では」 ＋ at present「現在は，今のところは」＝currently ➡ 1252 ＋ to the present day「今日まで，現在まで」＝to this day",
+        "en": "We don’t have any more information {at the present time}.",
+        "answer": "at the present time",
+        "explanation": "Tip 「現時点では」を表す表現は？「現在の～」を表す形容詞を使う。\n▶ 形容詞の中には限定用法と叙述用法で意味が異なるものがある。➡ File 92",
+        "question": "We don’t have any more information (    ) (    ) (    ) (    )."
     },
     {
         "id": "784-2",
-        "ja": "市長が式典に出席した。",
-        "en": "The mayor {was present at the ceremony.}",
-        "answer": "was present at the ceremony.",
-        "explanation": "▶ このpresent は叙述用法でʮग़ ੮ͯ͠ʯの意味。⇔absent੮ͯ͠ʯ\nmayor௕ʯ",
-        "question": "The mayor (        ) (        ) at the ceremony."
+        "ja": "市長が式典に出席した。 ○ mayor「市長」",
+        "en": "The mayor {was present} at the ceremony.",
+        "answer": "was present",
+        "explanation": "Tip 「出席していた」と考えて形容詞を使うと？\nF 314 ▶ このpresentは叙述用法で「出席して」の意味。⇔ absent「欠席して」",
+        "question": "The mayor (    ) (    ) at the ceremony."
     },
     {
         "id": "785-1",
-        "ja": "これが最善の選択だと私 は 確 信しています。",
-        "en": "{I’m absolutely certain this is the best choice. be certain [sure] that …৴͍ͯ͠Δʯ absolutely ʮઈରʹɼ·ͬͨ͘ʯ}",
-        "answer": "I’m absolutely certain this is the best choice. be certain [sure] that …৴͍ͯ͠Δʯ absolutely ʮઈରʹɼ·ͬͨ͘ʯ",
-        "explanation": "",
-        "question": "(        ) absolutely (        ) this is the best choice."
+        "ja": "これが最善の選択だと私は確信しています。 certain ①「(叙述用法で)確信して(＝sure)」②「(限定用法で)ある～」➡ 785-2 be certain [sure] that …「…ということを確信している」 ○ absolutely「絶対に，まったく」",
+        "en": "{I’m} absolutely {certain} this is the best choice.",
+        "answer": "I’m, certain",
+        "explanation": "Tip  sure「確信して」と同じ意味を表す形容詞は？",
+        "question": "(    ) absolutely (    ) this is the best choice."
     },
     {
         "id": "785-2",
-        "ja": "そのテレビ番組は，特定の年齢層の視聴者に受ける。",
-        "en": "The TV show appeals to an audience of a {certain age.}",
-        "answer": "certain age.",
-        "explanation": "▶ このcertain は限定用法で「ある～」の意味。➡785-1  age は「年代」 。\nappeal to A ʮAʢͷ৺ʣʹૌ͑ΔɼA ʹड͚Δʯ",
-        "question": "The TV show appeals to an audience of a (c      ) (        )."
+        "ja": "そのテレビ番組は，特定の年齢層の視聴者に受ける。 ○ appeal to A「A(の心)に訴える，Aに受ける」",
+        "en": "The TV show appeals to an audience of a {certain age}.",
+        "answer": "certain age",
+        "explanation": "Tip 「特定の年齢層＝ある年代」と表現する。「ある～」を表す形容詞は？\n▶ このcertainは限定用法で「ある～」の意味。➡ 785-1  ageは「年代」。",
+        "question": "The TV show appeals to an audience of a (c   ) (    )."
     },
     {
         "id": "786",
-        "ja": "ひょっとしたら10分ほど遅れるかもしれない。",
-        "en": "I might be about {10 minutes late. late ʮ஗Εͨɼ஗͍ʯ ʙ minute(s) [hour(s)] lateʧ ஗Εͨʯ}",
-        "answer": "10 minutes late. late ʮ஗Εͨɼ஗͍ʯ ʙ minute(s) [hour(s)] lateʧ ஗Εͨʯ",
-        "explanation": "▶ late には複数の意味があり，比較級・最上級にもそれぞれ意味がある。➡File93",
-        "question": "I might be about ."
+        "ja": "ひょっとしたら10分ほど遅れるかもしれない。 late「遅れた，遅い」 ～ minute(s) [hour(s)] late「～分[時間]遅れた」",
+        "en": "I might be about {10 minutes late}.",
+        "answer": "10 minutes late",
+        "explanation": "▶ lateには複数の意味があり，比較級・最上級にもそれぞれ意味がある。➡ File 93",
+        "question": "I might be about 10 minutes late."
     },
     {
         "id": "787",
-        "ja": "故エリザベス２世は，世界中の多くの人々に愛されていた。",
-        "en": "The late Queen Elizabeth II was loved by many people around the world. the late A ʮ๢͘ͳͬͨAނAʯ people around the world ʮੈքதͷਓʑʯ",
-        "answer": "???",
-        "explanation": "",
-        "question": "Queen Elizabeth II was loved by many people around the world."
+        "ja": "故エリザベス２世は，世界中の多くの人々に愛されていた。 the late A「亡くなったA，故A」 ○ people around the world「世界中の人々」",
+        "en": "{The late} Queen Elizabeth II was loved by many people around the world.",
+        "answer": "The late",
+        "explanation": "Tip 「故～，亡くなった～」を表す表現は？",
+        "question": "The late Queen Elizabeth II was loved by many people around the world."
     },
     {
         "id": "788",
-        "ja": "ナオミはいつも最新のファッショントレンドを追っている。",
-        "en": "Naomi always keeps up with the {latest} fashion trends. {latest}৽ͷʯ＝newest keep up with A ʮA ʹ஗Ε͍͍ͣͭͯ͘ʯ＝keep pace with A",
+        "ja": "ナオミはいつも最新のファッショントレンドを追っている。 latest「最新の」＝newest ○ keep up with A「Aに遅れずついていく」＝keep pace with A",
+        "en": "Naomi always keeps up with the {latest }fashion trends.",
         "answer": "latest",
-        "explanation": "",
-        "question": "Naomi always keeps up with the (l      ) fashion trends."
+        "explanation": "Tip 「最新の」を表す最上級の形容詞は？",
+        "question": "Naomi always keeps up with the (l   ) fashion trends."
     },
     {
         "id": "789",
-        "ja": "観光産業は20世紀後半 に大きく発 展した。 限定用法ͷʙ ѱ͍ʙ 復習",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "The tourism industry developed greatly in (        ) (        ) (        ) (        ) the 20th century. The tourism industry developed greatly in the latter half of the 20th century. latterऀͷʯ⇔ formerʮલऀͷʯ the latter [second] half of AʮA൒ʯ⇔ the /f_irst half of AʮA ͷલ൒ʯ the tourism industryʯ time / age / half lateڃֱ  laterͷʯ ڃ  latest৽ͷʯ lateڃֱ  latterऀͷʯ ڃ  lastͷʯ the late Aʮ๢͘ͳͬͨAނAʯ present  certain  late  ill 308 309 Self Check"
+        "ja": "観光産業は20世紀後半に大きく発展した。 形容詞の語法 ② ● 309 latter「後者の」⇔ former「前者の」 the latter [second] half of A「Aの後半」⇔ the first half of A「Aの前半」 ○ the tourism industry「観光産業」",
+        "en": "The tourism industry developed greatly in {the latter half of} the 20th",
+        "answer": "the latter half of",
+        "explanation": "Tip 「後半 → 後者の半分」\ncentury.",
+        "question": "The tourism industry developed greatly in (    ) (    ) (    ) (    ) the 20th century."
     },
     {
         "id": "790",
-        "ja": "その賞を受賞したことは私の人生で最もワクワクする経験だった。",
+        "ja": "その賞を受賞したことは私の人生で最もワクワクする経験だった。 exciting「興奮させる」←(人を)興奮させるような ○ win an award「受賞する」―winは「～を勝ち取る」という意味の他動詞。",
         "en": "Winning the award was the most {exciting} experience of my life.",
         "answer": "exciting",
-        "explanation": "▶ 形容詞的用法の現在分詞と過去分詞の中には，動詞と しての性質を失って完全\nに形容詞として使われるようになったものがある。それらをࢺと呼ぶ。\n感情に影響を与える他動詞から分詞形容詞になったものが多い。790～802 で\n使われている形容詞は分詞形容詞。\nexcitingฃͤ͞Δʯ←（ 人 を ）興 奮 さ せ るような\n▶ 感情を表す分詞形容詞は，現在分詞の形で「（人に）～の感情を起こさせる」の\n意味を持つ。\nwin an award ʮड৆͢Δʯ―win は「～を勝ち取る」という意味の他動詞。",
-        "question": "Winning the award was the most (e      ) experience of my life."
+        "explanation": "F 104 ▶ 形容詞的用法の現在分詞と過去分詞の中には，動詞としての性質を失って完全に形容詞として使われるようになったものがある。それらを分詞形容詞と呼ぶ。感情に影響を与える他動詞から分詞形容詞になったものが多い。790～802で使われている形容詞は分詞形容詞。\n▶ 感情を表す分詞形容詞は，現在分詞の形で「(人に)～の感情を起こさせる」の意味を持つ。",
+        "question": "Winning the award was the most (e   ) experience of my life."
     },
     {
         "id": "791",
-        "ja": "初めての東京旅行の前は，とても興 奮してほとんど眠れなかった。",
-        "en": "I was so {excited} that I could hardly sleep before my first trip to Tokyo. {excited}ฃ͠ ͯʯ←（ 人 が ）興 奮 さ せ ら れ て",
+        "ja": "初めての東京旅行の前は，とても興奮してほとんど眠れなかった。 F 104  excited「興奮して」←(人が)興奮させられて",
+        "en": "I was so {excited} that I could hardly sleep before my first trip to Tokyo.",
         "answer": "excited",
-        "explanation": "▶ 感情を表す分詞形容詞は，過去分詞の形で「（人が）～の感情をかき立てられる」\nの意味を持つ。",
-        "question": "I was so (e      ) that I could hardly sleep before my first trip to Tokyo."
+        "explanation": "▶ 感情を表す分詞形容詞は，過去分詞の形で「(人が)～の感情をかき立てられる」の意味を持つ。",
+        "question": "I was so (e   ) that I could hardly sleep before my first trip to Tokyo."
     },
     {
         "id": "792",
-        "ja": "昨日見た映画はとても退屈だった。 boringͳʯ←（ 人 を ）退 屈 さ せ るような",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "The movie I watched yesterday was very (b      ). The movie I watched yesterday was very boring."
+        "ja": "昨日見た映画はとても退屈だった。 boring「退屈な」←(人を)退屈させるような",
+        "en": "The movie I watched yesterday was very {boring}.",
+        "answer": "boring",
+        "explanation": "Tip 「退屈な → 退屈させるような」を表す形容詞は？",
+        "question": "The movie I watched yesterday was very (b   )."
     },
     {
         "id": "793",
-        "ja": "ロボットは 決して疲れたり退屈したりしない。 bored͠ ͯʯ←（ 人 が ）退 屈 さ せ ら れ て",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Robots never (g      ) (        ) or (        ). ͢Δɻ͢Δɻ Robots never get tired or bored. get tired ʮർΕΔʯ―be tiredʮർΕ͍ͯΔʯ get bored͢Δʯ―be bored͍ͯ͠Δʯ"
+        "ja": "ロボットは決して疲れたり退屈したりしない。 「退屈する」は「退屈させられた状態になる」と表現する。 bored「退屈して」←(人が)退屈させられて ○ get tired「疲れる」―be tired「疲れている」 ○ get bored「退屈する」―be bored「退屈している」 ○ never A or B「AでもBでも決してない」― ×never A and Bとはしない。",
+        "en": "Robots never {get tired} or {bored}.",
+        "answer": "get tired, bored",
+        "explanation": "Tip 「疲れる」「退屈する」を表す表現は？",
+        "question": "Robots never (g   ) (    ) or (    )."
     },
     {
         "id": "794",
-        "ja": "今日のトピックはとても興味深かった。 interestingຯਂ͍ʯ←（ 人 に ）興 味 を 持 た せ るような interestedͬͯʯ← （人が） 興味を持たせられて",
-        "en": "???",
-        "answer": "???",
+        "ja": "今日のトピックはとても興味深かった。 interesting「興味深い」←(人に)興味を持たせるような ＋ interested「興味を持って」←(人が)興味を持たせられて",
+        "en": "Today’s topic was very {interesting}.",
+        "answer": "interesting",
         "explanation": "",
-        "question": "Today’s topic was very (        ). Today’s topic was very interesting."
+        "question": "Today’s topic was very (    )."
     },
     {
         "id": "795",
-        "ja": "夜空に天の川が見えるのは驚きだ。 amazing୰͢΂͖ʯ←（ 人 を ）驚 か せ るような amazed୰͠ ͯʯ←（ 人 が ）驚 か さ れ て",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "(        ) (a      ) (        ) we can see the Milky Way in the night sky. It’s amazing that we can see the Milky Way in the night sky. the Milky Way ʮఱͷ઒ʯ"
+        "ja": "夜空に天の川が見えるのは驚きだ。 amazing「驚嘆すべき」←(人を)驚かせるような ＋ amazed「驚嘆して」←(人が)驚かされて ○ the Milky Way「天の川」",
+        "en": "{It’s amazing that} we can see the Milky Way in the night sky.",
+        "answer": "It’s amazing that",
+        "explanation": "Tip 「…は驚きだ → …ということは驚嘆すべきだ」",
+        "question": "(    ) (a   ) (    ) we can see the Milky Way in the night sky."
     },
     {
         "id": "796",
-        "ja": "昨日，家の近くでシカを見て驚いた。 surprised͍ͯʯ←（ 人 が ）驚 か され て surprising͘΂͖ʯ←（ 人 を ）驚 か せ る よ う な",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "I (        ) (s      ) (        ) see a deer near my house yesterday. I was surprised to see a deer near my house yesterday. be surprised to do͘ʯ"
+        "ja": "昨日，家の近くでシカを見て驚いた。 surprised「驚いて」←(人が)驚かされて ＋ surprising「驚くべき」←(人を)驚かせるような ○ be surprised to do「～して驚く」",
+        "en": "I {was surprised to} see a deer near my house yesterday.",
+        "answer": "was surprised to",
+        "explanation": "Tip 「～して驚いた」を表すには形容詞の後に何を続ける？",
+        "question": "I (    ) (s   ) (    ) see a deer near my house yesterday."
     },
     {
         "id": "797",
-        "ja": "私たちは彼女が退部すると聞いてショックを受けた。 shocked ʮγϣοΫΛड͚ͯʯ← （人が） ショックを与えられて shockingతͳʯ← （人に） ショックを与えるような 復習",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "We (        ) (        ) (        ) hear she was leaving our club. We were shocked to hear she was leaving our club. be shocked to do ʮʙͯ͠γϣοΫΛड͚Δʯ leave a club / leave a team ʮୀ෦͢Δʯ⇔⇔ join a club [team]ʮೖ෦͢Δʯ get 310 311 Self Check"
+        "ja": "私たちは彼女が退部すると聞いてショックを受けた。 形容詞の語法 ③ ● 311 shocked「ショックを受けて」←(人が)ショックを与えられて ＋ shocking「衝撃的な」←(人に)ショックを与えるような ○ be shocked to do「～してショックを受ける」 ○ leave a club / leave a team「退部する」⇔ join a club [team]「入部する」",
+        "en": "We {were shocked to} hear she was leaving our club.",
+        "answer": "were shocked to",
+        "explanation": "Tip 「～してショックを受けた」を表すには形容詞の後に何を続ける？",
+        "question": "We (    ) (    ) (    ) hear she was leaving our club."
     },
     {
         "id": "798",
-        "ja": "友達が私を彼女の誕生日パーティーに招待してくれてうれしい。 pleasing͹ͤΔʯ←（ 人 を ）喜 ば せ る よ う な",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "(        ) (        ) (        ) my friend invited me to her birthday party. I’m pleased [glad, happy] that my friend invited me to her birthday party. be pleased [glad, happy] (that) …ʮ…ͱ͍͏͜ͱ͕͏Ε͍͠ʯ"
+        "ja": "友達が私を彼女の誕生日パーティーに招待してくれてうれしい。 pleased「喜んで」←(人が)喜ばされて ＋ pleasing「喜ばせる」←(人を)喜ばせるような ○ be pleased [glad, happy] (that) …「…ということがうれしい」",
+        "en": "{I’m pleased [glad, happy] that} my friend invited me to her birthday party.",
+        "answer": "I’m pleased [glad, happy] that",
+        "explanation": "Tip 「…してくれてうれしい → …ということに喜んでいる」",
+        "question": "(    ) (    ) (    ) my friend invited me to her birthday party."
     },
     {
         "id": "799",
-        "ja": "5 キロのレースを完 走して私は満足している。 satis/f_ied ʮຬ଍͠ ͯʯ←（ 人 が ）満 足 さ せ ら れ て satisfying ʮຬ଍ͤ͞Δʯ← （人を） 満足させるよ うな",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "(        ) (s      ) (        ) I finished the 5 km race. I’m satis/f_ied that I finished the 5 km race. be satis/f_ied (that) …ʮ…ͱ͍͏͜ͱʹຬ଍͍ͯ͠Δʯ"
+        "ja": "5キロのレースを完走して私は満足している。 satisfied「満足して」←(人が)満足させられて ＋ satisfying「満足させる」←(人を)満足させるような ○ be satisfied (that) …「…ということに満足している」",
+        "en": "{I’m satisfied that} I finished the 5 km race.",
+        "answer": "I’m satisfied that",
+        "explanation": "Tip 「…して満足している → …ということに満足している」",
+        "question": "(    ) (s   ) (    ) I finished the 5 km race."
     },
     {
         "id": "800",
-        "ja": "子どもたちは遊園地に行けなくてがっかりしている。 disappointed๬͠ ͯʯ←（ 人 が ）失 望 さ せ ら れ て disappointing๬ͤ͞Δʯ← （人を） 失望させるよ うな",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "The children (        ) (d      ) (        ) they cannot go to the amusement park. The children are disappointed that they cannot go to the amusement park. be disappointed with [by, at] AʮA๬͍ͯ͠Δʧ ʯ be disappointed (that) …ʮ…ͱ͍͏͜ͱʹ͕͔ͬΓ͍ͯ͠Δʯ amusement park ʮ༡Ԃ஍ʯ"
+        "ja": "子どもたちは遊園地に行けなくてがっかりしている。 disappointed「失望して」←(人が)失望させられて ＋ disappointing「失望させる」←(人を)失望させるような ＋ be disappointed with [by, at] A「A(事柄)にがっかりしている[失望している]」 ○ be disappointed (that) …「…ということにがっかりしている」 ○ amusement park「遊園地」",
+        "en": "The children {are disappointed that} they cannot go to the",
+        "answer": "are disappointed that",
+        "explanation": "Tip 「…してがっかりしている → ということに失望している」\namusement park.",
+        "question": "The children (    ) (d   ) (    ) they cannot go to the amusement park."
     },
     {
         "id": "801",
-        "ja": "ケンはプレゼン中にミスをして恥ずかしい思いをした。 embarrassed ʮஏ͔͍ͣ͠ʯ←（ 人 が ）恥 ず か しくさ せ ら れ て embarrassing ʮஏ͔͕ͣ͠ΒͤΔʯ←（ 人 を ）恥 ず か し くさ せ る よ う な",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Ken felt (e      ) by his mistake during the presentation. ＝ Ken felt embarrassed by his mistake during the presentation. Ken felt ashamed of his mistake during the presentation. feel embarrassed / feel ashamed͍Λ͢Δʯ"
+        "ja": "ケンはプレゼン中にミスをして恥ずかしい思いをした。 embarrassed「恥ずかしい」←(人が)恥ずかしくさせられて ＋ embarrassing「恥ずかしがらせる」←(人を)恥ずかしくさせるような ○ feel embarrassed / feel ashamed「恥ずかしい思いをする」",
+        "en": "Ken felt {embarrassed} by his mistake during the presentation. ＝Ken felt {ashamed of} his mistake during the presentation.",
+        "answer": "embarrassed, ashamed of",
+        "explanation": "Tip 「恥ずかしい思いをした → 恥ずかしくさせられた」を表す形容詞は？",
+        "question": "Ken felt (e   ) by his mistake during the presentation."
     },
     {
         "id": "802",
-        "ja": "私たちは突然の予定変更に混乱した。 confusedཚ͠ ͯʯ←（ 人 が ）混 乱 さ せ ら れ て confusingཚͤ͞Δʯ← （人を） 混乱させるよ うな",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "We were (c      ) by the sudden change in the schedule. We were confused by the sudden change in the schedule."
+        "ja": "私たちは突然の予定変更に混乱した。 confused「混乱して」←(人が)混乱させられて ＋ confusing「混乱させる」←(人を)混乱させるような",
+        "en": "We were {confused} by the sudden change in the schedule.",
+        "answer": "confused",
+        "explanation": "Tip 「混乱した → 混乱させられた」",
+        "question": "We were (c   ) by the sudden change in the schedule."
     },
     {
         "id": "803",
-        "ja": "環境問題について活発な議論が交わされた。",
-        "en": "There was a {lively debate on environmental issues.}",
-        "answer": "lively debate on environmental issues.",
-        "explanation": "▶ 803～814 で使われている形容詞には形の似ている形容詞があり，意味もまぎら\nわしいので注意する。➡File94\nlivelyൃͳʯ―発音は/láˆvli/\nlively debate࿦ʯ\nenvironmental issues [problems]໰୊ʯ\ndebate\nlivingʮੜ͖͍ͯΔʯ\naliveʮੜ͖ͯʯ\nlivelyൃͳʯ\nintellectualʮ஌ೳͷʯ\nintelligentʮ૱໌ͳʯ\nhistoric্༗໊ͳʯ\nhistoricalͷʯ\nfavoriteʹೖΓͷʯ\nfavorableͳʯ\ncontinualΓฦ͞ΕΔʯ\ncontinuousͳ͍ʯ\n312 313\nSelf\nCheck\n復習",
-        "question": "There was a (l      ) (        ) on environmental issues."
+        "ja": "環境問題について活発な議論が交わされた。 形容詞の語法 ④ ● 313 lively「元気な，活発な」―発音は/○○/ lively debate「活発な議論」 ○ environmental issues [problems]「環境問題」",
+        "en": "There was a {lively debate} on environmental issues.",
+        "answer": "lively debate",
+        "explanation": "Tip 「活発な議論が交わされた → 活発な議論があった」\n▶ 803～814で使われている形容詞には形の似ている形容詞があり，意味もまぎらわしいので注意する。➡ File 94",
+        "question": "There was a (l   ) (    ) on environmental issues."
     },
     {
         "id": "804",
-        "ja": "家で料理するほうが外食より経済的だ。",
-        "en": "Cooking at home is more {economical} than eating out. {economical}తͳɼ্͕҆Γͷʯ economicͷʯ eat out ʮ֎৯͢Δʯ",
+        "ja": "家で料理するほうが外食より経済的だ。 economical「経済的な，安上がりの」 ＋ economic「経済の」 ○ eat out「外食する」",
+        "en": "Cooking at home is more {economical} than eating out.",
         "answer": "economical",
-        "explanation": "",
-        "question": "Cooking at home is more (        ) than eating out."
+        "explanation": "Tip 「経済的な，安上がりの」を表す形容詞は？",
+        "question": "Cooking at home is more (    ) than eating out."
     },
     {
         "id": "805",
-        "ja": "発展 話すときは他人の気持ちにもっと敏感になるべきだ。",
-        "en": "You should be more {sensitive} to other people’s feelings when you speak. {sensitive}ͳʯ sensible ʮ෼ผͷ͋Δʯ be {sensitive} to A ʮAͩʯ other people ’s feelingsͪʯ",
+        "ja": "話すときは他人の気持ちにもっと敏感になるべきだ。 発展     Tip 「敏感な」を表す形容詞は？ sensitive「敏感な」 ＋ sensible「分別のある」 ○ be sensitive to A「Aに敏感だ」 ○ other people’s feelings「他人の気持ち」",
+        "en": "You should be more {sensitive} to other people’s feelings when you speak.",
         "answer": "sensitive",
         "explanation": "",
-        "question": "You should be more (        ) to other people’s feelings when you speak."
+        "question": "You should be more (    ) to other people’s feelings when you speak."
     },
     {
         "id": "806",
-        "ja": "手術は成功し，彼女は順調に回復し ている。",
-        "en": "The surgery was {successful}, and she is recovering well. {successful}ͨ͠ʯ successive ʮ࿈ଓͷʯ surgery ʮ֎Պखज़ʯ",
+        "ja": "手術は成功し，彼女は順調に回復している。 successful「成功した」 ＋ successive「連続の」 ○ surgery「外科手術」",
+        "en": "The surgery was {successful}, and she is recovering well.",
         "answer": "successful",
-        "explanation": "",
-        "question": "The surgery was (        ), and she is recovering well."
+        "explanation": "Tip 「成功した」を表す形容詞は？",
+        "question": "The surgery was (    ), and she is recovering well."
     },
     {
         "id": "807",
-        "ja": "発展 ケンはいつも友達に親切で思いやりがある。",
-        "en": "Ken is always kind and {considerate} toward his friends. {considerate}͍΍Γͷ͋Δʯ ＝thoughtful",
+        "ja": "ケンはいつも友達に親切で思いやりがある。 発展     Tip 「思いやりのある」を表す形容詞は？ considerate「思いやりのある」",
+        "en": "Ken is always kind and {considerate} toward his friends.",
         "answer": "considerate",
-        "explanation": "",
-        "question": "Ken is always kind and (c      ) toward his friends."
+        "explanation": "＝thoughtful",
+        "question": "Ken is always kind and (c   ) toward his friends."
     },
     {
         "id": "808",
-        "ja": "発展 新しい言語を習得するには，かなりの時間と努力が必要だ。",
-        "en": "Mastering a new language takes {considerable} time and effort. {considerable} ʮ͔ͳΓͷʯ＝substantial master ʮʙΛशಘ͢Δʯ eﬀort ʮ౒ྗʯ",
+        "ja": "新しい言語を習得するには，かなりの時間と努力が必要だ。 発展     Tip 「かなりの」を表す形容詞は？ considerable「かなりの」＝substantial ○ master「～を習得する」 ○ effort「努力」",
+        "en": "Mastering a new language takes {considerable} time and effort.",
         "answer": "considerable",
         "explanation": "",
-        "question": "Mastering a new language takes (c      ) time and effort."
+        "question": "Mastering a new language takes (c   ) time and effort."
     },
     {
         "id": "809",
-        "ja": "発展 多くの工業製品は 金 属とプラスチックで 作られている。",
-        "en": "Many {industrial products are made of metal and plastic. industrialͷʯ industriousษͳʯ＝hard-working industrial products੡඼ʯ}",
-        "answer": "industrial products are made of metal and plastic. industrialͷʯ industriousษͳʯ＝hard-working industrial products੡඼ʯ",
+        "ja": "多くの工業製品は金属とプラスチックで作られている。 発展     Tip 「工業の」＋「製品」→「工業製品」 industrial「産業の，工業の」 ＋ industrious「勤勉な」＝hard-working ○ industrial products「工業製品」",
+        "en": "Many {industrial products} are made of metal and plastic.",
+        "answer": "industrial products",
         "explanation": "",
-        "question": "Many (i      ) (        ) are made of metal and plastic."
+        "question": "Many (i   ) (    ) are made of metal and plastic."
     },
     {
         "id": "810",
-        "ja": "発展 一角獣はおとぎ話に登場する想像上の生き物だ。 fairy tale ʮ͓ͱ͗࿩ʯ―fairy は「妖精，妖精の」 ，tale は「話，物語」 。",
-        "en": "???",
-        "answer": "???",
+        "ja": "一角獣はおとぎ話に登場する想像上の生き物だ。 発展     Tip 「想像上の」を表す形容詞は？ imaginary「想像上の，架空の」 ○ creature「生き物」 ○ fairy tale「おとぎ話」―fairyは「妖精，妖精の」，taleは「話，物語」。",
+        "en": "Unicorns are {imaginary creatures} from fairy tales.",
+        "answer": "imaginary creatures",
         "explanation": "",
-        "question": "Unicorns are (        ) (c      ) from fairy tales. Unicorns are imaginary creatures from fairy tales. imaginaryͷʯ creature ʮੜ͖෺ʯ"
+        "question": "Unicorns are (    ) (c   ) from fairy tales."
     },
     {
         "id": "811",
-        "ja": "発展 弟はとても想像力が豊かだ。",
-        "en": "My younger brother is very {imaginative}. {imaginative} ʮ૝૾ྗʹ෋Μͩʯ",
+        "ja": "弟はとても想像力が豊かだ。 発展     Tip 「想像力に富んだ」を表す形容詞は？ imaginative「想像力に富んだ」 ＋ imaginable「想像できる」―形容詞の最上級やall, everyなどと共に使う。",
+        "en": "My younger brother is very {imaginative}.",
         "answer": "imaginative",
         "explanation": "",
-        "question": "My younger brother is very (        )."
+        "question": "My younger brother is very (    )."
     },
     {
         "id": "812",
-        "ja": "発展 人間関係を改善したいなら，他人に対し てもっと敬意を払うようにしよう。 復習",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "If you want to improve your relationships, try to be more (r      ) of others. If you want to improve your relationships, try to be more respectful of others. respectfulҙΛදͨ͠ɼஸॏͳʯ respectable ʮ͖ͪΜͱͨ͠ɼཱ೿ͳʯ respective ʮͦΕͧΕͷʯ relationshipʯ product / creature 314 315 Self Check"
+        "ja": "人間関係を改善したいなら，他人に対してもっと敬意を払うようにしよう。 発展    others. 形容詞の語法 ⑤ ● 315 respectful「敬意を表した，丁重な」 ＋ respectable「きちんとした，立派な」 ＋ respective「それぞれの」 ○ relationship「人間関係」",
+        "en": "If you want to improve your relationships, try to be more {respectful} of",
+        "answer": "respectful",
+        "explanation": "Tip 「もっと敬意を払う → もっと敬意を表している」。「敬意を表した」を表す形容詞は？\nothers.",
+        "question": "If you want to improve your relationships, try to be more (r   ) of"
     },
     {
         "id": "813",
-        "ja": "文学批評は，作者の意図をより良く理解するのに役立つ。 authorऀʯ―発音は /$\\˙6R/",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "(        ) criticism helps us understand the author’s purpose better. Literary criticism helps us understand the author’s purpose better. literaryͷʯ literal௨Γͷʯ criticism ʮ൷ධɼධ࿦ʯ"
+        "ja": "文学批評は，作者の意図をより良く理解するのに役立つ。 literary「文学の」 ＋ literal「文字通りの」 ○ criticism「批評，評論」 ○ author「著者，作者」―発音は/〇〇/",
+        "en": "{Literary} criticism helps us understand the author’s purpose better.",
+        "answer": "Literary",
+        "explanation": "Tip 「文学批評 → 文学の批評」。「文学の」を表す形容詞は？",
+        "question": "(    ) criticism helps us understand the author’s purpose better."
     },
     {
         "id": "814",
-        "ja": "世界の成人人口の識字率は約 86％だ。",
+        "ja": "世界の成人人口の識字率は約86％だ。 literate「読み書きのできる」 ⇔ illiterate「読み書きのできない」",
         "en": "About 86% of the world’s adult population is {literate}.",
         "answer": "literate",
-        "explanation": "",
-        "question": "About 86% of the world’s adult population is (        )."
+        "explanation": "Tip 「成人人口の識字率は約86%だ → 成人人口の約86%が読み書きできる」",
+        "question": "About 86% of the world’s adult population is (    )."
     },
     {
         "id": "815-1",
-        "ja": "私の友達はレ アなポケモンカードを高値で買った。",
-        "en": "My friend bought a rare Pokémon card {at a high price.}",
-        "answer": "at a high price.",
-        "explanation": "▶ price 「値段，価格」は「高い⇔安い」をhigh ⇔low で表す。➡File95\na high price͍஋ஈʯ⇔ a low priceʯ\na reasonable priceͳ஋ஈʯ\nhalf (the) priceʯ",
-        "question": "My friend bought a rare Pokémon card (a      ) (        ) (        ) (        )."
+        "ja": "私の友達はレアなポケモンカードを高値で買った。 a high price「高い値段」⇔ a low price「安い価格」 ＋ a reasonable price「手頃な値段」 ＋ half (the) price「半額」 ○ at ～ price「～な価格で」",
+        "en": "My friend bought a rare Pokémon card {at a high price}.",
+        "answer": "at a high price",
+        "explanation": "Tip 「高い値段で」を表す表現は？\n▶ price「値段，価格」は「高い⇔安い」をhigh⇔lowで表す。➡ File 95",
+        "question": "My friend bought a rare Pokémon card (a   ) (    ) (    ) (    )."
     },
     {
         "id": "815-2",
-        "ja": "ニューヨークの物価は高い。 prices ʮ෺Ձʯ― 「物価」の意味では常に複数形になる。",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "(P      ) in New York are (        ). Prices in New York are high. high pricesʯ"
+        "ja": "ニューヨークの物価は高い。 high prices「物価高」 ○ prices「物価」―「物価」の意味では常に複数形になる。",
+        "en": "{Prices} in New York are {high}.",
+        "answer": "Prices, high",
+        "explanation": "Tip 「物価」はさまざまな品物の値段なので複数形で表す。",
+        "question": "(P   ) in New York are (    )."
     },
     {
         "id": "816",
-        "ja": "兄はいつも給料が安いと文 句を言っている。",
-        "en": "My brother is always complaining about his {low salary.}",
-        "answer": "low salary.",
-        "explanation": "▶ salary「給料」は「高い⇔安い」 をhigh ⇔low や large⇔small で表す。\n➡File96\na low salaryྉʯ⇔ a high salaryྉʯ\ncomplain about [of] AʮA͏ʯ",
-        "question": "My brother is always complaining about his (        ) (s      )."
+        "ja": "兄はいつも給料が安いと文句を言っている。 「安い給料」はどう表す？ a low salary「安い給料」⇔ a high salary「高い給料」 ○ complain about [of] A「Aについて不平[文句]を言う」",
+        "en": "My brother is always complaining about his {low salary}. ➡ {File 96}",
+        "answer": "low salary, File 96",
+        "explanation": "Tip 「給料が安いと文句を言っている → 自分の安い給料について文句を言っている」\n▶ salary「給料」は「高い⇔安い」をhigh⇔lowやlarge⇔smallで表す。",
+        "question": "My brother is always complaining about his (    ) (s   )."
     },
     {
         "id": "817",
-        "ja": "交通量の多さは大都市の大きな問題だ。 交通量が多い⇔少ないは heavy⇔light で表す。traﬃc௨ྔʯは数えら れない名詞。複数形にはしない。",
-        "en": "???",
-        "answer": "???",
+        "ja": "交通量の多さは大都市の大きな問題だ。 heavy traffic「交通量が多い」⇔ light traffic「交通量が少ない」 ！ 交通量が多い⇔少ないはheavy⇔lightで表す。traffic「交通，交通量」は数えられ ない名詞。複数形にはしない。",
+        "en": "{Heavy traffic} is a major problem in big cities.",
+        "answer": "Heavy traffic",
         "explanation": "",
-        "question": "(        ) (        ) is a major problem in big cities. Heavy traﬃc is a major problem in big cities. heavy traf/f_ic௨ྔ͕ଟ͍ʯ⇔ light traﬃc௨ྔ͕গͳ͍ʯ"
+        "question": "(    ) (    ) is a major problem in big cities."
     },
     {
         "id": "818",
-        "ja": "彼の電話は話し中だ。後で彼にかけ直す よ。 高い 安い 高い 安い 復習",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "His phone is (        ). I’ll call him back later. His phone is busy. I’ll call him back later. salary / traffic a high price͍஋ஈʯ ⇔  a low priceʮ͍҆஋ஈʯ a high feeʯ ⇔  a low feeʯ a high cost͍අ༻ʯ ⇔  a low costʮ͍҆අ༻ʯ a high interest rateརʯ ⇔  a low interest rateརʯ high pay / high wagesʯ ⇔  low pay / low wagesʯ a high salary a large salary    ྉʯ ⇔  a low salary a small salary    ྉʯ a high income a large income    ॴಘʯ ⇔  a low income a small income    ʮ௿ॴಘʯ 316 317 Self Check"
+        "ja": "彼の電話は話し中だ。後で彼にかけ直すよ。 形容詞の語法 ⑥ ● 317 busy「(電話が)話し中で」⇦「電話(phone)が忙しい(busy)」 ○ call (A) back later「(電話を)後で(Aに)かけ直す」",
+        "en": "His phone is{ busy}. I’ll call him back later.",
+        "answer": "busy",
+        "explanation": "Tip 「話し中」は英語ではどう表す？",
+        "question": "His phone is (    ). I’ll call him back later."
     },
     {
         "id": "819-1",
-        "ja": "発展 父は2 週間の休暇を取る予定だ。 数字と名詞をハイフンでつなぎ，形容詞化して名詞を修飾する。このとき，ハイフンで つながれた名詞は複数形にしない。 two-weeks vacation",
-        "en": "???",
-        "answer": "???",
+        "ja": "父は2週間の休暇を取る予定だ。 発展     Tip  ハイフンを使って「２週間の～」を表現する。 a two-week vacation「２週間の休暇」 ！ 数字と名詞をハイフンでつなぎ，形容詞化して名詞を修飾する。このとき， ハイフンでつながれた名詞は複数形にしない。× two-weeks vacation",
+        "en": "My father is planning to take {a two-week vacation}.",
+        "answer": "a two-week vacation",
         "explanation": "",
-        "question": "My father is planning to take (        ) (        ) (v      ). My father is planning to take a two-week vacation. a two-week vacationՋʯ"
+        "question": "My father is planning to take (    ) (    ) (v   )."
     },
     {
         "id": "819-2",
-        "ja": "発展 その物語の主人公は17 歳の少年だ。",
-        "en": "The main character in the story is {a 17-year-old boy. a 17-year-old boyͷগ೥ʯ}",
-        "answer": "a 17-year-old boy. a 17-year-old boyͷগ೥ʯ",
-        "explanation": "▶ 数字・名詞・形容詞をハイフンでつなぎ，形容詞化して名詞を修飾する。また，\n〈数字＋単位〉 が形容詞や副詞を修飾することもある。\nHe is 17 years old. ＝He is a 17-year-old boy.    a 17-years-old boy",
-        "question": "The main character in the story is ."
+        "ja": "その物語の主人公は17歳の少年だ。 発展     Tip  ハイフンを使って「17歳の～」を表現する。 a 17-year-old boy「17歳の少年」",
+        "en": "The main character in the story is {a 17-year-old boy}. He is {17 years} old.＝He is {a 17-year-old} boy. × a 17-years-old boy",
+        "answer": "a 17-year-old boy, 17 years, a 17-year-old",
+        "explanation": "▶ 数字・名詞・形容詞をハイフンでつなぎ，形容詞化して名詞を修飾する。また， 〈数字＋単位〉が形容詞や副詞を修飾することもある。",
+        "question": "The main character in the story is a 17-year-old boy."
     },
     {
         "id": "820-1",
-        "ja": "「今夜，空いている部 屋 は あ り ま す か 。」「 は い ， あ り ま す 。」 この問題文のavailable「利用でき る」はroom を後置修飾している。 後置修飾する形容詞には他にinvolved「関わって」などがある。",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "“Do you have a room (a      ) for tonight?” “Yes, we do.” ɻɻ “Do you have a room available for tonight?” “Yes, we do.” available  ͍͍ͯΔʯ people involvedऀʯ，problems involved࿈͢Δॾ໰୊ʯ。"
+        "ja": "「今夜，空いている部屋はありますか。」「はい，あります。」 ある形容詞。 available ①「(物・事が)入手できる，利用できる」②「(人の)手が空いている」 ！ この問題文のavailable「利用できる」はroomを後置修飾している。 後置修飾する形容詞には他にinvolved「関わって」などがある。 people involved「関係者」，problems involved「関連する諸問題」。",
+        "en": "“Do you have a room {available} for tonight?” “Yes, we do.”",
+        "answer": "available",
+        "explanation": "Tip 「空いている＝利用できる」を表す形容詞は？ 名詞を後ろから修飾することが",
+        "question": "“Do you have a room (a   ) for tonight?” “Yes, we do.”"
     },
     {
         "id": "820-2",
         "ja": "ごめんなさい，今日の放課後は空いていません。",
         "en": "I’m sorry, but I’m not {available} after school today.",
         "answer": "available",
-        "explanation": "▶ このavailable は「（人の）手が空いている」の意味を表す。叙述用法。\n➡820-1",
-        "question": "I’m sorry, but I’m not (a      ) after school today."
+        "explanation": "Tip 「手が空いている」を表す形容詞は？\n▶ このavailableは「(人の)手が空いている」の意味を表す。叙述用法。\n➡ 820-1",
+        "question": "I’m sorry, but I’m not (a   ) after school today."
     },
     {
         "id": "821",
-        "ja": "この議題については，さらに調査する必要がある。",
-        "en": "We need to do {further research on this subject. further ʮ͞ΒͳΔɼͦΕҎ্ͷʯ―形容詞}",
-        "answer": "further research on this subject. further ʮ͞ΒͳΔɼͦΕҎ্ͷʯ―形容詞",
-        "explanation": "▶ 副詞で使った場合は「さらに」 「さらに遠く」の意味になる。\ndo research / conduct research / carry out research͏ʯ",
-        "question": "We need to do (f      ) (r      ) on this subject."
+        "ja": "この議題については，さらに調査する必要がある。 further「さらなる，それ以上の」―形容詞 ○ do research / conduct research / carry out research「調査[研究]を行う」",
+        "en": "We need to do {further research} on this subject.",
+        "answer": "further research",
+        "explanation": "Tip 「さらに調査する → さらなる調査を行う」\n▶ 副詞で使った場合は「さらに」「さらに遠く」の意味になる。",
+        "question": "We need to do (f   ) (r   ) on this subject."
     },
     {
         "id": "822",
-        "ja": "彼は一人暮らし で，よ く寂しさを感じる。",
-        "en": "He lives alone and often {feels lonely. lonelyಠͳʯ}",
-        "answer": "feels lonely. lonelyಠͳʯ",
-        "explanation": "▶ -ly が付いているが副詞ではなく形容詞。\nlive alone ʮҰਓ฻Β͢͠Δʯ",
-        "question": "He lives alone and often (f      ) (        )."
+        "ja": "彼は一人暮らしで，よく寂しさを感じる。 lonely「寂しい，孤独な」 ○ live alone「一人暮らしする」",
+        "en": "He lives alone and often {feels lonely}.",
+        "answer": "feels lonely",
+        "explanation": "Tip 「寂しい」を表す形容詞を使う。\n▶ -lyが付いているが副詞ではなく形容詞。",
+        "question": "He lives alone and often (f   ) (    )."
     },
     {
         "id": "823",
-        "ja": "都会の住宅は費用がかかり過ぎる。",
-        "en": "Houses in the city are too {costly}. {costly}ͭ͘͘ʯ＝expensive",
+        "ja": "都会の住宅は費用がかかり過ぎる。 costly「費用のかかる，費用が高くつく」＝expensive",
+        "en": "Houses in the city are too {costly}.",
         "answer": "costly",
-        "explanation": "▶ -ly が付いているが副詞ではなく形容詞。",
-        "question": "Houses in the city are too (c      )."
+        "explanation": "Tip 「費用がかかる」を表す形容詞は？\n▶ -lyが付いているが副詞ではなく形容詞。",
+        "question": "Houses in the city are too (c   )."
     },
     {
         "id": "824",
-        "ja": "その壊れた腕時計は今では価値がない。",
-        "en": "The broken watch is now {worthless}. {worthless} ʮՁ஋ͷͳ͍ʯ⇔ valuableʮՁ஋ͷ͋Δʯ",
+        "ja": "その壊れた腕時計は今では価値がない。 worthless「価値のない」⇔ valuable「価値のある」",
+        "en": "The broken watch is now {worthless}.",
         "answer": "worthless",
-        "explanation": "▶ 過去分詞のbroken が watch を前置修飾。",
-        "question": "The broken watch is now (w     )."
+        "explanation": "Tip 「価値がない」を表す形容詞は？\n▶ 過去分詞のbrokenがwatchを前置修飾。",
+        "question": "The broken watch is now (w   )."
     },
     {
         "id": "825",
         "ja": "スティーブ・ジョブズのそのスピーチは聞く価値がある。",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
-        "question": "-1＝ -2＝ -3＝ That speech by Steve Jobs . (        ) (        ) (        ) (        ) (        ) that speech by Steve Jobs. ( to / worthwhile / it / is / to / listen ) that speech by Steve Jobs."
+        "question": ""
     },
     {
         "id": "825-1",
-        "ja": "復習",
-        "en": "???",
-        "answer": "???",
+        "ja": "",
+        "en": "That speech by Steve Jobs {is worth listening to}.",
+        "answer": "is worth listening to",
         "explanation": "",
-        "question": "-2＝ -3＝ That speech by Steve Jobs is worth listening to. It is worth listening to that speech by Steve Jobs. It is worthwhile to listen to that speech by Steve Jobs. A is worth doing It is worth doing A                  ʮA ͸ʙ͢ΔՁ஋͕͋Δʯ It is worthwhile to do A 318 319"
+        "question": "That speech by Steve Jobs is worth listening to."
     },
     {
         "id": "826",
-        "ja": "長い登山の末，私たちは山頂に到達できた。",
+        "ja": "長い登山の末，私たちは山頂に到達できた。 S(人) is able to do「Sは～することができる」＝S can ！ この問題文では × We could reach … とするのは誤り。ある事柄について「(１回 だけ)～できた」という場合はcouldを使わず，was [were] able to doやmanaged to do，あるいはsucceeded in doingを使って表現する。",
         "en": "{We were able to reach} the top of the mountain after a long climb.",
         "answer": "We were able to reach",
-        "explanation": "▶ 826～829 は「できる」⇔「できない」を表す表現。➡File97\nこの問題文では  We could reach … とするのは誤り。ある事柄について「（１回だけ）\n～できた」という場合はcould を使わず，was [were] able to do や managed to do，\nあるいはsucceeded in doing を使って表現する。",
-        "question": "the top of the mountain after a long climb."
+        "explanation": "F 050 ▶ 826～829は「できる」⇔「できない」を表す表現。➡ File 97\n▶ 主語は人。「(未来において)～できるだろう」はwill be able to do  × will can",
+        "question": "We were able to reach the top of the mountain after a long climb."
     },
     {
         "id": "827",
-        "ja": "先約があったため，その会議に出席できなかった。",
-        "en": "{I was unable to attend the meeting because of a previous engagement.}",
-        "answer": "I was unable to attend the meeting because of a previous engagement.",
-        "explanation": "▶ 主語は人。＝I could not attend the meeting …\nprevious engagement ʮઌ໿ʯ―engagement は「約束」 「婚約」の意味。",
-        "question": "(        ) (        ) (u      ) (        ) (a      ) the meeting because of a previous engagement."
+        "ja": "先約があったため，その会議に出席できなかった。 S(人) is unable to do「Sは～することができない」＝S cannot＝S can’t ○ previous engagement「先約」―engagementは「約束」「婚約」の意味。",
+        "en": "{I was unable to attend} the meeting because of a previous engagement.",
+        "answer": "I was unable to attend",
+        "explanation": "Tip 「～できなかった」を表す表現は？\n▶ 主語は人。＝I could not attend the meeting …",
+        "question": "(    ) (    ) (u   ) (    ) (a   ) the meeting because of a previous engagement."
     },
     {
         "id": "828",
-        "ja": "犬は人間の感情を理 解することができる。",
-        "en": "＝ Dogs {are capable of understanding human emotions. Dogs are able to understand human emotions.}",
-        "answer": "are capable of understanding human emotions. Dogs are able to understand human emotions.",
-        "explanation": "▶ 主語は人または物。  be capable to do は誤り。＝Dogs can understand …\nhuman emotion৘ʯ",
-        "question": "Dogs (        ) (c      ) (        ) (u      ) human emotions."
+        "ja": "犬は人間の感情を理解することができる。 S(人・物) is capable of doing「Sは～することができる」＝S is able to do ○ human emotion「人間の感情」",
+        "en": "Dogs {are capable of understanding} human emotions. ＝Dogs {are able to understand} human emotions.",
+        "answer": "are capable of understanding, are able to understand",
+        "explanation": "Tip  be able to doを同じ意味を表す，動名詞を含む表現を使ってみよう。\n▶ 主語は人または物。× be capable to doは誤り。＝Dogs can understand …",
+        "question": "Dogs (    ) (c   ) (    ) (u   ) human emotions."
     },
     {
         "id": "829",
-        "ja": "今日中にこれらすべての課題を仕上げるのは不可能だ。",
-        "en": "It {is impossible (for me [us]) to complete} all these assignments today.",
-        "answer": "is impossible (for me [us]) to complete",
-        "explanation": "▶ 829～831 は人を主語にしない形容詞を使った表現。➡File98\nIt is impossible for Aʢਓʣ to doʮA ͕ʙ͢Δͷ͸ෆՄೳͩʯ\nIt is possible for Aʢਓʣ to doʮA ͕ʙ͢Δͷ͸Մೳͩʯ",
-        "question": "It  all these assignments today."
+        "ja": "今日中にこれらすべての課題を仕上げるのは不可能だ。 It is impossible for A(人) to do「Aが～するのは不可能だ」 ＋ It is possible for A(人) to do「Aが～するのは可能だ」",
+        "en": "{It}’s impossible to complete all these assignments today.",
+        "answer": "It",
+        "explanation": "Tip 「～するのは不可能だ」を表す定型表現は？\n▶ 829～831は人を主語にしない形容詞を使った表現。➡ File 98",
+        "question": "It is impossible (for me [us]) to complete all these assignments today."
     },
     {
         "id": "830",
-        "ja": "24時間営業のレ ス トランは，夜働く人々にとって便利だ。",
-        "en": "{24-hour restaurants are convenient for people} who work at night. Sʣ is convenient for Aʢਓɾ෺ʣ ʮS ͸A͕ ͍ ͍ ʯʮS ͸A ʹͱͬͯศརͩʯ",
+        "ja": "24時間営業のレストランは，夜働く人々にとって便利だ。 F 315  S(物事) is convenient for A(人・物) 「SはAにとって都合がいい」「SはAにとって便利だ」 ○ 24-hour「24時間(営業)の」 ○ work at night / work nights「夜に働く」",
+        "en": "{24-hour restaurants are convenient for people} who work at night.",
         "answer": "24-hour restaurants are convenient for people",
-        "explanation": "▶ 主語は物事。people who … ＝those who …「…する人々」\n24-hour ʮ24ʣ ͷʯ\nwork at night / work nights ʮ໷ʹಇ͘ʯ",
+        "explanation": "Tip 「S(主語)は～にとって便利だ」を表す表現は？\n▶ 主語は物事。people who …＝those who …「…する人々」",
         "question": "( people / for / 24-hour / are / convenient / restaurants ) who work at night."
     },
     {
         "id": "831",
-        "ja": "父は簡単な手術を受ける必要があった。",
-        "en": "{It was necessary for my father to have} a minor operation. It is necessary for Aʢਓʣ to doʮA ͕ʙ͢Δඞཁ͕͋Δʯ",
+        "ja": "父は簡単な手術を受ける必要があった。 形容詞の語法 ⑧ ● 321 It is necessary for A(人) to do「Aが～する必要がある」 ○ have [undergo] an operation / have [undergo] surgery / go under the knife「手術を受ける」 ○ minor ①「小さいのほうの」②「比較的重要ではない」―形容詞",
+        "en": "{It was necessary for my father to have} a minor operation.",
         "answer": "It was necessary for my father to have",
-        "explanation": "▶ my father was necessary to … は誤り。\nhave [undergo] an operation / have [undergo] surgery / go under the knife\nʮखज़Λड͚Δʯ\nreach / attend / capable\nconvenient͕͍͍ʯ\npossibleʮՄೳͳʯ\nprobableʮ͋Γͦ͏ͳʯ\nnecessaryʮඞཁͳʯ\n⇔\n⇔\n⇔\n⇔\ninconvenient͕ѱ͍ʯ\nimpossibleʮෆՄೳͳʯ\nimprobableʮ͋Γͦ͏ʹͳ͍ʯ\nunnecessaryʮෆඞཁͳʯ\nSʢਓʣ is able to do\nSʢਓɾ෺ʣ is capable of doing\nIt is possible (for A) to do\n⇔\n⇔\n⇔\nSʢਓʣ is unable to do\nSʢਓɾ෺ʣ is incapable of doing\nIt is impossible (for A) to do\n320 321\nSelf\nCheck\n復習",
+        "explanation": "Tip  itを主語に立てて，「Aが～する必要がある」を表す定型表現は？\n▶ × my father was necessary to … は誤り。",
         "question": "( my father / was / for / necessary / to / have / it ) a minor operation."
+    },
+    {
+        "id": "837-2",
+        "ja": "",
+        "en": "＝{It is worth listening to} that speech by Steve Jobs.",
+        "answer": "It is worth listening to",
+        "explanation": "",
+        "question": "＝(    ) (    ) (    ) (    ) (    ) that speech by Steve Jobs."
+    },
+    {
+        "id": "837-3",
+        "ja": "形容詞の語法 ⑦ ● 319 It is worth doing A     　　「Aは～する価値がある」",
+        "en": "＝{It is worthwhile to listen to} that speech by Steve Jobs. A{ is worth }do{ing} {It is worthwhile to }do A",
+        "answer": "It is worthwhile to listen to, is worth, ing, It is worthwhile to",
+        "explanation": "Tip 「～する価値がある」を表す３つの表現は？",
+        "question": "＝( to / worthwhile / it / is / to / listen ) that speech by Steve Jobs."
     }
 ];
 
@@ -681,7 +772,7 @@
             recognition.lang = 'en-US';
             recognition.interimResults = false;
         }
-        
+
         // --- Voice Synthesis Setup ---
         let synthesisVoice = null;
 
@@ -689,10 +780,10 @@
             const voices = speechSynthesis.getVoices();
             // 優先順位: Google US English -> Microsoft Zira/David -> その他英語
             synthesisVoice = voices.find(voice => voice.name === 'Google US English') ||
-                             voices.find(voice => voice.name.includes('Google') && voice.lang.includes('en-US')) ||
-                             voices.find(voice => voice.name.includes('Microsoft') && voice.lang.includes('en-US')) ||
-                             voices.find(voice => voice.lang === 'en-US') ||
-                             voices.find(voice => voice.lang.startsWith('en'));
+                voices.find(voice => voice.name.includes('Google') && voice.lang.includes('en-US')) ||
+                voices.find(voice => voice.name.includes('Microsoft') && voice.lang.includes('en-US')) ||
+                voices.find(voice => voice.lang === 'en-US') ||
+                voices.find(voice => voice.lang.startsWith('en'));
         }
 
         // 音声リストがロードされたら設定を実行
@@ -715,7 +806,7 @@
         const quizModal = document.getElementById('quiz-modal');
         const closeQuizBtn = document.getElementById('close-quiz-btn');
         const quizContent = document.getElementById('quiz-content');
-        
+
         const selectAllCheckbox = document.getElementById('select-all-checkbox');
         const pdfModal = document.getElementById('pdf-modal');
         const openPdfModalBtn = document.getElementById('open-pdf-modal-btn');
@@ -765,7 +856,7 @@
                 `;
                 sentenceList.appendChild(sentenceDiv);
             });
-            
+
             // Add click listener to each sentence item
             document.querySelectorAll('.sentence-item').forEach(item => {
                 item.addEventListener('click', (e) => {
@@ -792,15 +883,15 @@
                     }
                 });
             });
-            
+
             // Select the first sentence by default
             if (sentenceList.firstChild) {
-                 sentenceList.firstChild.click();
+                sentenceList.firstChild.click();
             }
         }
-        
+
         // --- PDF / Print Logic ---
-        
+
         function openPrintWindow(bodyContent, title) {
             const htmlContent = `
                 <!DOCTYPE html>
@@ -852,7 +943,7 @@
             printWindow.document.write(htmlContent);
             printWindow.document.close();
             setTimeout(() => {
-                printWindow.focus(); 
+                printWindow.focus();
                 printWindow.print();
             }, 250);
         }
@@ -867,32 +958,32 @@
                 .map(id => chapterData.find(item => item.id === id))
                 .filter(Boolean)
                 .sort((a, b) => {
-                     // Handle IDs like "1382-1" vs "1382-2"
-                     const aParts = a.id.split('-').map(s => parseInt(s) || 0);
-                     const bParts = b.id.split('-').map(s => parseInt(s) || 0);
-                     if (aParts[0] !== bParts[0]) return aParts[0] - bParts[0];
-                     return (aParts[1] || 0) - (bParts[1] || 0);
+                    // Handle IDs like "1382-1" vs "1382-2"
+                    const aParts = a.id.split('-').map(s => parseInt(s) || 0);
+                    const bParts = b.id.split('-').map(s => parseInt(s) || 0);
+                    if (aParts[0] !== bParts[0]) return aParts[0] - bParts[0];
+                    return (aParts[1] || 0) - (bParts[1] || 0);
                 });
         }
-        
+
         function getUniqueItems(items) {
-             const uniqueMap = new Map();
-             items.forEach(item => {
-                 // Use answer as key to deduplicate same phrases
-                 if (!uniqueMap.has(item.answer)) {
-                     uniqueMap.set(item.answer, item);
-                 }
-             });
-             return Array.from(uniqueMap.values()).sort((a, b) => {
-                 const aId = parseInt(a.id.split('-')[0]);
-                 const bId = parseInt(b.id.split('-')[0]);
-                 return aId - bId;
-             });
+            const uniqueMap = new Map();
+            items.forEach(item => {
+                // Use answer as key to deduplicate same phrases
+                if (!uniqueMap.has(item.answer)) {
+                    uniqueMap.set(item.answer, item);
+                }
+            });
+            return Array.from(uniqueMap.values()).sort((a, b) => {
+                const aId = parseInt(a.id.split('-')[0]);
+                const bId = parseInt(b.id.split('-')[0]);
+                return aId - bId;
+            });
         }
 
 
         // --- Message & Sound Functions ---
-        
+
         function showMessage(htmlContent, duration = null) {
             messageContent.innerHTML = htmlContent;
             messageModal.classList.remove('hidden');
@@ -916,7 +1007,7 @@
 
             // 連続再生を防ぐために一度キャンセル
             speechSynthesis.cancel();
-            
+
             let textToSpeak = activeSentenceElement.dataset.fullSentence;
             // 念のため不要な記号を除去
             textToSpeak = textToSpeak.replace(/[{}]/g, '');
@@ -929,7 +1020,7 @@
                 utterance.voice = synthesisVoice;
             }
 
-            utterance.rate = 1.0; 
+            utterance.rate = 1.0;
             utterance.pitch = 1.0;
 
             speechSynthesis.speak(utterance);
@@ -946,7 +1037,7 @@
             }
 
             showMessage('<p class="text-2xl">マイクに向かって話してください...</p><div class="animate-pulse text-red-500 text-4xl mt-4">●</div>');
-            
+
             recognition.start();
 
             recognition.onresult = (event) => {
@@ -957,20 +1048,20 @@
             recognition.onerror = (event) => {
                 showMessage(`<p>エラーが発生しました: ${event.error}</p>`, 3000);
             };
-            
+
             recognition.onend = () => {
-                 if (messageModal.classList.contains('hidden') === false && messageContent.innerHTML.includes('マイクに')) {
+                if (messageModal.classList.contains('hidden') === false && messageContent.innerHTML.includes('マイクに')) {
                     messageModal.classList.add('hidden');
-                 }
+                }
             };
         }
-        
+
         function evaluatePronunciation(transcript) {
             const originalText = activeSentenceElement.dataset.fullSentence;
 
             const cleanOrig = originalText.toLowerCase().replace(/[^\w\s]/g, '').split(' ');
             const cleanTrans = transcript.toLowerCase().replace(/[^\w\s]/g, '').split(' ');
-            
+
             let matches = 0;
             cleanOrig.forEach(word => {
                 if (cleanTrans.includes(word)) {
@@ -979,7 +1070,7 @@
             });
 
             const similarity = matches / cleanOrig.length;
-            
+
             let score;
             if (similarity > 0.9) {
                 score = 95 + Math.floor(Math.random() * 5);
@@ -992,7 +1083,7 @@
             } else {
                 score = 70 + Math.floor(Math.random() * 10);
             }
-            
+
             if (score === 100 && Math.random() < 0.3) score = 99;
 
             const messageHtml = `
@@ -1009,8 +1100,8 @@
 
         function startQuiz() {
             if (chapterData.length < 10) {
-                 showMessage('<p>クイズを作成するには、文が10個以上必要です。</p>', 3000);
-                 return;
+                showMessage('<p>クイズを作成するには、文が10個以上必要です。</p>', 3000);
+                return;
             }
 
             const shuffled = [...chapterData].sort(() => 0.5 - Math.random());
@@ -1035,8 +1126,9 @@
                     .map(item => item.answer);
 
                 const options = [correctAnswer, ...incorrectAnswers].sort(() => 0.5 - Math.random());
-                
-                const questionSentence = question.en.replace(`{${question.answer}}`, ' (______) ');
+
+                // Use regex to replace ALL {answer} parts with (______)
+                const questionSentence = question.en.replace(/\{.*?\}/g, ' (______) ');
 
                 quizContent.innerHTML = `
                     <h3 class="text-2xl font-bold mb-2">問題 ${currentQuestionIndex + 1}/10</h3>
@@ -1056,7 +1148,7 @@
                             button.classList.add('bg-red-400', 'text-white');
                             document.querySelector(`.quiz-option[data-answer="${CSS.escape(correctAnswer)}"]`).classList.add('bg-green-400', 'text-white');
                         }
-                        
+
                         setTimeout(() => {
                             currentQuestionIndex++;
                             showQuestion();
@@ -1101,12 +1193,12 @@
                 explanationDiv.style.display = 'block';
             }
         });
-        
+
         playSoundBtn.addEventListener('click', playSound);
         recordBtn.addEventListener('click', handleRecording);
         startQuizBtn.addEventListener('click', startQuiz);
         closeQuizBtn.addEventListener('click', () => quizModal.classList.add('hidden'));
-        
+
         // Select All Logic
         selectAllCheckbox.addEventListener('change', (e) => {
             const isChecked = e.target.checked;
@@ -1120,7 +1212,7 @@
 
         // PDF Modal Logic
         openPdfModalBtn.addEventListener('click', () => {
-             if (selectedSentences.size === 0) {
+            if (selectedSentences.size === 0) {
                 showMessage('<p>PDFを作成する問題を選択してください。</p>', 3000);
                 return;
             }
@@ -1142,10 +1234,10 @@
         // 1. 完全なリスト
         document.getElementById('download-list-btn').addEventListener('click', () => {
             const items = getSelectedItems();
-            if(!items) return;
+            if (!items) return;
             // リスト作成の場合は重複があっても良いが、見やすくするために熟語ベースでユニークにするか、
             // そのままID順で並べるか。ここではID順ですべて表示する。
-            
+
             const listItems = items.map(item => {
                 // Remove { } for clean display
                 const cleanEn = item.en.replace(/[{}]/g, '');
@@ -1154,7 +1246,7 @@
                     <span style="font-size:0.9em; color:#555;">Ex: ${cleanEn} / ${item.ja}</span>
                 </li>`;
             }).join('');
-            
+
             openPrintWindow(`<ul class="list-container">${listItems}</ul>`, '重要熟語リスト');
             pdfModal.classList.add('hidden');
         });
@@ -1162,14 +1254,14 @@
         // 2. 英語を解答
         document.getElementById('download-en-quiz-btn').addEventListener('click', () => {
             const items = getUniqueItems(getSelectedItems());
-            
-            const quizItems = items.map(item => 
+
+            const quizItems = items.map(item =>
                 `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')} : ____________________</span></li>`
             ).join('');
-            const answerItems = items.map(item => 
+            const answerItems = items.map(item =>
                 `<li><span class="inline-content">${item.answer}</span></li>`
             ).join('');
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (英語を解答)');
             pdfModal.classList.add('hidden');
@@ -1178,14 +1270,14 @@
         // 3. 意味を解答
         document.getElementById('download-ja-quiz-btn').addEventListener('click', () => {
             const items = getUniqueItems(getSelectedItems());
-            
-            const quizItems = items.map(item => 
+
+            const quizItems = items.map(item =>
                 `<li><span class="inline-content"><strong>${item.answer}</strong> : ____________________</span></li>`
             ).join('');
-            const answerItems = items.map(item => 
+            const answerItems = items.map(item =>
                 `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')}</span></li>`
             ).join('');
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (意味を解答)');
             pdfModal.classList.add('hidden');
@@ -1196,7 +1288,7 @@
             const items = getUniqueItems(getSelectedItems());
             let quizItems = '';
             let answerItems = '';
-            
+
             items.forEach(item => {
                 if (Math.random() > 0.5) {
                     // 日本語 -> 英語
@@ -1208,7 +1300,7 @@
                     answerItems += `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')}</span></li>`;
                 }
             });
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (混合)');
             pdfModal.classList.add('hidden');
@@ -1217,14 +1309,14 @@
         // 5. 例文穴埋め
         document.getElementById('download-sentence-quiz-btn').addEventListener('click', () => {
             const items = getSelectedItems(); // 例文問題なので重複（文脈違い）も含める
-            
+
             const quizItems = items.map(item => {
                 // Replace {answer} with underscore
                 const blankSentence = item.en.replace(`{${item.answer}}`, '____________________');
                 return `<li>${blankSentence}<br><span style="font-size:0.9em;">(${item.ja})</span></li>`;
             }).join('');
-            
-            const answerItems = items.map(item => 
+
+            const answerItems = items.map(item =>
                 `<li>${item.answer}</li>`
             ).join('');
 
@@ -1238,7 +1330,7 @@
             const items = getSelectedItems();
             let quizItems = '';
             let answerItems = '';
-            
+
             const instruction = '<p style="border:1px solid #ccc; padding:10px; margin-bottom:20px;">指示：空所には適切な語句を補い、下線部がある文は下線部の意味を日本語で答えなさい。</p>';
 
             items.forEach(item => {
@@ -1267,4 +1359,5 @@
         });
     </script>
 </body>
+
 </html>

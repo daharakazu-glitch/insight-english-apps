@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Tinos:wght@700&display=swap');
-        
+
         body {
-            background-color: #007BFF; /* ビビットなブルー */
+            background-color: #007BFF;
+            /* ビビットなブルー */
             font-family: 'Noto Sans JP', sans-serif;
         }
 
@@ -17,12 +19,15 @@
         .font-english {
             font-family: 'Tinos', 'Times New Roman', serif;
             font-weight: 700;
-            font-size: 1.25rem; /* 20px */
-            line-height: 1.75rem; /* 28px */
+            font-size: 1.25rem;
+            /* 20px */
+            line-height: 1.75rem;
+            /* 28px */
         }
 
         .answer-span {
-            color: #DC2626; /* 赤色 */
+            color: #DC2626;
+            /* 赤色 */
             font-weight: 700;
             display: none;
         }
@@ -40,7 +45,7 @@
         .show-answer .underline-span {
             display: none;
         }
-        
+
         .explanation {
             display: none;
             white-space: pre-wrap;
@@ -57,22 +62,27 @@
             cursor: pointer;
             transition: all 0.2s ease-in-out;
         }
+
         .btn-primary {
             background-color: #3b82f6;
             color: white;
         }
+
         .btn-primary:hover {
             background-color: #2563eb;
         }
+
         .btn-secondary {
             background-color: #6b7280;
             color: white;
         }
+
         .btn-secondary:hover {
             background-color: #4b5563;
         }
     </style>
 </head>
+
 <body class="text-gray-800">
 
     <div id="app-container" class="container mx-auto p-4 md:p-8 max-w-4xl">
@@ -83,23 +93,27 @@
 
         <main class="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg mb-28">
             <div class="flex justify-between items-center mb-6">
-                 <!-- PDF Control Section -->
-                 <div class="flex-1 mr-4">
+                <!-- PDF Control Section -->
+                <div class="flex-1 mr-4">
                     <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
                         <h3 class="font-bold text-sm md:text-base mb-2">選択した問題でPDFを作成</h3>
                         <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
                             <div class="flex items-center">
-                                <input type="checkbox" id="select-all-checkbox" class="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
-                                <label for="select-all-checkbox" class="ml-2 text-sm font-medium text-gray-700 cursor-pointer">すべて選択 / 解除</label>
+                                <input type="checkbox" id="select-all-checkbox"
+                                    class="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                                <label for="select-all-checkbox"
+                                    class="ml-2 text-sm font-medium text-gray-700 cursor-pointer">すべて選択 / 解除</label>
                             </div>
-                            <button id="open-pdf-modal-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow text-sm transition-transform transform hover:scale-105">
+                            <button id="open-pdf-modal-btn"
+                                class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow text-sm transition-transform transform hover:scale-105">
                                 PDF作成メニュー
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <button id="start-quiz-btn" class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-lg shadow transition-transform transform hover:scale-105 whitespace-nowrap">
+                <button id="start-quiz-btn"
+                    class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-lg shadow transition-transform transform hover:scale-105 whitespace-nowrap">
                     ランダムテスト
                 </button>
             </div>
@@ -111,11 +125,16 @@
     </div>
 
     <!-- Control Panel -->
-    <div id="control-panel" class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md p-4 border-t-2 border-gray-200 shadow-2xl flex justify-center items-center space-x-2 md:space-x-4">
-        <button id="toggle-answer-btn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">表示/非表示</button>
-        <button id="play-sound-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">音声再生</button>
-        <button id="record-btn" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">録音評価</button>
-        <button id="toggle-explanation-btn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">解説</button>
+    <div id="control-panel"
+        class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md p-4 border-t-2 border-gray-200 shadow-2xl flex justify-center items-center space-x-2 md:space-x-4">
+        <button id="toggle-answer-btn"
+            class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">表示/非表示</button>
+        <button id="play-sound-btn"
+            class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">音声再生</button>
+        <button id="record-btn"
+            class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">録音評価</button>
+        <button id="toggle-explanation-btn"
+            class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">解説</button>
     </div>
 
     <!-- Message/Score Modal -->
@@ -124,11 +143,12 @@
             <!-- Message content will be populated by JS -->
         </div>
     </div>
-    
+
     <!-- Quiz Modal -->
     <div id="quiz-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-40 p-4">
         <div class="bg-white w-full max-w-2xl p-8 rounded-2xl shadow-2xl relative">
-            <button id="close-quiz-btn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-3xl font-bold">&times;</button>
+            <button id="close-quiz-btn"
+                class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-3xl font-bold">&times;</button>
             <div id="quiz-content">
                 <!-- Quiz content will be populated by JS -->
             </div>
@@ -136,17 +156,24 @@
     </div>
 
     <!-- PDF Download Modal -->
-    <div id="pdf-modal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center z-50">
+    <div id="pdf-modal"
+        class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center z-50">
         <div class="relative mx-auto p-5 border w-11/12 md:w-1/2 lg:w-1/3 shadow-lg rounded-md bg-white">
             <div class="mt-3 text-center">
                 <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">ダウンロードするPDFの種類を選択</h3>
                 <div class="mt-2 space-y-3">
-                    <button id="download-list-btn" class="btn btn-primary w-full justify-start text-left">1. 完全なリスト (熟語・意味・例文)</button>
-                    <button id="download-en-quiz-btn" class="btn btn-primary w-full justify-start text-left">2. 熟語テスト (英語を解答)</button>
-                    <button id="download-ja-quiz-btn" class="btn btn-primary w-full justify-start text-left">3. 熟語テスト (意味を解答)</button>
-                    <button id="download-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">4. 熟語テスト (混合)</button>
-                    <button id="download-sentence-quiz-btn" class="btn btn-primary w-full justify-start text-left">5. 例文の穴埋め問題</button>
-                    <button id="download-sentence-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">6. 例文の混合問題 (穴埋め/和訳)</button>
+                    <button id="download-list-btn" class="btn btn-primary w-full justify-start text-left">1. 完全なリスト
+                        (熟語・意味・例文)</button>
+                    <button id="download-en-quiz-btn" class="btn btn-primary w-full justify-start text-left">2. 熟語テスト
+                        (英語を解答)</button>
+                    <button id="download-ja-quiz-btn" class="btn btn-primary w-full justify-start text-left">3. 熟語テスト
+                        (意味を解答)</button>
+                    <button id="download-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">4. 熟語テスト
+                        (混合)</button>
+                    <button id="download-sentence-quiz-btn" class="btn btn-primary w-full justify-start text-left">5.
+                        例文の穴埋め問題</button>
+                    <button id="download-sentence-mixed-quiz-btn"
+                        class="btn btn-primary w-full justify-start text-left">6. 例文の混合問題 (穴埋め/和訳)</button>
                 </div>
                 <div class="mt-6">
                     <button id="close-modal-btn" class="btn btn-secondary w-full">キャンセル</button>
@@ -158,300 +185,388 @@
     <script>
         const chapterData = [
     {
-        "id": "1",
-        "ja": "2 3 4 5 6 7 8 9 10音読 その他の重要熟語 2 3 4 5 6 7 8 9 10音読 その他の重要熟語 2 3 4 5 6 7 8 9 10音読 その他の重要熟語 2 3 4 5 6 7 8 9 10音読 その他の重要熟語 2 3 4 5 6 7 8 9 10音読 その他の重要熟語",
+        "id": "28",
+        "ja": "章　その他の重要熟語  QR ☚ 音読用動画　別解など ▼ 1364～1369〈inを使った熟語〉",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
-        "question": "Self Check"
+        "question": ""
     },
     {
-        "id": "28",
-        "ja": "その他の重要熟語 ◀\t音読用動画 別解など 28章 その他の重要熟語 熟語編 ｜  28章 その他の重要熟語 ② 熟語編 ｜  28章 その他の重要熟語 ③ 熟語編 ｜  28章 その他の重要熟語 ④ 熟語編 ｜  28章 その他の重要熟語 ⑤",
+        "id": "484",
+        "ja": "● 熟語編｜28章",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
-        "question": "①"
+        "question": ""
+    },
+    {
+        "id": "486",
+        "ja": "● 熟語編｜28章 ▼ 1381～1384〈makeを使った熟語〉",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "488",
+        "ja": "● 熟語編｜28章 ▼ 1387～1390〈結果を表す熟語〉",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "490",
+        "ja": "● 熟語編｜28章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
     },
     {
         "id": "1364",
-        "ja": "失くした鍵を何時間もかけて捜したが無駄だった。 ⇧ 「無駄な （vain）状 態 で（in）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "I spent hours searching for my lost keys (i      ) (        ). I spent hours searching for my lost keys in vain. in vain ʮແବʹʢʙ͢Δʣɼʢʙ͢Δ͕ʣແବʹऴΘΔʯ spend A (in) doingʮʙͯ͠AʣΛա͢͝ɼʙͯ͠Aɾ࿑ྗʣΛඅ΍͢ʯ search for A ʮA Λ૞͢ʯ―search A for BʮBΊͯAʢ৔ॴʣΛ૞͢ʯ"
+        "ja": "失くした鍵を何時間もかけて捜したが無駄だった。 「無駄に」を表す表現は？ in vain「無駄に(～する)，(～するが)無駄に終わる」 ⇧「無駄な(vain)状態で(in)」 ○ spend A (in) doing「～してA(時間)を過ごす，～してA(金・労力)を費やす」 ○ search for A「Aを捜す」―search A for B「Bを求めてA(場所)を捜す」",
+        "en": "I spent hours searching for my lost keys {in vain}.",
+        "answer": "in vain",
+        "explanation": "Tip 「～を捜したが無駄だった」は「無駄に～を捜した」と表現する。",
+        "question": "I spent hours searching for my lost keys (i   ) (    )."
     },
     {
         "id": "1365",
-        "ja": "ケンが夢を語った時，彼は真剣そのものだった。 ⇧ 「真剣な （earnest）状 態 で（in）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Ken was (i      ) (        ) when he talked about his dreams. Ken was in earnest when he talked about his dreams. in earnest  ͷʢ＝seriousతʹʯ"
+        "ja": "ケンが夢を語った時，彼は真剣そのものだった。 in earnest ①「本気の(＝serious)」②「本格的に」 ⇧「真剣な(earnest)状態で(in)」",
+        "en": "Ken was {in earnest} when he talked about his dreams.",
+        "answer": "in earnest",
+        "explanation": "Tip 「真剣そのもの＝本気の」を表す表現は？",
+        "question": "Ken was (i   ) (    ) when he talked about his dreams."
     },
     {
         "id": "1366",
-        "ja": "景気がいいとき，仕事がより見つけやすい。 ⇧ 「調子(shape) が良い(good) 状 態 で（in）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "When the economy is (        ) (g      ) (s      ), jobs are easier to find. When the economy is in good shape, jobs are easier to find. in good shape͕ྑͯ͘ʯ ⇔ out of shape͕ѱͯ͘ʯ keep in shape ＝stay in shape͢Δʯ＝keep /f_it ＝stay /f_it economyʯ"
+        "ja": "景気がいいとき，仕事がより見つけやすい。 in good shape「調子が良くて」 ⇧「調子(shape)が良い(good)状態で(in)」 ⇔ out of shape「調子が悪くて」 ＋ keep in shape＝stay in shape「体調を維持する」＝keep fit＝stay fit ○ economy「経済，景気」",
+        "en": "When the economy is {in good shape}, jobs are easier to find.",
+        "answer": "in good shape",
+        "explanation": "Tip 「景気がいい＝経済が調子いい」。「調子が良くて」を表す表現は？",
+        "question": "When the economy is (    ) (g   ) (s   ), jobs are easier to find."
     },
     {
         "id": "1367",
-        "ja": "世界的な危機の際，石油はしばしば供給不足になる。 ⇧ 「不足した （short）供 給（supply）の 状 態 で（in）」 crisisʯ―複数形は crises",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Oil is often (        ) (s      ) (        ) during global crises. Oil is often in short supply during global crises."
+        "ja": "世界的な危機の際，石油はしばしば供給不足になる。 in short supply「供給不足で」 ⇧「不足した(short)供給(supply)の状態で(in)」 ○ crisis「危機」―複数形はcrises",
+        "en": "Oil is often {in short supply} during global crises.",
+        "answer": "in short supply",
+        "explanation": "Tip 「供給不足で」を表す表現は？",
+        "question": "Oil is often (    ) (s   ) (    ) during global crises."
     },
     {
         "id": "1368",
-        "ja": "現代人はいつも急いでいる。",
-        "en": "People today are always {in a hurry. hurry up͙ʯ people today୅ਓʯ}",
-        "answer": "in a hurry. hurry up͙ʯ people today୅ਓʯ",
+        "ja": "現代人はいつも急いでいる。 in a hurry「急いで」⇦「急ぎ(a hurry)の状態で(in)」 ＋ hurry up「急ぐ」 ＋ in haste「あわてて，急いで」 ○ people today「現代人」",
+        "en": "People today are always{ in a hurry}.",
+        "answer": "in a hurry",
         "explanation": "",
-        "question": "People today are always (        ) (        ) (h      )."
+        "question": "People today are always (    ) (    ) (h   )."
     },
     {
         "id": "1369",
-        "ja": "私たちは３試合連続で勝った。 in a row  ᶃ ʮ࿈ଓ͠ ͯʯᶄ ʮԣҰྻʹʯ⇦「１つ の 列（a row）の 中 で（in）」 期間ʴon endଓ͚ͯʯ➡1181",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "We won three games (        ) (        ) (        ). We won three games in a row. in succession ʮ࿈ଓ͠ ͯʯ＝in a row ▼ 1370～1372ʪonʫ"
+        "ja": "私たちは３試合連続で勝った。 ▼ 1370～1372〈onを使った熟語〉 in a row ①「連続して」②「横一列に」⇦「１つの列(a row)の中で(in)」 ＋ in succession「連続して」＝in a row ＋ 期間＋on end「～の間続けて」➡ 1181",
+        "en": "We won three games {in a row}.",
+        "answer": "in a row",
+        "explanation": "Tip 「連続して」を表す表現は？",
+        "question": "We won three games (    ) (    ) (    )."
     },
     {
         "id": "1370",
-        "ja": "新しいiPhoneはまもなく発売される。",
-        "en": "The new iPhone will be {on sale soon.}",
-        "answer": "on sale soon.",
-        "explanation": "▶ 「（普通の値段で）売 り 出 さ れ て 」「（特価で）売り出されて」の２つの意味がある。",
-        "question": "The new iPhone will be (o      ) (        ) soon."
+        "ja": "新しいiPhoneはまもなく発売される。 on sale ①「(店で)売りに出されて」②「特価で」 ＋ for sale「売り物で」―物や家の「所有者」が売りに出す場合に使われる。",
+        "en": "The new iPhone will be {on sale} soon.",
+        "answer": "on sale",
+        "explanation": "Tip 「発売される」は「売りに出される」と表現する。\n▶「(普通の値段で)売り出されて」「(特価で)売り出されて」の２つの意味がある。",
+        "question": "The new iPhone will be (o   ) (    ) soon."
     },
     {
         "id": "1371",
-        "ja": "私たちは費用がかかり過ぎるという理由でその計画に反対している。 ⇧「 … と い う（that）根 拠（the grounds）に 基 づ い て（on）」 復習",
-        "en": "{on / at / feel / ease}",
-        "answer": "on / at / feel / ease",
-        "explanation": "",
-        "question": "We oppose the plan (        ) (        ) (g      ) (        ) it’s too expensive. We oppose the plan on the grounds that it’s too expensive. oppose ʮʙʹ൓ର͢Δʯ⇔⇔ support͢Δʯ 482 483"
+        "ja": "私たちは費用がかかり過ぎるという理由でその計画に反対している。 その他の重要熟語 ① ● 483 on (the) grounds that …「…という理由で」＝because … ⇧「…という(that)根拠(the grounds)に基づいて(on)」 ○ oppose「～に反対する」⇔ support「～を支持する」",
+        "en": "We oppose the plan {on the grounds that} it’s too expensive.",
+        "answer": "on the grounds that",
+        "explanation": "Tip  because「…という理由で」と同じ意味を表す表現は？",
+        "question": "We oppose the plan (    ) (    ) (g   ) (    ) it’s too expensive."
     },
     {
         "id": "1372",
-        "ja": "ス ミ ス さ ん は 午前8時 か ら 午後5時 ま で勤務する。 Mr. Smith is oﬀ duty tomorrow.（スミスさんは明日は非番だ 。）",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Mr. Smith is (        ) (d      ) from 8 a.m. to 5 p.m. Mr. Smith is on duty from 8 a.m. to 5 p.m. ▼ 1373～1380ʪatʫ"
+        "ja": "スミスさんは午前8時から午後5時まで勤務する。 ▼ 1373～1380〈atを使った熟語〉 on duty「勤務中で，当番で」⇦「義務(duty)に接して(on)」 ⇔ off duty「勤務時間外で，非番で」 Mr. Smith is off duty tomorrow.（スミスさんは明日は非番だ。）",
+        "en": "Mr. Smith is {on duty} from 8 a.m. to 5 p.m.",
+        "answer": "on duty",
+        "explanation": "Tip 「勤務中で」を表す表現は？「義務」を表す名詞を使う。",
+        "question": "Mr. Smith is (    ) (d   ) from 8 a.m. to 5 p.m."
     },
     {
         "id": "1373",
-        "ja": "仕事でコンピューターを使うのは普通だ。 ⇧「 仕 事（work） の場所／時点において （at）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "It is normal to use a computer (a      ) (w     ). It is normal to use a computer at work. at work  தʹʯ at (the) tableதʹʯ"
+        "ja": "仕事でコンピューターを使うのは普通だ。 at work ①「職場で」②「仕事中に」⇦「仕事(work)の場所／時点において(at)」 ＋ at (the) table「食事中に」",
+        "en": "It is normal to use a computer {at work}.",
+        "answer": "at work",
+        "explanation": "Tip 「仕事で → 仕事中に」を表す表現は？",
+        "question": "It is normal to use a computer (a   ) (w   )."
     },
     {
         "id": "1374",
-        "ja": "私はサラといると心が安らぐ。",
-        "en": "I feel at ease with Sara. ＝at home ＝relaxed feel at ease͕ͪམͪண͘ʯ with ease୯ʹɼ༰қʹʯ＝easily  ➡776",
-        "answer": "feel at ease with Sara. ＝at home ＝relaxed feel at ease͕ͪམͪண͘ʯ with ease୯ʹɼ༰қʹʯ＝easily ➡776",
-        "explanation": "",
-        "question": "I (f      ) (        ) (e      ) with Sara."
+        "ja": "私はサラといると心が安らぐ。 at ease「くつろいで」―このeaseは「気楽さ」の意味。＝at home＝relaxed feel at ease「心が安らぐ，気持ちが落ち着く」 ＋ with ease「簡単に，容易に」＝easily ➡ 776",
+        "en": "I {feel at ease} with Sara.",
+        "answer": "feel at ease",
+        "explanation": "Tip 「くつろぎを感じる＝心が安らぐ」を表す表現は？",
+        "question": "I (f   ) (    ) (e   ) with Sara."
     },
     {
         "id": "1375",
-        "ja": "パーティーではいつも落ち着かない。 ⇧「 悪 く（ill）く つ ろ い で（at ease）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "I always (f      ) (i      ) (        ) (        ) at parties. I always feel ill at ease at parties. ill at ease ʮམͪண͔ͳ͍ɼෆ҆ͳʯ⇔ at ease ＝uneasy feel ill at ease͕ͪམͪண͔ͳ͍ʯ⇔ feel at ease"
+        "ja": "パーティーではいつも落ち着かない。 ill at ease「落ち着かない，不安な」⇔ at ease ⇧「悪く(ill)くつろいで(at ease)」 feel ill at ease「気持ちが落ち着かない」⇔ feel at ease",
+        "en": "I always {feel ill at ease} at parties.",
+        "answer": "feel ill at ease",
+        "explanation": "Tip 「気持ちが落ち着かない」を表す表現は？\n＝uneasy",
+        "question": "I always (f   ) (i   ) (    ) (    ) at parties."
     },
     {
         "id": "1376",
-        "ja": "発展 多くの人の命が危険にさらされている。 ⇧「 火 あ ぶ り（stake）の 状 態 で（at）」",
-        "en": "???",
-        "answer": "???",
+        "ja": "多くの人の命が危険にさらされている。 発展     Tip 「危険にさらされて」を表す表現は？ at stake「危険にさらされて」＝at risk ⇧「火あぶり(stake)の状態で(at)」",
+        "en": "Many people’s lives are {at stake}.",
+        "answer": "at stake",
         "explanation": "",
-        "question": "Many people’s lives are (        ) (s      ). Many people’s lives are at stake. at stakeʹ͞Β͞Εͯʯ＝at risk"
+        "question": "Many people’s lives are (    ) (s   )."
     },
     {
         "id": "1377",
-        "ja": "旅行中に携帯電話をなく したとき，私はす っかり途方に暮れた。 ⇧「 喪 失（a loss）の 状 態 で（at）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "When I lost my phone while traveling, I felt completely (        ) (        ) (        ). When I lost my phone while traveling, I felt completely at a loss. at a loss ʮ్ํʹ฻Εͯʯ while travelingதʹʯ"
+        "ja": "旅行中に携帯電話をなくしたとき，私はすっかり途方に暮れた。 at a loss「途方に暮れて」 ⇧「喪失(a loss)の状態で(at)」 ○ while traveling「旅行中に」",
+        "en": "When I lost my phone while traveling, I felt completely {at a loss}.",
+        "answer": "at a loss",
+        "explanation": "Tip 「途方に暮れて」を表す表現は？「喪失」を表す名詞を使う。",
+        "question": "When I lost my phone while traveling, I felt completely (    ) (    ) (    )."
     },
     {
         "id": "1378",
-        "ja": "ぐっすり眠れたとき， 私は最高のパフォーマンスを発揮する。 ⇧「 ～ の 最 善（oneʼs best）の 状 態 で（at）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "I perform (        ) (        ) (        ) when I get a good night’s sleep. I perform at my best when I get a good night’s sleep. at best ʮΑͯ͘΋ɼ ͤ ͍ ͍ͥʯ➡322 get a good night ’s sleepʮ͙ͬ͢Γ຾Δʯ＝sleep well"
+        "ja": "ぐっすり眠れたとき，私は最高のパフォーマンスを発揮する。 at one’s best「最高の状態で」 ⇧「～の最善(one’s best)の状態で(at)」 ＋ at best「よくても，せいぜい」➡ 322 ○ get a good night’s sleep「ぐっすり眠る」＝sleep well",
+        "en": "I perform {at my best} when I get a good night’s sleep.",
+        "answer": "at my best",
+        "explanation": "Tip 「最高のパフォーマンスを発揮できる」は「最高の状態でパフォーマンスする」と表現する。「最高の状態で」を表す表現は？",
+        "question": "I perform (    ) (    ) (    ) when I get a good night’s sleep."
     },
     {
         "id": "1379",
-        "ja": "掲示には「自己責任で泳いでください」とあった。 ⇧ 「自分自身の （oneʼs own）危 険(risk) に お い て（at）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "The sign said, “Swim (a      ) your (        ) (        ).” The sign said, “Swim at your own risk.” signɼஹ͠ʯ―signatureʮʢจॻͳͲʹ͢ΔʣαΠϯʯ"
+        "ja": "掲示には「自己責任で泳いでください」とあった。 at one’s own risk「自己責任で」 ⇧「自分自身の(one’s own)危険(risk)において(at)」 ○ sign「合図，標識，掲示，兆し」―signature「(文書などにする)サイン」",
+        "en": "The sign said, “Swim {at }your {own risk}.”",
+        "answer": "at, own risk",
+        "explanation": "Tip 「自己責任で」を表す表現は？「危険」を表す名詞を使う。",
+        "question": "The sign said, “Swim (a   ) your (    ) (    ).”"
     },
     {
         "id": "1380",
-        "ja": "発展 私は自由に使えるお 金 を いくら か 持 ってい る 。 ⇧ 「自分の （oneʼs）処 分 権（disposal）に お い て（at）」 復習",
-        "en": "{soybean / wood / metal ▼1381～1384ʪmakeʫ}",
-        "answer": "soybean / wood / metal ▼1381～1384ʪmakeʫ",
+        "ja": "私は自由に使えるお金をいくらか持っている。 発展     Tip 「～の自由に使える」を表す表現は？「処分」を表す名詞を使う。 その他の重要熟語 ② ● 485 at one’s disposal「～の自由に使える」 ⇧「自分の(one’s)処分権(disposal)において(at)」 ○ disposal「処分」―dispose of A「Aを処分する」，disposable「使い捨ての」",
+        "en": "I have some money {at }my {disposal}.",
+        "answer": "at, disposal",
         "explanation": "",
-        "question": "I have some money (        ) my (d      ). I have some money at my disposal. at one’s disposal͑Δʯ disposal ʮॲ෼ʯ―dispose of AʮA Λॲ෼͢Δʯ，disposableͯͷʯ 484 485 Self Check"
+        "question": "I have some money (    ) my (d   )."
     },
     {
         "id": "1381",
-        "ja": "発展 ごめんなさい，明日は都合がつきません。",
-        "en": "I’m sorry, I can’t make it tomorrow. make it  ᶃʮ ͏·͍͘ ͘ʢ＝succeed͏ʯ 1382-1 基本 豆腐は大豆から作られる。 Tofu (        ) (m     ) (        ) (s      ). 1382-1 Tofu is made from soybeans. be made from A ʮAΒΕΔʯ ⇧「A か ら（from）作 ら れ て い る（be made）」",
-        "answer": "make it tomorrow. make it ᶃʮ ͏·͍͘ ͘ʢ＝succeed͏ʯ 1382-1 基本 豆腐は大豆から作られる。 Tofu   m    s . 1382-1 Tofu is made from soybeans. be made from A ʮAΒΕΔʯ ⇧「A か ら（from）作 ら れ て い る（be made）」",
-        "explanation": "▶ 原料が加工されて原形をとどめていない場合にfrom を使う。\nsoybean ʮେ ౾ʢ μΠζ ʣʯ\n1382-2\n基本\nその門は木材と金属でできている。\nThe gate (        ) (m     ) (        ) (w     ) and (m     ).\n1382-2 The gate is made of wood and metal.\n⇧「A で（of）作 ら れ て い る（be made）」\n▶ 材料がその素材の形をある程度残している場合にof を使う。\nwoodʯ―複数形の woods はʮ৿ʯの意味。\nmetalଐʯ",
-        "question": "I’m sorry, I can’t (m     ) (        ) tomorrow."
+        "ja": "ごめんなさい，明日は都合がつきません。 発展     Tip 「都合がつく」を表す表現は？ make it ①「うまくいく(＝succeed)」②「都合がつく」③「間に合う」",
+        "en": "I’m sorry, I can’t {make it} tomorrow.",
+        "answer": "make it",
+        "explanation": "",
+        "question": "I’m sorry, I can’t (m   ) (    ) tomorrow."
+    },
+    {
+        "id": "1382-1",
+        "ja": "豆腐は大豆から作られる。 be made from A「A(原料)から作られる」 ⇧「Aから(from)作られている(be made)」 ○ soybean「大豆(ダイズ)」",
+        "en": "Tofu {is made from soybeans}.",
+        "answer": "is made from soybeans",
+        "explanation": "▶ 原料が加工されて原形をとどめていない場合にfromを使う。",
+        "question": "Tofu (    ) (m   ) (    ) (s   )."
+    },
+    {
+        "id": "1382-2",
+        "ja": "その門は木材と金属でできている。 be made of A「A(材料)でできている」 ⇧「Aで(of)作られている(be made)」 ○ wood「木材」―複数形のwoodsは「森」の意味。 ○ metal「金属」",
+        "en": "The gate {is made of wood }and {metal}.",
+        "answer": "is made of wood, metal",
+        "explanation": "▶ 材料がその素材の形をある程度残している場合にofを使う。",
+        "question": "The gate (    ) (m   ) (    ) (w   ) and (m   )."
     },
     {
         "id": "1383",
-        "ja": "その小説は映画化された。 ⇧「A へ と（into）作 ら れ る（be made）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "The novel (        ) (m     ) (        ) a (m     ). The novel was made into a movie. be made into A ʮAʢ੡඼ʣʹͳΔ ʦ੡඼Խ͞ΕΔʧ ʯ"
+        "ja": "その小説は映画化された。 be made into A「A(製品)になる[製品化される]」 ⇧「Aへと(into)作られる(be made)」",
+        "en": "The novel {was made into }a{ movie}.",
+        "answer": "was made into, movie",
+        "explanation": "Tip 「(製品)になる，(製品化)される」を表す表現は？",
+        "question": "The novel (    ) (m   ) (    ) a (m   )."
     },
     {
         "id": "1384",
-        "ja": "私の家族は４人家族です。 ⇧「A で（of）作 り 上 げ ら れ て（made up）い る（be）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "My family (        ) (m     ) (        ) (        ) four (p      ). ＝ My family is made up of four people. My family is a family of four. be made up of A ʮA੒͞Ε͍ͯΔʯ ＝consist of A ＝be composed of A ＝comprise A ▼ 1385～1386ʪtakeʫ"
+        "ja": "私の家族は4人家族です。 consist of「～で構成されている」と同じ意味を表す表現は？ ▼ 1385～1386〈takeを使った熟語〉 be made up of A「Aで構成されている」 ⇧「Aで(of)作り上げられて(made up)いる(be)」",
+        "en": "My family {is made up of }four {people}. ＝My family {is a family of }four.",
+        "answer": "is made up of, people, is a family of",
+        "explanation": "Tip 「４人家族です → ４人で構成される」と表現する。\n＝consist of A＝be composed of A＝comprise A",
+        "question": "My family (    ) (m   ) (    ) (    ) four (p   )."
     },
     {
         "id": "1385",
-        "ja": "気 楽 に 行こう。まだ時間はたっぷりある。 ⇧「 そ の 状 況（it）を 気 楽 に（easy）取 る（take）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "(        ) (        ) (e      ). There’s still plenty of time. Take it easy. There’s still plenty of time. take it easy͑Δʯ plenty of timeʯ"
+        "ja": "気楽に行こう。まだ時間はたっぷりある。 take it easy「気楽に考える」 ⇧「その状況(it)を気楽に(easy)取る(take)」 ○ plenty of time「たっぷりの時間」",
+        "en": "{Take it easy}. There’s still plenty of time.",
+        "answer": "Take it easy",
+        "explanation": "Tip 「気楽に行こう＝気楽に考えよう」を表す表現は？",
+        "question": "(    ) (    ) (e   ). There’s still plenty of time."
     },
     {
         "id": "1386",
-        "ja": "私たちはきれいな水を当 然 のことと思ってはいけない。 ▼ 1387～1390ʪ結果ʫ",
-        "en": "We should not {take clean water for granted. take A for grantedʮAͳ͢ʯ ⇧「 与 えら れ た（granted）も の と し て（for）受 け 取 る（take）」 clean water ʮ͖Ε͍ͳਫʯ⇔⇔ dirty waterʮԚਫʯ take it for granted that …ʮ…͏ʯ➡339}",
-        "answer": "take clean water for granted. take A for grantedʮAͳ͢ʯ ⇧「 与 えら れ た（granted）も の と し て（for）受 け 取 る（take）」 clean water ʮ͖Ε͍ͳਫʯ⇔⇔ dirty waterʮԚਫʯ take it for granted that …ʮ…͏ʯ➡339",
-        "explanation": "▶ In Japan, some people still take it for granted that women should\nraise children.\n（日本では，女性が子育てをするのが当たり前だと思っている人 が い ま だ に い る 。）\n486 487\nSelf\nCheck\n復習",
-        "question": "We should not (        ) clean water (        ) (g      ). ask / but"
+        "ja": "私たちはきれいな水を当然のことと思ってはいけない。 その他の重要熟語 ③ ● 487 take A for granted「Aを当然と見なす」 ⇧「与えられた(granted)ものとして(for)受け取る(take)」 ○ clean water「きれいな水」⇔ dirty water「汚水」 ＋ take it for granted that …「…を当然のことと思う」➡ 339 （日本では，女性が子育てをするのが当たり前だと思っている人がいまだにいる。）",
+        "en": "We should not {take }clean water{ for granted}.",
+        "answer": "take, for granted",
+        "explanation": "Tip 「～を当然と見なす」を表す表現は？\n▶ In Japan, some people still take it for granted that women should raise children.",
+        "question": "We should not (    ) clean water (    ) (g   )."
     },
     {
         "id": "1387",
-        "ja": "砂糖の取り過ぎは肥満につながることがある。 ⇧「B へ（to）導 く（lead） 」―原因と結果の因果関係を示す表現。 obesity ʮංຬʯ―発音は /oÜbí\\s6ti/",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Too much sugar can (l      ) (        ) obesity. ͢Δɻ͢Δɻ Too much sugar can lead to obesity. A lead to BʮAҼ ʣ͸BՌʣʹͭͳ͕ΔɼA ͸B͜͢ʯ ＝A cause [result in / bring about / give rise to] B"
+        "ja": "砂糖の取り過ぎは肥満につながることがある。 「砂糖の取り過ぎは…」は，「多すぎる砂糖は…」と表現する。 A lead to B「A(という原因)はB(という結果)につながる，AはBを引き起こす」 ⇧「Bへ(to)導く(lead)」―原因と結果の因果関係を示す表現。 ○ obesity「肥満」―発音は/〇〇/",
+        "en": "Too much sugar can {lead to }obesity.",
+        "answer": "lead to",
+        "explanation": "＝A cause [result in / bring about / give rise to] B",
+        "question": "Too much sugar can (l   ) (    ) obesity."
     },
     {
         "id": "1388",
-        "ja": "その大雨は洪水をもたらした。 ⇧「B の 中（in）の 結 果 に な る（result）／ に 終 わ る（end）」 /f_loodingਫʯ―発音は /fl%di© /",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "The heavy rain (r      ) (        ) flooding. The heavy rain resulted in flooding. A result in B A end in B        ʮA ͸BՌʣʹऴΘΔɼA ͸B͜͢ʯ ＝A cause [lead to / bring about / give rise to] B"
+        "ja": "その大雨は洪水をもたらした。 「AはB(という結果)に終わる」を表す表現は？ A end in B      「AはB(という結果)に終わる，AはBを引き起こす」 ⇧「Bの中(in)の結果になる(result)／に終わる(end)」 ○ flooding「洪水」―発音は/〇〇/",
+        "en": "The heavy rain {resulted in} flooding. A{ result in} B",
+        "answer": "resulted in, result in",
+        "explanation": "＝A cause [lead to / bring about / give rise to] B",
+        "question": "The heavy rain (r   ) (    ) flooding."
     },
     {
         "id": "1389",
-        "ja": "洪水はその大雨によって発 生した。 ⇧「B か ら（from）A が 結 果 とし て 生 じ る（result）」 〈A（原因） result in B（結果） 〉 と 〈A（結果） result from B（原因） 〉 は因果関係が逆 であることに注意。",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Flooding (r      ) (        ) the heavy rain. Flooding resulted from the heavy rain. A result from BʮA ͸BՌʢͱͯ͠ʣੜ͡ΔɼA ͸BҼ͢Δʯ ＝A is caused by B ＝A is brought about by B"
+        "ja": "洪水はその大雨によって発生した。 A result from B「AはBの結果(として)生じる，AはBに起因する」 ⇧「Bから(from)Aが結果として生じる(result)」 ！〈A(原因) result in B(結果)〉と〈A(結果) result from B(原因)〉は因果関係が逆であることに注意。",
+        "en": "Flooding {resulted from} the heavy rain.",
+        "answer": "resulted from",
+        "explanation": "Tip 「洪水は大雨によって発生した」を「大雨の結果(として)洪水が起こる」と表現する。「AはBの結果(として)生じる」を表す表現は？\n＝A is caused by B＝A is brought about by B",
+        "question": "Flooding (r   ) (    ) the heavy rain."
     },
     {
         "id": "1390",
-        "ja": "発展 最初は仲が悪かったけど，結局，私たちはいい関係を 築くことができた。 ⇧「 ～ す ること で（doing）完 了 し て（up）終 え る（end）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "We didn’t get along at first, but we (e      ) (        ) (h      ) a good relationship. We didn’t get along at first, but we ended up having a good relationship. A end up doingہ݁A ͸ʙͯ͠ऴ ΘΔʯ get along (with A)ʮʢA ͱ ʣ஥ ྑ ͘΍ ͬ ͯ ͍ ͘ʯ"
+        "ja": "最初は仲が悪かったけど，結局，私たちはいい関係を築くことができた。 発展     relationship. 持って終えた」と表現する。「結局Aは～して終わる」を表す表現は？ A end up doing「結局Aは～して終わる」 ⇧「～することで(doing)完了して(up)終える(end)」 ○ get along (with A)「(Aと)仲良くやっていく」",
+        "en": "We didn’t get along at first, but we {ended up having} a good relationship.",
+        "answer": "ended up having",
+        "explanation": "Tip 「結局，私たちはいい関係を築くことができた」を「結局，私たちはいい関係を",
+        "question": "We didn’t get along at first, but we (e   ) (    ) (h   ) a good"
     },
     {
         "id": "1391",
-        "ja": "ケンが無断で私のピザを食べた。 ⇧「 ～ す る こ と で さ え も（even doing）も な し で（without）」 「 そ ん な（so much）～ す る よ う な こ と（as doing）も な し で（without）」",
+        "ja": "ケンが無断で私のピザを食べた。",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
-        "question": "-1 -2 Ken ate my pizza (w     ) (        ) (a      ). Ken ate my pizza (w     ) (        ) (        ) (        ) (a      ). 1391-1 -2 Ken ate my pizza without even asking. Ken ate my pizza without so much as asking. without even doing"
+        "question": ""
+    },
+    {
+        "id": "1391-1",
+        "ja": "",
+        "en": "Ken ate my pizza {without even asking}.",
+        "answer": "without even asking",
+        "explanation": "",
+        "question": "Ken ate my pizza (w   ) (    ) (a   )."
+    },
+    {
+        "id": "1391-2",
+        "ja": "without so much as doing    「～さえしないで」 ⇧「～することでさえも(even doing)もなしで(without)」 「そんな(so much)～するようなこと(as doing)もなしで(without)」",
+        "en": "Ken ate my pizza {without so much as asking}. {without even }do{ing}",
+        "answer": "without so much as asking, without even, ing",
+        "explanation": "Tip 「無断で → 尋ねることさえしないで」と表現する。",
+        "question": "Ken ate my pizza (w   ) (    ) (    ) (    ) (a   )."
     },
     {
         "id": "1392",
-        "ja": "デジタ ル時代になっ て手書きの手紙はほとんど姿を消した。",
-        "en": "Handwritten letters have all but disappeared in the digital age. all but A  ᶃʮ ΄ ͱ Μ ͲAʢ＝almost Aʣʯ ᶄʮA Λআ͘͢΂ͯͷ΋ͷʯ handwritten ʮखॻ͖ͷʯ disappearΛফ͢ʯ⇔⇔ appearΕΔʯ",
-        "answer": "all but disappeared in the digital age. all but A ᶃʮ ΄ ͱ Μ ͲAʢ＝almost Aʣʯ ᶄʮA Λআ͘͢΂ͯͷ΋ͷʯ handwritten ʮखॻ͖ͷʯ disappearΛফ͢ʯ⇔⇔ appearΕΔʯ",
-        "explanation": "",
-        "question": "Handwritten letters have (       ) (       ) disappeared in the digital age."
+        "ja": "デジタル時代になって手書きの手紙はほとんど姿を消した。 all but A ①「ほとんどA(＝almost A)」②「Aを除くすべてのもの」 ○ handwritten「手書きの」 ○ disappear「消える，姿を消す」⇔ appear「現れる」",
+        "en": "Handwritten letters have {all but} disappeared in the digital age.",
+        "answer": "all but",
+        "explanation": "Tip  almost「ほとんど」と同じ意味を表す表現は？",
+        "question": "Handwritten letters have (    ) (    ) disappeared in the digital age."
     },
     {
         "id": "1393",
-        "ja": "昨年と比べて，平均気温が高い。 ⇧「A と（to/with）比 較 さ れ て（compared）」 復習",
-        "en": "{up / past}",
-        "answer": "up / past",
-        "explanation": "",
-        "question": "(        ) (        ) last year, the average temperature is higher. Compared to last year, the average temperature is higher. compared to [with] AʮA ͱൺ΂Δͱʯ ＝in [by] comparison with A average temperatureԹʯ 488 489 Self Check"
+        "ja": "昨年と比べて，平均気温が高い。 その他の重要熟語 ④ ● 489 compared to [with] A「Aと比べると」 ⇧「Aと(to/with)比較されて(compared)」 ○ average temperature「平均気温」",
+        "en": "{Compared to} last year, the average temperature is higher.",
+        "answer": "Compared to",
+        "explanation": "＝in [by] comparison with A",
+        "question": "(    ) (    ) last year, the average temperature is higher."
     },
     {
         "id": "1394",
-        "ja": "日本では，フクロウは幸運の象徴と言われている。 owl ʮϑΫϩ΢ʯ―発音は /aÜl/",
+        "ja": "日本では，フクロウは幸運の象徴と言われている。",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
-        "question": "-1 -2＝ In Japan, owls (        ) (s      ) (        ) (        ) a symbol of good luck. In Japan, it  owls are a symbol of good luck. 1394-1 -2＝ In Japan, owls are said to be a symbol of good luck. In Japan, it is said that owls are a symbol of good luck. be said to doΘΕ͍ͯΔʯ It is said that …ΘΕ͍ͯΔʯ It is often said that …ʮ…ΘΕΔʯ symbol ʮ৅௃ʯ good luck / fortuneӡʯ⇔⇔ bad luck / misfortuneʮෆӡʯ"
+        "question": ""
+    },
+    {
+        "id": "1394-1",
+        "ja": "",
+        "en": "In Japan, owls {are said to be} a symbol of good luck.",
+        "answer": "are said to be",
+        "explanation": "",
+        "question": "In Japan, owls (    ) (s   ) (    ) (    ) a symbol of good luck."
     },
     {
         "id": "1395",
-        "ja": "発展 「 ど の 映 画 を 見 た い ？ 」「君次第だよ。誕生日なんだから。 」 ⇧ 「責任はA に（to）達 し て（up）い る（be）」",
-        "en": "???",
-        "answer": "???",
+        "ja": "「どの映画を見たい？」「君次第だよ。誕生日なんだから。」 発展     Tip 「～次第だ」を表す表現は？ be up to A「A次第だ，Aの責任だ」 ⇧「責任はAに(to)達して(up)いる(be)」 ＋ up to A「Aに至るまで」",
+        "en": "“What movie would you like to see?” “{It’s }up to you. It’s your birthday.” “What movie would you like to see?” “{It’s up to you}. It’s your birthday.”",
+        "answer": "It’s, It’s up to you",
         "explanation": "",
-        "question": "“What movie would you like to see?” “It’s . It’s your birthday.” “What movie would you like to see?” “It’s up to you. It’s your birthday.” be up to A ʮAୈͩɼA ͷ੹೚ͩʯ"
+        "question": ""
     },
     {
         "id": "1396",
-        "ja": "私の夏休みの予定は未定だ。 ⇧ 「空中に （in the air）上 が っ た（up）状 態 だ（be）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "My summer vacation plans (        ) (        ) (        ) (        ) (a      ). My summer vacation plans are up in the air."
+        "ja": "私の夏休みの予定は未定だ。 be up in the air「未定である」＝be undecided ⇧「空中に(in the air)上がった(up)状態だ(be)」",
+        "en": "My summer vacation plans {are up in the air}.",
+        "answer": "are up in the air",
+        "explanation": "Tip 「未定である」を表す表現は？",
+        "question": "My summer vacation plans (    ) (    ) (    ) (    ) (a   )."
     },
     {
         "id": "1397",
-        "ja": "発展 グル ープ のダンサ ーとして， モモは誰にも負けない。 ⇧「 誰 に 対 しても２番（second）で は な い 」",
-        "en": "???",
-        "answer": "???",
+        "ja": "グループのダンサーとして，モモは誰にも負けない。 発展     Tip 「誰にも負けない」を表す表現は？ be second to none「誰にも負けない」 ⇧「誰に対しても２番(second)ではない」",
+        "en": "As a dancer in the group, Momo {is second to none}.",
+        "answer": "is second to none",
         "explanation": "",
-        "question": "As a dancer in the group, Momo (        ) (s      ) (        ) (        ). As a dancer in the group, Momo is second to none. be second to none ʮ୭ʹ΋ෛ͚ͳ͍ʯ"
+        "question": "As a dancer in the group, Momo (    ) (s   ) (    ) (    )."
     },
     {
         "id": "1398",
-        "ja": "私たちは過去を手放して前に進む必要がある。 ⇧of は 分 離 の イ メ ー ジ 。「A か ら 離 れ て（of ）遠 ざ か る（go）ま ま に し て お く（let）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "We need to (l      ) (        ) (        ) the (p      ) and move forward. We need to let go of the past and move forward. let go of A  ᶃʮA ͔ Β ख Λ ཭ ͢ ʯ ᶄʮA Λ์͢ʯ＝release A move forward ʮલʹਐΉʯ＝progress"
+        "ja": "私たちは過去を手放して前に進む必要がある。 let go of A ①「Aから手を離す」②「Aを放す」＝release A ⇧ ofは分離のイメージ。「Aから離れて(of)遠ざかる(go)ままにしておく(let)」 ○ move forward「前に進む」＝progress",
+        "en": "We need to {let go of }the {past} and move forward.",
+        "answer": "let go of, past",
+        "explanation": "Tip  release「～を放す」と同じ意味を表す表現は？",
+        "question": "We need to (l   ) (    ) (    ) the (p   ) and move forward."
     },
     {
         "id": "1399",
-        "ja": "私のコンピューター・スキルはかなり改善の余地がある。",
-        "en": "My computer skills leave a lot to be desired. leave a lot to be desired ʮ͔ͳΓվળͷ༨஍͕͋Δʯ―このlot は名詞 ⇧「 望 ま れ る（be desired）こ と を（to）た くさ ん（a lot）残 し て い る（leave）」 leave something to be desired͑ͳ͍ʯ 1400-1 私たちには共通点が多いと思う。 I think we (        ) (        ) (l      ) (        ) (c      ). 1400-1 I think we have a lot in common. have A in common (with B)ʮʢB௨ ͢ ΔA ͕͋Δʯ ⇧「B と（with）共 通 す る（in common）A を 持 っ て い る（have）」",
-        "answer": "leave a lot to be desired. leave a lot to be desired ʮ͔ͳΓվળͷ༨஍͕͋Δʯ―このlot は名詞 ⇧「 望 ま れ る（be desired）こ と を（to）た くさ ん（a lot）残 し て い る（leave）」 leave something to be desired͑ͳ͍ʯ 1400-1 私たちには共通点が多いと思う。 I think we     l    c . 1400-1 I think we have a lot in common",
-        "explanation": "▶ have characteristics in common（共通する特徴がある）\nhave a lot in common (with A)ʮʢA௨఺͕ଟ͍ʯ\n＝have much in common (with A)\n1400-2 ケイトと私 には共通点が何もない。\nKate and I (        ) (n      ) (        ) (c      ).\n1400-2 Kate and I have nothing in common.\nhave nothing in common (with A)ʮʢA௨఺͕Կ΋ͳ͍ʯ\n⇧「B と（with）共 通 す る（in common）も の が 何 も な い(have nothing）」\n⇔ have something in common (with A)ʮʢA௨఺͕͋Δʯ\n490 491\nSelf\nCheck\n復習",
+        "ja": "私のコンピューター・スキルはかなり改善の余地がある。 leave a lot to be desired「かなり改善の余地がある」―このlotは名詞 ⇧「望まれる(be desired)ことを(to)たくさん(a lot)残している(leave)」 ＋ leave something to be desired「十分とは言えない」",
+        "en": "My computer skills {leave a lot to be desired}.",
+        "answer": "leave a lot to be desired",
+        "explanation": "Tip 「かなり改善の余地がある」を表す定型表現は？",
         "question": "My computer skills ( desired / to / leave / a lot / be )."
+    },
+    {
+        "id": "1400-1",
+        "ja": "私たちには共通点が多いと思う。 have A in common (with B)「(Bと)共通するAがある」 ⇧「Bと(with)共通する(in common)Aを持っている(have)」 have a lot in common (with A)「(Aと)共通点が多い」",
+        "en": "I think we {have a lot in common}.",
+        "answer": "have a lot in common",
+        "explanation": "Tip 「共通点が多い」を表す定型表現は？\n▶ have characteristics in common（共通する特徴がある）",
+        "question": "I think we (    ) (    ) (l   ) (    ) (c   ). ＝have much in common (with A)"
+    },
+    {
+        "id": "1400-2",
+        "ja": "ケイトと私には共通点が何もない。 その他の重要熟語 ⑤ ● 491 have nothing in common (with A)「(Aとの)共通点が何もない」 ⇧「Bと(with)共通する(in common)ものが何もない(have nothing)」 ⇔ have something in common (with A)「(Aとの)共通点がある」",
+        "en": "Kate and I {have nothing in common}.",
+        "answer": "have nothing in common",
+        "explanation": "Tip 「共通点が何もない」を表す定型表現は？ 全否定の意味を表す代名詞を使う。",
+        "question": "Kate and I (    ) (n   ) (    ) (c   )."
+    },
+    {
+        "id": "1410-2",
+        "ja": "F 078  be said to do「～すると言われている」 It is said that …「…と言われている」 ＋ It is often said that …「…とよく言われる」 ○ owl「フクロウ」―発音は/〇〇/ ○ symbol「象徴」 ○ good luck / fortune「幸運」⇔ bad luck / misfortune「不運」",
+        "en": "＝In Japan, {it} is said that owls are a symbol of good luck. ＝In Japan, {it is said that} owls are a symbol of good luck.",
+        "answer": "it, it is said that",
+        "explanation": "Tip 「～すると言われている」，「…と言われている」を表す表現は？",
+        "question": ""
     }
 ];
 
@@ -465,7 +580,7 @@
             recognition.lang = 'en-US';
             recognition.interimResults = false;
         }
-        
+
         // --- Voice Synthesis Setup ---
         let synthesisVoice = null;
 
@@ -473,10 +588,10 @@
             const voices = speechSynthesis.getVoices();
             // 優先順位: Google US English -> Microsoft Zira/David -> その他英語
             synthesisVoice = voices.find(voice => voice.name === 'Google US English') ||
-                             voices.find(voice => voice.name.includes('Google') && voice.lang.includes('en-US')) ||
-                             voices.find(voice => voice.name.includes('Microsoft') && voice.lang.includes('en-US')) ||
-                             voices.find(voice => voice.lang === 'en-US') ||
-                             voices.find(voice => voice.lang.startsWith('en'));
+                voices.find(voice => voice.name.includes('Google') && voice.lang.includes('en-US')) ||
+                voices.find(voice => voice.name.includes('Microsoft') && voice.lang.includes('en-US')) ||
+                voices.find(voice => voice.lang === 'en-US') ||
+                voices.find(voice => voice.lang.startsWith('en'));
         }
 
         // 音声リストがロードされたら設定を実行
@@ -499,7 +614,7 @@
         const quizModal = document.getElementById('quiz-modal');
         const closeQuizBtn = document.getElementById('close-quiz-btn');
         const quizContent = document.getElementById('quiz-content');
-        
+
         const selectAllCheckbox = document.getElementById('select-all-checkbox');
         const pdfModal = document.getElementById('pdf-modal');
         const openPdfModalBtn = document.getElementById('open-pdf-modal-btn');
@@ -549,7 +664,7 @@
                 `;
                 sentenceList.appendChild(sentenceDiv);
             });
-            
+
             // Add click listener to each sentence item
             document.querySelectorAll('.sentence-item').forEach(item => {
                 item.addEventListener('click', (e) => {
@@ -576,15 +691,15 @@
                     }
                 });
             });
-            
+
             // Select the first sentence by default
             if (sentenceList.firstChild) {
-                 sentenceList.firstChild.click();
+                sentenceList.firstChild.click();
             }
         }
-        
+
         // --- PDF / Print Logic ---
-        
+
         function openPrintWindow(bodyContent, title) {
             const htmlContent = `
                 <!DOCTYPE html>
@@ -636,7 +751,7 @@
             printWindow.document.write(htmlContent);
             printWindow.document.close();
             setTimeout(() => {
-                printWindow.focus(); 
+                printWindow.focus();
                 printWindow.print();
             }, 250);
         }
@@ -651,32 +766,32 @@
                 .map(id => chapterData.find(item => item.id === id))
                 .filter(Boolean)
                 .sort((a, b) => {
-                     // Handle IDs like "1382-1" vs "1382-2"
-                     const aParts = a.id.split('-').map(s => parseInt(s) || 0);
-                     const bParts = b.id.split('-').map(s => parseInt(s) || 0);
-                     if (aParts[0] !== bParts[0]) return aParts[0] - bParts[0];
-                     return (aParts[1] || 0) - (bParts[1] || 0);
+                    // Handle IDs like "1382-1" vs "1382-2"
+                    const aParts = a.id.split('-').map(s => parseInt(s) || 0);
+                    const bParts = b.id.split('-').map(s => parseInt(s) || 0);
+                    if (aParts[0] !== bParts[0]) return aParts[0] - bParts[0];
+                    return (aParts[1] || 0) - (bParts[1] || 0);
                 });
         }
-        
+
         function getUniqueItems(items) {
-             const uniqueMap = new Map();
-             items.forEach(item => {
-                 // Use answer as key to deduplicate same phrases
-                 if (!uniqueMap.has(item.answer)) {
-                     uniqueMap.set(item.answer, item);
-                 }
-             });
-             return Array.from(uniqueMap.values()).sort((a, b) => {
-                 const aId = parseInt(a.id.split('-')[0]);
-                 const bId = parseInt(b.id.split('-')[0]);
-                 return aId - bId;
-             });
+            const uniqueMap = new Map();
+            items.forEach(item => {
+                // Use answer as key to deduplicate same phrases
+                if (!uniqueMap.has(item.answer)) {
+                    uniqueMap.set(item.answer, item);
+                }
+            });
+            return Array.from(uniqueMap.values()).sort((a, b) => {
+                const aId = parseInt(a.id.split('-')[0]);
+                const bId = parseInt(b.id.split('-')[0]);
+                return aId - bId;
+            });
         }
 
 
         // --- Message & Sound Functions ---
-        
+
         function showMessage(htmlContent, duration = null) {
             messageContent.innerHTML = htmlContent;
             messageModal.classList.remove('hidden');
@@ -700,7 +815,7 @@
 
             // 連続再生を防ぐために一度キャンセル
             speechSynthesis.cancel();
-            
+
             let textToSpeak = activeSentenceElement.dataset.fullSentence;
             // 念のため不要な記号を除去
             textToSpeak = textToSpeak.replace(/[{}]/g, '');
@@ -713,7 +828,7 @@
                 utterance.voice = synthesisVoice;
             }
 
-            utterance.rate = 1.0; 
+            utterance.rate = 1.0;
             utterance.pitch = 1.0;
 
             speechSynthesis.speak(utterance);
@@ -730,7 +845,7 @@
             }
 
             showMessage('<p class="text-2xl">マイクに向かって話してください...</p><div class="animate-pulse text-red-500 text-4xl mt-4">●</div>');
-            
+
             recognition.start();
 
             recognition.onresult = (event) => {
@@ -741,20 +856,20 @@
             recognition.onerror = (event) => {
                 showMessage(`<p>エラーが発生しました: ${event.error}</p>`, 3000);
             };
-            
+
             recognition.onend = () => {
-                 if (messageModal.classList.contains('hidden') === false && messageContent.innerHTML.includes('マイクに')) {
+                if (messageModal.classList.contains('hidden') === false && messageContent.innerHTML.includes('マイクに')) {
                     messageModal.classList.add('hidden');
-                 }
+                }
             };
         }
-        
+
         function evaluatePronunciation(transcript) {
             const originalText = activeSentenceElement.dataset.fullSentence;
 
             const cleanOrig = originalText.toLowerCase().replace(/[^\w\s]/g, '').split(' ');
             const cleanTrans = transcript.toLowerCase().replace(/[^\w\s]/g, '').split(' ');
-            
+
             let matches = 0;
             cleanOrig.forEach(word => {
                 if (cleanTrans.includes(word)) {
@@ -763,7 +878,7 @@
             });
 
             const similarity = matches / cleanOrig.length;
-            
+
             let score;
             if (similarity > 0.9) {
                 score = 95 + Math.floor(Math.random() * 5);
@@ -776,7 +891,7 @@
             } else {
                 score = 70 + Math.floor(Math.random() * 10);
             }
-            
+
             if (score === 100 && Math.random() < 0.3) score = 99;
 
             const messageHtml = `
@@ -793,8 +908,8 @@
 
         function startQuiz() {
             if (chapterData.length < 10) {
-                 showMessage('<p>クイズを作成するには、文が10個以上必要です。</p>', 3000);
-                 return;
+                showMessage('<p>クイズを作成するには、文が10個以上必要です。</p>', 3000);
+                return;
             }
 
             const shuffled = [...chapterData].sort(() => 0.5 - Math.random());
@@ -819,8 +934,9 @@
                     .map(item => item.answer);
 
                 const options = [correctAnswer, ...incorrectAnswers].sort(() => 0.5 - Math.random());
-                
-                const questionSentence = question.en.replace(`{${question.answer}}`, ' (______) ');
+
+                // Use regex to replace ALL {answer} parts with (______)
+                const questionSentence = question.en.replace(/\{.*?\}/g, ' (______) ');
 
                 quizContent.innerHTML = `
                     <h3 class="text-2xl font-bold mb-2">問題 ${currentQuestionIndex + 1}/10</h3>
@@ -840,7 +956,7 @@
                             button.classList.add('bg-red-400', 'text-white');
                             document.querySelector(`.quiz-option[data-answer="${CSS.escape(correctAnswer)}"]`).classList.add('bg-green-400', 'text-white');
                         }
-                        
+
                         setTimeout(() => {
                             currentQuestionIndex++;
                             showQuestion();
@@ -885,12 +1001,12 @@
                 explanationDiv.style.display = 'block';
             }
         });
-        
+
         playSoundBtn.addEventListener('click', playSound);
         recordBtn.addEventListener('click', handleRecording);
         startQuizBtn.addEventListener('click', startQuiz);
         closeQuizBtn.addEventListener('click', () => quizModal.classList.add('hidden'));
-        
+
         // Select All Logic
         selectAllCheckbox.addEventListener('change', (e) => {
             const isChecked = e.target.checked;
@@ -904,7 +1020,7 @@
 
         // PDF Modal Logic
         openPdfModalBtn.addEventListener('click', () => {
-             if (selectedSentences.size === 0) {
+            if (selectedSentences.size === 0) {
                 showMessage('<p>PDFを作成する問題を選択してください。</p>', 3000);
                 return;
             }
@@ -926,10 +1042,10 @@
         // 1. 完全なリスト
         document.getElementById('download-list-btn').addEventListener('click', () => {
             const items = getSelectedItems();
-            if(!items) return;
+            if (!items) return;
             // リスト作成の場合は重複があっても良いが、見やすくするために熟語ベースでユニークにするか、
             // そのままID順で並べるか。ここではID順ですべて表示する。
-            
+
             const listItems = items.map(item => {
                 // Remove { } for clean display
                 const cleanEn = item.en.replace(/[{}]/g, '');
@@ -938,7 +1054,7 @@
                     <span style="font-size:0.9em; color:#555;">Ex: ${cleanEn} / ${item.ja}</span>
                 </li>`;
             }).join('');
-            
+
             openPrintWindow(`<ul class="list-container">${listItems}</ul>`, '重要熟語リスト');
             pdfModal.classList.add('hidden');
         });
@@ -946,14 +1062,14 @@
         // 2. 英語を解答
         document.getElementById('download-en-quiz-btn').addEventListener('click', () => {
             const items = getUniqueItems(getSelectedItems());
-            
-            const quizItems = items.map(item => 
+
+            const quizItems = items.map(item =>
                 `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')} : ____________________</span></li>`
             ).join('');
-            const answerItems = items.map(item => 
+            const answerItems = items.map(item =>
                 `<li><span class="inline-content">${item.answer}</span></li>`
             ).join('');
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (英語を解答)');
             pdfModal.classList.add('hidden');
@@ -962,14 +1078,14 @@
         // 3. 意味を解答
         document.getElementById('download-ja-quiz-btn').addEventListener('click', () => {
             const items = getUniqueItems(getSelectedItems());
-            
-            const quizItems = items.map(item => 
+
+            const quizItems = items.map(item =>
                 `<li><span class="inline-content"><strong>${item.answer}</strong> : ____________________</span></li>`
             ).join('');
-            const answerItems = items.map(item => 
+            const answerItems = items.map(item =>
                 `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')}</span></li>`
             ).join('');
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (意味を解答)');
             pdfModal.classList.add('hidden');
@@ -980,7 +1096,7 @@
             const items = getUniqueItems(getSelectedItems());
             let quizItems = '';
             let answerItems = '';
-            
+
             items.forEach(item => {
                 if (Math.random() > 0.5) {
                     // 日本語 -> 英語
@@ -992,7 +1108,7 @@
                     answerItems += `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')}</span></li>`;
                 }
             });
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (混合)');
             pdfModal.classList.add('hidden');
@@ -1001,14 +1117,14 @@
         // 5. 例文穴埋め
         document.getElementById('download-sentence-quiz-btn').addEventListener('click', () => {
             const items = getSelectedItems(); // 例文問題なので重複（文脈違い）も含める
-            
+
             const quizItems = items.map(item => {
                 // Replace {answer} with underscore
                 const blankSentence = item.en.replace(`{${item.answer}}`, '____________________');
                 return `<li>${blankSentence}<br><span style="font-size:0.9em;">(${item.ja})</span></li>`;
             }).join('');
-            
-            const answerItems = items.map(item => 
+
+            const answerItems = items.map(item =>
                 `<li>${item.answer}</li>`
             ).join('');
 
@@ -1022,7 +1138,7 @@
             const items = getSelectedItems();
             let quizItems = '';
             let answerItems = '';
-            
+
             const instruction = '<p style="border:1px solid #ccc; padding:10px; margin-bottom:20px;">指示：空所には適切な語句を補い、下線部がある文は下線部の意味を日本語で答えなさい。</p>';
 
             items.forEach(item => {
@@ -1051,4 +1167,5 @@
         });
     </script>
 </body>
+
 </html>

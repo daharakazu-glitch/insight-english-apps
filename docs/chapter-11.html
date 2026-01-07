@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Tinos:wght@700&display=swap');
-        
+
         body {
-            background-color: #007BFF; /* ビビットなブルー */
+            background-color: #007BFF;
+            /* ビビットなブルー */
             font-family: 'Noto Sans JP', sans-serif;
         }
 
@@ -17,12 +19,15 @@
         .font-english {
             font-family: 'Tinos', 'Times New Roman', serif;
             font-weight: 700;
-            font-size: 1.25rem; /* 20px */
-            line-height: 1.75rem; /* 28px */
+            font-size: 1.25rem;
+            /* 20px */
+            line-height: 1.75rem;
+            /* 28px */
         }
 
         .answer-span {
-            color: #DC2626; /* 赤色 */
+            color: #DC2626;
+            /* 赤色 */
             font-weight: 700;
             display: none;
         }
@@ -40,7 +45,7 @@
         .show-answer .underline-span {
             display: none;
         }
-        
+
         .explanation {
             display: none;
             white-space: pre-wrap;
@@ -57,22 +62,27 @@
             cursor: pointer;
             transition: all 0.2s ease-in-out;
         }
+
         .btn-primary {
             background-color: #3b82f6;
             color: white;
         }
+
         .btn-primary:hover {
             background-color: #2563eb;
         }
+
         .btn-secondary {
             background-color: #6b7280;
             color: white;
         }
+
         .btn-secondary:hover {
             background-color: #4b5563;
         }
     </style>
 </head>
+
 <body class="text-gray-800">
 
     <div id="app-container" class="container mx-auto p-4 md:p-8 max-w-4xl">
@@ -83,23 +93,27 @@
 
         <main class="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg mb-28">
             <div class="flex justify-between items-center mb-6">
-                 <!-- PDF Control Section -->
-                 <div class="flex-1 mr-4">
+                <!-- PDF Control Section -->
+                <div class="flex-1 mr-4">
                     <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
                         <h3 class="font-bold text-sm md:text-base mb-2">選択した問題でPDFを作成</h3>
                         <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
                             <div class="flex items-center">
-                                <input type="checkbox" id="select-all-checkbox" class="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
-                                <label for="select-all-checkbox" class="ml-2 text-sm font-medium text-gray-700 cursor-pointer">すべて選択 / 解除</label>
+                                <input type="checkbox" id="select-all-checkbox"
+                                    class="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                                <label for="select-all-checkbox"
+                                    class="ml-2 text-sm font-medium text-gray-700 cursor-pointer">すべて選択 / 解除</label>
                             </div>
-                            <button id="open-pdf-modal-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow text-sm transition-transform transform hover:scale-105">
+                            <button id="open-pdf-modal-btn"
+                                class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow text-sm transition-transform transform hover:scale-105">
                                 PDF作成メニュー
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <button id="start-quiz-btn" class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-lg shadow transition-transform transform hover:scale-105 whitespace-nowrap">
+                <button id="start-quiz-btn"
+                    class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-lg shadow transition-transform transform hover:scale-105 whitespace-nowrap">
                     ランダムテスト
                 </button>
             </div>
@@ -111,11 +125,16 @@
     </div>
 
     <!-- Control Panel -->
-    <div id="control-panel" class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md p-4 border-t-2 border-gray-200 shadow-2xl flex justify-center items-center space-x-2 md:space-x-4">
-        <button id="toggle-answer-btn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">表示/非表示</button>
-        <button id="play-sound-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">音声再生</button>
-        <button id="record-btn" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">録音評価</button>
-        <button id="toggle-explanation-btn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">解説</button>
+    <div id="control-panel"
+        class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md p-4 border-t-2 border-gray-200 shadow-2xl flex justify-center items-center space-x-2 md:space-x-4">
+        <button id="toggle-answer-btn"
+            class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">表示/非表示</button>
+        <button id="play-sound-btn"
+            class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">音声再生</button>
+        <button id="record-btn"
+            class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">録音評価</button>
+        <button id="toggle-explanation-btn"
+            class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">解説</button>
     </div>
 
     <!-- Message/Score Modal -->
@@ -124,11 +143,12 @@
             <!-- Message content will be populated by JS -->
         </div>
     </div>
-    
+
     <!-- Quiz Modal -->
     <div id="quiz-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-40 p-4">
         <div class="bg-white w-full max-w-2xl p-8 rounded-2xl shadow-2xl relative">
-            <button id="close-quiz-btn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-3xl font-bold">&times;</button>
+            <button id="close-quiz-btn"
+                class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-3xl font-bold">&times;</button>
             <div id="quiz-content">
                 <!-- Quiz content will be populated by JS -->
             </div>
@@ -136,17 +156,24 @@
     </div>
 
     <!-- PDF Download Modal -->
-    <div id="pdf-modal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center z-50">
+    <div id="pdf-modal"
+        class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center z-50">
         <div class="relative mx-auto p-5 border w-11/12 md:w-1/2 lg:w-1/3 shadow-lg rounded-md bg-white">
             <div class="mt-3 text-center">
                 <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">ダウンロードするPDFの種類を選択</h3>
                 <div class="mt-2 space-y-3">
-                    <button id="download-list-btn" class="btn btn-primary w-full justify-start text-left">1. 完全なリスト (熟語・意味・例文)</button>
-                    <button id="download-en-quiz-btn" class="btn btn-primary w-full justify-start text-left">2. 熟語テスト (英語を解答)</button>
-                    <button id="download-ja-quiz-btn" class="btn btn-primary w-full justify-start text-left">3. 熟語テスト (意味を解答)</button>
-                    <button id="download-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">4. 熟語テスト (混合)</button>
-                    <button id="download-sentence-quiz-btn" class="btn btn-primary w-full justify-start text-left">5. 例文の穴埋め問題</button>
-                    <button id="download-sentence-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">6. 例文の混合問題 (穴埋め/和訳)</button>
+                    <button id="download-list-btn" class="btn btn-primary w-full justify-start text-left">1. 完全なリスト
+                        (熟語・意味・例文)</button>
+                    <button id="download-en-quiz-btn" class="btn btn-primary w-full justify-start text-left">2. 熟語テスト
+                        (英語を解答)</button>
+                    <button id="download-ja-quiz-btn" class="btn btn-primary w-full justify-start text-left">3. 熟語テスト
+                        (意味を解答)</button>
+                    <button id="download-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">4. 熟語テスト
+                        (混合)</button>
+                    <button id="download-sentence-quiz-btn" class="btn btn-primary w-full justify-start text-left">5.
+                        例文の穴埋め問題</button>
+                    <button id="download-sentence-mixed-quiz-btn"
+                        class="btn btn-primary w-full justify-start text-left">6. 例文の混合問題 (穴埋め/和訳)</button>
                 </div>
                 <div class="mt-6">
                     <button id="close-modal-btn" class="btn btn-secondary w-full">キャンセル</button>
@@ -158,516 +185,588 @@
     <script>
         const chapterData = [
     {
-        "id": "1",
-        "ja": "2 3 4 5 6 7 8 9 10音読 代名詞 2 3 4 5 6 7 8 9 10音読 文法編 ｜  11 章 代名詞 2 3 4 5 6 7 8 9 10音読 文法編 ｜  11 章 代名詞 2 3 4 5 6 7 8 9 10音読 文法編 ｜  11 章 代名詞 2 3 4 5 6 7 8 9 10音読 文法編 ｜  11 章 代名詞 2 3 4 5 6 7 8 9 10音読 文法編 ｜  11 章 代名詞 2 3 4 5 6 7 8 9 10音読 ࢺ・ʣ ͷ·ͱΊ② ࢺ・ʣ ͷ·ͱΊ① 文法編 ｜  11 章 代名詞",
+        "id": "11",
+        "ja": "章　代名詞  QR ☚ 音読用動画　別解など",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
-        "question": "ʮ～ͷ΋ͷʯFile40 ʮ～਎ʯFile41 one / another / some / the other / the others / othersFile 42 File45 File44 every otherʴࢺFile43"
+        "question": ""
     },
     {
-        "id": "11",
-        "ja": "代名詞 ◀\t音読用動画 別解など 章 代名詞 代名詞 代名詞 代名詞 代名詞 代名詞 代名詞",
+        "id": "164",
+        "ja": "● 文法編｜11章",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
-        "question": "①"
+        "question": ""
+    },
+    {
+        "id": "166",
+        "ja": "● 文法編｜11章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "168",
+        "ja": "● 文法編｜11章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "170",
+        "ja": "● 文法編｜11章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "172",
+        "ja": "● 文法編｜11章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "174",
+        "ja": "● 文法編｜11章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
     },
     {
         "id": "326",
-        "ja": "サラがすてきなシャーペンをくれたんだけど，なくしてしまっ た。",
-        "en": "Sara gave me a nice mechanical pencil, but I {(have) lost it.}",
-        "answer": "(have) lost it.",
-        "explanation": "▶ ࢺは名詞の代わりをするもの。英語は同じ語句の繰り返しを避ける傾向が\nあり，一度登場した名詞は代名詞を使って表す。\n▶ it はすでに登場したಛఆͷ単数名詞・数えられない名詞の代わりに使う。\n〈theʴ単数名詞 / 数えられない名詞〉の代わり。➡VI22– p.9\n▶ ࢺ…人や物事を指し示すI, we, you, he, she, it, they など。",
-        "question": "Sara gave me a nice mechanical pencil, but I . ͬͯ΋̤̠ɻͬͯ΋̤̠ɻ"
+        "ja": "サラがすてきなシャーペンをくれたんだけど，なくしてしまった。 〈the＋単数名詞/数えられない名詞〉の代わり。➡ VI 22―p.9",
+        "en": "???",
+        "answer": "",
+        "explanation": "F 290 ▶ 代名詞は名詞の代わりをするもの。英語は同じ語句の繰り返しを避ける傾向があり，一度登場した名詞は代名詞を使って表す。\n▶ itはすでに登場した特定の単数名詞・数えられない名詞の代わりに使う。\n▶ 人称代名詞…人や物事を指し示すI, we, you, he, she, it, theyなど。",
+        "question": "Sara gave me a nice mechanical pencil, but I (have) lost it. Sara gave me a nice mechanical pencil, but I (have) lost it."
     },
     {
         "id": "327-1",
         "ja": "シャーペンが壊れた。今日買わないと。",
-        "en": "My mechanical pencil is broken. I have to {buy one today.}",
-        "answer": "buy one today.",
-        "explanation": "▶ one はすでに登場した単数名詞の代わりに使うが，it と違ってෆಛఆͷ（͜Ε\nͱఆ·͍ͬͯͳ͍）１つ［１人］を表す。〈a/anʴ単数名詞〉の代用。➡VI22– p.9\n▶ ࢺ…不特定の（これと定まっていない）人・物・数量を指すone,\nanother, someone, both など。",
-        "question": "My mechanical pencil is broken. I have to (        ) (        ) today."
+        "en": "My mechanical pencil is broken. I have to {buy one} today.",
+        "answer": "buy one",
+        "explanation": "F 299 ▶ oneはすでに登場した単数名詞の代わりに使うが，itと違って不特定の(これと定まっていない)１つ[１人]を表す。〈a/an＋単数名詞〉の代用。➡ VI 22―p.9\n▶ 不定代名詞…不特定の(これと定まっていない)人・物・数量を指すone, another, someone, bothなど。",
+        "question": "My mechanical pencil is broken. I have to (    ) (    ) today."
     },
     {
         "id": "327-2",
-        "ja": "発展 私は緑茶より紅茶が好きだ。",
-        "en": "I prefer black tea to {green (tea)}.",
-        "answer": "green (tea)",
-        "explanation": "▶ one は数えられない名詞の代わりには使えない。tea「茶」は物質名詞で，\n数えられない名詞。繰り返しを避けるため，２つめのtea を省 略することもある。",
-        "question": "I prefer black tea to ."
+        "ja": "私は緑茶より紅茶が好きだ。 発展     Tip  一度登場した数えられない名詞を二度目に使うときはどうする？",
+        "en": "???",
+        "answer": "",
+        "explanation": "▶ oneは数えられない名詞の代わりには使えない。tea「茶」は物質名詞で，数えられない名詞。繰り返しを避けるため，２つめのteaを省略することもある。",
+        "question": "I prefer black tea to green tea. I prefer black tea to green (tea)."
     },
     {
         "id": "328-1",
-        "ja": "私の上着は小さすぎるから，新しいものを買う必要がある。",
-        "en": "Since my jacket is too small, I need to buy {a new one.}",
-        "answer": "a new one.",
-        "explanation": "▶ one の単数形に形容詞を付けるときはa/anʴࢺʴone の形にする。",
-        "question": "Since my jacket is too small, I need to buy (        ) (        ) (        )."
+        "ja": "私の上着は小さすぎるから，新しいものを買う必要がある。 ○ since …「…なので，…なのだから」―理由を表すsince",
+        "en": "Since my jacket is too small, I need to buy {a new one}.",
+        "answer": "a new one",
+        "explanation": "Tip 「新しい」という形容詞が付いた「不特定の」上着はどう表す？\nF 300 ▶ oneの単数形に形容詞を付けるときはa/an＋形容詞＋oneの形にする。",
+        "question": "Since my jacket is too small, I need to buy (    ) (    ) (    )."
     },
     {
         "id": "328-2",
-        "ja": "電池が切れている。新しいのと交換しないと。",
+        "ja": "電池が切れている。新しいのと交換しないと。 batteriesと複数形になっているので，複数の電池を表すonesを使う。",
         "en": "The batteries are dead. I need to replace them with {new ones}.",
         "answer": "new ones",
-        "explanation": "▶ one の複数形に形容詞を付けるときはࢺʴones の形にする。\nbatteries と複数形になっているので，複数の電池を表すones を使う。",
-        "question": "The batteries are dead. I need to replace them with ."
+        "explanation": "Tip  この文ではbatteriesは複数形。「複数の，不特定の」電池を表すには？\nF 300 ▶ oneの複数形に形容詞を付けるときは形容詞＋onesの形にする。",
+        "question": "The batteries are dead. I need to replace them with new ones."
     },
     {
         "id": "328-3",
         "ja": "新しいジーンズを買ったほうがいいよ。今はいているのは短すぎる。",
-        "en": "You should buy a new pair of jeans. {The ones you’re wearing now are too short.}",
-        "answer": "The ones you’re wearing now are too short.",
-        "explanation": "▶ one/ones の後ろに修飾語句を付けるときは，限定されるためthe を付けてthe\none/onesʴ۟ޠの形にする。a pair of ～は複数を表す代名詞で受ける。",
-        "question": "You should buy a new pair of jeans. (        ) (        ) you’re wearing now are too short."
+        "en": "You should buy a new pair of jeans. {The ones} you’re wearing now are",
+        "answer": "The ones",
+        "explanation": "Tip 〈a pair of ～〉は複数を表す代名詞で受ける。\ntoo short.\n▶ one/onesの後ろに修飾語句を付けるときは，限定されるためtheを付けてthe one/ones＋修飾語句の形にする。a pair of ～は複数を表す代名詞で受ける。",
+        "question": "You should buy a new pair of jeans. (    ) (    ) you’re wearing now are too short."
     },
     {
         "id": "329",
-        "ja": "神奈川の人口は大阪の人口よりも多い。",
+        "ja": "神奈川の人口は大阪の人口よりも多い。 このように，人・物事・節や文の内容を指し示す代名詞を指示代名詞と呼ぶ。",
         "en": "The population of Kanagawa is larger than {that} of Osaka.",
         "answer": "that",
-        "explanation": "▶ このthat は名詞の反復を避ける代名詞。前出の単数名詞/ 数えられない名詞の\n代用をする。この文ではthe population の代用。it は単独で使うのに対し，that\nは後ろに修飾語を付けることができる。of Osaka「大阪の」がthat を修飾。\n▶ this, these, that, those などは人や物事，前後の節や文などの内容を指す。\nこのよ うに，人・物事・節や文の内容を指し示す代名詞をࢺと呼ぶ。",
-        "question": "The population of Kanagawa is larger than (        ) of Osaka."
+        "explanation": "F 297 ▶ このthatは名詞の反復を避ける代名詞。前出の単数名詞/数えられない名詞の代用をする。この文ではthe populationの代用。itは単独で使うのに対し，thatは後ろに修飾語を付けることができる。of Osaka「大阪の」がthatを修飾。\n▶ this, these, that, thoseなどは人や物事，前後の節や文などの内容を指す。",
+        "question": "The population of Kanagawa is larger than (    ) of Osaka."
     },
     {
         "id": "330-1",
-        "ja": "一般的に，ア メ リカでの給料は日本より高い。",
+        "ja": "一般的に，アメリカでの給料は日本より高い。 この問題文のthoseはsalariesの代用。",
         "en": "In general, salaries in the US are higher than {those} in Japan.",
         "answer": "those",
-        "explanation": "▶ このthose は名詞の反復を避ける代名詞。前出の複数名詞の代用をする。\nこの問題文のthose はsalaries の代用。",
-        "question": "In general, salaries in the US are higher than (        ) in Japan."
+        "explanation": "Tip 「日本より → 日本での給料より」だが，salaries「給料」の繰り返しは避ける。\nF 297 ▶ このthoseは名詞の反復を避ける代名詞。前出の複数名詞の代用をする。",
+        "question": "In general, salaries in the US are higher than (    ) in Japan."
     },
     {
         "id": "330-2",
-        "ja": "この国の習慣は日本とは大きく異なる。",
+        "ja": "この国の習慣は日本とは大きく異なる。 代名詞 ① ● 163 ○ be different from A「Aとは異なる，Aとは違う」＝differ from A",
         "en": "The customs of this country are very different from {those} of Japan.",
         "answer": "those",
-        "explanation": "▶ ➡330-1  they や them は単独で使うのに対し，those は後ろに修飾語を付ける\nことができる。of Japan「日本の」がthose を修飾。\nbe diﬀerent from A ʮA ͱ͸ҟͳΔɼA ͱ͸ҧ͏ʯ＝diﬀer from A\n162 163\n復習\nSelf\nCheck",
-        "question": "The customs of this country are very different from (        ) of Japan."
+        "explanation": "Tip 「日本とは → 日本の習慣とは」だが，the customs「習慣」の繰り返しは避ける。\n▶ ➡ 330-1  theyやthemは単独で使うのに対し，thoseは後ろに修飾語を付けることができる。of Japan「日本の」がthoseを修飾。",
+        "question": "The customs of this country are very different from (    ) of Japan."
     },
     {
         "id": "331",
-        "ja": "会議の出席者はその新しい提案に同意した。",
-        "en": "{Those present at the meeting agreed to the new proposal. those present ʮग़੮ऀʯ＝people present}",
-        "answer": "Those present at the meeting agreed to the new proposal. those present ʮग़੮ऀʯ＝people present",
-        "explanation": "▶ 代名詞のthose はʮਓʑʯの意味を表すことがある。\npresent は形容詞で「出席している」の意味。",
-        "question": "(T      ) (        ) at the meeting agreed to the new proposal."
+        "ja": "会議の出席者はその新しい提案に同意した。 those present「出席者」＝people present presentは形容詞で「出席している」の意味。",
+        "en": "{Those present} at the meeting agreed to the new proposal.",
+        "answer": "Those present",
+        "explanation": "Tip 「出席者」を表す，形容詞を使った定型表現は？\n▶ 代名詞のthoseは「人々」の意味を表すことがある。",
+        "question": "(T   ) (    ) at the meeting agreed to the new proposal."
     },
     {
         "id": "332",
-        "ja": "彼らは戦争で亡くなった人々に祈りを捧げた。",
-        "en": "They prayed for {those who died in the war. those who … ʮʜ͢Δਓʑʯ＝people who … pray for A ʮAΔʯ}",
-        "answer": "those who died in the war. those who … ʮʜ͢Δਓʑʯ＝people who … pray for A ʮAΔʯ",
-        "explanation": "",
-        "question": "They prayed for (t      ) (        ) (d      ) in the war."
+        "ja": "彼らは戦争で亡くなった人々に祈りを捧げた。 F 298  those who …「…する人々」＝people who … ○ pray for A「Aのために祈る」",
+        "en": "They prayed for {those who died} in the war.",
+        "answer": "those who died",
+        "explanation": "Tip 「…する人々」を表す，関係代名詞を使った定型表現は？",
+        "question": "They prayed for (t   ) (    ) (d   ) in the war."
     },
     {
         "id": "333",
-        "ja": "発展 子どもたちは私たちの未来であり，そのように扱われるべきだ。",
-        "en": "Children are our future and should be treated {as such. as such ʮͦ͏͍͏΋ͷͱͯ͠ʯ}",
-        "answer": "as such. as such ʮͦ͏͍͏΋ͷͱͯ͠ʯ",
-        "explanation": "▶ such は「そのよ うな人 ［物，事］ 」の意味を表す代名詞。",
-        "question": "Children are our future and should be treated (        ) (        )."
+        "ja": "子どもたちは私たちの未来であり，そのように扱われるべきだ。 発展     Tip 「そういうものとして」を表す定型表現は？ as such「そういうものとして」",
+        "en": "Children are our future and should be treated {as such}.",
+        "answer": "as such",
+        "explanation": "▶ suchは「そのような人[物，事]」の意味を表す代名詞。",
+        "question": "Children are our future and should be treated (    ) (    )."
     },
     {
         "id": "334",
-        "ja": "すしや天ぷらのような日本料理を楽しむことができる。 sushi 「 す し 」，tempura「 天 ぷ ら 」，tofu「豆腐」 ，sake「酒」などはそのまま英語 として通じる。",
-        "en": "???",
-        "answer": "???",
+        "ja": "すしや天ぷらのような日本料理を楽しむことができる。 such as A「例えばAのような」 ＋ sushi「すし」, tempura「天ぷら」, tofu「豆腐」, sake「酒」などはそのまま英語として通じる。",
+        "en": "You can enjoy Japanese food {such as sushi }and tempura.",
+        "answer": "such as sushi",
         "explanation": "",
-        "question": "You can enjoy Japanese food (        ) (        ) (        ) and tempura. You can enjoy Japanese food such as sushi and tempura. such as A ʮྫ͑͹A ͷΑ͏ͳʯ"
+        "question": "You can enjoy Japanese food (    ) (    ) (    ) and tempura."
     },
     {
         "id": "335",
-        "ja": "朝 ， バスがよく遅 れるので 困っている。",
-        "en": "{It bothers me that the bus is often late in the morning.}",
-        "answer": "It bothers me that the bus is often late in the morning.",
-        "explanation": "▶ ޠのit。that節を主語にすると頭でっかちの文となりバランスが悪い。\nThat the bus is often late in the morning bothers me.\n⭢ It bothers me that the bus is often late in the morning.\n形式主語                                             ޠ\nIt is clear [obvious, evident] that …ʮ…ͱ͍͏͜ͱ͸໌Β͔ͩʯ\nbotherΒͤΔʯ",
-        "question": "(        ) (b      ) (        ) (        ) the bus is often late in the morning."
+        "ja": "朝，バスがよく遅れるので困っている。 ように形式主語を使う。「(人)を困らせる」を表す動詞は？ 形式主語                      真の主語 ＋ It is clear [obvious, evident] that …「…ということは明らかだ」 ○ bother「～を困らせる」",
+        "en": "{It bothers me that} the bus is often late in the morning. {That} the bus is often late in the morning bothers me. → {It} bothers me {that} the bus is often late in the morning.",
+        "answer": "It bothers me that, That, It, that",
+        "explanation": "F 291 ▶ 形式主語のit。that節を主語にすると頭でっかちの文となりバランスが悪い。",
+        "question": "(    ) (b   ) (    ) (    ) the bus is often late in the morning."
     },
     {
         "id": "336-1",
-        "ja": "「外見は重要じゃない。」「 私 は そ う は 思 わ な い 。」 What you look like doesnʼt matter.（外見は問題ではない。 ） 形式主語                                ޠ",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "“(        ) (d      ) (        ) (        ) you look like.” “I don’t agree.” ͢Δɻ͢Δɻ “It doesn’t matter what you look like.” “I don’t agree.” ⭢                                 It doesnʼt matter what you look like."
+        "ja": "「外見は重要じゃない。」「私はそうは思わない。」 It doesn’t matter (to A) wh-節 …  　　  「…は(Aにとって)問題ではない， It makes no difference (to A) wh-節 … 　　…は(Aにとって)どうでもよい」 What you look like doesn’t matter.（外見は問題ではない。） 形式主語               真の主語 ○ matter ① 名詞「問題, 事柄」② 動詞「重要である，問題となる」",
+        "en": "“{It doesn’t matter what} you look like.” “I don’t agree.” → {It} doesn’t matter {what} you look like.",
+        "answer": "It doesn’t matter what, It, what",
+        "explanation": "Tip 「(人の)外見 → 人がどのように見えるか(what you look like)」が主語になるが，主語が長くならないように形式主語を使う。「…は重要じゃない＝…は問題ではない」と表現する。",
+        "question": "“(    ) (d   ) (    ) (    ) you look like.” “I don’t agree.”"
     },
     {
         "id": "336-2",
-        "ja": "彼女がどこの出身かは関係ない。 Where she is from makes no difference.（彼女がどこの出身かは関係ない。 ） 形式主語                                          ޠ 336-1, 336-2 の表現や，I don’t care [mind] wh-અʮ…ʹ͠ͳ͍ʯなどの表現 では，wh-節の中は未来のことでもwill は使わず現在形を使う。これらのwh-節は名 詞節だが，例外的に条件を表す副詞節 （➡22）と 同 じ よ う な 扱 い を す る 。 （君が何をしようと私は構わない。 ） 復習",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "( difference / no / where / makes / it ) she is from. It makes no diﬀerence where she is from. ⭢                               It makes no difference where she is from. It doesn’t matter to me what you do.  [  what you will do] those / present / die / bother / matter 164 165 Self Check"
+        "ja": "彼女がどこの出身かは関係ない。 代名詞 ② ● 165 Where she is from makes no difference.（彼女がどこの出身かは関係ない。） 形式主語                    真の主語 ＋ 336-1, 336-2の表現や，I don’t care [mind] wh-節「…は気にしない」などの表現 では，wh-節の中は未来のことでもwillは使わず現在形を使う。これらのwh-節は名 詞節だが，例外的に条件を表す副詞節(➡ 22)と同じような扱いをする。 （君が何をしようと私は構わない。）",
+        "en": "{It makes no difference where} she is from. → {It} makes no difference {where} she is from. It doesn’t matter to me what you {do}. [×what you will do]",
+        "answer": "It makes no difference where, It, where, do",
+        "explanation": "Tip 「…は関係ない → …はどうでもよい(まったく違いが生じない)」と表現する。",
+        "question": "( difference / no / where / makes / it ) she is from."
     },
     {
         "id": "337",
-        "ja": "この街で雨がこんなに降るのはおかしいと思う。",
-        "en": "I find it {strange that it rains so much in this city.}",
-        "answer": "strange that it rains so much in this city.",
-        "explanation": "▶ ޠのit を使う。that節を後ろへ 置くこ とで文を読みやすくする。\nI find that it rains so much in this city strange.\n⭢ I find                            it                             strange that it rains so much\nin this city.          形式目的語                           C                    ޠ",
-        "question": "I find  it rains so much in this city. ͬͯಡΈ΍͍ͬͯ͢ಡΈ΍͍͢"
+        "ja": "この街で雨がこんなに降るのはおかしいと思う。 V’〉を置くと文のバランスが悪く，読みにくくなってしまう。形式目的語を使って 読みやすい文にすると？ 形式目的語         　C             真の目的語",
+        "en": "{I find} it strange that it rains so much in this city. {I find it strange that} it rains so much in this city. → I find {it} strange {that} it rains so much in this city.",
+        "answer": "I find, I find it strange that, it, that",
+        "explanation": "Tip 〈find＋O＋C〉で「OをCだと思う，OがCだとわかる」。Oの位置に〈that S’＋\nF 292 ▶ 形式目的語のitを使う。that節を後ろへ置くことで文を読みやすくする。\n× I find that it rains so much in this city strange.",
+        "question": ""
     },
     {
         "id": "338",
-        "ja": "大統領は来月の首脳会談に出席することを 明 言している。",
-        "en": "The President has made it clear that he will attend the summit next month. make it clear that … ʮʜͱ͍͏͜ͱΛ໌Β͔ʹ͢Δʯ summit  ᶃʮट೴ձஊʯ ᶄʮ௖্ʯ",
-        "answer": "it clear that he will attend the summit next month. make it clear that … ʮʜͱ͍͏͜ͱΛ໌Β͔ʹ͢Δʯ summit ᶃʮट೴ձஊʯ ᶄʮ௖্ʯ",
-        "explanation": "",
-        "question": "The President has made  he will attend the summit next month."
+        "ja": "大統領は来月の首脳会談に出席することを明言している。 make it clear that …「…ということを明らかにする」 ○ summit ①「首脳会談」②「頂上」",
+        "en": "The President has {made} it clear that he will attend the summit next month. The President has {made it clear that} he will attend the summit next",
+        "answer": "made, made it clear that",
+        "explanation": "Tip 「…ということを明言する → …ということを明らかにする」を表す定型表現は？\nmonth.",
+        "question": ""
     },
     {
         "id": "339",
-        "ja": "日本では，女性が子育てをするの が 当たり前 だと思っている人がいまだにいる。 ⇧「 与 えら れ た（granted）も の と し て（for）受 け 取 る（take）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "In Japan, some people still take  women should raise children. In Japan, some people still take it for granted that women should raise children. take it for granted that …͏ʯ raise a childͲ΋ΛҭͯΔʯ"
+        "ja": "日本では，女性が子育てをするのが当たり前だと思っている人がいまだにいる。 take it for granted that …「…を当然のことと思う」 ⇧「与えられた(granted)ものとして(for)受け取る(take)」 ○ raise a child「子どもを育てる」",
+        "en": "In Japan, some people still {take }it for granted that women should raise In Japan, some people still {take it for granted that} women should raise",
+        "answer": "take, take it for granted that",
+        "explanation": "children.\nTip 「…を当たり前だと思っている＝…を当然のことと思う」を表す定型表現は？\nchildren.",
+        "question": ""
     },
     {
         "id": "340",
-        "ja": "発展 みんなが明日，自分の昼食を持って く るように取り計らってくれますか。 この表現のthat節では未来のことでもwill は使わず現在形を使う。",
-        "en": "???",
-        "answer": "???",
+        "ja": "みんなが明日，自分の昼食を持ってくるように取り計らってくれますか。 発展     Tip 「…するように取り計らう」を表す定型表現は？ see to it that …「…するように取り計らう」 ！ この表現のthat節では未来のことでもwillは使わず現在形を使う。 ○ bring one’s lunch「昼食を持ってくる」",
+        "en": "Could you {see} to it that everyone brings their lunch tomorrow? Could you {see to it that} everyone brings their lunch tomorrow?",
+        "answer": "see, see to it that",
         "explanation": "",
-        "question": "Could you see  everyone brings their lunch tomorrow? Could you see to it that everyone brings their lunch tomorrow? see to it that …Β͏ʯ bring one’s lunchͬͯ͘Δʯ"
+        "question": ""
     },
     {
         "id": "341-1",
-        "ja": "サラの絵は私のよりずっとい い 。",
+        "ja": "サラの絵は私のよりずっといい。 ➡ File 40 この問題文では，mineはmy paintingを意味する。 mine「私のもの」",
         "en": "Sara’s painting is much better than {mine}.",
         "answer": "mine",
-        "explanation": "▶ ࢺは「～のもの」という意味を表し，〈所有格ʴ名詞〉の代わりをする。\n➡File40   この問題文では，mine はmy painting を意味する。\nmineͷ΋ͷʯ",
-        "question": "Sara’s painting is much better than (        )."
+        "explanation": "F 288 ▶ 所有代名詞は「～のもの」という意味を表し，〈所有格＋名詞〉の代わりをする。",
+        "question": "Sara’s painting is much better than (    )."
     },
     {
         "id": "341-2",
-        "ja": "彼の目と彼女の目が合った。",
-        "en": "His eyes met {hers}. {hers} ʮ൴ঁͷ΋ͷʯ",
+        "ja": "彼の目と彼女の目が合った。 hers「彼女のもの」",
+        "en": "His eyes met {hers}.",
         "answer": "hers",
-        "explanation": "",
-        "question": "His eyes met (        )."
+        "explanation": "Tip 「彼女の目(her eyes)」の代わりに使う所有代名詞は？",
+        "question": "His eyes met (    )."
     },
     {
         "id": "341-3",
-        "ja": "選ぶのは彼らだ。",
-        "en": "The choice is {theirs}. {theirs} ʮ൴Β ʦ൴ঁΒʧ ͷ΋ͷʯ choice ʮબ୒ʯ",
+        "ja": "選ぶのは彼らだ。 theirs「彼ら[彼女ら]のもの」 ○ choice「選択」",
+        "en": "The choice is {theirs}.",
         "answer": "theirs",
-        "explanation": "",
-        "question": "The choice is (        )."
+        "explanation": "Tip 「選ぶのは彼らだ → その選択は彼らのものだ」と表現する。",
+        "question": "The choice is (    )."
     },
     {
         "id": "342",
-        "ja": "彼女のあのバッグはとてもかっこいい。",
+        "ja": "彼女のあのバッグはとてもかっこいい。 はどう表す？ 代名詞 ③ ● 167 × Her that bagは誤り。herではなくof hersで所有を表す。",
         "en": "{That bag of hers} is very cool.",
         "answer": "That bag of hers",
-        "explanation": "▶ her などの所有格はa/an, the, that, some などと一緒に使えない。所有代名詞\nを使って〈a/an [the, this, that, these, those, some]ʴࢺʴofʴॴ༗୅\nࢺ〉の形にする。\nHer that bag は誤り。her ではなくof hers で所有を表す。\n▶ a friend of mine（私の友人）\nstrange / clear / granted / see\nmineͷ΋ͷʯɹ  oursͨͪͷ΋ͷʯɹ  yoursʮ͋ͳͨͷ΋ͷʯ\nhisʮ൴ͷ΋ͷʯɹ  hersʮ൴ঁͷ΋ͷʯɹ  theirsʮ൴Β ʦ൴ঁΒʧ ͷ΋ͷʯ\n166 167\n復習\nSelf\nCheck",
-        "question": "is very cool."
+        "explanation": "Tip 「彼女の」と「あの」の２つで名詞(バッグ)を修飾する場合，「彼女の」という所有\nF 288 ▶ herなどの所有格はa/an, the, that, someなどと一緒に使えない。所有代名詞を使って〈a/an [the, this, that, these, those, some]＋名詞＋of＋所有代名詞〉の形にする。\n▶ a friend of mine（私の友人）",
+        "question": "That bag of hers is very cool."
     },
     {
         "id": "343",
-        "ja": "修学旅行は本当に楽しかった。",
-        "en": "I really {enjoyed myself during the school trip.}",
-        "answer": "enjoyed myself during the school trip.",
-        "explanation": "▶ ࢺは「～自身」という意味を表す。人称代名詞の所有格か目的格に\n-self，または-selves を付けた形になる。➡File41\nenjoy oneself͠Ήʯ＝have fun ＝have a good time\nschool tripʯ",
-        "question": "I really (e      ) (        ) during the school trip."
+        "ja": "修学旅行は本当に楽しかった。 enjoy oneself「楽しむ」＝have fun＝have a good time ○ school trip「修学旅行」",
+        "en": "I really {enjoyed myself} during the school trip.",
+        "answer": "enjoyed myself",
+        "explanation": "F 289 ▶ 再帰代名詞は「～自身」という意味を表す。人称代名詞の所有格か目的格に-self，または-selvesを付けた形になる。➡ File 41",
+        "question": "I really (e   ) (    ) during the school trip."
     },
     {
         "id": "344",
-        "ja": "私はぬれた床で滑っ てけがをした。",
-        "en": "I slipped on the wet floor and {hurt myself. hurt oneselfʮ͚͕Λ͢Δʯ＝get hurt}",
-        "answer": "hurt myself. hurt oneselfʮ͚͕Λ͢Δʯ＝get hurt",
-        "explanation": "▶ hurt 「～を傷つける」の活用はhurt —hurt —hurt",
-        "question": "I slipped on the wet floor and (h      ) (        )."
+        "ja": "私はぬれた床で滑ってけがをした。 hurt oneself「けがをする」＝get hurt",
+        "en": "I slipped on the wet floor and {hurt myself}.",
+        "answer": "hurt myself",
+        "explanation": "Tip 「自分自身を傷つけた」と表現する。\n▶ hurt「～を傷つける」の活用はhurt―hurt―hurt",
+        "question": "I slipped on the wet floor and (h   ) (    )."
     },
     {
         "id": "345",
-        "ja": "私が留守の間，行 儀 よくしていてほしい。",
-        "en": "I expect you to {behave yourself while I’m away. behave oneselfΑ͘͢Δʯ}",
-        "answer": "behave yourself while I’m away. behave oneselfΑ͘͢Δʯ",
-        "explanation": "",
-        "question": "I expect you to (        ) (        ) while I’m away."
+        "ja": "私が留守の間，行儀よくしていてほしい。 behave oneself「行儀よくする」 ○ be away「留守中である」",
+        "en": "I expect you to {behave yourself} while I’m away.",
+        "answer": "behave yourself",
+        "explanation": "Tip 「行儀よくする」を表す定型表現は？",
+        "question": "I expect you to (    ) (    ) while I’m away."
     },
     {
         "id": "346",
-        "ja": "座ってくつ ろい でください。",
-        "en": "Sit down and {make yourself at home. make oneself at homeʮͭ͘Ζ͙ʯ}",
-        "answer": "make yourself at home. make oneself at homeʮͭ͘Ζ͙ʯ",
-        "explanation": "",
-        "question": "Sit down and (        ) (        ) (        ) (h      )."
+        "ja": "座ってくつろいでください。 make oneself at home「くつろぐ」 ＋ at home ①「家で」②「(家にいるように)くつろいで(＝relaxed＝at ease)」",
+        "en": "Sit down and {make yourself at home}.",
+        "answer": "make yourself at home",
+        "explanation": "Tip 「くつろぐ」を表す定型表現は？",
+        "question": "Sit down and (    ) (    ) (    ) (h   )."
     },
     {
         "id": "347",
-        "ja": "その少女は独力でそのアプリを作った。",
-        "en": "The girl created the app {by herself. app ʮΞϓϦʯ}",
-        "answer": "by herself. app ʮΞϓϦʯ",
+        "ja": "その少女は独力でそのアプリを作った。 F 289  (all) by oneself「自分自身で，独力で」 ○ app「アプリ」",
+        "en": "The girl created the app {by herself}.",
+        "answer": "by herself",
         "explanation": "",
-        "question": "The girl created the app (        ) (        )."
+        "question": "The girl created the app (    ) (    )."
     },
     {
         "id": "348",
         "ja": "これはここだけの話です。",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
-        "question": "-1 -2＝ This is (        ) (        ). This is (        ) (y      ) (        ) (m     )."
+        "question": ""
     },
     {
         "id": "348-1",
-        "ja": "???",
-        "en": "-2＝ This is between us [ourselves]. This is between you and me. between us ＝between ourselves between you and me                              ʮ͚ͩ͜͜ͷ࿩͕ͩʯ",
-        "answer": "???",
+        "ja": "",
+        "en": "This is {between us [ourselves]}.",
+        "answer": "between us [ourselves]",
         "explanation": "",
-        "question": "???"
+        "question": "This is (    ) (    )."
+    },
+    {
+        "id": "348-2",
+        "ja": "between you and me      　　　　「ここだけの話だが」",
+        "en": "＝This is {between you and me}. {between us}＝{between ourselves}",
+        "answer": "between you and me, between us, between ourselves",
+        "explanation": "Tip 「これは私たちの間のことだ」と表現する。",
+        "question": "＝This is (    ) (y   ) (    ) (m   )."
     },
     {
         "id": "349",
-        "ja": "彼は自転車を盗まれた後，怒りで我を忘れた。 be stolen ʮ౪·ΕΔʯ    … after he was stolen his bike は誤り。",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "He was (b      ) (        ) (        ) (a      ) after his bike was stolen. He was beside himself with anger after his bike was stolen. beside A  ᶃʮA ͷ ͦ ͹ ʹ ʯ ᶄʮAʢతɾཁ఺ͳͲʣΛ֎Εͯʯ➡764"
+        "ja": "彼は自転車を盗まれた後，怒りで我を忘れた。 beside oneself with A「A(怒りなど)で我を忘れて」 ＋ beside A ①「Aのそばに」②「A(的・要点など)を外れて」➡ 764 ○ be stolen「盗まれる」 ×… after he was stolen his bike は誤り。",
+        "en": "He was {beside himself with anger} after his bike was stolen.",
+        "answer": "beside himself with anger",
+        "explanation": "Tip 「～で我を忘れて」を表すoneselfを使った定型表現は？",
+        "question": "He was (b   ) (    ) (    ) (a   ) after his bike was stolen."
     },
     {
         "id": "350",
-        "ja": "発展 その写真を見て，私は思わず笑ってしまった。 despite oneself          Θͣʯ―in spite of / despite「～にもかかわらず」",
-        "en": "???",
-        "answer": "???",
+        "ja": "その写真を見て，私は思わず笑ってしまった。 発展     Tip 「思わず」を表すoneselfを使った定型表現は？ despite oneself      「思わず」―in spite of / despite「～にもかかわらず」",
+        "en": "The picture made me laugh {in spite of myself}. {in spite of }{oneself}",
+        "answer": "in spite of myself, in spite of, oneself",
         "explanation": "",
-        "question": "The picture made me laugh (        ) (        ) (        ) (        ). The picture made me laugh in spite of myself. in spite of oneself"
+        "question": "The picture made me laugh (    ) (    ) (    ) (    )."
     },
     {
         "id": "351",
-        "ja": "発展 AI は単なるツールであって，それ自体は解決策ではない。 AI (＝artificial intelligence)஌ೳʯ―単数扱い 復習",
-        "en": "???",
-        "answer": "???",
+        "ja": "AIは単なるツールであって，それ自体は解決策ではない。 発展     Tip 「それ自体は」を表す定型表現は？ 代名詞 ④ ● 169 in themselves   「それ自体は」 ○ AI (＝artificial intelligence)「人工知能」―単数扱い ○ solution「解決策」",
+        "en": "AI is just a tool, not a solution {in itself}. {in itself}",
+        "answer": "in itself, in itself",
         "explanation": "",
-        "question": "AI is just a tool, not a solution (        ) (i      ). AI is just a tool, not a solution in itself. in itself in themselves    ମ͸ʯ solutionʯ hurt / at home / anger / spite myself਎ʯɹ  ourselves਎ʯɹ  yourself਎ʯ yourselves਎ʯɹ  himself਎ʯɹ  herself਎ʯ itselfମʯɹ  themselves਎ʯ 168 169 Self Check"
-    },
-    {
-        "id": "352",
-        "ja": "???",
-        "en": "⑤",
-        "answer": "???",
-        "explanation": "",
-        "question": "???"
+        "question": "AI is just a tool, not a solution (    ) (i   )."
     },
     {
         "id": "352-1",
-        "ja": "これはイマイチかも。別のものを見せてもらえますか。",
-        "en": "This might not be so good. Could you show me {another}? {another} ʮʢෆಛఆͷʣ΄ ͔ ͷ ̍ ͭʦ ̍ ਓ ʧɼ ΋ ͏̍ ͭʦ ̍ ਓ ʧʯ―代名詞",
+        "ja": "これはイマイチかも。別のものを見せてもらえますか。 F 303  another「(不特定の)ほかの１つ[１人]，もう１つ[１人]」―代名詞",
+        "en": "This might not be so good. Could you show me {another}?",
         "answer": "another",
-        "explanation": "▶ 「いくつかある中の別の１つ」を指す。➡File42",
-        "question": "This might not be so good. Could you show me (        )?"
+        "explanation": "▶「いくつかある中の別の１つ」を指す。➡ File 42",
+        "question": "This might not be so good. Could you show me (    )?"
     },
     {
         "id": "352-2",
-        "ja": "私のいとこは仕事を辞め，別の仕事を探している。 another ʴࢺʮ΋͏ ̍ͭ ʦ̍ਓʧ ผͷʙʯ―形容詞  ➡File45 –p.175 〈an＋other〉 で，もともと冠詞を含んでいるため，さらに冠詞を付けることはできない。 the another は誤り。",
-        "en": "???",
-        "answer": "???",
+        "ja": "私のいとこは仕事を辞め，別の仕事を探している。 を使う。 another＋単数名詞「もう１つ[１人]別の～」―形容詞 ➡ File 45―p.175 ！〈an＋other〉で，もともと冠詞を含んでいるため，さらに冠詞を付けることはできない。×the anotherは誤り。",
+        "en": "My cousin quit his job and is looking for {another one}.",
+        "answer": "another one",
         "explanation": "",
-        "question": "My cousin quit his job and is looking for (a      ) (        ). ͏ɻ͏ɻ My cousin quit his job and is looking for another one."
+        "question": "My cousin quit his job and is looking for (a   ) (    )."
     },
     {
         "id": "353",
-        "ja": "発展 結果が出るまであと2週間待たなければならない。 another の後には通常，単数名詞がく るが， 「２週間」を「１つのまとま り」と してとら えるため，複数形の名詞 （two weeks）で あ っ て も 単 数 と し て 扱 う 。",
-        "en": "???",
-        "answer": "???",
+        "ja": "結果が出るまであと2週間待たなければならない。 発展     Tip 「あと～，さらに～」はどう表す？ another＋数詞＋複数名詞「あと～，さらに～」 ！ anotherの後には通常，単数名詞がくるが，「２週間」を「１つのまとまり」としてとらえるため，複数形の名詞(two weeks)であっても単数として扱う。",
+        "en": "I’ll have to wait {another two weeks} for the results.",
+        "answer": "another two weeks",
         "explanation": "",
-        "question": "I’ll have to wait (        ) (        ) (        ) for the results. I’ll have to wait another two weeks for the results. another ʴࢺʴࢺʮ͋ͱʙɼ͞Βʹʙʯ"
+        "question": "I’ll have to wait (    ) (    ) (    ) for the results."
     },
     {
         "id": "354",
-        "ja": "恋愛と結婚は別のものだという人もいる。 ⇧「A は１つのこと，B はもう１つ の こと」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Some say romance (        ) (        ) (        ), marriage (        ) (        ). Some say romance is one thing, marriage is another. A is one thing, B is another.ʮA ͱB ͸ ผ ͷ ͜ ͱ ͩ ɻʯ"
+        "ja": "恋愛と結婚は別のものだという人もいる。 A is one thing, B is another.「AとBは別のことだ。」 ⇧「Aは１つのこと，Bはもう１つのこと」",
+        "en": "Some say romance {is one thing}, marriage {is another}.",
+        "answer": "is one thing, is another",
+        "explanation": "Tip 「AとBは別のことだ。」を表す定型表現は？",
+        "question": "Some say romance (    ) (    ) (    ), marriage (    ) (    )."
     },
     {
         "id": "355",
-        "ja": "パーティーの招待客が次々とやって来た。 ⇧ 「別の人の後に人」 「別のものの後にもの」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "The party guests came in (        ) (        ) (        ). The party guests came in one after another. one after another΁ͱʯ＝one after the other"
+        "ja": "パーティーの招待客が次々とやって来た。 one after another「次から次へと」＝one after the other ⇧「別の人の後に人」「別のものの後にもの」",
+        "en": "The party guests came in {one after another}.",
+        "answer": "one after another",
+        "explanation": "Tip 「次から次へと」を表す定型表現は？",
+        "question": "The party guests came in (    ) (    ) (    )."
     },
     {
         "id": "356",
-        "ja": "私は2匹の犬を飼っていて，1匹は茶色，もう1 匹は黒だ。",
-        "en": "I have two dogs; {one is brown, and the other is black. the otherΓͷʙʯ}",
-        "answer": "one is brown, and the other is black. the otherΓͷʙʯ",
-        "explanation": "▶ 対象は̎ͭ［̎ਓ］。 「２つある中のも う一方」を指す。 「も う一方」は特定される\nのでthe が付く。➡File42",
-        "question": "I have two dogs;  is brown, and  is black."
+        "ja": "私は2匹の犬を飼っていて，1匹は茶色，もう1匹は黒だ。 「もう１匹」は特定されるので冠詞は？ F 304  the other「(特定の２つのうち)もう一方，もう一方の～，ほかの残りの～」",
+        "en": "I have two dogs; {one} is brown, and {the other} is black.",
+        "answer": "one, the other",
+        "explanation": "▶ 対象は２つ[２人]。「２つある中のもう一方」を指す。「もう一方」は特定されるのでtheが付く。➡ File 42",
+        "question": "I have two dogs; one is brown, and the other is black."
     },
     {
         "id": "357",
-        "ja": "この本はほかの本よりもおもしろそうだ。",
-        "en": "This book seems more interesting than {the others. the othersΓશ෦ʯ➡File42}",
-        "answer": "the others. the othersΓશ෦ʯ➡File42",
-        "explanation": "▶ 対象は全部で̏ͭ［̏ਓ］Ҏ্。 「ほかの残り全部」は特定されるのでthe が付く。",
-        "question": "This book seems more interesting than (        ) (        )"
+        "ja": "この本はほかの本よりもおもしろそうだ。 F 304  the others「(特定の)ほかの残り全部」➡ File 42",
+        "en": "This book seems more interesting than {the others}.",
+        "answer": "the others",
+        "explanation": "Tip 「ほかの本」は，「ほかの残りの本全部」を指す。\n▶ 対象は全部で３つ[３人]以上。「ほかの残り全部」は特定されるのでtheが付く。",
+        "question": "This book seems more interesting than (    ) (    )."
     },
     {
         "id": "358",
-        "ja": "野菜が好きな人もいるが，嫌いな人もいる。",
-        "en": "{Some people like vegetables, but others do not. some ʙ, others …ʮʙ΋͋Ε͹ ʦ͍Ε͹ʧ ʜ΋͋Δ ʦ͍Δʧ ʯ➡File42}",
-        "answer": "Some people like vegetables, but others do not. some ʙ, others …ʮʙ΋͋Ε͹ ʦ͍Ε͹ʧ ʜ΋͋Δ ʦ͍Δʧ ʯ➡File42",
-        "explanation": "▶ others は「 （不特定の） ほかのいくつか」 。不特定なのでthe は付かない。",
-        "question": "(        ) (        ) like vegetables, but (o      ) do not."
+        "ja": "野菜が好きな人もいるが，嫌いな人もいる。 F 304  some ～, others …「～もあれば[いれば]…もある[いる]」➡ File 42",
+        "en": "{Some people} like vegetables, but{ others} do not.",
+        "answer": "Some people, others",
+        "explanation": "▶ othersは「(不特定の)ほかのいくつか」。不特定なのでtheは付かない。",
+        "question": "(    ) (    ) like vegetables, but (o   ) do not."
     },
     {
         "id": "359",
-        "ja": "他人の気持ちを考えることが大切だ。",
-        "en": "It is important to consider the feelings of others. others  ᶃ ʮଞਓʯᶄ ʮ΄͔ͷਓͨͪɼ΄͔ͷ͍͔ͭ͘ʯ➡File45 –p.175",
-        "answer": "others. others ᶃ ʮଞਓʯᶄ ʮ΄͔ͷਓͨͪɼ΄͔ͷ͍͔ͭ͘ʯ➡File45 –p",
-        "explanation": "▶ 「 （不特定の） ほかのいくつか」に加えて「他人」の意味もある。冠詞は付けない。\nthing / others\none   another one   the other\none   the others some   the others\nsome   others [some]\n170 171\n復習\nSelf\nCheck",
-        "question": "It is important to consider the feelings of (        )."
+        "ja": "他人の気持ちを考えることが大切だ。 代名詞 ⑤ ● 171 others ①「他人」 ②「ほかの人たち，ほかのいくつか」➡ File 45―p.175",
+        "en": "It is important to consider the feelings of {others}.",
+        "answer": "others",
+        "explanation": "Tip 「他人」を表す表現は？\n▶「(不特定の)ほかのいくつか」に加えて「他人」の意味もある。冠詞は付けない。",
+        "question": "It is important to consider the feelings of (    )."
     },
     {
         "id": "360",
         "ja": "私の両親は共働きです。",
-        "en": "{⑥}",
-        "answer": "⑥",
+        "en": "???",
+        "answer": "",
         "explanation": "",
-        "question": "-1 -2＝ (        ) (        ) my (        ) work. (        ) my (        ) work."
+        "question": ""
     },
     {
         "id": "360-1",
-        "ja": "???",
-        "en": "-2＝ Both of my parents work. Both my parents work. both of ʴͷ（୅）ࢺʮʙͷ྆ํʯ―both は代名詞  ➡File45– p.175",
-        "answer": "???",
-        "explanation": "▶ 対象は２つ［２人］。複数扱い。\nboth ʴࢺʮ྆ํͷʙʯ―このboth は形容詞\n所有格やthe, these, those と共に使う場合，both はそれらの前に置く。\n▶ both his parents（彼の両親は２人とも）　  his both parents は誤り。",
-        "question": "???"
+        "ja": "F 306  both of＋複数形の(代)名詞「～の両方」―bothは代名詞 ➡ File 45―p.175 ＋ both＋複数名詞「両方の～」―このbothは形容詞 ！ 所有格やthe, these, thoseと共に使う場合，bothはそれらの前に置く。",
+        "en": "{Both of }my {parents} work. -2＝{Both }my {parents} work.",
+        "answer": "Both of, parents, Both, parents",
+        "explanation": "▶ 対象は２つ[２人]。複数扱い。\n▶ both his parents（彼の両親は２人とも） ×his both parentsは誤り。",
+        "question": "(    ) (    ) my (    ) work."
+    },
+    {
+        "id": "360-2",
+        "ja": "",
+        "en": "???",
+        "answer": "",
+        "explanation": "Tip  代名詞と形容詞を使った２通りの表現が可能。",
+        "question": "＝(    ) my (    ) work."
     },
     {
         "id": "361",
-        "ja": "発展 あなたたちのどちらかが，これらのバッグを運ぶのを手伝って くれる ？",
-        "en": "Can either of you help me carry these bags? either of ʴͷ（୅）ࢺ  ʕ代名詞 ➡File45– p.175",
-        "answer": "either of you help me carry these bags? either of ʴͷ（୅）ࢺ ʕ代名詞 ➡File45– p.175",
-        "explanation": "▶ 対象は２つ［２人］。単数扱いが原則だが，複数扱いも可。",
-        "question": "Can (        ) (        ) (        ) help me carry these bags?"
+        "ja": "あなたたちのどちらかが，これらのバッグを運ぶのを手伝ってくれる？ 発展     Tip 「～のうちどちらか」を表す表現は？ F 309  either of＋複数形の(代)名詞 ―代名詞 ➡ File 45―p.175 ①「～のどちらか」 ②「～のどちらでも」 ＋ either＋単数名詞 ①「どちらか一方の～」 ②「どちらの～でも」―形容詞",
+        "en": "Can {either of you} help me carry these bags?",
+        "answer": "either of you",
+        "explanation": "▶ 対象は２つ[２人]。単数扱いが原則だが，複数扱いも可。",
+        "question": "Can (    ) (    ) (    ) help me carry these bags?"
     },
     {
         "id": "362",
         "ja": "どちらの答えも正しくない。",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
-        "question": "-1 -2＝ (        ) (        ) the (        ) is right. (        ) (        ) is right."
+        "question": ""
     },
     {
         "id": "362-1",
-        "ja": "???",
-        "en": "-2＝ Neither of the answers is right. Neither answer is right. neither of ʴͷ（୅）ࢺʮʙͷͲͪΒ΋ʜͳ͍ʯ―代名詞 neither ʴࢺʮͲͪΒͷʙ΋ʜͳ͍ʯ―形容詞 ➡File45– p.175",
-        "answer": "???",
-        "explanation": "▶ 対象は２つ［２人］。単数扱いが原則。neither of ～ は複数扱いも可。",
-        "question": "???"
+        "ja": "",
+        "en": "{Neither of }the {answers} is right.",
+        "answer": "Neither of, answers",
+        "explanation": "",
+        "question": "(    ) (    ) the (    ) is right."
+    },
+    {
+        "id": "362-2",
+        "ja": "F 310  neither of＋複数形の(代)名詞「～のうちどちらも…ない」―代名詞 neither＋単数名詞「どちらの～も…ない」―形容詞 ➡ File 45―p.175",
+        "en": "＝{Neither answer} is right.",
+        "answer": "Neither answer",
+        "explanation": "Tip  ２通りの表現があるが，それぞれ名詞の単数・複数に注意する。\n▶ 対象は２つ[２人]。単数扱いが原則。neither of ～は複数扱いも可。",
+        "question": "＝(    ) (    ) is right."
     },
     {
         "id": "363",
-        "ja": "私たちは誰も中国語がわからない。",
-        "en": "{None of us understands Chinese. none of ʴͷ（୅）ࢺʮʙͷͲΕ ʦ୭ʧ ΋ʜͳ͍ʯ―代名詞}",
-        "answer": "None of us understands Chinese. none of ʴͷ（୅）ࢺʮʙͷͲΕ ʦ୭ʧ ΋ʜͳ͍ʯ―代名詞",
-        "explanation": "▶ 対象は３つ［３人］以上。単数扱い・複数扱いのどちらでも可。➡File45– p.175",
-        "question": "(        ) (o      ) (        ) understands Chinese."
+        "ja": "私たちは誰も中国語がわからない。 F 164  none of＋複数形の(代)名詞「～のうちどれ[誰]も…ない」―代名詞",
+        "en": "{None of us} understands Chinese.",
+        "answer": "None of us",
+        "explanation": "Tip 「３人以上」について，「誰も～ない」を表す表現は？\n▶ 対象は３つ[３人]以上。単数扱い・複数扱いのどちらでも可。➡ File 45―p.175",
+        "question": "(    ) (o   ) (    ) understands Chinese."
     },
     {
         "id": "364",
-        "ja": "私たちはどちらの提案にも同意しません。",
-        "en": "＝ We do not agree to either of the proposals. We agree to neither of the proposals. not … eitherʮͲͪΒ΋ʜͳ͍ʯ＝neither  ➡File45– p.175 agree to A ʮAըʣʹಉҙ͢Δʯ",
-        "answer": "do not agree to either of the proposals. We agree to neither of the proposals. not … eitherʮͲͪΒ΋ʜͳ͍ʯ＝neither ➡File45– p.175 agree to A ʮAըʣʹಉҙ͢Δʯ",
-        "explanation": "",
-        "question": "We (        ) (        ) agree to (        ) of the proposals."
+        "ja": "私たちはどちらの提案にも同意しません。 not … either「どちらも…ない」＝neither ➡ File 45―p.175 ○ agree to A「A(提案・計画)に同意する」",
+        "en": "We {do not} agree to {either} of the proposals. ＝We agree to {neither} of the proposals.",
+        "answer": "do not, either, neither",
+        "explanation": "Tip  neither「どちらも…ない」と同じ意味を表す表現は？",
+        "question": "We (    ) (    ) agree to (    ) of the proposals."
     },
     {
         "id": "365",
         "ja": "それぞれの家には花でいっぱいの庭がある。",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
-        "question": "-1 -2＝ (        ) (        ) the (h      ) (        ) a garden full of flowers. (        ) (h      ) (        ) a garden full of flowers. ʹ΋஫ҙɻʹ΋஫ҙɻ"
+        "question": ""
     },
     {
         "id": "365-1",
-        "ja": "each of ʴͷ（୅）ࢺɼ̍ਓ̍ਓʧ ʯ―代名詞 each ʴࢺʮͦΕͧΕͷʙʯ―形容詞 ➡File45– p.175 each / each of ～ / each ～ は単数扱い。",
-        "en": "???",
-        "answer": "???",
+        "ja": "",
+        "en": "{Each of }the {houses has} a garden full of flowers.",
+        "answer": "Each of, houses has",
         "explanation": "",
-        "question": "-2＝ Each of the houses has a garden full of flowers. Each house has a garden full of flowers."
+        "question": "(    ) (    ) the (h   ) (    ) a garden full of flowers."
+    },
+    {
+        "id": "365-2",
+        "ja": "動詞の形にも注意。 F 308  each of＋複数形の(代)名詞「～のそれぞれ[各自，１人１人]」―代名詞 each＋単数名詞「それぞれの～」―形容詞 ➡ File 45―p.175 ！ each / each of ～ / each ～は単数扱い。",
+        "en": "＝{Each house has} a garden full of flowers.",
+        "answer": "Each house has",
+        "explanation": "Tip  ２通りの表現があるが，それぞれ名詞の単数・複数に注意する。",
+        "question": "＝(    ) (h   ) (    ) a garden full of flowers."
     },
     {
         "id": "366",
-        "ja": "２人の少女がお 互 いに手を振っている。 each other ＝one another͍ʯ―代名詞 each other / one another は代名詞。副詞句ではない。  wave each other",
-        "en": "???",
-        "answer": "???",
+        "ja": "２人の少女がお互いに手を振っている。 each other＝one another「お互い」―代名詞 ！ each other / one anotherは代名詞。副詞句ではない。× wave each other ○ wave to [at] A「Aに手を振る」",
+        "en": "Two girls {are} waving to each other. Two girls {are waving to [at] each other}.",
+        "answer": "are, are waving to [at] each other",
         "explanation": "",
-        "question": "Two girls are . Two girls are waving to [at] each other. wave to [at] AʮA ʹखΛৼΔʯ"
+        "question": ""
     },
     {
         "id": "367",
-        "ja": "長時間労働を減らすために，あらゆる努力がなされなければならない。 every の後ろには単数形の名詞がくる。every ～は単数扱いする。 every は形容詞。each のような代名詞の用法はない。➡File45– p.175 復習",
-        "en": "???",
-        "answer": "???",
+        "ja": "長時間労働を減らすために，あらゆる努力がなされなければならない。 代名詞 ⑥ ● 173 F 323  every＋単数名詞「(１つ１つを意識して)どの～も，あらゆる～」 ！ everyの後ろには単数形の名詞がくる。every ～は単数扱いする。 ！ everyは形容詞。eachのような代名詞の用法はない。➡ File 45―p.175 ○ make every effort to do「～するためにあらゆる努力をする」",
+        "en": "{Every effort }must be made to reduce long working hours.",
+        "answer": "Every effort",
         "explanation": "",
-        "question": "(        ) (e      ) must be made to reduce long working hours. Every eﬀort must be made to reduce long working hours. every ʴࢺͯ͠ʣͲͷʙ΋ɼ͋ΒΏΔʙʯ make every eﬀort to do ʮʙ͢ΔͨΊʹ͋ΒΏΔ౒ྗΛ͢Δʯ house / wave 172 173 Self Check"
+        "question": "(    ) (e   ) must be made to reduce long working hours."
     },
     {
         "id": "368",
-        "ja": "発展 オリンピックは4年ごとに開かれる。 every の後には通常，単数名詞がく るが， 「４年間」を「１つのまとま り」と してとらえる ため，複数形の名詞 （four years）で あ っ て も 単 数 と し て 扱 う 。 the Olympic Games ʮΦϦϯϐοΫʯ―Games が付く ことに注意。",
-        "en": "{⑦}",
-        "answer": "⑦",
+        "ja": "オリンピックは４年ごとに開かれる。 発展     Tip 「～ごとに」を表す表現は？ every＋数詞＋複数名詞「～ごとに」 ！ everyの後には通常，単数名詞がくるが，「４年間」を「１つのまとまり」としてとらえるため，複数形の名詞(four years)であっても単数として扱う。 ○ the Olympic Games「オリンピック」―Gamesが付くことに注意。",
+        "en": "The Olympic Games take place {every four years}.",
+        "answer": "every four years",
         "explanation": "",
-        "question": "The Olympic Games take place (        ) (        ) (        ). The Olympic Games take place every four years. every ʴࢺʴࢺʮʙ͝ͱʹʯ"
+        "question": "The Olympic Games take place (    ) (    ) (    )."
     },
     {
         "id": "369",
-        "ja": "発展 私たちの学校は隔年で多くの留学生を受け入れている。",
-        "en": "Our school welcomes many international students {every other year. every other ʴࢺʮʙ͓͖ʹʯ➡File43 international studentੜʯ}",
-        "answer": "every other year. every other ʴࢺʮʙ͓͖ʹʯ➡File43 international studentੜʯ",
+        "ja": "私たちの学校は隔年で多くの留学生を受け入れている。 発展     Tip 「隔年で → １年おきに」と表現する。 every other＋単数名詞「～おきに」➡ File 43 ○ international student「留学生」",
+        "en": "Our school welcomes many international students {every other year}.",
+        "answer": "every other year",
         "explanation": "",
-        "question": "Our school welcomes many international students ."
+        "question": "Our school welcomes many international students every other year."
     },
     {
         "id": "370",
-        "ja": "それは私たちが議論していることとは何の関係もない。",
-        "en": "That {has nothing to do with} what we’re discussing. have nothing to do with A ʮA΋ͳ͍ʯ have something to do with A ʮA͕͋Δʯ",
+        "ja": "それは私たちが議論していることとは何の関係もない。 have nothing to do with A「Aと何の関係もない」 ＋ have something to do with A「Aと何らかの関係がある」",
+        "en": "That {has nothing to do with} what we’re discussing.",
         "answer": "has nothing to do with",
-        "explanation": "",
+        "explanation": "Tip 「～と何の関係もない」を表す定型表現は？",
         "question": "That ( has / to / nothing / with / do ) what we’re discussing."
     },
     {
         "id": "371",
         "ja": "私のコンピューターはどこか調子が悪い。",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
-        "question": "-1 -2＝ ( wrong / something / with / there / is ) my computer. (S      ) (        ) (        ) (        ) my computer."
+        "question": ""
     },
     {
         "id": "371-1",
-        "ja": "???",
-        "en": "-2＝ There is something wrong with my computer. Something is wrong with my computer. There is something wrong with A ＝There is something the matter with A ＝Something is wrong with A ＝Something is the matter with AʮA͕ѱ͍ʯ",
-        "answer": "???",
+        "ja": "",
+        "en": "{There is something wrong with} my computer.",
+        "answer": "There is something wrong with",
         "explanation": "",
-        "question": "???"
+        "question": "( wrong / something / with / there / is ) my computer."
+    },
+    {
+        "id": "371-2",
+        "ja": "「Aはどこか調子が悪い」",
+        "en": "＝{Something is wrong with} my computer. {There is something wrong with }A＝{There is something the matter with }A ＝{Something is wrong with }A＝{Something is the matter with }A",
+        "answer": "Something is wrong with, There is something wrong with, There is something the matter with, Something is wrong with, Something is the matter with",
+        "explanation": "Tip 「～はどこか調子が悪い」は複数の表現が可能。",
+        "question": "＝(S   ) (    ) (    ) (    ) my computer."
     },
     {
         "id": "372",
-        "ja": "発展 彼は私の故郷ではちょっとした英雄だ。",
-        "en": "He is {something of a hero in my hometown. something of a /an Aʮͪΐͬͱͨ͠Aɼ͔ͳΓͷAʯ hometownʯ}",
-        "answer": "something of a hero in my hometown. something of a /an Aʮͪΐͬͱͨ͠Aɼ͔ͳΓͷAʯ hometownʯ",
+        "ja": "彼は私の故郷ではちょっとした英雄だ。 発展     Tip 「ちょっとした～」を表す定型表現は？ something of a/an A「ちょっとしたA，かなりのA」 ○ hometown「故郷」",
+        "en": "He is {something of a }hero in my hometown.",
+        "answer": "something of a",
         "explanation": "",
-        "question": "He is (        ) (        ) (        ) hero in my hometown."
+        "question": "He is (    ) (    ) (    ) hero in my hometown."
     },
     {
         "id": "373",
-        "ja": "発展 ナオミは歌はあまり得意ではないが，友達とカラオケを楽しむ。",
-        "en": "Naomi is {not much of a singer, but she enjoys karaoke with her friends.}",
-        "answer": "not much of a singer, but she enjoys karaoke with her friends.",
-        "explanation": "▶ このmuch は代名詞で「大したもの」の意味。\nmuch\n形容詞 代名詞\none ̍ͭʦ̍ਓ ʧͷ ʙ one student ̍ͭʦ̍ਓ ʧ one of the students\nanother ΋͏̍ͭʦ̍ਓ ʧผ ͷ ʙ\nanother student\n΄ ͔ ͷ̍ͭʦ̍ਓ ʧ\nanother of the students\nother ΄͔ͷʙ other students ΄ ͔ ͷ ෺ʦ ਓ ʑ] others\nthe otherΓʧ ͷʙ\nthe other student [students] ΋͏Ұํ the other\nevery A ͲͷA ΋ every student\neach ͦΕͧΕͷʙ each student ͦΕͧΕ each of the students\nboth ྆ํͷʙ both students ྆ํ both of the students\neither student\nͲͪΒ͔Ұํ\neither of the students\nneither ͲͪΒͷʙ΋ʜͳ͍\nneither student\nͲͪΒ΋ʜͳ͍\nneither of the students\nnone ͲΕ ʦ୭ʧ ΋ʜͳ͍\nnone of the students\n形容詞 代名詞\nall ͢΂ͯͷʙ all students ͢΂ͯ all (of) the students\nsome ͍͔ͭ͘ ʦԿਓ͔ɼ͍͘Β͔ʧ ͷʙ\nsome students\n͍͔ͭ͘ ʦԿਓ͔ɼ͍͘Β͔]\nsome of the students\nany\n͍͔ͭ͘ ʦ͍͘Β͔ʧ ͷʙ\nԿ͔ ʦͲΕ͔ʧ ͷʙɼগ͠ͷʙ\n͍͔ͭ͘ ʦ͍͘Β͔]\nԿ͔ ʦͲΕ͔ʧ ɼԿ΋ ʦͲΕ΋]\nͲͷʙ΋ any student any of the students\nevery other dayʮ̍೔͓͖ʹʯɹ  every other weekendिͷि຤ʹʯ\nevery other month͓͖ʹʯ＝every two months͝ͱʹʯ\n174 175\n復習\nSelf\nCheck",
-        "question": "Naomi is (        ) (m     ) (        ) (        ) singer, but she enjoys karaoke with her friends."
+        "ja": "ナオミは歌はあまり得意ではないが，友達とカラオケを楽しむ。 発展     Tip 「歌はあまり得意ではないが → 大した歌手ではないが」と表現する。 代名詞 ⑦ ● 175 not much of a/an A「大したAではない」",
+        "en": "Naomi is {not much of a} singer, but she enjoys karaoke with her friends.",
+        "answer": "not much of a",
+        "explanation": "▶ このmuchは代名詞で「大したもの」の意味。",
+        "question": "Naomi is (    ) (m   ) (    ) (    ) singer, but she enjoys karaoke with her friends."
     }
 ];
 
@@ -681,7 +780,7 @@
             recognition.lang = 'en-US';
             recognition.interimResults = false;
         }
-        
+
         // --- Voice Synthesis Setup ---
         let synthesisVoice = null;
 
@@ -689,10 +788,10 @@
             const voices = speechSynthesis.getVoices();
             // 優先順位: Google US English -> Microsoft Zira/David -> その他英語
             synthesisVoice = voices.find(voice => voice.name === 'Google US English') ||
-                             voices.find(voice => voice.name.includes('Google') && voice.lang.includes('en-US')) ||
-                             voices.find(voice => voice.name.includes('Microsoft') && voice.lang.includes('en-US')) ||
-                             voices.find(voice => voice.lang === 'en-US') ||
-                             voices.find(voice => voice.lang.startsWith('en'));
+                voices.find(voice => voice.name.includes('Google') && voice.lang.includes('en-US')) ||
+                voices.find(voice => voice.name.includes('Microsoft') && voice.lang.includes('en-US')) ||
+                voices.find(voice => voice.lang === 'en-US') ||
+                voices.find(voice => voice.lang.startsWith('en'));
         }
 
         // 音声リストがロードされたら設定を実行
@@ -715,7 +814,7 @@
         const quizModal = document.getElementById('quiz-modal');
         const closeQuizBtn = document.getElementById('close-quiz-btn');
         const quizContent = document.getElementById('quiz-content');
-        
+
         const selectAllCheckbox = document.getElementById('select-all-checkbox');
         const pdfModal = document.getElementById('pdf-modal');
         const openPdfModalBtn = document.getElementById('open-pdf-modal-btn');
@@ -765,7 +864,7 @@
                 `;
                 sentenceList.appendChild(sentenceDiv);
             });
-            
+
             // Add click listener to each sentence item
             document.querySelectorAll('.sentence-item').forEach(item => {
                 item.addEventListener('click', (e) => {
@@ -792,15 +891,15 @@
                     }
                 });
             });
-            
+
             // Select the first sentence by default
             if (sentenceList.firstChild) {
-                 sentenceList.firstChild.click();
+                sentenceList.firstChild.click();
             }
         }
-        
+
         // --- PDF / Print Logic ---
-        
+
         function openPrintWindow(bodyContent, title) {
             const htmlContent = `
                 <!DOCTYPE html>
@@ -852,7 +951,7 @@
             printWindow.document.write(htmlContent);
             printWindow.document.close();
             setTimeout(() => {
-                printWindow.focus(); 
+                printWindow.focus();
                 printWindow.print();
             }, 250);
         }
@@ -867,32 +966,32 @@
                 .map(id => chapterData.find(item => item.id === id))
                 .filter(Boolean)
                 .sort((a, b) => {
-                     // Handle IDs like "1382-1" vs "1382-2"
-                     const aParts = a.id.split('-').map(s => parseInt(s) || 0);
-                     const bParts = b.id.split('-').map(s => parseInt(s) || 0);
-                     if (aParts[0] !== bParts[0]) return aParts[0] - bParts[0];
-                     return (aParts[1] || 0) - (bParts[1] || 0);
+                    // Handle IDs like "1382-1" vs "1382-2"
+                    const aParts = a.id.split('-').map(s => parseInt(s) || 0);
+                    const bParts = b.id.split('-').map(s => parseInt(s) || 0);
+                    if (aParts[0] !== bParts[0]) return aParts[0] - bParts[0];
+                    return (aParts[1] || 0) - (bParts[1] || 0);
                 });
         }
-        
+
         function getUniqueItems(items) {
-             const uniqueMap = new Map();
-             items.forEach(item => {
-                 // Use answer as key to deduplicate same phrases
-                 if (!uniqueMap.has(item.answer)) {
-                     uniqueMap.set(item.answer, item);
-                 }
-             });
-             return Array.from(uniqueMap.values()).sort((a, b) => {
-                 const aId = parseInt(a.id.split('-')[0]);
-                 const bId = parseInt(b.id.split('-')[0]);
-                 return aId - bId;
-             });
+            const uniqueMap = new Map();
+            items.forEach(item => {
+                // Use answer as key to deduplicate same phrases
+                if (!uniqueMap.has(item.answer)) {
+                    uniqueMap.set(item.answer, item);
+                }
+            });
+            return Array.from(uniqueMap.values()).sort((a, b) => {
+                const aId = parseInt(a.id.split('-')[0]);
+                const bId = parseInt(b.id.split('-')[0]);
+                return aId - bId;
+            });
         }
 
 
         // --- Message & Sound Functions ---
-        
+
         function showMessage(htmlContent, duration = null) {
             messageContent.innerHTML = htmlContent;
             messageModal.classList.remove('hidden');
@@ -916,7 +1015,7 @@
 
             // 連続再生を防ぐために一度キャンセル
             speechSynthesis.cancel();
-            
+
             let textToSpeak = activeSentenceElement.dataset.fullSentence;
             // 念のため不要な記号を除去
             textToSpeak = textToSpeak.replace(/[{}]/g, '');
@@ -929,7 +1028,7 @@
                 utterance.voice = synthesisVoice;
             }
 
-            utterance.rate = 1.0; 
+            utterance.rate = 1.0;
             utterance.pitch = 1.0;
 
             speechSynthesis.speak(utterance);
@@ -946,7 +1045,7 @@
             }
 
             showMessage('<p class="text-2xl">マイクに向かって話してください...</p><div class="animate-pulse text-red-500 text-4xl mt-4">●</div>');
-            
+
             recognition.start();
 
             recognition.onresult = (event) => {
@@ -957,20 +1056,20 @@
             recognition.onerror = (event) => {
                 showMessage(`<p>エラーが発生しました: ${event.error}</p>`, 3000);
             };
-            
+
             recognition.onend = () => {
-                 if (messageModal.classList.contains('hidden') === false && messageContent.innerHTML.includes('マイクに')) {
+                if (messageModal.classList.contains('hidden') === false && messageContent.innerHTML.includes('マイクに')) {
                     messageModal.classList.add('hidden');
-                 }
+                }
             };
         }
-        
+
         function evaluatePronunciation(transcript) {
             const originalText = activeSentenceElement.dataset.fullSentence;
 
             const cleanOrig = originalText.toLowerCase().replace(/[^\w\s]/g, '').split(' ');
             const cleanTrans = transcript.toLowerCase().replace(/[^\w\s]/g, '').split(' ');
-            
+
             let matches = 0;
             cleanOrig.forEach(word => {
                 if (cleanTrans.includes(word)) {
@@ -979,7 +1078,7 @@
             });
 
             const similarity = matches / cleanOrig.length;
-            
+
             let score;
             if (similarity > 0.9) {
                 score = 95 + Math.floor(Math.random() * 5);
@@ -992,7 +1091,7 @@
             } else {
                 score = 70 + Math.floor(Math.random() * 10);
             }
-            
+
             if (score === 100 && Math.random() < 0.3) score = 99;
 
             const messageHtml = `
@@ -1009,8 +1108,8 @@
 
         function startQuiz() {
             if (chapterData.length < 10) {
-                 showMessage('<p>クイズを作成するには、文が10個以上必要です。</p>', 3000);
-                 return;
+                showMessage('<p>クイズを作成するには、文が10個以上必要です。</p>', 3000);
+                return;
             }
 
             const shuffled = [...chapterData].sort(() => 0.5 - Math.random());
@@ -1035,8 +1134,9 @@
                     .map(item => item.answer);
 
                 const options = [correctAnswer, ...incorrectAnswers].sort(() => 0.5 - Math.random());
-                
-                const questionSentence = question.en.replace(`{${question.answer}}`, ' (______) ');
+
+                // Use regex to replace ALL {answer} parts with (______)
+                const questionSentence = question.en.replace(/\{.*?\}/g, ' (______) ');
 
                 quizContent.innerHTML = `
                     <h3 class="text-2xl font-bold mb-2">問題 ${currentQuestionIndex + 1}/10</h3>
@@ -1056,7 +1156,7 @@
                             button.classList.add('bg-red-400', 'text-white');
                             document.querySelector(`.quiz-option[data-answer="${CSS.escape(correctAnswer)}"]`).classList.add('bg-green-400', 'text-white');
                         }
-                        
+
                         setTimeout(() => {
                             currentQuestionIndex++;
                             showQuestion();
@@ -1101,12 +1201,12 @@
                 explanationDiv.style.display = 'block';
             }
         });
-        
+
         playSoundBtn.addEventListener('click', playSound);
         recordBtn.addEventListener('click', handleRecording);
         startQuizBtn.addEventListener('click', startQuiz);
         closeQuizBtn.addEventListener('click', () => quizModal.classList.add('hidden'));
-        
+
         // Select All Logic
         selectAllCheckbox.addEventListener('change', (e) => {
             const isChecked = e.target.checked;
@@ -1120,7 +1220,7 @@
 
         // PDF Modal Logic
         openPdfModalBtn.addEventListener('click', () => {
-             if (selectedSentences.size === 0) {
+            if (selectedSentences.size === 0) {
                 showMessage('<p>PDFを作成する問題を選択してください。</p>', 3000);
                 return;
             }
@@ -1142,10 +1242,10 @@
         // 1. 完全なリスト
         document.getElementById('download-list-btn').addEventListener('click', () => {
             const items = getSelectedItems();
-            if(!items) return;
+            if (!items) return;
             // リスト作成の場合は重複があっても良いが、見やすくするために熟語ベースでユニークにするか、
             // そのままID順で並べるか。ここではID順ですべて表示する。
-            
+
             const listItems = items.map(item => {
                 // Remove { } for clean display
                 const cleanEn = item.en.replace(/[{}]/g, '');
@@ -1154,7 +1254,7 @@
                     <span style="font-size:0.9em; color:#555;">Ex: ${cleanEn} / ${item.ja}</span>
                 </li>`;
             }).join('');
-            
+
             openPrintWindow(`<ul class="list-container">${listItems}</ul>`, '重要熟語リスト');
             pdfModal.classList.add('hidden');
         });
@@ -1162,14 +1262,14 @@
         // 2. 英語を解答
         document.getElementById('download-en-quiz-btn').addEventListener('click', () => {
             const items = getUniqueItems(getSelectedItems());
-            
-            const quizItems = items.map(item => 
+
+            const quizItems = items.map(item =>
                 `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')} : ____________________</span></li>`
             ).join('');
-            const answerItems = items.map(item => 
+            const answerItems = items.map(item =>
                 `<li><span class="inline-content">${item.answer}</span></li>`
             ).join('');
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (英語を解答)');
             pdfModal.classList.add('hidden');
@@ -1178,14 +1278,14 @@
         // 3. 意味を解答
         document.getElementById('download-ja-quiz-btn').addEventListener('click', () => {
             const items = getUniqueItems(getSelectedItems());
-            
-            const quizItems = items.map(item => 
+
+            const quizItems = items.map(item =>
                 `<li><span class="inline-content"><strong>${item.answer}</strong> : ____________________</span></li>`
             ).join('');
-            const answerItems = items.map(item => 
+            const answerItems = items.map(item =>
                 `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')}</span></li>`
             ).join('');
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (意味を解答)');
             pdfModal.classList.add('hidden');
@@ -1196,7 +1296,7 @@
             const items = getUniqueItems(getSelectedItems());
             let quizItems = '';
             let answerItems = '';
-            
+
             items.forEach(item => {
                 if (Math.random() > 0.5) {
                     // 日本語 -> 英語
@@ -1208,7 +1308,7 @@
                     answerItems += `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')}</span></li>`;
                 }
             });
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (混合)');
             pdfModal.classList.add('hidden');
@@ -1217,14 +1317,14 @@
         // 5. 例文穴埋め
         document.getElementById('download-sentence-quiz-btn').addEventListener('click', () => {
             const items = getSelectedItems(); // 例文問題なので重複（文脈違い）も含める
-            
+
             const quizItems = items.map(item => {
                 // Replace {answer} with underscore
                 const blankSentence = item.en.replace(`{${item.answer}}`, '____________________');
                 return `<li>${blankSentence}<br><span style="font-size:0.9em;">(${item.ja})</span></li>`;
             }).join('');
-            
-            const answerItems = items.map(item => 
+
+            const answerItems = items.map(item =>
                 `<li>${item.answer}</li>`
             ).join('');
 
@@ -1238,7 +1338,7 @@
             const items = getSelectedItems();
             let quizItems = '';
             let answerItems = '';
-            
+
             const instruction = '<p style="border:1px solid #ccc; padding:10px; margin-bottom:20px;">指示：空所には適切な語句を補い、下線部がある文は下線部の意味を日本語で答えなさい。</p>';
 
             items.forEach(item => {
@@ -1267,4 +1367,5 @@
         });
     </script>
 </body>
+
 </html>

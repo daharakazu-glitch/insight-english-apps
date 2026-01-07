@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Tinos:wght@700&display=swap');
-        
+
         body {
-            background-color: #007BFF; /* ビビットなブルー */
+            background-color: #007BFF;
+            /* ビビットなブルー */
             font-family: 'Noto Sans JP', sans-serif;
         }
 
@@ -17,12 +19,15 @@
         .font-english {
             font-family: 'Tinos', 'Times New Roman', serif;
             font-weight: 700;
-            font-size: 1.25rem; /* 20px */
-            line-height: 1.75rem; /* 28px */
+            font-size: 1.25rem;
+            /* 20px */
+            line-height: 1.75rem;
+            /* 28px */
         }
 
         .answer-span {
-            color: #DC2626; /* 赤色 */
+            color: #DC2626;
+            /* 赤色 */
             font-weight: 700;
             display: none;
         }
@@ -40,7 +45,7 @@
         .show-answer .underline-span {
             display: none;
         }
-        
+
         .explanation {
             display: none;
             white-space: pre-wrap;
@@ -57,22 +62,27 @@
             cursor: pointer;
             transition: all 0.2s ease-in-out;
         }
+
         .btn-primary {
             background-color: #3b82f6;
             color: white;
         }
+
         .btn-primary:hover {
             background-color: #2563eb;
         }
+
         .btn-secondary {
             background-color: #6b7280;
             color: white;
         }
+
         .btn-secondary:hover {
             background-color: #4b5563;
         }
     </style>
 </head>
+
 <body class="text-gray-800">
 
     <div id="app-container" class="container mx-auto p-4 md:p-8 max-w-4xl">
@@ -83,23 +93,27 @@
 
         <main class="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg mb-28">
             <div class="flex justify-between items-center mb-6">
-                 <!-- PDF Control Section -->
-                 <div class="flex-1 mr-4">
+                <!-- PDF Control Section -->
+                <div class="flex-1 mr-4">
                     <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
                         <h3 class="font-bold text-sm md:text-base mb-2">選択した問題でPDFを作成</h3>
                         <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
                             <div class="flex items-center">
-                                <input type="checkbox" id="select-all-checkbox" class="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
-                                <label for="select-all-checkbox" class="ml-2 text-sm font-medium text-gray-700 cursor-pointer">すべて選択 / 解除</label>
+                                <input type="checkbox" id="select-all-checkbox"
+                                    class="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                                <label for="select-all-checkbox"
+                                    class="ml-2 text-sm font-medium text-gray-700 cursor-pointer">すべて選択 / 解除</label>
                             </div>
-                            <button id="open-pdf-modal-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow text-sm transition-transform transform hover:scale-105">
+                            <button id="open-pdf-modal-btn"
+                                class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow text-sm transition-transform transform hover:scale-105">
                                 PDF作成メニュー
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <button id="start-quiz-btn" class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-lg shadow transition-transform transform hover:scale-105 whitespace-nowrap">
+                <button id="start-quiz-btn"
+                    class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-lg shadow transition-transform transform hover:scale-105 whitespace-nowrap">
                     ランダムテスト
                 </button>
             </div>
@@ -111,11 +125,16 @@
     </div>
 
     <!-- Control Panel -->
-    <div id="control-panel" class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md p-4 border-t-2 border-gray-200 shadow-2xl flex justify-center items-center space-x-2 md:space-x-4">
-        <button id="toggle-answer-btn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">表示/非表示</button>
-        <button id="play-sound-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">音声再生</button>
-        <button id="record-btn" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">録音評価</button>
-        <button id="toggle-explanation-btn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">解説</button>
+    <div id="control-panel"
+        class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md p-4 border-t-2 border-gray-200 shadow-2xl flex justify-center items-center space-x-2 md:space-x-4">
+        <button id="toggle-answer-btn"
+            class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">表示/非表示</button>
+        <button id="play-sound-btn"
+            class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">音声再生</button>
+        <button id="record-btn"
+            class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">録音評価</button>
+        <button id="toggle-explanation-btn"
+            class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">解説</button>
     </div>
 
     <!-- Message/Score Modal -->
@@ -124,11 +143,12 @@
             <!-- Message content will be populated by JS -->
         </div>
     </div>
-    
+
     <!-- Quiz Modal -->
     <div id="quiz-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-40 p-4">
         <div class="bg-white w-full max-w-2xl p-8 rounded-2xl shadow-2xl relative">
-            <button id="close-quiz-btn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-3xl font-bold">&times;</button>
+            <button id="close-quiz-btn"
+                class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-3xl font-bold">&times;</button>
             <div id="quiz-content">
                 <!-- Quiz content will be populated by JS -->
             </div>
@@ -136,17 +156,24 @@
     </div>
 
     <!-- PDF Download Modal -->
-    <div id="pdf-modal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center z-50">
+    <div id="pdf-modal"
+        class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center z-50">
         <div class="relative mx-auto p-5 border w-11/12 md:w-1/2 lg:w-1/3 shadow-lg rounded-md bg-white">
             <div class="mt-3 text-center">
                 <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">ダウンロードするPDFの種類を選択</h3>
                 <div class="mt-2 space-y-3">
-                    <button id="download-list-btn" class="btn btn-primary w-full justify-start text-left">1. 完全なリスト (熟語・意味・例文)</button>
-                    <button id="download-en-quiz-btn" class="btn btn-primary w-full justify-start text-left">2. 熟語テスト (英語を解答)</button>
-                    <button id="download-ja-quiz-btn" class="btn btn-primary w-full justify-start text-left">3. 熟語テスト (意味を解答)</button>
-                    <button id="download-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">4. 熟語テスト (混合)</button>
-                    <button id="download-sentence-quiz-btn" class="btn btn-primary w-full justify-start text-left">5. 例文の穴埋め問題</button>
-                    <button id="download-sentence-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">6. 例文の混合問題 (穴埋め/和訳)</button>
+                    <button id="download-list-btn" class="btn btn-primary w-full justify-start text-left">1. 完全なリスト
+                        (熟語・意味・例文)</button>
+                    <button id="download-en-quiz-btn" class="btn btn-primary w-full justify-start text-left">2. 熟語テスト
+                        (英語を解答)</button>
+                    <button id="download-ja-quiz-btn" class="btn btn-primary w-full justify-start text-left">3. 熟語テスト
+                        (意味を解答)</button>
+                    <button id="download-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">4. 熟語テスト
+                        (混合)</button>
+                    <button id="download-sentence-quiz-btn" class="btn btn-primary w-full justify-start text-left">5.
+                        例文の穴埋め問題</button>
+                    <button id="download-sentence-mixed-quiz-btn"
+                        class="btn btn-primary w-full justify-start text-left">6. 例文の混合問題 (穴埋め/和訳)</button>
                 </div>
                 <div class="mt-6">
                     <button id="close-modal-btn" class="btn btn-secondary w-full">キャンセル</button>
@@ -158,372 +185,412 @@
     <script>
         const chapterData = [
     {
-        "id": "1",
-        "ja": "2 3 4 5 6 7 8 9 10音読 ◀\t音読用動画 別解など 否 定 2 3 4 5 6 7 8 9 10音読 否 定 文法編 ｜  13章 2 3 4 5 6 7 8 9 10音読 否 定 文法編 ｜  13章 2 3 4 5 6 7 8 9 10音読 否 定 文法編 ｜  13章 2 3 4 5 6 7 8 9 10音読 否 定 文法編 ｜  13章",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "શ൱ఆͱ෦෼൱ఆ  ➡VI23– p.9File51 notʴʢ෦෼൱ఆʣFile52"
-    },
-    {
         "id": "２",
-        "ja": "つ［ ２ 人 ］を 否定 「私の町には書店が１つもない。 」は以下の４つの文で表せる。 (3) There is no bookstore in my town.                    少なくとも １つの書店の存在が期待 (4) There is not a bookstore in my town.             されるが１つもないことを表す。 「複数あることが想定されている」のか「１つあることが想定されている」のかで使う表 現 が 変 わ る 。（4） が「１つもない」ということを最も強調した表現。 Grasp ʪnoʴʫ ͷ୯਺・ෳ਺23 復習",
+        "ja": "通りの表現が可能。それぞれ単数・複数と，動詞の形に注意する。 否 定 ① ● 185",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
-        "question": "neither not … either ʮͲͪΒ΋ʜͳ͍ʯ not (…) both (1) There are no bookstores in my town.                ଴͞ΕΔ͕ (2) There are not any bookstores in my town.    ̍ͭ΋ͳ͍͜ͱΛද͢ɻ 184 185 Self Check"
-    },
-    {
-        "id": "３",
-        "ja": "つ ［ ３ 人］ 以上を 否定",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "none noʴࢺ not … anyʴࢺ ʮͲΕ΋ʜͳ͍ʯ no one ＝nobody ʮ୭΋ʜͳ͍ʯ not (…) all （ʴࢺ） not (…) everyʴࢺ not (…) everyone"
+        "question": ""
     },
     {
         "id": "13",
-        "ja": "否 定 否 定 否 定 否 定 否 定",
+        "ja": "章　否 定  QR ☚ 音読用動画　別解など",
         "en": "???",
-        "answer": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "186",
+        "ja": "● 文法編｜13章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "188",
+        "ja": "● 文法編｜13章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "190",
+        "ja": "● 文法編｜13章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "192",
+        "ja": "● 文法編｜13章",
+        "en": "???",
+        "answer": "",
         "explanation": "",
         "question": ""
     },
     {
         "id": "390",
-        "ja": "彼は返事を待ったが，1つも来なかった。 13章 否 定",
-        "en": "He waited for a reply, but {none came.}",
-        "answer": "none came.",
-        "explanation": "▶ 否定には「まったく～ない」のように全体を否定するશ൱ఆと，「すべてが～と\nいうわけではない」のように一部分を否定する෦෼൱ఆがある。➡VI23– p.9\nnone ʮ̍ͭ΋ ʦ̍ਓ΋ʧ ʜͳ͍ɼͲΕ΋ ʦ୭΋ʧ ʜͳ͍ʯ\n▶ 全否定。３つ ［３人］ 以上の場合に使う。➡File51\nこの問題文のnone はno reply の代用。",
-        "question": "He waited for a reply, but (        ) (c      ). ①"
+        "ja": "彼は返事を待ったが，１つも来なかった。 none「１つも[１人も]…ない，どれも[誰も]…ない」 この問題文のnoneはno replyの代用。",
+        "en": "He waited for a reply, but {none} {came}.",
+        "answer": "none, came",
+        "explanation": "▶ 否定には「まったく～ない」のように全体を否定する全否定と，「すべてが～というわけではない」のように一部分を否定する部分否定がある。➡ VI 23―p.9\n▶ 全否定。３つ[３人]以上の場合に使う。➡ File 51",
+        "question": "He waited for a reply, but (    ) (c   )."
     },
     {
         "id": "391",
-        "ja": "私の近所にはコンビニが 1 つもない。",
+        "ja": "私の近所にはコンビニが１つもない。",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
-        "question": "-1 -2＝ There (        ) (n      ) (        ) (        ) in my neighborhood. There (        ) (n      ) (        ) (        ) (        ) in my neighborhood."
+        "question": ""
     },
     {
         "id": "391-1",
-        "ja": "???",
-        "en": "-2＝ There are no convenience stores in my neighborhood. There are not any convenience stores in my neighborhood. no ʴࢺ not … anyʴࢺ    ʮ̍ͭͷʦ̍ਓͷɼͲͷʧʙ΋ʜͳ͍ʯ",
-        "answer": "???",
-        "explanation": "▶ 全否定。３つ ［３人］ 以上の場合に使う。➡Grasp23, File51\nin one’s neighborhoodॴʹʯ―neighborॴͷਓɼྡਓʯ",
-        "question": "???"
+        "ja": "",
+        "en": "There {are no convenience stores} in my neighborhood.",
+        "answer": "are no convenience stores",
+        "explanation": "",
+        "question": "There (    ) (n   ) (    ) (    ) in my neighborhood."
+    },
+    {
+        "id": "391-2",
+        "ja": "F 163  no＋名詞 not … any＋名詞　　「１つの[１人の，どの]～も…ない」 ○ in one’s neighborhood「～の近所に」―neighbor「近所の人，隣人」",
+        "en": "＝There {are not any convenience stores} in my neighborhood.",
+        "answer": "are not any convenience stores",
+        "explanation": "Tip 「どの[１つの]～も…ない」はどう表す？ noとnotを使う２つの方法がある。\n▶ 全否定。３つ[３人]以上の場合に使う。➡ Grasp 23，File 51",
+        "question": "＝There (    ) (n   ) (    ) (    ) (    ) in my neighborhood."
     },
     {
         "id": "392-1",
-        "ja": "私たちは2 人ともピ アノ が 上 手 に弾けない。",
-        "en": "{Neither of us can play the piano very well. neither ʮͲͪΒ΋ʜͳ͍ʯ＝not … either}",
-        "answer": "Neither of us can play the piano very well. neither ʮͲͪΒ΋ʜͳ͍ʯ＝not … either",
-        "explanation": "▶ 全否定。２つ［２人］の場合に使う。➡File51\nWe agree to neither of the proposals.\n＝ We don’t agree to either of the proposals.\n（私たちはどちらの提案にも同意しません。）",
-        "question": "(N      ) of us (        ) (        ) the piano very well."
+        "ja": "私たちは２人ともピアノが上手に弾けない。 F 310  neither「どちらも…ない」＝not … either （私たちはどちらの提案にも同意しません。）",
+        "en": "{Neither} of us {can play} the piano very well. We agree to {neither} of the proposals.＝We {don’t} agree to {either} of the proposals.",
+        "answer": "Neither, can play, neither, don’t, either",
+        "explanation": "Tip 「２つ[２人]のうちどちらも…ない」を１語で表す表現は？\n▶ 全否定。２つ[２人]の場合に使う。➡ File 51",
+        "question": "(N   ) of us (    ) (    ) the piano very well."
     },
     {
         "id": "392-2",
-        "ja": "「私はホラー映画が好きではありません。 」 「私も好きではありません。」",
-        "en": "“I don’t like horror movies.” “Me(,) neither.”",
-        "answer": "Me, neither.”",
-        "explanation": "▶ 前文が否定文のときに使う。コンマは付けても付けなくてもよい。\nMe (,) too.΋ ͦ ͏ ͩ ɻʯ―前文が肯定文のときに使う。",
-        "question": "“I don’t like horror movies.” “(        ) (        )”"
+        "ja": "「私はホラー映画が好きではありません。」「私も好きではありません。」 Me(,) neither.「私もそうではない。」＝Neither do [did] I.＝Nor do [did] I. ＋ Me(,) too.「私もそうだ。」―前文が肯定文のときに使う。",
+        "en": "???",
+        "answer": "",
+        "explanation": "Tip 「私もそうではない。」を表す定型表現は？\n▶ 前文が否定文のときに使う。コンマは付けても付けなくてもよい。",
+        "question": "“I don’t like horror movies.” “(    ) (    )” “I don’t like horror movies.” “Me(,) neither.”"
     },
     {
         "id": "393",
         "ja": "すべての高卒生が大学に進学するわけではない。",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
-        "question": "-1 -2＝ (        ) (        ) high school (g      ) go on to college. (        ) (        ) high school (g      ) goes on to college. ʹ஫ҙ͢Δɻʹ஫ҙ͢Δɻ"
+        "question": ""
     },
     {
         "id": "393-1",
-        "ja": "???",
-        "en": "-2＝ Not all high school graduates go on to college. Not every high school graduate goes on to college. not (…) all （ʴࢺ）",
-        "answer": "???",
-        "explanation": "▶ 部分否定。３つ ［３人］ 以上の場合に使う。➡File51\ngraduate  ੜʯ\nnone / convenience / neither / all / graduate / every\n全否定 部分否定",
-        "question": "???"
+        "ja": "",
+        "en": "{Not all }high school{ graduates} go on to college.",
+        "answer": "Not all, graduates",
+        "explanation": "",
+        "question": "(    ) (    ) high school (g   ) go on to college."
+    },
+    {
+        "id": "393-2",
+        "ja": "F 167  not (…) all (＋複数名詞) F 168    not (…) every＋単数名詞　　「すべての～が…というわけではない」 ○ graduate ① 動詞「卒業する」② 名詞「卒業生」",
+        "en": "＝{Not every }high school{ graduate} goes on to college.",
+        "answer": "Not every, graduate",
+        "explanation": "Tip 「すべての～が…というわけではない」という部分否定を表す表現は？\n▶ 部分否定。３つ[３人]以上の場合に使う。➡ File 51",
+        "question": "＝(    ) (    ) high school (g   ) goes on to college."
     },
     {
         "id": "394",
         "ja": "すべての人が英語を学ぶ必要があるというわけではないと思う。",
-        "en": "②",
-        "answer": "???",
+        "en": "???",
+        "answer": "",
         "explanation": "",
-        "question": "-1 -2＝ I  needs to learn English. I  need to learn English. ͢Δɻ͢Δɻ➡398"
+        "question": ""
     },
     {
         "id": "394-1",
-        "ja": "???",
-        "en": "-2＝ I do not think (that) everyone needs to learn English. I do not think (that) all people need to learn English. not (…) everyone",
-        "answer": "???",
-        "explanation": "▶ 部分否定。➡File51– p.185",
-        "question": "???"
+        "ja": "",
+        "en": "I {I }do not think everyone needs to learn English.",
+        "answer": "I",
+        "explanation": "",
+        "question": "I do not think (that) everyone needs to learn English."
+    },
+    {
+        "id": "394-2",
+        "ja": "「…ではないと思う」は「…だとは思わない」と表現する。➡ 398 not (…) all people    「すべての人が…というわけではない」",
+        "en": "＝I{I}do not think all people need to learn English.",
+        "answer": "I",
+        "explanation": "Tip  部分否定の文。単数と複数の２通りの表現が可能。\n▶ 部分否定。➡ File 51―p.185",
+        "question": "＝I do not think (that) all people need to learn English. not (…) everyone"
     },
     {
         "id": "395",
-        "ja": "私たちは質と量の両方に重点を置くことはできない。",
-        "en": "We {cannot focus on both quality and quantity.}",
-        "answer": "cannot focus on both quality and quantity.",
-        "explanation": "▶ 部分否定。２つ［２人］の場合に使う。➡File51– p.185\nfocus on A ʮA ʹয఺Λ౰ͯΔɼA ʹॏ఺Λஔ͘ʯ\nboth A and BʮA ΋B ΋ɼA ͱB ͷ྆ํʯ",
-        "question": "We (        ) focus on (        ) quality and quantity."
+        "ja": "私たちは質と量の両方に重点を置くことはできない。 使う。 F 168  not (…) both「両方とも…というわけではない」 ○ focus on A「Aに焦点を当てる，Aに重点を置く」 ○ both A and B「AもBも，AとBの両方」",
+        "en": "We {cannot} focus on {both} quality and quantity.",
+        "answer": "cannot, both",
+        "explanation": "Tip 「両方とも…というわけではない」を表す表現を，「できる」を表す助動詞と共に\n▶ 部分否定。２つ[２人]の場合に使う。➡ File 51―p.185",
+        "question": "We (    ) focus on (    ) quality and quantity."
     },
     {
         "id": "396",
-        "ja": "お金がいつも幸せをもたらすとは限らない。",
-        "en": "Money {does not always bring happiness. not always …Βͳ͍ʧ ʯ}",
-        "answer": "does not always bring happiness. not always …Βͳ͍ʧ ʯ",
-        "explanation": "▶ 部分否定。➡File52\nbring happinessͤΛ΋ͨΒ͢ʯ",
-        "question": "Money (        ) (        ) (a      ) (b      ) happiness."
+        "ja": "お金がいつも幸せをもたらすとは限らない。 F 168  not always …「いつも…というわけではない[…とは限らない]」 ○ bring happiness「幸せをもたらす」",
+        "en": "Money {does not always bring} happiness.",
+        "answer": "does not always bring",
+        "explanation": "▶ 部分否定。➡ File 52",
+        "question": "Money (    ) (    ) (a   ) (b   ) happiness."
     },
     {
         "id": "397",
-        "ja": "大都会での生活はわくわく するが，誰にと っ てもそうとは 限らない。",
-        "en": "Living in a big city is exciting, but {not necessarily for everyone. not necessarily …Βͳ͍ʧ ʯ}",
-        "answer": "not necessarily for everyone. not necessarily …Βͳ͍ʧ ʯ",
-        "explanation": "▶ 部分否定。➡File52  本来ならbut の後に入るit is と，necessarily の後の\nexciting は省略されている。… but (it is) not necessarily (exciting) for\neveryone.",
-        "question": "Living in a big city is exciting, but (n      ) (n      ) for everyone."
+        "ja": "大都会での生活はわくわくするが，誰にとってもそうとは限らない。 not necessarily …「必ずしも…というわけではない[…とは限らない]」",
+        "en": "Living in a big city is exciting, but {not necessarily} for everyone.",
+        "answer": "not necessarily",
+        "explanation": "Tip 「…とは限らない＝必ずしも…というわけではない」を表す表現は？\n▶ 部分否定。➡ File 52  本来ならbutの後に入るit isと，necessarilyの後のexcitingは省略されている。… but (it is) not necessarily (exciting) for everyone.",
+        "question": "Living in a big city is exciting, but (n   ) (n   ) for everyone."
     },
     {
         "id": "398",
-        "ja": "１年間留学するこ とは簡単ではないと思う。",
-        "en": "I {do not think it is easy to study abroad for a year. I do not [don’t] think …͏ʯ⇦「 …であるとは思わない」}",
-        "answer": "do not think it is easy to study abroad for a year. I do not [don’t] think …͏ʯ⇦「 …であるとは思わない」",
+        "ja": "１年間留学することは簡単ではないと思う。 I do not [don’t] think …「…ではないと思う」⇦「…であるとは思わない」",
+        "en": "{I}I dont think it is easy to study abroad for a year. {I do not think it is easy} to study abroad for a year.",
+        "answer": "I, I do not think it is easy",
         "explanation": "▶ 英語では否定語をなるべく前に置く。",
-        "question": "I  to study abroad for a year."
+        "question": ""
     },
     {
         "id": "399-1",
-        "ja": "電車には乗客はほとんどいなかった。",
-        "en": "There {were few passengers on the train.}",
-        "answer": "were few passengers on the train.",
-        "explanation": "▶ not や never のように完全に否定するのではなく，「ほとんど～ない」や「めっ\nたに～ない」などの数量・程度・頻度が少ないことを表す語句をޠと呼\nぶ。準否定語はそれだけで否定の意味を持つので，not や never を伴わない。\nfew ʴࢺʮʙʢ਺ʣ͕΄ͱΜͲͳ͍ʯ―準否定語\n▶ few は数えられる名詞の複数形，複数を表す名詞に付く。\na few ʴࢺʮʢ਺͕ʣগ͠ͷʙʯ ʮ̎ɼ ̏ͷʙʯ➡714",
-        "question": "There (        ) (        ) (        ) on the train."
+        "ja": "電車には乗客はほとんどいなかった。 準否定語はそれだけで否定の意味を持つので，notやneverを伴わない。 few＋複数名詞「～(数)がほとんどない」―準否定語 ＋ a few＋複数名詞「(数が)少しの～」「２,３の～」➡ 714",
+        "en": "There {were few passengers} on the train.",
+        "answer": "were few passengers",
+        "explanation": "F 166 ▶ notやneverのように完全に否定するのではなく，「ほとんど～ない」や「めったに～ない」などの数量・程度・頻度が少ないことを表す語句を準否定語と呼ぶ。\n▶ fewは数えられる名詞の複数形，複数を表す名詞に付く。",
+        "question": "There (    ) (    ) (    ) on the train."
     },
     {
         "id": "399-2",
-        "ja": "ナオミの知り合いはこの街にごくわずかしかいない。",
-        "en": "Naomi knows {very few people in this city. very few ʴࢺʮʢ਺͕ʣ͘͝Θ͔ͣͷʙʯ}",
-        "answer": "very few people in this city. very few ʴࢺʮʢ਺͕ʣ͘͝Θ͔ͣͷʙʯ",
-        "explanation": "▶ only a few 「ほんの少しの」よりも，さらに少ない数を表す。\nfew には代名詞の用法もある。\n(Very) few of my friends speak three languages.\n（私の友人で３か国語を話す人はほとんどいない。）\neveryone / all / bring / necessarily / passenger\nnot always …Βͳ͍ʧʯ\nnot necessarily …Βͳ͍ʧʯ\n186 187\n復習\nSelf\nCheck",
-        "question": "Naomi knows (        ) (        ) (        ) in this city."
-    },
-    {
-        "id": "400",
-        "ja": "???",
-        "en": "③",
-        "answer": "???",
-        "explanation": "",
-        "question": "???"
+        "ja": "ナオミの知り合いはこの街にごくわずかしかいない。 否 定 ② ● 187 very few＋複数名詞「(数が)ごくわずかの～」 ＋ fewには代名詞の用法もある。 （私の友人で3か国語を話す人はほとんどいない。）",
+        "en": "Naomi knows {very few people} in this city.",
+        "answer": "very few people",
+        "explanation": "Tip 「(数が)ほとんどない」をさらに強調した表現は？\n▶ only a few「ほんの少しの」よりも，さらに少ない数を表す。",
+        "question": "Naomi knows (    ) (    ) (    ) in this city. (Very) few of my friends speak three languages."
     },
     {
         "id": "400-1",
-        "ja": "プレゼンの準備をする時間がほとんどなかった。",
-        "en": "I {had little time to prepare for the presentation. little ʴࢺʮʙʢྔʣ͕΄ͱΜͲͳ͍ʯ―準否定語}",
-        "answer": "had little time to prepare for the presentation. little ʴࢺʮʙʢྔʣ͕΄ͱΜͲͳ͍ʯ―準否定語",
-        "explanation": "▶ little は数えられない名詞に付く。\na little ʴࢺʮʢྔ͕ʣগ͠ͷʙʯ➡719",
-        "question": "I (        ) (        ) (        ) to prepare for the presentation."
+        "ja": "プレゼンの準備をする時間がほとんどなかった。 F 166  little＋数えられない名詞「～(量)がほとんどない」―準否定語 ＋ a little＋数えられない名詞「(量が)少しの～」➡ 719",
+        "en": "I {had little time }to prepare for the presentation.",
+        "answer": "had little time",
+        "explanation": "▶ littleは数えられない名詞に付く。",
+        "question": "I (    ) (    ) (    ) to prepare for the presentation."
     },
     {
         "id": "400-2",
-        "ja": "詩を書いた経験はご くわずかしかない。 little には代名詞や副詞の用法もある。 Little is known about the disease.（その病気についてはほとんどわかっていない。） Iʼm a little tired today.（今日は少し疲 れ て い る 。）",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "I have (        ) (        ) (        ) in writing poetry. Λॻ͘ ͜ͱʹΛॻ͘ ͜ͱʹ ମతͳʣମతͳʣ ͱͯ͠ѻ͏ɻͱͯ͠ѻ͏ɻ I have very little experience in writing poetry. very little ʴࢺʮʢྔ͕ʣ͘͝Θ͔ͣͷʙʯ I have (very) little experience in doing͸ʢ ͘͝ʣΘ ͣ ͔ ͠ ͔ ͳ ͍ʯ poetryʢ＝poemsʣʯ―poemʯ"
+        "ja": "詩を書いた経験はごくわずかしかない。 very little＋数えられない名詞「(量が)ごくわずかの～」 ○ I have (very) little experience in doing「～した経験は(ごく)わずかしかない」 ○ poetry「(集合的に)詩(＝poems)」―poem「(一編の)詩」 ＋ littleには代名詞や副詞の用法もある。 Little is known about the disease.（その病気についてはほとんどわかっていない。） I’m a little tired today.（今日は少し疲れている。）",
+        "en": "I have {very little experience} in writing poetry.",
+        "answer": "very little experience",
+        "explanation": "Tip 「(量が)ほとんどない」をさらに強調した表現は？「経験」は，経験によって得られる知識や技能を表す場合，数えられない名詞として扱う。この文は，詩を書くことについての知識や技能を得られる経験はほとんどないことを表す。「(個々の具体的な)体験」を表す場合は，数えられる名詞として扱う。",
+        "question": "I have (    ) (    ) (    ) in writing poetry."
     },
     {
         "id": "401",
-        "ja": "彼 はとても早 口で ， 言っていることがほとんど理解できなかった。",
-        "en": "He was talking so fast that I could hardly [scarcely] understand what he was saying. hardly scarcely    ʮʢఔ౓͕ʣ΄ͱΜͲʜͳ͍ʯ―準否定語",
-        "answer": "hardly [scarcely] understand what he was saying. hardly scarcely ʮʢఔ౓͕ʣ΄ͱΜͲʜͳ͍ʯ―準否定語",
-        "explanation": "▶ hardly /scarcely は副詞。一般動詞の前，be動詞・助動詞の後に置く。",
-        "question": "He was talking so fast that I could (        ) (        ) what he was saying."
+        "ja": "彼はとても早口で，言っていることがほとんど理解できなかった。 scarcely   　「(程度が)ほとんど…ない」―準否定語",
+        "en": "He was talking so fast that I could {hardly [scarcely] understand} what {hardly}",
+        "answer": "hardly [scarcely] understand, hardly",
+        "explanation": "Tip 「(程度が)ほとんどない」を表す準否定語を使って表現する。\nhe was saying.\n▶ hardly/scarcelyは副詞。一般動詞の前，be動詞・助動詞の後に置く。",
+        "question": "He was talking so fast that I could (    ) (    ) what he was saying."
     },
     {
         "id": "402",
-        "ja": "雨のため公園にはほとんど人がいない。 ＝very fewʴ複数名詞／very littleʴ数えられない名詞",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "There ( people / are / any / hardly ) in the park because of the rain. ＝ There are hardly [scarcely] any people in the park because of the rain. There are very few people in the park because of the rain. hardly any ʴࢺ           ʮʢ਺ɾྔ͕ʣ΄ͱΜͲͳ͍ɼ scarcely any ʴࢺ      ͘͝Θ͔ͣͷʙʯ"
+        "ja": "雨のため公園にはほとんど人がいない。 hardly any＋複数名詞／数えられない名詞      「(数・量が)ほとんどない， scarcely any＋複数名詞／数えられない名詞　　 　ごくわずかの～」 ＝very few＋複数名詞／very little＋数えられない名詞",
+        "en": "There {are hardly [scarcely] any people} in the park because of the rain. ＝There {are very few people} in the park because of the rain.",
+        "answer": "are hardly [scarcely] any people, are very few people",
+        "explanation": "Tip 〈very few …〉と同様「…がほとんどない，ごくわずかの…」を表す表現は？",
+        "question": "There ( people / are / any / hardly ) in the park because of the rain."
     },
     {
         "id": "403-1",
-        "ja": "私の姉は健康的な食生活を維持したいのでファ ス ト フードをほとんど食べない。",
-        "en": "My sister seldom [rarely] eats fast food because she wants to maintain a healthy diet. seldom / rarely hardly ever / scarcely ever    ʮʢස౓͕ʣΊͬͨʹʜͳ͍ʯ―準否定語",
-        "answer": "seldom [rarely] eats fast food because she wants to maintain a healthy diet. seldom / rarely hardly ever / scarcely ever ʮʢස౓͕ʣΊͬͨʹʜͳ͍ʯ―準否定語",
-        "explanation": "▶ seldom /rarely は副詞。動詞に３単現の-s を付け忘れないようにする。\nmaintain a healthy diet͢Δʯ",
-        "question": "My sister (        ) (        ) fast food because she wants to maintain a healthy diet. ͢Δɻ͢Δɻ"
+        "ja": "私の姉は健康的な食生活を維持したいのでファストフードをほとんど食べない。 hardly ever / scarcely ever    「(頻度が)めったに…ない」―準否定語 ○ maintain a healthy diet「健康的な食生活を維持する」",
+        "en": "My sister {seldom [rarely] eats} fast food because she wants to maintain {seldom }/{ rarely }",
+        "answer": "seldom [rarely] eats, seldom, rarely",
+        "explanation": "Tip 「食べる回数＝頻度」の話題なので，「ほとんど食べない → めったに食べない」と日本語を置き換えてから表現する。\na healthy diet.\n▶ seldom/rarelyは副詞。動詞に３単現の-sを付け忘れないようにする。",
+        "question": "My sister (    ) (    ) fast food because she wants to maintain a healthy diet."
     },
     {
         "id": "403-2",
         "ja": "ほとんど学校に遅刻しないのですが，今日は例外でした。",
-        "en": "I {am rarely [seldom] late for school, but today was an exception.}",
-        "answer": "am rarely [seldom] late for school, but today was an exception.",
-        "explanation": "▶ seldom / rarely/ hardly ever/ scarcely ever「（頻度が）めったに…ない」は，\n一般動詞の前，be動詞・助動詞の後に置く。",
-        "question": "I (        ) (        ) (        ) (        ) school, but today was an exception."
+        "en": "I {am rarely [seldom] late for} school, but today was an exception.",
+        "answer": "am rarely [seldom] late for",
+        "explanation": "Tip 「ほとんど遅刻しない → めったに遅刻しない」と表現する。副詞の位置に注意。\n▶ seldom/rarely/hardly ever/scarcely ever「(頻度が)めったに…ない」は，一般動詞の前，be動詞・助動詞の後に置く。",
+        "question": "I (    ) (    ) (    ) (    ) school, but today was an exception."
     },
     {
         "id": "404",
-        "ja": "彼女が誕生日に何を欲しがっているのか全然わからない。",
-        "en": "I {have no idea what she wants for her birthday. have no idea ʮશવΘ͔Βͳ͍ʯ}",
-        "answer": "have no idea what she wants for her birthday. have no idea ʮશવΘ͔Βͳ͍ʯ",
-        "explanation": "▶ idea の直後にwh-節を続ける。",
-        "question": "I (h      ) (        ) (        ) what she wants for her birthday."
+        "ja": "彼女が誕生日に何を欲しがっているのか全然わからない。 have no idea「全然わからない」",
+        "en": "I {have no idea} what she wants for her birthday.",
+        "answer": "have no idea",
+        "explanation": "▶ ideaの直後にwh-節を続ける。",
+        "question": "I (h   ) (    ) (    ) what she wants for her birthday."
     },
     {
         "id": "405",
-        "ja": "スマート フォ ンがあるので，百科事典はもはや必要ない。 復習",
-        "en": "???",
-        "answer": "???",
+        "ja": "スマートフォンがあるので，百科事典はもはや必要ない。 否 定 ③ ● 189 no longer「もはや…ない」＝not ～ any longer [anymore] ➡ 866 ○ encyclopedia「百科事典」",
+        "en": "Thanks to smartphones, we {no longer need} encyclopedias. ＝Thanks to smartphones, we {do not need} encyclopedias {any longer}.",
+        "answer": "no longer need, do not need, any longer",
         "explanation": "",
-        "question": "Thanks to smartphones, we (        ) (        ) (        ) encyclopedias. ＝ Thanks to smartphones, we no longer need encyclopedias. Thanks to smartphones, we do not need encyclopedias any longer. no longer ʮ΋͸΍ʜͳ͍ʯ＝not ～ any longer [anymore]  ➡866 encyclopediaయʯ experience / idea 188 189 Self Check"
+        "question": "Thanks to smartphones, we (    ) (    ) (    ) encyclopedias."
     },
     {
         "id": "406",
-        "ja": "発展 サッカー 部でいちばんうまいのは，他でもない，キャプテンのケンだ。",
-        "en": "The best player on the soccer team is {none other than the captain, Ken. A … none other than BʮA ͸B ʹଞͳΒͳ͍ɼA ͸ଞͳΒ͵Bʯ ⇧「B よ り（than B）他 の（other）誰 で もな い（none）」}",
-        "answer": "none other than the captain, Ken. A … none other than BʮA ͸B ʹଞͳΒͳ͍ɼA ͸ଞͳΒ͵Bʯ ⇧「B よ り（than B）他 の（other）誰 で もな い（none）」",
-        "explanation": "▶ 強調や驚きを表す表現。",
-        "question": "The best player on the soccer team is (        ) (        ) (        ) the captain, Ken."
+        "ja": "サッカー部でいちばんうまいのは，他でもない，キャプテンのケンだ。 発展    Ken. A … none other than B「AはBに他ならない，Aは他ならぬB」 ⇧「Bより(than B)他の(other)誰でもない(none)」",
+        "en": "The best player on the soccer team is {none other than} the captain, Ken.",
+        "answer": "none other than",
+        "explanation": "Tip 「AはBに他ならない」を表す定型表現は？\n▶ 強調や驚きを表す表現。",
+        "question": "The best player on the soccer team is (    ) (    ) (    ) the captain,"
     },
     {
         "id": "407",
-        "ja": "彼は私の自転車をただで直してくれ た 。 for nothing にはʮແବʹʢ＝in vainʣʯの意味もある。",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "He fixed my bike (        ) (        ). He fixed my bike for free. for free fix ʮʙΛमཧ͢Δʯ＝repair"
+        "ja": "彼は私の自転車をただで直してくれた。 for nothing     「無料で」＝free of charge ！ for nothingには「無駄に(＝in vain)」の意味もある。 ○ fix「～を修理する」＝repair",
+        "en": "He fixed my bike {for free}. {for free}",
+        "answer": "for free, for free",
+        "explanation": "Tip 「ただで＝無料で」を表す表現は？",
+        "question": "He fixed my bike (    ) (    )."
     },
     {
         "id": "408",
-        "ja": "すし店では新鮮な魚だけが使われる。",
-        "en": "{＝ Nothing but fresh fish is used in sushi restaurants. Only fresh fish is used in sushi restaurants. nothing but A ʮA ͚ͩʯ＝only A ⇧「A 以 外 は（but A）何 もな い（nothing）」}",
-        "answer": "＝ Nothing but fresh fish is used in sushi restaurants. Only fresh fish is used in sushi restaurants. nothing but A ʮA ͚ͩʯ＝only A ⇧「A 以 外 は（but A）何 もな い（nothing）」",
-        "explanation": "▶ A には名詞がくる。この 文 のfish は不可算名詞で「（食品と しての）魚肉」の意\n味。",
-        "question": "(        ) (        ) fresh fish is used in sushi restaurants."
+        "ja": "すし店では新鮮な魚だけが使われる。 nothing but A「Aだけ」＝only A ⇧「A以外は(but A)何もない(nothing)」",
+        "en": "{Nothing but }fresh fish is used in sushi restaurants. ＝{Only} fresh fish is used in sushi restaurants.",
+        "answer": "Nothing but, Only",
+        "explanation": "Tip 「～だけが使われる → ～以外のものは何も使っていない」と表現する。\n▶ Aには名詞がくる。この文のfishは不可算名詞で「(食品としての)魚肉」の意味。",
+        "question": "(    ) (    ) fresh fish is used in sushi restaurants."
     },
     {
         "id": "409",
-        "ja": "私の弟はテレビゲームば かりしている。",
-        "en": "My brother {does nothing but play video games. do nothing but do ʮ ʙͯ͠͹͔Γ͍Δʯ Ὄʮʙ͢ΔҎ֎ʹʢbut doʣԿ ΋͠ ͳ ͍ʢdo nothingʣʯ}",
-        "answer": "does nothing but play video games. do nothing but do ʮ ʙͯ͠͹͔Γ͍Δʯ Ὄʮʙ͢ΔҎ֎ʹʢbut doʣԿ ΋͠ ͳ ͍ʢdo nothingʣʯ",
-        "explanation": "▶ but の後は動詞の原形。",
-        "question": "My brother (        ) (n      ) (        ) (        ) video games."
+        "ja": "私の弟はテレビゲームばかりしている。 do nothing but do「～してばかりいる」 ⇧「～する以外に(but do)何もしない(do nothing)」",
+        "en": "My brother {does nothing but play} video games.",
+        "answer": "does nothing but play",
+        "explanation": "Tip 「～してばかりいる → ～する以外に何もしない」と表現する。\n▶ butの後は動詞の原形。",
+        "question": "My brother (    ) (n   ) (    ) (    ) video games."
     },
     {
         "id": "410",
-        "ja": "悪天候のため，私たちは旅行を中止するしかなかった。",
-        "en": "We {had no choice but to cancel} our trip due to bad weather. have no choice but to do ʮʙ͢Δ͔͠ͳ͍ʯ ⇧ 「～すること以外に （but to do） 選択肢がない （have no choice）」",
+        "ja": "悪天候のため，私たちは旅行を中止するしかなかった。 have no choice but to do「～するしかない」 ⇧「～すること以外に(but to do)選択肢がない(have no choice)」 ○ cancel A「Aを中止する」＝call off A / call A off",
+        "en": "We {had no choice but to cancel} our trip due to bad weather.",
         "answer": "had no choice but to cancel",
-        "explanation": "▶ but の後はto不定詞。\ncancel AʮA͢Δʯ＝call oﬀ A / call A oﬀ",
+        "explanation": "Tip 「～するしかない → ～すること以外に何も選択肢がない」と表現する。\n▶ butの後はto不定詞。",
         "question": "We ( cancel / to / choice / but / no / had ) our trip due to bad weather."
     },
     {
         "id": "411",
-        "ja": "試験は決して簡単ではなかった。",
-        "en": "The exam was {anything but easy. ⇧「A 以 外 の（but A）何 も の で も（anything）」}",
-        "answer": "anything but easy. ⇧「A 以 外 の（but A）何 も の で も（anything）」",
-        "explanation": "▶ ݱ。A には形容詞・名詞がくる。",
-        "question": "The exam was (a      ) (        ) (        )."
+        "ja": "試験は決して簡単ではなかった。 anything but A「決してAではない」＝far from A ⇧「A以外の(but A)何ものでも(anything)」",
+        "en": "The exam was {anything but easy}.",
+        "answer": "anything but easy",
+        "explanation": "Tip 「決してAではない → A以外の何ものでもある」と表現する。\n▶ 否定語を使わない否定表現。Aには形容詞・名詞がくる。",
+        "question": "The exam was (a   ) (    ) (    )."
     },
     {
         "id": "412",
-        "ja": "発展 結果は決して満 足 の いくも のではなかった。",
-        "en": "The results were {far from satisfactory. ⇧「A か ら は（from A）ほ ど 遠 い（far）」}",
-        "answer": "far from satisfactory. ⇧「A か ら は（from A）ほ ど 遠 い（far）」",
-        "explanation": "▶ A には形容詞・名詞・動名詞がくる。\nsatisfactory ʮຬ଍ͷ͍͘ʯ―形容詞",
-        "question": "The results were (f      ) (        ) satisfactory."
+        "ja": "結果は決して満足のいくものではなかった。 発展     Tip 「決してAではない → Aからはほど遠い」と表現する。 far from A「決してAではない，Aどころではない」＝anything but A ⇧「Aからは(from A)ほど遠い(far)」 ○ satisfactory「満足のいく」―形容詞",
+        "en": "The results were {far from }satisfactory.",
+        "answer": "far from",
+        "explanation": "▶ Aには形容詞・名詞・動名詞がくる。",
+        "question": "The results were (f   ) (    ) satisfactory."
     },
     {
         "id": "413",
-        "ja": "発展 サラは決して私にうそをつく人ではない。",
+        "ja": "サラは決して私にうそをつく人ではない。",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
-        "question": "-1 -2＝ Sara is (        ) (        ) (p      ) (        ) would lie to me. Sara is (        ) (        ) (p      ) (        ) lie to me."
+        "question": ""
     },
     {
         "id": "413-1",
-        "ja": "⇧ 「～する最後のA」 復習",
-        "en": "???",
-        "answer": "???",
+        "ja": "",
+        "en": "Sara is {the last person who} would lie to me.",
+        "answer": "the last person who",
         "explanation": "",
-        "question": "-2＝ Sara is the last person who would lie to me. Sara is the last person to lie to me. the last A ʴࢺ ʙ the last A to do                       ͯ͠ʙ͠ͳ͍Aʯ lie to A ʮA ʹ͏ͦΛͭ͘ʯ none / last 190 191 Self Check"
+        "question": "Sara is (    ) (    ) (p   ) (    ) would lie to me."
+    },
+    {
+        "id": "413-2",
+        "ja": "発展 否 定 ④ ● 191 the last A＋関係代名詞 ～ the last A to do              「決して～しないA」 ⇧「～する最後のA」 ○ lie to A「Aにうそをつく」",
+        "en": "＝Sara is {the last person to} lie to me.",
+        "answer": "the last person to",
+        "explanation": "Tip 「うそをつくであろう最後の人 → 決してうそをつかない人」と表現する。",
+        "question": "＝Sara is (    ) (    ) (p   ) (    ) lie to me."
     },
     {
         "id": "414",
-        "ja": "発展 次の会議の日程は未定です。 ⇧「 い ま だ に（yet）～ す る べ き だ（be to do）／ ～ し な け れ ば な ら な い（have to do）」",
-        "en": "{⑤}",
-        "answer": "⑤",
+        "ja": "次の会議の日程は未定です。 発展     Tip 「未定です → まだ決められていない」。 「まだ～していない」を表す定型表現は？ have yet to do      「まだ～していない」 ⇧「いまだに(yet)～するべきだ(be to do)／～しなければならない(have to do)」",
+        "en": "The date of the next meeting {is [has] yet to be} determined. {be yet to }do",
+        "answer": "is [has] yet to be, be yet to",
         "explanation": "",
-        "question": "The date of the next meeting (        ) (y      ) (        ) (        ) determined. The date of the next meeting is [has] yet to be determined. be yet to do have yet to do    ʮ·ͩ ʙ͍ͯ͠ͳ͍ ʯ"
+        "question": "The date of the next meeting (    ) (y   ) (    ) (    ) determined."
     },
     {
         "id": "415",
-        "ja": "発展 多くの難題がまだ解決されていない。 ⇧「 こ れ か ら ～ さ れ る べ き（to be done）状 態 で 残 っ て い る（remain）」",
-        "en": "???",
-        "answer": "???",
+        "ja": "多くの難題がまだ解決されていない。 発展     Tip 「まだ解決されるべく残っている」と考えると？ remain to be done「まだ～されていない」 ⇧「これから～されるべき(to be done)状態で残っている(remain)」 ○ challenge ①「課題，難題」②「挑戦」 ○ resolve「(問題・困難など)を解決する」",
+        "en": "Many challenges remain to be{ resolved}. Many challenges {remain to be resolved}.",
+        "answer": "resolved, remain to be resolved",
         "explanation": "",
-        "question": "Many challenges resolved. Many challenges remain to be resolved. remain to be done ʮ·ͩʙ͞Ε͍ͯͳ͍ʯ challenge   ᶃʮ՝୊ɼ೉୊ʯ ᶄʮ௅ઓʯ resolve͢Δʯ"
+        "question": ""
     },
     {
         "id": "416-1",
-        "ja": "絵を描いている時，私はストレスから解 放される。",
-        "en": "When I paint, I am {free of stress. be free of [from] AʮA ͕ͳ͍ʯ⇦「 ～ か ら（of/from）自 由 で あ る（be free）」}",
-        "answer": "free of stress. be free of [from] AʮA ͕ͳ͍ʯ⇦「 ～ か ら（of/from）自 由 で あ る（be free）」",
-        "explanation": "▶ of [from] の後のA は名詞で，苦痛や困難，やっかいな事柄がく ることが多い。",
-        "question": "When I paint, I am ."
+        "ja": "絵を描いている時，私はストレスから解放される。 be free of [from] A「Aがない」⇦「～から(of/from)自由である(be free)」",
+        "en": "When I paint, I {am} free of stress. When I paint, I {am free of stress}.",
+        "answer": "am, am free of stress",
+        "explanation": "Tip 「ストレスから解放される → ストレスがない」と表現する。\n▶ of [from]の後のAは名詞で，苦痛や困難，やっかいな事柄がくることが多い。",
+        "question": ""
     },
     {
         "id": "416-2",
-        "ja": "木曜日は入場無料です。",
+        "ja": "木曜日は入場無料です。 be free of charge「無料だ」＝be free ○ admission「入場，入学」",
         "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Admission  on Thursdays. Admission is free (of charge) on Thursdays. be free of charge ʮແྉͩʯ＝be free admissionʯ"
+        "answer": "",
+        "explanation": "Tip 「課金がない → 無料だ」を表す表現は？",
+        "question": "Admission is free of charge on Thursdays. Admission is free (of charge) on Thursdays."
     },
     {
         "id": "417",
-        "ja": "今朝は寝坊し てバスに乗り損ねた。",
-        "en": "＝ I {failed to catch the bus this morning because I overslept. I missed the bus this morning because I overslept. oversleep ʮ৸ա͢͝ɼ৸๥͢Δʯ}",
-        "answer": "failed to catch the bus this morning because I overslept. I missed the bus this morning because I overslept. oversleep ʮ৸ա͢͝ɼ৸๥͢Δʯ",
-        "explanation": "",
-        "question": "I (f      ) (        ) (c      ) the bus this morning because I overslept."
+        "ja": "今朝は寝坊してバスに乗り損ねた。 fail to do「～し損なう，～できない」 ○ oversleep「寝過ごす，寝坊する」",
+        "en": "I {failed to catch} the bus this morning because I overslept. ＝I {missed} the bus this morning because I overslept.",
+        "answer": "failed to catch, missed",
+        "explanation": "Tip 「～し損なう」を表す定型表現は？",
+        "question": "I (f   ) (    ) (c   ) the bus this morning because I overslept."
     },
     {
         "id": "418",
-        "ja": "近所の人に会ったら必ずあいさつします。",
-        "en": "I {never fail to say hello to my neighbors when I see them.}",
-        "answer": "never fail to say hello to my neighbors when I see them.",
-        "explanation": "▶ 否定の内容を表す語が２つ使われると， 「否定×否定＝肯定」の意味になる。\n強い肯定を表すこのような表 現をೋॏ൱ఆと呼ぶ。\nnever fail to do ʮඞͣʙ͢Δʯ\n⇧「 ～ し 損 な う（fail to do）こ と は 決 し て な い（never）」\nsay hello to A  ᶃʮA ʹ͍͋ͭ͢͞Δʢ＝greet Aʣʯ ᶄʮA ʹΑΖ͘͠఻͑Δʯ",
-        "question": "I (n      ) (        ) (        ) (s      ) (        ) to my neighbors when I see them. ʮ͍͋ͭ͞Λ͢Δ ˠ ͢Δɻʮ͍͋ͭ͞Λ͢Δ ˠ ͢Δɻ"
+        "ja": "近所の人に会ったら必ずあいさつします。 「あいさつをする → こんにちはと言う」と表現する。 強い肯定を表すこのような表現を二重否定と呼ぶ。 never fail to do「必ず～する」 ⇧「～し損なう(fail to do)ことは決してない(never)」 ○ say hello to A ①「Aにあいさつする(＝greet A)」②「Aによろしく伝える」",
+        "en": "I {never fail to say hello} to my neighbors when I see them.",
+        "answer": "never fail to say hello",
+        "explanation": "Tip 「必ず～する」を表す二重否定の表現は？\n▶ 否定の内容を表す語が２つ使われると，「否定×否定＝肯定」の意味になる。",
+        "question": "I (n   ) (    ) (    ) (s   ) (    ) to my neighbors when I see them."
     },
     {
         "id": "419",
-        "ja": "私は毎晩必ずソーシャルメディアをチェックする。 ⇧「 し 損 な う こ と（fail）な し に（without）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "I check my social media every night (        ) (        ). I check my social media every night without fail. without fail ʮඞͣʯ"
+        "ja": "私は毎晩必ずソーシャルメディアをチェックする。 without fail「必ず」 ⇧「し損なうこと(fail)なしに(without)」",
+        "en": "I check my social media every night {without fail}.",
+        "answer": "without fail",
+        "explanation": "Tip 「必ず → し損なうことなしに」という二重否定の形で表現すると？",
+        "question": "I check my social media every night (    ) (    )."
     },
     {
         "id": "420",
-        "ja": "私の家族は映画に行けば必ずポップコーンを買う。 ⇧「 ～ す ることなし に は（without doing）… し な い（never …）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "My family (n      ) goes to the movies (        ) (        ) popcorn. F 169  ＝ My family never goes to the movies without buying popcorn. My family always buys popcorn when we go to the movies. never … without doingʮʜ͢Ε͹ඞͣʙ͢Δʯ＝always do when …"
+        "ja": "私の家族は映画に行けば必ずポップコーンを買う。 never … without doing「…すれば必ず～する」＝always do when … ⇧「～することなしには(without doing)…しない(never …)」",
+        "en": "My family {never }goes to the movies {without buying} popcorn. ＝My family {always} {buys} popcorn {when} we go to the movies.",
+        "answer": "never, without buying, always, buys, when",
+        "explanation": "Tip 「ポップコーンを買うことなしには映画に行かない」と表現する。",
+        "question": "My family (n   ) goes to the movies (    ) (    ) popcorn."
     },
     {
         "id": "421",
-        "ja": "試験期間中に生徒がス トレ スを感じるのはよくあることだ。 ⇧「 珍 し く（unusual）は な い（not）」 復習",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "(        ) (        ) (u      ) for students to feel stressed during exam periods. F 169  ＝ It’s not unusual for students to feel stressed during exam periods. It’s quite common for students to feel stressed during exam periods. It’s not unusual … ʮʜ͸Α͋͘Δ͜ͱͩʯ＝It’s quite common … feel stressed͡Δʯ yet / charge / hello / unusual 192 193 Self Check"
+        "ja": "試験期間中に生徒がストレスを感じるのはよくあることだ。 否 定 ⑤ ● 193 It’s not unusual …「…はよくあることだ」＝It’s quite common … ⇧「珍しく(unusual)はない(not)」 ○ feel stressed「ストレスを感じる」",
+        "en": "{It’s not unusual} for students to feel stressed during exam periods. ＝{It’s quite common} for students to feel stressed during exam periods.",
+        "answer": "It’s not unusual, It’s quite common",
+        "explanation": "Tip 「よくあることだ → 珍しくはない」と表現する。",
+        "question": "(    ) (    ) (u   ) for students to feel stressed during exam periods."
     }
 ];
 
@@ -537,7 +604,7 @@
             recognition.lang = 'en-US';
             recognition.interimResults = false;
         }
-        
+
         // --- Voice Synthesis Setup ---
         let synthesisVoice = null;
 
@@ -545,10 +612,10 @@
             const voices = speechSynthesis.getVoices();
             // 優先順位: Google US English -> Microsoft Zira/David -> その他英語
             synthesisVoice = voices.find(voice => voice.name === 'Google US English') ||
-                             voices.find(voice => voice.name.includes('Google') && voice.lang.includes('en-US')) ||
-                             voices.find(voice => voice.name.includes('Microsoft') && voice.lang.includes('en-US')) ||
-                             voices.find(voice => voice.lang === 'en-US') ||
-                             voices.find(voice => voice.lang.startsWith('en'));
+                voices.find(voice => voice.name.includes('Google') && voice.lang.includes('en-US')) ||
+                voices.find(voice => voice.name.includes('Microsoft') && voice.lang.includes('en-US')) ||
+                voices.find(voice => voice.lang === 'en-US') ||
+                voices.find(voice => voice.lang.startsWith('en'));
         }
 
         // 音声リストがロードされたら設定を実行
@@ -571,7 +638,7 @@
         const quizModal = document.getElementById('quiz-modal');
         const closeQuizBtn = document.getElementById('close-quiz-btn');
         const quizContent = document.getElementById('quiz-content');
-        
+
         const selectAllCheckbox = document.getElementById('select-all-checkbox');
         const pdfModal = document.getElementById('pdf-modal');
         const openPdfModalBtn = document.getElementById('open-pdf-modal-btn');
@@ -621,7 +688,7 @@
                 `;
                 sentenceList.appendChild(sentenceDiv);
             });
-            
+
             // Add click listener to each sentence item
             document.querySelectorAll('.sentence-item').forEach(item => {
                 item.addEventListener('click', (e) => {
@@ -648,15 +715,15 @@
                     }
                 });
             });
-            
+
             // Select the first sentence by default
             if (sentenceList.firstChild) {
-                 sentenceList.firstChild.click();
+                sentenceList.firstChild.click();
             }
         }
-        
+
         // --- PDF / Print Logic ---
-        
+
         function openPrintWindow(bodyContent, title) {
             const htmlContent = `
                 <!DOCTYPE html>
@@ -708,7 +775,7 @@
             printWindow.document.write(htmlContent);
             printWindow.document.close();
             setTimeout(() => {
-                printWindow.focus(); 
+                printWindow.focus();
                 printWindow.print();
             }, 250);
         }
@@ -723,32 +790,32 @@
                 .map(id => chapterData.find(item => item.id === id))
                 .filter(Boolean)
                 .sort((a, b) => {
-                     // Handle IDs like "1382-1" vs "1382-2"
-                     const aParts = a.id.split('-').map(s => parseInt(s) || 0);
-                     const bParts = b.id.split('-').map(s => parseInt(s) || 0);
-                     if (aParts[0] !== bParts[0]) return aParts[0] - bParts[0];
-                     return (aParts[1] || 0) - (bParts[1] || 0);
+                    // Handle IDs like "1382-1" vs "1382-2"
+                    const aParts = a.id.split('-').map(s => parseInt(s) || 0);
+                    const bParts = b.id.split('-').map(s => parseInt(s) || 0);
+                    if (aParts[0] !== bParts[0]) return aParts[0] - bParts[0];
+                    return (aParts[1] || 0) - (bParts[1] || 0);
                 });
         }
-        
+
         function getUniqueItems(items) {
-             const uniqueMap = new Map();
-             items.forEach(item => {
-                 // Use answer as key to deduplicate same phrases
-                 if (!uniqueMap.has(item.answer)) {
-                     uniqueMap.set(item.answer, item);
-                 }
-             });
-             return Array.from(uniqueMap.values()).sort((a, b) => {
-                 const aId = parseInt(a.id.split('-')[0]);
-                 const bId = parseInt(b.id.split('-')[0]);
-                 return aId - bId;
-             });
+            const uniqueMap = new Map();
+            items.forEach(item => {
+                // Use answer as key to deduplicate same phrases
+                if (!uniqueMap.has(item.answer)) {
+                    uniqueMap.set(item.answer, item);
+                }
+            });
+            return Array.from(uniqueMap.values()).sort((a, b) => {
+                const aId = parseInt(a.id.split('-')[0]);
+                const bId = parseInt(b.id.split('-')[0]);
+                return aId - bId;
+            });
         }
 
 
         // --- Message & Sound Functions ---
-        
+
         function showMessage(htmlContent, duration = null) {
             messageContent.innerHTML = htmlContent;
             messageModal.classList.remove('hidden');
@@ -772,7 +839,7 @@
 
             // 連続再生を防ぐために一度キャンセル
             speechSynthesis.cancel();
-            
+
             let textToSpeak = activeSentenceElement.dataset.fullSentence;
             // 念のため不要な記号を除去
             textToSpeak = textToSpeak.replace(/[{}]/g, '');
@@ -785,7 +852,7 @@
                 utterance.voice = synthesisVoice;
             }
 
-            utterance.rate = 1.0; 
+            utterance.rate = 1.0;
             utterance.pitch = 1.0;
 
             speechSynthesis.speak(utterance);
@@ -802,7 +869,7 @@
             }
 
             showMessage('<p class="text-2xl">マイクに向かって話してください...</p><div class="animate-pulse text-red-500 text-4xl mt-4">●</div>');
-            
+
             recognition.start();
 
             recognition.onresult = (event) => {
@@ -813,20 +880,20 @@
             recognition.onerror = (event) => {
                 showMessage(`<p>エラーが発生しました: ${event.error}</p>`, 3000);
             };
-            
+
             recognition.onend = () => {
-                 if (messageModal.classList.contains('hidden') === false && messageContent.innerHTML.includes('マイクに')) {
+                if (messageModal.classList.contains('hidden') === false && messageContent.innerHTML.includes('マイクに')) {
                     messageModal.classList.add('hidden');
-                 }
+                }
             };
         }
-        
+
         function evaluatePronunciation(transcript) {
             const originalText = activeSentenceElement.dataset.fullSentence;
 
             const cleanOrig = originalText.toLowerCase().replace(/[^\w\s]/g, '').split(' ');
             const cleanTrans = transcript.toLowerCase().replace(/[^\w\s]/g, '').split(' ');
-            
+
             let matches = 0;
             cleanOrig.forEach(word => {
                 if (cleanTrans.includes(word)) {
@@ -835,7 +902,7 @@
             });
 
             const similarity = matches / cleanOrig.length;
-            
+
             let score;
             if (similarity > 0.9) {
                 score = 95 + Math.floor(Math.random() * 5);
@@ -848,7 +915,7 @@
             } else {
                 score = 70 + Math.floor(Math.random() * 10);
             }
-            
+
             if (score === 100 && Math.random() < 0.3) score = 99;
 
             const messageHtml = `
@@ -865,8 +932,8 @@
 
         function startQuiz() {
             if (chapterData.length < 10) {
-                 showMessage('<p>クイズを作成するには、文が10個以上必要です。</p>', 3000);
-                 return;
+                showMessage('<p>クイズを作成するには、文が10個以上必要です。</p>', 3000);
+                return;
             }
 
             const shuffled = [...chapterData].sort(() => 0.5 - Math.random());
@@ -891,8 +958,9 @@
                     .map(item => item.answer);
 
                 const options = [correctAnswer, ...incorrectAnswers].sort(() => 0.5 - Math.random());
-                
-                const questionSentence = question.en.replace(`{${question.answer}}`, ' (______) ');
+
+                // Use regex to replace ALL {answer} parts with (______)
+                const questionSentence = question.en.replace(/\{.*?\}/g, ' (______) ');
 
                 quizContent.innerHTML = `
                     <h3 class="text-2xl font-bold mb-2">問題 ${currentQuestionIndex + 1}/10</h3>
@@ -912,7 +980,7 @@
                             button.classList.add('bg-red-400', 'text-white');
                             document.querySelector(`.quiz-option[data-answer="${CSS.escape(correctAnswer)}"]`).classList.add('bg-green-400', 'text-white');
                         }
-                        
+
                         setTimeout(() => {
                             currentQuestionIndex++;
                             showQuestion();
@@ -957,12 +1025,12 @@
                 explanationDiv.style.display = 'block';
             }
         });
-        
+
         playSoundBtn.addEventListener('click', playSound);
         recordBtn.addEventListener('click', handleRecording);
         startQuizBtn.addEventListener('click', startQuiz);
         closeQuizBtn.addEventListener('click', () => quizModal.classList.add('hidden'));
-        
+
         // Select All Logic
         selectAllCheckbox.addEventListener('change', (e) => {
             const isChecked = e.target.checked;
@@ -976,7 +1044,7 @@
 
         // PDF Modal Logic
         openPdfModalBtn.addEventListener('click', () => {
-             if (selectedSentences.size === 0) {
+            if (selectedSentences.size === 0) {
                 showMessage('<p>PDFを作成する問題を選択してください。</p>', 3000);
                 return;
             }
@@ -998,10 +1066,10 @@
         // 1. 完全なリスト
         document.getElementById('download-list-btn').addEventListener('click', () => {
             const items = getSelectedItems();
-            if(!items) return;
+            if (!items) return;
             // リスト作成の場合は重複があっても良いが、見やすくするために熟語ベースでユニークにするか、
             // そのままID順で並べるか。ここではID順ですべて表示する。
-            
+
             const listItems = items.map(item => {
                 // Remove { } for clean display
                 const cleanEn = item.en.replace(/[{}]/g, '');
@@ -1010,7 +1078,7 @@
                     <span style="font-size:0.9em; color:#555;">Ex: ${cleanEn} / ${item.ja}</span>
                 </li>`;
             }).join('');
-            
+
             openPrintWindow(`<ul class="list-container">${listItems}</ul>`, '重要熟語リスト');
             pdfModal.classList.add('hidden');
         });
@@ -1018,14 +1086,14 @@
         // 2. 英語を解答
         document.getElementById('download-en-quiz-btn').addEventListener('click', () => {
             const items = getUniqueItems(getSelectedItems());
-            
-            const quizItems = items.map(item => 
+
+            const quizItems = items.map(item =>
                 `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')} : ____________________</span></li>`
             ).join('');
-            const answerItems = items.map(item => 
+            const answerItems = items.map(item =>
                 `<li><span class="inline-content">${item.answer}</span></li>`
             ).join('');
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (英語を解答)');
             pdfModal.classList.add('hidden');
@@ -1034,14 +1102,14 @@
         // 3. 意味を解答
         document.getElementById('download-ja-quiz-btn').addEventListener('click', () => {
             const items = getUniqueItems(getSelectedItems());
-            
-            const quizItems = items.map(item => 
+
+            const quizItems = items.map(item =>
                 `<li><span class="inline-content"><strong>${item.answer}</strong> : ____________________</span></li>`
             ).join('');
-            const answerItems = items.map(item => 
+            const answerItems = items.map(item =>
                 `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')}</span></li>`
             ).join('');
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (意味を解答)');
             pdfModal.classList.add('hidden');
@@ -1052,7 +1120,7 @@
             const items = getUniqueItems(getSelectedItems());
             let quizItems = '';
             let answerItems = '';
-            
+
             items.forEach(item => {
                 if (Math.random() > 0.5) {
                     // 日本語 -> 英語
@@ -1064,7 +1132,7 @@
                     answerItems += `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')}</span></li>`;
                 }
             });
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (混合)');
             pdfModal.classList.add('hidden');
@@ -1073,14 +1141,14 @@
         // 5. 例文穴埋め
         document.getElementById('download-sentence-quiz-btn').addEventListener('click', () => {
             const items = getSelectedItems(); // 例文問題なので重複（文脈違い）も含める
-            
+
             const quizItems = items.map(item => {
                 // Replace {answer} with underscore
                 const blankSentence = item.en.replace(`{${item.answer}}`, '____________________');
                 return `<li>${blankSentence}<br><span style="font-size:0.9em;">(${item.ja})</span></li>`;
             }).join('');
-            
-            const answerItems = items.map(item => 
+
+            const answerItems = items.map(item =>
                 `<li>${item.answer}</li>`
             ).join('');
 
@@ -1094,7 +1162,7 @@
             const items = getSelectedItems();
             let quizItems = '';
             let answerItems = '';
-            
+
             const instruction = '<p style="border:1px solid #ccc; padding:10px; margin-bottom:20px;">指示：空所には適切な語句を補い、下線部がある文は下線部の意味を日本語で答えなさい。</p>';
 
             items.forEach(item => {
@@ -1123,4 +1191,5 @@
         });
     </script>
 </body>
+
 </html>

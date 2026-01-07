@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Tinos:wght@700&display=swap');
-        
+
         body {
-            background-color: #007BFF; /* ビビットなブルー */
+            background-color: #007BFF;
+            /* ビビットなブルー */
             font-family: 'Noto Sans JP', sans-serif;
         }
 
@@ -17,12 +19,15 @@
         .font-english {
             font-family: 'Tinos', 'Times New Roman', serif;
             font-weight: 700;
-            font-size: 1.25rem; /* 20px */
-            line-height: 1.75rem; /* 28px */
+            font-size: 1.25rem;
+            /* 20px */
+            line-height: 1.75rem;
+            /* 28px */
         }
 
         .answer-span {
-            color: #DC2626; /* 赤色 */
+            color: #DC2626;
+            /* 赤色 */
             font-weight: 700;
             display: none;
         }
@@ -40,7 +45,7 @@
         .show-answer .underline-span {
             display: none;
         }
-        
+
         .explanation {
             display: none;
             white-space: pre-wrap;
@@ -57,22 +62,27 @@
             cursor: pointer;
             transition: all 0.2s ease-in-out;
         }
+
         .btn-primary {
             background-color: #3b82f6;
             color: white;
         }
+
         .btn-primary:hover {
             background-color: #2563eb;
         }
+
         .btn-secondary {
             background-color: #6b7280;
             color: white;
         }
+
         .btn-secondary:hover {
             background-color: #4b5563;
         }
     </style>
 </head>
+
 <body class="text-gray-800">
 
     <div id="app-container" class="container mx-auto p-4 md:p-8 max-w-4xl">
@@ -83,23 +93,27 @@
 
         <main class="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg mb-28">
             <div class="flex justify-between items-center mb-6">
-                 <!-- PDF Control Section -->
-                 <div class="flex-1 mr-4">
+                <!-- PDF Control Section -->
+                <div class="flex-1 mr-4">
                     <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
                         <h3 class="font-bold text-sm md:text-base mb-2">選択した問題でPDFを作成</h3>
                         <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
                             <div class="flex items-center">
-                                <input type="checkbox" id="select-all-checkbox" class="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
-                                <label for="select-all-checkbox" class="ml-2 text-sm font-medium text-gray-700 cursor-pointer">すべて選択 / 解除</label>
+                                <input type="checkbox" id="select-all-checkbox"
+                                    class="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                                <label for="select-all-checkbox"
+                                    class="ml-2 text-sm font-medium text-gray-700 cursor-pointer">すべて選択 / 解除</label>
                             </div>
-                            <button id="open-pdf-modal-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow text-sm transition-transform transform hover:scale-105">
+                            <button id="open-pdf-modal-btn"
+                                class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow text-sm transition-transform transform hover:scale-105">
                                 PDF作成メニュー
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <button id="start-quiz-btn" class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-lg shadow transition-transform transform hover:scale-105 whitespace-nowrap">
+                <button id="start-quiz-btn"
+                    class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-lg shadow transition-transform transform hover:scale-105 whitespace-nowrap">
                     ランダムテスト
                 </button>
             </div>
@@ -111,11 +125,16 @@
     </div>
 
     <!-- Control Panel -->
-    <div id="control-panel" class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md p-4 border-t-2 border-gray-200 shadow-2xl flex justify-center items-center space-x-2 md:space-x-4">
-        <button id="toggle-answer-btn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">表示/非表示</button>
-        <button id="play-sound-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">音声再生</button>
-        <button id="record-btn" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">録音評価</button>
-        <button id="toggle-explanation-btn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">解説</button>
+    <div id="control-panel"
+        class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md p-4 border-t-2 border-gray-200 shadow-2xl flex justify-center items-center space-x-2 md:space-x-4">
+        <button id="toggle-answer-btn"
+            class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">表示/非表示</button>
+        <button id="play-sound-btn"
+            class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">音声再生</button>
+        <button id="record-btn"
+            class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">録音評価</button>
+        <button id="toggle-explanation-btn"
+            class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">解説</button>
     </div>
 
     <!-- Message/Score Modal -->
@@ -124,11 +143,12 @@
             <!-- Message content will be populated by JS -->
         </div>
     </div>
-    
+
     <!-- Quiz Modal -->
     <div id="quiz-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-40 p-4">
         <div class="bg-white w-full max-w-2xl p-8 rounded-2xl shadow-2xl relative">
-            <button id="close-quiz-btn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-3xl font-bold">&times;</button>
+            <button id="close-quiz-btn"
+                class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-3xl font-bold">&times;</button>
             <div id="quiz-content">
                 <!-- Quiz content will be populated by JS -->
             </div>
@@ -136,17 +156,24 @@
     </div>
 
     <!-- PDF Download Modal -->
-    <div id="pdf-modal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center z-50">
+    <div id="pdf-modal"
+        class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center z-50">
         <div class="relative mx-auto p-5 border w-11/12 md:w-1/2 lg:w-1/3 shadow-lg rounded-md bg-white">
             <div class="mt-3 text-center">
                 <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">ダウンロードするPDFの種類を選択</h3>
                 <div class="mt-2 space-y-3">
-                    <button id="download-list-btn" class="btn btn-primary w-full justify-start text-left">1. 完全なリスト (熟語・意味・例文)</button>
-                    <button id="download-en-quiz-btn" class="btn btn-primary w-full justify-start text-left">2. 熟語テスト (英語を解答)</button>
-                    <button id="download-ja-quiz-btn" class="btn btn-primary w-full justify-start text-left">3. 熟語テスト (意味を解答)</button>
-                    <button id="download-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">4. 熟語テスト (混合)</button>
-                    <button id="download-sentence-quiz-btn" class="btn btn-primary w-full justify-start text-left">5. 例文の穴埋め問題</button>
-                    <button id="download-sentence-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">6. 例文の混合問題 (穴埋め/和訳)</button>
+                    <button id="download-list-btn" class="btn btn-primary w-full justify-start text-left">1. 完全なリスト
+                        (熟語・意味・例文)</button>
+                    <button id="download-en-quiz-btn" class="btn btn-primary w-full justify-start text-left">2. 熟語テスト
+                        (英語を解答)</button>
+                    <button id="download-ja-quiz-btn" class="btn btn-primary w-full justify-start text-left">3. 熟語テスト
+                        (意味を解答)</button>
+                    <button id="download-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">4. 熟語テスト
+                        (混合)</button>
+                    <button id="download-sentence-quiz-btn" class="btn btn-primary w-full justify-start text-left">5.
+                        例文の穴埋め問題</button>
+                    <button id="download-sentence-mixed-quiz-btn"
+                        class="btn btn-primary w-full justify-start text-left">6. 例文の混合問題 (穴埋め/和訳)</button>
                 </div>
                 <div class="mt-6">
                     <button id="close-modal-btn" class="btn btn-secondary w-full">キャンセル</button>
@@ -158,652 +185,828 @@
     <script>
         const chapterData = [
     {
-        "id": "1",
-        "ja": "2 3 4 5 6 7 8 9 10音読 副詞の働きをする熟語 2 3 4 5 6 7 8 9 10音読 副詞の働きをする熟語 2 3 4 5 6 7 8 9 10音読 副詞の働きをする熟語 2 3 4 5 6 7 8 9 10音読 副詞の働きをする熟語 2 3 4 5 6 7 8 9 10音読 副詞の働きをする熟語 2 3 4 5 6 7 8 9 10音読 副詞の働きをする熟語 2 3 4 5 6 7 8 9 10音読 副詞の働きをする熟語 2 3 4 5 6 7 8 9 10音読 副詞の働きをする熟語 2 3 4 5 6 7 8 9 10音読 副詞の働きをする熟語 2 3 4 5 6 7 8 9 10音読 副詞の働きをする熟語 2 3 4 5 6 7 8 9 10音読 副詞の働きをする熟語",
+        "id": "26",
+        "ja": "章　副詞の働きをする熟語  QR ☚ 音読用動画　別解など ▼ 1246～1265〈「時」に関する副詞句〉",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
-        "question": "Self Check"
+        "question": ""
     },
     {
-        "id": "26",
-        "ja": "副詞の働きをする熟語 ◀\t音読用動画 別解など 副詞の働きをする熟語 熟語編 ｜  26章 副詞の働きをする熟語② 熟語編 ｜  26章 副詞の働きをする熟語③ 熟語編 ｜  26章 副詞の働きをする熟語④ 熟語編 ｜  26章 副詞の働きをする熟語⑤ 熟語編 ｜  26章 副詞の働きをする熟語⑥ 熟語編 ｜  26章 副詞の働きをする熟語⑦ 熟語編 ｜  26章 副詞の働きをする熟語⑧ 熟語編 ｜  26章 副詞の働きをする熟語⑨ 熟語編 ｜  26章 副詞の働きをする熟語⑩ 熟語編 ｜  26章 副詞の働きをする熟語⑪",
+        "id": "452",
+        "ja": "● 熟語編｜26章",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
-        "question": "①"
+        "question": ""
+    },
+    {
+        "id": "454",
+        "ja": "● 熟語編｜26章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "456",
+        "ja": "● 熟語編｜26章 ▼ 1268～1277〈by＋名詞〉",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "458",
+        "ja": "● 熟語編｜26章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "460",
+        "ja": "● 熟語編｜26章 ▼ 1284～1286〈on＋名詞〉",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "462",
+        "ja": "● 熟語編｜26章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "464",
+        "ja": "● 熟語編｜26章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "466",
+        "ja": "● 熟語編｜26章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "468",
+        "ja": "● 熟語編｜26章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "470",
+        "ja": "● 熟語編｜26章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
     },
     {
         "id": "1246",
-        "ja": "ちょうど今，忙しいんです。後で話せますか。",
-        "en": "I’m busy right now. Can we talk later? right now  ͙͢ʢ＝immediatelyʣʯ by now͸ʯ",
-        "answer": "right now. Can we talk later? right now ͙͢ʢ＝immediatelyʣʯ by now͸ʯ",
+        "ja": "ちょうど今，忙しいんです。後で話せますか。 right now ①「ちょうど今」②「今すぐ(＝immediately)」 ＋ by now「今頃は」 ＋ until now＝up to now「今まで」➡ 20",
+        "en": "I’m busy {right now}. Can we talk later?",
+        "answer": "right now",
         "explanation": "",
-        "question": "I’m busy (        ) (n      ). Can we talk later?"
+        "question": "I’m busy (    ) (n   ). Can we talk later?"
     },
     {
         "id": "1247",
-        "ja": "「すぐに来 て く れ ま す か 。」「 了 解 ！ 」",
-        "en": "“Can you come {right away?” “Sure!” right away ʮ͙͢ʹʯ ＝immediately ＝instantly}",
-        "answer": "right away?” “Sure!” right away ʮ͙͢ʹʯ ＝immediately ＝instantly",
-        "explanation": "",
-        "question": "“Can you come (r      ) (        ) ?” “Sure!”"
+        "ja": "「すぐに来てくれますか。」「了解！」 right away「すぐに」",
+        "en": "“Can you come {right away}?” “Sure!”",
+        "answer": "right away",
+        "explanation": "＝immediately＝instantly",
+        "question": "“Can you come (r   ) (    )?” “Sure!”"
     },
     {
         "id": "1248",
-        "ja": "バスに乗るためにすぐに出発しなければならない。 ⇧ 「一度 （once）の 時 点 で（at） ⭢ 同時に」 「すると決めた時と同時に ⭢ すぐに」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "I have to leave (a      ) (        ) to catch the bus. I have to leave at once to catch the bus. at once  ᶃʮ ͢ ͙ ʹʢ＝immediatelyʹ ʢ＝at the same timeʣʯ all at once  ᶃʮ ಥ વʢ＝suddenlyʣʯ ᶄʮ ͍ ͬ ͤ ͍ ʹ ʯ"
+        "ja": "バスに乗るためにすぐに出発しなければならない。 at once ①「すぐに(＝immediately)」②「同時に(＝at the same time)」 ⇧「一度(once)の時点で(at) → 同時に」「すると決めた時と同時に → すぐに」 ＋ all at once ①「突然(＝suddenly)」②「いっせいに」",
+        "en": "I have to leave {at once} to catch the bus.",
+        "answer": "at once",
+        "explanation": "Tip  immediately「すぐに」と同じ意味を表すもう１つの表現は？",
+        "question": "I have to leave (a   ) (    ) to catch the bus."
     },
     {
         "id": "1249",
-        "ja": "発展 私はその場でチームに加わることを決めた。 ⇧「 そ の 場 所（the spot）で（on）」",
-        "en": "???",
-        "answer": "???",
+        "ja": "私はその場でチームに加わることを決めた。 発展     Tip 「その場で」を表す表現は？ on the spot「その場で，即座に(＝immediately)」 ⇧「その場所(the spot)で(on)」 ○ join「(グループなど)に加わる，(組織・会社など)の一員となる」",
+        "en": "I decided to join the team{ on the spot}.",
+        "answer": "on the spot",
         "explanation": "",
-        "question": "I decided to join the team (o      ) (        ) (        ). I decided to join the team on the spot. on the spotʹʢ＝immediatelyʣʯ joinͳͲʣͷҰһͱͳΔʯ"
+        "question": "I decided to join the team (o   ) (    ) (    )."
     },
     {
         "id": "1250",
-        "ja": "すぐに参ります。 ⇧ 「一瞬の （a minute） ／時間がない （no time）う ち に（in）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "I’ll be with you (        ) (        ) (m     ). I’ll be with you in a minute. in a minute in no time       ʮ͙͢ʹʯ＝very soon ＝in a moment ＝in a second"
+        "ja": "すぐに参ります。 in no time      「すぐに」＝very soon＝in a moment＝in a second ⇧「一瞬の(a minute)／時間がない(no time)うちに(in)」",
+        "en": "I’ll be with you {in a minute}. {in a minute}",
+        "answer": "in a minute, in a minute",
+        "explanation": "Tip  very soon「すぐに，まもなく」と同じ意味を表す表現は？",
+        "question": "I’ll be with you (    ) (    ) (m   )."
     },
     {
         "id": "1251",
-        "ja": "その法律はまもなく可決されるだろう。 ⇧「 長 く（long）に な る 前 に（before）」",
-        "en": "???",
-        "answer": "???",
+        "ja": "その法律はまもなく可決されるだろう。 before long「まもなく」＝soon ⇧「長く(long)になる前に(before)」",
+        "en": "That law will be passed {before long}.",
+        "answer": "before long",
         "explanation": "",
-        "question": "That law will be passed (b      ) (        ). That law will be passed before long. before long ʮ·΋ͳ͘ʯ＝soon"
+        "question": "That law will be passed (b   ) (    )."
     },
     {
         "id": "1252",
-        "ja": "現在，社会保障費の増加が大きな問題となっ ている。 ⇧「 現 在（present）の 時 点 で（at）」",
-        "en": "???",
-        "answer": "???",
+        "ja": "現在，社会保障費の増加が大きな問題となっている。 at present「現在は，今のところは」＝currently ⇧「現在(present)の時点で(at)」 ＋ for the present「当分の間，しばらくは」＝for the time being ➡ 1255 ○ social security costs「社会保障費」",
+        "en": "{At present}, the increase in social security costs is a big problem.",
+        "answer": "At present",
         "explanation": "",
-        "question": "(        ) (p      ), the increase in social security costs is a big problem. At present, the increase in social security costs is a big problem. at presentͷͱ͜Ζ͸ʯ＝currently for the presentɼ͠͹Β͘͸ʯ＝for the time being  ➡1255 social security costsձอোඅʯ"
+        "question": "(    ) (p   ), the increase in social security costs is a big problem."
     },
     {
         "id": "1253",
-        "ja": "昔は，今よりもっとビニール袋を使っていた。",
-        "en": "{In the past, we used more plastic bags than we do today. in the pastʹʯ a plastic bag ʮϏχʔϧାʯ}",
-        "answer": "In the past, we used more plastic bags than we do today. in the pastʹʯ a plastic bag ʮϏχʔϧାʯ",
+        "ja": "昔は，今よりもっとビニール袋を使っていた。 in the past「過去に」 ○ a plastic bag「ビニール袋」",
+        "en": "{In the past}, we used more plastic bags than we do today.",
+        "answer": "In the past",
         "explanation": "",
-        "question": "(        ) (        ) (p      ), we used more plastic bags than we do today."
+        "question": "(    ) (    ) (p   ), we used more plastic bags than we do today."
     },
     {
         "id": "1254",
-        "ja": "ネットショッピングのこうした流行は今後も続くだろう。 復習 26章",
-        "en": "???",
-        "answer": "???",
+        "ja": "ネットショッピングのこうした流行は今後も続くだろう。 副詞の働きをする熟語 ① ● 451 in the future「将来は，今後は」 ＋ in the near future「近い将来」 ○ trend「(一般的な)傾向，流行」",
+        "en": "This trend of online shopping will continue {in the future}.",
+        "answer": "in the future",
         "explanation": "",
-        "question": "This trend of online shopping will continue (        ) (        ) (f      ). This trend of online shopping will continue in the future. in the future͸ʯ in the near future͍কདྷʯ trendʯ 450 451 for / while / along / so / as"
+        "question": "This trend of online shopping will continue (    ) (    ) (f   )."
     },
     {
         "id": "1255",
-        "ja": "発展 この話題はしばらく置 いておこう。 ⇧「 今 こ の 時（the time）が 存 在 す る（being）間（for）は 」",
-        "en": "???",
-        "answer": "???",
+        "ja": "この話題はしばらく置いておこう。 発展     Tip 「しばらく＝当分の間」を表す表現は？ for the present       「当分の間，しばらくは」 ⇧「今この時(the time)が存在する(being)間(for)は」 ＋ at present「現在は，今のところは」＝currently ➡ 1252 ○ put aside A / put A aside ①「Aを取っておく」②「A(問題など)を保留にする」",
+        "en": "Let’s put this topic aside {for the time being}. {for the time being}",
+        "answer": "for the time being, for the time being",
         "explanation": "",
-        "question": "Let’s put this topic aside (        ) (        ) (t      ) (b      ). Let’s put this topic aside for the time being. for the time being for the present          ɼ͠͹Β͘͸ʯ at presentͷͱ͜Ζ͸ʯ＝currently  ➡1252 put aside A / put A aside  ᶃʮA Λऔ͓ͬͯ͘ʯ ᶄʮAʢ໰୊ͳͲʣΛอཹʹ͢Δʯ"
+        "question": "Let’s put this topic aside (    ) (    ) (t   ) (b   )."
     },
     {
         "id": "1256",
-        "ja": "ナオミはどうしていますか 。しばらく彼女に会っていないけれど。 ⇧「 し ば ら く（a while）の 間（for）」",
-        "en": "???",
-        "answer": "???",
+        "ja": "ナオミはどうしていますか。しばらく彼女に会っていないけれど。 for a while「しばらくの間」 ⇧「しばらく(a while)の間(for)」",
+        "en": "How’s Naomi? I haven’t seen her {for a while}.",
+        "answer": "for a while",
         "explanation": "",
-        "question": "How’s Naomi? I haven’t seen her (f      ) (        ) (        ). How’s Naomi? I haven’t seen her for a while. for a whileʯ"
+        "question": "How’s Naomi? I haven’t seen her (f   ) (    ) (    )."
     },
     {
         "id": "1257",
-        "ja": "し ば らくして，気分はだいぶ良く なった。 ⇧「 し ば ら く（a while）し た 後（after）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "(        ) (        ) (w     ), I felt much better. After a while, I felt much better. after a while ʮ͠͹Βͯ͘͠ʯ feel much better෼͕͍ͣͿΜྑ͘ͳΔʯ"
+        "ja": "しばらくして，気分はだいぶ良くなった。 after a while「しばらくして」 ⇧「しばらく(a while)した後(after)」 ○ feel much better「気分がずいぶん良くなる」",
+        "en": "{After a while}, I felt much better.",
+        "answer": "After a while",
+        "explanation": "Tip 「しばらくして」を表す表現は？",
+        "question": "(    ) (    ) (w   ), I felt much better."
     },
     {
         "id": "1258",
-        "ja": "長い間，ビーチに行っていない 。 ⇧ 「長期間 （ages）の 間（for）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "I haven’t been to the beach (        ) (        ). I haven’t been to the beach for ages. for agesʯ＝for a long time for years ʮԿ೥΋ʯ"
+        "ja": "長い間，ビーチに行っていない。 for ages「長い間」＝for a long time ⇧「長期間(ages)の間(for)」 ＋ for years「何年も」",
+        "en": "I haven’t been to the beach {for ages}.",
+        "answer": "for ages",
+        "explanation": "Tip  for a long time「長い間」と同じ意味を表す表現は？",
+        "question": "I haven’t been to the beach (    ) (    )."
     },
     {
         "id": "1259",
-        "ja": "父はたばこを永久にやめたと言っていた。",
-        "en": "My father said he quit smoking {for good. for goodʹʯ＝forever ＝permanently}",
-        "answer": "for good. for goodʹʯ＝forever ＝permanently",
-        "explanation": "▶ イギリスではfor good and allも同じ意味で使われる。",
-        "question": "My father said he quit smoking (        ) (        )."
+        "ja": "父はたばこを永久にやめたと言っていた。 for good「永久に」＝forever＝permanently",
+        "en": "My father said he quit smoking {for good}.",
+        "answer": "for good",
+        "explanation": "Tip  forever「永久に」と同じ意味を表す表現は？\n▶ イギリスではfor good and allも同じ意味で使われる。",
+        "question": "My father said he quit smoking (    ) (    )."
     },
     {
         "id": "1260",
-        "ja": "発展 私たちはこの問題についてきっぱりと決着をつける必要がある。 ⇧「 一 度（once）そし て（and）そ れ が 全 部 の 代 わ り（for all）」",
-        "en": "???",
-        "answer": "???",
+        "ja": "私たちはこの問題についてきっぱりと決着をつける必要がある。 発展     Tip 「これを最後に，きっぱりと」を表す表現は？ once and for all「これを最後に，きっぱりと」 ⇧「一度(once)そして(and)それが全部の代わり(for all)」 ○ settle「～に決着をつける，～を解決する(＝resolve)」",
+        "en": "We need to settle this matter {once and for all}.",
+        "answer": "once and for all",
         "explanation": "",
-        "question": "We need to settle this matter (o      ) (        ) (        ) (        ). We need to settle this matter once and for all. once and for allʹɼ͖ͬͺΓͱʯ settle͢Δʢ＝resolveʣʯ"
+        "question": "We need to settle this matter (o   ) (    ) (    ) (    )."
     },
     {
         "id": "1261",
-        "ja": "鍵がずっとバッグの中にあったことに気がついた。 ⇧「 全 部（all）に 沿 っ て（along）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "I realized that my keys were in the bag (        ) (a      ). I realized that my keys were in the bag all along. all along ʮͣͬͱʢ＝all the time)ɼ ॳ Ί ͔ Βʢ＝from the beginningʣʯ"
+        "ja": "鍵がずっとバッグの中にあったことに気がついた。 all along「ずっと(＝all the time)，初めから(＝from the beginning)」 ⇧「全部(all)に沿って(along)」",
+        "en": "I realized that my keys were in the bag {all along}.",
+        "answer": "all along",
+        "explanation": "Tip  all the time「ずっと」と同じ意味を表す表現は？",
+        "question": "I realized that my keys were in the bag (    ) (a   )."
     },
     {
         "id": "1262",
-        "ja": "これまでに，5 人の生徒がこのプロジェクトに集まった。",
-        "en": "{So far, five students have come together for this project.}",
-        "answer": "So far, five students have come together for this project.",
-        "explanation": "▶ so far / until now / up to now は現在完了形と共に使うことが多い。\n⇔ from now on͸ʯ\ncome together ʮʢάϧ ʔϓͱͯ͠ʣू·Δʯ",
-        "question": "(S      ) (        ), five students have come together for this project."
+        "ja": "これまでに，5人の生徒がこのプロジェクトに集まった。 so far「今までのところ，これまでに」＝until now＝up to now ⇔ from now on「これからは，今後は」 ○ come together「(グループとして)集まる」",
+        "en": "{So far}, five students have come together for this project.",
+        "answer": "So far",
+        "explanation": "▶ so far / until now / up to nowは現在完了形と共に使うことが多い。",
+        "question": "(S   ) (    ), five students have come together for this project."
     },
     {
         "id": "1263",
-        "ja": "発展 これまでのところ，その行方不明の旅行者に関する情報はない。 否定文や否定語と共に使うことが多い。 復習 私たちは今でも時々メッセージを送り合う。 発展 誰でもたまには間違いをする。 ⇧「 し ば らくの 間（a while）の 中 で（in）一 度（once）」",
-        "en": "???",
-        "answer": "???",
+        "ja": "これまでのところ，その行方不明の旅行者に関する情報はない。 発展     Tip 「これまでのところ(～ない)」を表す表現は？ 否定文や否定語と共に使う表現。 副詞の働きをする熟語 ② ● 453 as yet「これまでのところ(～ない)，今のところ(～ない)」 ！ 否定文や否定語と共に使うことが多い。 ＋ A …, (and) yet B …「A…だがB…，A…しかしB…」➡ 846-3 ○ missing「行方不明の」",
+        "en": "{As yet}, there is no information about the missing tourist.",
+        "answer": "As yet",
         "explanation": "",
-        "question": "(A      ) (        ), there is no information about the missing tourist. As yet, there is no information about the missing tourist. as yetͷͱ͜Ζʢʙͳ͍ʣʯ A …, (and) yet B …ʮA …͕ͩB …ɼA …͔͠͠B …ʯ➡846-3 missingํෆ໌ͷʯ 452 453 Self Check rule / large 1264-1 We still text each other (f      ) (        ) (        ) (        ). 1264-1 We still text each other from time to time. from time to time at times                        ʑʯ ＝sometimes at a time ʮҰ౓ʹʯ at the same timeʹʯ 1264-2 Everyone makes mistakes (o      ) (        ) (        ) (        ). 1264-2 Everyone makes mistakes once in a while. once in a while (every) now and then (every) now and again      ંʯ on occasion (s) ＝occasionally make a mistakeҧ͍Λ͢Δʯ"
+        "question": "(A   ) (    ), there is no information about the missing tourist."
+    },
+    {
+        "id": "1264-1",
+        "ja": "私たちは今でも時々メッセージを送り合う。 at times             「時々」 ＋ at a time「一度に」 ＋ at the same time「同時に」 ○ text (A)「(Aに)(携帯電話で)メッセージを送る」",
+        "en": "We still text each other {from time to time}. {from time to time}",
+        "answer": "from time to time, from time to time",
+        "explanation": "＝sometimes",
+        "question": "We still text each other (f   ) (    ) (    ) (    )."
+    },
+    {
+        "id": "1264-2",
+        "ja": "誰でもたまには間違いをする。 発展     Tip  occasionally「たまに，時折」と同じ意味を表す表現は？ (every) now and again    「たまに，時折」 ⇧「しばらくの間(a while)の中で(in)一度(once)」 ○ make a mistake「間違いをする」",
+        "en": "Everyone makes mistakes {once in a while}. {once in a while}",
+        "answer": "once in a while, once in a while",
+        "explanation": "＝occasionally",
+        "question": "Everyone makes mistakes (o   ) (    ) (    ) (    ). (every) now and then on occasion(s)"
     },
     {
         "id": "1265",
-        "ja": "発展 今日は一日中，雨が降ったりやんだりしている。",
-        "en": "It’s been raining on and oﬀ all day today. on and off off and on    ʮஅଓతʹʯ ⇧「 付 い て（on）そし て（and）離 れ て（off）」 all day (long)ʮҰ೔தʯ⇔⇔ all night (long)ʮҰ൩தʯ ▼1266～1267ʫ 1266-1 基本 一般的に，日本の夏は蒸し暑い。 (I      ) (        ), summers in Japan are hot and humid. 1266-1 In general, summers in Japan are hot and humid. in general             ᶃ ʮҰൠతʹʢ＝generallyʣʯ as a whole            ᶄ ʮશମͱ͠ ͯʢ＝all in allʣʯ on the whole    ᶅ ʮʙશମʢ＝ ～ at largeʣʯ hot and humid ʮৠ͠ॵ͍ʯ―humidͷ͋Δʯ 1266-2 全 体として，試験はうまくいった。 (O      ) (        ) (        ), I did well in my exams. 1266-2 On the whole, I did well in my exams.",
-        "answer": "on and oﬀ all day today. on and off off and on ʮஅଓతʹʯ ⇧「 付 い て（on）そし て（and）離 れ て（off）」 all day longʮҰ೔தʯ⇔⇔ all night longʮҰ൩தʯ ▼1266～1267ʫ 1266-1 基本 一般的に，日本の夏は蒸し暑い。 I   , summers in Japan are hot and humid. 1266-1 In general, summers in Japan are hot and humid. in general ᶃ ʮҰൠతʹʢ＝generallyʣʯ as a whole ᶄ ʮશମͱ͠ ͯʢ＝all in allʣʯ on the whole ᶅ ʮʙશମʢ＝ ～ at largeʣʯ hot and humid ʮৠ͠ॵ͍ʯ―humidͷ͋Δʯ 1266-2 全 体として，試験はうまくいった。 O     , I did well in my exams. 1266-2 On the whole, I did well in my exams.",
-        "explanation": "▶ on the whole 「一般的に，全体と して，～全体」➡1266-1\ndo well ʮ͏·͘΍Δʯ＝succeed\n1267-1 たいてい，私はバスで学校に行くが，時々歩く こ ともある。\n(A      ) (        ) (        ), I take the bus to school, but sometimes I walk.\n1267-1 As a rule, I take the bus to school, but sometimes I walk.\nas a (general) rule\n͠ ͯɼҰൠతʹʢ＝generallyʣʯ ᶄʮ ͨ ͍ ͯ ͍ʢ＝usuallyʣʯ\n⇧ 「一般的な （general）規 則（a rule）とし て（as）」\n1267-2 一般的に，日本の６月は雨が多い。\n(B      ) (        ) (        ), it rains a lot in June in Japan.\n1267-2 By and large, it rains a lot in June in Japan.\nby and large͠ ͯɼҰൠతʹʯ\n⇧「 近 く（by）も（and）幅 広 く（large）も 」\n＝generally ＝as a (general) rule\nit rains a lotΔʯ\n⇔⇔ it doesn’t rain muchΒͳ͍ʯ\n454 455\nSelf\nCheck\n復習",
-        "question": "It’s been raining (        ) (        ) (        ) all day today."
+        "ja": "今日は一日中，雨が降ったりやんだりしている。 発展     Tip 「(雨が)降ったりやんだり＝断続的に」を表す表現は？ ▼ 1266～1267〈「一般，全体」を表す副詞句〉 off and on     「断続的に」 ⇧「付いて(on)そして(and)離れて(off)」 ○ all day (long)「一日中」⇔ all night (long)「一晩中」",
+        "en": "It’s been raining {on and off} all day today. {on and off}",
+        "answer": "on and off, on and off",
+        "explanation": "",
+        "question": "It’s been raining (    ) (    ) (    ) all day today."
     },
     {
-        "id": "1267",
-        "ja": "???",
-        "en": "sea / air ▼ 1268～1277ʪbyʫ",
-        "answer": "???",
+        "id": "1266-1",
+        "ja": "一般的に，日本の夏は蒸し暑い。 in general　  　 　  ①「一般的に(＝generally)」 as a whole　　 　　 ②「全体として(＝all in all)」 on the whole  　　　③「～全体(＝～ at large)」 ○ hot and humid「蒸し暑い」―humid「湿気のある」",
+        "en": "{In general}, summers in Japan are hot and humid.",
+        "answer": "In general",
         "explanation": "",
-        "question": "???"
+        "question": "(I   ) (    ), summers in Japan are hot and humid."
+    },
+    {
+        "id": "1266-2",
+        "ja": "全体として，試験はうまくいった。 ○ do well「うまくやる」＝succeed",
+        "en": "{On the whole}, I did well in my exams.",
+        "answer": "On the whole",
+        "explanation": "Tip 「全体として」を表す表現は？\n▶ on the whole「一般的に，全体として，～全体」➡ 1266-1",
+        "question": "(O   ) (    ) (    ), I did well in my exams."
+    },
+    {
+        "id": "1267-1",
+        "ja": "たいてい，私はバスで学校に行くが，時々歩くこともある。 ①「概して，一般的に(＝generally)」②「たいてい(＝usually)」 ⇧「一般的な(general)規則(a rule)として(as)」",
+        "en": "{As a rule}, I take the bus to school, but sometimes I walk.",
+        "answer": "As a rule",
+        "explanation": "Tip  usually「たいてい」と同じ意味を表す表現は？",
+        "question": "(A   ) (    ) (    ), I take the bus to school, but sometimes I walk. as a (general) rule"
+    },
+    {
+        "id": "1267-2",
+        "ja": "一般的に，日本の６月は雨が多い。 副詞の働きをする熟語 ③ ● 455 by and large「概して，一般的に」 ⇧「近く(by)も(and)幅広く(large)も」 ○ it rains a lot「たくさん雨が降る」 ⇔ it doesn’t rain much「あまり雨が降らない」",
+        "en": "{By and large}, it rains a lot in June in Japan.",
+        "answer": "By and large",
+        "explanation": "Tip  generally「一般的に」と同じ意味を表す表現は？",
+        "question": "(B   ) (    ) (    ), it rains a lot in June in Japan. ＝generally＝as a (general) rule"
     },
     {
         "id": "1268",
-        "ja": "そのショッピングモールで偶然，昔の友達に会った。",
-        "en": "I met my old friend {by chance at the mall.}",
-        "answer": "by chance at the mall.",
-        "explanation": "▶ by は前置詞で「～によって，～経由で，～単位で，～のそばに」などの意味。\nby chance\nby accident    વʹʯ＝accidentally\nchance, accident には「偶然」という意味がある。",
-        "question": "I met my old friend (        ) (        ) at the mall."
+        "ja": "そのショッピングモールで偶然，昔の友達に会った。 by accident    「偶然に」＝accidentally ！ chance, accidentには「偶然」という意味がある。",
+        "en": "I met my old friend {by chance} at the mall. {by chance}",
+        "answer": "by chance, by chance",
+        "explanation": "▶ byは前置詞で「～によって，～経由で，～単位で，～のそばに」などの意味。",
+        "question": "I met my old friend (    ) (    ) at the mall."
     },
     {
         "id": "1269",
-        "ja": "発展 「ひょっとして， ハ リ ス さ ん で す か 。」「 は い ， 私 で す 。」 ⇧「 少 し の（any）偶 然（chance）に よっ て（by）」 疑問文で使う。",
-        "en": "???",
-        "answer": "???",
+        "ja": "「ひょっとして，ハリスさんですか。」「はい，私です。」 発展     Tip  perhaps「ひょっとして」と同じ意味を表し，疑問文で使う表現は？ by any chance「ひょっとして(～か)」＝perhaps ⇧「少しの(any)偶然(chance)によって(by)」 ！ 疑問文で使う。",
+        "en": "“Are you Ms. Harris, {by any chance}?” “Yes, I am.”",
+        "answer": "by any chance",
         "explanation": "",
-        "question": "“Are you Ms. Harris, (        ) (        ) (        )?” “Yes, I am.” “Are you Ms. Harris, by any chance?” “Yes, I am.” by any chance ʮ ͻΐͬͱͯ͠ʢʙ͔ʣʯ＝perhaps"
+        "question": "“Are you Ms. Harris, (    ) (    ) (    )?” “Yes, I am.”"
     },
     {
         "id": "1270",
-        "ja": "重 要なファイルを誤って削 除してしまった 。どうにかして元 に戻 せません か 。 ⇧「 誤 り（mistake）に よっ て（by）」 deleteআ͢Δʯ―パソコンのデリートキーは「削除キー」のこと。",
-        "en": "???",
-        "answer": "???",
+        "ja": "重要なファイルを誤って削除してしまった。どうにかして元に戻せませんか。 by mistake「誤って，間違って」＝mistakenly＝accidentally ⇧「誤り(mistake)によって(by)」 ＋ make a mistake「間違いをする」 ○ delete「～を削除する」―パソコンのデリートキーは「削除キー」のこと。 ○ recover「回復する，～を取り戻す」",
+        "en": "I’ve deleted an important file {by mistake}. Can I recover it somehow?",
+        "answer": "by mistake",
         "explanation": "",
-        "question": "I’ve deleted an important file (        ) (m     ). Can I recover it somehow? I’ve deleted an important file by mistake. Can I recover it somehow? by mistakeҧͬͯʯ＝mistakenly ＝accidentally make a mistakeҧ͍Λ͢Δʯ recover ʮճ෮͢ΔɼʙΛऔΓ໭͢ʯ"
+        "question": "I’ve deleted an important file (    ) (m   ). Can I recover it somehow?"
     },
     {
         "id": "1271",
-        "ja": "これらの木製の椀は手作業で作られている。",
-        "en": "These wooden bowls are crafted by hand. wooden bowl ʮ໦੡ͷ࿶ʯ craft  Δʯ",
-        "answer": "by hand. wooden bowl ʮ໦੡ͷ࿶ʯ craft Δʯ",
-        "explanation": "",
-        "question": "These wooden bowls are crafted (        ) (        )."
+        "ja": "これらの木製の椀は手作業で作られている。 by hand「人の手で」⇦「人の手(hand)によって(by)」 ○ wooden bowl「木製の椀」 ○ craft ① 名詞「手芸，工芸品，技術」② 動詞「～を手で作る」",
+        "en": "These wooden bowls are crafted {by hand}.",
+        "answer": "by hand",
+        "explanation": "Tip 「手作業で＝人の手で」を表す表現は？",
+        "question": "These wooden bowls are crafted (    ) (    )."
     },
     {
         "id": "1272",
-        "ja": "猫は生まれつき独立心が強い。 ⇧「 天 性（nature）に よっ て（by）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Cats are independent (        ) (        ). Cats are independent by nature. by nature ʮੜ·Ε͖ͭʯ＝naturally"
+        "ja": "猫は生まれつき独立心が強い。 by nature「生まれつき」＝naturally ⇧「天性(nature)によって(by)」",
+        "en": "Cats are independent {by nature}.",
+        "answer": "by nature",
+        "explanation": "Tip 「生まれつき」を表す表現は？",
+        "question": "Cats are independent (    ) (    )."
     },
     {
         "id": "1273",
-        "ja": "マリは生まれは日本だが ， 長い間フランスに住んでいる。 ⇧「 誕 生（birth）に よっ て（by）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Mari is Japanese (        ) (        ), but has lived in France for a long time. Mari is Japanese by birth, but has lived in France for a long time. by birth ʮੜ·Ε͸ʯ for a long timeʯ＝for ages"
+        "ja": "マリは生まれは日本だが，長い間フランスに住んでいる。 by birth「生まれは」 ⇧「誕生(birth)によって(by)」 ○ for a long time「長い間」＝for ages",
+        "en": "Mari is Japanese {by birth}, but has lived in France for a long time.",
+        "answer": "by birth",
+        "explanation": "Tip 「生まれは」を表す表現は？",
+        "question": "Mari is Japanese (    ) (    ), but has lived in France for a long time."
     },
     {
         "id": "1274",
-        "ja": "空輸よりも海上輸送のほうが環境に優しい。",
-        "en": "It is more environmentally friendly to ship goods {by sea than by air. environmentally friendlyʹ༏͍͠ʯ＝eco-friendly ⇔⇔ environmentally damagingഁյతͳʯ}",
-        "answer": "by sea than by air. environmentally friendlyʹ༏͍͠ʯ＝eco-friendly ⇔⇔ environmentally damagingഁյతͳʯ",
-        "explanation": "",
-        "question": "It is more environmentally friendly to ship goods (        ) (s      ) than (        ) (        )."
+        "ja": "空輸よりも海上輸送のほうが環境に優しい。 by sea「海路で」⇦「海(sea)を経由して(by)」 by air「空路で」⇦「大気(air)を経由して(by)」 ＋ by land「陸路で」 ○ environmentally friendly「環境に優しい」＝eco-friendly ⇔ environmentally damaging「環境破壊的な」 ○ ship ① 名詞「船」② 動詞「(船・飛行機・トラックなどで)～を輸送する」",
+        "en": "It is more environmentally friendly to ship goods {by sea} than {by air}.",
+        "answer": "by sea, by air",
+        "explanation": "Tip 「空路で」「海路で」を表す表現は？",
+        "question": "It is more environmentally friendly to ship goods (    ) (s   ) than (    ) (    )."
     },
     {
         "id": "1275",
-        "ja": "徐々に私たちの友情は深まっていった。 ⇧ 「度合い （degrees）の 単 位 で（by）」 復習",
-        "en": "{by / cost}",
-        "answer": "by / cost",
-        "explanation": "",
-        "question": "(        ) (        ), our friendship grew stronger. By degrees, our friendship grew stronger. by degreesୈʹʯ＝gradually degreeҐʯ friendship ʮ༑৘ʯ 456 457 Self Check"
+        "ja": "徐々に私たちの友情は深まっていった。 副詞の働きをする熟語 ④ ● 457 by degrees「徐々に，次第に」＝gradually ⇧「度合い(degrees)の単位で(by)」 ○ degree「程度，(温度・角度などの)度，学位」 ○ friendship「友情」",
+        "en": "{By degrees}, our friendship grew stronger.",
+        "answer": "By degrees",
+        "explanation": "Tip  gradually「徐々に，次第に」と同じ意味を表す表現は？",
+        "question": "(    ) (    ), our friendship grew stronger."
     },
     {
         "id": "1276",
-        "ja": "ぜひ，この件についてどう思うか教えてください。 by all means ʮͥͻͱ΋ʯ―means「手段」は単数形も複数形もmeans。 ⇧「 あ ら ゆ る（all）手 段（means）を 使 っ て（by）で も 」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "(        ) (        ) (        ), please let us know what you think about the matter. By all means, please let us know what you think about the matter."
+        "ja": "ぜひ，この件についてどう思うか教えてください。 by all means「ぜひとも」―means「手段」は単数形も複数形もmeans。 ⇧「あらゆる(all)手段(means)を使って(by)でも」 ＋ by no means「決して…ではない」➡ 444",
+        "en": "{By all means}, please let us know what you think about the matter.",
+        "answer": "By all means",
+        "explanation": "Tip 「ぜひとも」を表す表現は？",
+        "question": "(    ) (    ) (    ), please let us know what you think about the matter."
     },
     {
         "id": "1277",
-        "ja": "ところで，あの本はもう読んだ？ ⇧「 道（the way）の そ ば（by） ⭢ （脇道にそれるが）ところで」",
-        "en": "???",
-        "answer": "???",
+        "ja": "ところで，あの本はもう読んだ？ ▼ 1278～1283〈at＋名詞〉 F 285  by the way「ところで」 ⇧「道(the way)のそば(by) → (脇道にそれるが)ところで」 ＋ in the [one’s] way「(～の)邪魔になって」 ＋ on the [one’s] way home「帰宅途中で」➡ 834-2",
+        "en": "{By the way}, have you read that book yet?",
+        "answer": "By the way",
         "explanation": "",
-        "question": "(        ) (        ) (        ), have you read that book yet? By the way, have you read that book yet? in the [one’s] wayʮʢ ʙ ͷ ʣअ ຐ ʹ ͳ ͬ ͯ ʯ ▼ 1278～1283ʪatʫ"
+        "question": "(    ) (    ) (    ), have you read that book yet?"
     },
     {
         "id": "1278",
-        "ja": "ついに，戦争が終わった。",
-        "en": "{At last, the war ended.}",
-        "answer": "At last, the war ended.",
-        "explanation": "▶ at は時や場所を点 （時点・地点） ととらえて「～に，～で」を意味する前置詞。\nat last ʮ͍ͭʹɼ΍ͬͱʯ＝/f_inally\n⇧「 最 後（last）で（at）」",
-        "question": "(        ) (        ), the war ended."
+        "ja": "ついに，戦争が終わった。 at last「ついに，やっと」＝finally ⇧「最後(last)で(at)」",
+        "en": "{At last}, the war ended.",
+        "answer": "At last",
+        "explanation": "▶ atは時や場所を点(時点・地点)ととらえて「～に，～で」を意味する前置詞。",
+        "question": "(    ) (    ), the war ended."
     },
     {
         "id": "1279",
-        "ja": "彼は趣味について長々と語った。 ⇧「 長 さ（length）を か け た 状 態 で（at）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "He (t      ) (        ) (        ) about his hobbies. He talked at length about his hobbies. at length  ᶃʮ ௕ ʑͱ ʯ ᶄʮ Α͏ ΍ ͘ɼ ΍ ͬͱʢ＝/f_inally ＝at lastʣʯ"
+        "ja": "彼は趣味について長々と語った。 at length ①「長々と」②「ようやく，やっと(＝finally＝at last)」 ⇧「長さ(length)をかけた状態で(at)」",
+        "en": "He {talked at length} about his hobbies.",
+        "answer": "talked at length",
+        "explanation": "Tip 「長々と」を表す表現は？",
+        "question": "He (t   ) (    ) (    ) about his hobbies."
     },
     {
         "id": "1280",
-        "ja": "最初は，彼らの英語についていけなかったが，次第に彼らが何を言っているのか 理解できるようになった。",
-        "en": "{At /f_irst, I could not follow their English, but gradually I began to understand what they were saying. at /f_irstॳ͸ɼॳΊͷ͏ͪ͸ʯ⇦ 「最初の （first）時 点 に お い て は（at）」}",
-        "answer": "At /f_irst, I could not follow their English, but gradually I began to understand what they were saying. at /f_irstॳ͸ɼॳΊͷ͏ͪ͸ʯ⇦ 「最初の （first）時 点 に お い て は（at）」",
-        "explanation": "▶ 順序ではなく時点を表す。後にbut や however を 含 む 文 が き て ，「 し か し そ う\nではなかった」という内容が続く ことが多い。\n/f_irst of all ʮ·ͣॳΊʹɼୈҰʹʯ＝/f_irst ＝/f_irstly ― 順序を表す。➡1311-1\nfor the /f_irst time ʮॳΊͯʢʙ͢Δʣʯ\ngradually ʮঃʑʹʯ⇔⇔ suddenlyʮಥવʹʯ",
-        "question": "(        ) (        ), I could not follow their English, but gradually I began to understand what they were saying."
+        "ja": "最初は，彼らの英語についていけなかったが，次第に彼らが何を言っているのか理解 できるようになった。 at first「最初は，初めのうちは」⇦「最初の(first)時点においては(at)」 ＋ first of all「まず初めに，第一に」＝first＝firstly ―順序を表す。➡ 1311-1 ＋ for the first time「初めて(～する)」 ○ gradually「徐々に」⇔ suddenly「突然に」",
+        "en": "{At first}, I could not follow their English, but gradually I began to understand what they were saying.",
+        "answer": "At first",
+        "explanation": "Tip 「最初は，初めのうちは」を表す表現は？\n▶ 順序ではなく時点を表す。後にbutやhoweverを含む文がきて，「しかしそうではなかった」という内容が続くことが多い。",
+        "question": "understand what they were saying."
     },
     {
         "id": "1281",
-        "ja": "私はエッフェル塔を直接見てみたい。",
-        "en": "I hope to see the Eiffel Tower /f_irst hand. (at) /f_irst handʮ௚઀ɼ͔͡ʹʯ＝directly ⇧ 「 （間接的ではなく） 直接最初に （first）手（hand）を 触 れ て（at）」 ⇔ (at) second hand઀తʹɼਓΛհͯ͠ʯ",
-        "answer": "/f_irst hand. at /f_irst handʮ௚઀ɼ͔͡ʹʯ＝directly ⇧ 「 （間接的ではなく） 直接最初に （first）手（hand）を 触 れ て（at）」 ⇔ at second hand઀తʹɼਓΛհͯ͠ʯ",
-        "explanation": "▶ Eiffel の発音に注意。/áif6l/\nclose at hand  ͘ʹʯᶅ ʮ΋͏͙͢ʯ➡1305-1",
-        "question": "I hope to see the Eiffel Tower (        ) (h      )."
+        "ja": "私はエッフェル塔を直接見てみたい。 (at) first hand「直接，じかに」＝directly ⇧「(間接的ではなく)直接最初に(first)手(hand)を触れて(at)」 ⇔ (at) second hand「間接的に，人を介して」 ＋ close at hand ①「手元に」②「すぐ近くに」③「もうすぐ」➡ 1305-1",
+        "en": "I hope to see the Eiffel Tower {first hand}.",
+        "answer": "first hand",
+        "explanation": "Tip  directly「直接，じかに」と同じ意味を表す表現は？\n▶ Eiffelの発音に注意。/○○/",
+        "question": "I hope to see the Eiffel Tower (    ) (h   )."
     },
     {
         "id": "1282",
-        "ja": "その猫は気ままに行ったり来たりする。 ⇧「 自 由 な 意 志（will）で（at）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "The cat comes and goes (        ) (        ). The cat comes and goes at will. at will͍ͷ··ʹʯ"
+        "ja": "その猫は気ままに行ったり来たりする。 at will「思いのままに」 ⇧「自由な意志(will)で(at)」",
+        "en": "The cat comes and goes {at will}.",
+        "answer": "at will",
+        "explanation": "Tip 「気ままに＝思いのままに」を表す表現は？",
+        "question": "The cat comes and goes (    ) (    )."
     },
     {
         "id": "1283",
-        "ja": "私たちは何としても戦争を避けなければならない。 ⇧「 す べ て の（all）／ ど ん な（any）犠 牲（costs/cost）で も（at）」 復習",
-        "en": "{more / advance / person ▼ 1284～1286ʪonʫ}",
-        "answer": "more / advance / person ▼ 1284～1286ʪonʫ",
-        "explanation": "",
-        "question": "We must avoid war (        ) (        ) (c      ). We must avoid war at all costs. at all costs at any cost    ਜ਼Λ෷ͬͯ΋ʯ avoid ʮʙΛආ͚Δʯ 458 459 Self Check"
+        "ja": "私たちは何としても戦争を避けなければならない。 副詞の働きをする熟語 ⑤ ● 459 at any cost 　 「どんな犠牲を払っても」 ⇧「すべての(all)／どんな(any)犠牲(costs/cost)でも(at)」 ○ avoid「～を避ける」",
+        "en": "We must avoid war {at all costs}. {at all costs}",
+        "answer": "at all costs, at all costs",
+        "explanation": "Tip 「何としても → どんな犠牲を払っても」を表す表現は？",
+        "question": "We must avoid war (    ) (    ) (c   )."
     },
     {
         "id": "1284",
-        "ja": "たぶん彼女はわざと会議に出席しなかったのだろう。",
-        "en": "Perhaps she didn’t attend the meeting {on purpose.}",
-        "answer": "on purpose.",
-        "explanation": "▶ このon は前置詞で「～において」の意味を表す。\non purposeҙʹʯ＝intentionally ＝deliberately\n⇧「 目 的 や 意 図（purpose）に お い て（on）」\nperhaps ʮ΋͔͢͠Δͱʯ―probablyʮ͓ͦΒ͘ʯよ り確信度は低い。",
-        "question": "Perhaps she didn’t attend the meeting (        ) (        )."
+        "ja": "たぶん彼女はわざと会議に出席しなかったのだろう。 on purpose「わざと，故意に」＝intentionally＝deliberately ⇧「目的や意図(purpose)において(on)」 ＋ for the purpose of doing「～する目的で」＝with a view to doing ➡ 1334 ○ perhaps「もしかすると」―probably「おそらく」より確信度は低い。",
+        "en": "Perhaps she didn’t attend the meeting {on purpose}.",
+        "answer": "on purpose",
+        "explanation": "Tip 「わざと，故意に」を表す表現は？\n▶ このonは前置詞で「～において」の意味を表す。",
+        "question": "Perhaps she didn’t attend the meeting (    ) (    )."
     },
     {
         "id": "1285",
-        "ja": "発展 考え 直して，ピザを注文しようと思う。 ⇧「２回 め の（second）考 え（thought）に お い て（on）」",
+        "ja": "考え直して，ピザを注文しようと思う。 発展     Tip 「考え直して」を表す表現は？ on second thought(s)「考え直して」 ⇧「２回めの(second)考え(thought)において(on)」",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
-        "question": "(        ) (        ) (        ), I think I’ll order the pizza. On second thought(s), I think I’ll order the pizza. on second thought (s)͑௚ͯ͠ʯ"
+        "question": "(    ) (    ) (    ), I think I’ll order the pizza. On second thought(s), I think I’ll order the pizza."
     },
     {
         "id": "1286",
-        "ja": "そのイベントは急きょ中止になった。",
-        "en": "The event was canceled {on short notice. on [at] short notice͖ΐʯ ⇧「 短 い（short）通 知（notice）で（on/at）」}",
-        "answer": "on short notice. on [at] short notice͖ΐʯ ⇧「 短 い（short）通 知（notice）で（on/at）」",
-        "explanation": "▶ on short notice はアメリカで，at short notice はイギリスで使われる。\nbe canceledʹͳΔʯ\n▼ 1287～1296ʪinʫ",
-        "question": "The event was canceled (        ) (        ) (n      )."
+        "ja": "そのイベントは急きょ中止になった。 ▼ 1287～1296〈in＋名詞〉 on [at] short notice「(連絡や準備がなく)急きょ」 ⇧「短い(short)通知(notice)で(on/at)」 ○ be canceled「中止になる」",
+        "en": "The event was canceled {on short notice}.",
+        "answer": "on short notice",
+        "explanation": "Tip 「急きょ」を表す表現は？\n▶ on short noticeはアメリカで，at short noticeはイギリスで使われる。",
+        "question": "The event was canceled (    ) (    ) (n   )."
     },
     {
         "id": "1287",
-        "ja": "実は，人前で話すのは好きではありません。緊張し てしまいます。",
-        "en": "Actually, I don’t like speaking {in public. It makes me nervous.}",
-        "answer": "in public. It makes me nervous.",
-        "explanation": "▶ このin は前置詞で， 「～の中で」などの意味を表す。\nin publicવͱʯ⇦ 「公衆 （public）の 中 で（in）」\n⇔ in privateʮ಺ີʹʯ⇦ 「 プ ラ イ ベ ー ト（private）の 中 で（in）」\n“Can we talk about this in private?” “Yes, of course.”\n「この件について内密に話 せ ま す か 。」「 え え ， も ち ろ ん 。」",
-        "question": "Actually, I don’t like speaking (        ) (        ). It makes me nervous."
+        "ja": "実は，人前で話すのは好きではありません。緊張してしまいます。 in public「人前で，公然と」⇦「公衆(public)の中で(in)」 ⇔ in private「内密に」⇦「プライベート(private)の中で(in)」 「この件について内密に話せますか。」「ええ，もちろん。」",
+        "en": "Actually, I don’t like speaking {in public}. It makes me nervous. “Can we talk about this {in private}?” “Yes, of course.”",
+        "answer": "in public, in private",
+        "explanation": "▶ このinは前置詞で，「～の中で」などの意味を表す。",
+        "question": "Actually, I don’t like speaking (    ) (    ). It makes me nervous."
     },
     {
         "id": "1288",
-        "ja": "それをもっと詳しく説明していただけますか。 ⇧「 詳 細（detail）の 中 で（in）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Could you explain it (        ) (m      ) (        )? Could you explain it in more detail? in detail ʮৄ͘͠ʯ"
+        "ja": "それをもっと詳しく説明していただけますか。 in detail「詳しく」 ⇧「詳細(detail)の中で(in)」",
+        "en": "Could you explain it {in more detail}?",
+        "answer": "in more detail",
+        "explanation": "Tip 「詳しく」を表す表現に，「もっと」を表す語を加えて表現する。",
+        "question": "Could you explain it (    ) (m   ) (    )?"
     },
     {
         "id": "1289",
-        "ja": "もし来られるなら事前にご連絡ください。 ⇧「 前 進（advance）の 中 で（in）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Please let me know (        ) (        ) if you can come. Please let me know in advance if you can come. in advanceલʹɼ͋Β͔͡Ίʯ＝beforehand"
+        "ja": "もし来られるなら事前にご連絡ください。 in advance「前もって，事前に，あらかじめ」＝beforehand ⇧「前進(advance)の中で(in)」",
+        "en": "Please let me know {in advance} if you can come.",
+        "answer": "in advance",
+        "explanation": "Tip 「事前に，前もって」を表す表現は？",
+        "question": "Please let me know (    ) (    ) if you can come."
     },
     {
         "id": "1290",
-        "ja": "各生徒が順番に質問に答えた。",
-        "en": "Each student answered the question in turn. in turn  ౓͸ʯ",
-        "answer": "in turn. in turn ౓͸ʯ",
-        "explanation": "▶ このturn は名詞で「順番」の意味。",
-        "question": "Each student answered the question (        ) (        )."
+        "ja": "各生徒が順番に質問に答えた。 in turn ①「順番に」②「今度は」 ＋ take turns (in) doing「交代で～する，順番に～する」➡ 693",
+        "en": "Each student answered the question {in turn}.",
+        "answer": "in turn",
+        "explanation": "▶ このturnは名詞で「順番」の意味。",
+        "question": "Each student answered the question (    ) (    )."
     },
     {
         "id": "1291",
-        "ja": "彼女と直接話したい。 ⇧「 個 人（person）に お い て（in）」 復習",
-        "en": "{in / case / opinion / view / some}",
-        "answer": "in / case / opinion / view / some",
-        "explanation": "",
-        "question": "I prefer to talk to her (        ) (        ). I prefer to talk to her in person. in personΒʯ prefer to doΉʯ talk to A / talk with A ʮA ͱ࿩͢ʯ 460 461 Self Check"
+        "ja": "彼女と直接話したい。 副詞の働きをする熟語 ⑥ ● 461 in person「直接本人が，本人自ら」 ⇧「個人(person)において(in)」 ○ prefer to do「(未来のことについて)～するほうを好む」 ○ talk to A / talk with A「Aと話す」",
+        "en": "I prefer to talk to her {in person}.",
+        "answer": "in person",
+        "explanation": "Tip  この場合の「直接」は，「(電話やメールなどではなく)直接本人が，じかに本人が」という意味。それを表す表現は？",
+        "question": "I prefer to talk to her (    ) (    )."
     },
     {
         "id": "1292",
-        "ja": "彼の言うことは，ある意味，本当だ。 ⇧「 あ る（a）意 味（sense）の 中 で は（in）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "What he says is true, (        ) (        ) (s      ). What he says is true, in a sense."
+        "ja": "彼の言うことは，ある意味，本当だ。 in a sense「ある意味では」 ⇧「ある(a)意味(sense)の中では(in)」",
+        "en": "What he says is true, {in a sense}.",
+        "answer": "in a sense",
+        "explanation": "Tip 「ある意味では」を表す表現は？",
+        "question": "What he says is true, (    ) (    ) (s   )."
     },
     {
         "id": "1293",
-        "ja": "サラは来なかったけど，とにかく私たちはとても楽しんだ。 ⇧「 ど の ような（any）場 合（case） ／割合 （rate）の 中 で も（in）／ に お い て も（at）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Sara didn’t come, but (i      ) (        ) (        ), we had a lot of fun. Sara didn’t come, but in any case, we had a lot of fun. in any case at any rate     ʮͱʹ͔͘ɼ͍ͣΕʹͤΑʯ ＝anyway have fun͠Ήʯ＝have a good time ＝enjoy oneself"
+        "ja": "サラは来なかったけど，とにかく私たちはとても楽しんだ。 at any rate    「とにかく，いずれにせよ」 ⇧「どのような(any)場合(case)／割合(rate)の中でも(in)／においても(at)」 ○ have fun「楽しむ」＝have a good time＝enjoy oneself",
+        "en": "Sara didn’t come, but {in any case}, we had a lot of fun. {in any case}",
+        "answer": "in any case, in any case",
+        "explanation": "Tip  anyway「とにかく」と同じ意味を表す表現は？\n＝anyway",
+        "question": "Sara didn’t come, but (i   ) (    ) (    ), we had a lot of fun."
     },
     {
         "id": "1294",
-        "ja": "万 一に備えてレシートは取っておいてください。 receipt ʮϨγʔτʯ―p は発音しない。",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Keep the receipt (        ) (        ) (        ). Keep the receipt just in case. just in case ʮສҰʹඋ͑ͯʯ in that caseʹ͸ʯ in case of A ʮAʹ͸ʯ in case …ʮ…ʹඋ͑ͯɼ…͢Δͱ͍͚ͳ͍͔Βʯ➡270"
+        "ja": "万一に備えてレシートは取っておいてください。 just in case「万一に備えて」 ＋ in that case「その場合には」 ＋ in case of A「Aの場合には」 ＋ in case …「…する場合に備えて，…するといけないから」➡ 270 ○ receipt「レシート」― pは発音しない。",
+        "en": "Keep the receipt {just in case}.",
+        "answer": "just in case",
+        "explanation": "Tip 「万一に備えて」を表す表現は？",
+        "question": "Keep the receipt (    ) (    ) (    )."
     },
     {
         "id": "1295",
-        "ja": "発展 ソーラーパネルの設置には費用がかかるが，長期的にはコスト削 減になる。 ⇧「 長 い（long）連 続（run）に お い て（in）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Installing solar panels can be expensive, but they reduce costs (        ) (        ) (        ) (        ). Installing solar panels can be expensive, but they reduce costs in the long run. in the long runతʹ͸ʯ ⇔ in the short runతʹ͸ʯ install ʮʙΛઃஔ͢Δʯ⇔⇔ removeʮʙΛऔΓ֎͢ʯ reduce costs͢Δʯ"
+        "ja": "ソーラーパネルの設置には費用がかかるが，長期的にはコスト削減になる。 発展     (    ) (    ) (    ). in the long run「長い目で見れば，長期的には」 ⇧「長い(long)連続(run)において(in)」 ⇔ in the short run「短期的には」 ○ install「～を設置する」⇔ remove「～を取り外す」 ○ reduce costs「コスト[費用]を削減する」",
+        "en": "{in the long run}.",
+        "answer": "in the long run",
+        "explanation": "Tip 「長期的には，長い目で見れば」を表す表現は？",
+        "question": "Installing solar panels can be expensive, but they reduce costs (    ) Installing solar panels can be expensive, but they reduce costs"
     },
     {
         "id": "1296",
-        "ja": "私の考えでは，人種差別は教育によっ てなく すこ とができる。 ⇧「 ～ の 意 見（oneʼs opinion）に お い て（in）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "(        ) (        ) (        ), racism can be eliminated through education. In my opinion, racism can be eliminated through education. racismʯ eliminate ʮʙΛऔΓআ͘ʯ＝remove ＝get rid of"
+        "ja": "私の考えでは，人種差別は教育によってなくすことができる。 in one’s opinion「～の考えでは，～の意見では」 ⇧「～の意見(one’s opinion)において(in)」 ＋ In my view, …「私の考えでは…」＝in my opinion ○ racism「人種差別，人種主義」 ○ eliminate「～を取り除く」＝remove＝get rid of",
+        "en": "{In my opinion}, racism can be eliminated through education.",
+        "answer": "In my opinion",
+        "explanation": "Tip 「～の考えでは，～の意見では」を表す表現は？",
+        "question": "(    ) (    ) (    ), racism can be eliminated through education."
     },
     {
         "id": "1297",
-        "ja": "森林保護は，生態系の観点から極めて重要だ。",
-        "en": "Protecting forests is crucial {from an ecological point of view. from ～ point of view஍ʧ ͔Β͢Ε͹ʯ From the author ’s point of view, …ղʹΑΔͱ…ʯ crucialఆతͳʯ ecologicalͷʯ}",
-        "answer": "from an ecological point of view. from ～ point of view஍ʧ ͔Β͢Ε͹ʯ From the author ’s point of view, …ղʹΑΔͱ…ʯ crucialఆతͳʯ ecologicalͷʯ",
-        "explanation": "",
-        "question": "Protecting forests is crucial (        ) an ecological (        ) (        ) (        )."
+        "ja": "森林保護は，生態系の観点から極めて重要だ。 from ～ point of view「～の観点[見地]からすれば」 ＋ From my point of view, …「私の見解では…」 ＋ From the author’s point of view, …「著者の見解によると…」 ○ crucial「極めて重要な, 決定的な」 ○ ecological「生態系の，環境保護の」",
+        "en": "Protecting forests is crucial {from }an ecological{ point of view}.",
+        "answer": "from, point of view",
+        "explanation": "Tip 「～の観点からすれば」を表す表現に，「生態系の」を表す語句を加えて表現する。",
+        "question": "Protecting forests is crucial (    ) an ecological (    ) (    ) (    )."
     },
     {
         "id": "1298",
-        "ja": "ある程度，あなたのおっしゃることは理解できます。 ⇧「 あ る（some/a certain）程 度（extent/degree）ま で（to）」 復習",
-        "en": "{to / at / close}",
-        "answer": "to / at / close",
-        "explanation": "",
-        "question": "(        ) (        ) (        ), I understand what you’re saying. To some extent, I understand what you’re saying. to some extent [degree] 462 463 Self Check"
+        "ja": "ある程度，あなたのおっしゃることは理解できます。 副詞の働きをする熟語 ⑦ ● 463 to a certain extent [degree]    「ある程度まで」 ⇧「ある(some/a certain)程度(extent/degree)まで(to)」",
+        "en": "{To some extent}, I understand what you’re saying. {to some extent }[{degree}]",
+        "answer": "To some extent, to some extent, degree",
+        "explanation": "Tip 「ある程度まで」を表す表現は？",
+        "question": "(    ) (    ) (    ), I understand what you’re saying."
     },
     {
         "id": "1299",
-        "ja": "驚いたことに，今夜は兄が私たちのために夕食を作ってくれた。",
-        "en": "{To my surprise, my brother cooked dinner for us tonight.}",
-        "answer": "To my surprise, my brother cooked dinner for us tonight.",
-        "explanation": "▶ 〈to oneʼs＋感情を表す名詞〉 で， 「～が…したことに」という意味になる。\nto one’s surprise͍ͨ͜ͱʹʯ",
-        "question": "(        ) (        ) (s      ), my brother cooked dinner for us tonight."
+        "ja": "驚いたことに，今夜は兄が私たちのために夕食を作ってくれた。 to one’s surprise「～が驚いたことに」",
+        "en": "{To my surprise}, my brother cooked dinner for us tonight.",
+        "answer": "To my surprise",
+        "explanation": "Tip  驚いたのは「私」。「私が驚いたことに」はどう表現する？\n▶〈to one’s＋感情を表す名詞〉で，「～が…したことに」という意味になる。",
+        "question": "(    ) (    ) (s   ), my brother cooked dinner for us tonight."
     },
     {
         "id": "1300",
-        "ja": "うれしいことに，私の家族は新しい子犬を迎えることにした。",
-        "en": "{To my delight, my family decided to adopt a new puppy. to one’s delightΜͩ͜ͱʹʯ adoptʹ͢Δʯ}",
-        "answer": "To my delight, my family decided to adopt a new puppy. to one’s delightΜͩ͜ͱʹʯ adoptʹ͢Δʯ",
-        "explanation": "",
-        "question": "(        ) (        ) (d      ), my family decided to adopt a new puppy."
+        "ja": "うれしいことに，私の家族は新しい子犬を迎えることにした。 to one’s delight「～が喜んだことに」 ○ adopt「～を採用する，～を養子にする」",
+        "en": "{To my delight}, my family decided to adopt a new puppy.",
+        "answer": "To my delight",
+        "explanation": "Tip  うれしいのは「私」。「うれしいことに → 私が喜んだことに」と表現する。",
+        "question": "(    ) (    ) (d   ), my family decided to adopt a new puppy."
     },
     {
         "id": "1301",
-        "ja": "私たちがほっとしたことに，妹は失くしたスマートフォンをベッドの下で見つけた。",
-        "en": "{To our relief, my sister found her lost smartphone under the bed. to one’s reliefʮʙ͕҆৺ͨ͜͠ͱʹɼʙ͕΄ͬͱͨ͜͠ͱʹʯ}",
-        "answer": "To our relief, my sister found her lost smartphone under the bed. to one’s reliefʮʙ͕҆৺ͨ͜͠ͱʹɼʙ͕΄ͬͱͨ͜͠ͱʹʯ",
-        "explanation": "▶ much を付けると強調表現になる。Much to my relief「とても安心したことに」",
-        "question": "(      ) (      ) (      ), my sister found her lost smartphone under the bed."
+        "ja": "私たちがほっとしたことに，妹は失くしたスマートフォンをベッドの下で見つけた。 to one’s relief「～が安心したことに，～がほっとしたことに」",
+        "en": "{To our relief}, my sister found her lost smartphone under the bed.",
+        "answer": "To our relief",
+        "explanation": "Tip 「ほっとしたことに」を表す表現は？ ほっとしたのは「私たち」なので所有格は？\n▶ muchを付けると強調表現になる。Much to my relief「とても安心したことに」",
+        "question": "(    ) (    ) (    ), my sister found her lost smartphone under the bed."
     },
     {
         "id": "1302",
-        "ja": "テク ノロジーが私たちの仕事にどのような影響を与えるかは，誰も確かなことは 言えない。",
-        "en": "No one can say for sure how technology will affect our jobs. for sure for certain    ͔ʹɼ͸͖ͬΓͱʯ＝surely ＝certainly to be sure͔ʹʢ…͕ͩʣʯ",
-        "answer": "for sure how technology will affect our jobs. for sure for certain ͔ʹɼ͸͖ͬΓͱʯ＝surely ＝certainly to be sure͔ʹʢ…͕ͩʣʯ",
-        "explanation": "",
-        "question": "No one can say (f      ) (        ) how technology will affect our jobs."
+        "ja": "テクノロジーが私たちの仕事にどのような影響を与えるかは，誰も確かなことは言えな い。 「確かに，はっきりと」を表す表現は？ for certain   「確かに，はっきりと」＝surely＝certainly ＋ to be sure「確かに(…だが)」 ○ No one can …「誰も…できない，…できる者はいない」",
+        "en": "No one can say {for sure} how technology will affect our jobs. {for sure}",
+        "answer": "for sure, for sure",
+        "explanation": "Tip 「確かなことは言えない → 確かには[はっきりとは]言えない」と表現する。",
+        "question": "No one can say (f   ) (    ) how technology will affect our jobs."
     },
     {
         "id": "1303",
-        "ja": "大学の授業料を自分で払わなければならないかもしれない。 ⇧「 ～ 自 身（oneʼs own）に お い て（on）」",
-        "en": "???",
-        "answer": "???",
+        "ja": "大学の授業料を自分で払わなければならないかもしれない。 on one’s own「独力で，自力で」＝(by) oneself ⇧「～自身(one’s own)において(on)」 ○ tuition「授業料，学費」",
+        "en": "I may have to pay for my college tuition {on my own}.",
+        "answer": "on my own",
         "explanation": "",
-        "question": "I may have to pay for my college tuition (        ) (        ) (        ). I may have to pay for my college tuition on my own. tuitionඅʯ"
+        "question": "I may have to pay for my college tuition (    ) (    ) (    )."
     },
     {
         "id": "1304",
-        "ja": "私はカードを１枚適当に選んだ。",
-        "en": "I picked a card at random. 1305-1 英語を勉強する時，私はいつも辞書を手元に置いておく。 I always keep my dictionary (c      ) (        ) (        ) when I study English. 1305-1 I always keep my dictionary close at hand when I study English. close at hand near at hand    తʹʣ΋͏͙͢ʯ ⇧「 手（hand）の 近 く（close/near）に（at）」 (at) /f_irst handʮ௚઀ɼ͔͡ʹʯ＝directly  ➡1281 1305-2 すぐ近くにいいレストランがある。 There is a good restaurant (c      ) (        ) (        ). 1305-2 There is a good restaurant close at hand.",
-        "answer": "at random. 1305-1 英語を勉強する時，私はいつも辞書を手元に置いておく。 I always keep my dictionary c      when I study English. 1305-1 I always keep my dictionary close at hand when I study English. close at hand near at hand తʹʣ΋͏͙͢ʯ ⇧「 手（hand）の 近 く（close/near）に（at）」 at /f_irst handʮ௚઀ɼ͔͡ʹʯ＝directly ➡1281 1305-2 すぐ近くにいいレストランがある。 There is a good restaurant c",
-        "explanation": "▶ この問題文のclose at hand は「すぐ近くに」の意味。➡1305-1\nnearby͘ʹʯとほぼ同じ意味を表す。",
-        "question": "I picked a card (        ) (        )."
+        "ja": "私はカードを１枚適当に選んだ。 at random「無作為に，でたらめに」",
+        "en": "I picked a card {at random}.",
+        "answer": "at random",
+        "explanation": "Tip 「適当に＝無作為に，でたらめに」を表す表現は？",
+        "question": "I picked a card (    ) (    )."
+    },
+    {
+        "id": "1305-1",
+        "ja": "英語を勉強する時，私はいつも辞書を手元に置いておく。 near at hand     ①「手元に」②「すぐ近くに」③「(時間的に)もうすぐ」 ⇧「手(hand)の近く(close/near)に(at)」 ＋ (at) first hand「直接，じかに」＝directly ➡ 1281",
+        "en": "I always keep my dictionary {close at hand} when I study English. {close at hand}",
+        "answer": "close at hand, close at hand",
+        "explanation": "Tip 「手元に」を表す表現は？",
+        "question": "I always keep my dictionary (c   ) (    ) (    ) when I study English."
+    },
+    {
+        "id": "1305-2",
+        "ja": "すぐ近くにいいレストランがある。 nearby「近くに」とほぼ同じ意味を表す。",
+        "en": "There is a good restaurant {close at hand}.",
+        "answer": "close at hand",
+        "explanation": "Tip 「すぐ近くに」を表す表現は？\n▶ この問題文のclose at handは「すぐ近くに」の意味。➡ 1305-1",
+        "question": "There is a good restaurant (c   ) (    ) (    )."
     },
     {
         "id": "1306",
-        "ja": "突然，大雨が降り始めた。",
-        "en": "{All of a sudden, it began to rain heavily. all of a sudden ʮಥવɼ͍͖ͳΓʯ ＝suddenly ＝all at once}",
-        "answer": "All of a sudden, it began to rain heavily. all of a sudden ʮಥવɼ͍͖ͳΓʯ ＝suddenly ＝all at once",
-        "explanation": "",
-        "question": "(A      ) (        ) (        ) (        ), it began to rain heavily."
+        "ja": "突然，大雨が降り始めた。 all of a sudden「突然，いきなり」",
+        "en": "{All of a sudden}, it began to rain heavily.",
+        "answer": "All of a sudden",
+        "explanation": "Tip 「突然，いきなり」を表す表現は？\n＝suddenly＝all at once",
+        "question": "(A   ) (    ) (    ) (    ), it began to rain heavily."
     },
     {
         "id": "1307",
-        "ja": "ホームステイ中，私の英語は少しずつ上達した。 ⇧「 少 し（little）の 差 で（by）ま た 少 し（little）」 復習",
-        "en": "{to / example}",
-        "answer": "to / example",
-        "explanation": "",
-        "question": "My English improved (        ) (        ) (        ) during the homestay. My English improved little by little during the homestay. little by little ʮগͣͭ͠ɼঃʑʹʯ＝gradually ＝by degrees one by one ʮ̍ͭͣͭʯ day by day ʮ೔ʹ೔ʹʯ 464 465 Self Check"
+        "ja": "ホームステイ中，私の英語は少しずつ上達した。 副詞の働きをする熟語 ⑧ ● 465 little by little「少しずつ，徐々に」＝gradually＝by degrees ⇧「少し(little)の差で(by)また少し(little)」 ＋ one by one「１つずつ」 ＋ day by day「日に日に」",
+        "en": "My English improved {little by little} during the homestay.",
+        "answer": "little by little",
+        "explanation": "Tip 「少しずつ」を表す表現は？",
+        "question": "My English improved (    ) (    ) (    ) during the homestay."
     },
     {
         "id": "1308",
-        "ja": "発展 夕食は家族全員で食べることが 多い。",
-        "en": "{More often than not, I eat dinner with the whole family. more often than not ʮ͍͍ͨͯʯ＝usually the whole family ʮՈ଒શһʯ}",
-        "answer": "More often than not, I eat dinner with the whole family. more often than not ʮ͍͍ͨͯʯ＝usually the whole family ʮՈ଒શһʯ",
+        "ja": "夕食は家族全員で食べることが多い。 発展     Tip 「家族全員で食べることが多い → たいてい私は家族全員と食べる」 more often than not「たいてい」＝usually ○ the whole family「家族全員」",
+        "en": "{More often than not}, I eat dinner with the whole family.",
+        "answer": "More often than not",
         "explanation": "",
-        "question": "(M      ) (        ) (        ) (n      ), I eat dinner with the whole family."
+        "question": "(M   ) (    ) (    ) (n   ), I eat dinner with the whole family."
     },
     {
         "id": "1309",
-        "ja": "君はセーターを裏返しに着ているかもしれない。 ⇧「 内 側（inside）が 外（out）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "You might be wearing your sweater (        ) (        ). You might be wearing your sweater inside out. inside out ʮཪฦ͠ʹʯ"
+        "ja": "君はセーターを裏返しに着ているかもしれない。 inside out「裏返しに」 ⇧「内側(inside)が外(out)」",
+        "en": "You might be wearing your sweater {inside out}.",
+        "answer": "inside out",
+        "explanation": "Tip 「裏返しに」を表す表現は？「内側」を表す語と「外に」を表す語を使う。",
+        "question": "You might be wearing your sweater (    ) (    )."
     },
     {
         "id": "1310",
-        "ja": "テーブルの 上にグラスが逆さまに置かれている。 ⇧「 上 側（upside） が下方向 （down）」 まず第一に，教育の重要性を強調したいと思います。 ⇧「 す べ て（all）の 中 の（of）最 初（first） 」―順序を表す。 at /f_irst ʮॳΊͷ͏ͪ͸ʯ― 時点を表す。➡1280 1311-2 初めに，この図をご覧ください。 ⇧「 ～ に つ い て（with）始 め る（begin/start）た め に（to）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "A glass is (u      ) (        ) on the table. A glass is upside down on the table. upside down͞·ʹʯ 1311-1 (F      ) (        ) (        ), I would like to emphasize the importance of education. 1311-1 First of all, I would like to emphasize the importance of education. /f_irst of all ʮ·ͣॳΊʹɼୈҰʹʯ＝/f_irst ＝/f_irstly ＝to begin with emphasizeௐ͢Δʯ (T      ) (        ) (        ), please take a look at this chart. 1311-2 To begin with, please take a look at this chart. to begin with to start with      ʮॳΊʹʯ＝/f_irst ＝/f_irstly ＝/f_irst of all"
+        "ja": "テーブルの上にグラスが逆さまに置かれている。 upside down「(上下)逆さまに」 ⇧「上側(upside)が下方向(down)」",
+        "en": "A glass is {upside down} on the table.",
+        "answer": "upside down",
+        "explanation": "Tip 「逆さまに」を表す表現は？「上側」を表す語と「下に」を表す語を使う。",
+        "question": "A glass is (u   ) (    ) on the table."
+    },
+    {
+        "id": "1311-1",
+        "ja": "まず第一に，教育の重要性を強調したいと思います。 first of all「まず初めに，第一に」＝first＝firstly＝to begin with ⇧「すべて(all)の中の(of)最初(first)」―順序を表す。 ＋ at first「初めのうちは」―時点を表す。➡ 1280 ○ emphasize「～を強調する」",
+        "en": "{First of all}, I would like to emphasize the importance of education.",
+        "answer": "First of all",
+        "explanation": "Tip 「まず初めに，第一に」を表す表現は？",
+        "question": "(F   ) (    ) (    ), I would like to emphasize the importance of"
+    },
+    {
+        "id": "1311-2",
+        "ja": "初めに，この図をご覧ください。 to start with     「初めに」＝first＝firstly＝first of all ⇧「～について(with)始める(begin/start)ために(to)」",
+        "en": "{To begin with}, please take a look at this chart. {to begin with}",
+        "answer": "To begin with, to begin with",
+        "explanation": "Tip 「初めに」を表す表現は？",
+        "question": "(T   ) (    ) (    ), please take a look at this chart."
     },
     {
         "id": "1312",
-        "ja": "人々は環境を守るために対策を講じている。例えば，ごみを分別している。 for instance    ʮྫ͑͹ʯ⇦「 例（example） ／事例 （instance）とし て（for）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "People are taking steps to protect the environment. (        ) (        ), they separate their garbage. People are taking steps to protect the environment. For example, they separate their garbage. for example take steps͡Δʯ protect the environmentΛकΔʯ separate garbage ʮ͝ΈΛ෼ผ͢Δʯ"
+        "ja": "人々は環境を守るために対策を講じている。例えば，ごみを分別している。 for instance    「例えば」⇦「例(example)／事例(instance)として(for)」 ○ take steps「手段を講じる」 ○ protect the environment「環境を守る」 ○ separate garbage「ごみを分別する」",
+        "en": "People are taking steps to protect the environment. {For example}, they {for example}",
+        "answer": "For example, for example",
+        "explanation": "Tip 「例えば」を表す表現は？\nseparate their garbage.",
+        "question": "People are taking steps to protect the environment. (    ) (    ),"
     },
     {
         "id": "1313",
-        "ja": "調査結果は次の通りです。 as followsͷ௨ΓɼҎԼͷ௨Γʯ⇦ 「 後 に 続 く（follows）よう に（as）」 ナオミは英語が流ちょうだ。加えて，フランス語も話せる。 ⇧ 「追加(addition) に お い て（in）」 私は英語以外の別の言語も学びたい。 ⇧「A に（to）加 え て（in addition）」 復習",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "The results of the survey are (        ) (f      ): The results of the survey are as follows: surveyʯ 1314-1 Naomi is fluent in English. (I      ) (        ), she can speak French. 1314-1 Naomi is fluent in English. In addition, she can speak French. in addition ʮՃ͑ͯʯ＝moreover ＝furthermore ＝what’s more be /f_luent in A ʮA ʣ͕ ྲྀͪΐ͏ͩʯ 1314-2 I would like to learn another language (i      ) (        ) (        ) (E      ). 1314-2 ＝ I would like to learn another language in addition to English. I would like to learn another language besides English. in addition to A ʮA ʹՃ͑ͯʯ＝besides A 466 467 Self Check"
+        "ja": "調査結果は次の通りです。 as follows「次の通り，以下の通り」⇦「後に続く(follows)ように(as)」 ○ survey「調査」",
+        "en": "The results of the survey are {as follows}:",
+        "answer": "as follows",
+        "explanation": "Tip 「次の通り，以下の通り」を表す表現は？",
+        "question": "The results of the survey are (    ) (f   ):"
     },
     {
-        "id": "1314",
-        "ja": "???",
-        "en": "fact / practice / now",
-        "answer": "???",
+        "id": "1314-1",
+        "ja": "ナオミは英語が流ちょうだ。加えて，フランス語も話せる。 in addition「加えて」＝moreover＝furthermore＝what’s more ⇧「追加(addition)において(in)」 ○ be fluent in A「A (言語)が流ちょうだ」",
+        "en": "Naomi is fluent in English.{ In addition}, she can speak French.",
+        "answer": "In addition",
         "explanation": "",
-        "question": "???"
+        "question": "Naomi is fluent in English. (I   ) (    ), she can speak French."
+    },
+    {
+        "id": "1314-2",
+        "ja": "私は英語以外の別の言語も学びたい。 副詞の働きをする熟語 ⑨ ● 467 in addition to A「Aに加えて」＝besides A ⇧「Aに(to)加えて(in addition)」",
+        "en": "I would like to learn another language {in addition to English}. ＝I would like to learn another language {besides English}.",
+        "answer": "in addition to English, besides English",
+        "explanation": "",
+        "question": "I would like to learn another language (i   ) (    ) (    ) (E   )."
     },
     {
         "id": "1315",
-        "ja": "私は読書が好きだ。特に東野圭吾のミステリー小説を読むのが。 in particularʮಛʹʯ⇦ 「 特 定 の（particular）範 囲 内 で（in）」＝particularly",
-        "en": "???",
-        "answer": "???",
+        "ja": "私は読書が好きだ。特に東野圭吾のミステリー小説を読むのが。 in particular「特に」⇦「特定の(particular)範囲内で(in)」＝particularly ＋ be particular about A「Aについて(好みなどが)うるさい」➡ 898",
+        "en": "I like reading, {in particular}, mystery novels by Higashino Keigo.",
+        "answer": "in particular",
         "explanation": "",
-        "question": "I like reading, (i      ) (        ), mystery novels by Higashino Keigo. I like reading, in particular, mystery novels by Higashino Keigo. be particular about A ʮAΈͳͲ͕ʣ͏Δ͍͞ʯ➡898"
+        "question": "I like reading, (i   ) (    ), mystery novels by Higashino Keigo."
     },
     {
         "id": "1316",
-        "ja": "何よりもまず，語学を学ぶには強い動機が必要だ。 above all ʮԿΑΓ΋·ͣɼͱΓΘ͚ʯ⇦「 す べ て（all）よ りも 上 に（above）」 実は，これら 2 つのことはまったく異なります。 in truth    ͸ʯ⇦「事実 （fact）の 中（in）で は 」＝actually 1317-2 実のところ，君の意見には賛成できない。 ⇧「 事 実（fact）の（of）事 柄（a matter）とし て は（as）」 1317-3 実際には，プラ スチックの使用を完全に避けることは難しいだろう。 ⇧「 実 行（practice） ／現実(reality) に お い て は（in）」",
-        "en": "???",
-        "answer": "???",
+        "ja": "何よりもまず，語学を学ぶには強い動機が必要だ。 above all「何よりもまず，とりわけ」⇦「すべて(all)よりも上に(above)」 ○ require「～を必要とする，～を要求する」",
+        "en": "{Above all}, learning a language requires a strong motivation.",
+        "answer": "Above all",
         "explanation": "",
-        "question": "(A      ) (        ), learning a language requires a strong motivation. Above all, learning a language requires a strong motivation. require͢Δʯ 1317-1 (        ) (f      ), these two things are very different. 1317-1 In fact, these two things are very different. in fact The fact is (that) …͸…ͩʯ➡231 (A      ) (        ) (        ) (        ) (        ), I don’t agree with you. 1317-2 As a matter of fact, I don’t agree with you. as a matter of fact͏ͱʯ (        ) (p      ), it would be difficult to avoid using plastic completely. 1317-3 In practice, it would be difficult to avoid using plastic completely. in practice in reality        ʹ͸ʯ"
+        "question": "(A   ) (    ), learning a language requires a strong motivation."
+    },
+    {
+        "id": "1317-1",
+        "ja": "実は，これら2つのことはまったく異なります。 in truth    「実は」⇦「事実(fact)の中(in)では」＝actually ＋ The fact is (that) …「実は…だ」➡ 231",
+        "en": "{In fact}, these two things are very different. {in fact}",
+        "answer": "In fact, in fact",
+        "explanation": "",
+        "question": "(    ) (f   ), these two things are very different."
+    },
+    {
+        "id": "1317-2",
+        "ja": "実のところ，君の意見には賛成できない。 as a matter of fact「実のところ，実を言うと」 ⇧「事実(fact)の(of)事柄(a matter)としては(as)」",
+        "en": "{As a matter of fact}, I don’t agree with you.",
+        "answer": "As a matter of fact",
+        "explanation": "Tip 「実のところ」を表す表現は？",
+        "question": "(A   ) (    ) (    ) (    ) (    ), I don’t agree with you."
+    },
+    {
+        "id": "1317-3",
+        "ja": "実際には，プラスチックの使用を完全に避けることは難しいだろう。 in reality      「実際には」⇦「実行(practice)／現実(reality)においては(in)」",
+        "en": "{In practice}, it would be difficult to avoid using plastic completely. {in practice}",
+        "answer": "In practice, in practice",
+        "explanation": "Tip 「実際には」を表す表現は？",
+        "question": "(    ) (p   ), it would be difficult to avoid using plastic completely."
     },
     {
         "id": "1318",
-        "ja": "日本は経済的に豊かな国だが，それでも，十分に食べられない子どもたちがいる。",
-        "en": "Japan is an economically rich country, but {even now, some children do not have enough to eat.}",
-        "answer": "even now, some children do not have enough to eat.",
-        "explanation": "▶ even now は後に否定文が続く ことが多い。この問題文ではeven so でも正解。\neven so ʮͦ͏ͩͱͯ͠΋ʯ＝still ＝nevertheless ＝nonetheless",
-        "question": "Japan is an economically rich country, but (        ) (        ), some children do not have enough to eat."
+        "ja": "日本は経済的に豊かな国だが，それでも，十分に食べられない子どもたちがいる。 even now「それでも」⇦「今(now)でも(even)」＝still ＋ even so「そうだとしても」＝still＝nevertheless＝nonetheless",
+        "en": "Japan is an economically rich country, but {even now}, some children do not have enough to eat.",
+        "answer": "even now",
+        "explanation": "Tip  still「それでも」と同じ意味を表す表現は？\n▶ even nowは後に否定文が続くことが多い。この問題文ではeven soでも正解。",
+        "question": "Japan is an economically rich country, but (    ) (    ), some children do not have enough to eat."
     },
     {
         "id": "1319",
-        "ja": "日本人の寿命は伸びてきている。その一方で，出生率は低下している。 ⇧ 「２つの手にあるうちの，も う一方の （the other）手（hand）に お い て（on）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Life expectancy in Japan has increased. (O      ) (        ) (        ) (        ), the birth rate is declining. Life expectancy in Japan has increased. On the other hand, the birth rate is declining."
+        "ja": "日本人の寿命は伸びてきている。その一方で，出生率は低下している。 on the other hand「その一方で」 ⇧「２つの手にあるうちの，もう一方の(the other)手(hand)において(on)」",
+        "en": "Life expectancy in Japan has increased. {On the other hand}, the birth rate is declining.",
+        "answer": "On the other hand",
+        "explanation": "Tip 「その一方で」を表す表現は？",
+        "question": "Life expectancy in Japan has increased. (O   ) (    ) (    ) (    ),"
     },
     {
         "id": "1320",
-        "ja": "外 は 寒くない 。それどころか，かなり暖かい。",
-        "en": "It’s not cold outside. {On the contrary, it’s quite warm. on the contrary ʮͦΕͲ͜Ζ͔ɼΉ͠Ζʯ ⇧「 前 に 述 べ た こととは 逆（the contrary）に お い て（on）」}",
-        "answer": "On the contrary, it’s quite warm. on the contrary ʮͦΕͲ͜Ζ͔ɼΉ͠Ζʯ ⇧「 前 に 述 べ た こととは 逆（the contrary）に お い て（on）」",
-        "explanation": "▶ on the contrary は前文の内容を否定する表現。文頭に置く ことが多い。\nto the contraryʹʧ ʯ―文中や文末で使うことが多い。",
-        "question": "It’s not cold outside. (O      ) (        ) (        ), it’s quite warm."
+        "ja": "外は寒くない。それどころか，かなり暖かい。 on the contrary「それどころか，むしろ」 ⇧「前に述べたこととは逆(the contrary)において(on)」 ＋ to the contrary「それとは反対の[逆に]」―文中や文末で使うことが多い。",
+        "en": "It’s not cold outside. {On the contrary}, it’s quite warm.",
+        "answer": "On the contrary",
+        "explanation": "Tip 「それどころか，むしろ」を表す表現は？\n▶ on the contraryは前文の内容を否定する表現。文頭に置くことが多い。",
+        "question": "It’s not cold outside. (O   ) (    ) (    ), it’s quite warm."
     },
     {
         "id": "1321",
-        "ja": "太陽光発電はク リーンだ。これ に対して，火力発電は汚染を引き起こす。 ⇧「 対 照（contrast）に お い て（in） 」 「対照 （contrast）す る こ と に よっ て（by）」 復習",
-        "en": "{that / short}",
-        "answer": "that / short",
-        "explanation": "",
-        "question": "Solar power is clean. (        ) (        ), thermal power generation causes pollution. Solar power is clean. In contrast, thermal power generation causes pollution. in contrast ＝by contrastʮ͜Εʹରͯ͠ɼͦΕʹൺ΂ͯʯ in contrast to A ʮA ͱ͸ରরతʹʯ thermal power generation ʮՐྗൃిʯ―thermalʮ೤ͷɼԹ౓ͷʯ pollution ʮԚછʯ 468 469 Self Check"
+        "ja": "太陽光発電はクリーンだ。これに対して，火力発電は汚染を引き起こす。 副詞の働きをする熟語 ⑩ ● 469 in contrast＝by contrast「これに対して，それに比べて」 ⇧「対照(contrast)において(in)」「対照(contrast)することによって(by)」 ＋ in contrast to A「Aとは対照的に」 ○ thermal power generation「火力発電」―thermal「熱の，温度の」 ○ pollution「汚染」",
+        "en": "Solar power is clean. {In contrast}, thermal power generation causes pollution.",
+        "answer": "In contrast",
+        "explanation": "Tip 「これに対して」を表す表現は？「対照」を表す名詞を使う。",
+        "question": "Solar power is clean. (    ) (    ), thermal power generation causes pollution."
     },
     {
         "id": "1322",
-        "ja": "人類は温室効果ガスを排出し続け，その結果，私たちは地球温暖化に直面し ている。",
-        "en": "Humans continue to emit greenhouse gases, and {as a result, we are facing global warming. as a resultՌͱ͠ ͯʯ＝consequently ＝as a consequence emit greenhouse gasesՌΨεΛഉग़͢Δʯ face A೉ͳͲʣʹ௚໘͢Δʯ＝be faced with A ＝be confronted with A}",
-        "answer": "as a result, we are facing global warming. as a resultՌͱ͠ ͯʯ＝consequently ＝as a consequence emit greenhouse gasesՌΨεΛഉग़͢Δʯ face A೉ͳͲʣʹ௚໘͢Δʯ＝be faced with A ＝be confronted with A",
-        "explanation": "",
-        "question": "Humans continue to emit greenhouse gases, and (       ) (       ) (r     ), we are facing global warming."
+        "ja": "人類は温室効果ガスを排出し続け，その結果，私たちは地球温暖化に直面している。 as a result「結果として」＝consequently＝as a consequence ○ emit greenhouse gases「温室効果ガスを排出する」 ○ face A「(困難など)に直面する」＝be faced with A＝be confronted with A",
+        "en": "Humans continue to emit greenhouse gases, and {as a result}, we are facing global warming.",
+        "answer": "as a result",
+        "explanation": "Tip  consequently「結果として」と同じ意味を表す表現は？",
+        "question": "Humans continue to emit greenhouse gases, and (    ) (    ) (r   ),"
     },
     {
         "id": "1323",
-        "ja": "結局，そのイベントには行かないことにした。 ⇧「 す べ て（all）終 わ っ た 後（after）」",
-        "en": "???",
-        "answer": "???",
+        "ja": "結局，そのイベントには行かないことにした。 after all「結局は」＝eventually ⇧「すべて(all)終わった後(after)」 ○ decide not to do「～しないことにする」",
+        "en": "I decided not to go to that event {after all}.",
+        "answer": "after all",
         "explanation": "",
-        "question": "I decided not to go to that event (        ) (        ). I decided not to go to that event after all. after all͸ʯ＝eventually decide not to do ʮʙ͠ͳ͍͜ͱʹ͢Δʯ"
+        "question": "I decided not to go to that event (    ) (    )."
     },
     {
         "id": "1324",
-        "ja": "最終的にはすべてうまくいった。",
-        "en": "It all worked out {in the end. in the endऴతʹʯ⇦「最後 （the end）の 中 に お い て（in）」 ＝eventually}",
-        "answer": "in the end. in the endऴతʹʯ⇦「最後 （the end）の 中 に お い て（in）」 ＝eventually",
-        "explanation": "▶ 主語It all のit は「状況」を表すit。all が続いて「状況全体」を表している。",
-        "question": "It all worked out (        ) (        ) (        )."
+        "ja": "最終的にはすべてうまくいった。 in the end「最終的に」⇦「最後(the end)の中において(in)」＝eventually",
+        "en": "It all worked out {in the end}.",
+        "answer": "in the end",
+        "explanation": "▶ 主語It allのitは「状況」を表すit。allが続いて「状況全体」を表している。",
+        "question": "It all worked out (    ) (    ) (    )."
     },
     {
         "id": "1325",
-        "ja": "太陽エネルギーは持続可能だ。言いかえれば，決して尽きることはない。 ⇧「 他 の（other）言 葉（words）に お い て（in）」",
-        "en": "???",
-        "answer": "???",
+        "ja": "太陽エネルギーは持続可能だ。言いかえれば，決して尽きることはない。 in other words「言いかえれば」⇦「他の(other)言葉(words)において(in)」 ○ sustainable「持続可能な」",
+        "en": "Solar energy is sustainable. {In other words}, it will never run out.",
+        "answer": "In other words",
         "explanation": "",
-        "question": "Solar energy is sustainable. (       ) (       ) (       ), it will never run out. Solar energy is sustainable. In other words, it will never run out. in other words͍͔͑Ε͹ʯ sustainableଓՄೳͳʯ"
+        "question": "Solar energy is sustainable. (    ) (    ) (    ), it will never run out."
     },
     {
         "id": "1326",
-        "ja": "汚染は至る所で深刻だ。別の言い方をすれば，地球は病気になりつつある。 ⇧ 「今述べたこと （it）を 別 の や り 方 で（another way）言 葉 と し て 置 く（put）と 」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Pollution is severe everywhere. (        ) (        ) (        ) (        ) (w     ), the Earth is getting sick. Pollution is severe everywhere. To put it another way, the Earth is getting sick. to put it another way͍ํΛ͢Δͱʯ severeͳʯ＝very serious"
+        "ja": "汚染は至る所で深刻だ。別の言い方をすれば，地球は病気になりつつある。 to put it another way「別の言い方をすると」 ⇧「今述べたこと(it)を別のやり方で(another way)言葉として置く(put)と」 ○ severe「厳しい，深刻な」＝very serious",
+        "en": "Pollution is severe everywhere. {To put it another way}, the Earth is getting sick.",
+        "answer": "To put it another way",
+        "explanation": "Tip 「別の言い方をすると」を表す表現は？",
+        "question": "Pollution is severe everywhere. (    ) (    ) (    ) (    ) (w   ), the Earth is getting sick."
     },
     {
         "id": "1327",
-        "ja": "他の子どもたちと同じ機会を得られない子どもたちもいる。つまり，貧困は子どもの 教育に影響を与える。 ⇧「 そ れ は（that is）言うなら ば（to say）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Some children do not have the same opportunities as others. (        ) (        ) (        ) (        ), poverty affects children’s education. Some children do not have the same opportunities as others. That is to say, poverty affects children’s education. that is (to say)ʮͭ·Γɼ͢ͳΘͪʯ＝namely aﬀect AʮA͢Δʯ＝in/f_luence A ＝have an eﬀect on A"
+        "ja": "他の子どもたちと同じ機会を得られない子どもたちもいる。つまり，貧困は子どもの教 育に影響を与える。 that is (to say)「つまり，すなわち」＝namely ⇧「それは(that is)言うならば(to say)」 ○ affect A「Aに影響する」＝influence A＝have an effect on A",
+        "en": "{That is to say}, poverty affects children’s education.",
+        "answer": "That is to say",
+        "explanation": "Tip 「つまり，すなわち」を表す表現は？",
+        "question": "(    ) (    ) (    ) (    ), poverty affects children’s education. Some children do not have the same opportunities as others."
     },
     {
         "id": "1328",
-        "ja": "要するに，日本は出生率の低下と平均寿命の伸びにより急速に高齢化し ている。 in brief     ͑͹ʯ⇦「 短 い（short/brief）中 で（in）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "(        ) (        ), Japan is aging rapidly due to its low birth rate and long average life expectancy. In short, Japan is aging rapidly due to its low birth rate and long average life expectancy. in short in a word͑͹ʯ rapidly଎ʹʯ⇔⇔ slowlyʮΏͬ͘Γʯ average life expectancyण໋ʯ"
+        "ja": "要するに，日本は出生率の低下と平均寿命の伸びにより急速に高齢化している。 in brief     「要するに，手短に言えば」⇦「短い(short/brief)中で(in)」 ＋ in a word「ひと言で言えば」 ○ rapidly「急速に」⇔ slowly「ゆっくり」 ○ average life expectancy「平均寿命」",
+        "en": "{In short}, Japan is aging rapidly due to its low birth rate and long average life expectancy. {in short}",
+        "answer": "In short, in short",
+        "explanation": "Tip 「要するに」を表す表現は？",
+        "question": "(    ) (    ), Japan is aging rapidly due to its low birth rate and long average life expectancy."
     },
     {
         "id": "1329",
-        "ja": "結 論として，スマートフォンは私たちの日常生活になくてはならないものとなっている。 復習",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "(I      ) (c      ), smartphones have become an indispensable part of our daily lives. In conclusion, smartphones have become an indispensable part of our daily lives. in conclusion࿦ͱ͠ ͯʯ＝to conclude indispensableͳɼͳͯ͘͸ͳΒͳ͍ʯ＝essential (our) daily livesʯ 470 471 Self Check"
+        "ja": "結論として，スマートフォンは私たちの日常生活になくてはならないものとなっている。 副詞の働きをする熟語 ⑪ ● 471 in conclusion「結論として」＝to conclude ○ indispensable「不可欠な，なくてはならない」＝essential ○ (our) daily lives「(私たちの)日常生活」",
+        "en": "{In conclusion}, smartphones have become an indispensable part of our daily lives.",
+        "answer": "In conclusion",
+        "explanation": "Tip 「結論として」を表す表現は？",
+        "question": "(I   ) (c   ), smartphones have become an indispensable part of our daily lives."
     }
 ];
 
@@ -817,7 +1020,7 @@
             recognition.lang = 'en-US';
             recognition.interimResults = false;
         }
-        
+
         // --- Voice Synthesis Setup ---
         let synthesisVoice = null;
 
@@ -825,10 +1028,10 @@
             const voices = speechSynthesis.getVoices();
             // 優先順位: Google US English -> Microsoft Zira/David -> その他英語
             synthesisVoice = voices.find(voice => voice.name === 'Google US English') ||
-                             voices.find(voice => voice.name.includes('Google') && voice.lang.includes('en-US')) ||
-                             voices.find(voice => voice.name.includes('Microsoft') && voice.lang.includes('en-US')) ||
-                             voices.find(voice => voice.lang === 'en-US') ||
-                             voices.find(voice => voice.lang.startsWith('en'));
+                voices.find(voice => voice.name.includes('Google') && voice.lang.includes('en-US')) ||
+                voices.find(voice => voice.name.includes('Microsoft') && voice.lang.includes('en-US')) ||
+                voices.find(voice => voice.lang === 'en-US') ||
+                voices.find(voice => voice.lang.startsWith('en'));
         }
 
         // 音声リストがロードされたら設定を実行
@@ -851,7 +1054,7 @@
         const quizModal = document.getElementById('quiz-modal');
         const closeQuizBtn = document.getElementById('close-quiz-btn');
         const quizContent = document.getElementById('quiz-content');
-        
+
         const selectAllCheckbox = document.getElementById('select-all-checkbox');
         const pdfModal = document.getElementById('pdf-modal');
         const openPdfModalBtn = document.getElementById('open-pdf-modal-btn');
@@ -901,7 +1104,7 @@
                 `;
                 sentenceList.appendChild(sentenceDiv);
             });
-            
+
             // Add click listener to each sentence item
             document.querySelectorAll('.sentence-item').forEach(item => {
                 item.addEventListener('click', (e) => {
@@ -928,15 +1131,15 @@
                     }
                 });
             });
-            
+
             // Select the first sentence by default
             if (sentenceList.firstChild) {
-                 sentenceList.firstChild.click();
+                sentenceList.firstChild.click();
             }
         }
-        
+
         // --- PDF / Print Logic ---
-        
+
         function openPrintWindow(bodyContent, title) {
             const htmlContent = `
                 <!DOCTYPE html>
@@ -988,7 +1191,7 @@
             printWindow.document.write(htmlContent);
             printWindow.document.close();
             setTimeout(() => {
-                printWindow.focus(); 
+                printWindow.focus();
                 printWindow.print();
             }, 250);
         }
@@ -1003,32 +1206,32 @@
                 .map(id => chapterData.find(item => item.id === id))
                 .filter(Boolean)
                 .sort((a, b) => {
-                     // Handle IDs like "1382-1" vs "1382-2"
-                     const aParts = a.id.split('-').map(s => parseInt(s) || 0);
-                     const bParts = b.id.split('-').map(s => parseInt(s) || 0);
-                     if (aParts[0] !== bParts[0]) return aParts[0] - bParts[0];
-                     return (aParts[1] || 0) - (bParts[1] || 0);
+                    // Handle IDs like "1382-1" vs "1382-2"
+                    const aParts = a.id.split('-').map(s => parseInt(s) || 0);
+                    const bParts = b.id.split('-').map(s => parseInt(s) || 0);
+                    if (aParts[0] !== bParts[0]) return aParts[0] - bParts[0];
+                    return (aParts[1] || 0) - (bParts[1] || 0);
                 });
         }
-        
+
         function getUniqueItems(items) {
-             const uniqueMap = new Map();
-             items.forEach(item => {
-                 // Use answer as key to deduplicate same phrases
-                 if (!uniqueMap.has(item.answer)) {
-                     uniqueMap.set(item.answer, item);
-                 }
-             });
-             return Array.from(uniqueMap.values()).sort((a, b) => {
-                 const aId = parseInt(a.id.split('-')[0]);
-                 const bId = parseInt(b.id.split('-')[0]);
-                 return aId - bId;
-             });
+            const uniqueMap = new Map();
+            items.forEach(item => {
+                // Use answer as key to deduplicate same phrases
+                if (!uniqueMap.has(item.answer)) {
+                    uniqueMap.set(item.answer, item);
+                }
+            });
+            return Array.from(uniqueMap.values()).sort((a, b) => {
+                const aId = parseInt(a.id.split('-')[0]);
+                const bId = parseInt(b.id.split('-')[0]);
+                return aId - bId;
+            });
         }
 
 
         // --- Message & Sound Functions ---
-        
+
         function showMessage(htmlContent, duration = null) {
             messageContent.innerHTML = htmlContent;
             messageModal.classList.remove('hidden');
@@ -1052,7 +1255,7 @@
 
             // 連続再生を防ぐために一度キャンセル
             speechSynthesis.cancel();
-            
+
             let textToSpeak = activeSentenceElement.dataset.fullSentence;
             // 念のため不要な記号を除去
             textToSpeak = textToSpeak.replace(/[{}]/g, '');
@@ -1065,7 +1268,7 @@
                 utterance.voice = synthesisVoice;
             }
 
-            utterance.rate = 1.0; 
+            utterance.rate = 1.0;
             utterance.pitch = 1.0;
 
             speechSynthesis.speak(utterance);
@@ -1082,7 +1285,7 @@
             }
 
             showMessage('<p class="text-2xl">マイクに向かって話してください...</p><div class="animate-pulse text-red-500 text-4xl mt-4">●</div>');
-            
+
             recognition.start();
 
             recognition.onresult = (event) => {
@@ -1093,20 +1296,20 @@
             recognition.onerror = (event) => {
                 showMessage(`<p>エラーが発生しました: ${event.error}</p>`, 3000);
             };
-            
+
             recognition.onend = () => {
-                 if (messageModal.classList.contains('hidden') === false && messageContent.innerHTML.includes('マイクに')) {
+                if (messageModal.classList.contains('hidden') === false && messageContent.innerHTML.includes('マイクに')) {
                     messageModal.classList.add('hidden');
-                 }
+                }
             };
         }
-        
+
         function evaluatePronunciation(transcript) {
             const originalText = activeSentenceElement.dataset.fullSentence;
 
             const cleanOrig = originalText.toLowerCase().replace(/[^\w\s]/g, '').split(' ');
             const cleanTrans = transcript.toLowerCase().replace(/[^\w\s]/g, '').split(' ');
-            
+
             let matches = 0;
             cleanOrig.forEach(word => {
                 if (cleanTrans.includes(word)) {
@@ -1115,7 +1318,7 @@
             });
 
             const similarity = matches / cleanOrig.length;
-            
+
             let score;
             if (similarity > 0.9) {
                 score = 95 + Math.floor(Math.random() * 5);
@@ -1128,7 +1331,7 @@
             } else {
                 score = 70 + Math.floor(Math.random() * 10);
             }
-            
+
             if (score === 100 && Math.random() < 0.3) score = 99;
 
             const messageHtml = `
@@ -1145,8 +1348,8 @@
 
         function startQuiz() {
             if (chapterData.length < 10) {
-                 showMessage('<p>クイズを作成するには、文が10個以上必要です。</p>', 3000);
-                 return;
+                showMessage('<p>クイズを作成するには、文が10個以上必要です。</p>', 3000);
+                return;
             }
 
             const shuffled = [...chapterData].sort(() => 0.5 - Math.random());
@@ -1171,8 +1374,9 @@
                     .map(item => item.answer);
 
                 const options = [correctAnswer, ...incorrectAnswers].sort(() => 0.5 - Math.random());
-                
-                const questionSentence = question.en.replace(`{${question.answer}}`, ' (______) ');
+
+                // Use regex to replace ALL {answer} parts with (______)
+                const questionSentence = question.en.replace(/\{.*?\}/g, ' (______) ');
 
                 quizContent.innerHTML = `
                     <h3 class="text-2xl font-bold mb-2">問題 ${currentQuestionIndex + 1}/10</h3>
@@ -1192,7 +1396,7 @@
                             button.classList.add('bg-red-400', 'text-white');
                             document.querySelector(`.quiz-option[data-answer="${CSS.escape(correctAnswer)}"]`).classList.add('bg-green-400', 'text-white');
                         }
-                        
+
                         setTimeout(() => {
                             currentQuestionIndex++;
                             showQuestion();
@@ -1237,12 +1441,12 @@
                 explanationDiv.style.display = 'block';
             }
         });
-        
+
         playSoundBtn.addEventListener('click', playSound);
         recordBtn.addEventListener('click', handleRecording);
         startQuizBtn.addEventListener('click', startQuiz);
         closeQuizBtn.addEventListener('click', () => quizModal.classList.add('hidden'));
-        
+
         // Select All Logic
         selectAllCheckbox.addEventListener('change', (e) => {
             const isChecked = e.target.checked;
@@ -1256,7 +1460,7 @@
 
         // PDF Modal Logic
         openPdfModalBtn.addEventListener('click', () => {
-             if (selectedSentences.size === 0) {
+            if (selectedSentences.size === 0) {
                 showMessage('<p>PDFを作成する問題を選択してください。</p>', 3000);
                 return;
             }
@@ -1278,10 +1482,10 @@
         // 1. 完全なリスト
         document.getElementById('download-list-btn').addEventListener('click', () => {
             const items = getSelectedItems();
-            if(!items) return;
+            if (!items) return;
             // リスト作成の場合は重複があっても良いが、見やすくするために熟語ベースでユニークにするか、
             // そのままID順で並べるか。ここではID順ですべて表示する。
-            
+
             const listItems = items.map(item => {
                 // Remove { } for clean display
                 const cleanEn = item.en.replace(/[{}]/g, '');
@@ -1290,7 +1494,7 @@
                     <span style="font-size:0.9em; color:#555;">Ex: ${cleanEn} / ${item.ja}</span>
                 </li>`;
             }).join('');
-            
+
             openPrintWindow(`<ul class="list-container">${listItems}</ul>`, '重要熟語リスト');
             pdfModal.classList.add('hidden');
         });
@@ -1298,14 +1502,14 @@
         // 2. 英語を解答
         document.getElementById('download-en-quiz-btn').addEventListener('click', () => {
             const items = getUniqueItems(getSelectedItems());
-            
-            const quizItems = items.map(item => 
+
+            const quizItems = items.map(item =>
                 `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')} : ____________________</span></li>`
             ).join('');
-            const answerItems = items.map(item => 
+            const answerItems = items.map(item =>
                 `<li><span class="inline-content">${item.answer}</span></li>`
             ).join('');
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (英語を解答)');
             pdfModal.classList.add('hidden');
@@ -1314,14 +1518,14 @@
         // 3. 意味を解答
         document.getElementById('download-ja-quiz-btn').addEventListener('click', () => {
             const items = getUniqueItems(getSelectedItems());
-            
-            const quizItems = items.map(item => 
+
+            const quizItems = items.map(item =>
                 `<li><span class="inline-content"><strong>${item.answer}</strong> : ____________________</span></li>`
             ).join('');
-            const answerItems = items.map(item => 
+            const answerItems = items.map(item =>
                 `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')}</span></li>`
             ).join('');
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (意味を解答)');
             pdfModal.classList.add('hidden');
@@ -1332,7 +1536,7 @@
             const items = getUniqueItems(getSelectedItems());
             let quizItems = '';
             let answerItems = '';
-            
+
             items.forEach(item => {
                 if (Math.random() > 0.5) {
                     // 日本語 -> 英語
@@ -1344,7 +1548,7 @@
                     answerItems += `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')}</span></li>`;
                 }
             });
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (混合)');
             pdfModal.classList.add('hidden');
@@ -1353,14 +1557,14 @@
         // 5. 例文穴埋め
         document.getElementById('download-sentence-quiz-btn').addEventListener('click', () => {
             const items = getSelectedItems(); // 例文問題なので重複（文脈違い）も含める
-            
+
             const quizItems = items.map(item => {
                 // Replace {answer} with underscore
                 const blankSentence = item.en.replace(`{${item.answer}}`, '____________________');
                 return `<li>${blankSentence}<br><span style="font-size:0.9em;">(${item.ja})</span></li>`;
             }).join('');
-            
-            const answerItems = items.map(item => 
+
+            const answerItems = items.map(item =>
                 `<li>${item.answer}</li>`
             ).join('');
 
@@ -1374,7 +1578,7 @@
             const items = getSelectedItems();
             let quizItems = '';
             let answerItems = '';
-            
+
             const instruction = '<p style="border:1px solid #ccc; padding:10px; margin-bottom:20px;">指示：空所には適切な語句を補い、下線部がある文は下線部の意味を日本語で答えなさい。</p>';
 
             items.forEach(item => {
@@ -1403,4 +1607,5 @@
         });
     </script>
 </body>
+
 </html>

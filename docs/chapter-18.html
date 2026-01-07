@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Tinos:wght@700&display=swap');
-        
+
         body {
-            background-color: #007BFF; /* ビビットなブルー */
+            background-color: #007BFF;
+            /* ビビットなブルー */
             font-family: 'Noto Sans JP', sans-serif;
         }
 
@@ -17,12 +19,15 @@
         .font-english {
             font-family: 'Tinos', 'Times New Roman', serif;
             font-weight: 700;
-            font-size: 1.25rem; /* 20px */
-            line-height: 1.75rem; /* 28px */
+            font-size: 1.25rem;
+            /* 20px */
+            line-height: 1.75rem;
+            /* 28px */
         }
 
         .answer-span {
-            color: #DC2626; /* 赤色 */
+            color: #DC2626;
+            /* 赤色 */
             font-weight: 700;
             display: none;
         }
@@ -40,7 +45,7 @@
         .show-answer .underline-span {
             display: none;
         }
-        
+
         .explanation {
             display: none;
             white-space: pre-wrap;
@@ -57,22 +62,27 @@
             cursor: pointer;
             transition: all 0.2s ease-in-out;
         }
+
         .btn-primary {
             background-color: #3b82f6;
             color: white;
         }
+
         .btn-primary:hover {
             background-color: #2563eb;
         }
+
         .btn-secondary {
             background-color: #6b7280;
             color: white;
         }
+
         .btn-secondary:hover {
             background-color: #4b5563;
         }
     </style>
 </head>
+
 <body class="text-gray-800">
 
     <div id="app-container" class="container mx-auto p-4 md:p-8 max-w-4xl">
@@ -83,23 +93,27 @@
 
         <main class="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg mb-28">
             <div class="flex justify-between items-center mb-6">
-                 <!-- PDF Control Section -->
-                 <div class="flex-1 mr-4">
+                <!-- PDF Control Section -->
+                <div class="flex-1 mr-4">
                     <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
                         <h3 class="font-bold text-sm md:text-base mb-2">選択した問題でPDFを作成</h3>
                         <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
                             <div class="flex items-center">
-                                <input type="checkbox" id="select-all-checkbox" class="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
-                                <label for="select-all-checkbox" class="ml-2 text-sm font-medium text-gray-700 cursor-pointer">すべて選択 / 解除</label>
+                                <input type="checkbox" id="select-all-checkbox"
+                                    class="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                                <label for="select-all-checkbox"
+                                    class="ml-2 text-sm font-medium text-gray-700 cursor-pointer">すべて選択 / 解除</label>
                             </div>
-                            <button id="open-pdf-modal-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow text-sm transition-transform transform hover:scale-105">
+                            <button id="open-pdf-modal-btn"
+                                class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow text-sm transition-transform transform hover:scale-105">
                                 PDF作成メニュー
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <button id="start-quiz-btn" class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-lg shadow transition-transform transform hover:scale-105 whitespace-nowrap">
+                <button id="start-quiz-btn"
+                    class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-lg shadow transition-transform transform hover:scale-105 whitespace-nowrap">
                     ランダムテスト
                 </button>
             </div>
@@ -111,11 +125,16 @@
     </div>
 
     <!-- Control Panel -->
-    <div id="control-panel" class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md p-4 border-t-2 border-gray-200 shadow-2xl flex justify-center items-center space-x-2 md:space-x-4">
-        <button id="toggle-answer-btn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">表示/非表示</button>
-        <button id="play-sound-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">音声再生</button>
-        <button id="record-btn" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">録音評価</button>
-        <button id="toggle-explanation-btn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">解説</button>
+    <div id="control-panel"
+        class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md p-4 border-t-2 border-gray-200 shadow-2xl flex justify-center items-center space-x-2 md:space-x-4">
+        <button id="toggle-answer-btn"
+            class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">表示/非表示</button>
+        <button id="play-sound-btn"
+            class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">音声再生</button>
+        <button id="record-btn"
+            class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">録音評価</button>
+        <button id="toggle-explanation-btn"
+            class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">解説</button>
     </div>
 
     <!-- Message/Score Modal -->
@@ -124,11 +143,12 @@
             <!-- Message content will be populated by JS -->
         </div>
     </div>
-    
+
     <!-- Quiz Modal -->
     <div id="quiz-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-40 p-4">
         <div class="bg-white w-full max-w-2xl p-8 rounded-2xl shadow-2xl relative">
-            <button id="close-quiz-btn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-3xl font-bold">&times;</button>
+            <button id="close-quiz-btn"
+                class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-3xl font-bold">&times;</button>
             <div id="quiz-content">
                 <!-- Quiz content will be populated by JS -->
             </div>
@@ -136,17 +156,24 @@
     </div>
 
     <!-- PDF Download Modal -->
-    <div id="pdf-modal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center z-50">
+    <div id="pdf-modal"
+        class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center z-50">
         <div class="relative mx-auto p-5 border w-11/12 md:w-1/2 lg:w-1/3 shadow-lg rounded-md bg-white">
             <div class="mt-3 text-center">
                 <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">ダウンロードするPDFの種類を選択</h3>
                 <div class="mt-2 space-y-3">
-                    <button id="download-list-btn" class="btn btn-primary w-full justify-start text-left">1. 完全なリスト (熟語・意味・例文)</button>
-                    <button id="download-en-quiz-btn" class="btn btn-primary w-full justify-start text-left">2. 熟語テスト (英語を解答)</button>
-                    <button id="download-ja-quiz-btn" class="btn btn-primary w-full justify-start text-left">3. 熟語テスト (意味を解答)</button>
-                    <button id="download-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">4. 熟語テスト (混合)</button>
-                    <button id="download-sentence-quiz-btn" class="btn btn-primary w-full justify-start text-left">5. 例文の穴埋め問題</button>
-                    <button id="download-sentence-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">6. 例文の混合問題 (穴埋め/和訳)</button>
+                    <button id="download-list-btn" class="btn btn-primary w-full justify-start text-left">1. 完全なリスト
+                        (熟語・意味・例文)</button>
+                    <button id="download-en-quiz-btn" class="btn btn-primary w-full justify-start text-left">2. 熟語テスト
+                        (英語を解答)</button>
+                    <button id="download-ja-quiz-btn" class="btn btn-primary w-full justify-start text-left">3. 熟語テスト
+                        (意味を解答)</button>
+                    <button id="download-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">4. 熟語テスト
+                        (混合)</button>
+                    <button id="download-sentence-quiz-btn" class="btn btn-primary w-full justify-start text-left">5.
+                        例文の穴埋め問題</button>
+                    <button id="download-sentence-mixed-quiz-btn"
+                        class="btn btn-primary w-full justify-start text-left">6. 例文の混合問題 (穴埋め/和訳)</button>
                 </div>
                 <div class="mt-6">
                     <button id="close-modal-btn" class="btn btn-secondary w-full">キャンセル</button>
@@ -158,188 +185,212 @@
     <script>
         const chapterData = [
     {
-        "id": "1",
-        "ja": "2 3 4 5 6 7 8 9 10音読 ◀\t音読用動画 別解など 数量を表す表現 2 3 4 5 6 7 8 9 10音読 数量を表す表現 2 3 4 5 6 7 8 9 10音読 数量を表す表現 2 3 4 5 6 7 8 9 10音読 数量を表す表現",
+        "id": "18",
+        "ja": "章　数量を表す表現  QR ☚ 音読用動画　別解など",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
-        "question": "ݱFile 84 ݱFile 86File 85 large ⇔smallࢺFile 87"
+        "question": ""
     },
     {
-        "id": "18",
-        "ja": "数量を表す表現 ① 章 数量を表す表現 語法編 ｜  18章 数量を表す表現 ② 語法編 ｜  18章 数量を表す表現 ③ 語法編 ｜  18章 数量を表す表現 ④",
+        "id": "286",
+        "ja": "● 語法編｜18章",
         "en": "???",
-        "answer": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "288",
+        "ja": "● 語法編｜18章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "290",
+        "ja": "● 語法編｜18章",
+        "en": "???",
+        "answer": "",
         "explanation": "",
         "question": ""
     },
     {
         "id": "705",
-        "ja": "年に一度の体育祭には全生徒が参加する。",
-        "en": "All (of) the students participate in the annual sports festival. all A all the A             ʮ͢΂ͯͷAʯ all of the A",
-        "answer": "???",
-        "explanation": "▶ 数えられる名詞の複数形にも数えられない名詞にも付く。 「特定されている集ま り\nのすべて」を表す場合は，the またはof the を付ける。動詞はA に合わせる。",
-        "question": "the annual sports festival."
+        "ja": "年に一度の体育祭には全生徒が参加する。 all the A　　　　「すべてのA」",
+        "en": "{all }A {all of the }A",
+        "answer": "all, all of the",
+        "explanation": "▶ 数えられる名詞の複数形にも数えられない名詞にも付く。「特定されている集まりのすべて」を表す場合は，theまたはof theを付ける。動詞はAに合わせる。",
+        "question": "All students participate in the annual sports festival. All (of) the students participate in the annual sports festival."
     },
     {
         "id": "706",
-        "ja": "今日ではほとんどすべての大人はスマ ートフォンを持っている。",
-        "en": "F 322  ＝ Most adults have smartphones today. Almost all adults have smartphones today. most (of the) A almost all (the) A          ʮ΄ͱΜͲ͢΂ͯͷAɼେ෦෼ͷAʯ almost all of the A",
-        "answer": "???",
-        "explanation": "▶ 数えられる名詞の複数形にも数えられない名詞にも付く。of の後にはthe A, his A,\nthem などを続ける。この文では「ほとんどすべての大人」とあり， 「特定の大人の\n集ま り」ではないので， （　） 内のthe や of the は不要。動詞はA に合わせる。",
-        "question": "smartphones today."
+        "ja": "今日ではほとんどすべての大人はスマートフォンを持っている。 almost all (the) A　　　　「ほとんどすべてのA，大部分のA」",
+        "en": "{Most adults have} smartphones today. ＝{Almost all adults have} smartphones today. {almost all of the }A",
+        "answer": "Most adults have, Almost all adults have, almost all of the",
+        "explanation": "Tip 「ほとんどすべての～」を表す表現は？\n▶ 数えられる名詞の複数形にも数えられない名詞にも付く。ofの後にはthe A, his A, themなどを続ける。この文では「ほとんどすべての大人」とあり，「特定の大人の集まり」ではないので，(   )内のtheやof theは不要。動詞はAに合わせる。",
+        "question": "Almost all adults have smartphones today. most (of the) A"
     },
     {
         "id": "707",
-        "ja": "電子書籍には多くの利点がある。",
-        "en": "Ebooks have a lot of [lots of] advantages. a lot of A lots of A    ʮͨ͘͞ΜͷAɼଟ͘ͷAʯ",
-        "answer": "lot of [lots of] advantages. a lot of A lots of A ʮͨ͘͞ΜͷAɼଟ͘ͷAʯ",
-        "explanation": "▶ 数えられる名詞の複数形にも数えられない名詞にも付く。many は数えられる名\n詞の複数形に付き，否定文や 〈There are many A …〉の 形 で 使うこと が 多 い 。\nadvantage「利点」は数えられる名詞。動詞はA に合わせる。",
-        "question": "Ebooks have a ."
+        "ja": "電子書籍には多くの利点がある。 lots of A    「たくさんのA，多くのA」",
+        "en": "Ebooks have {a }lot of advantages. Ebooks have {a lot of [lots of] advantages}. {a lot of }A",
+        "answer": "a, a lot of [lots of] advantages, a lot of",
+        "explanation": "▶ 数えられる名詞の複数形にも数えられない名詞にも付く。manyは数えられる名詞の複数形に付き，否定文や〈There are many A …〉の形で使うことが多い。advantage「利点」は数えられる名詞。動詞はAに合わせる。",
+        "question": ""
     },
     {
         "id": "708",
-        "ja": "文化祭の準備をするための時間は十分ある。",
-        "en": "There {is plenty of time to prepare for the school festival. plenty of A ʮͨ͘͞ΜͷAɼे෼ͳAʯ}",
-        "answer": "is plenty of time to prepare for the school festival. plenty of A ʮͨ͘͞ΜͷAɼे෼ͳAʯ",
-        "explanation": "▶ 数えられる名詞の複数形にも数えられない名詞にも付く。動詞はA に合わせる。\na lot of A は 「 たくさん のA」を表し，enough A は「必要なだけのA」を表す。\nplenty of A は両者の中間に位置し， 「必要以上の十分なA」を表す。",
-        "question": "There (        ) (        ) (        ) (        ) to prepare for the school festival."
+        "ja": "文化祭の準備をするための時間は十分ある。 plenty of A「たくさんのA，十分なA」 ＋ a lot of Aは「たくさんのA」を表し，enough Aは「必要なだけのA」を表す。 plenty of Aは両者の中間に位置し，「必要以上の十分なA」を表す。",
+        "en": "There {is plenty of time} to prepare for the school festival.",
+        "answer": "is plenty of time",
+        "explanation": "▶ 数えられる名詞の複数形にも数えられない名詞にも付く。動詞はAに合わせる。",
+        "question": "There (    ) (    ) (    ) (    ) to prepare for the school festival."
     },
     {
         "id": "709",
-        "ja": "諸外国と比べて，日本には国民の休日が十分にある。",
-        "en": "Compared to other countries, there {are enough national holidays in Japan. enough Aʮे෼ͳAʯ}",
-        "answer": "are enough national holidays in Japan. enough Aʮे෼ͳAʯ",
-        "explanation": "▶ 数えられる名詞の複数形にも数えられない名詞にも付く。動詞はA に合わせる。\nnational holiday೔ʯ\nparticipate / adult / advantage / plenty\nall Aɹ  all the Aɹ  all of the A ʮ͢΂ͯͷAʯ\nmost (of the) Aɹ  almost all (of the) A ʮ΄ͱΜͲ͢΂ͯͷAʯ\na lot of Aɹ  lots of Aɹ  plenty of A ʮͨ͘͞ΜͷAɼଟ͘ͷAʯ\nenough A ʮे෼ͳAʯ\nsome (of the) A ʮ͍͔ͭ͘ ʦ͍͘Β͔ʧ ͷAʯ\nany (of the) A ʮ͍͔ͭ͘ ʦ͍͘Β͔ʧ ͷAʯ\nʮͲͷA ΋ɼͲΜͳA ΋ʯ\n284 285\nSelf\nCheck\n復習",
-        "question": "Compared to other countries, there (        ) (        ) national (        ) in Japan."
+        "ja": "諸外国と比べて，日本には国民の休日が十分にある。 ここでは「十分な＝必要なだけの～」を意味する語を使ってみよう。 数量を表す表現 ① ● 285 enough A「十分なA」 ○ national holiday「国民の休日」",
+        "en": "Compared to other countries, there {are enough }national {holidays} in",
+        "answer": "are enough, holidays",
+        "explanation": "Tip 「国民の休日が十分にある → 十分な国民の休日がある」\nJapan.\n▶ 数えられる名詞の複数形にも数えられない名詞にも付く。動詞はAに合わせる。",
+        "question": "Compared to other countries, there (    ) (    ) national (    ) in"
     },
     {
         "id": "710-1",
-        "ja": "気候危機は避けられないと言う人もいるけれど，私はそうは思わない。",
-        "en": "Some (people) say (that) we cannot avoid the climate crisis, but I do not believe that. some ʴࢺʮ͍͔ͭ͘ͷʙʯ",
-        "answer": "???",
-        "explanation": "▶ 複数扱いする。➡File84 – p.285   後ろに動詞が続く場合， 「～する人がいる，\n～するものがある」と訳すと，日本語らしい訳になる。\navoid ʮʙΛආ͚Δʯ\nclimate crisisʯ",
-        "question": "we cannot avoid the climate crisis, but I do not believe that."
+        "ja": "気候危機は避けられないと言う人もいるけれど，私はそうは思わない。 some＋複数名詞「いくつかの～」 ～するものがある」と訳すと，日本語らしい訳になる。 ○ avoid「～を避ける」 ○ climate crisis「気候危機」",
+        "en": "???",
+        "answer": "",
+        "explanation": "Tip 「…と言う人もいる」は，「何人かの人々」を主語にして表現する。\n▶ 複数扱いする。➡ File 84―p.285　後ろに動詞が続く場合，「～する人がいる，",
+        "question": "Some people say we cannot avoid the climate crisis, but I do not Some (people) say (that) we cannot avoid the climate crisis, but I do not believe that."
     },
     {
         "id": "710-2",
-        "ja": "「お 金 を いくら か貸 し て く れ る ？ 」「 い い よ 。」 some は肯定文で，any は疑問文・否定文・条件文で使うが，相手に「肯定の答え」 を期待する場合は，疑問文でもsome を使う。",
-        "en": "???",
-        "answer": "???",
+        "ja": "「お金をいくらか貸してくれる？」「いいよ。」 相手に「肯定の答え」を期待するときに使う「いくらかの～」を表す語は？ F 301  some＋数えられない名詞「いくらかの～」 ！ someは肯定文で，anyは疑問文・否定文・条件文で使うが，相手に「肯定の答え」を期待する場合は，疑問文でもsomeを使う。 ○ lend A B「AにBを貸す」⇔ borrow B from A「AからBを借りる」",
+        "en": "“Can you lend me {some money}?” “Sure.”",
+        "answer": "some money",
         "explanation": "",
-        "question": "“Can you lend me (        ) (        )?” “Sure.” “Can you lend me some money?” “Sure.” some ʴࢺʮ ͍͘Β͔ ͷ ʙ ʯ lend A BʮA ʹB Λି͢ʯ⇔⇔ borrow B from AʮA ͔ΒB ΛआΓΔʯ"
+        "question": "“Can you lend me (    ) (    )?” “Sure.”"
     },
     {
         "id": "711",
-        "ja": "空いている席にお 座りください 。",
-        "en": "Please take {any available seat. any ʴࢺʗࢺʮͲͷʙ΋ɼͲΜͳʙ΋ʯ}",
-        "answer": "any available seat. any ʴࢺʗࢺʮͲͷʙ΋ɼͲΜͳʙ΋ʯ",
-        "explanation": "▶ 単数扱いする。➡File84 – p.285   問題文は，any とseat の間にseat を修飾する\navailable が置かれている。\nsome は肯定文で，any は疑問文・否定文・条件文で使うが， 「どの～も （…する） 」\n「どんな～も （…する） 」の意味を表す肯定文ではany を使う。\navailable  ͍͍ͯΔʯ",
-        "question": "Please take (        ) available (        )."
+        "ja": "空いている席にお座りください。 「どんな～も」を表す語は？ any＋単数名詞／数えられない名詞「どの～も，どんな～も」 ！ someは肯定文で，anyは疑問文・否定文・条件文で使うが，「どの～も(…する)」「どんな～も(…する)」の意味を表す肯定文ではanyを使う。 ○ available ①「(物・事が)入手できる，利用できる」②「(人の)手が空いている」",
+        "en": "Please take {any} available {seat}.",
+        "answer": "any, seat",
+        "explanation": "Tip 「空いているどの席でもお取りください」と表現する。\n▶ 単数扱いする。➡ File 84―p.285  問題文は，anyとseatの間にseatを修飾するavailableが置かれている。",
+        "question": "Please take (    ) available (    )."
     },
     {
         "id": "712",
         "ja": "毎年，かなり多くの人が喫煙関連の病気で亡くなっている。",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
-        "question": "-1 -2＝ A great  each year from smoking-related diseases. Quite  each year from smoking-related diseases."
+        "question": ""
     },
     {
         "id": "712-1",
-        "ja": "???",
-        "en": "-2＝ A great many people die each year from smoking-related diseases. Quite a few people die each year from smoking-related diseases. a great many ʴࢺ a good many ʴࢺ       ʮ͔ͳΓଟ͘ͷʢ਺ͷʣʙʯ quite a few ʴࢺ",
-        "answer": "???",
-        "explanation": "▶ 複数扱いする。➡File85 – p.288   die each year（毎年亡く っている） の後に，\nfrom smoking-related diseases（喫煙関連の病気で） が続く語順になっている。\nmany ʴࢺʮͨ͘͞Μͷʢ਺ͷʣʙʯ\n-related࿈ͷʯ―work-related࿈ͷʯ",
-        "question": "???"
+        "ja": "",
+        "en": "{A great }many people die each year from smoking-related diseases. {A great many people die }each year from smoking-related diseases.",
+        "answer": "A great, A great many people die",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "712-2",
+        "ja": "「亡くなっている → 亡くなる」でよい。変わらない事実なので時制は？ a great many＋複数名詞 a good many＋複数名詞     「かなり多くの(数の)～」 quite a few＋複数名詞 ＋ many＋複数名詞「たくさんの(数の)～」 ○ -related「～関連の」―work-related「仕事関連の」",
+        "en": "＝{Quite }a few people die each year from smoking-related diseases. ＝{Quite a few people die }each year from smoking-related diseases.",
+        "answer": "Quite, Quite a few people die",
+        "explanation": "Tip 「かなり多くの(数の)～」を表す２つの表現を使ってみよう。\n▶ 複数扱いする。➡ File 85―p.288  die each year(毎年亡くなっている)の後に，from smoking-related diseases(喫煙関連の病気で)が続く語順になっている。",
+        "question": ""
     },
     {
         "id": "713",
-        "ja": "２人の子どもが公園で楽しそうに遊んでいる。",
-        "en": "{A couple of children are playing happily in the park. a couple of ʴࢺ ᶃʮ̎ͭʦ̎ਓʧͷʙʢ＝two ～ʣʯ ᶄ ʮ ̎ ɼ̏ ͷAʢ＝a few ～ʣʯ}",
-        "answer": "A couple of children are playing happily in the park. a couple of ʴࢺ ᶃʮ̎ͭʦ̎ਓʧͷʙʢ＝two ～ʣʯ ᶄ ʮ ̎ ɼ̏ ͷAʢ＝a few ～ʣʯ",
+        "ja": "２人の子どもが公園で楽しそうに遊んでいる。 a couple of＋複数名詞 ①「２つ[２人]の～(＝two ～)」②「２，３のA(＝a few ～)」",
+        "en": "{A couple of children are} playing happily in the park.",
+        "answer": "A couple of children are",
         "explanation": "▶ 複数扱いする。",
-        "question": "(        ) (c      ) (        ) (        ) (        ) playing happily in the park."
+        "question": "(    ) (c   ) (    ) (    ) (    ) playing happily in the park."
     },
     {
         "id": "714",
-        "ja": "テーブルの上に数冊の本がある。",
-        "en": "There {are a few books on the table. a few ʴࢺʮগ͠ͷʢ਺ͷʣʙ ʯʮ ̎ ɼ̏ ͷ ʙ ʢ＝a couple of ～）」}",
-        "answer": "are a few books on the table. a few ʴࢺʮগ͠ͷʢ਺ͷʣʙ ʯʮ ̎ ɼ̏ ͷ ʙ ʢ＝a couple of ～）」",
-        "explanation": "▶ 複数扱いする。➡File86 – p.289\nonly a few ʴࢺʮ΄Μͷগ͠ͷʢ਺ͷʣʙ͔͠…ͳ͍ʯ\nThere are only a few books on the shelf.（本棚にはほんの少しの本しかない。）\nfew ʴࢺʮʙʢ਺ʣ͕΄ͱΜͲͳ͍ʯ➡399-1\nThere are few books on the shelf.（本棚にはほとんど本がない。）\ndie / few\n286 287\nSelf\nCheck\n復習",
-        "question": "There (        ) (        ) (        ) (        ) on the table."
+        "ja": "テーブルの上に数冊の本がある。 数量を表す表現 ② ● 287 F 319  a few＋複数名詞「少しの(数の)～」「２，３の～(＝a couple of ～)」 ＋ only a few＋複数名詞「ほんの少しの(数の)～しか…ない」 There are only a few books on the shelf.（本棚にはほんの少しの本しかない。） ＋ few＋複数名詞「～(数)がほとんどない」➡ 399-1 There are few books on the shelf.（本棚にはほとんど本がない。）",
+        "en": "There {are a few books} on the table.",
+        "answer": "are a few books",
+        "explanation": "▶ 複数扱いする。➡ File 86―p.289",
+        "question": "There (    ) (    ) (    ) (    ) on the table."
     },
     {
         "id": "715",
-        "ja": "昨年，ごみの量が0.7%減少した。 the amount of waste [garbage]ʮ͝Έͷྔʯ―waste, garbage は不可算名詞。",
-        "en": "???",
-        "answer": "???",
+        "ja": "昨年，ごみの量が0.7%減少した。 the amount of＋数えられない名詞「～の量」 ○ the amount of waste [garbage]「ごみの量」―waste, garbageは不可算名詞。 ○ decrease [fall, drop] by ～%「～％減少する」 ⇔ increase [rise] by ～％「～％増加する」",
+        "en": "{The amount of waste} decreased by 0.7% last year.",
+        "answer": "The amount of waste",
         "explanation": "",
-        "question": "(        ) (a      ) (        ) (w     ) decreased by 0.7% last year. The amount of waste decreased by 0.7% last year. the amount of ʴࢺʮʙͷྔʯ decrease [fall, drop] by ʙ%গ͢Δʯ ⇔⇔ increase [rise] by ʙ%ʮʙˋ૿Ճ͢Δʯ"
+        "question": "(    ) (a   ) (    ) (w   ) decreased by 0.7% last year."
     },
     {
         "id": "716",
-        "ja": "先生たちは私たちに夏休みの宿題を大量に出した。",
-        "en": "Our teachers gave us {a large amount of homework for the summer vacation. a large amount of ʴࢺʮେྔͷʙʯ➡File85 ⇔ a small amount ofʴࢺʮগྔͷʙʯ➡File86}",
-        "answer": "a large amount of homework for the summer vacation. a large amount of ʴࢺʮେྔͷʙʯ➡File85 ⇔ a small amount ofʴࢺʮগྔͷʙʯ➡File86",
-        "explanation": "▶ 〈a large [small] amount of＋数えられない名詞〉 は具体的な物事についての量\nが多い ［少ない］ を表すときに使われる。この文では「宿題の量」の多さを表し\nている。",
-        "question": "Our teachers gave us (        ) (l      ) (        ) (        ) (        ) for the summer vacation."
+        "ja": "先生たちは私たちに夏休みの宿題を大量に出した。 a large amount of＋数えられない名詞「大量の～」➡ File 85 ⇔ a small amount of＋数えられない名詞「少量の～」➡ File 86",
+        "en": "Our teachers gave us {a large amount of homework} for the summer",
+        "answer": "a large amount of homework",
+        "explanation": "Tip 「私たちに宿題を大量に出した → 私たちに大量の宿題を与えた」\nvacation.\n▶〈a large [small] amount of＋数えられない名詞〉は具体的な物事についての量が多い[少ない]を表すときに使われる。この文では「宿題の量」の多さを表している。",
+        "question": "Our teachers gave us (    ) (l   ) (    ) (    ) (    ) for the summer vacation."
     },
     {
         "id": "717",
-        "ja": "彼女は統計に関する知識が豊富だ。",
-        "en": "She has a great deal of knowledge about statistics. a great deal of ʴࢺ a good deal of ʴࢺ    ʮ͔ͳΓଟ͘ͷʢྔͷʣʙʯ➡File85",
-        "answer": "a great deal of knowledge about statistics. a great deal of ʴࢺ a good deal of ʴࢺ ʮ͔ͳΓଟ͘ͷʢྔͷʣʙʯ➡File85",
-        "explanation": "▶ 〈a great [good] deal of ＋数えられない名詞〉 は具体的には表現しにくい抽象的\nな事柄についての量や程度について使うことが多い。この文は「知識の量」が\n多いことを表している。\nstatisticsʯ― 「統計」は複数扱い， 「統計学」は単数扱い。",
-        "question": "She has (        ) (g      ) (        ) (        ) (        ) about statistics."
+        "ja": "彼女は統計に関する知識が豊富だ。 「かなり多くの(量の)～」を表す表現は？ a great deal of＋数えられない名詞 a good deal of＋数えられない名詞    「かなり多くの(量の)～」➡ File 85 ○ statistics「統計，統計学」―「統計」は複数扱い，「統計学」は単数扱い。",
+        "en": "She has {a great deal of knowledge} about statistics.",
+        "answer": "a great deal of knowledge",
+        "explanation": "Tip 「知識が豊富だ → かなり多くの知識を持っている」\n▶〈a great [good] deal of＋数えられない名詞〉は具体的には表現しにくい抽象的な事柄についての量や程度について使うことが多い。この文は「知識の量」が多いことを表している。",
+        "question": "She has (    ) (g   ) (    ) (    ) (    ) about statistics."
     },
     {
         "id": "718",
-        "ja": "私は海外旅行の経験があまりない。 much は主に疑問文・否定文で使う。肯定文ではa lot of などを使う。 〈not … muchʴࢺ〉で「͋·Γ…ͳ͍」という意味になる。 数え られる名詞 （複数名詞） に付く数えられない 名 詞 に付く 数え られる名詞 （複数名詞） に付く数えられない 名 詞 に付く 復習",
-        "en": "???",
-        "answer": "???",
+        "ja": "私は海外旅行の経験があまりない。 数量を表す表現 ③ ● 289 F 317  much＋数えられない名詞「たくさんの(量の)～」➡ File 85 ！ muchは主に疑問文・否定文で使う。肯定文ではa lot ofなどを使う。 〈not … much＋数えられない名詞〉で「あまり…ない」という意味になる。 ○ not have much experience of doing「～した経験があまりない」 ○ have a lot of experience of doing「～した経験が豊富だ」 ○ have no experience of doing「～した経験がない」",
+        "en": "I do not have {much experience} of traveling abroad.",
+        "answer": "much experience",
         "explanation": "",
-        "question": "I do not have  of traveling abroad. I do not have much experience of traveling abroad. much ʴࢺʮͨ͘͞Μͷʢྔͷʣʙʯ➡File85 not have much experience of doing͕͋·Γͳ͍ʯ have a lot of experience of doing͕๛෋ͩʯ have no experience of doing͕ͳ͍ʯ amount / waste / deal / knowledge / experience several ～ a number of ～ ➡375-1 ʮ͍͔ͭ͘ͷʙʯ ʮ͍͘Β͔ ͷ ʙʯ some ～ some of the ～ a few ～ a small number of ～ a little ～ a small amount of ～ ʮগ͠ͷʙʯ only a few ～  only a little ～ ʮ΄Μͷগ͠ͷʙʯ fewer ～ ➡296-2  less ～ ʮΑΓগͳ͍ʙʯ few ～  little ～ ʮʙ͸΄ͱΜͲͳ͍ʯ very few ～  very little ～ ʮ͘͝Θ͔ͣͷʙʯ a large number of ～ ➡375-2 a great many ～ a good many ～ quite a few ～ a large amount of ～ a great deal of ～ a good deal of ～ ʮͱͯ΋ଟ͘ͷʙʯ many ～ a number of ～ ➡375-1 much ～ ʮଟ͘ͷʙʯ ʮͨ͘͞Μͷʙʯ a lot of ～ lots of ～ more ～ ʮΑΓଟ͘ͷʙʯ 288 289 Self Check"
+        "question": "I do not have much experience of traveling abroad."
     },
     {
         "id": "719",
-        "ja": "着替えるのに少し時間が必要です。 Sara speaks a little French.（サラは少しだけフ ラ ン ス 語 を 話 す 。） Sara speaks only a little French.（サラはほんの少しのフランス語しか話さない。） Sara speaks little French.（サラはほとんどフランス語を話さない。）",
-        "en": "???",
-        "answer": "???",
+        "ja": "着替えるのに少し時間が必要です。 F 319  a little＋数えられない名詞「少しの(量の)～」➡ File 86―p.289 Sara speaks a little French.（サラは少しだけフランス語を話す。） ＋ only a little＋数えられない名詞「ほんの少しの(量の)～しか…ない」 Sara speaks only a little French.（サラはほんの少しのフランス語しか話さない。） ＋ little＋数えられない名詞「～(量)がほとんどない」➡ 400-1 Sara speaks little French.（サラはほとんどフランス語を話さない。）",
+        "en": "I just need {a little time} to change my clothes.",
+        "answer": "a little time",
         "explanation": "",
-        "question": "I just need (        ) (        ) (        ) to change my clothes. I just need a little time to change my clothes. a little ʴࢺʮগ͠ͷʢྔͷʣʙʯ➡File86 – p.289 only a little ʴࢺʮ΄Μͷগ͠ͷʢྔͷʣʙ͔͠…ͳ͍ʯ little ʴࢺʮʙʢྔʣ͕΄ͱΜͲͳ͍ʯ➡400-1"
+        "question": "I just need (    ) (    ) (    ) to change my clothes."
     },
     {
         "id": "720",
-        "ja": "ソーシャルメディアに費やす時間を減らす必要がある。",
-        "en": "We need to spend {less time on social media. less ʴࢺʮΑΓগͳ͍ʢྔͷʣʙʯ➡File86 – p.289}",
-        "answer": "less time on social media. less ʴࢺʮΑΓগͳ͍ʢྔͷʣʙʯ➡File86 – p.289",
-        "explanation": "▶ less はlittle「少量の」の比較級。最上級はleast「 最 も 少 な い 」。",
-        "question": "We need to spend  on social media."
+        "ja": "ソーシャルメディアに費やす時間を減らす必要がある。 less＋数えられない名詞「より少ない(量の)～」➡ File 86―p.289",
+        "en": "We need to spend {less time} on social media.",
+        "answer": "less time",
+        "explanation": "Tip 「費やす時間を減らす → より少ない時間を費やす」と表現する。\n▶ lessはlittle「少量の」の比較級。最上級はleast「最も少ない」。",
+        "question": "We need to spend less time on social media."
     },
     {
         "id": "721",
-        "ja": "東京は通勤人口が多い。",
-        "en": "Tokyo has {a large commuting population.}",
-        "answer": "a large commuting population.",
-        "explanation": "▶ 721～723 の名詞は「大きな数の⇔小さな数の」と考え， 「多い⇔少ない」は\nlarge⇔small で表す。➡File87\na large populationʯ―  many [much] population は誤り。\n⇔ a small populationʯ―  few [little] population は誤り。\ncommuting populationʯ―commute͢Δʯ",
-        "question": "Tokyo has (        ) (        ) commuting (        )."
+        "ja": "東京は通勤人口が多い。 人口の「多い／少ない」はどう表現する？ large⇔smallで表す。➡ File 87 a large population「多い人口」― × many [much] populationは誤り。 ⇔ a small population「少ない人口」― × few [little] populationは誤り。 ○ commuting population「通勤人口」―commute「通勤する，通学する」",
+        "en": "Tokyo has {a large} commuting {population}.",
+        "answer": "a large, population",
+        "explanation": "Tip 「東京は多くの通勤人口を持っている」と表現する。\n▶ 721～723の名詞は「大きな数の⇔小さな数の」と考え，「多い⇔少ない」は",
+        "question": "Tokyo has (    ) (    ) commuting (    )."
     },
     {
         "id": "722",
-        "ja": "大勢の聴衆の前で話すのは緊張した。",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "I felt nervous speaking in front of (        ) (        ) (        ). I felt nervous speaking in front of a large audience. a large audienceऺʯ ⇔ a small audienceʮগͳ͍ௌऺʯ feel nervous (about) doingு͢Δʯ"
+        "ja": "大勢の聴衆の前で話すのは緊張した。 a large audience「大観衆」 ⇔ a small audience「少ない聴衆」 ○ feel nervous (about) doing「～するのに緊張する」 ○ in front of A「Aの前に[で]」",
+        "en": "I felt nervous speaking in front of {a large audience}.",
+        "answer": "a large audience",
+        "explanation": "Tip 「大勢の観衆＝大観衆」を表す表現は？ 観衆の「多い／少ない」はどう表現する？",
+        "question": "I felt nervous speaking in front of (    ) (    ) (    )."
     },
     {
         "id": "723",
-        "ja": "昨年の夏に開催されたフードフェスティバルには多くの人が集まった。",
-        "en": "The food festival held last summer attracted {a large crowd. a large crowdऺʯ ⇔ a small crowdऺʯ}",
-        "answer": "a large crowd. a large crowdऺʯ ⇔ a small crowdऺʯ",
-        "explanation": "▶ 分詞句のheld last summer が主語のThe food festival を修飾している。\nattractͳͲʣΛ༠க͢Δʯ\nlarge / crowd\n多い 少ない\n਺͕  a large numberʮଟ਺ʯ  a small numberʮগ਺ʯ\nྔ͕  a large amount\na large quantity    ʮଟྔʯ  a small amount\na small quantity    ʮগྔʯ\n͕  a large sumʯ  a small sumʯ\nՈ଒͕  a large familyʮେՈ଒ʯ  a small familyʮখՈ଒ʯ\nௌऺ͕  a large audienceऺʯ  a small audienceʮগͳ͍ௌऺʯ\nऺ͕  a large crowdऺʯ  a small crowdऺʯ\n͕  a large populationʯ  a small populationʯ\n290 291\nSelf\nCheck\n復習",
-        "question": "The food festival held last summer attracted (        ) (        ) (        ). ͢Δɻ͢Δɻ"
+        "ja": "昨年の夏に開催されたフードフェスティバルには多くの人が集まった。 数量を表す表現 ④ ● 291 a large crowd「大群衆」 ⇔ a small crowd「少ない群衆」 ○ attract「(興味・気持ちなど)を引き寄せる，(投資など)を誘致する」",
+        "en": "The food festival held last summer attracted {a large crowd}.",
+        "answer": "a large crowd",
+        "explanation": "Tip 「フードフェルティバルには多くの人が集まった → フードフェスティバルは大群衆を引き寄せた」と表現する。\n▶ 分詞句のheld last summerが主語のThe food festivalを修飾している。",
+        "question": "The food festival held last summer attracted (    ) (    ) (    )."
     }
 ];
 
@@ -353,7 +404,7 @@
             recognition.lang = 'en-US';
             recognition.interimResults = false;
         }
-        
+
         // --- Voice Synthesis Setup ---
         let synthesisVoice = null;
 
@@ -361,10 +412,10 @@
             const voices = speechSynthesis.getVoices();
             // 優先順位: Google US English -> Microsoft Zira/David -> その他英語
             synthesisVoice = voices.find(voice => voice.name === 'Google US English') ||
-                             voices.find(voice => voice.name.includes('Google') && voice.lang.includes('en-US')) ||
-                             voices.find(voice => voice.name.includes('Microsoft') && voice.lang.includes('en-US')) ||
-                             voices.find(voice => voice.lang === 'en-US') ||
-                             voices.find(voice => voice.lang.startsWith('en'));
+                voices.find(voice => voice.name.includes('Google') && voice.lang.includes('en-US')) ||
+                voices.find(voice => voice.name.includes('Microsoft') && voice.lang.includes('en-US')) ||
+                voices.find(voice => voice.lang === 'en-US') ||
+                voices.find(voice => voice.lang.startsWith('en'));
         }
 
         // 音声リストがロードされたら設定を実行
@@ -387,7 +438,7 @@
         const quizModal = document.getElementById('quiz-modal');
         const closeQuizBtn = document.getElementById('close-quiz-btn');
         const quizContent = document.getElementById('quiz-content');
-        
+
         const selectAllCheckbox = document.getElementById('select-all-checkbox');
         const pdfModal = document.getElementById('pdf-modal');
         const openPdfModalBtn = document.getElementById('open-pdf-modal-btn');
@@ -437,7 +488,7 @@
                 `;
                 sentenceList.appendChild(sentenceDiv);
             });
-            
+
             // Add click listener to each sentence item
             document.querySelectorAll('.sentence-item').forEach(item => {
                 item.addEventListener('click', (e) => {
@@ -464,15 +515,15 @@
                     }
                 });
             });
-            
+
             // Select the first sentence by default
             if (sentenceList.firstChild) {
-                 sentenceList.firstChild.click();
+                sentenceList.firstChild.click();
             }
         }
-        
+
         // --- PDF / Print Logic ---
-        
+
         function openPrintWindow(bodyContent, title) {
             const htmlContent = `
                 <!DOCTYPE html>
@@ -524,7 +575,7 @@
             printWindow.document.write(htmlContent);
             printWindow.document.close();
             setTimeout(() => {
-                printWindow.focus(); 
+                printWindow.focus();
                 printWindow.print();
             }, 250);
         }
@@ -539,32 +590,32 @@
                 .map(id => chapterData.find(item => item.id === id))
                 .filter(Boolean)
                 .sort((a, b) => {
-                     // Handle IDs like "1382-1" vs "1382-2"
-                     const aParts = a.id.split('-').map(s => parseInt(s) || 0);
-                     const bParts = b.id.split('-').map(s => parseInt(s) || 0);
-                     if (aParts[0] !== bParts[0]) return aParts[0] - bParts[0];
-                     return (aParts[1] || 0) - (bParts[1] || 0);
+                    // Handle IDs like "1382-1" vs "1382-2"
+                    const aParts = a.id.split('-').map(s => parseInt(s) || 0);
+                    const bParts = b.id.split('-').map(s => parseInt(s) || 0);
+                    if (aParts[0] !== bParts[0]) return aParts[0] - bParts[0];
+                    return (aParts[1] || 0) - (bParts[1] || 0);
                 });
         }
-        
+
         function getUniqueItems(items) {
-             const uniqueMap = new Map();
-             items.forEach(item => {
-                 // Use answer as key to deduplicate same phrases
-                 if (!uniqueMap.has(item.answer)) {
-                     uniqueMap.set(item.answer, item);
-                 }
-             });
-             return Array.from(uniqueMap.values()).sort((a, b) => {
-                 const aId = parseInt(a.id.split('-')[0]);
-                 const bId = parseInt(b.id.split('-')[0]);
-                 return aId - bId;
-             });
+            const uniqueMap = new Map();
+            items.forEach(item => {
+                // Use answer as key to deduplicate same phrases
+                if (!uniqueMap.has(item.answer)) {
+                    uniqueMap.set(item.answer, item);
+                }
+            });
+            return Array.from(uniqueMap.values()).sort((a, b) => {
+                const aId = parseInt(a.id.split('-')[0]);
+                const bId = parseInt(b.id.split('-')[0]);
+                return aId - bId;
+            });
         }
 
 
         // --- Message & Sound Functions ---
-        
+
         function showMessage(htmlContent, duration = null) {
             messageContent.innerHTML = htmlContent;
             messageModal.classList.remove('hidden');
@@ -588,7 +639,7 @@
 
             // 連続再生を防ぐために一度キャンセル
             speechSynthesis.cancel();
-            
+
             let textToSpeak = activeSentenceElement.dataset.fullSentence;
             // 念のため不要な記号を除去
             textToSpeak = textToSpeak.replace(/[{}]/g, '');
@@ -601,7 +652,7 @@
                 utterance.voice = synthesisVoice;
             }
 
-            utterance.rate = 1.0; 
+            utterance.rate = 1.0;
             utterance.pitch = 1.0;
 
             speechSynthesis.speak(utterance);
@@ -618,7 +669,7 @@
             }
 
             showMessage('<p class="text-2xl">マイクに向かって話してください...</p><div class="animate-pulse text-red-500 text-4xl mt-4">●</div>');
-            
+
             recognition.start();
 
             recognition.onresult = (event) => {
@@ -629,20 +680,20 @@
             recognition.onerror = (event) => {
                 showMessage(`<p>エラーが発生しました: ${event.error}</p>`, 3000);
             };
-            
+
             recognition.onend = () => {
-                 if (messageModal.classList.contains('hidden') === false && messageContent.innerHTML.includes('マイクに')) {
+                if (messageModal.classList.contains('hidden') === false && messageContent.innerHTML.includes('マイクに')) {
                     messageModal.classList.add('hidden');
-                 }
+                }
             };
         }
-        
+
         function evaluatePronunciation(transcript) {
             const originalText = activeSentenceElement.dataset.fullSentence;
 
             const cleanOrig = originalText.toLowerCase().replace(/[^\w\s]/g, '').split(' ');
             const cleanTrans = transcript.toLowerCase().replace(/[^\w\s]/g, '').split(' ');
-            
+
             let matches = 0;
             cleanOrig.forEach(word => {
                 if (cleanTrans.includes(word)) {
@@ -651,7 +702,7 @@
             });
 
             const similarity = matches / cleanOrig.length;
-            
+
             let score;
             if (similarity > 0.9) {
                 score = 95 + Math.floor(Math.random() * 5);
@@ -664,7 +715,7 @@
             } else {
                 score = 70 + Math.floor(Math.random() * 10);
             }
-            
+
             if (score === 100 && Math.random() < 0.3) score = 99;
 
             const messageHtml = `
@@ -681,8 +732,8 @@
 
         function startQuiz() {
             if (chapterData.length < 10) {
-                 showMessage('<p>クイズを作成するには、文が10個以上必要です。</p>', 3000);
-                 return;
+                showMessage('<p>クイズを作成するには、文が10個以上必要です。</p>', 3000);
+                return;
             }
 
             const shuffled = [...chapterData].sort(() => 0.5 - Math.random());
@@ -707,8 +758,9 @@
                     .map(item => item.answer);
 
                 const options = [correctAnswer, ...incorrectAnswers].sort(() => 0.5 - Math.random());
-                
-                const questionSentence = question.en.replace(`{${question.answer}}`, ' (______) ');
+
+                // Use regex to replace ALL {answer} parts with (______)
+                const questionSentence = question.en.replace(/\{.*?\}/g, ' (______) ');
 
                 quizContent.innerHTML = `
                     <h3 class="text-2xl font-bold mb-2">問題 ${currentQuestionIndex + 1}/10</h3>
@@ -728,7 +780,7 @@
                             button.classList.add('bg-red-400', 'text-white');
                             document.querySelector(`.quiz-option[data-answer="${CSS.escape(correctAnswer)}"]`).classList.add('bg-green-400', 'text-white');
                         }
-                        
+
                         setTimeout(() => {
                             currentQuestionIndex++;
                             showQuestion();
@@ -773,12 +825,12 @@
                 explanationDiv.style.display = 'block';
             }
         });
-        
+
         playSoundBtn.addEventListener('click', playSound);
         recordBtn.addEventListener('click', handleRecording);
         startQuizBtn.addEventListener('click', startQuiz);
         closeQuizBtn.addEventListener('click', () => quizModal.classList.add('hidden'));
-        
+
         // Select All Logic
         selectAllCheckbox.addEventListener('change', (e) => {
             const isChecked = e.target.checked;
@@ -792,7 +844,7 @@
 
         // PDF Modal Logic
         openPdfModalBtn.addEventListener('click', () => {
-             if (selectedSentences.size === 0) {
+            if (selectedSentences.size === 0) {
                 showMessage('<p>PDFを作成する問題を選択してください。</p>', 3000);
                 return;
             }
@@ -814,10 +866,10 @@
         // 1. 完全なリスト
         document.getElementById('download-list-btn').addEventListener('click', () => {
             const items = getSelectedItems();
-            if(!items) return;
+            if (!items) return;
             // リスト作成の場合は重複があっても良いが、見やすくするために熟語ベースでユニークにするか、
             // そのままID順で並べるか。ここではID順ですべて表示する。
-            
+
             const listItems = items.map(item => {
                 // Remove { } for clean display
                 const cleanEn = item.en.replace(/[{}]/g, '');
@@ -826,7 +878,7 @@
                     <span style="font-size:0.9em; color:#555;">Ex: ${cleanEn} / ${item.ja}</span>
                 </li>`;
             }).join('');
-            
+
             openPrintWindow(`<ul class="list-container">${listItems}</ul>`, '重要熟語リスト');
             pdfModal.classList.add('hidden');
         });
@@ -834,14 +886,14 @@
         // 2. 英語を解答
         document.getElementById('download-en-quiz-btn').addEventListener('click', () => {
             const items = getUniqueItems(getSelectedItems());
-            
-            const quizItems = items.map(item => 
+
+            const quizItems = items.map(item =>
                 `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')} : ____________________</span></li>`
             ).join('');
-            const answerItems = items.map(item => 
+            const answerItems = items.map(item =>
                 `<li><span class="inline-content">${item.answer}</span></li>`
             ).join('');
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (英語を解答)');
             pdfModal.classList.add('hidden');
@@ -850,14 +902,14 @@
         // 3. 意味を解答
         document.getElementById('download-ja-quiz-btn').addEventListener('click', () => {
             const items = getUniqueItems(getSelectedItems());
-            
-            const quizItems = items.map(item => 
+
+            const quizItems = items.map(item =>
                 `<li><span class="inline-content"><strong>${item.answer}</strong> : ____________________</span></li>`
             ).join('');
-            const answerItems = items.map(item => 
+            const answerItems = items.map(item =>
                 `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')}</span></li>`
             ).join('');
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (意味を解答)');
             pdfModal.classList.add('hidden');
@@ -868,7 +920,7 @@
             const items = getUniqueItems(getSelectedItems());
             let quizItems = '';
             let answerItems = '';
-            
+
             items.forEach(item => {
                 if (Math.random() > 0.5) {
                     // 日本語 -> 英語
@@ -880,7 +932,7 @@
                     answerItems += `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')}</span></li>`;
                 }
             });
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (混合)');
             pdfModal.classList.add('hidden');
@@ -889,14 +941,14 @@
         // 5. 例文穴埋め
         document.getElementById('download-sentence-quiz-btn').addEventListener('click', () => {
             const items = getSelectedItems(); // 例文問題なので重複（文脈違い）も含める
-            
+
             const quizItems = items.map(item => {
                 // Replace {answer} with underscore
                 const blankSentence = item.en.replace(`{${item.answer}}`, '____________________');
                 return `<li>${blankSentence}<br><span style="font-size:0.9em;">(${item.ja})</span></li>`;
             }).join('');
-            
-            const answerItems = items.map(item => 
+
+            const answerItems = items.map(item =>
                 `<li>${item.answer}</li>`
             ).join('');
 
@@ -910,7 +962,7 @@
             const items = getSelectedItems();
             let quizItems = '';
             let answerItems = '';
-            
+
             const instruction = '<p style="border:1px solid #ccc; padding:10px; margin-bottom:20px;">指示：空所には適切な語句を補い、下線部がある文は下線部の意味を日本語で答えなさい。</p>';
 
             items.forEach(item => {
@@ -939,4 +991,5 @@
         });
     </script>
 </body>
+
 </html>

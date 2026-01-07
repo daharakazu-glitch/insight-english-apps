@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Tinos:wght@700&display=swap');
-        
+
         body {
-            background-color: #007BFF; /* ビビットなブルー */
+            background-color: #007BFF;
+            /* ビビットなブルー */
             font-family: 'Noto Sans JP', sans-serif;
         }
 
@@ -17,12 +19,15 @@
         .font-english {
             font-family: 'Tinos', 'Times New Roman', serif;
             font-weight: 700;
-            font-size: 1.25rem; /* 20px */
-            line-height: 1.75rem; /* 28px */
+            font-size: 1.25rem;
+            /* 20px */
+            line-height: 1.75rem;
+            /* 28px */
         }
 
         .answer-span {
-            color: #DC2626; /* 赤色 */
+            color: #DC2626;
+            /* 赤色 */
             font-weight: 700;
             display: none;
         }
@@ -40,7 +45,7 @@
         .show-answer .underline-span {
             display: none;
         }
-        
+
         .explanation {
             display: none;
             white-space: pre-wrap;
@@ -57,22 +62,27 @@
             cursor: pointer;
             transition: all 0.2s ease-in-out;
         }
+
         .btn-primary {
             background-color: #3b82f6;
             color: white;
         }
+
         .btn-primary:hover {
             background-color: #2563eb;
         }
+
         .btn-secondary {
             background-color: #6b7280;
             color: white;
         }
+
         .btn-secondary:hover {
             background-color: #4b5563;
         }
     </style>
 </head>
+
 <body class="text-gray-800">
 
     <div id="app-container" class="container mx-auto p-4 md:p-8 max-w-4xl">
@@ -83,23 +93,27 @@
 
         <main class="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg mb-28">
             <div class="flex justify-between items-center mb-6">
-                 <!-- PDF Control Section -->
-                 <div class="flex-1 mr-4">
+                <!-- PDF Control Section -->
+                <div class="flex-1 mr-4">
                     <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
                         <h3 class="font-bold text-sm md:text-base mb-2">選択した問題でPDFを作成</h3>
                         <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
                             <div class="flex items-center">
-                                <input type="checkbox" id="select-all-checkbox" class="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
-                                <label for="select-all-checkbox" class="ml-2 text-sm font-medium text-gray-700 cursor-pointer">すべて選択 / 解除</label>
+                                <input type="checkbox" id="select-all-checkbox"
+                                    class="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                                <label for="select-all-checkbox"
+                                    class="ml-2 text-sm font-medium text-gray-700 cursor-pointer">すべて選択 / 解除</label>
                             </div>
-                            <button id="open-pdf-modal-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow text-sm transition-transform transform hover:scale-105">
+                            <button id="open-pdf-modal-btn"
+                                class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow text-sm transition-transform transform hover:scale-105">
                                 PDF作成メニュー
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <button id="start-quiz-btn" class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-lg shadow transition-transform transform hover:scale-105 whitespace-nowrap">
+                <button id="start-quiz-btn"
+                    class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-lg shadow transition-transform transform hover:scale-105 whitespace-nowrap">
                     ランダムテスト
                 </button>
             </div>
@@ -111,11 +125,16 @@
     </div>
 
     <!-- Control Panel -->
-    <div id="control-panel" class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md p-4 border-t-2 border-gray-200 shadow-2xl flex justify-center items-center space-x-2 md:space-x-4">
-        <button id="toggle-answer-btn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">表示/非表示</button>
-        <button id="play-sound-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">音声再生</button>
-        <button id="record-btn" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">録音評価</button>
-        <button id="toggle-explanation-btn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">解説</button>
+    <div id="control-panel"
+        class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md p-4 border-t-2 border-gray-200 shadow-2xl flex justify-center items-center space-x-2 md:space-x-4">
+        <button id="toggle-answer-btn"
+            class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">表示/非表示</button>
+        <button id="play-sound-btn"
+            class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">音声再生</button>
+        <button id="record-btn"
+            class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">録音評価</button>
+        <button id="toggle-explanation-btn"
+            class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">解説</button>
     </div>
 
     <!-- Message/Score Modal -->
@@ -124,11 +143,12 @@
             <!-- Message content will be populated by JS -->
         </div>
     </div>
-    
+
     <!-- Quiz Modal -->
     <div id="quiz-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-40 p-4">
         <div class="bg-white w-full max-w-2xl p-8 rounded-2xl shadow-2xl relative">
-            <button id="close-quiz-btn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-3xl font-bold">&times;</button>
+            <button id="close-quiz-btn"
+                class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-3xl font-bold">&times;</button>
             <div id="quiz-content">
                 <!-- Quiz content will be populated by JS -->
             </div>
@@ -136,17 +156,24 @@
     </div>
 
     <!-- PDF Download Modal -->
-    <div id="pdf-modal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center z-50">
+    <div id="pdf-modal"
+        class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center z-50">
         <div class="relative mx-auto p-5 border w-11/12 md:w-1/2 lg:w-1/3 shadow-lg rounded-md bg-white">
             <div class="mt-3 text-center">
                 <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">ダウンロードするPDFの種類を選択</h3>
                 <div class="mt-2 space-y-3">
-                    <button id="download-list-btn" class="btn btn-primary w-full justify-start text-left">1. 完全なリスト (熟語・意味・例文)</button>
-                    <button id="download-en-quiz-btn" class="btn btn-primary w-full justify-start text-left">2. 熟語テスト (英語を解答)</button>
-                    <button id="download-ja-quiz-btn" class="btn btn-primary w-full justify-start text-left">3. 熟語テスト (意味を解答)</button>
-                    <button id="download-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">4. 熟語テスト (混合)</button>
-                    <button id="download-sentence-quiz-btn" class="btn btn-primary w-full justify-start text-left">5. 例文の穴埋め問題</button>
-                    <button id="download-sentence-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">6. 例文の混合問題 (穴埋め/和訳)</button>
+                    <button id="download-list-btn" class="btn btn-primary w-full justify-start text-left">1. 完全なリスト
+                        (熟語・意味・例文)</button>
+                    <button id="download-en-quiz-btn" class="btn btn-primary w-full justify-start text-left">2. 熟語テスト
+                        (英語を解答)</button>
+                    <button id="download-ja-quiz-btn" class="btn btn-primary w-full justify-start text-left">3. 熟語テスト
+                        (意味を解答)</button>
+                    <button id="download-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">4. 熟語テスト
+                        (混合)</button>
+                    <button id="download-sentence-quiz-btn" class="btn btn-primary w-full justify-start text-left">5.
+                        例文の穴埋め問題</button>
+                    <button id="download-sentence-mixed-quiz-btn"
+                        class="btn btn-primary w-full justify-start text-left">6. 例文の混合問題 (穴埋め/和訳)</button>
                 </div>
                 <div class="mt-6">
                     <button id="close-modal-btn" class="btn btn-secondary w-full">キャンセル</button>
@@ -158,684 +185,812 @@
     <script>
         const chapterData = [
     {
-        "id": "1",
-        "ja": "2 3 4 5 6 7 8 9 10音読 名詞を含む熟語 2 3 4 5 6 7 8 9 10音読 名詞を含む熟語 2 3 4 5 6 7 8 9 10音読 名詞を含む熟語 2 3 4 5 6 7 8 9 10音読 名詞を含む熟語 2 3 4 5 6 7 8 9 10音読 名詞を含む熟語 2 3 4 5 6 7 8 9 10音読 名詞を含む熟語 2 3 4 5 6 7 8 9 10音読 名詞を含む熟語 2 3 4 5 6 7 8 9 10音読 名詞を含む熟語 2 3 4 5 6 7 8 9 10音読 名詞を含む熟語 2 3 4 5 6 7 8 9 10音読 名詞を含む熟語 2 3 4 5 6 7 8 9 10音読 名詞を含む熟語",
+        "id": "25",
+        "ja": "章　名詞を含む熟語  QR ☚ 音読用動画　別解など",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
-        "question": "Self Check"
+        "question": ""
     },
     {
-        "id": "25",
-        "ja": "名詞を含む熟語 ◀\t音読用動画 別解など 25章 名詞を含む熟語 熟語編 ｜  25章 名詞を含む熟語 ② 熟語編 ｜  25章 名詞を含む熟語 ③ 熟語編 ｜  25章 名詞を含む熟語 ④ 熟語編 ｜  25章 名詞を含む熟語 ⑤ 熟語編 ｜  25章 名詞を含む熟語 ⑥ 熟語編 ｜  25章 名詞を含む熟語 ⑦ 熟語編 ｜  25章 名詞を含む熟語 ⑧ 熟語編 ｜  25章 名詞を含む熟語 ⑨ 熟語編 ｜  25章 名詞を含む熟語 ⑩ 熟語編 ｜  25章 名詞を含む熟語 ⑪",
+        "id": "428",
+        "ja": "● 熟語編｜25章",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
-        "question": "①"
+        "question": ""
+    },
+    {
+        "id": "430",
+        "ja": "● 熟語編｜25章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "432",
+        "ja": "● 熟語編｜25章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "434",
+        "ja": "● 熟語編｜25章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "436",
+        "ja": "● 熟語編｜25章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "438",
+        "ja": "● 熟語編｜25章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "440",
+        "ja": "● 熟語編｜25章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "442",
+        "ja": "● 熟語編｜25章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "444",
+        "ja": "● 熟語編｜25章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "446",
+        "ja": "● 熟語編｜25章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
     },
     {
         "id": "1160",
-        "ja": "見渡す限り人影はなかった。",
-        "en": "There was not a soul {in sight. in sight͑Δͱ͜Ζʹʯ ⇧「 見 える 範 囲（sight）に（in）」 ⇔ out of sight͑ͳ͘ͳͬͯʯ⇦ 「視界 （sight）か ら 出 て（out of）」}",
-        "answer": "in sight. in sight͑Δͱ͜Ζʹʯ ⇧「 見 える 範 囲（sight）に（in）」 ⇔ out of sight͑ͳ͘ͳͬͯʯ⇦ 「視界 （sight）か ら 出 て（out of）」",
-        "explanation": "▶ insight は名詞で「洞察力，見抜く力」の意味。\nsoulɼਓʯ",
-        "question": "There was not a soul (        ) (        )."
+        "ja": "見渡す限り人影はなかった。 in sight「見えるところに」 ⇧「見える範囲(sight)に(in)」 ⇔ out of sight「見えなくなって」⇦「視界(sight)から出て(out of)」 ○ soul「魂，人」",
+        "en": "There was not a soul {in sight}.",
+        "answer": "in sight",
+        "explanation": "Tip 「見渡す限り＝見えるところに」\n▶ insightは名詞で「洞察力，見抜く力」の意味。",
+        "question": "There was not a soul (    ) (    )."
     },
     {
         "id": "1161",
-        "ja": "私は血を見ると気 が 遠くなる。 ⇧「A の（of）見 える 範 囲（the sight）に お い て（at）」 feel faint͕ԕ͘ͳΔʯ―faint は形容詞。動詞のfaint は 「 気 を 失 う 」。",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "I feel faint at . I feel faint at the sight of blood. at the sight of A ʮAͯɼAΔͱ͙͢ʹʯ"
+        "ja": "私は血を見ると気が遠くなる。 at the sight of A「Aを見て，Aを見るとすぐに」 ⇧「Aの(of)見える範囲(the sight)において(at)」 ○ feel faint「気が遠くなる」―faintは形容詞。動詞のfaintは「気を失う」。",
+        "en": "I feel faint {at }the sight of blood. I feel faint {at the sight of blood}.",
+        "answer": "at, at the sight of blood",
+        "explanation": "Tip 「～を見ると＝～を見て」を表す表現は？",
+        "question": ""
     },
     {
         "id": "1162",
-        "ja": "昨日，ショッピングモールで友達を見かけた。 ⇧「A の（of）見 える 範 囲（sight）に と ら え る（catch）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "I (c      ) (s      ) (        ) my (        ) at the mall yesterday. I caught sight of my friend at the mall yesterday. catch sight of A ʮA͚ͭΔʯ⇔ lose sight of A"
+        "ja": "昨日，ショッピングモールで友達を見かけた。 catch sight of A「Aを見つける」⇔ lose sight of A ⇧「Aの(of)見える範囲(sight)にとらえる(catch)」",
+        "en": "I {caught sight of }my {friend} at the mall yesterday.",
+        "answer": "caught sight of, friend",
+        "explanation": "Tip 「友達を見かけた＝友達を見つけた」",
+        "question": "I (c   ) (s   ) (    ) my (    ) at the mall yesterday."
     },
     {
         "id": "1163",
-        "ja": "私たちの目標を見失ってはいけない。 ⇧「A の（of）見 える 範 囲（sight）を 失 う（lose）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "We must not (        ) (s      ) (        ) our (        ). We must not lose sight of our goal. lose sight of A ʮA͏ʯ⇔ catch sight of A"
+        "ja": "私たちの目標を見失ってはいけない。 lose sight of A「Aを見失う」⇔ catch sight of A ⇧「Aの(of)見える範囲(sight)を失う(lose)」",
+        "en": "We must not {lose sight of }our {goal}.",
+        "answer": "lose sight of, goal",
+        "explanation": "Tip 「～を見失う」を表す表現は？",
+        "question": "We must not (    ) (s   ) (    ) our (    )."
     },
     {
         "id": "1164",
-        "ja": "去年の夏，山口を観光した。",
-        "en": "I saw the sights of Yamaguchi last summer. see the sights of A ʮA෺͢ΔɼA͢Δʯ ⇧「A の（of）名 所（the sights）を 見 る（see）」 go sightseeingʹग़͔͚Δʯ―sightseeing はʯの意味。 1165-1 基本 生徒はクラブ活動に参加すべきだ。 Students should (t      ) (        ) (        ) (        ) (        ). 1165-1 Students should take part in club activities. take part in A participate in A    ʮAՃ͢Δʯ➡Grasp32– p.393 ⇧ 「活動の中で （in）一 部（part）を 引 き 受 け る（take）」 1165-2 私はボランティ ア活動に参加したいです。 I’d like to (p      ) (        ) (v      ) (w     ). 1165-2 I’d like to participate in volunteer work.",
-        "answer": "saw the sights of Yamaguchi last summer. see the sights of A ʮA෺͢ΔɼA͢Δʯ ⇧「A の（of）名 所（the sights）を 見 る（see）」 go sightseeingʹग़͔͚Δʯ―sightseeing はʯの意味。 1165-1 基本 生徒はクラブ活動に参加すべきだ。 Students should t         . 1165-1 Students should take part in club activities. take part in A participate in A ʮAՃ͢Δʯ➡Grasp32– p.393 ⇧ 「活動の中で （in）一 部（part）を 引 き 受 け る（take）」 1165-2 私はボランティ ア活動に参加したいです。 I’d like to p    v  w . 1165-2 I’d like to participate in volunteer work.",
-        "explanation": "▶ participate in A 「A に参加する」➡1165-1\nI ’d like to do / I would like to doʮʙ͍ͨ͠ʯ\n―I want to do「～したい」よ り も控えめで丁寧な言い方。\nvolunteer workಈʯ―数えられない名詞。  volunteer works",
-        "question": "I (s      ) (        ) (s      ) (        ) Yamaguchi last summer."
+        "ja": "去年の夏，山口を観光した。 see the sights of A「Aを見物する，Aを観光する」 ⇧「Aの(of)名所(the sights)を見る(see)」 ＋ go sightseeing「観光に出かける」―sightseeingは「観光」の意味。",
+        "en": "I {saw the sights of }Yamaguchi last summer.",
+        "answer": "saw the sights of",
+        "explanation": "Tip 「～を見物する，～を観光する」を表す表現は？「見所」は複数あることに注意。",
+        "question": "I (s   ) (    ) (s   ) (    ) Yamaguchi last summer."
+    },
+    {
+        "id": "1165-1",
+        "ja": "生徒はクラブ活動に参加すべきだ。 participate in A    「Aに参加する」➡ Grasp32―p.393 ⇧「活動の中で(in)一部(part)を引き受ける(take)」",
+        "en": "Students should {take part in club activities}. {take part in} A",
+        "answer": "take part in club activities, take part in",
+        "explanation": "",
+        "question": "Students should (t   ) (    ) (    ) (    ) (    )."
+    },
+    {
+        "id": "1165-2",
+        "ja": "私はボランティア活動に参加したいです。 ○ I’d like to do / I would like to do「～したい」 ―I want to do「～したい」よりも控えめで丁寧な言い方。 ○ volunteer work「ボランティア活動」―数えられない名詞。× volunteer works",
+        "en": "I’d like to {participate in volunteer work}.",
+        "answer": "participate in volunteer work",
+        "explanation": "Tip 「～に参加する」を表すもう１つの表現は？\n▶ participate in A「Aに参加する」➡ 1165-1",
+        "question": "I’d like to (p   ) (    ) (v   ) (w   )."
     },
     {
         "id": "1166",
-        "ja": "育児で積極的な役割を果たす父親がますます増えている。 ⇧「A の 中 で（in）～ な 役 割（role/part）を 演 じ る（play）」 復習",
-        "en": "{time / kill / take / place / effect}",
-        "answer": "time / kill / take / place / effect",
-        "explanation": "",
-        "question": "More and more fathers are ( role / playing / in / active / raising / an ) their children. ͢Δɻ͢Δɻ More and more fathers are playing an active role in raising their children. play [take] a/an ～ role in A [doing]        ʮA ʹʦ ʜ ͢ Δ ͜ ͱ ʹ ʧ͓ ͍ ͯ play [take] a/an ～ part in A [doing]      ΛՌͨ͢ʯ more and more A ʮ·͢·͢ଟ͘ͷAʯ an active role / an active partʯ raise a childͲ΋ΛҭͯΔʯ sight / blood / goal / part 426 427"
+        "ja": "育児で積極的な役割を果たす父親がますます増えている。 「～がますます増えている」は，「ますます多くの～が…している」と表現する。 名詞を含む熟語 ① ● 427 play [take] a/an ～ role in A [doing] 　　「Aに[…することに]おいて play [take] a/an ～ part in A [doing]      ～な役割を果たす」 ⇧「Aの中で(in)～な役割(role/part)を演じる(play)」 ○ more and more A「ますます多くのA」 ○ an active role / an active part「積極的な役割」 ○ raise a child「子どもを育てる」",
+        "en": "More and more fathers are {playing an active role in raising} their children.",
+        "answer": "playing an active role in raising",
+        "explanation": "Tip 「…において～な役割を果たす」を表す表現は？",
+        "question": "More and more fathers are ( role / playing / in / active / raising / an )"
     },
     {
         "id": "1167",
-        "ja": "電車は定刻に駅を出発した。 ⇧ 「約束の時間 （time）に（on）」",
-        "en": "???",
-        "answer": "???",
+        "ja": "電車は定刻に駅を出発した。 on time「時間通りに」 ⇧「約束の時間(time)に(on)」",
+        "en": "The train left the station {on time}.",
+        "answer": "on time",
         "explanation": "",
-        "question": "The train left the station (        ) (        ). The train left the station on time. on time௨Γʹʯ"
+        "question": "The train left the station (    ) (    )."
     },
     {
         "id": "1168",
-        "ja": "その少女はバスに間に合うようにバス停に着いた。 ⇧「A へ の（for）時 間（time）の 中 で（in）」",
-        "en": "???",
-        "answer": "???",
+        "ja": "その少女はバスに間に合うようにバス停に着いた。 in time (for A)「(Aに)間に合って」 ⇧「Aへの(for)時間(time)の中で(in)」 ＋ just in time「ちょうど間に合って，ぎりぎり間に合って」",
+        "en": "The girl arrived at the bus stop {in time }to catch her bus.",
+        "answer": "in time",
         "explanation": "",
-        "question": "The girl arrived at the bus stop (        ) (        ) to catch her bus. The girl arrived at the bus stop in time to catch her bus. in time (for A)ʮʢAͬͯʯ just in timeͬͯʯ"
+        "question": "The girl arrived at the bus stop (    ) (    ) to catch her bus."
     },
     {
         "id": "1169",
-        "ja": "「大阪では楽しく過ごせま し た か 。」「 最 高 で し た ！ 」 ⇧「 よ い（a good）／ す ば ら し い（a great）時 間（time）を 持 つ（have）」",
-        "en": "???",
-        "answer": "???",
+        "ja": "「大阪では楽しく過ごせましたか。」「最高でした！」 have a good [great] time「楽しい時を過ごす」 ⇧「よい(a good)／すばらしい(a great)時間(time)を持つ(have)」 ○ amazing「驚嘆すべき」",
+        "en": "“Did you {have a good time} in Osaka?” “It was amazing!”",
+        "answer": "have a good time",
         "explanation": "",
-        "question": "“Did you (        ) (        ) (        ) (        ) in Osaka?” “It was amazing!” “Did you have a good time in Osaka?” “It was amazing!” have a good [great] timeΛա͢͝ʯ amazing୰͢΂͖ʯ"
+        "question": "“Did you (    ) (    ) (    ) (    ) in Osaka?” “It was amazing!”"
     },
     {
         "id": "1170",
-        "ja": "私たちは電車の中でトランプをして時間をつぶした。",
+        "ja": "私たちは電車の中でトランプをして時間をつぶした。 kill time「時間をつぶす」 kill time (by) doing「～をして時間をつぶす」 ○ play cards「トランプをする」",
         "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "We  playing cards on the train. We killed time (by) playing cards on the train. kill timeΛͭͿ͢ʯ kill time (by) doingΛͭͿ͢ʯ play cards ʮτϥϯϓΛ͢Δʯ"
+        "answer": "",
+        "explanation": "Tip 「時間をつぶす」を表す表現は？",
+        "question": "We killed time playing cards on the train. We killed time (by) playing cards on the train."
     },
     {
         "id": "1171",
-        "ja": "時 間 を か け て ゆ っくりや ってくだ さい。急ぎではありませんから。",
-        "en": "Take your time. There’s no rush. take one’s timeΛ͔͚ͯʣΏͬ͘Γ΍Δʯ take time to do͕͔͔Δʯ rush  ͙͜ͱʯ",
-        "answer": "Take your time. There’s no rush. take one’s timeΛ͔͚ͯʣΏͬ͘Γ΍Δʯ take time to do͕͔͔Δʯ rush ͙͜ͱʯ",
-        "explanation": "",
-        "question": "(        ) your (        ). There’s no rush."
+        "ja": "時間をかけてゆっくりやってください。急ぎではありませんから。 take one’s time「(時間をかけて)ゆっくりやる」 ＋ take time to do「～するには時間がかかる」 ○ rush ① 動詞「急いで行く」② 名詞「急ぐこと」",
+        "en": "{Take }your {time}. There’s no rush.",
+        "answer": "Take, time",
+        "explanation": "Tip 「(自分の時間をかけて)ゆっくりやる」を表す表現は？",
+        "question": "(    ) your (    ). There’s no rush."
     },
     {
         "id": "1172",
-        "ja": "その祭りは毎年 10月に開催される。",
-        "en": "The festival takes place every October. take placeΘΕΔʯ＝be held every A  ᶃʮͲͷA ΋ɼ͋ΒΏΔAʯ ᶄʮA ͝ͱʹɼຖ Aʯ",
-        "answer": "takes place every October. take placeΘΕΔʯ＝be held every A ᶃʮͲͷA ΋ɼ͋ΒΏΔAʯ ᶄʮA ͝ͱʹɼຖ Aʯ",
+        "ja": "その祭りは毎年10月に開催される。 take place「(行事などが)行われる」＝be held ○ every A ①「どのAも，あらゆるA」②「Aごとに，毎A」",
+        "en": "The festival {takes place} every October.",
+        "answer": "takes place",
         "explanation": "",
-        "question": "The festival (t      ) (        ) every October."
+        "question": "The festival (t   ) (    ) every October."
     },
     {
         "id": "1173",
-        "ja": "近い将来，AIが労働者に取って代 わるだろう。 ⇧「A の（of A/Aʼs）居 場 所（place）を 取 る（take）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "AI will (t      ) (        ) (        ) (        ) workers in the near future. AI will take the place of workers in the near future. take the place of A take A’s place               ʮA ʹऔͬͯ୅ΘΔʯ＝replace A in place of A ʮA ͷ୅ΘΓʹʯ＝instead of A worker ʮ࿑ಇऀʯ"
+        "ja": "近い将来，AIが労働者に取って代わるだろう。 take A’s place          「Aに取って代わる」＝replace A ⇧「Aの(of A/A’s)居場所(place)を取る(take)」 ＋ in place of A「Aの代わりに」＝instead of A ○ worker「労働者」",
+        "en": "AI will {take the place of }workers in the near future. {take the place of }A",
+        "answer": "take the place of, take the place of",
+        "explanation": "Tip  replace「～に取って代わる」と同じ意味を表す表現は？",
+        "question": "AI will (t   ) (    ) (    ) (    ) workers in the near future."
     },
     {
         "id": "1174",
-        "ja": "その薬はすぐに効いた。",
-        "en": "The medicine took eﬀect quickly. take effect  ͞ΕΔʯ come into eﬀect͞ΕΔʯ＝take eﬀect eﬀectՌʯ",
-        "answer": "took eﬀect quickly. take effect ͞ΕΔʯ come into eﬀect͞ΕΔʯ＝take eﬀect eﬀectՌʯ",
-        "explanation": "",
-        "question": "The medicine (t      ) (        ) quickly."
+        "ja": "その薬はすぐに効いた。 take effect ①「(薬などが)効く」②「(法律などが)施行される」 ＋ come into effect「(法律などが)施行される」＝take effect ○ effect「効果，影響，結果」",
+        "en": "The medicine {took effect} quickly.",
+        "answer": "took effect",
+        "explanation": "Tip 「(薬などが)効く」を表す表現は？",
+        "question": "The medicine (t   ) (    ) quickly."
     },
     {
         "id": "1175",
-        "ja": "睡眠不足は免疫系に影響を与えることがある。 復習",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Lack of sleep can (h      ) (        ) (        ) (        ) your immune system. Lack of sleep can have an eﬀect on your immune system. have an effect on A have an in/f_luence on A    ʮAΛ༩͑Δʯ ＝aﬀect A ＝in/f_luence A lack of sleep ʮਭ຾ෆ଍ʯ immune systemʯ 428 429 Self Check"
+        "ja": "睡眠不足は免疫系に影響を与えることがある。 名詞を含む熟語 ② ● 429 have an influence on A    「Aに影響を与える」＝affect A＝influence A ○ lack of sleep「睡眠不足」 ○ immune system「免疫系」",
+        "en": "Lack of sleep can {have an effect on} your immune system. {have an effect on }A",
+        "answer": "have an effect on, have an effect on",
+        "explanation": "Tip  affect「～に影響を与える」と同じ意味を表す表現は？ 使用する名詞に注意。",
+        "question": "Lack of sleep can (h   ) (    ) (    ) (    ) your immune system."
     },
     {
         "id": "1176",
-        "ja": "緊張した時，私はいつも深呼吸をする。 ⇧「 深 い 息（a deep breath）を 取 り 込 む（take）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "When I get nervous, I always (t      ) (        ) (        ) (        ). When I get nervous, I always take a deep breath. take a deep breath͢Δʯ＝breathe deeply"
+        "ja": "緊張した時，私はいつも深呼吸をする。 take a deep breath「深呼吸する」＝breathe deeply ⇧「深い息(a deep breath)を取り込む(take)」",
+        "en": "When I get nervous, I always {take a deep breath}.",
+        "answer": "take a deep breath",
+        "explanation": "Tip 「深呼吸する」を表す表現は？",
+        "question": "When I get nervous, I always (t   ) (    ) (    ) (    )."
     },
     {
         "id": "1177",
-        "ja": "彼女は水中でとても長い時間息を止めることができる。 hold one’s breathΊΔʯ⇦「 息（oneʼs breath） を抑える （hold）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "She can (h      ) her (        ) underwater for a very long time. She can hold her breath underwater for a very long time. hold one’s tongueʮ໧͍ͬͯΔʯ"
+        "ja": "彼女は水中でとても長い時間息を止めることができる。 hold one’s breath「息を止める」⇦「息(one’s breath)を抑える(hold)」 ＋ hold one’s tongue「黙っている」 ○ underwater「水中で」―副詞",
+        "en": "She can {hold }her {breath} underwater for a very long time.",
+        "answer": "hold, breath",
+        "explanation": "Tip 「息を止める」を表す表現は？",
+        "question": "She can (h   ) her (    ) underwater for a very long time."
     },
     {
         "id": "1178",
-        "ja": "発展 夕日の美しさに私は息をのんだ。 ⇧「S が ～ の 息（oneʼs breath）を 奪 い 去 る（take away）」",
-        "en": "???",
-        "answer": "???",
+        "ja": "夕日の美しさに私は息をのんだ。 発展     Tip 「息をのむ」を表す表現は？ S take one’s breath away「S(のため)に息をのむ[はっとする]」 ⇧「Sが～の息(one’s breath)を奪い去る(take away)」",
+        "en": "The beauty of the sunset {took }my {breath away}.",
+        "answer": "took, breath away",
         "explanation": "",
-        "question": "The beauty of the sunset (t      ) my (        ) (        ). The beauty of the sunset took my breath away. S take one’s breath awayʮSʢͷͨΊʣʹ ଉ Λ ͷ Ήʦ ͸ ͬ ͱ ͢ Δ ʧʯ"
+        "question": "The beauty of the sunset (t   ) my (    ) (    )."
     },
     {
         "id": "1179",
-        "ja": "枯れ草に火がついた。 catch /f_ire ʮՐ͕ͭ͘ʯ⇦「 火（fire）を つ か ま え る（catch）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "The dry grass (        ) (f      ). The dry grass caught /f_ire. dry grassΕ૲ʯ"
+        "ja": "枯れ草に火がついた。 catch fire「火がつく」⇦「火(fire)をつかまえる(catch)」 ○ dry grass「枯れ草」",
+        "en": "The dry grass {caught fire}.",
+        "answer": "caught fire",
+        "explanation": "Tip 「火がつく」を表す表現は？",
+        "question": "The dry grass (    ) (f   )."
     },
     {
         "id": "1180",
-        "ja": "子どもたちがマッチで遊んでいて，ごみ袋に火をつけた。",
-        "en": "The children were playing with matches and {set the trash bag on /f_ire. set A on /f_ireʮA ʹՐΛ͚ͭΔʯ on /f_ire ʮՐ͕͍ͭͯɼ೩͑ͯʯ trash bag ʮ͝Έାʯ―trashʮͣ͘ɼ͝Έʯ}",
-        "answer": "set the trash bag on /f_ire. set A on /f_ireʮA ʹՐΛ͚ͭΔʯ on /f_ire ʮՐ͕͍ͭͯɼ೩͑ͯʯ trash bag ʮ͝Έାʯ―trashʮͣ͘ɼ͝Έʯ",
-        "explanation": "",
-        "question": "The children were playing with matches and (s      ) the trash bag (        ) (        )."
+        "ja": "子どもたちがマッチで遊んでいて，ごみ袋に火をつけた。 set A on fire「Aに火をつける」 ＋ on fire「火がついて，燃えて」 ○ trash bag「ごみ袋」―trash「くず，ごみ」",
+        "en": "The children were playing with matches and {set} the trash bag{ on fire}.",
+        "answer": "set, on fire",
+        "explanation": "Tip 「～に火をつける」を表す表現は？",
+        "question": "The children were playing with matches and (s   ) the trash bag (    ) (    )."
     },
     {
         "id": "1181",
-        "ja": "発展 テレビゲームを何時間も続けてやるのは 健 康 に良くない 。 期間ʴon endଓ͚ͯʯ⇦ 「 終 わ り（end）ま で 続 け て（on）」",
-        "en": "???",
-        "answer": "???",
+        "ja": "テレビゲームを何時間も続けてやるのは健康に良くない。 発展     Tip 「続けて」を表す表現は？ 期間＋on end「～の間続けて」⇦「終わり(end)まで続けて(on)」 ＋ in the end「最終的に」＝eventually ➡ 1324 ○ for hours「何時間も」",
+        "en": "It is not healthy to play video games for hours {on end}.",
+        "answer": "on end",
         "explanation": "",
-        "question": "It is not healthy to play video games for hours (o      ) (        ). It is not healthy to play video games for hours on end. in the endऴతʹʯ＝eventually  ➡1324 for hours΋ʯ"
+        "question": "It is not healthy to play video games for hours (o   ) (    )."
     },
     {
         "id": "1182",
-        "ja": "期 末テストがようやく終わった。 ⇧「 終 わり へ（to an end）や っ て 来 る（come）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "The term exams have finally (c      ) (        ) (        ) (        ). The term exams have finally come to an end. come to an end ʮऴΘΔʯ ＝end ＝/f_inish ＝break up /f_inallyʹʯ"
+        "ja": "期末テストがようやく終わった。 come to an end「終わる」 ⇧「終わりへ(to an end)やって来る(come)」 ○ finally「ようやく，最後に」",
+        "en": "The term exams have finally {come to an end}.",
+        "answer": "come to an end",
+        "explanation": "Tip  end「終わる」と同じ意味を表す表現は？\n＝end＝finish＝break up",
+        "question": "The term exams have finally (c   ) (    ) (    ) (    )."
     },
     {
         "id": "1183",
-        "ja": "戦争を終わらせるには外交が不可欠だ。 ⇧「A に（to）終 わ り（an end）を 置 く（put）／ 持 っ て くる（bring）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Diplomacy is essential for (p      ) (        ) (        ) (        ) a war. Diplomacy is essential for putting an end to a war. put [bring] an end to AʮA ΛऴΘΒͤΔʯ ＝end A ＝/f_inish A ＝terminate A diplomacyज़ʯ be essential for [to] doingͩʯ"
+        "ja": "戦争を終わらせるには外交が不可欠だ。 put [bring] an end to A「Aを終わらせる」 ⇧「Aに(to)終わり(an end)を置く(put)／持ってくる(bring)」 ○ diplomacy「外交，外交術」 ○ be essential for [to] doing「～するには不可欠だ」",
+        "en": "Diplomacy is essential for {putting an end to }a war.",
+        "answer": "putting an end to",
+        "explanation": "Tip  end「～を終わらせる」と同じ意味を表す表現は？\n＝end A＝finish A＝terminate A",
+        "question": "Diplomacy is essential for (p   ) (    ) (    ) (    ) a war."
     },
     {
         "id": "1184",
-        "ja": "発展 多くの 家 庭 にとって，家 計 を やりくりす るのは難しい。 ⇧ 「収入と支出の端 （ends）を 合 わ（meet）せ る（make）」 復習",
-        "en": "{weight / touch / mind}",
-        "answer": "weight / touch / mind",
+        "ja": "多くの家庭にとって，家計をやりくりするのは難しい。 発展     Tip 「家計をやりくりする → 収支を合わせる」と表現する。 名詞を含む熟語 ③ ● 431 make ends meet「収支を合わせる」 ⇧「収入と支出の端(ends)を合わ(meet)せる(make)」 ○ find it difficult to do「～するのは難しいとわかる」",
+        "en": "Many families find it difficult to {make ends meet}.",
+        "answer": "make ends meet",
         "explanation": "",
-        "question": "Many families find it difficult to (        ) (e      ) (        ). Many families find it difficult to make ends meet. make ends meetΘͤΔʯ /f_ind it diﬃcult to do ʮʙ͢Δͷ͸೉͍͠ͱΘ͔Δʯ breath / away / fire / end / meet 430 431 Self Check"
+        "question": "Many families find it difficult to (    ) (e   ) (    )."
     },
     {
         "id": "1185",
-        "ja": "父 は 禁 煙してから太ってしまった。 ⇧「 体 重（weight）を 得 る（gain）／ 増 す（put on）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "My father has  since he quit smoking. My father has gained weight since he quit smoking. gain weight put on weight    ʮଠΔʯ⇔ lose weight overweight ʮଠΓ͗͢ͷʯ"
+        "ja": "父は禁煙してから太ってしまった。 put on weight    「太る」⇔ lose weight ⇧「体重(weight)を得る(gain)／増す(put on)」 ＋ overweight「太りすぎの」",
+        "en": "My father has {gained weight} since he quit smoking. {gain weight}",
+        "answer": "gained weight, gain weight",
+        "explanation": "Tip 「太る」を表す表現は？",
+        "question": "My father has put on weight since he quit smoking."
     },
     {
         "id": "1186",
-        "ja": "ウォーキングは体重を減らすための簡単な方法だ。 ⇧「 体 重（weight）を 失 う（lose）」 1187-1 多くの人がスマートフォンのテキストメッセージを使って連 絡を取り合っている。 ⇧「A と（with）接 触 し た（touch/contact）状 態（in）を 保 っ て い る（keep/stay/be）」 1187-2 どうすればあなたと連絡が取れますか。 ⇧「A と（with）接 触 し た（touch）状 態（in）に な る（get）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Walking is an easy way to . Walking is an easy way to lose weight. lose weightྔ͢Δʯ⇔ gain weight / put on weight a way to do ʮʙ͢Δํ๏ʯ Many people use text messaging on their smartphones to (k      ) (        ) (        ). 1187-1 Many people use text messaging on their smartphones to keep in touch. keep [stay] in touch (with A) ＝be in touch (with A) keep [stay] in contact (with A) ＝be in contact (with A) ʮʢAͬ ͯ ͍ Δ ʯ How can I (g      ) (        ) (t      ) (        ) (        )? 1187-2 How can I get in touch with you? get in touch (with A)ʮʢA ͱ ʣ࿈ བྷ Λ औ Δ ʯ＝contact A"
+        "ja": "ウォーキングは体重を減らすための簡単な方法だ。 lose weight「やせる，減量する」⇔ gain weight / put on weight ⇧「体重(weight)を失う(lose)」 ○ a way to do「～する方法」",
+        "en": "Walking is an easy way to {lose weight}.",
+        "answer": "lose weight",
+        "explanation": "Tip 「体重を減らす＝やせる」を表す表現は？",
+        "question": "Walking is an easy way to losing weight."
+    },
+    {
+        "id": "1187-1",
+        "ja": "多くの人がスマートフォンのテキストメッセージを使って連絡を取り合っている。 「連絡を取り合う」を表す表現は？ 「(Aと)連絡を取り合っている」 ⇧「Aと(with)接触した(touch/contact)状態(in)を保っている(keep/stay/be)」",
+        "en": "Many people use text messaging on their smartphones to {keep in touch}.",
+        "answer": "keep in touch",
+        "explanation": "Tip 「連絡を取り合うためにテキストメッセージを使う」と表現する。",
+        "question": "Many people use text messaging on their smartphones to (k   ) (    ) (    ). keep [stay] in touch (with A)＝be in touch (with A) keep [stay] in contact (with A)＝be in contact (with A)"
+    },
+    {
+        "id": "1187-2",
+        "ja": "どうすればあなたと連絡が取れますか。 get in touch (with A)「(Aと)連絡を取る」＝contact A ⇧「Aと(with)接触した(touch)状態(in)になる(get)」 ○ How can I …?「どうすれば…できますか。」",
+        "en": "How can I {get in touch with you}?",
+        "answer": "get in touch with you",
+        "explanation": "Tip  contact「～と連絡を取る」と同じ意味を表す表現は？",
+        "question": "How can I (g   ) (    ) (t   ) (    ) (    )?"
     },
     {
         "id": "1188",
-        "ja": "これ を 手 伝 ってくれる人に心当たりはありますか。",
-        "en": "Do you {have someone in mind to help with this? have A in mindʮA͍͑ͯΔʯ⇦「 心 に（in mind）A を 持 っ て い る（have）」}",
-        "answer": "have someone in mind to help with this? have A in mindʮA͍͑ͯΔʯ⇦「 心 に（in mind）A を 持 っ て い る（have）」",
-        "explanation": "▶ in mind を挟んで，to help with this が someone を修飾している。\nsomeone は肯定文で，anyone は疑問文・否定文・条件文で使うが，相手に\n「肯定の答え」を期待する場合は，疑問文でもsomeone を使う。",
-        "question": "Do you (        ) (s      ) (        ) (m     ) to help with this ?"
+        "ja": "これを手伝ってくれる人に心当たりはありますか。 通常，疑問文では「誰か」はanyoneを使うが，相手に「肯定の答え」を 期待するときはanyoneではなく何を使う？ have A in mind「Aを考えている」⇦「心に(in mind)Aを持っている(have)」 ！ someoneは肯定文で，anyoneは疑問文・否定文・条件文で使うが，相手に 「肯定の答え」を期待する場合は，疑問文でもsomeoneを使う。",
+        "en": "Do you {have someone in mind} to help with this?",
+        "answer": "have someone in mind",
+        "explanation": "Tip 「人に心当たりがある」は「(心に)誰かを考えている」と表現する。\n▶ in mindを挟んで，to help with thisがsomeoneを修飾している。",
+        "question": "Do you (    ) (s   ) (    ) (m   ) to help with this?"
     },
     {
         "id": "1189",
-        "ja": "君の言ったことを覚えておくよ。 ⇧「 心 に（in mind）A を 保 つ（keep）／ 持 つ（bear）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "I’ll (k      ) what you said (        ) (m     ). I’ll keep what you said in mind. keep A in mind bear A in mind    ʮA Λ৺ʹཹΊ͓ͯ͘ʯ＝remember A what A sayʮA͏͜ͱʯ"
+        "ja": "君の言ったことを覚えておくよ。 bear A in mind   　「Aを心に留めておく」＝remember A ⇧「心に(in mind)Aを保つ(keep)／持つ(bear)」 ○ what A say「Aの言うこと」",
+        "en": "I’ll {keep }what you said{ in mind}. {keep }A {in mind}",
+        "answer": "keep, in mind, keep, in mind",
+        "explanation": "Tip 「覚えておく＝心に留めておく」と表現する。",
+        "question": "I’ll (k   ) what you said (    ) (m   )."
     },
     {
         "id": "1190",
-        "ja": "彼が考えを変えて， 私 たちのチームに加 わってくれることを願っています。 ⇧「 ～ の 心（oneʼs mind） を変える （change）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "I hope he (        ) his (m     ) and joins our team. I hope he changes his mind and joins our team. change one’s mind͕มΘΔʯ"
+        "ja": "彼が考えを変えて，私たちのチームに加わってくれることを願っています。 change one’s mind「考えを変える，気が変わる」 ⇧「～の心(one’s mind)を変える(change)」",
+        "en": "I hope he {changes }his {mind} and joins our team.",
+        "answer": "changes, mind",
+        "explanation": "Tip 「考えを変える」を表す表現は？",
+        "question": "I hope he (    ) his (m   ) and joins our team."
     },
     {
         "id": "1191",
-        "ja": "私たちのチームに加わるかどうか，決心はついた？ ⇧「 ～ の 心（oneʼs mind）を 作 り（make）上 げ る（up）」 復習",
-        "en": "{way / point / leave / arrive / much}",
-        "answer": "way / point / leave / arrive / much",
+        "ja": "私たちのチームに加わるかどうか，決心はついた？ 名詞を含む熟語 ④ ● 433 make up one’s mind「決心する」 ⇧「～の心(one’s mind)を作り(make)上げる(up)」 make up one’s mind (about) A「Aについて決心する」＝decide A ＋ make up one’s mind to do「～しようと決心する」＝decide to do ○ whether to do (or not)「～するかどうか」",
+        "en": "Have you {made up }your {mind} whether to join our team?",
+        "answer": "made up, mind",
         "explanation": "",
-        "question": "Have you (        ) (        ) your (        ) whether to join our team? Have you made up your mind whether to join our team? make up one’s mind৺͢Δʯ make up one’s mind (about) AʮA৺͢Δʯ＝decide A make up one ’s mind to do৺͢Δʯ＝decide to do whether to do (or not)ʮʙ͢Δ͔Ͳ͏͔ʯ 432 433 Self Check"
+        "question": "Have you (    ) (    ) your (    ) whether to join our team?"
     },
     {
         "id": "1192",
-        "ja": "車いすが通りますので道を空けてください。 ⇧「A の た め に（for）道（way）を 作 る（make）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Please (m     ) (        ) (        ) the wheelchair. Please make way for the wheelchair. make way (for A)ʮʢA͚ Δ ʯ wheelchair ʮं͍͢ʯ"
+        "ja": "車いすが通りますので道を空けてください。 make way (for A)「(Aに)道を空ける」⇦「Aのために(for)道(way)を作る(make)」 ○ wheelchair「車いす」",
+        "en": "Please {make way for }the wheelchair.",
+        "answer": "make way for",
+        "explanation": "Tip 「車いすのために道を空ける」と表現する。「～に道を空ける」を表す表現は？",
+        "question": "Please (m   ) (    ) (    ) the wheelchair."
     },
     {
         "id": "1193",
-        "ja": "できるだけ早く15 番ゲートへお越しください。 ⇧「A に 向 か っ て（to）自 分 の 道（oneʼs way）を つ くる（make）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Please (m     ) your (        ) (        ) gate 15 as soon as possible. Please make your way to gate 15 as soon as possible. make one’s way (to A)ʮʢA ΁ʣ ਐΉʯ＝go (to A)"
+        "ja": "できるだけ早く15番ゲートへお越しください。 make one’s way (to A)「(Aへ)進む」＝go (to A) ⇧「Aに向かって(to)自分の道(one’s way)をつくる(make)」",
+        "en": "Please {make }your {way to }gate 15 as soon as possible.",
+        "answer": "make, way to",
+        "explanation": "Tip 「～へお越しください → ～へ進んでください」を，wayを使って表すと？",
+        "question": "Please (m   ) your (    ) (    ) gate 15 as soon as possible."
     },
     {
         "id": "1194",
-        "ja": "その会社の最高経営責任者はいつも自分の思い通りにする。",
-        "en": "The CEO of the company always {gets [has] their own way. get [have] one’s own way͍௨Γʹ͢Δʯ ⇧ 「自分自身の （oneʼs own）や り 方（way）を 得 る（get）／ 持 つ（have）」}",
-        "answer": "gets [has] their own way. get [have] one’s own way͍௨Γʹ͢Δʯ ⇧ 「自分自身の （oneʼs own）や り 方（way）を 得 る（get）／ 持 つ（have）」",
-        "explanation": "▶ 文中のtheir の用法については ➡389-1 を参照。\nCEOӦ੹೚ऀʯ―chief executive officer の略。",
-        "question": "The CEO of the company always (        ) their (        ) (        )."
+        "ja": "その会社の最高経営責任者はいつも自分の思い通りにする。 get [have] one’s own way「自分の思い通りにする」 ⇧「自分自身の(one’s own)やり方(way)を得る(get)／持つ(have)」 ○ CEO「最高経営責任者」―chief executive officerの略。",
+        "en": "The CEO of the company always {gets [has] }their {own way}.",
+        "answer": "gets [has], own way",
+        "explanation": "Tip 「自分の思い通りにする」を表す表現は？\n▶ 文中のtheirの用法については ➡ 389-1 を参照。",
+        "question": "The CEO of the company always (    ) their (    ) (    )."
     },
     {
         "id": "1195",
-        "ja": "発展 e メール を 書くときは 簡 潔 で的を射たものにするのがいちばんだ。 to the pointͨʯ⇦「 そ の 的（the point）に 向 か っ て（to）」",
-        "en": "???",
-        "answer": "???",
+        "ja": "eメールを書くときは簡潔で的を射たものにするのがいちばんだ。 発展     Tip 「的を射た」を表す表現は？ to the point「的を射た」⇦「その的(the point)に向かって(to)」 ⇔ beside the point「的外れ」 ○ It is best to do「～するのがいちばんよい」 ○ brief「短い，簡潔な」",
+        "en": "It is best to be brief and {to the point} when writing emails.",
+        "answer": "to the point",
         "explanation": "",
-        "question": "It is best to be brief and (        ) (        ) (        ) when writing emails. It is best to be brief and to the point when writing emails. ⇔ beside the pointʮత֎Εʯ It is best to do ʮʙ͢Δͷ͕͍ͪ͹ΜΑ͍ʯ briefͳʯ"
+        "question": "It is best to be brief and (    ) (    ) (    ) when writing emails."
     },
     {
         "id": "1196",
-        "ja": "発展 電話が鳴った時，私はちょうど出かけるところだった。 ⇧「 ～ す る（of doing）時 の 点（the point）の 上 に（on）い る（be）」",
-        "en": "???",
-        "answer": "???",
+        "ja": "電話が鳴った時，私はちょうど出かけるところだった。 発展     Tip 「私はまさに出発しようとしていた」と表現する。be about to doの同意表現。 be on the point of doing「まさに～しようとしている」＝be about to do ⇧「～する(of doing)時の点(the point)の上に(on)いる(be)」",
+        "en": "I {was on the point of leaving} when the phone rang.",
+        "answer": "was on the point of leaving",
         "explanation": "",
-        "question": "I ( leaving / of / the point / was / on ) when the phone rang. I was on the point of leaving when the phone rang. be on the point of doing ʮ·͞ʹʙ͠Α͏ͱ͍ͯ͠Δʯ＝be about to do"
+        "question": "I ( leaving / of / the point / was / on ) when the phone rang."
     },
     {
         "id": "1197",
-        "ja": "私はいつも早めに到着するようにしている。 ⇧「 ～ す る（of doing）行 動 の 点（a point）を 作 る（make）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "I always (        ) (        ) (p      ) (        ) (        ) early. I always make a point of arriving early. make a point of doing ʮ ʙ ͢ΔΑ͏ʹ͍ͯ͠Δʯ＝make an eﬀort to do"
+        "ja": "私はいつも早めに到着するようにしている。 make a point of doing「～するようにしている」＝make an effort to do ⇧「～する(of doing)行動の点(a point)を作る(make)」",
+        "en": "I always {make a point of arriving} early.",
+        "answer": "make a point of arriving",
+        "explanation": "Tip 「～するようにしている」を表す表現は？",
+        "question": "I always (    ) (    ) (p   ) (    ) (    ) early."
     },
     {
         "id": "1198",
-        "ja": "その会社は持続可能性への取り組みを重要視している。 ⇧「A に つ い て（of）多 く（much）を 作 る（make）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "The company (        ) (        ) (        ) its commitment to sustainability. The company makes much of its commitment to sustainability. make much of A ʮA͢Δʯ ⇔ make light [little] of AʮA͢Δʯ commitment ʮऔΓ૊Έɼ໿ଋʯ sustainabilityଓՄೳੑʯ"
+        "ja": "その会社は持続可能性への取り組みを重要視している。 make much of A「Aを重要視する」 ⇧「Aについて(of)多く(much)を作る(make)」 ⇔ make light [little] of A「Aを軽視する」 ○ commitment「取り組み，約束」 ○ sustainability「持続可能性」",
+        "en": "The company {makes much of} its commitment to sustainability.",
+        "answer": "makes much of",
+        "explanation": "Tip 「～を重要視する」を表す表現は？",
+        "question": "The company (    ) (    ) (    ) its commitment to sustainability."
     },
     {
         "id": "1199",
-        "ja": "最近，お 互 いにあまり会っていない。",
-        "en": "We {haven’t seen much of each other} lately. see much of A ⇧「A に つ い て（of）た くさ ん（much）見 か け る（see）」 ― こ のmuch は代名詞。",
+        "ja": "最近，お互いにあまり会っていない。 see much of A 「(疑問文で)Aによく会いますか，(否定文で)Aにあまり会わない」 ⇧「Aについて(of)たくさん(much)見かける(see)」―このmuchは代名詞。",
+        "en": "We {haven’t seen much of each other} lately.",
         "answer": "haven’t seen much of each other",
-        "explanation": "▶ We havenʼt seen each other much lately.とほぼ同じ意味。このmuch は副詞。",
+        "explanation": "Tip 「(否定文で)～にあまり会わない」を表す表現は？\n▶ We haven’t seen each other much lately.とほぼ同じ意味。このmuchは副詞。",
         "question": "We ( each other / haven’t / much / seen / of ) lately."
     },
     {
         "id": "1200",
-        "ja": "彼は現代アートを大したものとは 思っていない。 ⇧「A に つ い て（of）大 し た も の（much）と は 思 わ な い（donʼt think）」 復習",
-        "en": "{make / solar energy / good}",
-        "answer": "make / solar energy / good",
-        "explanation": "",
-        "question": "He (        ) (t      ) (m     ) (        ) modern art. He doesn’t think much of modern art. don’t think much of A ʮAΘͳ͍ʯ modern୅ͷʯ⇔⇔ traditionalʮ఻౷తͳɼैདྷͷʯ 434 435 Self Check"
+        "ja": "彼は現代アートを大したものとは思っていない。 名詞を含む熟語 ⑤ ● 435 don’t think much of A「Aを大したものとは思わない」 ⇧「Aについて(of)大したもの(much)とは思わない(don’t think)」 ○ modern「現代的な，現代の」⇔ traditional「伝統的な，従来の」",
+        "en": "He {doesn’t think much of }modern art.",
+        "answer": "doesn’t think much of",
+        "explanation": "Tip 「大したものとは思わない」を表す表現は？",
+        "question": "He (    ) (t   ) (m   ) (    ) modern art."
     },
     {
         "id": "1201",
-        "ja": "子どものスク リーンタイ ムを制限し て，大人は制限しないというのは筋が通らない。",
-        "en": "{It makes no sense to limit screen time for children but not for adults. make sense͏ʯ⇦ 「分別 （sense）を 作 る（make）」 It makes no sense to doΘͳ͍ʧ ʯ}",
-        "answer": "It makes no sense to limit screen time for children but not for adults. make sense͏ʯ⇦ 「分別 （sense）を 作 る（make）」 It makes no sense to doΘͳ͍ʧ ʯ",
-        "explanation": "▶ sense の直前に否定を表すno が付いて， 「理屈に合わない」の意味を表す。\nIt makes sense to do໌ͩʯ\nmake sense of A ʮA Λཧղ͢Δʯ＝understand A\nlimit͢Δʯ＝restrict",
-        "question": "(        ) (        ) no (        ) (        ) limit screen time for children but not for adults. ɻ ɻ"
+        "ja": "子どものスクリーンタイムを制限して，大人は制限しないというのは筋が通らない。 「子どものスクリーンタイムは制限するのに大人は制限しないこと」は長い主語。 主語が長いときはどの構文を使う？ make sense「意味をなす，理屈に合う」⇦「分別(sense)を作る(make)」 It makes no sense to do「～するのは意味をなさない[理屈に合わない]」 ＋ It makes sense to do「～するのは賢明だ」 ＋ make sense of A「Aを理解する」＝understand A ○ limit「～を制限する」＝restrict",
+        "en": "{It makes} no{ sense to} limit screen time for children but not for adults.",
+        "answer": "It makes, sense to",
+        "explanation": "Tip 「筋が通らない＝理屈に合わない」。「～は理屈に合う」を表す表現は？\n▶ senseの直前に否定を表すnoが付いて，「理屈に合わない」の意味を表す。",
+        "question": "(    ) (    ) no (    ) (    ) limit screen time for children but not for adults."
     },
     {
         "id": "1202",
-        "ja": "芸術家とし て生計を立てるのは難しい。 ⇧「 生 活（living）を 作 る（make）／ 稼 ぐ（earn）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "It is difficult to  as an artist. It is difficult to make a living as an artist. make a living ＝make one’s living earn a living ＝earn one’s living        ΛཱͯΔʯ It is diﬃcult to do ʮʙ͢Δͷ͸೉͍͠ʯ⇔⇔ It is easy to do୯ͩʯ"
+        "ja": "芸術家として生計を立てるのは難しい。 earn a living＝earn one’s living      「生計を立てる」 ⇧「生活(living)を作る(make)／稼ぐ(earn)」 ○ It is difficult to do「～するのは難しい」⇔ It is easy to do「～するのは簡単だ」",
+        "en": "It is difficult to {make a living} as an artist. {make a living}＝{make }one’s{ living}",
+        "answer": "make a living, make a living, make, living",
+        "explanation": "Tip 「生計を立てる」を表す表現は？",
+        "question": "It is difficult to make a living as an artist."
     },
     {
         "id": "1203",
-        "ja": "留学はあなたにとって大きな意味を持つことでしょう。 ⇧「 違 い(a difference）を 生 じ さ せ る（make） ⭢ 重要である，意味を持つ」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Studying abroad will ( difference / a / big / to / make / you ). Λ෇͚ΔɻΛ෇͚Δɻ Studying abroad will make a big diﬀerence to you. make a difference (to A) ᶃʮʢAͭʧ ʯᶄ ʮ ʢA ʹ ʣҧ ͍ Λ ΋ ͨ Β ͢ ʯ ➡336-1"
+        "ja": "留学はあなたにとって大きな意味を持つことでしょう。 「違い」を表す名詞の前に「大きな」を表す形容詞を付ける。 ①「(Aにとって)重要である[意味を持つ]」②「(Aに)違いをもたらす」 ⇧「違い(a difference)を生じさせる(make) → 重要である，意味を持つ」 ＋ It makes no difference (to A) wh-節 …「…は(Aにとって)どうでもよい」",
+        "en": "Studying abroad will {make a big difference to} {you}.",
+        "answer": "make a big difference to, you",
+        "explanation": "Tip 「～にとって意味を持つ」を表す表現は？\n➡ 336-1",
+        "question": "Studying abroad will ( difference / a / big / to / make / you ). make a difference (to A)"
     },
     {
         "id": "1204",
-        "ja": "私たちは太陽エネルギーを利用できる。 ⇧「A の（of）利 用（use）を 行 う（make）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "We can make . We can make use of solar energy. make use of A ʮA Λར༻͢Δʯ ＝utilize A ＝take advantage of A in useΘΕͯʯ put A to good useʮA Λ͏·͘ੜ͔͢ʯ solar energy ʮଠཅΤωϧΪʔʯ"
+        "ja": "私たちは太陽エネルギーを利用できる。 make use of A「Aを利用する」 ⇧「Aの(of)利用(use)を行う(make)」 ＋ in use「使われて」 ＋ put A to good use「Aをうまく生かす」 ○ solar energy「太陽エネルギー」",
+        "en": "We can {make} use of solar energy. We can {make use of solar energy}.",
+        "answer": "make, make use of solar energy",
+        "explanation": "＝utilize A＝take advantage of A",
+        "question": ""
     },
     {
         "id": "1205",
-        "ja": "私をからかうのは や めてください 。 ⇧「A に つ い て（of）お も し ろ い こ と（fun）を 作 る（make）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Stop (        ) (        ) (        ) (        ). Stop making fun of me. make fun of A ʮA Λ͔Β͔͏ʯ＝tease A"
+        "ja": "私をからかうのはやめてください。 make fun of A「Aをからかう」＝tease A ⇧「Aについて(of)おもしろいこと(fun)を作る(make)」",
+        "en": "Stop {making fun of me}.",
+        "answer": "making fun of me",
+        "explanation": "Tip 「～をからかう」を表す表現は？",
+        "question": "Stop (    ) (    ) (    ) (    )."
     },
     {
         "id": "1206",
-        "ja": "ばかなまねはしたくはないんだ。 ⇧「A と い う（of）ば か 者（a fool）を 作 る（make）」 ⇧ 「自分自身 （oneself ）に つ い て（of）笑 い も の に す る（make a fool）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "I don’t want to (m     ) (        ) (f      ) (        ) (m     ). I don’t want to make a fool of myself. make a fool of A ʮA Λস͍΋ͷʹ͢Δʯ make a fool of oneself ʮ͹͔ͳ·ͶΛ͢Δʯ"
+        "ja": "ばかなまねはしたくはないんだ。 make a fool of A「Aを笑いものにする」 ⇧「Aという(of)ばか者(a fool)を作る(make)」 make a fool of oneself「ばかなまねをする」 ⇧「自分自身(oneself)について(of)笑いものにする(make a fool)」",
+        "en": "I don’t want to {make a fool of myself}.",
+        "answer": "make a fool of myself",
+        "explanation": "Tip 「ばかなまねをする → 自分自身を笑いものにする」と表現する。",
+        "question": "I don’t want to (m   ) (    ) (f   ) (    ) (m   )."
     },
     {
         "id": "1207",
-        "ja": "私 は いくつ か の 科 目でかなり良くなった。 ⇧「A に お い て（in）進 歩（progress）を 成 し 遂 げ る（make）」 progress ʮਐาʯ―数えられない名詞。複数形にしない。 復習",
-        "en": "take / ten-minute / opportunity 1208-1 基本 10分間，休憩にしましょう。 Let’s (        ) (        ) (t      ) (b      ). 1208-1 F 191 ＝ Let’s take a ten-minute break. Let’s take a break for ten minutes. take [have] a break take [have] a rest        ͢Δʯ take ʴ期間ʴoﬀΈΛͱΔʯ ten-minute A / 10-minute Aʮ10ͷAʯ―  ten [10] minutes A は誤り。 1208-2 疲れているみたいだね。ひと休みした ら ど う？ You look tired. Why don’t you (        ) (        ) (r      )? 1208-2 You look tired. Why don’t you take a rest?",
-        "answer": "take / ten-minute / opportunity 1208-1 基本 10分間，休憩にしましょう。 Let’s     t  b . 1208-1 F 191 ＝ Let’s take a ten-minute break. Let’s take a break for ten minutes. take [have] a break take [have] a rest ͢Δʯ take ʴ期間ʴoﬀΈΛͱΔʯ ten-minute A / 10-minute Aʮ10ͷAʯ― ten [10] minutes A は誤り。 1208-2 疲れているみたいだね。ひと休みした ら ど う？ You look tired. Why don’t you     r ? 1208-2 You look tired. Why don’t you take a rest?",
-        "explanation": "▶ take [have] a rest「休憩する」➡1208-1\nlook tired͑Δʯ",
-        "question": "I have (        ) (g      ) (p      ) (        ) several subjects. I have made good progress in several subjects. make progress in [with] A [doing]ʮA ʹ ʦʙ͢Δ͜ͱʹʧ ͓͍ͯਐา͢Δʯ make good progress ʮ͔ͳΓਐา͢Δ ʦલਐ͢Δɼྑ͘ͳΔʧ ʯ subjectʯ 436 437 Self Check"
+        "ja": "私はいくつかの科目でかなり良くなった。 名詞を含む熟語 ⑥ ● 437 make progress in [with] A [doing]「Aに[～することに]おいて進歩する」 ⇧「Aにおいて(in)進歩(progress)を成し遂げる(make)」 make good progress「かなり進歩する[前進する，良くなる]」 ○ progress「進歩」―数えられない名詞。複数形にしない。 ○ subject「科目，話題，件名，主語」",
+        "en": "I have {made good progress in} several subjects.",
+        "answer": "made good progress in",
+        "explanation": "Tip 「かなり良くなる＝かなり進歩する」を表す定型表現は？",
+        "question": "I have (    ) (g   ) (p   ) (    ) several subjects."
+    },
+    {
+        "id": "1208-1",
+        "ja": "10分間，休憩にしましょう。 take [have] a rest      「休憩する」 ＋ take＋期間＋off「～(期間)の休みをとる」 ○ ten-minute A / 10-minute A「10分間のA」― × ten [10] minutes Aは誤り。",
+        "en": "Let’s {take a ten-minute break}. ＝Let’s {take a break for ten minutes}. {take} [{have}]{ a break}",
+        "answer": "take a ten-minute break, take a break for ten minutes, take, have, a break",
+        "explanation": "",
+        "question": "Let’s (    ) (    ) (t   ) (b   )."
+    },
+    {
+        "id": "1208-2",
+        "ja": "疲れているみたいだね。ひと休みしたらどう？ ○ look tired「疲れているように見える」",
+        "en": "You look tired. Why don’t you {take a rest}?",
+        "answer": "take a rest",
+        "explanation": "Tip 「ひと休みする＝休憩する」を表すもう１つの表現は？\nF 191 ▶ take [have] a rest「休憩する」➡ 1208-1",
+        "question": "You look tired. Why don’t you (    ) (    ) (r   )?"
     },
     {
         "id": "1209",
-        "ja": "これを見て ください。",
-        "en": "Take {a look at this. take [have] a look at AʮAΔʯ ＝look at A}",
-        "answer": "a look at this. take [have] a look at AʮAΔʯ ＝look at A",
-        "explanation": "",
-        "question": "Take ."
+        "ja": "これを見てください。 F 191  take [have] a look at A「Aを見る」",
+        "en": "{Take }a look at this. {Take a look at this}.",
+        "answer": "Take, Take a look at this",
+        "explanation": "＝look at A",
+        "question": ""
     },
     {
         "id": "1210",
-        "ja": "私はこの論争においてどちらかの味方をするつもりはない。 ⇧「 複 数 の 側（sides）（ の ど ち ら か ） を 取 る （take）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "I’m not going to (t      ) (        ) in this argument. I’m not going to take sides in this argument. take sides͢Δʯ take A’s sideʮA ͷଆʹͭ͘ɼA ͷຯํΛ͢Δʯ＝support A argument ʮ࿦૪ʯ"
+        "ja": "私はこの論争においてどちらかの味方をするつもりはない。 take sides「(複数あるうちの)１つを支持する」 ⇧「複数の側(sides)(のどちらか)を取る(take)」 ＋ take A’s side「Aの側につく，Aの味方をする」＝support A ○ argument「論争」",
+        "en": "I’m not going to {take sides} in this argument.",
+        "answer": "take sides",
+        "explanation": "Tip 「～の味方をする」は「～の側を取る」と考えると？",
+        "question": "I’m not going to (t   ) (    ) in this argument."
     },
     {
         "id": "1211",
-        "ja": "彼の言うことはまったく気にしないで。 ⇧notice は 「 気 づ き 」。「Aに つ い て（of）何 ら 気 づ くこと が な い（take no notice）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "( he / notice / what / take / of / says / no ). Take no notice of what he says. take no notice (of A)ʮʢAʹ͔͚ͳ͍ʯ ＝pay no attention to A"
+        "ja": "彼の言うことはまったく気にしないで。 take no notice (of A)「(Aを)まったく気にかけない」＝pay no attention to A ⇧ noticeは「気づき」。「Aについて(of)何ら気づくことがない(take no notice)」",
+        "en": "{Take no notice of} {what he says}.",
+        "answer": "Take no notice of, what he says",
+        "explanation": "Tip 「～をまったく気にかけない」を表す表現は？",
+        "question": "( he / notice / what / take / of / says / no )."
     },
     {
         "id": "1212",
-        "ja": "赤ちゃんの世話は大変な仕事だ。 ⇧「A の（of）世 話（care）を 引 き 受 け る（take）」 ―work は「仕事」の意味では数えられない名詞。a を付けない。  a hard work",
-        "en": "???",
-        "answer": "???",
+        "ja": "赤ちゃんの世話は大変な仕事だ。 take care of A「Aの世話をする」＝look after A＝care for A ⇧「Aの(of)世話(care)を引き受ける(take)」 ＋ take care「気をつける」 ＋ take care of oneself「体に気をつける」 ○ hard work「大変な仕事，激務」 ―workは「仕事」の意味では数えられない名詞。aを付けない。× a hard work",
+        "en": "{Taking care of }a{ baby} is hard work.",
+        "answer": "Taking care of, baby",
         "explanation": "",
-        "question": "(T      ) (        ) (        ) a (        ) is hard work. Taking care of a baby is hard work. take care of A ʮA ͷੈ࿩Λ͢Δʯ＝look after A ＝care for A take careΛ͚ͭΔʯ take care of oneselfΛ͚ͭΔʯ hard work຿ʯ"
+        "question": "(T   ) (    ) (    ) a (    ) is hard work."
     },
     {
         "id": "1213",
-        "ja": "この機 会 を 利 用して英語力を向上させます。 ⇧「A に つ い て の（of）有 利 な 点 を 引 き 受 け る（take advantage）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "I will (t      ) (        ) (        ) this (o      ) to improve my English. I will take advantage of this opportunity to improve my English. take advantage of A ᶃʮA Λར༻͢Δʢ＝make use of A ＝utilize Aʣʯ ᶄʮA ʹ͚ͭ͜Ήʯ opportunityձʯ＝chance improve one’s English্ͤ͞Δʯ"
+        "ja": "この機会を利用して英語力を向上させます。 ①「Aを利用する(＝make use of A＝utilize A)」②「Aにつけこむ」 ⇧「Aについての(of)有利な点を引き受ける(take advantage)」 ○ opportunity「機会」＝chance ○ improve one’s English「英語力を向上させる」",
+        "en": "I will {take advantage of }this {opportunity} to improve my English. {take advantage of }A",
+        "answer": "take advantage of, opportunity, take advantage of",
+        "explanation": "Tip 「～(の有利な点)を利用する」を表す表現は？",
+        "question": "I will (t   ) (    ) (    ) this (o   ) to improve my English."
     },
     {
         "id": "1214",
-        "ja": "発展 彼女の突然の訪問に私たちは驚いた。 ⇧ surprise は「驚き，不意打ち」 復習",
-        "en": "???",
-        "answer": "???",
+        "ja": "彼女の突然の訪問に私たちは驚いた。 発展     Tip  Her sudden visitが主語。surprise「～を驚かせる」と同じ意味を表す表現は？ 名詞を含む熟語 ⑦ ● 439 ①「Aを驚かせる(＝surprise A)」②「Aの不意をつく」 ⇧ surpriseは「驚き，不意打ち」 ○ sudden「突然の」",
+        "en": "Her sudden visit {took us by surprise}. {take }A {by surprise}",
+        "answer": "took us by surprise, take, by surprise",
         "explanation": "",
-        "question": "Her sudden visit (t      ) (        ) (        ) (s      ). Her sudden visit took us by surprise. take A by surprise ᶃʮA͔ͤΔʢ＝surprise Aʣʯ ᶄʮA ͷෆҙΛͭ͘ʯ sudden ʮಥવͷʯ 438 439 Self Check"
+        "question": "Her sudden visit (t   ) (    ) (    ) (s   )."
     },
     {
         "id": "1215",
-        "ja": "発展 私たちは手間をかけて学校行事の準備をした。 ⇧「 ～ す る（to do）そ の 面 倒(the trouble）を 引 き 受 け る（take）」",
-        "en": "???",
-        "answer": "???",
+        "ja": "私たちは手間をかけて学校行事の準備をした。 発展     Tip 「手間をかけて～する」を表す表現は？ take the trouble to do「手間をかけて～する」 ⇧「～する(to do)その面倒(the trouble)を引き受ける(take)」 ＋ have trouble (in) doing「～するのに苦労する」＝have difficulty (in) doing ○ prepare for A「Aの準備をする」",
+        "en": "We {took the trouble to prepare} {for} the school event.",
+        "answer": "took the trouble to prepare, for",
         "explanation": "",
-        "question": "We ( prepare / to / trouble / for / the / took ) the school event. We took the trouble to prepare for the school event. take the trouble to doΛ͔͚ͯʙ͢Δʯ have trouble (in) doing࿑͢Δʯ＝have diﬃculty (in) doing prepare for A ʮA ͷ४උΛ͢Δʯ"
+        "question": "We ( prepare / to / trouble / for / the / took ) the school event."
     },
     {
         "id": "1216",
-        "ja": "他人の不幸を喜んではいけない。 ⇧「A の 中 に（in）喜 び（delight）を 受 け 取 る（take）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "We should not (t      ) (d      ) (        ) the misfortunes of others. We should not take delight in the misfortunes of others. take delight in A [doing]ʮA͠Ήʯ＝enjoy A [doing] delightͼʯ＝pleasure misfortuneʯ⇔⇔ fortuneʯ"
+        "ja": "他人の不幸を喜んではいけない。 enjoy「～を楽しむ」と同じ意味を表す表現は？ take delight in A [doing]「Aを楽しむ」＝enjoy A [doing] ⇧「Aの中に(in)喜び(delight)を受け取る(take)」 ○ delight「喜び」＝pleasure ○ misfortune「不運，不幸」⇔ fortune「幸運，財産」",
+        "en": "We should not {take delight in} the misfortunes of others.",
+        "answer": "take delight in",
+        "explanation": "Tip 「喜んではいけない → 楽しむべきではない」と表現する。",
+        "question": "We should not (t   ) (d   ) (    ) the misfortunes of others."
     },
     {
         "id": "1217",
-        "ja": "明日の朝，あなたに電話します。 ⇧「A に 通 話（a call） を与える （give）」 （お電話番号を教えていただけますか。電話をかけ直しま す 。）",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "I’ll (        ) (        ) (        ) (        ) tomorrow morning. I’ll give you a call tomorrow morning. give A a callʮA ʹి࿩Λ͔͚Δʯ＝call (up) A ＝call A (up) call back A / call A back ʮA ʹి࿩Λ͔͚௚͢ʯ May I have your number? Iʼll call you back."
+        "ja": "明日の朝，あなたに電話します。 F 193  give A a call「Aに電話をかける」＝call (up) A＝call A (up) ⇧「Aに通話(a call)を与える(give)」 ＋ call back A / call A back「Aに電話をかけ直す」 （お電話番号を教えていただけますか。電話をかけ直します。）",
+        "en": "I’ll {give you a call} tomorrow morning. May I have your number? I’ll {call you back}.",
+        "answer": "give you a call, call you back",
+        "explanation": "Tip  call A up「Aに電話をかける」と同じ意味を表す表現は？",
+        "question": "I’ll (    ) (    ) (    ) (    ) tomorrow morning."
     },
     {
         "id": "1218",
-        "ja": "人口の減少はいく つかの問題を引き起こすだろう。 ⇧「A に（to）上 昇（rise） を与える （give）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "The population decline will (g      ) (        ) (        ) several problems. The population decline will give rise to several problems. give rise to A ʮA͜͢ʯ＝cause A ＝bring about A population declineগʯ ⇔⇔ population growthͷ૿Ճʯ"
+        "ja": "人口の減少はいくつかの問題を引き起こすだろう。 give rise to A「Aを引き起こす」＝cause A＝bring about A ⇧「Aに(to)上昇(rise)を与える(give)」 ○ population decline「人口の減少」 ⇔ population growth「人口の増加」",
+        "en": "The population decline will {give rise to }several problems.",
+        "answer": "give rise to",
+        "explanation": "Tip  cause「～を引き起こす」と同じ意味を表す表現は？",
+        "question": "The population decline will (g   ) (    ) (    ) several problems."
     },
     {
         "id": "1219",
-        "ja": "私の姉はこの春，女の子を出産した。 ⇧「A に（to）誕 生（birth） を与える （give）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "My sister (g      ) (        ) (        ) a baby girl this spring. My sister gave birth to a baby girl this spring. give birth to A ᶃʮAΉʢ＝have AʣʯᶄʮAʣΛੜΉʯ a baby girl ʮঁͷ੺ͪΌΜʯ⇔⇔ a baby boyʮஉͷ੺ͪΌΜʯ"
+        "ja": "私の姉はこの春，女の子を出産した。 give birth to A ①「A(赤ちゃん)を産む(＝have A)」②「A(物事)を生む」 ⇧「Aに(to)誕生(birth)を与える(give)」 ○ a baby girl「女の赤ちゃん」⇔ a baby boy「男の赤ちゃん」",
+        "en": "My sister {gave birth to} a baby girl this spring.",
+        "answer": "gave birth to",
+        "explanation": "Tip 「(赤ちゃん)を産む」を表す表現は？",
+        "question": "My sister (g   ) (    ) (    ) a baby girl this spring."
     },
     {
         "id": "1220",
-        "ja": "私 はほか の 人 たちが 言っていることに注 意を払った。",
-        "en": "I {paid attention to what the others were saying. pay attention to A ʮA ʹ஫ҙΛ෷͏ʯ ⇧「A に 対 し て（to）注 意（attention）を 払 う（pay）」}",
-        "answer": "paid attention to what the others were saying. pay attention to A ʮA ʹ஫ҙΛ෷͏ʯ ⇧「A に 対 し て（to）注 意（attention）を 払 う（pay）」",
-        "explanation": "▶ what は関係代名詞で「～すること，～するもの」の意味。\nattention ʮ஫ҙɼ஫໨ʯ\n1221-1 私たちは広島平和記念資料館を訪れた。\nWe (p      ) (        ) (v      ) (        ) the Hiroshima Peace Memorial\nMuseum.\n1221-1 We paid a visit to the Hiroshima Peace Memorial Museum.\npay a visit to A ʮAʢ৔ॴʣΛ๚ΕΔɼAʢਓʣΛ๚ͶΔʯ＝visit A\n▶ このvisit は名詞で「訪問」の意味。\n1221-2 先週末，和歌山で祖父母を訪ねた。\nI (p      ) my (        ) (        ) (v      ) in Wakayama last weekend.\n1221-2 I paid my grandparents a visit in Wakayama last weekend.\npay A a visitʮAʢਓʣΛ๚ͶΔʯ＝visit A ＝call on A\n▶ in Wakayama 「和歌山で」とlast weekend「先週末」は副詞句。\ngive / pay / what / grandparents\n440 441\nSelf\nCheck\n復習",
-        "question": "I (p      ) (        ) (        ) (w     ) the others were saying."
+        "ja": "私はほかの人たちが言っていることに注意を払った。 pay attention to A「Aに注意を払う」 ⇧「Aに対して(to)注意(attention)を払う(pay)」 ○ attention「注意，注目」",
+        "en": "I {paid attention to what} the others were saying.",
+        "answer": "paid attention to what",
+        "explanation": "▶ whatは関係代名詞で「～すること，～するもの」の意味。",
+        "question": "I (p   ) (    ) (    ) (w   ) the others were saying."
     },
     {
-        "id": "1221",
-        "ja": "???",
-        "en": "lose / keep / regular / come",
-        "answer": "???",
-        "explanation": "",
-        "question": "???"
+        "id": "1221-1",
+        "ja": "私たちは広島平和記念資料館を訪れた。 pay a visit to A「A(場所)を訪れる，A(人)を訪ねる」＝visit A",
+        "en": "We {paid a visit to} {t}he Hiroshima Peace Memorial Museum.",
+        "answer": "paid a visit to, t",
+        "explanation": "Tip 「(場所や人)を訪ねる」を表す表現は？\n▶ このvisitは名詞で「訪問」の意味。",
+        "question": "We (p   ) (    ) (v   ) (    ) the Hiroshima Peace Memorial Museum."
+    },
+    {
+        "id": "1221-2",
+        "ja": "先週末，和歌山で祖父母を訪ねた。 名詞を含む熟語 ⑧ ● 441 pay A a visit「A(人)を訪ねる」＝visit A＝call on A",
+        "en": "I {paid }my {grandparents a visit} in Wakayama last weekend.",
+        "answer": "paid, grandparents a visit",
+        "explanation": "Tip 「(人)を訪ねる」を表す表現は？\n▶ in Wakayama「和歌山で」とlast weekend「先週末」は副詞句。",
+        "question": "I (p   ) my (    ) (    ) (v   ) in Wakayama last weekend."
     },
     {
         "id": "1222",
-        "ja": "発展 失敗すれば，私は面目を失うだろう。",
-        "en": "If I fail, I will {lose face. lose face͏ʯ⇦「 顔（face）を な く す（lose）」 ⇔ save faceʮ໘໨Λอͭʯ}",
-        "answer": "lose face. lose face͏ʯ⇦「 顔（face）を な く す（lose）」 ⇔ save faceʮ໘໨Λอͭʯ",
-        "explanation": "▶ face は「顔」から転じて， 「面目」の意味を持つ。\nfailഊ͢Δʯ⇔⇔ succeed͢Δʯ",
-        "question": "If I fail, I will (        ) (        )."
+        "ja": "失敗すれば，私は面目を失うだろう。 発展     Tip 「面目を失う」を表す表現は？ lose face「面目を失う」⇦「顔(face)をなくす(lose)」 ⇔ save face「面目を保つ」 ○ fail「失敗する」⇔ succeed「成功する」",
+        "en": "If I fail, I will {lose face}.",
+        "answer": "lose face",
+        "explanation": "▶ faceは「顔」から転じて，「面目」の意味を持つ。",
+        "question": "If I fail, I will (    ) (    )."
     },
     {
         "id": "1223",
-        "ja": "かっとなったことをおわびします。 ⇧「 機 嫌（temper）を 失 う（lose）」 ―temper は「気性，機嫌」の意味。",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "I apologize for (        ) my (t      ). I apologize for losing my temper. lose one’s temperʮ͔ͬͱͳΔɼෲΛཱͯΔʯ＝get very angry ⇔ keep one’s temperʮౖΓΛ཈͑Δʯ apologize for doing ʮʙͨ͜͠ͱΛँΔʯ"
+        "ja": "かっとなったことをおわびします。 lose one’s temper「かっとなる，腹を立てる」＝get very angry ⇧「機嫌(temper)を失う(lose)」―temperは「気性，機嫌」の意味。 ⇔ keep one’s temper「怒りを抑える」 ○ apologize for doing「～したことを謝る」",
+        "en": "I apologize for {losing }my {temper}.",
+        "answer": "losing, temper",
+        "explanation": "Tip  get very angryと同じ意味で，「かっとなる，腹を立てる」を表す表現は？",
+        "question": "I apologize for (    ) my (t   )."
     },
     {
         "id": "1224",
-        "ja": "私のバッグを見ておいてくれ る？ ⇧「A の 上 に（on）監 視（an eye）を 保 つ（keep）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Can you ( keep / my bag / on / eye / an ) for me? Can you keep an eye on my bag for me? keep an eye on AʮA ͔Β໨Λ཭͞ͳ͍ɼA͓ͯ͘ʯ have an eye for A ʮAΔ໨͕͋Δʯ"
+        "ja": "私のバッグを見ておいてくれる？ keep an eye on A「Aから目を離さない，Aを見ておく」 ⇧「Aの上に(on)監視(an eye)を保つ(keep)」 ＋ have an eye for A「Aを見る目がある」",
+        "en": "Can you {keep an eye on my bag} for me?",
+        "answer": "keep an eye on my bag",
+        "explanation": "Tip 「～を見ておく，～から目を離さない」を表す表現は？",
+        "question": "Can you ( keep / my bag / on / eye / an ) for me?"
     },
     {
         "id": "1225",
-        "ja": "私の家族はみんな規則正しい生活を送っ ている。 ⇧ 「規則正しい （regular）時 間（hours）を 保 つ（keep）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Everyone in my family (        ) (r      ) (        ). Everyone in my family keeps regular hours. keep regular hoursΛૹΔʯ keep late hours͖͍ͯΔʯ⇔⇔ keep early hours"
+        "ja": "私の家族はみんな規則正しい生活を送っている。 keep regular hours「規則正しい生活を送る」 ⇧「規則正しい(regular)時間(hours)を保つ(keep)」 ＋ keep late hours「いつも遅くまで起きている」⇔ keep early hours",
+        "en": "Everyone in my family {keeps regular hours}.",
+        "answer": "keeps regular hours",
+        "explanation": "Tip 「規則正しい生活を送る」を表す表現は？",
+        "question": "Everyone in my family (    ) (r   ) (    )."
     },
     {
         "id": "1226",
-        "ja": "成人になったら，投票できるようになる。 ⇧ 「成人年齢に （of age）達 す る（come）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "When I (c      ) (        ) (        ), I will be able to vote. When I come of age, I will be able to vote. come of age ʮ੒ਓʹͳΔɼҰਓલʹͳΔʯ aging societyձʯ vote ʮ౤ථ͢Δʯ"
+        "ja": "成人になったら，投票できるようになる。 come of age「成人になる，一人前になる」 ⇧「成人年齢に(of age)達する(come)」 ＋ aging society「高齢化社会」 ○ vote「投票する」",
+        "en": "When I {come of age}, I will be able to vote.",
+        "answer": "come of age",
+        "explanation": "Tip 「成人になる」を表す表現は？",
+        "question": "When I (c   ) (    ) (    ), I will be able to vote."
     },
     {
         "id": "1227",
-        "ja": "発展 姉の死を受け入れるのに長い時間がかかった。 ⇧「A と の（with）折 り 合 い（terms）に 来 る（come to）」",
-        "en": "???",
-        "answer": "???",
+        "ja": "姉の死を受け入れるのに長い時間がかかった。 発展     Tip 「(困難など)を受け入れる」を表す表現は？ come to terms with A「A(困難など)を受け入れる」＝accept A ⇧「Aとの(with)折り合い(terms)に来る(come to)」 ○ It takes (A) a long time to do「(Aが)～するのに長い時間がかかる」",
+        "en": "It took me a long time to {come to terms with }my sister’s death.",
+        "answer": "come to terms with",
         "explanation": "",
-        "question": "It took me a long time to (c      ) (        ) (t      ) (        ) my sister’s death. It took me a long time to come to terms with my sister’s death. come to terms with A ʮA೉ͳͲʣΛड͚ೖΕΔʯ＝accept A It takes (A) a long time to doʮʢA͕ ͔ ͔ Δʯ"
+        "question": "It took me a long time to (c   ) (    ) (t   ) (    ) my sister’s death."
     },
     {
         "id": "1228",
-        "ja": "個人情報の漏えいが明るみに出た。 ⇧「 明 る い 所 に（to light）来 る（come）／ 持 っ て 来 ら れ る（be brought）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "The leak of personal information (        ) (        ) (        ). The leak of personal information came to light. come to light be brought to light    ʮʢൿີͳͲ͕ʣ໌ΔΈʹग़Δʯ leak  ʮ࿙ΕΔ͜ͱʯ personal informationਓ৘ใʯ"
+        "ja": "個人情報の漏えいが明るみに出た。 be brought to light    「(秘密などが)明るみに出る」 ⇧「明るい所に(to light)来る(come)／持って来られる(be brought)」 ○ leak ① 動詞「漏れる，～を漏らす」② 名詞「漏れること」 ○ personal information「個人情報」",
+        "en": "The leak of personal information {came to light}. {come to light}",
+        "answer": "came to light, come to light",
+        "explanation": "Tip 「(秘密などが)明るみに出る」を表す表現は？",
+        "question": "The leak of personal information (    ) (    ) (    )."
     },
     {
         "id": "1229",
-        "ja": "私 はどのようにして宇 宙 が誕生したのか知りたい。 ⇧「 存 在（existence/being）の 中 へ（into）や っ て 来 る（come）」 復習",
-        "en": "{go / bear / have / fault / do / meet / get / run}",
-        "answer": "go / bear / have / fault / do / meet / get / run",
-        "explanation": "",
-        "question": "I want to know how the universe (c      ) (        ) (        ). I want to know how the universe came into being. come into being come into existence    ʮ஀ੜ͢Δɼ૑ઃ͞ΕΔʯ existenceʯ＝being 442 443 Self Check"
+        "ja": "私はどのようにして宇宙が誕生したのか知りたい。 名詞を含む熟語 ⑨ ● 443 come into existence    「誕生する，創設される」 ⇧「存在(existence/being)の中へ(into)やって来る(come)」 ○ existence「存在」＝being",
+        "en": "I want to know how the universe {came into being}. {come into being}",
+        "answer": "came into being, come into being",
+        "explanation": "Tip 「(あるものが存在として)誕生する」を表す表現は？",
+        "question": "I want to know how the universe (c   ) (    ) (    )."
     },
     {
         "id": "1230",
-        "ja": "「ケーキのおかわりはどうですか。 」 「いいえ，結構です。ダイエット中な の で 。」 ⇧「 ダ イ エ ット（a diet） についた状態で （on）で あ る（be）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "“Would you like some more cake?” “No, thank you. .” “Would you like some more cake?” “No, thank you. I’m on a diet.” be on a diet ʮμΠΤοτதͩʯ go on a diet ʮμΠΤοτΛ͢Δʯ"
+        "ja": "「ケーキのおかわりはどうですか。」「いいえ，結構です。ダイエット中なので。」 be on a diet「ダイエット中だ」 ⇧「ダイエット(a diet)についた状態で(on)である(be)」 ＋ go on a diet「ダイエットをする」",
+        "en": "“Would you like some more cake?” “No, thank you. {I’m on a diet}.”",
+        "answer": "I’m on a diet",
+        "explanation": "Tip 「ダイエット中だ」を表す表現は？",
+        "question": "“Would you like some more cake?” “No, thank you. I’m on a diet.”"
     },
     {
         "id": "1231",
-        "ja": "従業員たちは20年ぶりのストライキに突 入した。 ⇧「 ストラ イ キ（strike） についた状態で （on）で 行 く（go）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "The workers (        ) (        ) (        ) for the first time in 20 years. The workers went on strike for the first time in 20 years. go on strike ʮετϥΠΩΛ͢Δʯ be on strike ʮετϥΠΩதͩʯ for the /f_irst time in ～ yearsʮʙ೥ͿΓʹʯ"
+        "ja": "従業員たちは20年ぶりのストライキに突入した。 go on strike「ストライキをする」 ⇧「ストライキ(strike)についた状態で(on)で行く(go)」 ＋ be on strike「ストライキ中だ」 ○ for the first time in ～ years「～年ぶりに」",
+        "en": "The workers {went on strike} for the first time in 20 years.",
+        "answer": "went on strike",
+        "explanation": "Tip 「ストライキをする」を表す表現は？",
+        "question": "The workers (    ) (    ) (    ) for the first time in 20 years."
     },
     {
         "id": "1232",
-        "ja": "私の努力はついに実を結んだ。",
-        "en": "My efforts finally {bore fruit. bear fruitͿʯ⇦ 「果実 （fruit）を 産 む（bear）」}",
-        "answer": "bore fruit. bear fruitͿʯ⇦ 「果実 （fruit）を 産 む（bear）」",
-        "explanation": "▶ bear 「～を産む，～を耐える」の活用はbear—bore—borne",
-        "question": "My efforts finally (        ) (f      )."
+        "ja": "私の努力はついに実を結んだ。 bear fruit「実を結ぶ」⇦「果実(fruit)を産む(bear)」",
+        "en": "My efforts finally {bore fruit}.",
+        "answer": "bore fruit",
+        "explanation": "Tip 「実を結ぶ」を表す表現は？\n▶ bear「～を産む，～を耐える」の活用はbear―bore―borne",
+        "question": "My efforts finally (    ) (f   )."
     },
     {
         "id": "1233",
-        "ja": "生徒は研究課題のためにオンライン・リ ソー スを利用できる。 ⇧「A に 対 し て（to）利 用 権（access）を 持 っ て い る（have）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Students (h    ) (a    ) (      ) online resources for their research projects. Students have access to online resources for their research projects."
+        "ja": "生徒は研究課題のためにオンライン・リソースを利用できる。 have access to A「Aを利用できる」＝can use A ⇧「Aに対して(to)利用権(access)を持っている(have)」",
+        "en": "Students {have access to} online resources for their research projects.",
+        "answer": "have access to",
+        "explanation": "Tip  can use「～を利用できる」と同じ意味を表す表現は？",
+        "question": "Students (h   ) (a   ) (    ) online resources for their research projects."
     },
     {
         "id": "1234",
-        "ja": "彼は私のすることすべてにケチをつける。 ⇧「A に 関 し て（with）欠 点（fault）を 見 つ け る（find）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "He (        ) (        ) (        ) everything I do. He /f_inds fault with everything I do. /f_ind fault with A ʮA ͷ͋Β୳͠Λ͢Δʯ everything S′ doʮS˄ͷ ͢ Δ ͜ ͱ ͢ ΂ ͯʯ"
+        "ja": "彼は私のすることすべてにケチをつける。 find fault with A「Aのあら探しをする」 ⇧「Aに関して(with)欠点(fault)を見つける(find)」 ○ everything S’ do「S’のすることすべて」",
+        "en": "He {finds fault with }everything I do.",
+        "answer": "finds fault with",
+        "explanation": "Tip 「～にケチをつける＝～のあら探しをする」を表す表現は？",
+        "question": "He (    ) (    ) (    ) everything I do."
     },
     {
         "id": "1235",
-        "ja": "食後に食器を洗います。 wash the dishes    Λચ͏ʯ⇦「 皿（the dishes）洗 い を す る（do）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "I’ll  after dinner. I’ll do the dishes after dinner. do the dishes do the laundry ʮચ୕Λ͢Δʯ"
+        "ja": "食後に食器を洗います。 wash the dishes    「食器を洗う」⇦「皿(the dishes)洗いをする(do)」 ＋ do the laundry「洗濯をする」",
+        "en": "I’ll {do the dishes} after dinner. {do the dishes}",
+        "answer": "do the dishes, do the dishes",
+        "explanation": "Tip 「食器を洗う」を表す表現は？",
+        "question": "I’ll do the dishes after dinner."
     },
     {
         "id": "1236",
-        "ja": "締め切りに間に合うように頑 張っています。 ⇧「 締 め 切 り（the deadline）を 満 た す（meet）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "I’m working hard to (        ) (        ) (        ). I’m working hard to meet the deadline. meet the deadlineΘͤΔʯ work hardுΔʯ deadline ʮకΊ੾Γʯ"
+        "ja": "締め切りに間に合うように頑張っています。 meet the deadline「締め切りに間に合わせる」 ⇧「締め切り(the deadline)を満たす(meet)」 ○ work hard「懸命にする，頑張る」 ○ deadline「締め切り」",
+        "en": "I’m working hard to {meet the deadline}.",
+        "answer": "meet the deadline",
+        "explanation": "Tip 「締め切りに間に合わせる」を表す表現は？",
+        "question": "I’m working hard to (    ) (    ) (    )."
     },
     {
         "id": "1237",
-        "ja": "発展 好奇心に負けて，私は箱を開けてしまった。 ⇧「A に つ い て（of）よ り よ い 側（the better）を 手 に 入 れ る（get）」",
-        "en": "???",
-        "answer": "???",
+        "ja": "好奇心に負けて，私は箱を開けてしまった。 発展     Tip 「好奇心が私を負かした」と表現する。「～を負かす」を表す表現は？ get the better of A「Aを負かす(＝defeat A)，Aに打ち勝つ(＝overcome A)」 ⇧「Aについて(of)よりよい側(the better)を手に入れる(get)」 ○ curiosity「好奇心」",
+        "en": "My curiosity {got the better of me}, and I opened the box.",
+        "answer": "got the better of me",
         "explanation": "",
-        "question": "My curiosity (g      ) (        ) (b      ) (        ) (        ), and I opened the box. My curiosity got the better of me, and I opened the box. get the better of A ʮA Λෛ͔͢ʢ＝defeat AʣɼA ʹ ଧ ͪ উ ͭʢ＝overcome Aʣʯ curiosity৺ʯ"
+        "question": "My curiosity (g   ) (    ) (b   ) (    ) (    ), and I opened the box."
     },
     {
         "id": "1238",
-        "ja": "勉強しないと，試験に落ちる危険を冒すことになる。 ⇧「 ～ す る（of doing）危 険（the risk）を 走 ら せ る（run）／ 取 る（take）」 復習",
-        "en": "{beat / get / jump / keep / break / learn}",
-        "answer": "beat / get / jump / keep / break / learn",
-        "explanation": "",
-        "question": "If I don’t study, I (r      ) (        ) (r      ) (        ) (f      ) my exams. If I don’t study, I run the risk of failing my exams. run [take] the risk of doingΛ๯͢ʯ at the risk of doingΛ๯ͯ͠ʯ fail an examʹམͪΔʯ⇔⇔ pass an examʹड͔Δʯ 444 445 Self Check"
+        "ja": "勉強しないと，試験に落ちる危険を冒すことになる。 名詞を含む熟語 ⑩ ● 445 run [take] the risk of doing「～する危険を冒す」 ⇧「～する(of doing)危険(the risk)を走らせる(run)／取る(take)」 ＋ at the risk of doing「～する危険を冒して」 ○ fail an exam「試験に落ちる」⇔ pass an exam「試験に受かる」",
+        "en": "If I don’t study, I {run the risk of failing} my exams.",
+        "answer": "run the risk of failing",
+        "explanation": "Tip 「～する危険を冒す」を表す表現は？",
+        "question": "If I don’t study, I (r   ) (    ) (r   ) (    ) (f   ) my exams."
     },
     {
         "id": "1239",
-        "ja": "遠回しな言い方はやめて。要点を言って。 ⇧「 や ぶ（the bush）の 周 り（around）を た た く（beat）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Don’t (        ) (        ) (        ) (        ). Get to the point. Don’t beat around the bush. Get to the point. beat around the bush͏ʯ ⇔ get to the pointʮཁ఺Λड़΂Δʯ―to the pointͨʯ bush ʮ΍ͿɼໜΈʯ"
+        "ja": "遠回しな言い方はやめて。要点を言って。 beat around the bush「遠回しに言う」 ⇧「やぶ(the bush)の周り(around)をたたく(beat)」 ⇔ get to the point「要点を述べる」―to the point「的を射た」 ○ bush「やぶ，茂み」",
+        "en": "Don’t {beat around the bush}. Get to the point.",
+        "answer": "beat around the bush",
+        "explanation": "Tip 「遠回しに言う」を表す表現は？",
+        "question": "Don’t (    ) (    ) (    ) (    ). Get to the point."
     },
     {
         "id": "1240",
-        "ja": "発展 工事の騒音は私をいらいらさせる。 ⇧「A の 神 経（nerves）の 上 に 乗 る（get on）」",
-        "en": "???",
-        "answer": "???",
+        "ja": "工事の騒音は私をいらいらさせる。 発展     Tip  irritate「～をいらいらさせる」と同じ意味を表す表現は？ get on A’s nerves「Aの神経にさわる，Aをいらいらさせる」＝irritate A ⇧「Aの神経(nerves)の上に乗る(get on)」 ○ construction「建設，建設工事」 ○ nerve「神経」",
+        "en": "Construction noise {gets on }my {nerves}.",
+        "answer": "gets on, nerves",
         "explanation": "",
-        "question": "Construction noise (g      ) (        ) my (n      ). Construction noise gets on my nerves. get on A’s nervesʮAʹ͞ΘΔɼA Λ͍Β͍Βͤ͞Δʯ＝irritate A constructionʯ nerveʯ"
+        "question": "Construction noise (g   ) (    ) my (n   )."
     },
     {
         "id": "1241",
-        "ja": "発展 先生が名前を呼ぶと，ケンはぱっと立ち上がった。",
-        "en": "Ken {jumped to his feet when the teacher called his name. jump to one’s feetʮͺͬͱ্ཱ͕ͪΔʯ ⇧「 足（oneʼs feet）に 向 け て（to）跳 ぶ（jump）」 rise [get] to one’s feetʮ্ཱ͕ͪΔʯ＝stand up}",
-        "answer": "jumped to his feet when the teacher called his name. jump to one’s feetʮͺͬͱ্ཱ͕ͪΔʯ ⇧「 足（oneʼs feet）に 向 け て（to）跳 ぶ（jump）」 rise [get] to one’s feetʮ্ཱ͕ͪΔʯ＝stand up",
-        "explanation": "▶ feet はfootʮ଍ʯの複数形。",
-        "question": "Ken ( j      ) (        ) his (        ) when the teacher called his name."
+        "ja": "先生が名前を呼ぶと，ケンはぱっと立ち上がった。 発展     Tip 「ぱっと立ち上がる」を表す表現は？ jump to one’s feet「ぱっと立ち上がる」 ⇧「足(one’s feet)に向けて(to)跳ぶ(jump)」 ＋ rise [get] to one’s feet「立ち上がる」＝stand up",
+        "en": "Ken {jumped to }his {feet} when the teacher called his name.",
+        "answer": "jumped to, feet",
+        "explanation": "▶ feetはfoot「足」の複数形。",
+        "question": "Ken (j   ) (    ) his (    ) when the teacher called his name."
     },
     {
         "id": "1242",
-        "ja": "私は君が約束を守ると信じている。 ⇧ keep は「 （約束・秘密など） を守る」 ，oneʼs word は「 （約束の） 言葉」の 意味。",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "I trust you to (        ) your (w     ). I trust you to keep your word. keep one’s word keep one’s promise(s)    ʮ໿ଋΛकΔʯ ⇔ break one’s word [promise(s)]ʮ໿ଋΛഁΔʯ➡1243 trust A to doʮA ͕ʙ͢Δ΋ͷͱ৴͡Δʯ"
+        "ja": "私は君が約束を守ると信じている。 keep one’s promise(s)    「約束を守る」 ⇔ break one’s word [promise(s)]「約束を破る」➡ 1243 ⇧ keepは「(約束・秘密など)を守る」，one’s wordは「(約束の)言葉」の意味。 ○ trust A to do「Aが～するものと信じる」",
+        "en": "I trust you to {keep }your {word}. {keep }one’s {word}",
+        "answer": "keep, word, keep, word",
+        "explanation": "Tip 「約束を守る」を表す表現は？",
+        "question": "I trust you to (    ) your (w   )."
     },
     {
         "id": "1243",
-        "ja": "彼はいつも約束を破るから， 信 用していない 。 ⇧ 「約束の言葉 （oneʼs word）を 破 る（break）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "He always (        ) his (w     ), so I don’t trust him. He always breaks his word, so I don’t trust him. break one’s word break one’s promise(s)    ʮ໿ଋΛഁΔʯ ⇔ keep one’s word [promise(s)]ʮ໿ଋΛकΔʯ➡1242 trust ʮʙΛ৴͡Δʯ"
+        "ja": "彼はいつも約束を破るから，信用していない。 break one’s promise(s)   「約束を破る」 ⇔ keep one’s word [promise(s)]「約束を守る」➡ 1242 ⇧「約束の言葉(one’s word)を破る(break)」 ○ trust「～を信じる」",
+        "en": "He always {breaks }his {word}, so I don’t trust him. {break }one’s {word}",
+        "answer": "breaks, word, break, word",
+        "explanation": "Tip 「約束を破る」を表す表現は？",
+        "question": "He always (    ) his (w   ), so I don’t trust him."
     },
     {
         "id": "1244",
-        "ja": "数学のテストに向けて，これらの公式をすべて暗記しなければならない。 ⇧「 心（heart）で（by）学 ぶ（learn）」 learn A by roteʮA͢Δʯ―rote は名詞で「機械的な繰り返し」の意味。 all these ʴ複数名詞ʮ͜ΕΒ͢΂ͯͷʙʯ",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "I have to (        ) all these formulas (        ) (        ) for the math test. ＝ I have to learn all these formulas by heart for the math test. I have to memorize all these formulas for the math test. learn A by heartʮA͢Δʯ＝memorize A formulaʯ"
+        "ja": "数学のテストに向けて，これらの公式をすべて暗記しなければならない。 learn A by heart「Aを暗記する」＝memorize A ⇧「心(heart)で(by)学ぶ(learn)」 ＋ learn A by rote「Aを丸暗記する」―roteは名詞で「機械的な繰り返し」の意味。 ○ all these＋複数名詞「これらすべての～」 ○ formula「公式」",
+        "en": "I have to {learn} all these formulas {by heart} for the math test. ＝I have to {memorize} all these formulas for the math test.",
+        "answer": "learn, by heart, memorize",
+        "explanation": "Tip 「～を暗記する」を表す表現は？",
+        "question": "I have to (    ) all these formulas (    ) (    ) for the math test."
     },
     {
         "id": "1245",
-        "ja": "自分のアイデアを実行に移したい。 ⇧「 実 践（practice）の 中 へ（into）置 く（put）」   put A in practice は誤り。 復習",
+        "ja": "自分のアイデアを実行に移したい。 名詞を含む熟語 ⑪ ● 447 put A into practice「Aを実行する」＝carry out A ⇧「実践(practice)の中へ(into)置く(put)」 × put A in practiceは誤り。 ○ practice「実践」⇔ theory「理論」",
         "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "I want to (p      ) my (        ) (        ) (        ). I want to put my idea(s) into practice. put A into practiceʮA͢Δʯ＝carry out A practiceફʯ⇔⇔ theoryʮཧ࿦ʯ 446 447 Self Check"
+        "answer": "",
+        "explanation": "Tip  carry out「～を実行する」と同じ意味を表す表現は？",
+        "question": "I want to (p   ) my (    ) (    ) (    ). I want to put my idea(s) into practice."
     }
 ];
 
@@ -849,7 +1004,7 @@
             recognition.lang = 'en-US';
             recognition.interimResults = false;
         }
-        
+
         // --- Voice Synthesis Setup ---
         let synthesisVoice = null;
 
@@ -857,10 +1012,10 @@
             const voices = speechSynthesis.getVoices();
             // 優先順位: Google US English -> Microsoft Zira/David -> その他英語
             synthesisVoice = voices.find(voice => voice.name === 'Google US English') ||
-                             voices.find(voice => voice.name.includes('Google') && voice.lang.includes('en-US')) ||
-                             voices.find(voice => voice.name.includes('Microsoft') && voice.lang.includes('en-US')) ||
-                             voices.find(voice => voice.lang === 'en-US') ||
-                             voices.find(voice => voice.lang.startsWith('en'));
+                voices.find(voice => voice.name.includes('Google') && voice.lang.includes('en-US')) ||
+                voices.find(voice => voice.name.includes('Microsoft') && voice.lang.includes('en-US')) ||
+                voices.find(voice => voice.lang === 'en-US') ||
+                voices.find(voice => voice.lang.startsWith('en'));
         }
 
         // 音声リストがロードされたら設定を実行
@@ -883,7 +1038,7 @@
         const quizModal = document.getElementById('quiz-modal');
         const closeQuizBtn = document.getElementById('close-quiz-btn');
         const quizContent = document.getElementById('quiz-content');
-        
+
         const selectAllCheckbox = document.getElementById('select-all-checkbox');
         const pdfModal = document.getElementById('pdf-modal');
         const openPdfModalBtn = document.getElementById('open-pdf-modal-btn');
@@ -933,7 +1088,7 @@
                 `;
                 sentenceList.appendChild(sentenceDiv);
             });
-            
+
             // Add click listener to each sentence item
             document.querySelectorAll('.sentence-item').forEach(item => {
                 item.addEventListener('click', (e) => {
@@ -960,15 +1115,15 @@
                     }
                 });
             });
-            
+
             // Select the first sentence by default
             if (sentenceList.firstChild) {
-                 sentenceList.firstChild.click();
+                sentenceList.firstChild.click();
             }
         }
-        
+
         // --- PDF / Print Logic ---
-        
+
         function openPrintWindow(bodyContent, title) {
             const htmlContent = `
                 <!DOCTYPE html>
@@ -1020,7 +1175,7 @@
             printWindow.document.write(htmlContent);
             printWindow.document.close();
             setTimeout(() => {
-                printWindow.focus(); 
+                printWindow.focus();
                 printWindow.print();
             }, 250);
         }
@@ -1035,32 +1190,32 @@
                 .map(id => chapterData.find(item => item.id === id))
                 .filter(Boolean)
                 .sort((a, b) => {
-                     // Handle IDs like "1382-1" vs "1382-2"
-                     const aParts = a.id.split('-').map(s => parseInt(s) || 0);
-                     const bParts = b.id.split('-').map(s => parseInt(s) || 0);
-                     if (aParts[0] !== bParts[0]) return aParts[0] - bParts[0];
-                     return (aParts[1] || 0) - (bParts[1] || 0);
+                    // Handle IDs like "1382-1" vs "1382-2"
+                    const aParts = a.id.split('-').map(s => parseInt(s) || 0);
+                    const bParts = b.id.split('-').map(s => parseInt(s) || 0);
+                    if (aParts[0] !== bParts[0]) return aParts[0] - bParts[0];
+                    return (aParts[1] || 0) - (bParts[1] || 0);
                 });
         }
-        
+
         function getUniqueItems(items) {
-             const uniqueMap = new Map();
-             items.forEach(item => {
-                 // Use answer as key to deduplicate same phrases
-                 if (!uniqueMap.has(item.answer)) {
-                     uniqueMap.set(item.answer, item);
-                 }
-             });
-             return Array.from(uniqueMap.values()).sort((a, b) => {
-                 const aId = parseInt(a.id.split('-')[0]);
-                 const bId = parseInt(b.id.split('-')[0]);
-                 return aId - bId;
-             });
+            const uniqueMap = new Map();
+            items.forEach(item => {
+                // Use answer as key to deduplicate same phrases
+                if (!uniqueMap.has(item.answer)) {
+                    uniqueMap.set(item.answer, item);
+                }
+            });
+            return Array.from(uniqueMap.values()).sort((a, b) => {
+                const aId = parseInt(a.id.split('-')[0]);
+                const bId = parseInt(b.id.split('-')[0]);
+                return aId - bId;
+            });
         }
 
 
         // --- Message & Sound Functions ---
-        
+
         function showMessage(htmlContent, duration = null) {
             messageContent.innerHTML = htmlContent;
             messageModal.classList.remove('hidden');
@@ -1084,7 +1239,7 @@
 
             // 連続再生を防ぐために一度キャンセル
             speechSynthesis.cancel();
-            
+
             let textToSpeak = activeSentenceElement.dataset.fullSentence;
             // 念のため不要な記号を除去
             textToSpeak = textToSpeak.replace(/[{}]/g, '');
@@ -1097,7 +1252,7 @@
                 utterance.voice = synthesisVoice;
             }
 
-            utterance.rate = 1.0; 
+            utterance.rate = 1.0;
             utterance.pitch = 1.0;
 
             speechSynthesis.speak(utterance);
@@ -1114,7 +1269,7 @@
             }
 
             showMessage('<p class="text-2xl">マイクに向かって話してください...</p><div class="animate-pulse text-red-500 text-4xl mt-4">●</div>');
-            
+
             recognition.start();
 
             recognition.onresult = (event) => {
@@ -1125,20 +1280,20 @@
             recognition.onerror = (event) => {
                 showMessage(`<p>エラーが発生しました: ${event.error}</p>`, 3000);
             };
-            
+
             recognition.onend = () => {
-                 if (messageModal.classList.contains('hidden') === false && messageContent.innerHTML.includes('マイクに')) {
+                if (messageModal.classList.contains('hidden') === false && messageContent.innerHTML.includes('マイクに')) {
                     messageModal.classList.add('hidden');
-                 }
+                }
             };
         }
-        
+
         function evaluatePronunciation(transcript) {
             const originalText = activeSentenceElement.dataset.fullSentence;
 
             const cleanOrig = originalText.toLowerCase().replace(/[^\w\s]/g, '').split(' ');
             const cleanTrans = transcript.toLowerCase().replace(/[^\w\s]/g, '').split(' ');
-            
+
             let matches = 0;
             cleanOrig.forEach(word => {
                 if (cleanTrans.includes(word)) {
@@ -1147,7 +1302,7 @@
             });
 
             const similarity = matches / cleanOrig.length;
-            
+
             let score;
             if (similarity > 0.9) {
                 score = 95 + Math.floor(Math.random() * 5);
@@ -1160,7 +1315,7 @@
             } else {
                 score = 70 + Math.floor(Math.random() * 10);
             }
-            
+
             if (score === 100 && Math.random() < 0.3) score = 99;
 
             const messageHtml = `
@@ -1177,8 +1332,8 @@
 
         function startQuiz() {
             if (chapterData.length < 10) {
-                 showMessage('<p>クイズを作成するには、文が10個以上必要です。</p>', 3000);
-                 return;
+                showMessage('<p>クイズを作成するには、文が10個以上必要です。</p>', 3000);
+                return;
             }
 
             const shuffled = [...chapterData].sort(() => 0.5 - Math.random());
@@ -1203,8 +1358,9 @@
                     .map(item => item.answer);
 
                 const options = [correctAnswer, ...incorrectAnswers].sort(() => 0.5 - Math.random());
-                
-                const questionSentence = question.en.replace(`{${question.answer}}`, ' (______) ');
+
+                // Use regex to replace ALL {answer} parts with (______)
+                const questionSentence = question.en.replace(/\{.*?\}/g, ' (______) ');
 
                 quizContent.innerHTML = `
                     <h3 class="text-2xl font-bold mb-2">問題 ${currentQuestionIndex + 1}/10</h3>
@@ -1224,7 +1380,7 @@
                             button.classList.add('bg-red-400', 'text-white');
                             document.querySelector(`.quiz-option[data-answer="${CSS.escape(correctAnswer)}"]`).classList.add('bg-green-400', 'text-white');
                         }
-                        
+
                         setTimeout(() => {
                             currentQuestionIndex++;
                             showQuestion();
@@ -1269,12 +1425,12 @@
                 explanationDiv.style.display = 'block';
             }
         });
-        
+
         playSoundBtn.addEventListener('click', playSound);
         recordBtn.addEventListener('click', handleRecording);
         startQuizBtn.addEventListener('click', startQuiz);
         closeQuizBtn.addEventListener('click', () => quizModal.classList.add('hidden'));
-        
+
         // Select All Logic
         selectAllCheckbox.addEventListener('change', (e) => {
             const isChecked = e.target.checked;
@@ -1288,7 +1444,7 @@
 
         // PDF Modal Logic
         openPdfModalBtn.addEventListener('click', () => {
-             if (selectedSentences.size === 0) {
+            if (selectedSentences.size === 0) {
                 showMessage('<p>PDFを作成する問題を選択してください。</p>', 3000);
                 return;
             }
@@ -1310,10 +1466,10 @@
         // 1. 完全なリスト
         document.getElementById('download-list-btn').addEventListener('click', () => {
             const items = getSelectedItems();
-            if(!items) return;
+            if (!items) return;
             // リスト作成の場合は重複があっても良いが、見やすくするために熟語ベースでユニークにするか、
             // そのままID順で並べるか。ここではID順ですべて表示する。
-            
+
             const listItems = items.map(item => {
                 // Remove { } for clean display
                 const cleanEn = item.en.replace(/[{}]/g, '');
@@ -1322,7 +1478,7 @@
                     <span style="font-size:0.9em; color:#555;">Ex: ${cleanEn} / ${item.ja}</span>
                 </li>`;
             }).join('');
-            
+
             openPrintWindow(`<ul class="list-container">${listItems}</ul>`, '重要熟語リスト');
             pdfModal.classList.add('hidden');
         });
@@ -1330,14 +1486,14 @@
         // 2. 英語を解答
         document.getElementById('download-en-quiz-btn').addEventListener('click', () => {
             const items = getUniqueItems(getSelectedItems());
-            
-            const quizItems = items.map(item => 
+
+            const quizItems = items.map(item =>
                 `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')} : ____________________</span></li>`
             ).join('');
-            const answerItems = items.map(item => 
+            const answerItems = items.map(item =>
                 `<li><span class="inline-content">${item.answer}</span></li>`
             ).join('');
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (英語を解答)');
             pdfModal.classList.add('hidden');
@@ -1346,14 +1502,14 @@
         // 3. 意味を解答
         document.getElementById('download-ja-quiz-btn').addEventListener('click', () => {
             const items = getUniqueItems(getSelectedItems());
-            
-            const quizItems = items.map(item => 
+
+            const quizItems = items.map(item =>
                 `<li><span class="inline-content"><strong>${item.answer}</strong> : ____________________</span></li>`
             ).join('');
-            const answerItems = items.map(item => 
+            const answerItems = items.map(item =>
                 `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')}</span></li>`
             ).join('');
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (意味を解答)');
             pdfModal.classList.add('hidden');
@@ -1364,7 +1520,7 @@
             const items = getUniqueItems(getSelectedItems());
             let quizItems = '';
             let answerItems = '';
-            
+
             items.forEach(item => {
                 if (Math.random() > 0.5) {
                     // 日本語 -> 英語
@@ -1376,7 +1532,7 @@
                     answerItems += `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')}</span></li>`;
                 }
             });
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (混合)');
             pdfModal.classList.add('hidden');
@@ -1385,14 +1541,14 @@
         // 5. 例文穴埋め
         document.getElementById('download-sentence-quiz-btn').addEventListener('click', () => {
             const items = getSelectedItems(); // 例文問題なので重複（文脈違い）も含める
-            
+
             const quizItems = items.map(item => {
                 // Replace {answer} with underscore
                 const blankSentence = item.en.replace(`{${item.answer}}`, '____________________');
                 return `<li>${blankSentence}<br><span style="font-size:0.9em;">(${item.ja})</span></li>`;
             }).join('');
-            
-            const answerItems = items.map(item => 
+
+            const answerItems = items.map(item =>
                 `<li>${item.answer}</li>`
             ).join('');
 
@@ -1406,7 +1562,7 @@
             const items = getSelectedItems();
             let quizItems = '';
             let answerItems = '';
-            
+
             const instruction = '<p style="border:1px solid #ccc; padding:10px; margin-bottom:20px;">指示：空所には適切な語句を補い、下線部がある文は下線部の意味を日本語で答えなさい。</p>';
 
             items.forEach(item => {
@@ -1435,4 +1591,5 @@
         });
     </script>
 </body>
+
 </html>

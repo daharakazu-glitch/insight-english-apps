@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Tinos:wght@700&display=swap');
-        
+
         body {
-            background-color: #007BFF; /* ビビットなブルー */
+            background-color: #007BFF;
+            /* ビビットなブルー */
             font-family: 'Noto Sans JP', sans-serif;
         }
 
@@ -17,12 +19,15 @@
         .font-english {
             font-family: 'Tinos', 'Times New Roman', serif;
             font-weight: 700;
-            font-size: 1.25rem; /* 20px */
-            line-height: 1.75rem; /* 28px */
+            font-size: 1.25rem;
+            /* 20px */
+            line-height: 1.75rem;
+            /* 28px */
         }
 
         .answer-span {
-            color: #DC2626; /* 赤色 */
+            color: #DC2626;
+            /* 赤色 */
             font-weight: 700;
             display: none;
         }
@@ -40,7 +45,7 @@
         .show-answer .underline-span {
             display: none;
         }
-        
+
         .explanation {
             display: none;
             white-space: pre-wrap;
@@ -57,22 +62,27 @@
             cursor: pointer;
             transition: all 0.2s ease-in-out;
         }
+
         .btn-primary {
             background-color: #3b82f6;
             color: white;
         }
+
         .btn-primary:hover {
             background-color: #2563eb;
         }
+
         .btn-secondary {
             background-color: #6b7280;
             color: white;
         }
+
         .btn-secondary:hover {
             background-color: #4b5563;
         }
     </style>
 </head>
+
 <body class="text-gray-800">
 
     <div id="app-container" class="container mx-auto p-4 md:p-8 max-w-4xl">
@@ -83,23 +93,27 @@
 
         <main class="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg mb-28">
             <div class="flex justify-between items-center mb-6">
-                 <!-- PDF Control Section -->
-                 <div class="flex-1 mr-4">
+                <!-- PDF Control Section -->
+                <div class="flex-1 mr-4">
                     <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
                         <h3 class="font-bold text-sm md:text-base mb-2">選択した問題でPDFを作成</h3>
                         <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
                             <div class="flex items-center">
-                                <input type="checkbox" id="select-all-checkbox" class="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
-                                <label for="select-all-checkbox" class="ml-2 text-sm font-medium text-gray-700 cursor-pointer">すべて選択 / 解除</label>
+                                <input type="checkbox" id="select-all-checkbox"
+                                    class="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                                <label for="select-all-checkbox"
+                                    class="ml-2 text-sm font-medium text-gray-700 cursor-pointer">すべて選択 / 解除</label>
                             </div>
-                            <button id="open-pdf-modal-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow text-sm transition-transform transform hover:scale-105">
+                            <button id="open-pdf-modal-btn"
+                                class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow text-sm transition-transform transform hover:scale-105">
                                 PDF作成メニュー
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <button id="start-quiz-btn" class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-lg shadow transition-transform transform hover:scale-105 whitespace-nowrap">
+                <button id="start-quiz-btn"
+                    class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-lg shadow transition-transform transform hover:scale-105 whitespace-nowrap">
                     ランダムテスト
                 </button>
             </div>
@@ -111,11 +125,16 @@
     </div>
 
     <!-- Control Panel -->
-    <div id="control-panel" class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md p-4 border-t-2 border-gray-200 shadow-2xl flex justify-center items-center space-x-2 md:space-x-4">
-        <button id="toggle-answer-btn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">表示/非表示</button>
-        <button id="play-sound-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">音声再生</button>
-        <button id="record-btn" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">録音評価</button>
-        <button id="toggle-explanation-btn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">解説</button>
+    <div id="control-panel"
+        class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md p-4 border-t-2 border-gray-200 shadow-2xl flex justify-center items-center space-x-2 md:space-x-4">
+        <button id="toggle-answer-btn"
+            class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">表示/非表示</button>
+        <button id="play-sound-btn"
+            class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">音声再生</button>
+        <button id="record-btn"
+            class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">録音評価</button>
+        <button id="toggle-explanation-btn"
+            class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">解説</button>
     </div>
 
     <!-- Message/Score Modal -->
@@ -124,11 +143,12 @@
             <!-- Message content will be populated by JS -->
         </div>
     </div>
-    
+
     <!-- Quiz Modal -->
     <div id="quiz-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-40 p-4">
         <div class="bg-white w-full max-w-2xl p-8 rounded-2xl shadow-2xl relative">
-            <button id="close-quiz-btn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-3xl font-bold">&times;</button>
+            <button id="close-quiz-btn"
+                class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-3xl font-bold">&times;</button>
             <div id="quiz-content">
                 <!-- Quiz content will be populated by JS -->
             </div>
@@ -136,17 +156,24 @@
     </div>
 
     <!-- PDF Download Modal -->
-    <div id="pdf-modal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center z-50">
+    <div id="pdf-modal"
+        class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center z-50">
         <div class="relative mx-auto p-5 border w-11/12 md:w-1/2 lg:w-1/3 shadow-lg rounded-md bg-white">
             <div class="mt-3 text-center">
                 <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">ダウンロードするPDFの種類を選択</h3>
                 <div class="mt-2 space-y-3">
-                    <button id="download-list-btn" class="btn btn-primary w-full justify-start text-left">1. 完全なリスト (熟語・意味・例文)</button>
-                    <button id="download-en-quiz-btn" class="btn btn-primary w-full justify-start text-left">2. 熟語テスト (英語を解答)</button>
-                    <button id="download-ja-quiz-btn" class="btn btn-primary w-full justify-start text-left">3. 熟語テスト (意味を解答)</button>
-                    <button id="download-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">4. 熟語テスト (混合)</button>
-                    <button id="download-sentence-quiz-btn" class="btn btn-primary w-full justify-start text-left">5. 例文の穴埋め問題</button>
-                    <button id="download-sentence-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">6. 例文の混合問題 (穴埋め/和訳)</button>
+                    <button id="download-list-btn" class="btn btn-primary w-full justify-start text-left">1. 完全なリスト
+                        (熟語・意味・例文)</button>
+                    <button id="download-en-quiz-btn" class="btn btn-primary w-full justify-start text-left">2. 熟語テスト
+                        (英語を解答)</button>
+                    <button id="download-ja-quiz-btn" class="btn btn-primary w-full justify-start text-left">3. 熟語テスト
+                        (意味を解答)</button>
+                    <button id="download-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">4. 熟語テスト
+                        (混合)</button>
+                    <button id="download-sentence-quiz-btn" class="btn btn-primary w-full justify-start text-left">5.
+                        例文の穴埋め問題</button>
+                    <button id="download-sentence-mixed-quiz-btn"
+                        class="btn btn-primary w-full justify-start text-left">6. 例文の混合問題 (穴埋め/和訳)</button>
                 </div>
                 <div class="mt-6">
                     <button id="close-modal-btn" class="btn btn-secondary w-full">キャンセル</button>
@@ -158,220 +185,228 @@
     <script>
         const chapterData = [
     {
-        "id": "1",
-        "ja": "2 3 4 5 6 7 8 9 10音読 動名詞 2 3 4 5 6 7 8 9 10音読 動名詞 2 3 4 5 6 7 8 9 10音読 動名詞",
+        "id": "６",
+        "ja": "章　動名詞  QR ☚ 音読用動画　別解など",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
-        "question": "File24 a means of doingʮʙ͢Δखஈʯɹ  be good at doingʮʙ͢Δͷ্͕खͩʯ‎904-1 be [become] successful in doing͢Δʯ‎1064-2 dream of doingΔʯ ࢺʴݱ"
+        "question": ""
     },
     {
-        "id": "6",
-        "ja": "動名詞 ◀\t音読用動画 別解など 動名詞文法編 ｜  6章 動名詞文法編 ｜  6章",
+        "id": "76",
+        "ja": "● 文法編｜６章",
         "en": "???",
-        "answer": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "78",
+        "ja": "● 文法編｜６章",
+        "en": "???",
+        "answer": "",
         "explanation": "",
         "question": ""
     },
     {
         "id": "139",
-        "ja": "異文化について学ぶこ とは大切だ。 6章 動名詞",
-        "en": "{Learning about diﬀerent cultures is important.}",
-        "answer": "Learning about diﬀerent cultures is important.",
-        "explanation": "▶ 動詞の原形に-ing が付いて「～すること」という名詞の働きをする準動詞を\nࢺと呼ぶ。➡VI16– p.7\n▶ 動名詞 （句） は文の中で，主語・目的語・補語・前置詞の目的語として使う。\nこの文ではLearning about different cultures という動名詞句が主語。\nlearn A はʮA͑ΔΑ͏ʹͳΔɼशಘ͢Δʯの意味。\nstudy はʮʢ౒ྗ͠ ͯʣA͢Δʯの意味。",
-        "question": "(L      ) (a      ) (        ) (        ) is important. ①"
+        "ja": "異文化について学ぶことは大切だ。 この文ではLearning about different culturesという動名詞句が主語。 ＋ learn about Aは「(習得ではなく) A(知識など)について学ぶ」の意味。 learn Aは「A(技術など)を学んで使えるようになる，習得する」の意味。 studyは「(努力して) A(学科など)を勉強する」の意味。",
+        "en": "{Learning about different cultures} is important.",
+        "answer": "Learning about different cultures",
+        "explanation": "F 098 ▶ 動詞の原形に-ingが付いて「～すること」という名詞の働きをする準動詞を動名詞と呼ぶ。➡ VI 16―p.7\n▶ 動名詞(句)は文の中で，主語・目的語・補語・前置詞の目的語として使う。",
+        "question": "(L   ) (a   ) (    ) (    ) is important."
     },
     {
         "id": "140",
-        "ja": "スマ ートフォン を 使 い 過 ぎ ると目を痛めることがある。",
-        "en": "{Using a smartphone too much can damage your eyes.}",
-        "answer": "Using a smartphone too much can damage your eyes.",
-        "explanation": "▶ 動名詞句 Using a smartphone too much が主語。\nuse A too muchʮA͍ա͗Δʯ\ndamage one’s eyesʮ໨Λ௧ΊΔʯ",
-        "question": "(U      ) a (        ) (        ) (        ) can damage your eyes. ͢Δɻ͢Δɻ"
+        "ja": "スマートフォンを使い過ぎると目を痛めることがある。 「スマートフォンの使い過ぎは目を痛めることがある」と表現する。 ○ use A too much「Aを使い過ぎる」 ○ damage one’s eyes「目を痛める」",
+        "en": "{Using }a{ smartphone too much} can damage your eyes.",
+        "answer": "Using, smartphone too much",
+        "explanation": "F 098 ▶ 動名詞句Using a smartphone too muchが主語。",
+        "question": "(U   ) a (    ) (    ) (    ) can damage your eyes."
     },
     {
         "id": "141",
-        "ja": "私のお気に入りの気晴らしは小 説を読むことだ。",
-        "en": "My favorite pastime {is reading novels.}",
-        "answer": "is reading novels.",
-        "explanation": "▶ 動名詞句 reading novels が補語。➡Grasp11– p.97 ［動名詞の基本イ メージ］\n〈S is doing〉は 「S は～している」という現在進行形の場合と， 「S は～することだ」と\nいう動名詞が補語の場合がある。He is swimming.（彼は泳いでいる。 ） は現在進行形\nで，swimming は現在分詞。",
-        "question": "My favorite pastime (        ) (        ) (        )."
+        "ja": "私のお気に入りの気晴らしは小説を読むことだ。 場合は，to不定詞と動名詞，どちらが好まれる？ ！〈S is doing〉は「Sは～している」という現在進行形の場合と，「Sは～することだ」という動名詞が補語の場合がある。He is swimming.（彼は泳いでいる。）は現在進行形で，swimmingは現在分詞。",
+        "en": "My favorite pastime {is reading novels}.",
+        "answer": "is reading novels",
+        "explanation": "Tip 「小説を読むこと」を補語にする。「これから行う」のではなく「実際に行っている」\nF 098 ▶ 動名詞句reading novelsが補語。➡ Grasp 11―p.97 [動名詞の基本イメージ]",
+        "question": "My favorite pastime (    ) (    ) (    )."
     },
     {
         "id": "142",
-        "ja": "留 学することで視 野を広げることができる。",
-        "en": "You can broaden your horizons {by studying abroad. by doingʮʙ͢Δ͜ͱʹΑͬͯʯ}",
-        "answer": "by studying abroad. by doingʮʙ͢Δ͜ͱʹΑͬͯʯ",
-        "explanation": "▶ 動名詞句 studying abroad が前置詞 by の目的語。\nto 不定詞は前置詞の目的語にはならない。 by doing    by to do\nbroaden one’s horizons͛Δʯ＝expand one’s horizons\nstudy abroad͢Δʯ",
-        "question": "You can broaden your horizons (        ) (        ) (        )."
+        "ja": "留学することで視野を広げることができる。 by doing「～することによって」 ！ to不定詞は前置詞の目的語にはならない。○ by doing × by to do ○ broaden one’s horizons「視野を広げる」＝expand one’s horizons ○ study abroad「留学する」",
+        "en": "You can broaden your horizons {by studying abroad}.",
+        "answer": "by studying abroad",
+        "explanation": "▶ 動名詞句studying abroadが前置詞byの目的語。",
+        "question": "You can broaden your horizons (    ) (    ) (    )."
     },
     {
         "id": "143",
-        "ja": "外国へ行く前に自国の文化について学ぶことが大切だ。",
-        "en": "It is important to learn about our own culture {before going abroad. before doingʮʙ͢Δલʹʯ go abroad͘ʯ}",
-        "answer": "before going abroad. before doingʮʙ͢Δલʹʯ go abroad͘ʯ",
-        "explanation": "",
-        "question": "It is important to learn about our own culture ."
+        "ja": "外国へ行く前に自国の文化について学ぶことが大切だ。 before doing「～する前に」 ○ go abroad「外国へ行く」",
+        "en": "It is important to learn about our own culture {before going abroad}.",
+        "answer": "before going abroad",
+        "explanation": "Tip  不定詞とは違い，動名詞は〈前置詞＋動名詞〉の形をとることができる。",
+        "question": "It is important to learn about our own culture before going abroad."
     },
     {
         "id": "144",
-        "ja": "私は音楽を聴くのが好きだ。",
-        "en": "I am {fond of listening to music. be fond of doing͖ͩʯ ＝like doing}",
-        "answer": "fond of listening to music. be fond of doing͖ͩʯ ＝like doing",
-        "explanation": "",
-        "question": "I am  music."
+        "ja": "私は音楽を聴くのが好きだ。 be fond of doing「～するのが好きだ」",
+        "en": "I {am }fond of listening to music. I {am fond of listening to} music.",
+        "answer": "am, am fond of listening to",
+        "explanation": "＝like doing",
+        "question": ""
     },
     {
         "id": "145",
-        "ja": "私 はイギリス留学に興味がある。 復習",
-        "en": "???",
-        "answer": "???",
+        "ja": "私はイギリス留学に興味がある。 動名詞 ① ● 75 be interested in doing「～することに興味がある」 ○ study in the UK「イギリスへ留学する」",
+        "en": "I {am interested in studying} in the UK.",
+        "answer": "am interested in studying",
         "explanation": "",
-        "question": "I  in the UK. I am interested in studying in the UK. be interested in doingຯ͕͋Δʯ study in the UK͢Δʯ learn / study 74 75 Self Check"
+        "question": "I am interested in studying in the UK."
     },
     {
         "id": "146",
-        "ja": "仕事が増えなければ，貧困解消の見込みはない。 have no chance to do はձ͕ͳ͍ʯの意味。この問題では不可。",
-        "en": "{②}",
-        "answer": "②",
-        "explanation": "",
-        "question": "Without more jobs, we (h      ) (        ) (c      ) (        ) (e      ) poverty. Without more jobs, we have no chance of ending poverty. have no chance of doingΈ͸ͳ͍ʯ end povertyΛղফ͢Δ ʦ๾໓͢Δʧʯ"
+        "ja": "仕事が増えなければ，貧困解消の見込みはない。 have no chance of doing「～する見込みはない」 ！ have no chance to doは「～する機会がない」の意味。この問題では不可。 ○ end poverty「貧困を解消する[撲滅する]」",
+        "en": "Without more jobs, we {have no chance of ending} poverty.",
+        "answer": "have no chance of ending",
+        "explanation": "Tip 「貧困解消の見込み → 貧困を終わらせることの見込み」と表現する。",
+        "question": "Without more jobs, we (h   ) (    ) (c   ) (    ) (e   ) poverty."
     },
     {
         "id": "147",
-        "ja": "クラ スメート と一緒に慈善活動のためにお金を募ったことを誇りに思う。",
-        "en": "I’m proud of {having raised money for charity with my classmates.}",
-        "answer": "having raised money for charity with my classmates.",
-        "explanation": "▶ 動名詞が述語動詞よりも前の時の動作や状態を表す場合，動名詞は〈having\nʴࢺ〉の 形 に な る（ܗ）。 こ の 文 で は〈be proud of having\n＋過去分詞〉 で「～したことを誇りに思う」の意味。\nraise money for charityΛืΔʯ",
-        "question": "I’m proud of (        ) (r      ) money for charity with my classmates."
+        "ja": "クラスメートと一緒に慈善活動のためにお金を募ったことを誇りに思う。 動名詞が述語動詞よりも「前の時の動作」を表す場合，動名詞の形はどうする？ ○ raise money for charity「慈善活動のためにお金を募る」",
+        "en": "I’m proud of {having raised} money for charity with my classmates.",
+        "answer": "having raised",
+        "explanation": "F 101 ▶ 動名詞が述語動詞よりも前の時の動作や状態を表す場合，動名詞は〈having＋過去分詞〉の形になる（動名詞の完了形）。この文では〈be proud of having＋過去分詞〉で「～したことを誇りに思う」の意味。",
+        "question": "I’m proud of (    ) (r   ) money for charity with my classmates."
     },
     {
         "id": "148",
-        "ja": "両親に子ども扱いされるのはうんざりだ。",
-        "en": "I’m tired of {being treated like a child by my parents.}",
-        "answer": "being treated like a child by my parents.",
-        "explanation": "▶ ͷडಈଶ「～されること」はbeingʴࢺ（done）の形にする。\nbe tired of A ʮA ʹ͏Μ͟Γ͍ͯ͠Δʯ\ntreat A like BʮA ΛB ͷΑ͏ʹѻ͏ʯ",
-        "question": "I’m tired of (        ) (        ) like a child by my parents."
+        "ja": "両親に子ども扱いされるのはうんざりだ。 動名詞の受動態の形は？ ○ be tired of A「Aにうんざりしている」 ○ treat A like B「AをBのように扱う」",
+        "en": "I’m tired of {being treated} like a child by my parents.",
+        "answer": "being treated",
+        "explanation": "F 102 ▶ 動名詞の受動態「～されること」はbeing＋過去分詞(done)の形にする。",
+        "question": "I’m tired of (    ) (    ) like a child by my parents."
     },
     {
         "id": "149",
-        "ja": "自転車に乗っているときにヘルメットを着用しないのはとても危険だ。",
-        "en": "{Not wearing a helmet while cycling is very dangerous.}",
-        "answer": "Not wearing a helmet while cycling is very dangerous.",
-        "explanation": "▶ ܗは，動名詞の直前にnot や never を置く。\nnot doingʮʙ͠ͳ͍͜ͱʯ",
-        "question": "(        ) (        ) a helmet while cycling is very dangerous."
+        "ja": "自転車に乗っているときにヘルメットを着用しないのはとても危険だ。 not doing「～しないこと」",
+        "en": "{Not wearing} a helmet while cycling is very dangerous.",
+        "answer": "Not wearing",
+        "explanation": "F 100 ▶ 動名詞の否定形は，動名詞の直前にnotやneverを置く。",
+        "question": "(    ) (    ) a helmet while cycling is very dangerous."
     },
     {
         "id": "150",
-        "ja": "個人情報の漏えいが懸念されている。",
-        "en": "There are concerns about {personal information being leaked}.",
-        "answer": "personal information being leaked",
-        "explanation": "▶ 動名詞の直前に，動名詞のޠを置く ことがある。意味上の主語が\n名詞の場合は〈そのままの形ʴ動名詞〉または〈所有格ʴ動名詞〉の形に，代\n名詞の場合は〈目的格ʴ動名詞〉または〈所有格ʴ動名詞〉の形にする。会話\nでは目的 格のほうがよく使われる。➡p.96 2 , VI17– p.7\nconcern೦ʯ\nbe leaked ʮʢ৘ใͳͲ͕ʣ࿙ΕΔ ʦྲྀग़͢Δʧʯ",
+        "ja": "個人情報の漏えいが懸念されている。 動名詞の意味上の主語はどこに置く？ ○ concern「心配，気づかい，関係，関心事，懸念」 ○ be leaked「(情報などが)漏れる[流出する]」",
+        "en": "There are concerns about {personal information being} {leaked}.",
+        "answer": "personal information being, leaked",
+        "explanation": "F 099 ▶ 動名詞の直前に，動名詞の意味上の主語を置くことがある。意味上の主語が名詞の場合は〈そのままの形＋動名詞〉または〈所有格＋動名詞〉の形に，代名詞の場合は〈目的格＋動名詞〉または〈所有格＋動名詞〉の形にする。会話では目的格のほうがよく使われる。➡ p.96 ②, VI 17―p.7",
         "question": "There are concerns about ( being / information / leaked / personal )."
     },
     {
         "id": "151",
-        "ja": "花火を見るのを楽しみにし ていた。",
-        "en": "I was {looking forward to seeing the fireworks. look forward to A [doing]ʮA͠Έʹ͢Δʯ}",
-        "answer": "looking forward to seeing the fireworks. look forward to A [doing]ʮA͠Έʹ͢Δʯ",
-        "explanation": "▶ 前置詞 to の後には名詞または動名詞がくる。\nこのto はto不定詞ではなく前置詞。よってto の後に動詞の原形はこない。\nsee (the) fireworksΔʯ",
-        "question": "I was  the fireworks."
+        "ja": "花火を見るのを楽しみにしていた。 look forward to A [doing]「Aを[～するのを]楽しみにする」 ！ このtoはto不定詞ではなく前置詞。よってtoの後に動詞の原形はこない。 ○ see (the) fireworks「花火を見る」",
+        "en": "I was {looking forward to seeing} the fireworks.",
+        "answer": "looking forward to seeing",
+        "explanation": "▶ 前置詞toの後には名詞または動名詞がくる。",
+        "question": "I was looking forward to seeing the fireworks."
     },
     {
         "id": "152-1",
-        "ja": "高齢者は電子機器を使うことに慣れていない。",
-        "en": "The elderly are not used to using electronic devices. be used to A [doing] be accustomed to A [doing]    ʮAΕ ͯ ͍ Δ ʯ electronic deviceʯ―deviceʮ૷ஔʯ",
-        "answer": "are not used to using electronic devices. be used to A [doing] be accustomed to A [doing] ʮAΕ ͯ ͍ Δ ʯ electronic deviceʯ―deviceʮ૷ஔʯ",
+        "ja": "高齢者は電子機器を使うことに慣れていない。 be accustomed to A [doing]    「Aに[～することに]慣れている」 ○ electronic device「電子機器」―device「装置」",
+        "en": "The elderly {are not used to using} electronic devices. {be used to }A [do{ing}]",
+        "answer": "are not used to using, be used to, ing",
         "explanation": "",
-        "question": "The elderly  electronic devices."
+        "question": "The elderly are not used to using electronic devices."
     },
     {
         "id": "152-2",
-        "ja": "発展 スマート フォ ンは友達や家族とコミュニケーションをとるのに使える。",
-        "en": "Smartphones can {be used to communicate with friends and family. be used to doΘΕΔʯ}",
-        "answer": "be used to communicate with friends and family. be used to doΘΕΔʯ",
-        "explanation": "▶ 「S は使われる」 （be used） という受動態の文に， 「～するために」 （to do）と い う\n不定詞の副詞的用法 （目的） が付いた表現。\nused to do ʮҎલ͸ʙͨ͠΋ͷͩɼҎલ͸ʙͩͬͨʯ➡65\n〈be used to A [doing]〉〈be used＋to do〉〈used to do〉 は間違えやすいので注意。\ncommunicate with A ʮA ͱίϛϡχέʔγϣϯΛͱΔʯ\nchance / raise / treat / wear / see\n76 77\n復習\nSelf\nCheck",
-        "question": "Smartphones can  with friends and family. ͢Δɻ͢Δɻ"
+        "ja": "スマートフォンは友達や家族とコミュニケーションをとるのに使える。 発展     Tip 「～に慣れている」の表現と形は似ているが，意味と用法が異なる。受動態の「使 われる」と，「～するために」を一緒に使って，「～するために使われる」と表現 する。 動名詞 ② ● 77 be used to do「～するために使われる」 ＋ used to do「以前は～したものだ，以前は～だった」➡ 65 ！〈be used to A [doing]〉〈be used＋to do〉〈used to do〉は間違えやすいので注意。 ○ communicate with A「Aとコミュニケーションをとる」",
+        "en": "Smartphones can {be used to communicate} with friends and family.",
+        "answer": "be used to communicate",
+        "explanation": "▶「Sは使われる」(be used)という受動態の文に，「～するために」(to do)という不定詞の副詞的用法（目的）が付いた表現。",
+        "question": "Smartphones can be used to communicate with friends and family."
     },
     {
         "id": "153",
-        "ja": "早起きに慣れるのにしばらく時 間がかかるかもしれない。",
-        "en": "It may take a while to get used [accustomed] to getting up early. get used to A [doing] get accustomed to A [doing]    ʮAΕ Δ ʯ",
-        "answer": "get used [accustomed] to getting up early. get used to A [doing] get accustomed to A [doing] ʮAΕ Δ ʯ",
-        "explanation": "▶ 前置詞 to の後には名詞または動名詞がくる。  get used to get up … は誤り。\nIt takes a while (for A) to doʮʢA͕ ͔ ͔ Δʯ",
-        "question": "It may take a while to (g      ) (        ) (        ) (        ) (        ) early."
+        "ja": "早起きに慣れるのにしばらく時間がかかるかもしれない。 get accustomed to A [doing]    「Aに[～することに]慣れる」 ○ It takes a while (for A) to do「(Aが)～するのにはしばらく時間がかかる」",
+        "en": "It may take a while to {get used [accustomed] to getting up} early. {get used to }A [do{ing}]",
+        "answer": "get used [accustomed] to getting up, get used to, ing",
+        "explanation": "Tip 「慣れている」という状態ではなく「慣れる」という動作を表すには？\n▶ 前置詞toの後には名詞または動名詞がくる。× get used to get up … は誤り。",
+        "question": "It may take a while to (g   ) (    ) (    ) (    ) (    ) early."
     },
     {
         "id": "154",
-        "ja": "公共の場所での喫煙に反対する人は多い。",
-        "en": "Many people {object to smoking in public places. object to A [doing]ʮA ʹ ʦʙ͢Δ͜ͱʹʧ ൓ର͢Δʯ＝oppose A [doing] smoke in public places͏ʯ}",
-        "answer": "object to smoking in public places. object to A [doing]ʮA ʹ ʦʙ͢Δ͜ͱʹʧ ൓ର͢Δʯ＝oppose A [doing] smoke in public places͏ʯ",
-        "explanation": "",
-        "question": "Many people (o      ) (        ) (        ) in public places."
+        "ja": "公共の場所での喫煙に反対する人は多い。 object to A [doing]「Aに[～することに]反対する」＝oppose A [doing] ○ smoke in public places「公共の場所でたばこを吸う」",
+        "en": "Many people {object to smoking} in public places.",
+        "answer": "object to smoking",
+        "explanation": "Tip 「～に反対する」を表す２語から成る表現は？",
+        "question": "Many people (o   ) (    ) (    ) in public places."
     },
     {
         "id": "155",
-        "ja": "かっこいい服を 選 ぶことに関してはナオミがいちばんだ。 clothes ʮҥ෰ʯ―-es が付いて「衣服」の意味。複数扱い。発音は/klóÜz/",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Naomi is the best (w     ) (        ) (c      ) (        ) (c      ) stylish clothes. Naomi is the best when it comes to choosing stylish clothes. when it comes to A [doing]ʮA ͷ͜ͱ ʦʙ͢Δ͜ͱʧ ͱͳΔͱʯ"
+        "ja": "かっこいい服を選ぶことに関してはナオミがいちばんだ。 when it comes to A [doing]「Aのこと[～すること]となると」 ○ clothes「衣服」― -esが付いて「衣服」の意味。複数扱い。発音は/○○/",
+        "en": "Naomi is the best {when it comes to choosing} stylish clothes.",
+        "answer": "when it comes to choosing",
+        "explanation": "Tip 「～することに関しては → ～することになると」を表す表現は？",
+        "question": "Naomi is the best (w   ) (    ) (c   ) (    ) (c   ) stylish clothes."
     },
     {
         "id": "156",
-        "ja": "今週末にビーチに行くのはどうだろう？",
-        "en": "{What do you say to going} to the beach this weekend? ＝How about A [doing]? ＝What about A [doing]?",
+        "ja": "今週末にビーチに行くのはどうだろう？ What do you say to A [doing]?「Aは[～するのは]どうだろう？」",
+        "en": "{What do you say to going }to the beach this weekend?",
         "answer": "What do you say to going",
-        "explanation": "",
+        "explanation": "Tip  How about doing「～するのはどうだろう？」などと同じ意味を表す表現は？\n＝How about A [doing]?＝What about A [doing]?",
         "question": "( do / you / going / to / say / what ) to the beach this weekend?"
     },
     {
         "id": "157",
-        "ja": "今夜は勉強する気がしない。",
-        "en": "I {don’t feel like studying tonight. feel like doing෼ͩʯ＝feel inclined to do feel like S ′ʴV′ʮʜ͕͢Δʯ＝feel as if … ＝feel as though …}",
-        "answer": "don’t feel like studying tonight. feel like doing෼ͩʯ＝feel inclined to do feel like S ′ʴV′ʮʜ͕͢Δʯ＝feel as if … ＝feel as though …",
+        "ja": "今夜は勉強する気がしない。 feel like doing「～したい気分だ」＝feel inclined to do ＋ feel like S’＋V’「…のような気がする」＝feel as if …＝feel as though …",
+        "en": "I {don’t feel like studying} tonight.",
+        "answer": "don’t feel like studying",
         "explanation": "",
-        "question": "I (        ) (        ) (l      ) (        ) tonight."
+        "question": "I (    ) (    ) (l   ) (    ) tonight."
     },
     {
         "id": "158",
-        "ja": "発展 私を見るとすぐに，彼は方向を変えて道を渡り始めた。",
-        "en": "{On seeing me, he changed direction and started to cross the street. on doingʮʙ͢Δͱ͙͢ʹʯ＝as soon as S′ʴV′ change directionΛม͑Δʯ}",
-        "answer": "On seeing me, he changed direction and started to cross the street. on doingʮʙ͢Δͱ͙͢ʹʯ＝as soon as S′ʴV′ change directionΛม͑Δʯ",
+        "ja": "私を見るとすぐに，彼は方向を変えて道を渡り始めた。 発展     Tip  動名詞を使って「～するとすぐに」を表す表現は？ on doing「～するとすぐに」＝as soon as S’＋V’ ○ change direction「方向を変える」",
+        "en": "{On seeing me}, he changed direction and started to cross the street.",
+        "answer": "On seeing me",
         "explanation": "",
-        "question": "(      ) (s   ) (      ), he changed direction and started to cross the street."
+        "question": "(    ) (s   ) (    ), he changed direction and started to cross the street."
     },
     {
         "id": "159",
-        "ja": "この本は読む価値がある。",
-        "en": "This book is {worth reading. A is worth doingʮA ͸ʙ͢ΔՁ஋͕͋Δʯ}",
-        "answer": "worth reading. A is worth doingʮA ͸ʙ͢ΔՁ஋͕͋Δʯ",
-        "explanation": "▶ 動名詞と主語の間には，意味上のV とO の関係（read this book）が あ る 。\n動名詞の目的語が主語に移動した形。  This book is worth reading it. や\nThis book is worth being read. にはならない。",
-        "question": "This book is ."
+        "ja": "この本は読む価値がある。 A is worth doing「Aは～する価値がある」 動名詞の目的語が主語に移動した形。 × This book is worth reading it. や × This book is worth being read. にはならない。",
+        "en": "This book {is}is worth reading. This book {is worth reading}.",
+        "answer": "is, is worth reading",
+        "explanation": "▶ 動名詞と主語の間には，意味上のVとOの関係（read this book）がある。",
+        "question": ""
     },
     {
         "id": "160",
-        "ja": "彼女は一度話し始めると止められない。",
-        "en": "There {is no stopping her once she starts talking. ＝It is impossible to do ＝No one can do ＝We cannot do}",
-        "answer": "is no stopping her once she starts talking. ＝It is impossible to do ＝No one can do ＝We cannot do",
-        "explanation": "",
-        "question": "There  her once she starts talking."
+        "ja": "彼女は一度話し始めると止められない。 There is no doing「～することはできない」",
+        "en": "{There} is no stopping her once she starts talking. {There is no stopping} her once she starts talking.",
+        "answer": "There, There is no stopping",
+        "explanation": "Tip 「～することはできない」を表す，動名詞を使った表現は？\n＝It is impossible to do＝No one can do＝We cannot do",
+        "question": ""
     },
     {
         "id": "161",
-        "ja": "彼からのメッセージの返信を待っても無 駄 だ。",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "(        ) (        ) (        ) (        ) (        ) for him to text back. It is no use [good] waiting for him to text back. It is no use [good] doingʮʙ͠ ͯ΋ແବͩʯ＝There is no point (in) doing text (A) backʮʢA ʹ ʣϝο η ʔ δ Λ ฦ ৴ ͢ Δʯ"
+        "ja": "彼からのメッセージの返信を待っても無駄だ。 It is no use [good] doing「～しても無駄だ」＝There is no point (in) doing ○ text (A) back「(Aに)メッセージを返信する」",
+        "en": "{It is no use [good] waiting} for him to text back.",
+        "answer": "It is no use [good] waiting",
+        "explanation": "Tip 「～しても無駄だ」を表す定型表現は？",
+        "question": "(    ) (    ) (    ) (    ) (    ) for him to text back."
     },
     {
         "id": "162",
-        "ja": "樹木保護の助けとなるよう，紙をリサイ ク ルすべきなのは言うまでもない。 help (to) doʮʙ͢Δॿ͚ͱͳΔʯ―to は省略されることが多い。 復習",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "(        ) (        ) (        ) (        ) (        ) we should recycle paper to help save trees. It goes without saying that we should recycle paper to help save trees. ＝Needless to say, SʴV recycle paperΛϦαΠΫϧ͢Δʯ save trees͢Δʯ choose / see 78 79 Self Check"
+        "ja": "樹木保護の助けとなるよう，紙をリサイクルすべきなのは言うまでもない。 動名詞 ③ ● 79 It goes without saying that S’＋V’「…は言うまでもないことだ」 ○ recycle paper「紙をリサイクルする」 ○ help (to) do「～する助けとなる」―toは省略されることが多い。 ○ save trees「樹木を保護する」",
+        "en": "{It goes without saying that} we should recycle paper to help save trees.",
+        "answer": "It goes without saying that",
+        "explanation": "Tip 「…は言うまでもないことだ」を表す定型表現は？\n＝Needless to say, S＋V",
+        "question": "(    ) (    ) (    ) (    ) (    ) we should recycle paper to help save trees."
     }
 ];
 
@@ -385,7 +420,7 @@
             recognition.lang = 'en-US';
             recognition.interimResults = false;
         }
-        
+
         // --- Voice Synthesis Setup ---
         let synthesisVoice = null;
 
@@ -393,10 +428,10 @@
             const voices = speechSynthesis.getVoices();
             // 優先順位: Google US English -> Microsoft Zira/David -> その他英語
             synthesisVoice = voices.find(voice => voice.name === 'Google US English') ||
-                             voices.find(voice => voice.name.includes('Google') && voice.lang.includes('en-US')) ||
-                             voices.find(voice => voice.name.includes('Microsoft') && voice.lang.includes('en-US')) ||
-                             voices.find(voice => voice.lang === 'en-US') ||
-                             voices.find(voice => voice.lang.startsWith('en'));
+                voices.find(voice => voice.name.includes('Google') && voice.lang.includes('en-US')) ||
+                voices.find(voice => voice.name.includes('Microsoft') && voice.lang.includes('en-US')) ||
+                voices.find(voice => voice.lang === 'en-US') ||
+                voices.find(voice => voice.lang.startsWith('en'));
         }
 
         // 音声リストがロードされたら設定を実行
@@ -419,7 +454,7 @@
         const quizModal = document.getElementById('quiz-modal');
         const closeQuizBtn = document.getElementById('close-quiz-btn');
         const quizContent = document.getElementById('quiz-content');
-        
+
         const selectAllCheckbox = document.getElementById('select-all-checkbox');
         const pdfModal = document.getElementById('pdf-modal');
         const openPdfModalBtn = document.getElementById('open-pdf-modal-btn');
@@ -469,7 +504,7 @@
                 `;
                 sentenceList.appendChild(sentenceDiv);
             });
-            
+
             // Add click listener to each sentence item
             document.querySelectorAll('.sentence-item').forEach(item => {
                 item.addEventListener('click', (e) => {
@@ -496,15 +531,15 @@
                     }
                 });
             });
-            
+
             // Select the first sentence by default
             if (sentenceList.firstChild) {
-                 sentenceList.firstChild.click();
+                sentenceList.firstChild.click();
             }
         }
-        
+
         // --- PDF / Print Logic ---
-        
+
         function openPrintWindow(bodyContent, title) {
             const htmlContent = `
                 <!DOCTYPE html>
@@ -556,7 +591,7 @@
             printWindow.document.write(htmlContent);
             printWindow.document.close();
             setTimeout(() => {
-                printWindow.focus(); 
+                printWindow.focus();
                 printWindow.print();
             }, 250);
         }
@@ -571,32 +606,32 @@
                 .map(id => chapterData.find(item => item.id === id))
                 .filter(Boolean)
                 .sort((a, b) => {
-                     // Handle IDs like "1382-1" vs "1382-2"
-                     const aParts = a.id.split('-').map(s => parseInt(s) || 0);
-                     const bParts = b.id.split('-').map(s => parseInt(s) || 0);
-                     if (aParts[0] !== bParts[0]) return aParts[0] - bParts[0];
-                     return (aParts[1] || 0) - (bParts[1] || 0);
+                    // Handle IDs like "1382-1" vs "1382-2"
+                    const aParts = a.id.split('-').map(s => parseInt(s) || 0);
+                    const bParts = b.id.split('-').map(s => parseInt(s) || 0);
+                    if (aParts[0] !== bParts[0]) return aParts[0] - bParts[0];
+                    return (aParts[1] || 0) - (bParts[1] || 0);
                 });
         }
-        
+
         function getUniqueItems(items) {
-             const uniqueMap = new Map();
-             items.forEach(item => {
-                 // Use answer as key to deduplicate same phrases
-                 if (!uniqueMap.has(item.answer)) {
-                     uniqueMap.set(item.answer, item);
-                 }
-             });
-             return Array.from(uniqueMap.values()).sort((a, b) => {
-                 const aId = parseInt(a.id.split('-')[0]);
-                 const bId = parseInt(b.id.split('-')[0]);
-                 return aId - bId;
-             });
+            const uniqueMap = new Map();
+            items.forEach(item => {
+                // Use answer as key to deduplicate same phrases
+                if (!uniqueMap.has(item.answer)) {
+                    uniqueMap.set(item.answer, item);
+                }
+            });
+            return Array.from(uniqueMap.values()).sort((a, b) => {
+                const aId = parseInt(a.id.split('-')[0]);
+                const bId = parseInt(b.id.split('-')[0]);
+                return aId - bId;
+            });
         }
 
 
         // --- Message & Sound Functions ---
-        
+
         function showMessage(htmlContent, duration = null) {
             messageContent.innerHTML = htmlContent;
             messageModal.classList.remove('hidden');
@@ -620,7 +655,7 @@
 
             // 連続再生を防ぐために一度キャンセル
             speechSynthesis.cancel();
-            
+
             let textToSpeak = activeSentenceElement.dataset.fullSentence;
             // 念のため不要な記号を除去
             textToSpeak = textToSpeak.replace(/[{}]/g, '');
@@ -633,7 +668,7 @@
                 utterance.voice = synthesisVoice;
             }
 
-            utterance.rate = 1.0; 
+            utterance.rate = 1.0;
             utterance.pitch = 1.0;
 
             speechSynthesis.speak(utterance);
@@ -650,7 +685,7 @@
             }
 
             showMessage('<p class="text-2xl">マイクに向かって話してください...</p><div class="animate-pulse text-red-500 text-4xl mt-4">●</div>');
-            
+
             recognition.start();
 
             recognition.onresult = (event) => {
@@ -661,20 +696,20 @@
             recognition.onerror = (event) => {
                 showMessage(`<p>エラーが発生しました: ${event.error}</p>`, 3000);
             };
-            
+
             recognition.onend = () => {
-                 if (messageModal.classList.contains('hidden') === false && messageContent.innerHTML.includes('マイクに')) {
+                if (messageModal.classList.contains('hidden') === false && messageContent.innerHTML.includes('マイクに')) {
                     messageModal.classList.add('hidden');
-                 }
+                }
             };
         }
-        
+
         function evaluatePronunciation(transcript) {
             const originalText = activeSentenceElement.dataset.fullSentence;
 
             const cleanOrig = originalText.toLowerCase().replace(/[^\w\s]/g, '').split(' ');
             const cleanTrans = transcript.toLowerCase().replace(/[^\w\s]/g, '').split(' ');
-            
+
             let matches = 0;
             cleanOrig.forEach(word => {
                 if (cleanTrans.includes(word)) {
@@ -683,7 +718,7 @@
             });
 
             const similarity = matches / cleanOrig.length;
-            
+
             let score;
             if (similarity > 0.9) {
                 score = 95 + Math.floor(Math.random() * 5);
@@ -696,7 +731,7 @@
             } else {
                 score = 70 + Math.floor(Math.random() * 10);
             }
-            
+
             if (score === 100 && Math.random() < 0.3) score = 99;
 
             const messageHtml = `
@@ -713,8 +748,8 @@
 
         function startQuiz() {
             if (chapterData.length < 10) {
-                 showMessage('<p>クイズを作成するには、文が10個以上必要です。</p>', 3000);
-                 return;
+                showMessage('<p>クイズを作成するには、文が10個以上必要です。</p>', 3000);
+                return;
             }
 
             const shuffled = [...chapterData].sort(() => 0.5 - Math.random());
@@ -739,8 +774,9 @@
                     .map(item => item.answer);
 
                 const options = [correctAnswer, ...incorrectAnswers].sort(() => 0.5 - Math.random());
-                
-                const questionSentence = question.en.replace(`{${question.answer}}`, ' (______) ');
+
+                // Use regex to replace ALL {answer} parts with (______)
+                const questionSentence = question.en.replace(/\{.*?\}/g, ' (______) ');
 
                 quizContent.innerHTML = `
                     <h3 class="text-2xl font-bold mb-2">問題 ${currentQuestionIndex + 1}/10</h3>
@@ -760,7 +796,7 @@
                             button.classList.add('bg-red-400', 'text-white');
                             document.querySelector(`.quiz-option[data-answer="${CSS.escape(correctAnswer)}"]`).classList.add('bg-green-400', 'text-white');
                         }
-                        
+
                         setTimeout(() => {
                             currentQuestionIndex++;
                             showQuestion();
@@ -805,12 +841,12 @@
                 explanationDiv.style.display = 'block';
             }
         });
-        
+
         playSoundBtn.addEventListener('click', playSound);
         recordBtn.addEventListener('click', handleRecording);
         startQuizBtn.addEventListener('click', startQuiz);
         closeQuizBtn.addEventListener('click', () => quizModal.classList.add('hidden'));
-        
+
         // Select All Logic
         selectAllCheckbox.addEventListener('change', (e) => {
             const isChecked = e.target.checked;
@@ -824,7 +860,7 @@
 
         // PDF Modal Logic
         openPdfModalBtn.addEventListener('click', () => {
-             if (selectedSentences.size === 0) {
+            if (selectedSentences.size === 0) {
                 showMessage('<p>PDFを作成する問題を選択してください。</p>', 3000);
                 return;
             }
@@ -846,10 +882,10 @@
         // 1. 完全なリスト
         document.getElementById('download-list-btn').addEventListener('click', () => {
             const items = getSelectedItems();
-            if(!items) return;
+            if (!items) return;
             // リスト作成の場合は重複があっても良いが、見やすくするために熟語ベースでユニークにするか、
             // そのままID順で並べるか。ここではID順ですべて表示する。
-            
+
             const listItems = items.map(item => {
                 // Remove { } for clean display
                 const cleanEn = item.en.replace(/[{}]/g, '');
@@ -858,7 +894,7 @@
                     <span style="font-size:0.9em; color:#555;">Ex: ${cleanEn} / ${item.ja}</span>
                 </li>`;
             }).join('');
-            
+
             openPrintWindow(`<ul class="list-container">${listItems}</ul>`, '重要熟語リスト');
             pdfModal.classList.add('hidden');
         });
@@ -866,14 +902,14 @@
         // 2. 英語を解答
         document.getElementById('download-en-quiz-btn').addEventListener('click', () => {
             const items = getUniqueItems(getSelectedItems());
-            
-            const quizItems = items.map(item => 
+
+            const quizItems = items.map(item =>
                 `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')} : ____________________</span></li>`
             ).join('');
-            const answerItems = items.map(item => 
+            const answerItems = items.map(item =>
                 `<li><span class="inline-content">${item.answer}</span></li>`
             ).join('');
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (英語を解答)');
             pdfModal.classList.add('hidden');
@@ -882,14 +918,14 @@
         // 3. 意味を解答
         document.getElementById('download-ja-quiz-btn').addEventListener('click', () => {
             const items = getUniqueItems(getSelectedItems());
-            
-            const quizItems = items.map(item => 
+
+            const quizItems = items.map(item =>
                 `<li><span class="inline-content"><strong>${item.answer}</strong> : ____________________</span></li>`
             ).join('');
-            const answerItems = items.map(item => 
+            const answerItems = items.map(item =>
                 `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')}</span></li>`
             ).join('');
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (意味を解答)');
             pdfModal.classList.add('hidden');
@@ -900,7 +936,7 @@
             const items = getUniqueItems(getSelectedItems());
             let quizItems = '';
             let answerItems = '';
-            
+
             items.forEach(item => {
                 if (Math.random() > 0.5) {
                     // 日本語 -> 英語
@@ -912,7 +948,7 @@
                     answerItems += `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')}</span></li>`;
                 }
             });
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (混合)');
             pdfModal.classList.add('hidden');
@@ -921,14 +957,14 @@
         // 5. 例文穴埋め
         document.getElementById('download-sentence-quiz-btn').addEventListener('click', () => {
             const items = getSelectedItems(); // 例文問題なので重複（文脈違い）も含める
-            
+
             const quizItems = items.map(item => {
                 // Replace {answer} with underscore
                 const blankSentence = item.en.replace(`{${item.answer}}`, '____________________');
                 return `<li>${blankSentence}<br><span style="font-size:0.9em;">(${item.ja})</span></li>`;
             }).join('');
-            
-            const answerItems = items.map(item => 
+
+            const answerItems = items.map(item =>
                 `<li>${item.answer}</li>`
             ).join('');
 
@@ -942,7 +978,7 @@
             const items = getSelectedItems();
             let quizItems = '';
             let answerItems = '';
-            
+
             const instruction = '<p style="border:1px solid #ccc; padding:10px; margin-bottom:20px;">指示：空所には適切な語句を補い、下線部がある文は下線部の意味を日本語で答えなさい。</p>';
 
             items.forEach(item => {
@@ -971,4 +1007,5 @@
         });
     </script>
 </body>
+
 </html>

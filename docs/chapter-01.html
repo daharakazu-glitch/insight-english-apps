@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Tinos:wght@700&display=swap');
-        
+
         body {
-            background-color: #007BFF; /* ビビットなブルー */
+            background-color: #007BFF;
+            /* ビビットなブルー */
             font-family: 'Noto Sans JP', sans-serif;
         }
 
@@ -17,12 +19,15 @@
         .font-english {
             font-family: 'Tinos', 'Times New Roman', serif;
             font-weight: 700;
-            font-size: 1.25rem; /* 20px */
-            line-height: 1.75rem; /* 28px */
+            font-size: 1.25rem;
+            /* 20px */
+            line-height: 1.75rem;
+            /* 28px */
         }
 
         .answer-span {
-            color: #DC2626; /* 赤色 */
+            color: #DC2626;
+            /* 赤色 */
             font-weight: 700;
             display: none;
         }
@@ -40,7 +45,7 @@
         .show-answer .underline-span {
             display: none;
         }
-        
+
         .explanation {
             display: none;
             white-space: pre-wrap;
@@ -57,22 +62,27 @@
             cursor: pointer;
             transition: all 0.2s ease-in-out;
         }
+
         .btn-primary {
             background-color: #3b82f6;
             color: white;
         }
+
         .btn-primary:hover {
             background-color: #2563eb;
         }
+
         .btn-secondary {
             background-color: #6b7280;
             color: white;
         }
+
         .btn-secondary:hover {
             background-color: #4b5563;
         }
     </style>
 </head>
+
 <body class="text-gray-800">
 
     <div id="app-container" class="container mx-auto p-4 md:p-8 max-w-4xl">
@@ -83,23 +93,27 @@
 
         <main class="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg mb-28">
             <div class="flex justify-between items-center mb-6">
-                 <!-- PDF Control Section -->
-                 <div class="flex-1 mr-4">
+                <!-- PDF Control Section -->
+                <div class="flex-1 mr-4">
                     <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
                         <h3 class="font-bold text-sm md:text-base mb-2">選択した問題でPDFを作成</h3>
                         <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
                             <div class="flex items-center">
-                                <input type="checkbox" id="select-all-checkbox" class="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
-                                <label for="select-all-checkbox" class="ml-2 text-sm font-medium text-gray-700 cursor-pointer">すべて選択 / 解除</label>
+                                <input type="checkbox" id="select-all-checkbox"
+                                    class="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                                <label for="select-all-checkbox"
+                                    class="ml-2 text-sm font-medium text-gray-700 cursor-pointer">すべて選択 / 解除</label>
                             </div>
-                            <button id="open-pdf-modal-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow text-sm transition-transform transform hover:scale-105">
+                            <button id="open-pdf-modal-btn"
+                                class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow text-sm transition-transform transform hover:scale-105">
                                 PDF作成メニュー
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <button id="start-quiz-btn" class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-lg shadow transition-transform transform hover:scale-105 whitespace-nowrap">
+                <button id="start-quiz-btn"
+                    class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-lg shadow transition-transform transform hover:scale-105 whitespace-nowrap">
                     ランダムテスト
                 </button>
             </div>
@@ -111,11 +125,16 @@
     </div>
 
     <!-- Control Panel -->
-    <div id="control-panel" class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md p-4 border-t-2 border-gray-200 shadow-2xl flex justify-center items-center space-x-2 md:space-x-4">
-        <button id="toggle-answer-btn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">表示/非表示</button>
-        <button id="play-sound-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">音声再生</button>
-        <button id="record-btn" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">録音評価</button>
-        <button id="toggle-explanation-btn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">解説</button>
+    <div id="control-panel"
+        class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md p-4 border-t-2 border-gray-200 shadow-2xl flex justify-center items-center space-x-2 md:space-x-4">
+        <button id="toggle-answer-btn"
+            class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">表示/非表示</button>
+        <button id="play-sound-btn"
+            class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">音声再生</button>
+        <button id="record-btn"
+            class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">録音評価</button>
+        <button id="toggle-explanation-btn"
+            class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">解説</button>
     </div>
 
     <!-- Message/Score Modal -->
@@ -124,11 +143,12 @@
             <!-- Message content will be populated by JS -->
         </div>
     </div>
-    
+
     <!-- Quiz Modal -->
     <div id="quiz-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-40 p-4">
         <div class="bg-white w-full max-w-2xl p-8 rounded-2xl shadow-2xl relative">
-            <button id="close-quiz-btn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-3xl font-bold">&times;</button>
+            <button id="close-quiz-btn"
+                class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-3xl font-bold">&times;</button>
             <div id="quiz-content">
                 <!-- Quiz content will be populated by JS -->
             </div>
@@ -136,17 +156,24 @@
     </div>
 
     <!-- PDF Download Modal -->
-    <div id="pdf-modal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center z-50">
+    <div id="pdf-modal"
+        class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center z-50">
         <div class="relative mx-auto p-5 border w-11/12 md:w-1/2 lg:w-1/3 shadow-lg rounded-md bg-white">
             <div class="mt-3 text-center">
                 <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">ダウンロードするPDFの種類を選択</h3>
                 <div class="mt-2 space-y-3">
-                    <button id="download-list-btn" class="btn btn-primary w-full justify-start text-left">1. 完全なリスト (熟語・意味・例文)</button>
-                    <button id="download-en-quiz-btn" class="btn btn-primary w-full justify-start text-left">2. 熟語テスト (英語を解答)</button>
-                    <button id="download-ja-quiz-btn" class="btn btn-primary w-full justify-start text-left">3. 熟語テスト (意味を解答)</button>
-                    <button id="download-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">4. 熟語テスト (混合)</button>
-                    <button id="download-sentence-quiz-btn" class="btn btn-primary w-full justify-start text-left">5. 例文の穴埋め問題</button>
-                    <button id="download-sentence-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">6. 例文の混合問題 (穴埋め/和訳)</button>
+                    <button id="download-list-btn" class="btn btn-primary w-full justify-start text-left">1. 完全なリスト
+                        (熟語・意味・例文)</button>
+                    <button id="download-en-quiz-btn" class="btn btn-primary w-full justify-start text-left">2. 熟語テスト
+                        (英語を解答)</button>
+                    <button id="download-ja-quiz-btn" class="btn btn-primary w-full justify-start text-left">3. 熟語テスト
+                        (意味を解答)</button>
+                    <button id="download-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">4. 熟語テスト
+                        (混合)</button>
+                    <button id="download-sentence-quiz-btn" class="btn btn-primary w-full justify-start text-left">5.
+                        例文の穴埋め問題</button>
+                    <button id="download-sentence-mixed-quiz-btn"
+                        class="btn btn-primary w-full justify-start text-left">6. 例文の混合問題 (穴埋め/和訳)</button>
                 </div>
                 <div class="mt-6">
                     <button id="close-modal-btn" class="btn btn-secondary w-full">キャンセル</button>
@@ -158,356 +185,372 @@
     <script>
         const chapterData = [
     {
-        "id": "1",
-        "ja": "2 3 4 5 6 7 8 9 10音読 知覚・感覚を表す動詞ɹ  see͑Δʯɹ  hearʮฉ͑͜Δʯ ੍・ͷΠϝʔδ 時制・完了形 時制・完了形 ◀\t音読用動画 別解など 章 時制・完了形 2 3 4 5 6 7 8 9 10音読 時制・完了形 文法編 ｜  1章 時制・完了形 2 3 4 5 6 7 8 9 10音読 ② 経験  onceʮ̍౓ʯɹ  twiceʮ̎౓ʯɹ  three timesʮ̏౓ʯɹ  beforeʮҎલʹʯ ③ 継続  forʯɹ  sinceʮʙҎདྷʯɹ  How long …?ʜʯ 時制・完了形 文法編 ｜  1章 時制・完了形 2 3 4 5 6 7 8 9 10音読 現在完了形 過去形 現在形・現在進行形 現在 過去 未来 基本時制 S do/does S did S will do 進行形 S am/are/is doing S was/were doing S will be doing 完了形 S have/has done S had done S will have done 完了進行形 S have/has been doing S had been doing S will have been doing ੍・ͷ·ͱΊ 時制・完了形 文法編 ｜  1章 時制・完了形 2 3 4 5 6 7 8 9 10音読 時制・完了形 文法編 ｜  1章 時制・完了形 2 3 4 5 6 7 8 9 10音読 接続詞 副詞節 名詞節 時 条件 અ・અ 時制・完了形 文法編 ｜  1章 時制・完了形",
+        "id": "１",
+        "ja": "章　時制・完了形  QR ☚ 音読用動画　別解など",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
-        "question": "File2 have / own / possess͍ͬͯΔɼॴ ༗͍ͯ͠Δʯɹ  resemble͍ͯΔʯ believeʮ৴͡Δʯɹ  knowʮ஌͍ͬͯΔʯɹ  understandʮཧղ͢Δʯ smellʮʹ͓͍͕͢Δʯɹ  tasteʮຯ͕͢Δʯɹ  feel͕͢͡Δʯ ࢺ ―ࢺ ܗ ܗߦ ͜Ε͔Βઌ ݱ ① ۟ޠFile3 File5File4 lately ʢ·Εʣ ʢ·Εʣ recently ʢ·Εʣ these days ʢ·Εʣ nowadays ؒظʴagoʮʙલʯɹ  yesterday೔ʯɹ  when I was a childʯ last night [week, month, year]೥ʧʯ thenʯɹ  in 2011ʮ2011೥ʹʯʢinʴ੢ྐྵʣɹ  in those daysʯ ۟ޠFile6 File7 whenʹʯ ܗࡏݱ ʮ͍ͭʜ͢Δ͔ʯwill͏ as soon as ʮʜ͢Δͱ͙͢ʹʯ if ʮ΋͠ʜͳΒ͹ʯ ܗࡏݱ ʮʜ͢Δ͔Ͳ͏͔ʯwill͏ અ͸ͭ͘ Βͳ͍ in caseʹඋ͑ͯʯ"
+        "question": ""
     },
     {
-        "id": "1-1",
-        "ja": "父 はよくネットで 買い 物 をする。",
-        "en": "My father often {shops online.}",
-        "answer": "shops online.",
-        "explanation": "▶ ܗࡏݱは「今この瞬間」ではなく，「現在を含む広い範囲の時」を表す。現在\nの状態や現在の習慣的・反復的動作，変わらない事実や真理を表す。\n➡VI1 – p.2\n▶ このshop は自動詞。英語では１つの単語が複数の品詞で使われることがある。",
-        "question": "My father often (        ) (        )."
+        "id": "01-1",
+        "ja": "父はよくネットで買い物をする。 「買い物をする」を1語の自動詞で表すと？「ネットで」を1語の副詞で表すと？ 現在の状態や現在の習慣的・反復的動作，変わらない事実や真理を表す。 ○ shop online「ネットで買い物をする」―online shop「ネットショップ」",
+        "en": "My father often {shops online}.",
+        "answer": "shops online",
+        "explanation": "F 023 ▶ 現在形は「今この瞬間」ではなく，「現在を含む広い範囲の時」を表す。\n➡ VI 1―p.2\n▶ このshopは自動詞。英語では１つの単語が複数の品詞で使われることがある。",
+        "question": "My father often (    ) (    )."
     },
     {
-        "id": "1-2",
-        "ja": "地球は太陽の周りを回っている。",
-        "en": "The Earth {goes around the Sun.}",
-        "answer": "goes around the Sun.",
-        "explanation": "▶ 過去・現在・未来を通じて変わらない事実や真理を表 すときは現在形を使う。\ngo around A ʮA ͷपΓΛճΔʯ",
-        "question": "The Earth (        ) (        ) the Sun."
+        "id": "01-2",
+        "ja": "地球は太陽の周りを回っている。 ○ go around A「Aの周りを回る」",
+        "en": "The Earth {goes around} the Sun.",
+        "answer": "goes around",
+        "explanation": "Tip 「過去・現在・未来を通じて変わらない事実」を表すとき，時制はどうする？\nF 024 ▶ 過去・現在・未来を通じて変わらない事実や真理を表すときは現在形を使う。",
+        "question": "The Earth (    ) (    ) the Sun."
     },
     {
-        "id": "1-3",
-        "ja": "ペットの世話は子どもに責任感を教える。",
-        "en": "{Caring for pets teaches children responsibility.}",
-        "answer": "Caring for pets teaches children responsibility.",
-        "explanation": "▶ 主語が３人称単数の場合，動詞が現在形のときは，３単現 （３人称単数現在） の\n-s が必要。動名詞や不定詞の主語は単数扱いになる。\ncare for a pet ʮϖοτͷੈ࿩Λ͢Δʯ",
-        "question": "(C      ) for pets (t      ) children responsibility."
+        "id": "01-3",
+        "ja": "ペットの世話は子どもに責任感を教える。 動詞が現在形のときに注意しないといけないことは？ ○ care for a pet「ペットの世話をする」",
+        "en": "{Caring} for pets {teaches} children responsibility.",
+        "answer": "Caring, teaches",
+        "explanation": "Tip 「ペットの世話をすること」を主語にするときどうする？\n▶ 主語が３人称単数の場合，動詞が現在形のときは，３単現(３人称単数現在)の-sが必要。動名詞や不定詞の主語は単数扱いになる。",
+        "question": "(C   ) for pets (t   ) children responsibility."
     },
     {
-        "id": "2",
-        "ja": "コンサートは６時半から始まる。",
-        "en": "The concert {starts at six thirty.}",
-        "answer": "starts at six thirty.",
-        "explanation": "▶ 交通機関の時刻や劇場の開始予定など，現時点で確定し ている未来の予定につ\nいては現在形を使う。時の一点を示す前置詞はat。「 ～ か ら 始 ま る ⭢ ～に始まる」",
-        "question": "The concert (        ) (        ) six thirty."
+        "id": "02",
+        "ja": "コンサートは６時半から始まる。 F 034    Tip  すでに確定していて，確実にやって来る未来の予定を表す時制は？",
+        "en": "The concert {starts} {at} six thirty.",
+        "answer": "starts, at",
+        "explanation": "F 034 ▶ 交通機関の時刻や劇場の開始予定など，現時点で確定している未来の予定については現在形を使う。時の一点を示す前置詞はat。「～から始まる → ～に始まる」",
+        "question": "The concert (    ) (    ) six thirty."
     },
     {
-        "id": "3-1",
-        "ja": "その女性は花に水をやっている。",
+        "id": "03-1",
+        "ja": "その女性は花に水をやっている。 ○ water flowers「花に水をやる」―このwaterは他動詞",
         "en": "The woman {is watering} some flowers.",
         "answer": "is watering",
-        "explanation": "▶ 「（今）～している（ところだ）」という今まさに行われている動作や行為を表すの\nはܗߦ。現在進行形はam/are/is doing の形。➡VI1 – p.2\nwater flowers ʮՖʹਫΛ΍Δʯ―このwater は他動詞",
-        "question": "The woman  some flowers."
+        "explanation": "F 025 ▶ 「(今)～している(ところだ)」という今まさに行われている動作や行為を表すのは現在進行形。現在進行形はam/are/is doingの形。➡ VI 1―p.2",
+        "question": "The woman is watering some flowers."
     },
     {
-        "id": "3-2",
-        "ja": "ケンはいつも自転車で通学しているが，雨 が 降っているので今日はバスに乗っている。",
-        "en": "Ken usually {goes to school by bike, but today he is on the bus because it is raining}.",
-        "answer": "goes to school by bike, but today he is on the bus because it is raining",
-        "explanation": "▶ 「～している」が常に現在進行形とは限らない。 「いつも～する」という現在の習\n慣は現在形，「 ～ し て い る 」 と い う今まさに起こっていることは現在進行形で表す。",
-        "question": "Ken usually  school by bike, but today he is on the bus because it ."
+        "id": "03-2",
+        "ja": "ケンはいつも自転車で通学しているが，雨が降っているので今日はバスに乗っている。 F 025    Tip 「いつもの習慣」を表すときの時制は？「今まさに～している」を表す形は？",
+        "en": "Ken usually {goes to} school by bike, but today he is on the bus because it {is raining}{. }",
+        "answer": "goes to, is raining, .",
+        "explanation": "F 025 ▶「～している」が常に現在進行形とは限らない。「いつも～する」という現在の習慣は現在形，「～している」という今まさに起こっていることは現在進行形で表す。",
+        "question": "Ken usually goes to school by bike, but today he is on the bus because it is raining."
     },
     {
-        "id": "4",
-        "ja": "その留学生はトム・ホラン ドにちょっと似ている。",
+        "id": "04",
+        "ja": "その留学生はトム・ホランドにちょっと似ている。 時制・完了形 ① ● 15 ○ international student「留学生」",
         "en": "The international student {resembles} Tom Holland a bit.",
         "answer": "resembles",
-        "explanation": "▶ 動詞には動作や行為を表すࢺ（ ～ す る ）と ，ある状態が続いていること\nを表すࢺ（～である，～している） の区別がある。状態動詞は原則とし て\n進行形にしない。resemble「～に似ている」は状態動詞。➡File2\ninternational studentੜʯ\nshop / online / go around / care / start / water / rain / resemble\n14 15\n復習\nSelf\nCheck",
-        "question": "The international student  Tom Holland a bit."
+        "explanation": "▶ 動詞には動作や行為を表す動作動詞(～する)と，ある状態が続いていることを表す状態動詞(～である，～している)の区別がある。状態動詞は原則として進行形にしない。resemble「～に似ている」は状態動詞。➡ File 2",
+        "question": "The international student resembles Tom Holland a bit."
     },
     {
-        "id": "5",
-        "ja": "プラスチックごみが 環 境を破壊している。",
-        "en": "Plastic waste {is damaging the environment.}",
-        "answer": "is damaging the environment.",
-        "explanation": "▶ 現在進行形を使うことで，切迫感や臨場感を表すことができる。\nplastic waste ʮϓϥενοΫ͝Έʯ\ndamage the environmentΛഁյ͢Δʯ",
-        "question": "Plastic waste (        ) (d      ) the environment."
+        "id": "05",
+        "ja": "プラスチックごみが環境を破壊している。 ○ plastic waste「プラスチックごみ」 ○ damage the environment「環境を破壊する」",
+        "en": "Plastic waste {is damaging} the environment.",
+        "answer": "is damaging",
+        "explanation": "Tip 「(ある程度長い時間)～している」ことを切迫感や臨場感を伴って表す形は？\n▶ 現在進行形を使うことで，切迫感や臨場感を表すことができる。",
+        "question": "Plastic waste (    ) (d   ) the environment."
     },
     {
-        "id": "6",
-        "ja": "その２人は来年結婚する。",
-        "en": "The couple {are [is] getting married next year.}",
-        "answer": "are [is] getting married next year.",
-        "explanation": "▶ すでに計画が進行中で具体的な準備が進んでいる場合は現在進行形を使って\n未来の予定を表せる。この用法は未来を表す時の副詞と共に使うのが普通。\ncouple 「１組の男女」は単数扱い・複数扱いのどちらでも可。\nget married͢Δʯ",
-        "question": "The couple (        ) (        ) married next year."
+        "id": "06",
+        "ja": "その２人は来年結婚する。 ＋ couple「１組の男女」は単数扱い・複数扱いのどちらでも可。 ○ get married「結婚する」",
+        "en": "The couple {are [is] getting} married next year.",
+        "answer": "are [is] getting",
+        "explanation": "F 034 ▶ すでに計画が進行中で具体的な準備が進んでいる場合は現在進行形を使って未来の予定を表せる。この用法は未来を表す時の副詞と共に使うのが普通。",
+        "question": "The couple (    ) (    ) married next year."
     },
     {
-        "id": "7-1",
-        "ja": "おととしの夏，家族で富士山に登った。",
-        "en": "I {climbed Mt. Fuji with my family two summers ago}.",
-        "answer": "climbed Mt. Fuji with my family two summers ago",
-        "explanation": "▶ ܗڈは「過去のこと」を表す時制。過去の長い期間の状態，過去１回きりの\n動作・行為・出来事，過去の習慣的・反復的動作はすべて過去形で表すこと\nができる。 ～ago「～前に」などの過去を表す語句と共に使う。➡VI3– p.2\ntwo summers ago ʮ͓ͱͱ͠ͷՆʯ",
-        "question": "I  Mt. Fuji with my family two ."
+        "id": "07-1",
+        "ja": "おととしの夏，家族で富士山に登った。 過去を示す表現と共に使われる時制は？ ～ago「～前に」などの過去を表す語句と共に使う。➡ VI 3―p.2 ○ two summers ago「おととしの夏」",
+        "en": "I {climbed} Mt. Fuji with my family two {summers ago}.",
+        "answer": "climbed, summers ago",
+        "explanation": "F 027 ▶ 過去形は「過去のこと」を表す時制。過去の長い期間の状態，過去１回きりの動作・行為・出来事，過去の習慣的・反復的動作はすべて過去形で表すことができる。",
+        "question": "I climbed Mt. Fuji with my family two summers ago."
     },
     {
-        "id": "7-2",
-        "ja": "発展 小学生の時，１年間東 京に住んでいたことがある。",
-        "en": "I {lived in Tokyo for a year when I was} in elementary school.",
-        "answer": "lived in Tokyo for a year when I was",
-        "explanation": "▶ 「住んでいたことがある」というのは， 「 （当時）住んでいた」という「現在とは切り\n離された過去の状態」を表すので過去形を使う。完了形にはしない。➡VI4– p.3\nwhen S′ was in elementary schoolʮSʯ",
-        "question": "I  for a year when I  in elementary school."
+        "id": "07-2",
+        "ja": "小学生の時，１年間東京に住んでいたことがある。 発展     Tip 「～していたことがある」という日本語に惑わされない。「小学生の時」は過去。 ○ when S’ was in elementary school「S’が小学生の時」",
+        "en": "I {lived in Tokyo} for a year when I {was} in elementary school.",
+        "answer": "lived in Tokyo, was",
+        "explanation": "F 026 ▶「住んでいたことがある」というのは，「(当時)住んでいた」という「現在とは切り離された過去の状態」を表すので過去形を使う。完了形にはしない。➡ VI 4―p.3",
+        "question": "I lived in Tokyo for a year when I was in elementary school."
     },
     {
-        "id": "8",
-        "ja": "友人が電話した時，サラは図書館で勉 強していた。",
-        "en": "Sara {was studying in the library when her friend calle}d her.",
-        "answer": "was studying in the library when her friend calle",
-        "explanation": "▶ 「（その時）～してい た ， ～している途 中 だった」という「過去のある時点」におい\nて一時的に行われていた動作や行為はܗߦwas/were doing で表す。",
-        "question": "Sara  in the library when her friend  her."
+        "id": "08",
+        "ja": "友人が電話した時，サラは図書館で勉強していた。",
+        "en": "Sara {was studying} in the library when her friend {called} her.",
+        "answer": "was studying, called",
+        "explanation": "F 028 ▶「(その時)～していた，～している途中だった」という「過去のある時点」において一時的に行われていた動作や行為は過去進行形was/were doingで表す。",
+        "question": "Sara was studying in the library when her friend called her."
     },
     {
-        "id": "9-1",
-        "ja": "自動運転車は交通をより安全にするだろう。",
-        "en": "Self-driving cars {will make transportation safer.}",
-        "answer": "will make transportation safer.",
-        "explanation": "▶ 未来の事柄はwill do や be going to do などのݱを使う。\nwill do は未来に起こると予想される事柄を表す一般的な表現。\nwill do  ᶃ ʮʙͩΖ͏ʯᶄ ʮʙ͢Δͭ΋Γͩɼʙ͠·͢ʯ\nself-driving carಈӡసंʯ\nmake A saferʮA ΛΑΓ҆શʹ͢Δʯ\ntransportation௨खஈʯ―複数形にはならない。",
-        "question": "Self-driving cars (        ) (        ) transportation safer."
+        "id": "09-1",
+        "ja": "自動運転車は交通をより安全にするだろう。 will doは未来に起こると予想される事柄を表す一般的な表現。 will do ①「～だろう」②「～するつもりだ，～します」 ○ self-driving car「自動運転車」 ○ make A safer「Aをより安全にする」 ○ transportation「輸送手段，交通手段」―複数形にはならない。",
+        "en": "Self-driving cars {will make} transportation safer.",
+        "answer": "will make",
+        "explanation": "F 029 ▶ 未来の事柄はwill doやbe going to doなどの未来を表す表現を使う。",
+        "question": "Self-driving cars (    ) (    ) transportation safer."
     },
     {
-        "id": "9-2",
-        "ja": "「裕子おばさんが３時にここに来るか ら ， 早 く 帰 っ て 来 な さ い 。」 「わかった。その時までには帰るよ。」",
-        "en": "“Aunt Yuko {will be here at 3:00. Come home early.” “OK. I’ll be back by then.”}",
-        "answer": "will be here at 3:00. Come home early.” “OK. I’ll be back by then.”",
-        "explanation": "▶ １文めは予想される未来の事柄を表す。応答文の２文めは「～するつもりだ，\n～します」という主語の意志を表し，このwill をະདྷのwill と呼ぶ。",
-        "question": "“Aunt Yuko (w     ) (        ) (        ) at 3:00. Come home early.” “OK. (        ) (b      ) (        ) by then.”"
+        "id": "09-2",
+        "ja": "「裕子おばさんが3時にここに来るから，早く帰って来なさい。」 「わかった。その時までには帰るよ。」 ～します」という主語の意志を表し，このwillを意志未来のwillと呼ぶ。 ○ by then「その時までには」",
+        "en": "“Aunt Yuko {will be here} at 3:00. Come home early.” “OK. {I’ll be back} by then.”",
+        "answer": "will be here, I’ll be back",
+        "explanation": "Tip 「～するよ」という「その場で決めた未来の意志」を表す表現は？\n▶ １文めは予想される未来の事柄を表す。応答文の２文めは「～するつもりだ，",
+        "question": "“Aunt Yuko (w   ) (    ) (    ) at 3:00. Come home early.” “OK. (    ) (b   ) (    ) by then.”"
     },
     {
-        "id": "9-3",
-        "ja": "「７時まで図書館で勉強する予定なんだ。」「 そ う な の ？ 」",
-        "en": "“{I’m going to study in the library until 7:00.” “Are you?”}",
-        "answer": "I’m going to study in the library until 7:00.” “Are you?”",
-        "explanation": "▶ be going to do は発話の時点ですでに決まっている未来の予定を表す。\n➡VI2– p.2   be going to do の疑問文はbe動詞を文頭に出す。Are you (going\nto study in the library until 7:00)?\nbe going to do ʮʙ͢Δ༧ఆͩʯ\ndamage / get / climb / ago / call / make / be back\n16 17\n復習\nSelf\nCheck",
-        "question": "“(        ) (g      ) (        ) (        ) in the library until 7:00.” “Are you?”"
+        "id": "09-3",
+        "ja": "「7時まで図書館で勉強する予定なんだ。」「そうなの？」 時制・完了形 ② ● 17 ➡ VI 2―p.2　be going to doの疑問文はbe動詞を文頭に出す。Are you (going to study in the library until 7:00)? be going to do「～する予定だ」 ○ until＋時刻「～までずっと」",
+        "en": "“{I’m going to study} in the library until 7:00.” “Are you?”",
+        "answer": "I’m going to study",
+        "explanation": "F 030 ▶ be going to doは発話の時点ですでに決まっている未来の予定を表す。",
+        "question": "“(    ) (g   ) (    ) (    ) in the library until 7:00.” “Are you?”"
     },
     {
         "id": "10",
-        "ja": "発展 土曜日の午後，私たちはビーチの 清 掃 をしているだろう。",
-        "en": "We {will be cleaning up the beach on Saturday afternoon.}",
-        "answer": "will be cleaning up the beach on Saturday afternoon.",
-        "explanation": "▶ 「～しているだろう」という未来のある時点において行われているであろう動作\nはܗߦwill be doing で表す。\nclean (up) the beachʮϏʔνΛਗ਼૟͢Δʯ\non Saturday afternoonʹʯ",
-        "question": "We (        ) (        ) (c      ) up the beach on Saturday afternoon."
+        "ja": "土曜日の午後，私たちはビーチの清掃をしているだろう。 発展     Tip 「未来のある時点」において「～しているだろう」を表す表現は？ ○ clean (up) the beach「ビーチを清掃する」 ○ on Saturday afternoon「土曜の午後に」",
+        "en": "We {will be cleaning }up the beach on Saturday afternoon.",
+        "answer": "will be cleaning",
+        "explanation": "F 031 ▶「～しているだろう」という未来のある時点において行われているであろう動作は未来進行形will be doingで表す。",
+        "question": "We (    ) (    ) (c   ) up the beach on Saturday afternoon."
     },
     {
         "id": "11",
-        "ja": "映画が始まろうとしていて，人々が席に着いているところだ。 be going to do「～する予定だ」よ り も差し迫った未来を表す。",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "The movie (       ) (a     ) (       ) (       ) and people are taking their seats. The movie is about to start and people are taking their seats. be about to do ʮ·͞ʹʙ͠Α͏ͱ͍ͯ͠Δʯ take a [one’s] seatʮ੮ʹண͘ʯ"
+        "ja": "映画が始まろうとしていて，人々が席に着いているところだ。 F 035  be about to do「まさに～しようとしている」 be going to do「～する予定だ」よりも差し迫った未来を表す。 ○ take a [one’s] seat「席に着く」",
+        "en": "The movie {is about to start} and people are taking their seats.",
+        "answer": "is about to start",
+        "explanation": "Tip 「まさに～しようとしている」という「差し迫った未来」を表す表現は？",
+        "question": "The movie (    ) (a   ) (    ) (    ) and people are taking their seats."
     },
     {
         "id": "12",
-        "ja": "ここ数年で私たちの生活様式はずいぶん変わった。",
+        "ja": "ここ数年で私たちの生活様式はずいぶん変わった。 「生活様式が変わって(完了)，今もその状況が続いている(結果)」ことを表す。 ！「完了・結果」の用法で使う動詞は動作動詞。状態動詞は用いない。 ○ in the last [past] few years「ここ数年で」",
         "en": "Our way of life {has changed} a lot in the last few years.",
         "answer": "has changed",
-        "explanation": "▶ 「過去の出来事」 と「現在」をつなぐ表現がܗ。haveʴࢺ\n（done）で表す。 「動作・行為の完了・結果」 「経験」 「状態の継続」の３つの\n用法に分けて考えると，File3 の「現在完了形と共によ く使う語句」との関係が\n理解しやすい。\n▶ 現在までの動作・行為の完了・結果ʮʙͨ͠ͱ͜Ζͩɼʙ͠ ͯ͠·ͬͯʜͩʯ\n「生活様式が変わって （完了） ，今もその状況が続いている （結果） 」ことを表す。\n「完了・結果」の用法で使う動詞は動作動詞。状態動詞は用いない。",
-        "question": "Our way of life  a lot in the last few years."
+        "explanation": "F 036 ▶「過去の出来事」と「現在」をつなぐ表現が現在完了形。have＋過去分詞(done)で表す。「動作・行為の完了・結果」「経験」「状態の継続」の３つの用法に分けて考えると，File 3の「現在完了形と共によく使う語句」との関係が理解しやすい。\n▶ 現在までの動作・行為の完了・結果「～したところだ，～してしまって…だ」",
+        "question": "Our way of life has changed a lot in the last few years."
     },
     {
         "id": "13-1",
-        "ja": "その話は前に聞いたことがある。",
-        "en": "I {have heard that story before.}",
-        "answer": "have heard that story before.",
-        "explanation": "▶ 現在までの経験ʮʙͨ͜͠ͱ͕͋Δʯ➡12, VI3– p.2, File3\n「過去に聞いて，今それを知っている」ということ。現在に焦点がある。\nbefore ʮҎલʹʯ",
-        "question": "I (        ) (        ) that story before."
+        "ja": "その話は前に聞いたことがある。 「過去に聞いて，今もそれを知っている」ということ。現在に焦点がある。 ○ before「以前に」",
+        "en": "I {have heard} that story before.",
+        "answer": "have heard",
+        "explanation": "F 037 ▶ 現在までの経験「～したことがある」➡ 12，VI 3―p.2，File 3",
+        "question": "I (    ) (    ) that story before."
     },
     {
         "id": "13-2",
-        "ja": "何度か東 京に行ったことがある。",
-        "en": "I {have been to Tokyo several times. have been to A ʮAʣʯ several times ʮ਺ճɼԿ౓͔ʯ}",
-        "answer": "have been to Tokyo several times. have been to A ʮAʣʯ several times ʮ਺ճɼԿ౓͔ʯ",
+        "ja": "何度か東京に行ったことがある。 F 037  have been to A「Aに行ったことがある(経験)」 ○ several times「数回，何度か」",
+        "en": "I {have been to Tokyo} several times.",
+        "answer": "have been to Tokyo",
         "explanation": "",
-        "question": "I  several times."
+        "question": "I have been to Tokyo several times."
     },
     {
         "id": "14",
-        "ja": "ケンとは小学校で一緒だった頃からの付き合いだ。",
-        "en": "I {have known Ken since we were in elementary school together.}",
-        "answer": "have known Ken since we were in elementary school together.",
-        "explanation": "▶ 現在までの状態の継続ʮͣͬͱʙͩʯ➡12, VI4– p.3, File3\n「状態の継続」の用法で使う動詞は状態動詞。",
-        "question": "I (        ) (        ) Ken since we were in elementary school together."
+        "ja": "ケンとは小学校で一緒だった頃からの付き合いだ。 ！「状態の継続」の用法で使う動詞は状態動詞。",
+        "en": "I {have known }Ken since we were in elementary school together.",
+        "answer": "have known",
+        "explanation": "Tip 「付き合いだ → ずっと知っている」と考える。現在までの状態の継続を表す形は？\nF 038 ▶ 現在までの状態の継続「ずっと～だ」➡ 12，VI 3―p.2，File 3",
+        "question": "I (    ) (    ) Ken since we were in elementary school together."
     },
     {
         "id": "15",
-        "ja": "私は８年間，英語を習っている。",
-        "en": "I {have been learning English for eight years.}",
-        "answer": "have been learning English for eight years.",
-        "explanation": "▶ 「動作の継続」はܗߦで表す。\n▶ 現在までの動作の継続ʮͣͬͱʙ͠ଓ͚͍ͯΔʯ➡VI5– p.3\n動作動詞を使ってܗߦhave been doing で表す。\nclean / start / know / learn\n18 19\n復習\nSelf\nCheck",
-        "question": "I (        ) (        ) (        ) English for eight years."
+        "ja": "私は８年間，英語を習っている。 時制・完了形 ③ ● 19 動作動詞を使って現在完了進行形have been doingで表す。",
+        "en": "I {have been learning} English for eight years.",
+        "answer": "have been learning",
+        "explanation": "F 039 ▶「動作の継続」は完了進行形で表す。\n▶ 現在までの動作の継続「ずっと～し続けている」➡ VI 5―p.3",
+        "question": "I (    ) (    ) (    ) English for eight years."
     },
     {
         "id": "16",
-        "ja": "???",
-        "en": "④",
-        "answer": "???",
+        "ja": "● 文法編｜１章",
+        "en": "???",
+        "answer": "",
         "explanation": "",
-        "question": "???"
+        "question": ""
     },
     {
         "id": "16-1",
-        "ja": "駅に着いた時には，電車はすでに出 発してしまっていた。",
-        "en": "The train {had already left when I got to the station.}",
-        "answer": "had already left when I got to the station.",
-        "explanation": "▶ ܗは， 「過去のある時点」と「さらに前の過去の時点」をつなぐ表現。\nhadʴࢺ（done）で表す。過去のある時点までの「動作・行為の完了・\n結果」 「経験」 「状態の継続」の３つの用法に分けられる。➡VI6– p.3\n▶ 過去のある時点までの動作・行為の完了・結果ʮ ʙͯ͠͠·͍ͬͯ ͨʯ",
-        "question": "The train (        ) (a      ) (        ) when I (g      ) to the station."
+        "ja": "駅に着いた時には，電車はすでに出発してしまっていた。 had＋過去分詞(done)で表す。過去のある時点までの「動作・行為の完了・結果」「経験」「状態の継続」の３つの用法に分けられる。➡ VI 6―p.3",
+        "en": "The train {had already left} when I {got} to the station.",
+        "answer": "had already left, got",
+        "explanation": "F 041 ▶ 過去完了形は，「過去のある時点」と「さらに前の過去の時点」をつなぐ表現。\n▶ 過去のある時点までの動作・行為の完了・結果「～してしまっていた」",
+        "question": "The train (    ) (a   ) (    ) when I (g   ) to the station."
     },
     {
         "id": "16-2",
         "ja": "昨年ニューヨークに行くまで，ミュージカルを見たことがなかった。",
-        "en": "I {had never seen a musical until I went} to New York last year.",
-        "answer": "had never seen a musical until I went",
-        "explanation": "▶ 過去のある時点までの経験ʮʙͨ͜͠ͱ͕͋ͬͨʯ\n▶ never があるので「～したことがなかった」の意味になる。until は接続詞。",
-        "question": "I  never  a musical until I  to New York last year."
+        "en": "I {had} never {seen} a musical until I {went} to New York last year.",
+        "answer": "had, seen, went",
+        "explanation": "Tip 「過去のある時点」までに「～したことがあった」を表す形は？\nF 042 ▶ 過去のある時点までの経験「～したことがあった」\n▶ neverがあるので「～したことがなかった」の意味になる。untilは接続詞。",
+        "question": "I had never seen a musical until I went to New York last year."
     },
     {
         "id": "17",
-        "ja": "駅に着いた時，家にスマート フォンを忘れてきたことに気がついた。",
-        "en": "When I got to the station, I {realized that I had left my smartphone at home.}",
-        "answer": "realized that I had left my smartphone at home.",
-        "explanation": "▶ 過去に起こった２つの出来事を述べるとき，時間的な前後関係を明確に表すため\nに「先に起こった出来事」を過去完了形にする。この用法をڈという。",
-        "question": "When I got to the station, I (        ) that I (        ) (l      ) my smartphone at home."
+        "ja": "駅に着いた時，家にスマートフォンを忘れてきたことに気がついた。 に「先に起こった出来事」を過去完了形にする。この用法を大過去という。",
+        "en": "When I got to the station, I {realized} that I {had left} my smartphone at",
+        "answer": "realized, had left",
+        "explanation": "Tip 「気がついた」よりも前の時点で「スマートフォンを忘れた」を表す形は？\nhome.\n▶ 過去に起こった２つの出来事を述べるとき，時間的な前後関係を明確に表すため",
+        "question": "When I got to the station, I (    ) that I (    ) (l   ) my smartphone"
     },
     {
         "id": "18",
-        "ja": "今朝から雨 が 降っていたが ， 今はやんでいる。",
+        "ja": "● 文法編｜１章 今朝から雨が降っていたが，今はやんでいる。 動作動詞を使って過去完了進行形had been doingで表す。➡ VI 5―p.3",
         "en": "It {had been raining} since this morning, but now it has stopped.",
         "answer": "had been raining",
-        "explanation": "▶ 過去のある時点までの動作の継続ʮͣͬͱʙ͠ଓ͚͍ͯͨʯ\n動作動詞を使ってܗߦhad been doing で表す。➡VI5– p.3",
-        "question": "It  since this morning, but now it has stopped."
+        "explanation": "Tip 「ずっと～し続けていた」を表す形は？ 過去のある時点で「やんだ」ということ。\nF 044 ▶ 過去のある時点までの動作の継続「ずっと～し続けていた」",
+        "question": "It had been raining since this morning, but now it has stopped."
     },
     {
         "id": "19",
-        "ja": "君が来るまでには宿題を終えているだろう。",
-        "en": "I {will have finished my homework by the time you come over.}",
-        "answer": "will have finished my homework by the time you come over.",
-        "explanation": "▶ 未来のある時点までの「動作・行為の完了・結果ʢʙͯ͠͠·͍ͬͯΔͩΖ͏ʣ」\n「経験ʢʙͨ͜͠ͱʹͳΔͩΖ͏ʣ」「状態の継続ʢ ͣͬͱʙ͍ͯ͠Δ͜ͱʹͳΔͩ\nΖ͏ʣ」をܗwill haveʴࢺ（done）で表す。➡VI6– p.3\ncome over ʮ΍ͬͯདྷΔʯ",
-        "question": "I (w     ) (        ) (        ) my homework by the time you come over."
+        "ja": "君が来るまでには宿題を終えているだろう。 「経験(～したことになるだろう)」「状態の継続(ずっと～していることになるだろう)」を未来完了形will have＋過去分詞(done)で表す。➡ VI 6―p.3 ○ come over「やって来る」",
+        "en": "I {will have finished }my homework by the time you come over.",
+        "answer": "will have finished",
+        "explanation": "Tip 「君が来る」のは「未来のある時点」。その時点までの動作の完了を表す形は？\nF 046 ▶ 未来のある時点での「動作・行為の完了・結果(～してしまっているだろう)」",
+        "question": "I (w   ) (    ) (    ) my homework by the time you come over."
     },
     {
         "id": "20",
-        "ja": "近頃，ネットショッピングがますます人気になってきている。",
+        "ja": "● 文法編｜１章 近頃，ネットショッピングがますます人気になってきている。",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
-        "question": "-1 -2＝ (        ), online shopping (h      ) (b      ) more and more popular. (        ) (        ), online shopping (i      ) ( b      ) more and more popular. ʣʣ ͏ɻ͏ɻ"
+        "question": ""
     },
     {
         "id": "20-1",
-        "ja": "などの「過去から現在へ」という意味の広がりがある語句は，現在完了形と共 に使うことが多い。these days / nowadaysʯは，「現在」を 示す副詞 （句） なので，現在形・現在進行形と共に使うことが多い。➡File5",
-        "en": "???",
-        "answer": "???",
+        "ja": "",
+        "en": "{Lately}, online shopping {has become} more and more popular.",
+        "answer": "Lately, has become",
         "explanation": "",
-        "question": "-2＝ Lately, online shopping has become more and more popular. These days, online shopping is becoming more and more popular. become [get] more and more popularʹͳΔʯ"
+        "question": "(    ), online shopping (h   ) (b   ) more and more popular."
+    },
+    {
+        "id": "20-2",
+        "ja": "詞(句)を使う。 ○ become [get] more and more popular「ますます人気になる」",
+        "en": "＝{These days}, online shopping {is becoming} more and more popular.",
+        "answer": "These days, is becoming",
+        "explanation": "Tip  最近の出来事を，「過去から現在まで」という時の流れで表すか，「今起こってい\nF 040 ▶ lately / recently「最近」，so far / until now / up to now「今までのところ」などの「過去から現在へ」という意味の広がりがある語句は，現在完了形と共に使うことが多い。these days / nowadays「この頃，近頃」は，「現在」を示す副詞（句）なので，現在形・現在進行形と共に使うことが多い。➡ File 5",
+        "question": "＝(    ) (    ), online shopping (i   ) (b   ) more and more popular."
     },
     {
         "id": "20-3",
-        "ja": "これまでのところ，そのシリーズは３話見た。",
-        "en": "I {have watched three episodes of the series so far}.",
-        "answer": "have watched three episodes of the series so far",
-        "explanation": "▶ so far / until now / up to now「これまでのところ，今までのところ」は現在完\n了形と共に使うことが多い。\nleave / get / realize / lately / become\n20 21\n復習\nSelf\nCheck",
-        "question": "I  three episodes of the series ."
+        "ja": "これまでのところ，そのシリーズは３話見た。 時制・完了形 ④ ● 21",
+        "en": "I {have watched} three episodes of the series {so far}.",
+        "answer": "have watched, so far",
+        "explanation": "Tip 「これまでのところ」は「過去から現在まで」のこと。動詞の形はどうする？\n▶ so far / until now / up to now「これまでのところ，今までのところ」は現在完了形と共に使うことが多い。",
+        "question": "I have watched three episodes of the series so far."
     },
     {
         "id": "21",
-        "ja": "私は先月，テニスを始めたばかりだ。",
-        "en": "I {just started playing tennis last month.}",
-        "answer": "just started playing tennis last month.",
-        "explanation": "▶ 「先月」は過去の時点を表す語句。過去形を使って「先月～した」と表現する。\nI have just started playing tennis last month. は誤り。last month などの\n特定の過去の時点を表す語句は，現在完了形と共には使えない。➡File6\njust 「ち ょ うど」は現在完了形と共によ く使う語だが，過去形と も使われる。どちらの場\n合も日本語は「ちょうど～したところ ［したばかり］ だ」となる。",
-        "question": "I ( j      ) (        ) playing tennis (        ) (        )."
+        "ja": "私は先月，テニスを始めたばかりだ。 「先月」という過去の時点を表す語句があるから時制はどうなる？ × I have just started playing tennis last month. は誤り。last monthなどの特定の過去の時点を表す語句は，現在完了形と共には使えない。➡ File 6 ＋ just「ちょうど」は現在完了形と共によく使う語だが，過去形とも使われる。どち らの場合も日本語は「ちょうど～したところ[～したばかり]だ」となる。",
+        "en": "I {just started} playing tennis {last month}.",
+        "answer": "just started, last month",
+        "explanation": "F 040 ▶「先月」は過去の時点を表す語句。過去形を使って「先月～した」と表現する。",
+        "question": "I (j   ) (    ) playing tennis (    ) (    )."
     },
     {
         "id": "22",
-        "ja": "ホテルに着いたらメッセ ー ジを 送ります。",
-        "en": "I will text you {when I get to the hotel.}",
-        "answer": "when I get to the hotel.",
-        "explanation": "▶ અの中では，未来のことでもwill は使わず，ܗࡏݱやݱ\nܗを使う。when 以下は副詞節 （➡p.141 3 ）  ➡Grasp1 – p.24, File7– p.24\nwhen …ʹʯ―副詞節を導く接続詞    when I will get to …\nget to A ʮA ʹ౸ண͢Δʯ⇔⇔ leave AʮA Λग़ൃ͢Δʯ",
-        "question": "I will text you  the hotel. ͸ ͳ ͍ ɻʮ ϗ ς ϧ ʹ ண ͍ ͨ Β ˠ ʯΛද͢͸ ͳ ͍ ɻʮ ϗ ς ϧ ʹ ண ͍ ͨ Β ˠ ʯΛද͢"
+        "ja": "● 文法編｜１章 ホテルに着いたらメッセージを送ります。 ではない。「ホテルに着いたら → ホテルに到着した時」ということなので「時」 を表す接続詞を使う。ホテルに到着するのは未来のことだが，時を表す副詞節の中 なので時制は？ 完了形を使う。when以下は副詞節(➡p.141③) ➡ Grasp 1―p.24，File 7―p.24 when …「…する時に」―副詞節を導く接続詞  × when I will get to … ○ get to A「Aに到着する」⇔ leave A「Aを出発する」",
+        "en": "I will text you {when I get to} the hotel.",
+        "answer": "when I get to",
+        "explanation": "F 032 ▶ 時や条件を表す副詞節の中では，未来のことでもwillは使わず，現在形や現在",
+        "question": "I will text you when I get to the hotel."
     },
     {
         "id": "23",
-        "ja": "雨がやむまでここで待つつもりです。",
-        "en": "I’ll wait here {until the rain stops. the rain stops ʮӍ͕΍Ήʯ}",
-        "answer": "until the rain stops. the rain stops ʮӍ͕΍Ήʯ",
-        "explanation": "",
-        "question": "I’ll wait here  the rain ."
+        "ja": "雨がやむまでここで待つつもりです。 F 032  until …＝till …「…するまでずっと」× until the rain will stop ➡ 22 ○ the rain stops「雨がやむ」",
+        "en": "I’ll wait here {until }the rain{ stops}.",
+        "answer": "until, stops",
+        "explanation": "Tip 「～するまで」という「時を表す副詞節」の中の時制は？",
+        "question": "I’ll wait here until the rain stops."
     },
     {
         "id": "24",
-        "ja": "両親と相談し次第，私の決断をお知らせします。",
-        "en": "???",
-        "answer": "???",
+        "ja": "両親と相談し次第，私の決断をお知らせします。 F 220  as soon as …「…するとすぐに」× as soon as I will have talked ➡ 22 ○ let you know「あなたに知らせる」 ○ talk to [with] one’s parent(s)「親[両親]と相談する」 ● 文法編｜１章",
+        "en": "I’ll let you know my decision {as soon as I have talked }to my parents.",
+        "answer": "as soon as I have talked",
         "explanation": "",
-        "question": "I’ll let you know my decision  to my parents. I’ll let you know my decision as soon as I have talked to my parents. as soon as … ʮʜ͢Δͱ͙͢ʹʯ  as soon as I will have talked  ➡22 let you know ʮ͋ͳͨʹ஌ΒͤΔʯ talk to [with] one’s parent(s)ʮ਌ ʦ྆਌ʧ ͱ૬ஊ͢Δʯ"
+        "question": "I’ll let you know my decision as soon as I have talked to my parents."
     },
     {
         "id": "25",
-        "ja": "車の代わりに公共交通機関を利用すれば，二酸化炭素の排出の削減に貢献できる。 if …ʮ΋͠ʜͳΒ͹ʯ―副詞節を導くif    If we will use  ➡22 help (to) doʮʙ͢Δॿ͚ͱͳΔʯ―to は省 略されることも多い。",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "public transportation instead of cars, we can help to reduce CO2 emissions. If we use public transportation instead of cars, we can help to reduce CO2 emissions. public transportation / public transportʯ CO 2 emissionsԽ୸ૉͷഉग़ ʢྔʣʯ"
+        "ja": "車の代わりに公共交通機関を利用すれば，二酸化炭素の排出の削減に貢献できる。 if …「もし…ならば」―副詞節を導くif  × If we will use ➡ 22 ○ public transportation / public transport「公共交通機関」 ○ help (to) do「～する助けとなる」―toは省略されることも多い。 ○ CO2 emissions「二酸化炭素の排出(量)」",
+        "en": "{If we use} public transportation instead of cars, we can help to reduce",
+        "answer": "If we use",
+        "explanation": "Tip  条件を表す副詞節の中の時制は？「利用する＝使う」\nCO2 emissions.",
+        "question": "If we use public transportation instead of cars, we can help to reduce"
     },
     {
         "id": "26",
-        "ja": "誰が送ったのかわからなければ，ファイルを開けるべきではない。 〈unless＋肯定文〉 で「…でなければ，…しない限り」という否定の意味になる。 unless の後を否定文にしないこと。 unless you donʼt know は誤り。",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "You should not open a file  who sent it. You should not open a file unless you know who sent it. unless …Γʯ➡22"
+        "ja": "誰が送ったのかわからなければ，ファイルを開けるべきではない。 F 221  unless …「…でなければ，…しない限り」➡ 22 ！〈unless＋肯定文〉で「…でなければ，…しない限り」という否定の意味になる。unlessの後を否定文にしないこと。× unless you don’t knowは誤り。",
+        "en": "You should not open a file {unless you know} who sent it.",
+        "answer": "unless you know",
+        "explanation": "Tip 「…でなければ」を表す接続詞１語と，その後の動詞の形は？",
+        "question": "You should not open a file unless you know who sent it."
     },
     {
         "id": "27",
-        "ja": "すみませんが，いつ公演が始まるか教えていただけますか。",
-        "en": "Excuse me, could you tell me {when the performance will start?}",
-        "answer": "when the performance will start?",
-        "explanation": "▶ when 節やif 節がઅ（➡p.140 3 1 ） の場合，未来のことはwill do などで\n表す。when 以下は名詞節で，tell の 目 的 語（O）。➡Grasp1 – p.24, File7– p.24\nwhen …ʮ͍ͭʜ͢Δ͔ʯ―このwhen は疑問詞で，名詞節を導く。\nExcuse me , could you …?ʮ͢Έ·ͤΜ͕ʜ͍ͯ͠ ͚ͨͩ·͔͢ ɻʯ\nstart / get to / stop / talk / use\n22 23\n復習\nSelf\nCheck",
-        "question": "Excuse me, could you tell me (        ) the performance (        ) (        )?"
+        "ja": "すみませんが，いつ公演が始まるか教えていただけますか。 時制・完了形 ⑤ ● 23 when …「いつ…するか」―このwhenは疑問詞で，名詞節を導く。 ○ Excuse me, could you …?「すみませんが…していただけますか。」",
+        "en": "Excuse me, could you tell me {when} the performance{ will start}?",
+        "answer": "when, will start",
+        "explanation": "Tip 〈tell＋O+O〉の形。「いつ…するか」は動詞の目的語なので名詞節。未来のことを表すとき，名詞節の中の時制は？\n▶ when節やif節が名詞節(➡p.140 ３ ①)の場合，未来のことはwill doなどで表す。when以下は名詞節で，tellの目的語(O)。➡ Grasp 1―p.24，File 7―p.24",
+        "question": "Excuse me, could you tell me (    ) the performance (    ) (    )?"
     },
     {
         "id": "28",
-        "ja": "ケンが今夜，パーティーに来るかどうかわからない。",
-        "en": "I don’t know {if [whether] Ken will come to the party tonight. if …ʮʜ͢Δ͔Ͳ͏͔ʯ―名詞節を導くif ＝whether …}",
-        "answer": "if [whether] Ken will come to the party tonight. if …ʮʜ͢Δ͔Ͳ͏͔ʯ―名詞節を導くif ＝whether …",
-        "explanation": "▶ if 節は名詞節でknow の目的語。名詞節の場合，未来のこ とはwill do などで表す。",
-        "question": "I don’t know  to the party tonight."
+        "ja": "ケンが今夜，パーティーに来るかどうかわからない。 F 215  if …「…するかどうか」―名詞節を導くif ＝whether …",
+        "en": "I don’t know {if [whether] Ken will come} to the party tonight.",
+        "answer": "if [whether] Ken will come",
+        "explanation": "Tip 「…するかどうか」を表す接続詞は？ 名詞節の中の時制に注意。\n▶ if節は名詞節でknowの目的語。名詞節の場合，未来のことはwill doなどで表す。",
+        "question": "I don’t know if Ken will come to the party tonight."
     },
     {
         "id": "29",
-        "ja": "発展 私が陸上部に入 部してから３か月がたった。",
+        "ja": "私が陸上部に入部してから3か月がたった。",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
-        "question": "-1 -2＝ Three months  the track and field team. (I       ) (        ) (        ) three months (        ) (        ) ( j      ) the track and field team."
+        "question": ""
     },
     {
         "id": "29-1",
-        "ja": "pass はここでは「 （期間） が経過する」を意味する自動詞。 It has passed three months since … は誤り。",
-        "en": "???",
-        "answer": "???",
+        "ja": "",
+        "en": "Three months{ have passed since I joined} the track and field team.",
+        "answer": "have passed since I joined",
         "explanation": "",
-        "question": "-2＝ Three months have passed since I joined the track and field team. It has been three months since I joined the track and field team. since …ʮʜ͠ ͯҎདྷʯ ؒظʴhave passed since S′ʴV′ɹ  ʣ͕ͨͬͨʯ It has been ʴؒظʴsince S′ʴV′"
+        "question": "Three months have passed since I joined the track and field team."
+    },
+    {
+        "id": "29-2",
+        "ja": "発展     Tip 「陸上部に入部した」のは過去。「3か月たった」のは「過去から現在」の時間の 幅があると考えると時制はどうなる？ F 038  since …「…して以来」 期間＋have passed since S’＋V’    「…してから～(の期間)がたった」 It has been＋期間＋since S’＋V’ ！ passはここでは「(期間)が経過する」を意味する自動詞。 × It has passed three months since …は誤り。",
+        "en": "＝{It has been} three months{ since I joined} the track and field team.",
+        "answer": "It has been, since I joined",
+        "explanation": "",
+        "question": "＝(I   ) (    ) (    ) three months (    ) (    ) (j   ) the track and field team."
     },
     {
         "id": "30",
-        "ja": "祖父が亡くなって３年になる。 「～（期間）の間S が死んでいる状態が続いている」という現在までの状態の継 続を表す現在完了形。＝Three years have passed since my grandfather",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "My grandfather (        ) (        ) (d      ) (        ) three years. My grandfather has been dead for three years. S have been dead forʴؒظʮSʣʹͳΔʯ died. ＝It has been three years since my grandfather died."
+        "ja": "祖父が亡くなって3年になる。 考えると時制はどうなる？ F 038  S have been dead for＋期間「Sが亡くなってから～(期間)になる」 「～(期間)の間Sが死んでいる状態が続いている」という現在までの状態の継続を表す現在完了形。＝Three years have passed since my grandfather died. ＝It has been three years since my grandfather died.",
+        "en": "My grandfather {has been dead for} three years.",
+        "answer": "has been dead for",
+        "explanation": "Tip 「亡くなっている」を形容詞を使って表現する。「３年間亡くなった状態でいる」と",
+        "question": "My grandfather (    ) (    ) (d   ) (    ) three years."
     },
     {
         "id": "31",
-        "ja": "サラは怒るだろうと思ったけれど，理解し て私の間違いを許し て くれた。",
-        "en": "I {thought Sara would be angry, but she understood and forgave my mistake.}",
-        "answer": "thought Sara would be angry, but she understood and forgave my mistake.",
-        "explanation": "▶ 主節の動詞がܗڈのとき，従属節の （助） 動詞を 〈現在形⭢過去形〉〈過去\n形/ 現在完了形⭢過去完了形〉に す る 。 こ れ を੍ͷҰகと呼ぶ。\n➡Grasp2, VI7– p.4\nforgive one’s mistake͢ʯ\npass / join / dead\n੍ͷҰக  ➡VI7– p.42Grasp\nᶃ 現在形 ⭢ 過去形\nI think (that) Sara is angry.（サラは怒っていると私は思う。）\nI thought (that) Sara was angry.［時制の一致］\n（サラは怒っていると私は思った。）\nᶄ 過去形 ⭢ 過去完了形\nI think (that) Sara was angry.（サラは怒っていたと私は思う。）\nI thought (that) Sara had been angry.［時制の一致］\n（サラは怒っていたと私は思った。）\nᶅ will ⭢ would （過去形）\nI think (that) Sara will be angry.（サラは怒るだろうと私は思う。）\nI thought (that) Sara would be angry.［時制の一致］\n（サラは怒るだろうと私は思った。）\nᶃ અ：文中で副詞の働きをする。when Ken is back は修飾語 （M）。➡p.11 3\nI will call you when Ken is back .［副詞節］\n文は成立　　　　   ޠʢMʣ　　　　 （ケンが戻って来た時に，私は君に電話します。 ）\nᶄ અ：文中で名詞の働きをする。when Ken will be back はtell の 目 的 語（O）。\nPlease tell me when Ken will be back .［名詞節］\n文は不成立　　　　　  ޠʢOʣ　　  （ケンがいつ戻って来るのか私 に 教 え て く だ さ い 。）\n෼͚ํ1Grasp\n24 25\n復習\nSelf\nCheck",
-        "question": "I (t      ) Sara (w      ) (        ) angry, but she understood and forgave my mistake."
+        "ja": "サラは怒るだろうと思ったけれど，理解して私の間違いを許してくれた。 時制・完了形 ⑥ ● 25 ○ forgive one’s mistake「～の間違いを許す」",
+        "en": "I {thought} Sara {would be} angry, but she understood and forgave my mistake. ➡ {Grasp 2}, VI 7―p.4",
+        "answer": "thought, would be, Grasp 2",
+        "explanation": "Tip  主節の動詞が過去形のとき，従属節の動詞や助動詞の時制はどうなる？\n▶ 主節の動詞が過去形のとき，従属節の(助)動詞を〈現在形→過去形〉〈過去形/現在完了形→過去完了形〉にする。これを時制の一致と呼ぶ。",
+        "question": "I (t   ) Sara (w   ) (    ) angry, but she understood and forgave my mistake."
     }
 ];
 
@@ -521,7 +564,7 @@
             recognition.lang = 'en-US';
             recognition.interimResults = false;
         }
-        
+
         // --- Voice Synthesis Setup ---
         let synthesisVoice = null;
 
@@ -529,10 +572,10 @@
             const voices = speechSynthesis.getVoices();
             // 優先順位: Google US English -> Microsoft Zira/David -> その他英語
             synthesisVoice = voices.find(voice => voice.name === 'Google US English') ||
-                             voices.find(voice => voice.name.includes('Google') && voice.lang.includes('en-US')) ||
-                             voices.find(voice => voice.name.includes('Microsoft') && voice.lang.includes('en-US')) ||
-                             voices.find(voice => voice.lang === 'en-US') ||
-                             voices.find(voice => voice.lang.startsWith('en'));
+                voices.find(voice => voice.name.includes('Google') && voice.lang.includes('en-US')) ||
+                voices.find(voice => voice.name.includes('Microsoft') && voice.lang.includes('en-US')) ||
+                voices.find(voice => voice.lang === 'en-US') ||
+                voices.find(voice => voice.lang.startsWith('en'));
         }
 
         // 音声リストがロードされたら設定を実行
@@ -555,7 +598,7 @@
         const quizModal = document.getElementById('quiz-modal');
         const closeQuizBtn = document.getElementById('close-quiz-btn');
         const quizContent = document.getElementById('quiz-content');
-        
+
         const selectAllCheckbox = document.getElementById('select-all-checkbox');
         const pdfModal = document.getElementById('pdf-modal');
         const openPdfModalBtn = document.getElementById('open-pdf-modal-btn');
@@ -605,7 +648,7 @@
                 `;
                 sentenceList.appendChild(sentenceDiv);
             });
-            
+
             // Add click listener to each sentence item
             document.querySelectorAll('.sentence-item').forEach(item => {
                 item.addEventListener('click', (e) => {
@@ -632,15 +675,15 @@
                     }
                 });
             });
-            
+
             // Select the first sentence by default
             if (sentenceList.firstChild) {
-                 sentenceList.firstChild.click();
+                sentenceList.firstChild.click();
             }
         }
-        
+
         // --- PDF / Print Logic ---
-        
+
         function openPrintWindow(bodyContent, title) {
             const htmlContent = `
                 <!DOCTYPE html>
@@ -692,7 +735,7 @@
             printWindow.document.write(htmlContent);
             printWindow.document.close();
             setTimeout(() => {
-                printWindow.focus(); 
+                printWindow.focus();
                 printWindow.print();
             }, 250);
         }
@@ -707,32 +750,32 @@
                 .map(id => chapterData.find(item => item.id === id))
                 .filter(Boolean)
                 .sort((a, b) => {
-                     // Handle IDs like "1382-1" vs "1382-2"
-                     const aParts = a.id.split('-').map(s => parseInt(s) || 0);
-                     const bParts = b.id.split('-').map(s => parseInt(s) || 0);
-                     if (aParts[0] !== bParts[0]) return aParts[0] - bParts[0];
-                     return (aParts[1] || 0) - (bParts[1] || 0);
+                    // Handle IDs like "1382-1" vs "1382-2"
+                    const aParts = a.id.split('-').map(s => parseInt(s) || 0);
+                    const bParts = b.id.split('-').map(s => parseInt(s) || 0);
+                    if (aParts[0] !== bParts[0]) return aParts[0] - bParts[0];
+                    return (aParts[1] || 0) - (bParts[1] || 0);
                 });
         }
-        
+
         function getUniqueItems(items) {
-             const uniqueMap = new Map();
-             items.forEach(item => {
-                 // Use answer as key to deduplicate same phrases
-                 if (!uniqueMap.has(item.answer)) {
-                     uniqueMap.set(item.answer, item);
-                 }
-             });
-             return Array.from(uniqueMap.values()).sort((a, b) => {
-                 const aId = parseInt(a.id.split('-')[0]);
-                 const bId = parseInt(b.id.split('-')[0]);
-                 return aId - bId;
-             });
+            const uniqueMap = new Map();
+            items.forEach(item => {
+                // Use answer as key to deduplicate same phrases
+                if (!uniqueMap.has(item.answer)) {
+                    uniqueMap.set(item.answer, item);
+                }
+            });
+            return Array.from(uniqueMap.values()).sort((a, b) => {
+                const aId = parseInt(a.id.split('-')[0]);
+                const bId = parseInt(b.id.split('-')[0]);
+                return aId - bId;
+            });
         }
 
 
         // --- Message & Sound Functions ---
-        
+
         function showMessage(htmlContent, duration = null) {
             messageContent.innerHTML = htmlContent;
             messageModal.classList.remove('hidden');
@@ -756,7 +799,7 @@
 
             // 連続再生を防ぐために一度キャンセル
             speechSynthesis.cancel();
-            
+
             let textToSpeak = activeSentenceElement.dataset.fullSentence;
             // 念のため不要な記号を除去
             textToSpeak = textToSpeak.replace(/[{}]/g, '');
@@ -769,7 +812,7 @@
                 utterance.voice = synthesisVoice;
             }
 
-            utterance.rate = 1.0; 
+            utterance.rate = 1.0;
             utterance.pitch = 1.0;
 
             speechSynthesis.speak(utterance);
@@ -786,7 +829,7 @@
             }
 
             showMessage('<p class="text-2xl">マイクに向かって話してください...</p><div class="animate-pulse text-red-500 text-4xl mt-4">●</div>');
-            
+
             recognition.start();
 
             recognition.onresult = (event) => {
@@ -797,20 +840,20 @@
             recognition.onerror = (event) => {
                 showMessage(`<p>エラーが発生しました: ${event.error}</p>`, 3000);
             };
-            
+
             recognition.onend = () => {
-                 if (messageModal.classList.contains('hidden') === false && messageContent.innerHTML.includes('マイクに')) {
+                if (messageModal.classList.contains('hidden') === false && messageContent.innerHTML.includes('マイクに')) {
                     messageModal.classList.add('hidden');
-                 }
+                }
             };
         }
-        
+
         function evaluatePronunciation(transcript) {
             const originalText = activeSentenceElement.dataset.fullSentence;
 
             const cleanOrig = originalText.toLowerCase().replace(/[^\w\s]/g, '').split(' ');
             const cleanTrans = transcript.toLowerCase().replace(/[^\w\s]/g, '').split(' ');
-            
+
             let matches = 0;
             cleanOrig.forEach(word => {
                 if (cleanTrans.includes(word)) {
@@ -819,7 +862,7 @@
             });
 
             const similarity = matches / cleanOrig.length;
-            
+
             let score;
             if (similarity > 0.9) {
                 score = 95 + Math.floor(Math.random() * 5);
@@ -832,7 +875,7 @@
             } else {
                 score = 70 + Math.floor(Math.random() * 10);
             }
-            
+
             if (score === 100 && Math.random() < 0.3) score = 99;
 
             const messageHtml = `
@@ -849,8 +892,8 @@
 
         function startQuiz() {
             if (chapterData.length < 10) {
-                 showMessage('<p>クイズを作成するには、文が10個以上必要です。</p>', 3000);
-                 return;
+                showMessage('<p>クイズを作成するには、文が10個以上必要です。</p>', 3000);
+                return;
             }
 
             const shuffled = [...chapterData].sort(() => 0.5 - Math.random());
@@ -875,8 +918,9 @@
                     .map(item => item.answer);
 
                 const options = [correctAnswer, ...incorrectAnswers].sort(() => 0.5 - Math.random());
-                
-                const questionSentence = question.en.replace(`{${question.answer}}`, ' (______) ');
+
+                // Use regex to replace ALL {answer} parts with (______)
+                const questionSentence = question.en.replace(/\{.*?\}/g, ' (______) ');
 
                 quizContent.innerHTML = `
                     <h3 class="text-2xl font-bold mb-2">問題 ${currentQuestionIndex + 1}/10</h3>
@@ -896,7 +940,7 @@
                             button.classList.add('bg-red-400', 'text-white');
                             document.querySelector(`.quiz-option[data-answer="${CSS.escape(correctAnswer)}"]`).classList.add('bg-green-400', 'text-white');
                         }
-                        
+
                         setTimeout(() => {
                             currentQuestionIndex++;
                             showQuestion();
@@ -941,12 +985,12 @@
                 explanationDiv.style.display = 'block';
             }
         });
-        
+
         playSoundBtn.addEventListener('click', playSound);
         recordBtn.addEventListener('click', handleRecording);
         startQuizBtn.addEventListener('click', startQuiz);
         closeQuizBtn.addEventListener('click', () => quizModal.classList.add('hidden'));
-        
+
         // Select All Logic
         selectAllCheckbox.addEventListener('change', (e) => {
             const isChecked = e.target.checked;
@@ -960,7 +1004,7 @@
 
         // PDF Modal Logic
         openPdfModalBtn.addEventListener('click', () => {
-             if (selectedSentences.size === 0) {
+            if (selectedSentences.size === 0) {
                 showMessage('<p>PDFを作成する問題を選択してください。</p>', 3000);
                 return;
             }
@@ -982,10 +1026,10 @@
         // 1. 完全なリスト
         document.getElementById('download-list-btn').addEventListener('click', () => {
             const items = getSelectedItems();
-            if(!items) return;
+            if (!items) return;
             // リスト作成の場合は重複があっても良いが、見やすくするために熟語ベースでユニークにするか、
             // そのままID順で並べるか。ここではID順ですべて表示する。
-            
+
             const listItems = items.map(item => {
                 // Remove { } for clean display
                 const cleanEn = item.en.replace(/[{}]/g, '');
@@ -994,7 +1038,7 @@
                     <span style="font-size:0.9em; color:#555;">Ex: ${cleanEn} / ${item.ja}</span>
                 </li>`;
             }).join('');
-            
+
             openPrintWindow(`<ul class="list-container">${listItems}</ul>`, '重要熟語リスト');
             pdfModal.classList.add('hidden');
         });
@@ -1002,14 +1046,14 @@
         // 2. 英語を解答
         document.getElementById('download-en-quiz-btn').addEventListener('click', () => {
             const items = getUniqueItems(getSelectedItems());
-            
-            const quizItems = items.map(item => 
+
+            const quizItems = items.map(item =>
                 `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')} : ____________________</span></li>`
             ).join('');
-            const answerItems = items.map(item => 
+            const answerItems = items.map(item =>
                 `<li><span class="inline-content">${item.answer}</span></li>`
             ).join('');
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (英語を解答)');
             pdfModal.classList.add('hidden');
@@ -1018,14 +1062,14 @@
         // 3. 意味を解答
         document.getElementById('download-ja-quiz-btn').addEventListener('click', () => {
             const items = getUniqueItems(getSelectedItems());
-            
-            const quizItems = items.map(item => 
+
+            const quizItems = items.map(item =>
                 `<li><span class="inline-content"><strong>${item.answer}</strong> : ____________________</span></li>`
             ).join('');
-            const answerItems = items.map(item => 
+            const answerItems = items.map(item =>
                 `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')}</span></li>`
             ).join('');
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (意味を解答)');
             pdfModal.classList.add('hidden');
@@ -1036,7 +1080,7 @@
             const items = getUniqueItems(getSelectedItems());
             let quizItems = '';
             let answerItems = '';
-            
+
             items.forEach(item => {
                 if (Math.random() > 0.5) {
                     // 日本語 -> 英語
@@ -1048,7 +1092,7 @@
                     answerItems += `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')}</span></li>`;
                 }
             });
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (混合)');
             pdfModal.classList.add('hidden');
@@ -1057,14 +1101,14 @@
         // 5. 例文穴埋め
         document.getElementById('download-sentence-quiz-btn').addEventListener('click', () => {
             const items = getSelectedItems(); // 例文問題なので重複（文脈違い）も含める
-            
+
             const quizItems = items.map(item => {
                 // Replace {answer} with underscore
                 const blankSentence = item.en.replace(`{${item.answer}}`, '____________________');
                 return `<li>${blankSentence}<br><span style="font-size:0.9em;">(${item.ja})</span></li>`;
             }).join('');
-            
-            const answerItems = items.map(item => 
+
+            const answerItems = items.map(item =>
                 `<li>${item.answer}</li>`
             ).join('');
 
@@ -1078,7 +1122,7 @@
             const items = getSelectedItems();
             let quizItems = '';
             let answerItems = '';
-            
+
             const instruction = '<p style="border:1px solid #ccc; padding:10px; margin-bottom:20px;">指示：空所には適切な語句を補い、下線部がある文は下線部の意味を日本語で答えなさい。</p>';
 
             items.forEach(item => {
@@ -1107,4 +1151,5 @@
         });
     </script>
 </body>
+
 </html>

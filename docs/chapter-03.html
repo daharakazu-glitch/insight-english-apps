@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Tinos:wght@700&display=swap');
-        
+
         body {
-            background-color: #007BFF; /* ビビットなブルー */
+            background-color: #007BFF;
+            /* ビビットなブルー */
             font-family: 'Noto Sans JP', sans-serif;
         }
 
@@ -17,12 +19,15 @@
         .font-english {
             font-family: 'Tinos', 'Times New Roman', serif;
             font-weight: 700;
-            font-size: 1.25rem; /* 20px */
-            line-height: 1.75rem; /* 28px */
+            font-size: 1.25rem;
+            /* 20px */
+            line-height: 1.75rem;
+            /* 28px */
         }
 
         .answer-span {
-            color: #DC2626; /* 赤色 */
+            color: #DC2626;
+            /* 赤色 */
             font-weight: 700;
             display: none;
         }
@@ -40,7 +45,7 @@
         .show-answer .underline-span {
             display: none;
         }
-        
+
         .explanation {
             display: none;
             white-space: pre-wrap;
@@ -57,22 +62,27 @@
             cursor: pointer;
             transition: all 0.2s ease-in-out;
         }
+
         .btn-primary {
             background-color: #3b82f6;
             color: white;
         }
+
         .btn-primary:hover {
             background-color: #2563eb;
         }
+
         .btn-secondary {
             background-color: #6b7280;
             color: white;
         }
+
         .btn-secondary:hover {
             background-color: #4b5563;
         }
     </style>
 </head>
+
 <body class="text-gray-800">
 
     <div id="app-container" class="container mx-auto p-4 md:p-8 max-w-4xl">
@@ -83,23 +93,27 @@
 
         <main class="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg mb-28">
             <div class="flex justify-between items-center mb-6">
-                 <!-- PDF Control Section -->
-                 <div class="flex-1 mr-4">
+                <!-- PDF Control Section -->
+                <div class="flex-1 mr-4">
                     <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
                         <h3 class="font-bold text-sm md:text-base mb-2">選択した問題でPDFを作成</h3>
                         <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
                             <div class="flex items-center">
-                                <input type="checkbox" id="select-all-checkbox" class="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
-                                <label for="select-all-checkbox" class="ml-2 text-sm font-medium text-gray-700 cursor-pointer">すべて選択 / 解除</label>
+                                <input type="checkbox" id="select-all-checkbox"
+                                    class="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                                <label for="select-all-checkbox"
+                                    class="ml-2 text-sm font-medium text-gray-700 cursor-pointer">すべて選択 / 解除</label>
                             </div>
-                            <button id="open-pdf-modal-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow text-sm transition-transform transform hover:scale-105">
+                            <button id="open-pdf-modal-btn"
+                                class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow text-sm transition-transform transform hover:scale-105">
                                 PDF作成メニュー
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <button id="start-quiz-btn" class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-lg shadow transition-transform transform hover:scale-105 whitespace-nowrap">
+                <button id="start-quiz-btn"
+                    class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-lg shadow transition-transform transform hover:scale-105 whitespace-nowrap">
                     ランダムテスト
                 </button>
             </div>
@@ -111,11 +125,16 @@
     </div>
 
     <!-- Control Panel -->
-    <div id="control-panel" class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md p-4 border-t-2 border-gray-200 shadow-2xl flex justify-center items-center space-x-2 md:space-x-4">
-        <button id="toggle-answer-btn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">表示/非表示</button>
-        <button id="play-sound-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">音声再生</button>
-        <button id="record-btn" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">録音評価</button>
-        <button id="toggle-explanation-btn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">解説</button>
+    <div id="control-panel"
+        class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md p-4 border-t-2 border-gray-200 shadow-2xl flex justify-center items-center space-x-2 md:space-x-4">
+        <button id="toggle-answer-btn"
+            class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">表示/非表示</button>
+        <button id="play-sound-btn"
+            class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">音声再生</button>
+        <button id="record-btn"
+            class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">録音評価</button>
+        <button id="toggle-explanation-btn"
+            class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">解説</button>
     </div>
 
     <!-- Message/Score Modal -->
@@ -124,11 +143,12 @@
             <!-- Message content will be populated by JS -->
         </div>
     </div>
-    
+
     <!-- Quiz Modal -->
     <div id="quiz-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-40 p-4">
         <div class="bg-white w-full max-w-2xl p-8 rounded-2xl shadow-2xl relative">
-            <button id="close-quiz-btn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-3xl font-bold">&times;</button>
+            <button id="close-quiz-btn"
+                class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-3xl font-bold">&times;</button>
             <div id="quiz-content">
                 <!-- Quiz content will be populated by JS -->
             </div>
@@ -136,17 +156,24 @@
     </div>
 
     <!-- PDF Download Modal -->
-    <div id="pdf-modal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center z-50">
+    <div id="pdf-modal"
+        class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center z-50">
         <div class="relative mx-auto p-5 border w-11/12 md:w-1/2 lg:w-1/3 shadow-lg rounded-md bg-white">
             <div class="mt-3 text-center">
                 <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">ダウンロードするPDFの種類を選択</h3>
                 <div class="mt-2 space-y-3">
-                    <button id="download-list-btn" class="btn btn-primary w-full justify-start text-left">1. 完全なリスト (熟語・意味・例文)</button>
-                    <button id="download-en-quiz-btn" class="btn btn-primary w-full justify-start text-left">2. 熟語テスト (英語を解答)</button>
-                    <button id="download-ja-quiz-btn" class="btn btn-primary w-full justify-start text-left">3. 熟語テスト (意味を解答)</button>
-                    <button id="download-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">4. 熟語テスト (混合)</button>
-                    <button id="download-sentence-quiz-btn" class="btn btn-primary w-full justify-start text-left">5. 例文の穴埋め問題</button>
-                    <button id="download-sentence-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">6. 例文の混合問題 (穴埋め/和訳)</button>
+                    <button id="download-list-btn" class="btn btn-primary w-full justify-start text-left">1. 完全なリスト
+                        (熟語・意味・例文)</button>
+                    <button id="download-en-quiz-btn" class="btn btn-primary w-full justify-start text-left">2. 熟語テスト
+                        (英語を解答)</button>
+                    <button id="download-ja-quiz-btn" class="btn btn-primary w-full justify-start text-left">3. 熟語テスト
+                        (意味を解答)</button>
+                    <button id="download-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">4. 熟語テスト
+                        (混合)</button>
+                    <button id="download-sentence-quiz-btn" class="btn btn-primary w-full justify-start text-left">5.
+                        例文の穴埋め問題</button>
+                    <button id="download-sentence-mixed-quiz-btn"
+                        class="btn btn-primary w-full justify-start text-left">6. 例文の混合問題 (穴埋め/和訳)</button>
                 </div>
                 <div class="mt-6">
                     <button id="close-modal-btn" class="btn btn-secondary w-full">キャンセル</button>
@@ -158,324 +185,348 @@
     <script>
         const chapterData = [
     {
-        "id": "1",
-        "ja": "2 3 4 5 6 7 8 9 10音読 ͱͦͷҙຯ（どの意味を表すかは文脈から判断する）File12 助動詞 2 3 4 5 6 7 8 9 10音読 助動詞 2 3 4 5 6 7 8 9 10音読 ʹʪthat S′ （should）ʴࢺ・ࢺ  ‎64File15 助動詞 2 3 4 5 6 7 8 9 10音読 助動詞 2 3 4 5 6 7 8 9 10音読 助動詞",
+        "id": "３",
+        "ja": "章　助動詞  QR ☚ 音読用動画　別解など",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
-        "question": "ʪIt is ～ that S′ （should） doࢺ  ‎63 ͷ·ͱΊ File14 File13"
+        "question": ""
     },
     {
-        "id": "3",
-        "ja": "助動詞 ◀\t音読用動画 別解など 文法編 ｜  3章 助動詞 文法編 ｜  3章 助動詞 文法編 ｜  3章 助動詞 文法編 ｜  3章 助動詞",
+        "id": "38",
+        "ja": "● 文法編｜３章",
         "en": "???",
-        "answer": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "40",
+        "ja": "● 文法編｜３章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "42",
+        "ja": "● 文法編｜３章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "44",
+        "ja": "● 文法編｜３章",
+        "en": "???",
+        "answer": "",
         "explanation": "",
         "question": ""
     },
     {
         "id": "48",
-        "ja": "学校は，男女平等について生徒に教えなければならない。 3章 助動詞",
-        "en": "Schools {must teach students about gender equality.}",
-        "answer": "must teach students about gender equality.",
-        "explanation": "▶ 話し手の気持ちや判断を表すために動詞に添える語をࢺと呼ぶ。助動詞は\n動詞の前に置く。➡Grasp5, File12\nmust doʮʙ͠ͳ͚Ε͹ͳΒͳ͍ʯ\ngender equality ʮஉঁฏ౳ʯ",
-        "question": "Schools (        ) (t      ) students about gender equality. ①"
+        "ja": "学校は，男女平等について生徒に教えなければならない。 動詞の前に置く。➡ Grasp 5, File 12 must do「～しなければならない」 ○ gender equality「男女平等」",
+        "en": "Schools {must teach} students about gender equality.",
+        "answer": "must teach",
+        "explanation": "F 055 ▶ 話し手の気持ちや判断を表すために動詞に添える語を助動詞と呼ぶ。助動詞は",
+        "question": "Schools (    ) (t   ) students about gender equality."
     },
     {
         "id": "49",
-        "ja": "ご み のポイ捨てをしてはいけないことは 誰もが わかっている。",
-        "en": "Everyone knows that they {must not litter. must not [mustn’t] doʮ ʙͯ͠͸͍͚ͳ͍ ʯ}",
-        "answer": "must not litter. must not [mustn’t] doʮ ʙͯ͠͸͍͚ͳ͍ ʯ",
-        "explanation": "▶ 禁止を表す表現。mustnʼt の発音は/m%snt/\n⇔ may do / can doʮʙͯ͠΋Α͍ʯ―許可を表す ➡File13– p.40\nlitterͯ͢Δʯ",
-        "question": "Everyone knows that they (        ) (        ) (l      )."
+        "ja": "ごみのポイ捨てをしてはいけないことは誰もがわかっている。 「ごみを捨てる」を動詞１語で表すと？ F 055  must not [mustn’t] do「～してはいけない」 ⇔ may do / can do「～してもよい」―許可を表す ➡ File 13―p.40 ○ litter「ごみをポイ捨てする」",
+        "en": "Everyone knows that they {must not litter}.",
+        "answer": "must not litter",
+        "explanation": "▶ 禁止を表す表現。mustn’tの発音は/〇〇/",
+        "question": "Everyone knows that they (    ) (    ) (l   )."
     },
     {
         "id": "50-1",
-        "ja": "地球温暖化を止めなければならない。 have to の発音は/h™ft6/，has to の発音は/h™st6/。 must は話し手が主観的に感じている義務・必要を，have to は状況や規則などの客 観的な要因から判断した義務・必要を表す。",
-        "en": "???",
-        "answer": "???",
+        "ja": "地球温暖化を止めなければならない。 F 056  have to do＝have got to do「～しなければならない」 ！ have toの発音は/〇〇/，has toの発音は/〇〇/。 ＋ mustは話し手が主観的に感じている義務・必要を，have toは状況や規則などの客観的な要因から判断した義務・必要を表す。 ○ global warming「地球温暖化」",
+        "en": "We {have to stop} global warming.",
+        "answer": "have to stop",
         "explanation": "",
-        "question": "We (        ) (        ) (s      ) global warming. We have to stop global warming. have to do ＝have got to doʮʙ͠ͳ͚Ε͹ͳΒͳ͍ʯ global warmingԹஆԽʯ"
+        "question": "We (    ) (    ) (s   ) global warming."
     },
     {
         "id": "50-2",
-        "ja": "その女性は重いスーツケースを階段の上まで運ばなければならなかった。",
+        "ja": "その女性は重いスーツケースを階段の上まで運ばなければならなかった。 ○ up the stairs「階段の上へ」⇔ down the stairs「階段の下へ」",
         "en": "The woman {had to carry} a heavy suitcase up the stairs.",
         "answer": "had to carry",
-        "explanation": "▶ have to do とほぼ同じ意味を表すmust（～しなければならない） は，過去形の\nない助動詞。したがって， 「～しなければならなかった」 （過去） はhad to do で，\n「～しなければならないだろう」 （未来） はwill have to do で表す。\nup the stairs ʮ֊ஈͷ্΁ʯ⇔⇔ down the stairsʮ֊ஈͷԼ΁ʯ",
-        "question": "The woman  a heavy suitcase up the stairs."
+        "explanation": "▶ have to doとほぼ同じ意味を表すmust（～しなければならない）は，過去形のない助動詞。したがって，「～しなければならなかった」(過去)はhad to doで，「～しなければならないだろう」(未来)はwill have to doで表す。",
+        "question": "The woman had to carry a heavy suitcase up the stairs."
     },
     {
         "id": "51",
-        "ja": "自分に自信を持つために高価な服を買う必要はない。",
-        "en": "We {don’t have to buy expensive clothes to feel confident about ourselves. don ’t have to doʮʙ͢Δඞཁ͸ͳ͍ʯ＝don’t need to do ＝need not do feel confidentͭʯ}",
-        "answer": "don’t have to buy expensive clothes to feel confident about ourselves. don ’t have to doʮʙ͢Δඞཁ͸ͳ͍ʯ＝don’t need to do ＝need not do feel confidentͭʯ",
-        "explanation": "",
-        "question": "We (        ) (h      ) (        ) (        ) expensive clothes to feel confident about ourselves."
+        "ja": "自分に自信を持つために高価な服を買う必要はない。 don’t have to do「～する必要はない」＝don’t need to do＝need notdo ○ feel confident「自信を持つ」",
+        "en": "We {don’t have to buy} expensive clothes to feel confident about",
+        "answer": "don’t have to buy",
+        "explanation": "Tip  「～する必要はない」を表す表現は？\nourselves.",
+        "question": "We (    ) (h   ) (    ) (    ) expensive clothes to feel confident"
     },
     {
         "id": "52",
-        "ja": "サラはあと少し勉強しさえすれば，試験に合格するだろう。",
-        "en": "Sara {only has to study a little more, and she’ll pass the test.}",
-        "answer": "only has to study a little more, and she’ll pass the test.",
-        "explanation": "▶ ３人称単数 （Sara） が主語で時制が現在なのでonly has to となる。\n助動詞 中心的な意味 推量の意味\ncan / could 能力・可能 ʹbe able to do\nmay / might 許可ʮʙͯ͠΋Α͍ʯ 推量ʮʙ͔΋͠Εͳ͍ʯ\nmust 義務・必要 ʹhave to do\nʮʙ͠ͳ͚Ε͹ͳΒͳ͍ʯ 推量৴ʣ\nshould 義務・助言 ʹought to do\nʮʙ͢΂͖ͩʯ 推量ʮʙͷ͸ͣͩʯ\nwill / would 意志ʮʙ͢Δͭ΋Γͩʯ 推量ʮʙͩΖ͏ʯ\nᶃ 助動詞は動詞の前に置く\nᶄ 助動詞の後の動詞は原形(do) にする\nᶅ 主語の人称や数によって助動詞は変化しない\nᶆ 否定文では助動詞の後にnot を置く\nᶇ 疑問文では主語の前に助動詞を置く\ncan swim（泳げる）\nSara can swim [  swims].\nSara can [  cans] swim.\nSara cannot swim.\nCan Sara swim?\nຊϧʔϧ5Grasp\nlitter / carry\n36 37\n復習\nSelf\nCheck",
-        "question": "Sara (        ) (h      ) (        ) (        ) a little more, and she’ll pass the test."
+        "ja": "サラはあと少し勉強しさえすれば，試験に合格するだろう。 助動詞 ① ● 37 only have to do「～しさえすればよい，～するだけでいい」＝have only to do",
+        "en": "Sara {only has to study} a little more, and she’ll pass the test.",
+        "answer": "only has to study",
+        "explanation": "Tip 「～しさえすればよい，～するだけでいい」を表す３語から成る表現は？\n▶ 3人称単数(Sara) が主語で時制が現在なのでonly has toとなる。",
+        "question": "Sara (    ) (h   ) (    ) (    ) a little more, and she’ll pass the test."
     },
     {
         "id": "53",
-        "ja": "環境のためにエネルギーを節約すべきだ。",
-        "en": "We {should [ought to] save energy for the sake of the environment. should do ＝ought to doʮʙ͢΂͖ͩʯ save energy ʮΤωϧΪʔΛઅ໿͢Δʯ⇔⇔ waste energyʮΤωϧΪʔΛ࿘අ͢Δʯ}",
-        "answer": "should [ought to] save energy for the sake of the environment. should do ＝ought to doʮʙ͢΂͖ͩʯ save energy ʮΤωϧΪʔΛઅ໿͢Δʯ⇔⇔ waste energyʮΤωϧΪʔΛ࿘අ͢Δʯ",
+        "ja": "環境のためにエネルギーを節約すべきだ。 F 058  should do＝ought to do「～すべきだ」 ○ save energy「エネルギーを節約する」⇔ waste energy「エネルギーを浪費す る」",
+        "en": "We {should [ought to] save energy} for the sake of the environment.",
+        "answer": "should [ought to] save energy",
         "explanation": "",
-        "question": "We  for the sake of the environment."
+        "question": "We should save energy for the sake of the environment."
     },
     {
         "id": "54",
-        "ja": "プラ スチック製のス トローは海洋生物に害を与えかねないので使うべきではない。",
-        "en": "We {should not [ought not to] use plastic straws because they can harm marine life. marine life ʮւ༸ੜ෺ʯ}",
-        "answer": "should not [ought not to] use plastic straws because they can harm marine life. marine life ʮւ༸ੜ෺ʯ",
-        "explanation": "",
-        "question": "We  plastic straws because they can harm marine life."
+        "ja": "プラスチック製のストローは海洋生物に害を与えかねないので使うべきではない。 should not [shouldn’t] do＝ought not to do「～すべきでない」 ○ marine life「海洋生物」",
+        "en": "We {should not [ought not to] use} plastic straws because they can harm marine life.",
+        "answer": "should not [ought not to] use",
+        "explanation": "Tip 「～すべきでない」を表す表現は？",
+        "question": "We should not use plastic straws because they can harm marine life."
     },
     {
         "id": "55-1",
-        "ja": "その男性はダイエッ ト中なのでどうしてもそのケーキを食べようとしない。",
-        "en": "The man {won’t eat that cake because he is on a diet. will not [won’t] doʮͲ͏ͯ͠΋ʙ͠Α͏ͱ͠ͳ͍ ʯ}",
-        "answer": "won’t eat that cake because he is on a diet. will not [won’t] doʮͲ͏ͯ͠΋ʙ͠Α͏ͱ͠ͳ͍ ʯ",
-        "explanation": "▶ will は現在の主語の意志を表し，will not で現在における拒絶を表すことがある。",
-        "question": "The man  that cake because he is on a diet."
+        "ja": "その男性はダイエット中なのでどうしてもそのケーキを食べようとしない。 F 061   will not [won’t] do「どうしても～しようとしない」",
+        "en": "The man {won’t eat} that cake because he is on a diet.",
+        "answer": "won’t eat",
+        "explanation": "Tip 「どうしても～しようとしない」という拒絶を表す表現は？\n▶ willは現在の主語の意志を表し，will notで現在における拒絶を表すことがある。",
+        "question": "The man won’t eat that cake because he is on a diet."
     },
     {
         "id": "55-2",
-        "ja": "その女性は部屋に入ろうとしたが，ドアがどうしても開 かなかった。",
-        "en": "The woman tried to enter the room, but the door {wouldn’t open. would not do ʮͲ͏ͯ͠΋ʙ͠ͳ͔ͬͨʯ}",
-        "answer": "wouldn’t open. would not do ʮͲ͏ͯ͠΋ʙ͠ͳ͔ͬͨʯ",
-        "explanation": "▶ would は過去の主語の意志を表し，would not で過去における拒絶を表す。\n人だけでなく，物や事柄も主語になる。",
-        "question": "The woman tried to enter the room, but the door ."
+        "ja": "その女性は部屋に入ろうとしたが，ドアがどうしても開かなかった。 F 061  would not do「どうしても～しなかった」",
+        "en": "The woman tried to enter the room, but the door {wouldn’t open}.",
+        "answer": "wouldn’t open",
+        "explanation": "Tip  過去において「どうしても～しなかった」という拒絶を表す表現は？\n▶ wouldは過去の主語の意志を表し，would notで過去における拒絶を表す。人だけでなく，物や事柄も主語になる。",
+        "question": "The woman tried to enter the room, but the door wouldn’t open."
     },
     {
         "id": "56-1",
-        "ja": "遅れるかもしれないので，先に始めておいて ください。",
-        "en": "I {may [might] be late, so please start without me. may do / might doʮʙ͔΋͠Εͳ͍ʯ➡VI9– p.4}",
-        "answer": "may [might] be late, so please start without me. may do / might doʮʙ͔΋͠Εͳ͍ʯ➡VI9– p.4",
-        "explanation": "▶ might はmay よ り も確信度が低い。may の過去形だが過去の意味はない。",
-        "question": "I (        ) (        ) (        ), so please start without me."
+        "ja": "遅れるかもしれないので，先に始めておいてください。 F 054  may do / might do「～かもしれない」➡ VI 9―p.4",
+        "en": "I {may [might] be late}, so please start without me.",
+        "answer": "may [might] be late",
+        "explanation": "▶ mightはmayよりも確信度が低い。mayの過去形だが過去の意味はない。",
+        "question": "I (    ) (    ) (    ), so please start without me."
     },
     {
         "id": "56-2",
-        "ja": "彼 の ご 冥 福 を お 祈 り し ま す（彼が安らかに眠 れ ますように）。",
-        "en": "{May he rest in peace. rest in peace ʮ҆Β͔ʹ຾Δʯ}",
-        "answer": "May he rest in peace. rest in peace ʮ҆Β͔ʹ຾Δʯ",
-        "explanation": "",
-        "question": "(        ) (        ) (r      ) in peace."
+        "ja": "彼のご冥福をお祈りします（彼が安らかに眠れますように）。 May S do「Sが～でありますように」―祈願を表すmay。語順に注意。 ○ rest in peace「安らかに眠る」",
+        "en": "{May he rest} in peace.",
+        "answer": "May he rest",
+        "explanation": "Tip  助動詞を使って，「～しますように」という祈願を表す表現は？",
+        "question": "(    ) (    ) (r   ) in peace."
     },
     {
         "id": "57",
-        "ja": "彼女は今，学校を出たところだから，７時までには帰宅しているはずだ。",
-        "en": "She has just left school, so she {should be home by seven. should doʮʢ౰વʣʙ͢Δ͸ͣͩʯ＝ought to do}",
-        "answer": "should be home by seven. should doʮʢ౰વʣʙ͢Δ͸ͣͩʯ＝ought to do",
-        "explanation": "",
-        "question": "She has just left school, so she (        ) (        ) (        ) by seven."
+        "ja": "彼女は今，学校を出たところだから，7時までには帰宅しているはずだ。 F 058  should do「(当然)～するはずだ」＝ought to do ○ by＋時刻「～(時刻)までには」",
+        "en": "She has just left school, so she {should be home} by seven.",
+        "answer": "should be home",
+        "explanation": "Tip 「～するはずだ」という推量を表す助動詞は？",
+        "question": "She has just left school, so she (    ) (    ) (    ) by seven."
     },
     {
         "id": "58",
-        "ja": "その女性はカフェで友達を待っているに違 いない。",
-        "en": "The woman {must be waiting for her friends at the café. must doʮʙʹҧ͍ͳ͍ʯ➡VI9– p.4}",
-        "answer": "must be waiting for her friends at the café. must doʮʙʹҧ͍ͳ͍ʯ➡VI9– p.4",
-        "explanation": "▶ 〈助動詞 （must） ＋進行形 （be waiting）〉の 形 。",
-        "question": "The woman (        ) (b      ) (        ) for her friends at the café."
+        "ja": "その女性はカフェで友達を待っているに違いない。 F 057  must do「～に違いない」➡ VI 9―p.4",
+        "en": "The woman {must be waiting} for her friends at the café.",
+        "answer": "must be waiting",
+        "explanation": "▶〈助動詞(must)＋進行形(be waiting)〉の形。",
+        "question": "The woman (    ) (b   ) (    ) for her friends at the café."
     },
     {
         "id": "59",
-        "ja": "牛肉を食べる量を減らすと温室効果ガスの排出量を減らせるというのは本当だろうか。",
-        "en": "{Can it be true that eating} less beef can reduce greenhouse gas emissions? Can …?ʮʜͩΖ͏͔ɻ ʯ",
-        "answer": "Can it be true that eating",
-        "explanation": "▶ can には「～はあり得る」という推量の意味がある。can が推量を表すかどうか\nは文脈から判断する。疑問文で使う と，驚き・困惑などのニュアンスが含まれる。\ngreenhouse gasՌΨεʯ",
+        "ja": "牛肉を食べる量を減らすと温室効果ガスの排出量を減らせるというのは本当だろうか。 Can …?「…だろうか。」 ○ greenhouse gas「温室効果ガス」",
+        "en": "{Can it be true} {that eating} less beef can reduce greenhouse gas",
+        "answer": "Can it be true, that eating",
+        "explanation": "Tip 「～はあり得る」という推量（可能性）を表す助動詞を疑問文で使う。\nemissions?\n▶ canには「～はあり得る」という推量の意味がある。canが推量を表すかどうかは文脈から判断する。疑問文で使うと，驚き・困惑などのニュアンスが含まれる。",
         "question": "( that / be / eating / it / can / true ) less beef can reduce greenhouse gas emissions?"
     },
     {
         "id": "60",
-        "ja": "その話が本当のはずがない。私は信じない。 can’t [cannot] doʮʙͷ͸͕ͣͳ͍ʯ―  can not は誤り。  cannot 復習",
-        "en": "???",
-        "answer": "???",
+        "ja": "その話が本当のはずがない。私は信じない。 助動詞 ② ● 39 F 052  can’t [cannot] do「～のはずがない」― × can notは誤り。 〇 cannot ⇔ must do「～に違いない」➡ File 13―p.40",
+        "en": "The story {can’t be true}. I don’t believe it.",
+        "answer": "can’t be true",
         "explanation": "",
-        "question": "The story . I don’t believe it. The story can’t be true. I don’t believe it. ⇔ must doʮʙʹҧ͍ͳ͍ʯ‎File13– p.40 save energy / rest / be home 38 39 Self Check"
+        "question": "The story can’t be true. I don’t believe it."
     },
     {
         "id": "61",
-        "ja": "発展 客がショッピングモールの駐車場代を支払う必要はない。",
-        "en": "＝ Customers {need not pay for the parking at the mall.［need は助動詞］ Customers don’t need to pay for the parking at the mall.［need は動詞］ need not [needn’t] doʮʙ͢Δඞཁ͸ͳ͍ʯ➡File13 ＝don’t need to do ＝don’t have to do}",
-        "answer": "need not pay for the parking at the mall.［need は助動詞］ Customers don’t need to pay for the parking at the mall.［need は動詞］ need not [needn’t] doʮʙ͢Δඞཁ͸ͳ͍ʯ➡File13 ＝don’t need to do ＝don’t have to do",
-        "explanation": "▶ need not のneed は助動詞。助動詞のneed は否定文と疑問文で使う。\n肯定文では動詞のneed をneed to do「～する必要がある」の形で使う。\nCustomers need to pay for the parking at the mall.\n（客はショ ッピングモールの駐車場代を支払う必要がある。）\npay for A ʮA෷͏ʯ",
-        "question": "Customers (        ) (        ) (        ) (        ) the parking at the mall."
+        "ja": "客がショッピングモールの駐車場代を支払う必要はない。 発展     Tip  needには動詞だけでなく助動詞の用法もある。助動詞を使った否定文はどう表 す？ その後にくる動詞の形は？ Customers need not pay for the parking at the mall. [needは助動詞] ＝Customers don’t need to pay for the parking at the mall. [needは動詞] need not [needn’t] do「～する必要はない」➡ File 13 ！ 肯定文では動詞のneedをneed to do「～する必要がある」の形で使う。 （客はショッピングモールの駐車場代を支払う必要がある。） ○ pay for A「Aの代金を支払う」",
+        "en": "Customers {need to} pay for the parking at the mall.",
+        "answer": "need to",
+        "explanation": "▶ need notのneedは助動詞。助動詞のneedは否定文と疑問文で使う。",
+        "question": "Customers (    ) (    ) (    ) (    ) the parking at the mall. ＝don’t need to do＝don’t have to do"
     },
     {
         "id": "62",
-        "ja": "発展 よくもま あ私の許可なく彼女はあの写真を投稿できるね。",
-        "en": "{How dare she post that photo without my permission?}",
-        "answer": "How dare she post that photo without my permission?",
-        "explanation": "▶ このdare は「あえて～する」という意味の助動詞。否定文と疑問文で使う。\ndare not do ʮ͋͑ͯʙ͠ͳ͍ʯ＝don’t dare (to) do\npost a photo͢Δʯ",
-        "question": "(        ) (d      ) (        ) (        ) that photo without my permission?"
+        "ja": "よくもまあ私の許可なく彼女はあの写真を投稿できるね。 発展     Tip 「よくも～できるものだ」を表す表現は？「投稿する」を表す動詞は？ How dare S do?「(Sは)よくも～できるものだ。」 ＋ dare not do「あえて～しない」＝don’t dare (to) do ○ post a photo「写真を(ネットに)投稿する」",
+        "en": "{How dare she post} that photo without my permission?",
+        "answer": "How dare she post",
+        "explanation": "▶ このdareは「あえて～する」という意味の助動詞。否定文と疑問文で使う。",
+        "question": "(    ) (d   ) (    ) (    ) that photo without my permission?"
     },
     {
         "id": "63",
-        "ja": "クラ スの前で発表する前に緊張するのは当然だ。",
-        "en": "It is natural that we (should) feel nervous before giving a presentation in front of the class.  ‎File14 It is natural that S ˄ (should, would) doʮS˄ ͕ʙ͢Δͷ͸౰વͩʯ",
-        "answer": "is natural that we (should) feel nervous before giving a presentation in front of the class. ‎File14 It is natural that S ˄ (should, would) doʮS˄ ͕ʙ͢Δͷ͸౰વͩʯ",
-        "explanation": "▶ It isʴ感情・判断を表す形容詞ʴthat … のthat節の中でshould do /\nwould do が使われることがある。that節以下は「実際に起こり得る」と考え\nている内容で，直説法（➡p.48）を使って表現する。\n仮定法ではないので，should/would を使わない場合は，It is natural that we\nfeel …，It is natural that he feels …，It was natural that we felt … などとする。",
-        "question": "It  we  nervous before giving a presentation in front of the class."
+        "ja": "クラスの前で発表する前に緊張するのは当然だ。 It is natural that S’ (should, would) do「S’が～するのは当然だ」 ！ 仮定法ではないので，should/woudを使わない場合は，It is natural that we feel …，It is natural that he feels …，It was natural that we felt …などとする。",
+        "en": "{It }is natural that we should feel nervous before giving a presentation in front of the class. ➡ {File 14}",
+        "answer": "It, File 14",
+        "explanation": "in front of the class.\nTip  感情・判断を表す形容詞を使った表現。that節内の述語動詞の形は？\n▶ It is＋感情・判断を表す形容詞＋that …のthat節の中でshould do / would doが使われることがある。that節以下は「実際に起こり得る」と考えている内容で，直説法(➡ p.48)を使って表現する。",
+        "question": "It is natural that we (should) feel nervous before giving a presentation"
     },
     {
         "id": "64",
-        "ja": "発展 アナン先生は私がオンラインの英語レッスンを受けたらと提案している。",
-        "en": "Ms. Annan {suggests (that) I (should) take online English lessons. suggest (that) S˄ (should)ʴܗݪʮS˄ ͕ʙ͢Δ͜ͱΛఏҊ͢Δʯ ＝propose (that) S′ (should)ʴ原形}",
-        "answer": "suggests (that) I (should) take online English lessons. suggest (that) S˄ (should)ʴܗݪʮS˄ ͕ʙ͢Δ͜ͱΛఏҊ͢Δʯ ＝propose (that) S′ (should)ʴ原形",
-        "explanation": "▶ 提案・命令・要求を表す動詞や必要性・重要性を表す形容詞に続くthat節の\n中の動詞は〈shouldʴ原形〉または原形にする。動詞を原形にするこの用法を\nࡏݱと呼ぶ。➡File15, 649-1\n主節の述語動詞が過去形になってもthat節の中の動詞は 〈should＋原形〉 または原形\nのままでよい。 Ms. Annan suggested (that) I take …\n肯定形 否定形\nʮ～してもよいʯ\nYou may take pictures.\nYou can take pictures. ⇔\nʮ～しては い けな いʯ\nYou may not take pictures.  ［不許可］\nYou cannot take pictures.  ［不許可］\nYou must not take pictures.  ［禁止］\nʮ～しなければならないʯ\nYou must wait here.\nYou have to wait here.\n⇔\nʮ～する必要はないʯ\nYou don’t have to wait here.\nYou need not wait here.\nʮ～に違いないʯ\nYou must be tired. ⇔ ʮ～であるはずがないʯ\nYou can’t be tired.\nnaturalʮ౰વͷʯɹ strangeົͳʯɹ surprising͘΂͖ʯ\nregrettable೦ͳʯɹ rightʮਖ਼͍͠ʯɹ wrongҧ͍ͬͯΔʯ\nᶃ 動詞 suggest / proposeʮఏҊ͢Δʯɹ recommendΊΔʯ‎649～653\norderʮ໋ྩ͢Δʯɹ demand / insist͢Δʯ\nrequestʮཁ੥͢Δʯɹ require͢Δʯ\nᶄ 形容詞 necessaryʮඞཁͳʯɹ essentialͳʯ\nimportantʮॏཁͳʯɹ desirableʮ๬·͍͠ʯ\npay for / post / feel / suggest\n40 41\n復習\nSelf\nCheck",
-        "question": "Ms. Annan  online English lessons."
+        "ja": "アナン先生は私がオンラインの英語レッスンを受けたらと提案している。 発展     Tip  提案・命令・要求を表す動詞を使った表現。that節内の述語動詞の形は？ 助動詞 ③ ● 41 suggest (that) S’ (should)＋原形「S’が～することを提案する」 ＝propose (that) S’ (should)＋原形 ！ 主節の述語動詞が過去形になってもthat節の中の動詞は〈should＋原形〉または原形のままでよい。○ Ms. Annan suggested (that) I take …",
+        "en": "???",
+        "answer": "",
+        "explanation": "▶ 提案・命令・要求を表す動詞や必要性・重要性を表す形容詞に続くthat節の中の動詞は〈should＋原形〉または原形にする。動詞を原形にするこの用法を仮定法現在と呼ぶ。➡ File 15, 649-1",
+        "question": "Ms. Annan suggests I (should) take online English lessons. Ms. Annan suggests (that) I (should) take online English lessons."
     },
     {
         "id": "65",
-        "ja": "以前は家族と映画を見に行ったものです。",
-        "en": "{I used to go to the movies} with my family. used to do ʮҎલ͸ʙͨ͠΋ͷͩɼҎલ͸ʙͩͬͨʯ",
-        "answer": "I used to go to the movies",
-        "explanation": "▶ 過去の習慣や状態を表す。「過去には～だったが今は違う」というニュアンスを\n含む。used to の後には動作動詞も状態動詞もくる。",
+        "ja": "以前は家族と映画を見に行ったものです。 F 064  used to do「以前は～したものだ，以前は～だった」",
+        "en": "I {used to go to the movies} with my family.",
+        "answer": "used to go to the movies",
+        "explanation": "▶ 過去の習慣や状態を表す。「過去には～だったが今は違う」というニュアンスを含む。used toの後には動作動詞も状態動詞もくる。",
         "question": "( to / the movies / I / go / to / used ) with my family."
     },
     {
         "id": "66",
-        "ja": "週末になると，友達とよく公園で遊んでいた。",
-        "en": "My friends and I would often hang out at the park on weekends. would (often) doʮʢ Α ͘ ʣʙ ͠ ͨ ΋ ͷ ͩ ʯ",
-        "answer": "would often hang out at the park on weekends. would often doʮʢ Α ͘ ʣʙ ͠ ͨ ΋ ͷ ͩ ʯ",
-        "explanation": "▶ 過去の習慣的動作を表す。would の後に続くのは動作動詞のみ。often などの\n頻度を表す副詞と共に使うことが多い。\nhang outΛա͢͝ʯ―この意味ではplay「遊ぶ」は使わない。",
-        "question": "My friends and I (        ) (o      ) (h      ) (        ) at the park on weekends."
+        "ja": "週末になると，友達とよく公園で遊んでいた。 F 063   would (often) do「(よく)～したものだ」 ○ hang out「ぶらぶらして時を過ごす」―この意味ではplay「遊ぶ」は使わない。",
+        "en": "My friends and I {would often hang out} at the park on weekends.",
+        "answer": "would often hang out",
+        "explanation": "Tip 「よく～したものだ」と過去の習慣的な動作を表す表現は？\n▶ 過去の習慣的動作を表す。wouldの後に続くのは動作動詞のみ。oftenなどの頻度を表す副詞と共に使うことが多い。",
+        "question": "My friends and I (    ) (o   ) (h   ) (    ) at the park on weekends."
     },
     {
         "id": "67-1",
-        "ja": "後で雨が降るかもしれないから，傘を持って行ったほうがいい。 Youを主語にすると命令口調になるため，子どもや親しい人以外には使わないほうがよい。",
-        "en": "???",
-        "answer": "???",
+        "ja": "後で雨が降るかもしれないから，傘を持って行ったほうがいい。 F 059  had better do「～したほうがよい」 ！ Youを主語にすると命令口調になるため，子どもや親しい人以外には使わないほうがよい。",
+        "en": "You {had better take} your umbrella because it might rain later.",
+        "answer": "had better take",
         "explanation": "",
-        "question": "You (h      ) (        ) (        ) your umbrella because it might rain later. You had better take your umbrella because it might rain later. had better do ʮʙͨ͠΄͏͕Α͍ʯ"
+        "question": "You (h   ) (    ) (    ) your umbrella because it might rain later."
     },
     {
         "id": "67-2",
-        "ja": "今夜は夜更かししないほうがいい。",
-        "en": "You {had better not stay up late tonight. had better not do ʮʙ͠ͳ͍΄͏͕Α͍ʯ}",
-        "answer": "had better not stay up late tonight. had better not do ʮʙ͠ͳ͍΄͏͕Α͍ʯ",
-        "explanation": "▶ had better を１つの助動詞として考え，その後にnot を付け，動詞を続ける。\nstay up late͔͢͠Δʯ⇔⇔ go to bed earlyʮૣ͘৸Δʯ",
-        "question": "You (h      ) (        ) (        ) (s      ) (        ) late tonight."
+        "ja": "今夜は夜更かししないほうがいい。 had better not do「～しないほうがよい」 ○ stay up late「夜更かしする」⇔ go to bed early「早く寝る」",
+        "en": "You {had better not stay up} late tonight.",
+        "answer": "had better not stay up",
+        "explanation": "Tip  相手に対する忠告・命令を表す表現。notの位置に注意。\n▶ had betterを１つの助動詞として考え，その後にnotを付け，動詞を続ける。",
+        "question": "You (h   ) (    ) (    ) (s   ) (    ) late tonight."
     },
     {
         "id": "68-1",
-        "ja": "「勉強中はむしろ音楽を聴きたい。 そ の ほ う が 集 中 で き る 。」「 本 当 に ？ 」 rather の直後に動詞の原形がく ることに注意。",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "“I (w     ) (        ) (        ) (        ) music while studying. It helps me concentrate.” “Are you sure?” “I would rather listen to music while studying. It helps me concentrate.” “Are you sure?” would rather do ʮʢΉ͠Ζʣʙ͍ͨ͠ʯ concentrate ʮूத͢Δʯ"
+        "ja": "「勉強中はむしろ音楽を聴きたい。そのほうが集中できる。」「本当に？」 would rather do「(むしろ)～したい」 ！ ratherの直後に動詞の原形がくることに注意。 ○ concentrate「集中する」",
+        "en": "“I {would rather listen to} music while studying. It helps me",
+        "answer": "would rather listen to",
+        "explanation": "Tip 「むしろ～したい」という意味を表す，助動詞を使った表現は？\nconcentrate.” “Are you sure?”",
+        "question": "“I (w   ) (    ) (    ) (    ) music while studying. It helps me"
     },
     {
         "id": "68-2",
-        "ja": "個人的なこ となので，その質問には答えたくありません。",
-        "en": "I {would rather not answer that question because it’s personal. would rather not do ʮʢͲͪΒ͔ͱ͍͏ͱʣʙͨ͘͠ͳ͍ʯ}",
-        "answer": "would rather not answer that question because it’s personal. would rather not do ʮʢͲͪΒ͔ͱ͍͏ͱʣʙͨ͘͠ͳ͍ʯ",
-        "explanation": "▶ would rather の後にnot を付け，動詞を続ける。",
-        "question": "I (w     ) (        ) (        ) (a      ) that question because it’s personal."
+        "ja": "個人的なことなので，その質問には答えたくありません。 would rather not do「(どちらかというと)～したくない」",
+        "en": "I {would rather not answer} that question because it’s personal.",
+        "answer": "would rather not answer",
+        "explanation": "Tip 「(どちらかというと)～したくない」を表す，助動詞を使った表現は？\n▶ would ratherの後にnotを付け，動詞を続ける。",
+        "question": "I (w   ) (    ) (    ) (a   ) that question because it’s personal."
     },
     {
         "id": "69",
-        "ja": "彼女はカラオケに行くよりも，テスト勉強をしたいと言っていた。 than の直後にも動詞の原形がく ることに注意。",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "She said she  for the test than  karaoke. She said she would rather study for the test than go to karaoke. would rather do A than do B ʮB ͢ΔΑΓ΋ʢΉ͠ΖʣA ͍ͨ͠ʯ"
+        "ja": "彼女はカラオケに行くよりも，テスト勉強をしたいと言っていた。 would rather do A than do B「Bするよりも(むしろ)Aしたい」 ！ thanの直後にも動詞の原形がくることに注意。",
+        "en": "She said she {would rather study} for the test than {go} {to} karaoke.",
+        "answer": "would rather study, go, to",
+        "explanation": "Tip 「…するよりも(むしろ)～したい」を表す表現は？",
+        "question": "She said she would rather study for the test than go to karaoke."
     },
     {
         "id": "70",
-        "ja": "彼 女に何かいいことがあったに違いない。",
-        "en": "Something good {must have happened to her.}",
-        "answer": "must have happened to her.",
-        "explanation": "▶ ࢺʴhaveʴࢺ（done）で過去の出来事や行為についての推量を\n表す。\nmust have done ʮʙͨ͠ʦͩͬͨʧʹҧ͍ͳ͍ʯ\nsomething good ʮԿ͔͍͍͜ͱʯ⇔⇔ something badʮԿ͔Α͘ͳ͍͜ͱʯ",
-        "question": "Something good (        ) (        ) (h      ) to her."
+        "ja": "彼女に何かいいことがあったに違いない。 にする？ must have done「～した[だった]に違いない」 ○ something good「何かいいこと」⇔ something bad「何かよくないこと」",
+        "en": "Something good {must have happened} to her.",
+        "answer": "must have happened",
+        "explanation": "F 067 ▶ 助動詞＋have＋過去分詞(done)で過去の出来事や行為についての推量を表す。",
+        "question": "Something good (    ) (    ) (h   ) to her."
     },
     {
         "id": "71",
-        "ja": "ケンはバスに乗り遅れたのかもしれない。",
-        "en": "Ken {may [might] have missed the bus. may [might] have doneʮʙͨ͠ ʦͩͬͨʧ ͷ͔΋͠Εͳ͍ʯ}",
-        "answer": "may [might] have missed the bus. may [might] have doneʮʙͨ͠ ʦͩͬͨʧ ͷ͔΋͠Εͳ͍ʯ",
-        "explanation": "▶ might はmay よ り も確信度が低い。\nmiss the bus ʮόεʹ৐Γ஗ΕΔʯ⇔⇔ catch the bus͏ʯ\nhang out / take / stay up / happen / miss\n42 43\n復習\nSelf\nCheck",
-        "question": "Ken (m     ) (        ) (        ) the bus."
+        "ja": "ケンはバスに乗り遅れたのかもしれない。 助動詞 ④ ● 43 F 067  may [might] have done「～した[だった]のかもしれない」 ○ miss the bus「バスに乗り遅れる」⇔ catch the bus「バスに間に合う」",
+        "en": "Ken {may [might] have missed} the bus.",
+        "answer": "may [might] have missed",
+        "explanation": "▶ mightはmayよりも確信度が低い。",
+        "question": "Ken (m   ) (    ) (    ) the bus."
     },
     {
         "id": "72",
-        "ja": "授業の後，傘を手に取った覚えがあるので，学校に置き忘れたはずはない。",
-        "en": "I {can’t [couldn’t] have left my umbrella at school because I remember taking it with me after class. can’t [couldn’t] have doneʮʙͨ͠ ʦͩͬͨʧ ͸͕ͣͳ͍ʯ➡VI11– p.5}",
-        "answer": "can’t [couldn’t] have left my umbrella at school because I remember taking it with me after class. can’t [couldn’t] have doneʮʙͨ͠ ʦͩͬͨʧ ͸͕ͣͳ͍ʯ➡VI11– p.5",
-        "explanation": "▶ couldn ʼt はcanʼt よ り も確信度が低い。",
-        "question": "I  my umbrella at school because I remember taking it with me after class."
+        "ja": "授業の後，傘を手に取った覚えがあるので，学校に置き忘れたはずはない。 can’t [couldn’t] have done「～した[だった]はずがない」➡ VI 11―p.5",
+        "en": "I {can’t [couldn’t] have left} my umbrella at school because I remember",
+        "answer": "can’t [couldn’t] have left",
+        "explanation": "Tip  過去についての推量を表す文。「はずがない」を表す助動詞の表現を使う。\ntaking it with me after class.\n▶ couldn’tはcan’tよりも確信度が低い。",
+        "question": "I can’t have left my umbrella at school because I remember"
     },
     {
         "id": "73-1",
-        "ja": "前回の授業の復習をしておく べきだった。",
-        "en": "I {should have reviewed the previous lesson.}",
-        "answer": "should have reviewed the previous lesson.",
-        "explanation": "▶ ࢺʴhaveʴࢺ（done）で過去についての非難・後悔を表す。\nshould have done ʮʙ͢΂͖ͩͬͨͷʹʢ͠ͳ͔ͬͨʣʯ➡VI11– p.5\n＝ought to have done\nreview AʮA Λ෮श͢Δʯ⇔⇔ prepare for AʮA ͷ༧शΛ͢Δʯ\nprevious ʮલͷɼલճͷʯ⇔⇔ nextͷʯ",
-        "question": "I (        ) (        ) (r      ) the previous lesson."
+        "ja": "前回の授業の復習をしておくべきだった。 should have done「～すべきだったのに(しなかった)」➡ VI 11―p.5 ○ review A「Aを復習する」⇔ prepare for A「Aの予習をする」 ○ previous「前の，前回の」⇔ next「次の」",
+        "en": "I {should have reviewed} the previous lesson.",
+        "answer": "should have reviewed",
+        "explanation": "F 068 ▶ 助動詞＋have＋過去分詞(done)で過去についての非難・後悔を表す。\n＝ought to have done",
+        "question": "I (    ) (    ) (r   ) the previous lesson."
     },
     {
         "id": "73-2",
-        "ja": "夜 遅くまでYouTubeの動画を見るべきではなかった。",
-        "en": "I {should not have stayed up late watching YouTube videos. ＝ought not to have done}",
-        "answer": "should not have stayed up late watching YouTube videos. ＝ought not to have done",
-        "explanation": "",
-        "question": "I (        ) (        ) (        ) (s      ) (        ) late watching YouTube videos."
+        "ja": "夜遅くまでYouTubeの動画を見るべきではなかった。 should not [shouldn’t] have done「～すべきでなかったのに(した)」 ○ stay up (late) doing「夜遅くまで～する」",
+        "en": "I {should not have stayed up }late watching YouTube videos.",
+        "answer": "should not have stayed up",
+        "explanation": "＝ought not to have done",
+        "question": "I (    ) (    ) (    ) (s   ) (    ) late watching YouTube videos."
     },
     {
         "id": "74",
-        "ja": "テストは思っていたより簡単だったので，心配する必要はなかった。",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "I (        ) (        ) (h      ) (w     ) (        ) the test because it was easier than I had expected. I need not have worried about the test because it was easier than I had expected. need not [needn’t] have doneʮʙ͢Δඞཁ͸ͳ͔ͬͨͷʹʢͨ͠ʣʯ worry about A ʮA Λ৺഑͢Δʯ＝be worried about A than S˄ (had) expectedʮSͬ ͯ ͍ ͨ Α ΓɼSͬ ͨ Α Γʯ"
+        "ja": "テストは思っていたより簡単だったので，心配する必要はなかった。 need not [needn’t] have done「～する必要はなかったのに(した)」 ○ worry about A「Aを心配する」＝be worried about A ○ than S’ (had) expected「S’が思っていたより，S’が思ったより」",
+        "en": "I {need not have worried about} the test because it was easier than",
+        "answer": "need not have worried about",
+        "explanation": "Tip 「～する必要はなかったのに(した)」を表す表現は？\nI had expected.",
+        "question": "I (    ) (    ) (h   ) (w   ) (    ) the test because it was easier than I had expected."
     },
     {
         "id": "75-1",
-        "ja": "私はどうしても過 去のことを考えてしまう。",
-        "en": "I {can’t help thinking about the past. can’t help doing ʮ ʙ ͤ ͣʹ͸͍ΒΕͳ͍ ɼͲ͏ͯ͠΋ʙͯ͠͠·͏ʯ}",
-        "answer": "can’t help thinking about the past. can’t help doing ʮ ʙ ͤ ͣʹ͸͍ΒΕͳ͍ ɼͲ͏ͯ͠΋ʙͯ͠͠·͏ʯ",
-        "explanation": "▶ このhelp は 「 ～ を 避 け る（avoid） 」の意味。 「～することを避けられない」",
-        "question": "I (        ) (h      ) (        ) (        ) the past."
+        "ja": "私はどうしても過去のことを考えてしまう。 can’t help doing「～せずにはいられない，どうしても～してしまう」",
+        "en": "I {can’t help thinking about} the past.",
+        "answer": "can’t help thinking about",
+        "explanation": "Tip 「過去について考えずにはいられない」と表現する。\n▶ このhelpは「～を避ける(avoid)」の意味。「～することを避けられない」",
+        "question": "I (    ) (h   ) (    ) (    ) the past."
     },
     {
         "id": "75-2",
-        "ja": "来週の修学旅行が楽しみで仕方ない。 can’t help but do ʮʙͤͣʹ͸͍ΒΕͳ͍ʯ―but の後は動詞の原形。",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "I (        ) (        ) (        ) (f      ) (e      ) about the school trip next week. I can’t help but feel excited about the school trip next week. feel excited ʮΘ͘Θ͘͢Δʯ"
+        "ja": "来週の修学旅行が楽しみで仕方ない。 can’t help but do「～せずにはいられない」―butの後は動詞の原形。 ○ feel excited「わくわくする」",
+        "en": "I {can’t help but feel excited} about the school trip next week.",
+        "answer": "can’t help but feel excited",
+        "explanation": "Tip 「楽しみで仕方がない→わくわくせずにはいられない」と表現する。",
+        "question": "I (    ) (    ) (    ) (f   ) (e   ) about the school trip next week."
     },
     {
         "id": "76",
-        "ja": "発展 車を運転するときは，いく ら注意してもし過ぎることはない。",
-        "en": "You cannot be too careful when driving. cannot … tooʴʧ  ʮ͍͘Βʙͯ͠΋ʜ͠ա͗Δ͜ͱ͸ͳ͍ʯ",
-        "answer": "cannot be too careful when driving. cannot … tooʴʧ ʮ͍͘Βʙͯ͠΋ʜ͠ա͗Δ͜ͱ͸ͳ͍ʯ",
-        "explanation": "▶ cannot [canʼt] の後に動詞，too の後に形容詞・副詞を続ける。",
-        "question": "You  when driving."
+        "ja": "車を運転するときは，いくら注意してもし過ぎることはない。 発展     Tip 〈too＋形容詞〉を使って表現する。 cannot … too＋形容詞[副詞]「いくら～しても…し過ぎることはない」",
+        "en": "You {cannot be too careful} when driving.",
+        "answer": "cannot be too careful",
+        "explanation": "▶ cannot [can’t]の後に動詞，tooの後に形容詞・副詞を続ける。",
+        "question": "You cannot be too careful when driving."
     },
     {
         "id": "77",
-        "ja": "発展 たくさん 練 習してきたので ，おそらくディベ ート大 会で勝てるだろう。 well の後に動詞の原形を続ける。might のほうが確信度は低く なる。",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "We have practiced a lot, so we (m     ) (        ) (        ) the debate competition. We have practiced a lot, so we may well win the debate competition. may [might] well do  ᶃʮ ͓ ͦΒ͘ʙ ͢ Δ ͩ Ζ͏ ʯ ᶄʮ ʙ ͢ Δ ͷ ΋ ΋ͬͱ΋ ͩ ʯ debate competition ʮσΟϕʔτେձʯ"
+        "ja": "たくさん練習してきたので，おそらくディベート大会で勝てるだろう。 発展     competition. may [might] well do ①「おそらく～するだろう」②「～するのももっともだ」 ！ wellの後に動詞の原形を続ける。mightのほうが確信度は低くなる。 ○ debate competition「ディベート大会」",
+        "en": "We have practiced a lot, so we {may well win} the debate competition.",
+        "answer": "may well win",
+        "explanation": "Tip 「おそらく～だろう」を表す，助動詞を含む表現。",
+        "question": "We have practiced a lot, so we (m   ) (    ) (    ) the debate"
     },
     {
         "id": "78",
-        "ja": "発展 外 は 雨 が 降っているので ， 屋 内で過ごすのがいいかもしれない。 well の後に動詞の原形を続ける。had better「～したほうがよい」とは違い，ほかに 良い選択肢がないため「～したほうがいい」という消極的な提案を表す。 復習",
-        "en": "???",
-        "answer": "???",
+        "ja": "外は雨が降っているので，屋内で過ごすのがいいかもしれない。 発展     Tip 「いいかもしれない＝したほうがいい」。消極的な提案を表す表現。 助動詞 ⑤ ● 45 may [might] as well do「～したほうがいい」 ！ well後に動詞の原形を続ける。had better「～したほうがよい」とは違い，ほかに良い選択肢がないため「～したほうがいい」という消極的な提案を表す。 ○ stay indoors「屋内で過ごす」⇔ go outdoors「外に出る」",
+        "en": "It’s raining outside, so we {may as well stay} indoors.",
+        "answer": "may as well stay",
         "explanation": "",
-        "question": "It’s raining outside, so we (m     ) (        ) (        ) (        ) indoors. It’s raining outside, so we may as well stay indoors. may [might] as well doʮʙͨ͠΄͏͕͍͍ʯ leave / review / stay up / worry about / excited / careful 44 45 Self Check"
+        "question": "It’s raining outside, so we (m   ) (    ) (    ) (    ) indoors."
     }
 ];
 
@@ -489,7 +540,7 @@
             recognition.lang = 'en-US';
             recognition.interimResults = false;
         }
-        
+
         // --- Voice Synthesis Setup ---
         let synthesisVoice = null;
 
@@ -497,10 +548,10 @@
             const voices = speechSynthesis.getVoices();
             // 優先順位: Google US English -> Microsoft Zira/David -> その他英語
             synthesisVoice = voices.find(voice => voice.name === 'Google US English') ||
-                             voices.find(voice => voice.name.includes('Google') && voice.lang.includes('en-US')) ||
-                             voices.find(voice => voice.name.includes('Microsoft') && voice.lang.includes('en-US')) ||
-                             voices.find(voice => voice.lang === 'en-US') ||
-                             voices.find(voice => voice.lang.startsWith('en'));
+                voices.find(voice => voice.name.includes('Google') && voice.lang.includes('en-US')) ||
+                voices.find(voice => voice.name.includes('Microsoft') && voice.lang.includes('en-US')) ||
+                voices.find(voice => voice.lang === 'en-US') ||
+                voices.find(voice => voice.lang.startsWith('en'));
         }
 
         // 音声リストがロードされたら設定を実行
@@ -523,7 +574,7 @@
         const quizModal = document.getElementById('quiz-modal');
         const closeQuizBtn = document.getElementById('close-quiz-btn');
         const quizContent = document.getElementById('quiz-content');
-        
+
         const selectAllCheckbox = document.getElementById('select-all-checkbox');
         const pdfModal = document.getElementById('pdf-modal');
         const openPdfModalBtn = document.getElementById('open-pdf-modal-btn');
@@ -573,7 +624,7 @@
                 `;
                 sentenceList.appendChild(sentenceDiv);
             });
-            
+
             // Add click listener to each sentence item
             document.querySelectorAll('.sentence-item').forEach(item => {
                 item.addEventListener('click', (e) => {
@@ -600,15 +651,15 @@
                     }
                 });
             });
-            
+
             // Select the first sentence by default
             if (sentenceList.firstChild) {
-                 sentenceList.firstChild.click();
+                sentenceList.firstChild.click();
             }
         }
-        
+
         // --- PDF / Print Logic ---
-        
+
         function openPrintWindow(bodyContent, title) {
             const htmlContent = `
                 <!DOCTYPE html>
@@ -660,7 +711,7 @@
             printWindow.document.write(htmlContent);
             printWindow.document.close();
             setTimeout(() => {
-                printWindow.focus(); 
+                printWindow.focus();
                 printWindow.print();
             }, 250);
         }
@@ -675,32 +726,32 @@
                 .map(id => chapterData.find(item => item.id === id))
                 .filter(Boolean)
                 .sort((a, b) => {
-                     // Handle IDs like "1382-1" vs "1382-2"
-                     const aParts = a.id.split('-').map(s => parseInt(s) || 0);
-                     const bParts = b.id.split('-').map(s => parseInt(s) || 0);
-                     if (aParts[0] !== bParts[0]) return aParts[0] - bParts[0];
-                     return (aParts[1] || 0) - (bParts[1] || 0);
+                    // Handle IDs like "1382-1" vs "1382-2"
+                    const aParts = a.id.split('-').map(s => parseInt(s) || 0);
+                    const bParts = b.id.split('-').map(s => parseInt(s) || 0);
+                    if (aParts[0] !== bParts[0]) return aParts[0] - bParts[0];
+                    return (aParts[1] || 0) - (bParts[1] || 0);
                 });
         }
-        
+
         function getUniqueItems(items) {
-             const uniqueMap = new Map();
-             items.forEach(item => {
-                 // Use answer as key to deduplicate same phrases
-                 if (!uniqueMap.has(item.answer)) {
-                     uniqueMap.set(item.answer, item);
-                 }
-             });
-             return Array.from(uniqueMap.values()).sort((a, b) => {
-                 const aId = parseInt(a.id.split('-')[0]);
-                 const bId = parseInt(b.id.split('-')[0]);
-                 return aId - bId;
-             });
+            const uniqueMap = new Map();
+            items.forEach(item => {
+                // Use answer as key to deduplicate same phrases
+                if (!uniqueMap.has(item.answer)) {
+                    uniqueMap.set(item.answer, item);
+                }
+            });
+            return Array.from(uniqueMap.values()).sort((a, b) => {
+                const aId = parseInt(a.id.split('-')[0]);
+                const bId = parseInt(b.id.split('-')[0]);
+                return aId - bId;
+            });
         }
 
 
         // --- Message & Sound Functions ---
-        
+
         function showMessage(htmlContent, duration = null) {
             messageContent.innerHTML = htmlContent;
             messageModal.classList.remove('hidden');
@@ -724,7 +775,7 @@
 
             // 連続再生を防ぐために一度キャンセル
             speechSynthesis.cancel();
-            
+
             let textToSpeak = activeSentenceElement.dataset.fullSentence;
             // 念のため不要な記号を除去
             textToSpeak = textToSpeak.replace(/[{}]/g, '');
@@ -737,7 +788,7 @@
                 utterance.voice = synthesisVoice;
             }
 
-            utterance.rate = 1.0; 
+            utterance.rate = 1.0;
             utterance.pitch = 1.0;
 
             speechSynthesis.speak(utterance);
@@ -754,7 +805,7 @@
             }
 
             showMessage('<p class="text-2xl">マイクに向かって話してください...</p><div class="animate-pulse text-red-500 text-4xl mt-4">●</div>');
-            
+
             recognition.start();
 
             recognition.onresult = (event) => {
@@ -765,20 +816,20 @@
             recognition.onerror = (event) => {
                 showMessage(`<p>エラーが発生しました: ${event.error}</p>`, 3000);
             };
-            
+
             recognition.onend = () => {
-                 if (messageModal.classList.contains('hidden') === false && messageContent.innerHTML.includes('マイクに')) {
+                if (messageModal.classList.contains('hidden') === false && messageContent.innerHTML.includes('マイクに')) {
                     messageModal.classList.add('hidden');
-                 }
+                }
             };
         }
-        
+
         function evaluatePronunciation(transcript) {
             const originalText = activeSentenceElement.dataset.fullSentence;
 
             const cleanOrig = originalText.toLowerCase().replace(/[^\w\s]/g, '').split(' ');
             const cleanTrans = transcript.toLowerCase().replace(/[^\w\s]/g, '').split(' ');
-            
+
             let matches = 0;
             cleanOrig.forEach(word => {
                 if (cleanTrans.includes(word)) {
@@ -787,7 +838,7 @@
             });
 
             const similarity = matches / cleanOrig.length;
-            
+
             let score;
             if (similarity > 0.9) {
                 score = 95 + Math.floor(Math.random() * 5);
@@ -800,7 +851,7 @@
             } else {
                 score = 70 + Math.floor(Math.random() * 10);
             }
-            
+
             if (score === 100 && Math.random() < 0.3) score = 99;
 
             const messageHtml = `
@@ -817,8 +868,8 @@
 
         function startQuiz() {
             if (chapterData.length < 10) {
-                 showMessage('<p>クイズを作成するには、文が10個以上必要です。</p>', 3000);
-                 return;
+                showMessage('<p>クイズを作成するには、文が10個以上必要です。</p>', 3000);
+                return;
             }
 
             const shuffled = [...chapterData].sort(() => 0.5 - Math.random());
@@ -843,8 +894,9 @@
                     .map(item => item.answer);
 
                 const options = [correctAnswer, ...incorrectAnswers].sort(() => 0.5 - Math.random());
-                
-                const questionSentence = question.en.replace(`{${question.answer}}`, ' (______) ');
+
+                // Use regex to replace ALL {answer} parts with (______)
+                const questionSentence = question.en.replace(/\{.*?\}/g, ' (______) ');
 
                 quizContent.innerHTML = `
                     <h3 class="text-2xl font-bold mb-2">問題 ${currentQuestionIndex + 1}/10</h3>
@@ -864,7 +916,7 @@
                             button.classList.add('bg-red-400', 'text-white');
                             document.querySelector(`.quiz-option[data-answer="${CSS.escape(correctAnswer)}"]`).classList.add('bg-green-400', 'text-white');
                         }
-                        
+
                         setTimeout(() => {
                             currentQuestionIndex++;
                             showQuestion();
@@ -909,12 +961,12 @@
                 explanationDiv.style.display = 'block';
             }
         });
-        
+
         playSoundBtn.addEventListener('click', playSound);
         recordBtn.addEventListener('click', handleRecording);
         startQuizBtn.addEventListener('click', startQuiz);
         closeQuizBtn.addEventListener('click', () => quizModal.classList.add('hidden'));
-        
+
         // Select All Logic
         selectAllCheckbox.addEventListener('change', (e) => {
             const isChecked = e.target.checked;
@@ -928,7 +980,7 @@
 
         // PDF Modal Logic
         openPdfModalBtn.addEventListener('click', () => {
-             if (selectedSentences.size === 0) {
+            if (selectedSentences.size === 0) {
                 showMessage('<p>PDFを作成する問題を選択してください。</p>', 3000);
                 return;
             }
@@ -950,10 +1002,10 @@
         // 1. 完全なリスト
         document.getElementById('download-list-btn').addEventListener('click', () => {
             const items = getSelectedItems();
-            if(!items) return;
+            if (!items) return;
             // リスト作成の場合は重複があっても良いが、見やすくするために熟語ベースでユニークにするか、
             // そのままID順で並べるか。ここではID順ですべて表示する。
-            
+
             const listItems = items.map(item => {
                 // Remove { } for clean display
                 const cleanEn = item.en.replace(/[{}]/g, '');
@@ -962,7 +1014,7 @@
                     <span style="font-size:0.9em; color:#555;">Ex: ${cleanEn} / ${item.ja}</span>
                 </li>`;
             }).join('');
-            
+
             openPrintWindow(`<ul class="list-container">${listItems}</ul>`, '重要熟語リスト');
             pdfModal.classList.add('hidden');
         });
@@ -970,14 +1022,14 @@
         // 2. 英語を解答
         document.getElementById('download-en-quiz-btn').addEventListener('click', () => {
             const items = getUniqueItems(getSelectedItems());
-            
-            const quizItems = items.map(item => 
+
+            const quizItems = items.map(item =>
                 `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')} : ____________________</span></li>`
             ).join('');
-            const answerItems = items.map(item => 
+            const answerItems = items.map(item =>
                 `<li><span class="inline-content">${item.answer}</span></li>`
             ).join('');
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (英語を解答)');
             pdfModal.classList.add('hidden');
@@ -986,14 +1038,14 @@
         // 3. 意味を解答
         document.getElementById('download-ja-quiz-btn').addEventListener('click', () => {
             const items = getUniqueItems(getSelectedItems());
-            
-            const quizItems = items.map(item => 
+
+            const quizItems = items.map(item =>
                 `<li><span class="inline-content"><strong>${item.answer}</strong> : ____________________</span></li>`
             ).join('');
-            const answerItems = items.map(item => 
+            const answerItems = items.map(item =>
                 `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')}</span></li>`
             ).join('');
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (意味を解答)');
             pdfModal.classList.add('hidden');
@@ -1004,7 +1056,7 @@
             const items = getUniqueItems(getSelectedItems());
             let quizItems = '';
             let answerItems = '';
-            
+
             items.forEach(item => {
                 if (Math.random() > 0.5) {
                     // 日本語 -> 英語
@@ -1016,7 +1068,7 @@
                     answerItems += `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')}</span></li>`;
                 }
             });
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (混合)');
             pdfModal.classList.add('hidden');
@@ -1025,14 +1077,14 @@
         // 5. 例文穴埋め
         document.getElementById('download-sentence-quiz-btn').addEventListener('click', () => {
             const items = getSelectedItems(); // 例文問題なので重複（文脈違い）も含める
-            
+
             const quizItems = items.map(item => {
                 // Replace {answer} with underscore
                 const blankSentence = item.en.replace(`{${item.answer}}`, '____________________');
                 return `<li>${blankSentence}<br><span style="font-size:0.9em;">(${item.ja})</span></li>`;
             }).join('');
-            
-            const answerItems = items.map(item => 
+
+            const answerItems = items.map(item =>
                 `<li>${item.answer}</li>`
             ).join('');
 
@@ -1046,7 +1098,7 @@
             const items = getSelectedItems();
             let quizItems = '';
             let answerItems = '';
-            
+
             const instruction = '<p style="border:1px solid #ccc; padding:10px; margin-bottom:20px;">指示：空所には適切な語句を補い、下線部がある文は下線部の意味を日本語で答えなさい。</p>';
 
             items.forEach(item => {
@@ -1075,4 +1127,5 @@
         });
     </script>
 </body>
+
 </html>

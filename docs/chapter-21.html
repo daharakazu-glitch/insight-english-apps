@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Tinos:wght@700&display=swap');
-        
+
         body {
-            background-color: #007BFF; /* ビビットなブルー */
+            background-color: #007BFF;
+            /* ビビットなブルー */
             font-family: 'Noto Sans JP', sans-serif;
         }
 
@@ -17,12 +19,15 @@
         .font-english {
             font-family: 'Tinos', 'Times New Roman', serif;
             font-weight: 700;
-            font-size: 1.25rem; /* 20px */
-            line-height: 1.75rem; /* 28px */
+            font-size: 1.25rem;
+            /* 20px */
+            line-height: 1.75rem;
+            /* 28px */
         }
 
         .answer-span {
-            color: #DC2626; /* 赤色 */
+            color: #DC2626;
+            /* 赤色 */
             font-weight: 700;
             display: none;
         }
@@ -40,7 +45,7 @@
         .show-answer .underline-span {
             display: none;
         }
-        
+
         .explanation {
             display: none;
             white-space: pre-wrap;
@@ -57,22 +62,27 @@
             cursor: pointer;
             transition: all 0.2s ease-in-out;
         }
+
         .btn-primary {
             background-color: #3b82f6;
             color: white;
         }
+
         .btn-primary:hover {
             background-color: #2563eb;
         }
+
         .btn-secondary {
             background-color: #6b7280;
             color: white;
         }
+
         .btn-secondary:hover {
             background-color: #4b5563;
         }
     </style>
 </head>
+
 <body class="text-gray-800">
 
     <div id="app-container" class="container mx-auto p-4 md:p-8 max-w-4xl">
@@ -83,23 +93,27 @@
 
         <main class="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg mb-28">
             <div class="flex justify-between items-center mb-6">
-                 <!-- PDF Control Section -->
-                 <div class="flex-1 mr-4">
+                <!-- PDF Control Section -->
+                <div class="flex-1 mr-4">
                     <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
                         <h3 class="font-bold text-sm md:text-base mb-2">選択した問題でPDFを作成</h3>
                         <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
                             <div class="flex items-center">
-                                <input type="checkbox" id="select-all-checkbox" class="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
-                                <label for="select-all-checkbox" class="ml-2 text-sm font-medium text-gray-700 cursor-pointer">すべて選択 / 解除</label>
+                                <input type="checkbox" id="select-all-checkbox"
+                                    class="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                                <label for="select-all-checkbox"
+                                    class="ml-2 text-sm font-medium text-gray-700 cursor-pointer">すべて選択 / 解除</label>
                             </div>
-                            <button id="open-pdf-modal-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow text-sm transition-transform transform hover:scale-105">
+                            <button id="open-pdf-modal-btn"
+                                class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow text-sm transition-transform transform hover:scale-105">
                                 PDF作成メニュー
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <button id="start-quiz-btn" class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-lg shadow transition-transform transform hover:scale-105 whitespace-nowrap">
+                <button id="start-quiz-btn"
+                    class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-lg shadow transition-transform transform hover:scale-105 whitespace-nowrap">
                     ランダムテスト
                 </button>
             </div>
@@ -111,11 +125,16 @@
     </div>
 
     <!-- Control Panel -->
-    <div id="control-panel" class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md p-4 border-t-2 border-gray-200 shadow-2xl flex justify-center items-center space-x-2 md:space-x-4">
-        <button id="toggle-answer-btn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">表示/非表示</button>
-        <button id="play-sound-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">音声再生</button>
-        <button id="record-btn" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">録音評価</button>
-        <button id="toggle-explanation-btn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">解説</button>
+    <div id="control-panel"
+        class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md p-4 border-t-2 border-gray-200 shadow-2xl flex justify-center items-center space-x-2 md:space-x-4">
+        <button id="toggle-answer-btn"
+            class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">表示/非表示</button>
+        <button id="play-sound-btn"
+            class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">音声再生</button>
+        <button id="record-btn"
+            class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">録音評価</button>
+        <button id="toggle-explanation-btn"
+            class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">解説</button>
     </div>
 
     <!-- Message/Score Modal -->
@@ -124,11 +143,12 @@
             <!-- Message content will be populated by JS -->
         </div>
     </div>
-    
+
     <!-- Quiz Modal -->
     <div id="quiz-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-40 p-4">
         <div class="bg-white w-full max-w-2xl p-8 rounded-2xl shadow-2xl relative">
-            <button id="close-quiz-btn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-3xl font-bold">&times;</button>
+            <button id="close-quiz-btn"
+                class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-3xl font-bold">&times;</button>
             <div id="quiz-content">
                 <!-- Quiz content will be populated by JS -->
             </div>
@@ -136,17 +156,24 @@
     </div>
 
     <!-- PDF Download Modal -->
-    <div id="pdf-modal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center z-50">
+    <div id="pdf-modal"
+        class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center z-50">
         <div class="relative mx-auto p-5 border w-11/12 md:w-1/2 lg:w-1/3 shadow-lg rounded-md bg-white">
             <div class="mt-3 text-center">
                 <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">ダウンロードするPDFの種類を選択</h3>
                 <div class="mt-2 space-y-3">
-                    <button id="download-list-btn" class="btn btn-primary w-full justify-start text-left">1. 完全なリスト (熟語・意味・例文)</button>
-                    <button id="download-en-quiz-btn" class="btn btn-primary w-full justify-start text-left">2. 熟語テスト (英語を解答)</button>
-                    <button id="download-ja-quiz-btn" class="btn btn-primary w-full justify-start text-left">3. 熟語テスト (意味を解答)</button>
-                    <button id="download-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">4. 熟語テスト (混合)</button>
-                    <button id="download-sentence-quiz-btn" class="btn btn-primary w-full justify-start text-left">5. 例文の穴埋め問題</button>
-                    <button id="download-sentence-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">6. 例文の混合問題 (穴埋め/和訳)</button>
+                    <button id="download-list-btn" class="btn btn-primary w-full justify-start text-left">1. 完全なリスト
+                        (熟語・意味・例文)</button>
+                    <button id="download-en-quiz-btn" class="btn btn-primary w-full justify-start text-left">2. 熟語テスト
+                        (英語を解答)</button>
+                    <button id="download-ja-quiz-btn" class="btn btn-primary w-full justify-start text-left">3. 熟語テスト
+                        (意味を解答)</button>
+                    <button id="download-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">4. 熟語テスト
+                        (混合)</button>
+                    <button id="download-sentence-quiz-btn" class="btn btn-primary w-full justify-start text-left">5.
+                        例文の穴埋め問題</button>
+                    <button id="download-sentence-mixed-quiz-btn"
+                        class="btn btn-primary w-full justify-start text-left">6. 例文の混合問題 (穴埋め/和訳)</button>
                 </div>
                 <div class="mt-6">
                     <button id="close-modal-btn" class="btn btn-secondary w-full">キャンセル</button>
@@ -158,452 +185,500 @@
     <script>
         const chapterData = [
     {
-        "id": "1",
-        "ja": "2 3 4 5 6 7 8 9 10音読 ◀\t音読用動画 別解など 副詞の語法 2 3 4 5 6 7 8 9 10音読 時 制 副 詞 過去形と共に 現在完了形と 共に 過去完了形と 共に 副詞の語法 2 3 4 5 6 7 8 9 10音読 肯定文 否定文 疑問文 副詞の語法 2 3 4 5 6 7 8 9 10音読 副詞の語法 2 3 4 5 6 7 8 9 10音読 副詞の語法 2 3 4 5 6 7 8 9 10音読 副詞の語法 2 3 4 5 6 7 8 9 10音読 副詞の語法 2 3 4 5 6 7 8 9 10音読 副詞の語法",
+        "id": "21",
+        "ja": "章　副詞の語法  QR ☚ 音読用動画　別解など",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
-        "question": "ΘΕΔso ͱnotFile 99 ؒظʴago ؒظʴbefore most΋ʯ mostlyʮओʹɼ͍͍ͨͯʯ high͘ʯ highlyʮඇৗʹʯ prettyʯ prettilyʮ͖Ε͍ʹʯ sharp͕ʣ͖͔ͬΓʯ sharplyʹɼӶ͘ʯ hard໋ʹʯ hardlyʮ΄ͱΜͲʜͳ͍ʯ➡401 lateʮ஗͘ʯ latelyʯ near͘ʹʯ yet  ʢ·ͩʣ · ͩʢ ʜ ͯ͠ ͍ ͳ ͍ ʣ ΋ ͏ʢ ʜ ͔ ʣ still · ͩʢ ʜ ͯ͠ ͍ Δ ʣ · ͩʢ ʜ ͯ͠ ͍ Δ ͷ ͔ ʣ"
+        "question": ""
     },
     {
-        "id": "21",
-        "ja": "副詞の語法 ① 21章 副詞の語法 語法編 ｜  21章 副詞の語法 ② 現在ࡏݱ 語法編 ｜  21章 副詞の語法 ③ 語法編 ｜  21章 副詞の語法 ④ 語法編 ｜  21章 副詞の語法 ⑤ 語法編 ｜  21章 副詞の語法 ⑥ 語法編 ｜  21章 副詞の語法 ⑦ 語法編 ｜  21章 副詞の語法 ⑧",
+        "id": "324",
+        "ja": "● 語法編｜21章",
         "en": "???",
-        "answer": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "326",
+        "ja": "● 語法編｜21章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "328",
+        "ja": "● 語法編｜21章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "330",
+        "ja": "● 語法編｜21章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "332",
+        "ja": "● 語法編｜21章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "334",
+        "ja": "● 語法編｜21章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "336",
+        "ja": "● 語法編｜21章",
+        "en": "???",
+        "answer": "",
         "explanation": "",
         "question": ""
     },
     {
         "id": "832",
-        "ja": "「 サ ラ は 来 る の ？ 」「そう願ってる。」",
-        "en": "“Is Sara coming?” “{I hope so.” so ʮͦͷΑ͏ʹʯ―副詞}",
-        "answer": "I hope so.” so ʮͦͷΑ͏ʹʯ―副詞",
-        "explanation": "▶ 先行するthat 節の肯定の内容をso で代用する場合がある。➡File99\nこの問題文のso はI hope that Sara is coming. のthat節の代用。",
-        "question": "“Is Sara coming?” “(        ) (        ) (        )”"
+        "ja": "「サラは来るの？」「そう願ってる。」 F 334  so「そのように」―副詞 この問題文のsoはI hope that Sara is coming.のthat節の代用。",
+        "en": "“Is Sara coming?” “{I hope so}.”",
+        "answer": "I hope so",
+        "explanation": "Tip 「そのように」を表す副詞は？\n▶ 先行するthat節の肯定の内容をsoで代用する場合がある。➡ File 99",
+        "question": "“Is Sara coming?” “(    ) (    ) (    ).”"
     },
     {
         "id": "833",
-        "ja": "「 サ ラ は ま だ 体 調 が 悪 い の ？ 」「そうじゃないことを願ってる。」",
-        "en": "“Is Sara still sick?” “{I hope not.”}",
-        "answer": "I hope not.”",
-        "explanation": "▶ 先行するthat 節の否定の内容をnot で代用する場合がある。➡File99\nこの問題文のnot はI hope that Sara is not sick. のthat節の代用。",
-        "question": "“Is Sara still sick?” “(        ) (        ) (        )”"
+        "ja": "「サラはまだ体調が悪いの？」「そうじゃないことを願ってる。」 F 334  not「…でない」―副詞 この問題文のnotはI hope that Sara is not sick.のthat節の代用。",
+        "en": "“Is Sara still sick?” “{I hope not}.”",
+        "answer": "I hope not",
+        "explanation": "Tip  １語で前文の否定の内容を代用する副詞は？\n▶ 先行するthat節の否定の内容をnotで代用する場合がある。➡ File 99",
+        "question": "“Is Sara still sick?” “(    ) (    ) (    ).”"
     },
     {
         "id": "834-1",
-        "ja": "家に帰らないといけない。",
-        "en": "I have to {go home. go homeΔʯ}",
-        "answer": "go home. go homeΔʯ",
-        "explanation": "▶ この場合のhome は副詞なのでto などの前置詞は不要。  go to home",
-        "question": "I have to ."
+        "ja": "家に帰らないといけない。 go home「家に帰る」",
+        "en": "I have to {go home}.",
+        "answer": "go home",
+        "explanation": "▶ この場合のhomeは副詞なのでtoなどの前置詞は不要。× go to home",
+        "question": "I have to go home."
     },
     {
         "id": "834-2",
-        "ja": "帰り道で昔の友達に会って，楽しいおしゃべりをした。",
-        "en": "I met an old friend {on the [my] way home and we had a nice chat. ⇧「 家 へ（home）の 道（the way）の 途 上 で（on）」}",
-        "answer": "on the [my] way home and we had a nice chat. ⇧「 家 へ（home）の 道（the way）の 途 上 で（on）」",
-        "explanation": "▶ … way to home は誤り。➡File100",
-        "question": "I met an old friend (        ) (        ) (        ) (h      ) and we had a nice chat."
+        "ja": "帰り道で昔の友達に会って，楽しいおしゃべりをした。 on the [one’s] way home「帰宅途中で」 ⇧「家へ(home)の道(the way)の途上で(on)」",
+        "en": "I met an old friend {on the [my] way home} and we had a nice chat.",
+        "answer": "on the [my] way home",
+        "explanation": "▶ ×… way to homeは誤り。➡ File 100",
+        "question": "I met an old friend (    ) (    ) (    ) (h   ) and we had a nice chat."
     },
     {
         "id": "835",
-        "ja": "視野を広げるために私は外国へ行きたいです。",
-        "en": "I would like to {go abroad to broaden my horizons. go abroad͘ʯ}",
-        "answer": "go abroad to broaden my horizons. go abroad͘ʯ",
-        "explanation": "▶ abroad は副詞なのでto などの前置詞は不要。  go to abroad ➡File100\nbroaden one’s horizons͛Δʯ＝expand one’s horizons",
-        "question": "I would like to  to broaden my horizons."
+        "ja": "視野を広げるために私は外国へ行きたいです。 go abroad「外国へ行く」 ○ broaden one’s horizons「視野を広げる」＝expand one’s horizons",
+        "en": "I would like to {go abroad} to broaden my horizons.",
+        "answer": "go abroad",
+        "explanation": "▶ abroadは副詞なのでtoなどの前置詞は不要。× go to abroad ➡ File 100",
+        "question": "I would like to go abroad to broaden my horizons."
     },
     {
         "id": "836",
-        "ja": "「私たちと一緒にどう ？」 「もちろん，参加するよ。」",
-        "en": "“Do you want to join us?” “Sure, {I’m in.”}",
-        "answer": "I’m in.”",
-        "explanation": "▶ in は前置詞の用法だけではなく，単独で副詞の働きをすることがある。",
-        "question": "“Do you want to join us?” “Sure, (        ) (        ).”"
+        "ja": "「私たちと一緒にどう？」「もちろん，参加するよ。」 in「入って，(人が)参加して」⇔ out「出て，(人が)不参加で」",
+        "en": "“Do you want to join us?” “Sure, {I’m in}.”",
+        "answer": "I’m in",
+        "explanation": "Tip 「参加する＝私も(仲間に)入る」を意味する最もシンプルな表現は？\n▶ inは前置詞の用法だけではなく，単独で副詞の働きをすることがある。",
+        "question": "“Do you want to join us?” “Sure, (    ) (    ).”"
     },
     {
         "id": "837",
-        "ja": "彼は今，外出中です。 ݱ（前置詞は不要）File 100 that節の肯定の内容をso で代用 that節の否定の内容をnot で代用 復習",
-        "en": "???",
-        "answer": "???",
+        "ja": "彼は今，外出中です。 副詞の語法 ① ● 323 out「外出して，不在で」―副詞。「外に(out)いる(is) → 外出中」ということ。 ○ right now ①「ちょうど今」②「今すぐ」",
+        "en": "He is {out} right now.",
+        "answer": "out",
         "explanation": "",
-        "question": "He is (        ) right now. He is out right now. right now  ͙͢ʯ way / abroad go home（  go to home）Δʯɹ  get homeʮՈʹண͘ʯ come homeͬͯ͘Δʯɹ  walk homeΔʯ drive homeΔʯɹ  stay homeʮՈʹ͍Δʯ travel abroad͢Δʯɹ  study abroad͢Δʯ go overseas͘ʯɹ  go downtown͘ʯ go upstairs͘ʯɹ  go downstairs͘ʯ live next door (to A)ʮʢA ͷ ʣྡ ʹ ॅ Ήʯ I think so. / I suppose so. / I guess so. / I expect so.͏ɻʯ I believe so.ʮͦ͏৴͍ͯ͡Δɻʯɹ  I hope so.͏ɻʯ I’m afraid so. / I fear so.೦ͳ͕Βͦ͏ͩɻʯ I guess not. / I believe not.Θͳ͍ɻʯ I hope not.͏ɻʯ 322 323 Self Check"
+        "question": "He is (    ) right now."
     },
     {
         "id": "838",
-        "ja": "彼女はいつも安全のために明かりをつけっぱなしにしておく。",
-        "en": "She always keeps the lights {on} for security. {on} ʮʢςϨϏɾর໌ͳͲ͕ʣ͍ͭͯʯ⇔ oﬀʮʢςϨϏɾর໌ͳͲ͕ʣফ͑ͯʯ",
+        "ja": "彼女はいつも安全のために明かりをつけっぱなしにしておく。 on「(テレビ・照明などが)ついて」⇔ off「(テレビ・照明などが)消えて」 ○ for security / for safety「安全のために」",
+        "en": "She always keeps the lights {on} for security.",
         "answer": "on",
-        "explanation": "▶ このon は前置詞ではなく副詞。➡Grasp30 – p.379\nfor security / for safety ʮ҆શͷͨΊʹʯ",
-        "question": "She always keeps the lights (        ) for security."
+        "explanation": "▶ このonは前置詞ではなく副詞。➡ Grasp 30―p.379",
+        "question": "She always keeps the lights (    ) for security."
     },
     {
         "id": "839",
-        "ja": "すべての明かりが消えていることを確認して。",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Make sure all the lights are (        ). Make sure all the lights are oﬀ. off ʮʢςϨϏɾর໌ͳͲ͕ʣফ͑ͯʯ⇔ onʮʢςϨϏɾর໌ͳͲ͕ʣ͍ͭͯʯ make sure (that) …  ᶃʮ…͔ΊΔʯ ᶄʮඞͣ…͢ΔΑ͏ʹ͢Δʯ"
+        "ja": "すべての明かりが消えていることを確認して。 off「(テレビ・照明などが)消えて」⇔ on「(テレビ・照明などが)ついて」 ○ make sure (that) … ①「…を確かめる」②「必ず…するようにする」",
+        "en": "Make sure all the lights are {off}.",
+        "answer": "off",
+        "explanation": "Tip 「(テレビ・照明などが)消えて」を表す副詞は？",
+        "question": "Make sure all the lights are (    )."
     },
     {
         "id": "840",
-        "ja": "夏休みが終わった。",
-        "en": "The summer vacation {is over. over ʮऴΘͬͯʯ}",
-        "answer": "is over. over ʮऴΘͬͯʯ",
-        "explanation": "▶ 「 休みが 終わった」⭢「 休みは今終 わ っ て（over）いる状態である（is）」 と 考 え る 。\nbe動詞を過去形にしないこと。",
-        "question": "The summer vacation (i      ) (        )."
+        "ja": "夏休みが終わった。 over「終わって」 be動詞を過去形にしないこと。",
+        "en": "The summer vacation {is over}.",
+        "answer": "is over",
+        "explanation": "▶「休みが終わった」→「休みは今終わって(over)いる状態である(is)」と考える。",
+        "question": "The summer vacation (i   ) (    )."
     },
     {
         "id": "841",
-        "ja": "祖父は3 年 前 に亡くなった。",
-        "en": "F 332 ＝ My grandfather died three years ago. My grandfather has been dead for three years.  ➡30 ؒظʴago͔Βʣʙલʹʯ",
-        "answer": "???",
-        "explanation": "▶ ～ ago は過去形と共に使う。現在を基準にした過去の時点を表す。\n➡Grasp27, File101",
-        "question": "My grandfather ."
+        "ja": "祖父は3年前に亡くなった。 期間＋ago「(今から)～前に」",
+        "en": "My grandfather {died three years ago}. ＝My grandfather {has been dead for three years}. ➡ 30 ➡ {Grasp 27}, {File 101}",
+        "answer": "died three years ago, has been dead for three years, Grasp 27, File 101",
+        "explanation": "▶ ～ agoは過去形と共に使う。現在を基準にした過去の時点を表す。",
+        "question": "My grandfather died three years ago."
     },
     {
         "id": "842",
-        "ja": "数年前に会ったことがあったので，彼女のことは覚え ていた。",
-        "en": "I remembered her because I h{ad met her a few years before. ؒظʴbefore఺͔Βʣʙલʹʯ}",
-        "answer": "ad met her a few years before. ؒظʴbefore఺͔Βʣʙલʹʯ",
-        "explanation": "▶ ～ before は過去完了形と共に使う。過去のある時点を基準にした過去の時点を\n表す。➡Grasp27, File101",
-        "question": "I remembered her because I  her a few ."
+        "ja": "数年前に会ったことがあったので，彼女のことは覚えていた。 F 332  期間＋before「(過去のある時点から)～前に」",
+        "en": "I remembered her because I had met her {a few} years before. I remembered her because I {had met} her {a few years before}.",
+        "answer": "a few, had met, a few years before",
+        "explanation": "Tip 「(過去のある時点から)～前に」を表す副詞を使った表現。\n▶ ～ beforeは過去完了形と共に使う。過去のある時点を基準にした過去の時点を表す。➡ Grasp 27, File 101",
+        "question": ""
     },
     {
         "id": "843",
-        "ja": "以前，金閣寺を訪れたこ とがある。",
-        "en": "I have visited Kinkaku-ji Temple {before}. ͏{before}ʮҎલʹʯ―副詞",
+        "ja": "以前，金閣寺を訪れたことがある。 F 332  単独で使うbefore「以前に」―副詞 ＋ before S’＋V’「…する前に，…しないうちに」―接続詞 ➡ 237-1",
+        "en": "I have visited Kinkaku-ji Temple {before}.",
         "answer": "before",
-        "explanation": "▶ 過去形・現在完了形・過去完了形と共に使う。➡File101  通例，文末に置く。\nbefore S′ʴV′ʮ…͢Δલʹɼ…͠ͳ͍͏ͪʹʯ―接続詞  ➡237-1",
-        "question": "I have visited Kinkaku-ji Temple (        )."
+        "explanation": "Tip 「以前に」を表す副詞は？\n▶ 過去形・現在完了形・過去完了形と共に使う。➡ File 101 通例，文末に置く。",
+        "question": "I have visited Kinkaku-ji Temple (    )."
     },
     {
         "id": "844",
-        "ja": "それ以来，彼とは会っていない。",
-        "en": "I have not seen him since. ͏(ever) sinceʮͦΕҎདྷʢͣͬͱʣʯ―副詞",
-        "answer": "have not seen him since. ͏ever sinceʮͦΕҎདྷʢͣͬͱʣʯ―副詞",
-        "explanation": "▶ 現在完了形・過去完了形と共に使う。➡File101\n伝えたい内容を強調したいときにever を付ける。\n(ever) since S′ʴV′ʮ…ͯ͠Ҏ དྷʢͣͬͱʣʯ―接続詞\n(ever) since AʮA Ҏདྷʢͣͬͱʣʯ―前置詞\nmeet / see\nago / before / since๏File 101\na week ago（１週間前）\n［過去形と共に使う］\na week before（その１週間前）\n［過去完了形と共に使う］\nGrasp ～ ago ͱ ～ before27\n324 325\nSelf\nCheck\n復習",
-        "question": "I (        ) not (        ) him (        )."
+        "ja": "それ以来，彼とは会っていない。 副詞の語法 ② ● 325 単独で使う(ever) since「それ以来(ずっと)」―副詞 伝えたい内容を強調したいときにeverを付ける。 ＋ (ever) since S’＋V’「…して以来(ずっと)」―接続詞 ＋ (ever) since A「A以来(ずっと)」―前置詞",
+        "en": "I {have} not {seen} him{ since}.",
+        "answer": "have, seen, since",
+        "explanation": "Tip 「それ以来」を表す副詞は？「(過去のある時点から現在までずっと)会っていない」という意味なので時制はどうする？\n▶ 現在完了形・過去完了形と共に使う。➡ File 101",
+        "question": "I (    ) not (    ) him (    )."
     },
     {
         "id": "845-1",
-        "ja": "私 たちはそのコンサ ートのチケットをすでに買ってある。",
+        "ja": "私たちはそのコンサートのチケットをすでに買ってある。 F 333  already「すでに(…した)」 完了形で使うことが多いが，他の時制でも使う。",
         "en": "We have {already} bought tickets for the concert.",
         "answer": "already",
-        "explanation": "▶ 肯定文で「すでに（…した）」という完了を表す。➡File102\n完了形で使うことが多いが，他の時制でも使う。",
-        "question": "We have (        ) bought tickets for the concert."
+        "explanation": "▶ 肯定文で「すでに(…した)」という完了を表す。➡ File 102",
+        "question": "We have (    ) bought tickets for the concert."
     },
     {
         "id": "845-2",
-        "ja": "そのコンサ ートのチケットをもう買ったのですか。",
-        "en": "Have you {already} bought tickets for the concert? {already} ʮ΋͏ʢ…ͨ͠ͷ͔ʣʯ",
+        "ja": "そのコンサートのチケットをもう買ったのですか。 already「もう(…したのか)」",
+        "en": "Have you {already} bought tickets for the concert?",
         "answer": "already",
-        "explanation": "▶ 疑問文で「もう（…したのか）」という驚きの気持ちを表す。➡File102",
-        "question": "Have you (        ) bought tickets for the concert?"
+        "explanation": "Tip  予想よりも早いという驚きの気持ちを表す「もう」は？\n▶ 疑問文で「もう(…したのか)」という驚きの気持ちを表す。➡ File 102",
+        "question": "Have you (    ) bought tickets for the concert?"
     },
     {
         "id": "846-1",
-        "ja": "ちょっと待って。まだ準備ができていない。",
-        "en": "Wait a minute. I’m {not ready yet. not … yetʮ·ͩ ʜ͍ͯ͠ͳ͍ ʯ}",
-        "answer": "not ready yet. not … yetʮ·ͩ ʜ͍ͯ͠ͳ͍ ʯ",
-        "explanation": "▶ 否定文でyet を使い，「まだ…していな い」という未完了を表す。➡File102\nどの時制・完了形でも使う。yet は 文 末 にくることが 多 い 。",
-        "question": "Wait a minute. I’m (        ) ready (        )."
+        "ja": "ちょっと待って。まだ準備ができていない。 F 333  not … yet「まだ…していない」 どの時制・完了形でも使う。yetは文末にくることが多い。",
+        "en": "Wait a minute. I’m {not} ready {yet}.",
+        "answer": "not, yet",
+        "explanation": "▶ 否定文でyetを使い，「まだ…していない」という未完了を表す。➡ File 102",
+        "question": "Wait a minute. I’m (    ) ready (    )."
     },
     {
         "id": "846-2",
-        "ja": "「もう準備できた？」 「まだだって言ったでしょ ！」",
-        "en": "“Are you ready {yet}?” “I told you I’m not!” {yet} ʮ΋͏ʢ…͔ʣʯ",
+        "ja": "「もう準備できた？」「まだだって言ったでしょ！」 yet「もう(…か)」",
+        "en": "“Are you ready {yet}?” “I told you I’m not!”",
         "answer": "yet",
-        "explanation": "▶ 疑問文で「もう（…か）」を表す。この意味ではyet は文末に置く。➡File102",
-        "question": "“Are you ready (        )?” “I told you I’m not!”"
+        "explanation": "Tip  疑問文で「もう(…か)」を表す副詞は？\n▶ 疑問文で「もう(…か)」を表す。この意味ではyetは文末に置く。➡ File 102",
+        "question": "“Are you ready (    )?” “I told you I’m not!”"
     },
     {
         "id": "846-3",
-        "ja": "発展 彼は待つように言ったけど， 私 はとに かくそ の 場 を 離 れ た 。",
-        "en": "He told me to wait, {(and) yet I left anyway. (and) yet …ʮ͕ͩʜɼ͔͠͠ʜʯ ＝but …}",
-        "answer": "(and) yet I left anyway. (and) yet …ʮ͕ͩʜɼ͔͠͠ʜʯ ＝but …",
-        "explanation": "▶ and yet のyet は副詞だが，and を省略すると接続詞扱いになる。",
-        "question": "He told me to wait,  I left anyway."
+        "ja": "彼は待つように言ったけど，私はとにかくその場を離れた。 発展     Tip  butと同じような意味を表す，接続詞的に使われる副詞を使ってみよう。 (and) yet …「だが…，しかし…」",
+        "en": "???",
+        "answer": "",
+        "explanation": "▶ and yetのyetは副詞だが，andを省略すると接続詞扱いになる。",
+        "question": "He told me to wait, (and) yet I left anyway. He told me to wait, (and) yet I left anyway. ＝but …"
     },
     {
         "id": "847",
-        "ja": "コンテストで１位を受賞したなんて今でも信じられない。",
-        "en": "I {still} can’t believe I won first prize in the contest. {still}΋ͳ͓ʯ",
+        "ja": "コンテストで１位を受賞したなんて今でも信じられない。 F 333  still「まだ，依然として，今もなお」 ○ win first prize「１位になる，優勝する」―firstの前に冠詞は不要。",
+        "en": "I {still} can’t believe I won first prize in the contest.",
         "answer": "still",
-        "explanation": "▶ 継続を表す。➡File102  どの時制・完了形でも使う。\nwin /f_irst prize ʮ̍ҐʹͳΔɼ༏উ͢Δʯ―first の前に冠詞は不要。",
-        "question": "I (        ) can’t believe I won first prize in the contest."
+        "explanation": "▶ 継続を表す。➡ File 102  どの時制・完了形でも使う。",
+        "question": "I (    ) can’t believe I won first prize in the contest."
     },
     {
         "id": "848",
-        "ja": "彼らはたいていテキストメッセ ー ジで やり取りしている。",
-        "en": "They communicate {mostly} by text message. {mostly} ʮ ओ ʹʢ＝mainlyʣɼ ͨ ͍ ͯ ͍ ʯ most΋ʯ➡File103 text messageଳి࿩ͷʣςΩετϝοηʔδɼγϣʔτϝʔϧʯ",
+        "ja": "彼らはたいていテキストメッセージでやり取りしている。 mostly「主に(＝mainly)，たいてい」 ＋ most「最も」➡ File 103 ○ text message「(携帯電話の)テキストメッセージ，ショートメール」",
+        "en": "They communicate {mostly} by text message.",
         "answer": "mostly",
-        "explanation": "",
-        "question": "They communicate (m     ) by text message."
+        "explanation": "Tip 「たいてい＝主に」を表す副詞は？",
+        "question": "They communicate (m   ) by text message."
     },
     {
         "id": "849",
-        "ja": "インフルエンザは感染力が非常に高い。 復習",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Influenza is (h      ) contagious. Influenza is highly contagious. highly ʮඇৗʹʯ＝very high͘ʯ➡File103 contagiousછੑͷʯ＝infectious not already / yet / still๏ -lyࢺFile 102 File 103 326 327 Self Check"
+        "ja": "インフルエンザは感染力が非常に高い。 副詞の語法 ③ ● 327 highly「非常に」＝very ＋ high「高く」➡ File 103 ○ contagious「感染性の」＝infectious",
+        "en": "Influenza is {highly} contagious.",
+        "answer": "highly",
+        "explanation": "Tip 「非常に」を表す副詞は？",
+        "question": "Influenza is (h   ) contagious."
     },
     {
         "id": "850",
-        "ja": "ケンは試験に向けて懸命に勉強している。 hard໋ʹʯ―hard には形容詞「難しい」だけでなく，副詞の用法もある。",
-        "en": "???",
-        "answer": "???",
+        "ja": "ケンは試験に向けて懸命に勉強している。 hard「懸命に」―hardには形容詞「難しい」だけでなく，副詞の用法もある。 ＋ hardly「ほとんど…ない」＝scarcely ➡ 401, File 103―p.327",
+        "en": "Ken has been studying {hard} for his exams.",
+        "answer": "hard",
         "explanation": "",
-        "question": "Ken has been studying (        ) for his exams. Ken has been studying hard for his exams. hardly ʮ΄ͱΜͲ…ͳ͍ʯ＝scarcely  ➡401, File103 – p.327"
+        "question": "Ken has been studying (    ) for his exams."
     },
     {
         "id": "851",
-        "ja": "結果はなかなか良かった。",
-        "en": "The results were {pretty good. prettyɼͳ͔ͳ͔ʯ＝quite ＝rather prettily ʮ͖Ε͍ʹʯ➡File103 – p.327}",
-        "answer": "pretty good. prettyɼͳ͔ͳ͔ʯ＝quite ＝rather prettily ʮ͖Ε͍ʹʯ➡File103 – p.327",
+        "ja": "結果はなかなか良かった。 pretty「結構，なかなか」＝quite＝rather ＋ prettily「きれいに」➡ File 103―p.327",
+        "en": "The results were {pretty good}.",
+        "answer": "pretty good",
         "explanation": "",
-        "question": "The results were (        ) (        )."
+        "question": "The results were (    ) (    )."
     },
     {
         "id": "852",
-        "ja": "４時ちょうどにここで会いましょう。",
+        "ja": "４時ちょうどにここで会いましょう。 at＋時刻＋sharp「～時きっかりに」 ＋ sharply「急に，鋭く」➡ File 103―p.327",
         "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Let’s meet here . Let’s meet here at four (o’clock) sharp. at ʴࠁ࣌ʴsharp͖͔ͬΓʹʯ sharplyʹɼӶ͘ʯ➡File103 – p.327"
+        "answer": "",
+        "explanation": "Tip 「～時ちょうどに＝～時きっかりに」を表す表現は？",
+        "question": "Let’s meet here at four o’clock sharp. Let’s meet here at four (o’clock) sharp."
     },
     {
         "id": "853-1",
-        "ja": "そ の 新 しい スマ ートフォン はあまりにも高すぎる。",
-        "en": "That new smartphone is {far [much] too expensive.}",
-        "answer": "far [much] too expensive.",
-        "explanation": "▶ 「ఔ౓」ࢺは修飾する語句の直前に置く。\n副詞 far [much, way] が too expensive を修飾する表現。\nfar too ʴʧ\nmuch too ʴʧ\nway too ʴʧ",
-        "question": "That new smartphone is (        ) (        ) (        )."
+        "ja": "その新しいスマートフォンはあまりにも高すぎる。 副詞far [much, way]がtoo expensiveを修飾する表現。 far too＋形容詞[副詞] much too＋形容詞[副詞]　  「あまりにも～すぎる」 way too＋形容詞[副詞]   　―way too ～は口語でよく使われる。",
+        "en": "That new smartphone is {far [much] too expensive}.",
+        "answer": "far [much] too expensive",
+        "explanation": "Tip 「あまりにも～すぎる」を表す表現は？\n▶「程度」を表す副詞は修飾する語句の直前に置く。",
+        "question": "That new smartphone is (    ) (    ) (    )."
     },
     {
         "id": "853-2",
-        "ja": "サラは結婚するにはあまりにも若すぎる。",
-        "en": "Sara is {much too young to get married.}",
-        "answer": "much too young to get married.",
-        "explanation": "▶ 〈much too＋形容詞 ［副詞］ 〉 「あま りにも～すぎる」 too much young ➡853-1\nget married͢Δʯ",
-        "question": "Sara is (        ) (        ) (        ) to get married."
+        "ja": "サラは結婚するにはあまりにも若すぎる。 ○ get married「結婚する」",
+        "en": "Sara is {much too young} to get married.",
+        "answer": "much too young",
+        "explanation": "Tip 「あまりにも～すぎる」を表すもう１つの表現は？ 語順に注意。\n▶〈much too＋形容詞[副詞]〉「あまりにも～すぎる」× too much young ➡ 853-1",
+        "question": "Sara is (    ) (    ) (    ) to get married."
     },
     {
         "id": "854-1",
-        "ja": "電気のない生活を想像するのはほとんど不可能だ。",
-        "en": "It is almost [nearly] impossible to imagine life without electricity. almost ʴʧ nearly ʴʧ    ʮ΄ͱΜͲʙʯ",
-        "answer": "almost [nearly] impossible to imagine life without electricity. almost ʴʧ nearly ʴʧ ʮ΄ͱΜͲʙʯ",
-        "explanation": "",
-        "question": "It is (        ) (        ) to imagine life without electricity."
+        "ja": "電気のない生活を想像するのはほとんど不可能だ。 F 328  almost＋形容詞[副詞] nearly＋形容詞[副詞]　　「ほとんど～」 ○ without electricity「電気のない，電気なしで」",
+        "en": "It is {almost [nearly] impossible} to imagine life without electricity.",
+        "answer": "almost [nearly] impossible",
+        "explanation": "Tip 「ほとんど～」を表し，「不可能な」を修飾する副詞は？",
+        "question": "It is (    ) (    ) to imagine life without electricity."
     },
     {
         "id": "854-2",
-        "ja": "幼稚園を卒園し てから彼女とは会っ ていない。もう10年近く前になります。",
-        "en": "I haven’t seen her since we graduated from kindergarten, which is {nearly [almost] ten years ago.}",
-        "answer": "nearly [almost] ten years ago.",
-        "explanation": "▶ 〈nearly＋形容詞 ［副詞］ 〉 「ほとんど～ （近く） 」 。➡854-1  この場合のten はyears\nを修飾する形容詞。which は関係代名詞の非限定用法で，we graduated from\nkindergarten という節を受けている。 「卒園した」 ＝ 「１ ０年近く前」\nkindergarten ʮ༮ஓԂʯ",
-        "question": "I haven’t seen her since we graduated from kindergarten, which is (        ) (        ) years ago."
+        "ja": "幼稚園を卒園してから彼女とは会っていない。もう10年近く前になります。 ○ kindergarten「幼稚園」",
+        "en": "I haven’t seen her since we graduated from kindergarten, which is {nearly [almost] ten} years ago.",
+        "answer": "nearly [almost] ten",
+        "explanation": "Tip 「10年近く前＝ほとんど10年前」\n▶〈nearly＋形容詞[副詞]〉「ほとんど～(近く)」。➡ 854-1 この場合のtenはyearsを修飾する形容詞。whichは関係代名詞の非限定用法で，we graduated from kindergartenという節を受けている。「卒園した」＝「10年近く前」",
+        "question": "I haven’t seen her since we graduated from kindergarten, which is (    ) (    ) years ago."
     },
     {
         "id": "855-1",
-        "ja": "子どもの頃，海でおぼれかけたことがある。",
-        "en": "When I was a child, I {almost [nearly] drowned in the sea. almost ʴࢺ}",
-        "answer": "almost [nearly] drowned in the sea. almost ʴࢺ",
-        "explanation": "▶ almost もnearly も， 「完全にはその状態に達してはいない」ことを表す。\ndrown͵ʯ",
-        "question": "When I was a child, I (        ) (        ) in the sea."
+        "ja": "子どもの頃，海でおぼれかけたことがある。 almost＋動詞 nearly＋動詞　　「もう少しで…するところ」 ○ drown「おぼれ死ぬ」",
+        "en": "When I was a child, I {almost [nearly] drowned} in the sea.",
+        "answer": "almost [nearly] drowned",
+        "explanation": "Tip 「おぼれかけたことがある → おぼれかけた → もう少しでおぼれ死ぬところだった」\n▶ almostもnearlyも，「完全にはその状態に達してはいない」ことを表す。",
+        "question": "When I was a child, I (    ) (    ) in the sea."
     },
     {
         "id": "855-2",
-        "ja": "電車で居眠りし てしまい，危うく乗り過ごすところだった。",
-        "en": "I fell asleep on the train and {nearly [almost] missed my stop.}",
-        "answer": "nearly [almost] missed my stop.",
-        "explanation": "▶ 〈nearly [almost]＋動詞〉 「危う く ［も う少しで］ …するところ」➡855-1\nfall asleep ʮ຾ΓʹམͪΔɼ৸ೖΔʯ\nmiss one’s stopʮ৐Γա͢͝ʯ⇦「停留所 （stop）を と ら え 損 な う（miss）」\nsharp / expensive / impossible / drown / miss\nʮ͋·Γʹ΋ʙ͗͢Δʯ\n―way too ～ は口語でよく使われる。\n328 329\nSelf\nCheck\n復習",
-        "question": "I fell asleep on the train and (        ) (        ) my stop."
+        "ja": "電車で居眠りしてしまい，危うく乗り過ごすところだった。 副詞の語法 ④ ● 329 ○ fall asleep「眠りに落ちる，寝入る」 ○ miss one’s stop「乗り過ごす」⇦「停留所(stop)をとらえ損なう(miss)」",
+        "en": "I fell asleep on the train and {nearly [almost] missed} my stop.",
+        "answer": "nearly [almost] missed",
+        "explanation": "Tip 「危うく…するところ」を表す表現は？\n▶〈nearly [almost]＋動詞〉「危うく[もう少しで]…するところ」➡ 855-1",
+        "question": "I fell asleep on the train and (    ) (    ) my stop."
     },
     {
         "id": "856",
-        "ja": "彼は持っ ていたわずかな食料でかろうじて生き延びることができた。",
-        "en": "He could barely survive on the little food he had. barely  ᶃʮ ͔ Ζ͏͡ ͯ ʯ ᶄʮ ΄ ͱ Μ Ͳ ʜ ͳ ͍ʢ＝hardlyʣʯ",
-        "answer": "barely survive on the little food he had. barely ᶃʮ ͔ Ζ͏͡ ͯ ʯ ᶄʮ ΄ ͱ Μ Ͳ ʜ ͳ ͍ʢ＝hardlyʣʯ",
-        "explanation": "▶ barely の後には動詞や形容詞がくる。\nThe elderly person could barely stand.［後ろに動詞］\n＝ The elderly person was barely able to stand.［後ろに形容詞］\n（ そ の お 年 寄 り は 立 っ て い る の が や っ と だ っ た 。）\nthe little A ʮগͳ͍͚ΕͲશ෦ͷAɼͳ͚ͳ͠ͷAʯ＝what little A  ➡209",
-        "question": "He could (b      ) (        ) on the little food he had."
+        "ja": "彼は持っていたわずかな食料でかろうじて生き延びることができた。 barely ①「かろうじて」②「ほとんど…ない(＝hardly)」 The elderly person could barely stand.  [後ろに動詞] ＝The elderly person was barely able to stand.  [後ろに形容詞] （そのお年寄りは立っているのがやっとだった。） ○ survive on A「A(食料など)で生き延びる，A(少ない収入など)で何とかやっていく」 ○ the little A「少ないけれど全部のA，なけなしのA」＝what little A ➡ 209",
+        "en": "He could {barely survive} on the little food he had.",
+        "answer": "barely survive",
+        "explanation": "Tip 「かろうじて」を表す副詞は？\n▶ barelyの後には動詞や形容詞がくる。",
+        "question": "He could (b   ) (    ) on the little food he had."
     },
     {
         "id": "857",
-        "ja": "私たちは間一髪で車の事故を免れた。",
-        "en": "We {narrowly avoided a car accident. narrowly ʴࢺʮ͔Ζ͏ͯ͡ʜ͢Δʯ ＝barelyʴࢺ avoid an accidentΛආ͚Δʯ}",
-        "answer": "narrowly avoided a car accident. narrowly ʴࢺʮ͔Ζ͏ͯ͡ʜ͢Δʯ ＝barelyʴࢺ avoid an accidentΛආ͚Δʯ",
-        "explanation": "",
-        "question": "We (n      ) (a      ) a car accident."
+        "ja": "私たちは間一髪で車の事故を免れた。 narrowly＋動詞「かろうじて…する」 ＝barely＋動詞 ○ avoid an accident「事故を避ける」",
+        "en": "We {narrowly avoided} a car accident.",
+        "answer": "narrowly avoided",
+        "explanation": "Tip 「間一髪で～を免れた → かろうじて～を避けた」と表現する。",
+        "question": "We (n   ) (a   ) a car accident."
     },
     {
         "id": "858",
-        "ja": "学校は教師の増員をとても必 要としている。",
-        "en": "Schools {badly} need more teachers. {badly} ʮͻͲ͘ɼେ͍ʹʯ ＝awfully ＝terribly  ➡File104",
-        "answer": "badly",
-        "explanation": "",
-        "question": "Schools (b      ) need more teachers."
+        "ja": "学校は教師の増員をとても必要としている。 badly「ひどく，大いに」",
+        "en": "Schools {badly} need more teachers. ＝awfully＝terribly ➡ {File 104}",
+        "answer": "badly, File 104",
+        "explanation": "Tip 「とても必要としている＝ひどく[大いに]必要だ」と表現する。",
+        "question": "Schools (b   ) need more teachers."
     },
     {
         "id": "859",
-        "ja": "幸い，遠足の当日は晴れだった。",
-        "en": "{Fortunately}, it was sunny on the day of the excursion. {Fortunately}, S ʴVӡʹ΋ʜʯ＝Luckily, SʴV ＝It is fortunate that S′ʴV′",
+        "ja": "幸い，遠足の当日は晴れだった。 Fortunately, S＋V「幸運にも…」＝Luckily, S＋V ○ excursion「遠足」",
+        "en": "{Fortunately}, it was sunny on the day of the excursion.",
         "answer": "Fortunately",
-        "explanation": "▶ 文全体を修飾する副詞。文全体を修飾する副詞には話し手の判断や気持ちを\n表すものがある。➡File105\nexcursion ʮԕ଍ʯ",
-        "question": "(F      ), it was sunny on the day of the excursion."
+        "explanation": "Tip 「幸い＝幸運にも」を表す，文全体を修飾する副詞は？\n＝It is fortunate that S’＋V’\n▶ 文全体を修飾する副詞。文全体を修飾する副詞には話し手の判断や気持ちを表すものがある。➡ File 105",
+        "question": "(F   ), it was sunny on the day of the excursion."
     },
     {
         "id": "860",
-        "ja": "不運にも，今朝は電車に乗り遅れて学校に遅刻した。",
-        "en": "{Unfortunately}, I missed the train this morning and was late for school. {Unfortunately}, S ʴV೦ͳ͕Βʜʯ miss ʮʢ৐Γ෺ʣʹ৐Γ஗ΕΔʯ⇔⇔ catch͏ʯ be late for A ʮA ʹ஗ΕΔʯ⇔⇔ be in time for AʮA͏ʯ",
+        "ja": "不運にも，今朝は電車に乗り遅れて学校に遅刻した。 F 330  Unfortunately, S＋V「不運にも…，残念ながら…」 ○ miss「(乗り物)に乗り遅れる」⇔ catch「(乗り物)に間に合う」 ○ be late for A「Aに遅れる」⇔ be in time for A「Aに間に合う」",
+        "en": "{Unfortunately}, I missed the train this morning and was late for school.",
         "answer": "Unfortunately",
-        "explanation": "",
-        "question": "(U      ), I missed the train this morning and was late for school."
+        "explanation": "Tip 「不運にも」を表す副詞は？",
+        "question": "(U   ), I missed the train this morning and was late for school."
     },
     {
         "id": "861",
-        "ja": "興味深いこ とに，１円玉を作るのに約３円かかる。 復習",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "(        ), it costs about 3 yen to make a 1-yen coin. Interestingly, it costs about 3 yen to make a 1-yen coin. Interestingly, S ʴVຯਂ͍͜ͱʹʜʯ ＝It is interesting that S′ʴV′ cost  ɾඅ༻ʣ͕͔͔Δʯ survive / avoid luckily / fortunatelyӡʹ΋ʯɹ  unfortunatelyʮෆӡʹ΋ʯ clearly / obviously / evidentlyʮ໌Β͔ʹʯɹ  surely͔ʹʯ naturallyʮ౰વɼ΋ͪΖΜʯɹ  foolishly͔ʹ΋ʯ surprisingly͘΂͖͜ͱʹʯɹ  interestinglyຯਂ͍͜ͱʹʯ apparentlyʮͲ͏΍ΒʜΒ͍͠ʯ absolutelyʮઈରʹʯɹ  completely / entirely / utterlyશʹɼ·ͬͨ͘ʯ greatlyʮେ͍ʹʯɹ  awfully / terriblyʮͱͯ΋ɼͻͲ͘ʯ very / much / tooʮͱͯ΋ʯɹ  quite / ratherʯɹ  fullyʮे෼ʹʯ reallyʮຊ౰ʹʯɹ  fairlyͱʯɹ  somewhatʮ͍͘ͿΜʯ slightlyʮΘ͔ͣʹʯɹ  hardly / scarcelyʮ΄ͱΜͲʜͳ͍ʯ➡401 ࢺFile 105File 104 330 331 Self Check"
+        "ja": "興味深いことに，１円玉を作るのに約３円かかる。 副詞の語法 ⑤ ● 331 Interestingly, S＋V「興味深いことに…」 ○ cost ① 名詞「費用」② 動詞「(金額・費用)がかかる」",
+        "en": "{Interestingly}, it costs about 3 yen to make a 1-yen coin.",
+        "answer": "Interestingly",
+        "explanation": "Tip 「興味深いことに」を表す，文全体を修飾する副詞は？\n＝It is interesting that S’＋V’",
+        "question": "(    ), it costs about 3 yen to make a 1-yen coin."
     },
     {
         "id": "862",
-        "ja": "ケンとサラはそれぞれ16歳と17歳だ。",
-        "en": "Ken and Sara are 16 and 17 years old {respectively}. {respectively} ʮͦΕͧΕʹʯ respective ʮͦΕͧΕͷʯ",
+        "ja": "ケンとサラはそれぞれ16歳と17歳だ。 respectively「それぞれに」 ＋ respective「それぞれの」",
+        "en": "Ken and Sara are 16 and 17 years old {respectively}.",
         "answer": "respectively",
-        "explanation": "▶ respectively を使う ときは，それぞれに「対応するもの」が伴う。この問題文で\nはKen と16 (years old)，Sara と17 years old がそれぞれ対応している。",
-        "question": "Ken and Sara are 16 and 17 years old (r      )."
+        "explanation": "Tip 「それぞれ」を副詞１語で表すと？\n▶ respectivelyを使うときは，それぞれに「対応するもの」が伴う。この問題文ではKenと16 (years old)，Saraと17 years oldがそれぞれ対応している。",
+        "question": "Ken and Sara are 16 and 17 years old (r   )."
     },
     {
         "id": "863",
-        "ja": "電話が鳴った時，妹は熟 睡していた。",
-        "en": "My sister was fast asleep when the phone rang. fast asleep sound asleep    ʮ͙ͬ͢Γ຾ͬͯɼख़ਭͯ͠ʯ",
-        "answer": "fast asleep when the phone rang. fast asleep sound asleep ʮ͙ͬ͢Γ຾ͬͯɼख़ਭͯ͠ʯ",
-        "explanation": "▶ このfast / sound はいずれも副詞。",
-        "question": "My sister was (        ) (        ) when the phone rang."
+        "ja": "電話が鳴った時，妹は熟睡していた。 sound asleep   「ぐっすり眠って，熟睡して」",
+        "en": "My sister was {fast asleep} when the phone rang. {fast asleep}",
+        "answer": "fast asleep, fast asleep",
+        "explanation": "Tip 「熟睡して，ぐっすり眠って」を表す表現は？\n▶ このfast / soundはいずれも副詞。",
+        "question": "My sister was (    ) (    ) when the phone rang."
     },
     {
         "id": "864-1",
-        "ja": "コーヒーではなくて，何かほかの飲み物が欲しいです。",
-        "en": "I don’t want coffee. I’d like {something else to drink, please. else ʮͦͷ΄͔ʹʯ―副詞}",
-        "answer": "something else to drink, please. else ʮͦͷ΄͔ʹʯ―副詞",
-        "explanation": "▶ else は，something / anything / someone / anyone / no one や who / what\nなどの後に続けて「そのほかに」という意味を表す。",
-        "question": "I don’t want coffee. I’d like (        ) (        ) to drink, please."
+        "ja": "コーヒーではなくて，何かほかの飲み物が欲しいです。 else「そのほかに」―副詞",
+        "en": "I don’t want coffee. I’d like {something else} to drink, please.",
+        "answer": "something else",
+        "explanation": "Tip 「そのほかに」を表す副詞を使う。「飲むための何かをほかに」と表現する。\n▶ elseは，something / anything / someone / anyone / no one やwho / whatなどの後に続けて「そのほかに」という意味を表す。",
+        "question": "I don’t want coffee. I’d like (    ) (    ) to drink, please."
     },
     {
         "id": "864-2",
-        "ja": "「ほかに誰が ミ ー テ ィ ン グ に 来 ま す か 。」「 ケ ン が 来 ま す 。」",
-        "en": "“{Who else is coming to the meeting?” “Ken.”}",
-        "answer": "Who else is coming to the meeting?” “Ken.”",
-        "explanation": "▶ who の後にelse「そのほかに」が続く形。応答文は，Ken (is coming). の\nis coming が省略されている。\nwho else ʮ΄͔ʹ୭͔ʯ",
-        "question": "“(        ) (        ) is coming to the meeting?” “Ken.”"
+        "ja": "「ほかに誰がミーティングに来ますか。」「ケンが来ます。」 ○ who else「ほかに誰か」",
+        "en": "“{Who else} is coming to the meeting?” “Ken.”",
+        "answer": "Who else",
+        "explanation": "Tip 「ほかに誰か」を表す文の主語は？\n▶ whoの後にelse「そのほかに」が続く形。応答文は，Ken (is coming).のis comingが省略されている。",
+        "question": "“(    ) (    ) is coming to the meeting?” “Ken.”"
     },
     {
         "id": "865",
-        "ja": "連休中，どこかおもしろい所に行きましたか。",
+        "ja": "連休中，どこかおもしろい所に行きましたか。 anywhere「どこかに，どこにも(…ない)，どこにでも」 ○ during the holidays「連休中に，休みの間に」",
         "en": "Did you go {anywhere} interesting during the holidays?",
         "answer": "anywhere",
-        "explanation": "▶ 形容詞 （interesting）が 副 詞（anywhere）を 修 飾 す る ま れ な ケ ー ス 。\nduring the holidaysʹʯ",
-        "question": "Did you go (a      ) interesting during the holidays?"
+        "explanation": "Tip  疑問文で「どこか」を表す副詞は？\n▶ 形容詞(interesting)が副詞(anywhere)を修飾するまれなケース。",
+        "question": "Did you go (a   ) interesting during the holidays?"
     },
     {
         "id": "866",
-        "ja": "私たちはこれ以上，これらの問題を無視するこ とはできない。",
-        "en": "＝ We cannot ignore these problems any longer [anymore]. We can no longer ignore these problems. not ʙ any longer [anymore]ʮ΋͸΍ʙͳ͍ʯ＝no longer ignore͢Δʯ",
-        "answer": "???",
+        "ja": "私たちはこれ以上，これらの問題を無視することはできない。 「もはや～ない」を表す定型表現は？ not ～ any longer [anymore]「もはや～ない」＝no longer ○ ignore「～を無視する」",
+        "en": "We {cannot} ignore these problems {any longer [anymore]}. ＝We {can no longer} ignore these problems.",
+        "answer": "cannot, any longer [anymore], can no longer",
         "explanation": "",
-        "question": "We  ignore these problems ."
+        "question": "We cannot ignore these problems any longer."
     },
     {
         "id": "867",
-        "ja": "私が留学したい理由は 3 つある。第一に，私は異文化を体験したい。第二に，英語 を練習したい。最後に，新しい友達をつく りたい。",
-        "en": "There are three reasons I want to study abroad. {First, I want to experience a different culture. Second, I want to practice my English. Finally, I want to make new friends.}",
-        "answer": "First, I want to experience a different culture. Second, I want to practice my English. Finally, I want to make new friends.",
-        "explanation": "▶ 867～876の副詞は文章の中で༿（σΟείʔεϚʔΧʔ）とし て 使 う\nことができる。つなぎの言葉を効果的に使うと，論理的でわかりやすい文章を書く\nことができ る。読むときにも，つなぎの言葉に着目すると文のつながりや論理の\n展開が理解しやすく なる。➡自由英作文の論理パターン ―巻末\n/f_irst ＝/f_irstlyʮୈҰʹʯ\nsecond ＝secondlyʮୈೋʹʯ\nthird ＝thirdlyʹʯ\n/f_inally ＝lastlyʹʯ\n▶ 列挙を表すつなぎの言葉。\nasleep / something\n332 333\nSelf\nCheck\n復習",
-        "question": "There are three reasons I want to study abroad. (        ), I want to experience a different culture. (        ), I want to practice my English. (        ), I want to make new friends."
+        "ja": "私が留学したい理由は3つある。第一に，私は異文化を体験したい。第二に，英語を練 習したい。最後に，新しい友達をつくりたい。 副詞の語法 ⑥ ● 333 first＝firstly「第一に」 second＝secondly「第二に」 third＝thirdly「第三に」 finally＝lastly「最後に」",
+        "en": "There are three reasons I want to study abroad. {First}, I want to experience a different culture. {Second}, I want to practice my English. {Finally}, I want to make new friends.",
+        "answer": "First, Second, Finally",
+        "explanation": "Tip 「第一に」「第二に」「最後に」という順序を表すつなぎの言葉。\n▶ 867～876の副詞は文章の中でつなぎの言葉（ディスコースマーカー）として使うことができる。つなぎの言葉を効果的に使うと，論理的でわかりやすい文章を書くことができる。読むときにも，つなぎの言葉に着目すると文のつながりや論理の展開が理解しやすくなる。➡ 自由英作文の論理パターン―巻末\n▶ 列挙を表すつなぎの言葉。",
+        "question": "There are three reasons I want to study abroad. (    ), I want to experience a different culture. (    ), I want to practice my English. (    ), I want to make new friends."
     },
     {
         "id": "868-1",
-        "ja": "学校で英語を学んでいる。さらに，毎朝英語のラジオ番組を聴いている。",
-        "en": "I’m learning English at school. {Besides}, I listen to English radio programs every morning. besides ʮͦͷ্ʯ＝what’s more ＝also",
+        "ja": "学校で英語を学んでいる。さらに，毎朝英語のラジオ番組を聴いている。 besides「その上」＝what’s more＝also ＋ besides A「Aに加えて」―beside A「Aのそばに」➡ 764",
+        "en": "I’m learning English at school. {Besides}, I listen to English radio",
         "answer": "Besides",
-        "explanation": "▶ 追加を表すつなぎの言葉。会話や比較的カジュアルな文章で使うことが多い。\nbesides AʮA ʹՃ͑ͯʯ―beside AʮA ͷͦ͹ʹʯ➡764",
-        "question": "I’m learning English at school. (B      ), I listen to English radio programs every morning."
+        "explanation": "Tip 「さらに＝その上」という追加を表す副詞は？\nprograms every morning.\n▶ 追加を表すつなぎの言葉。会話や比較的カジュアルな文章で使うことが多い。",
+        "question": "I’m learning English at school. (B   ), I listen to English radio programs every morning."
     },
     {
         "id": "868-2",
-        "ja": "ボランティ アをするこ とは地域社会に恩恵をもたらす。さらには，新しい人と出会う いい方法でもある。",
-        "en": "Volunteering benefits the community. {Moreover [Furthermore]}, it is a great way to meet new people. moreover furthermore    ʮͦͷ্ɼ͞Βʹ͸ʯ＝in addition",
-        "answer": "Moreover [Furthermore]",
-        "explanation": "▶ 追加を表すつなぎの言葉。書き言葉や公式な文書で使うことが多い。\nvolunteer  ʮϘϥϯςΟΞΛ͢Δʯ\n―volunteering で「ボランティアをすること」の意味になる。\nbene/f_it  ʮʙʹརӹΛ༩͑Δʯ\ncommunityձʯ",
-        "question": "Volunteering benefits the community. (        ), it is a great way to meet new people."
+        "ja": "ボランティアをすることは地域社会に恩恵をもたらす。さらには，新しい人と出会う いい方法でもある。 furthermore    「その上，さらには」＝in addition ○ volunteer ① 名詞「志願者，ボランティア」② 動詞「ボランティアをする」 ―volunteeringで「ボランティアをすること」の意味になる。 ○ benefit ① 名詞「利益」② 動詞「～に利益を与える」 ○ community「地域社会」",
+        "en": "Volunteering benefits the community. {Moreover [Furthermore]}, it is a great way to meet new people. {moreover}",
+        "answer": "Moreover [Furthermore], moreover",
+        "explanation": "Tip 「さらには」という追加を表す副詞は？\n▶ 追加を表すつなぎの言葉。書き言葉や公式な文書で使うことが多い。",
+        "question": "Volunteering benefits the community. (    ), it is a great way to meet new people."
     },
     {
         "id": "869",
-        "ja": "私は毎日バランスの取れた食事をし ている。しかしながら，自分へのごほうびによく アイスクリームを食べてしまう。",
-        "en": "I eat a balanced diet every day. {However}, I often treat myself to ice cream. however ʮ͔͠͠ͳ͕Βʯ",
+        "ja": "私は毎日バランスの取れた食事をしている。しかしながら，自分へのごほうびによく アイスクリームを食べてしまう。 however「しかしながら」 ＋ Butで文を始めることは正式な文書では避けられることが多い。 ○ a balanced diet「バランスの取れた食事」 ○ treat A to B「AにBをおごる」",
+        "en": "I eat a balanced diet every day. {However}, I often treat myself to ice",
         "answer": "However",
-        "explanation": "▶ 逆接を表す。  But, S＋V .  butは接続詞なので，普通はコンマを付けない。\nBut で文を始めることは正式な文書では避けられることが多い。\na balanced dietʯ\ntreat A to BʮA ʹB Λ͓͝Δʯ",
-        "question": "I eat a balanced diet every day. (H      ), I often treat myself to ice cream."
+        "explanation": "Tip 「しかしながら」という逆接を表す副詞は？\ncream.\n▶ 逆接を表す。× But, S＋V.  butは接続詞なので，普通はコンマを付けない。",
+        "question": ""
     },
     {
         "id": "870",
-        "ja": "誰もが 平 和を望んでいる。それにもかかわらず，世界の多くの地域で戦争が続いて いる。",
-        "en": "Everyone wants peace. {Nevertheless [Nonetheless]}, wars continue in many parts of the world. nevertheless",
-        "answer": "Nevertheless [Nonetheless]",
-        "explanation": "▶ 逆接を表すつなぎの言葉。",
-        "question": "Everyone wants peace. (N      ), wars continue in many parts of the world."
+        "ja": "誰もが平和を望んでいる。それにもかかわらず，世界の多くの地域で戦争が続いている。 nonetheless    「それにもかかわらず，それでもやはり」＝still＝even so",
+        "en": "Everyone wants peace. {Nevertheless [Nonetheless]}, wars continue in many parts of the world. {nevertheless}",
+        "answer": "Nevertheless [Nonetheless], nevertheless",
+        "explanation": "Tip 「それにもかかわらず，それでもやはり」を表す副詞は？\n▶ 逆接を表すつなぎの言葉。",
+        "question": "Everyone wants peace. (N   ), wars continue in many parts of the world."
     },
     {
         "id": "871",
-        "ja": "石油価格が急騰した。それに応じて，ガソリンも高くなった。",
-        "en": "Oil prices rose sharply. {Accordingly}, gas became more expensive. accordingly ʮ͕ͨͬͯ͠ʯ＝therefore ＝so",
+        "ja": "石油価格が急騰した。それに応じて，ガソリンも高くなった。 accordingly「したがって」＝therefore＝so ○ oil prices「石油価格」 ○ gas / gasoline / petrol「ガソリン」",
+        "en": "Oil prices rose sharply. {Accordingly}, gas became more expensive.",
         "answer": "Accordingly",
-        "explanation": "▶ 結果を表すつなぎの言葉。同意語のso は「したがって」を表す最も日常的な\n表現。\noil pricesʯ\ngas / gasoline / petrolʮΨιϦϯʯ",
-        "question": "Oil prices rose sharply. (A      ), gas became more expensive."
+        "explanation": "Tip 「それに応じて＝したがって」と表現する。so「したがって」と同じ意味を表す表現。\n▶ 結果を表すつなぎの言葉。同意語のsoは「したがって」を表す最も日常的な表現。",
+        "question": "Oil prices rose sharply. (A   ), gas became more expensive."
     },
     {
         "id": "872",
-        "ja": "これらの統計は誤解を招く ものであり，したがって混乱を招く。",
-        "en": "These statistics are misleading and {therefore} confusing. {therefore} thus                   ʮͦΕΏ͑ɼ͕ͨͬͯ͠ʯ hence",
-        "answer": "therefore",
-        "explanation": "▶ 結果を表すつなぎの言葉。thus /ð%s/ とhence は硬い表現。\nstatisticsʯ― 「統計」は複数扱い， 「統計学」は単数扱い。\nmisleadingղΛট͖΍͍͢ʯ―形容詞\nconfusingཚͤ͞Δʯ―形容詞\nmoreover / therefore\n334 335\nSelf\nCheck\n復習",
-        "question": "These statistics are misleading and (t      ) confusing."
+        "ja": "これらの統計は誤解を招くものであり，したがって混乱を招く。 副詞の語法 ⑦ ● 335 thus        「それゆえ，したがって」 ○ statistics「統計，統計学」―「統計」は複数扱い，「統計学」は単数扱い。 ○ misleading「誤解を招きやすい」―形容詞 ○ confusing「混乱させる」―形容詞",
+        "en": "These statistics are misleading and {therefore} confusing. {therefore} { hence }",
+        "answer": "therefore, therefore, hence",
+        "explanation": "Tip 「したがって，それゆえ」を表す副詞は？\n▶ 結果を表すつなぎの言葉。thus/〇〇/とhenceは硬い表現。",
+        "question": "These statistics are misleading and (t   ) confusing."
     },
     {
         "id": "873",
-        "ja": "汚染は環境を害し，その結果，人間の健康にも影響を及ぼす。",
-        "en": "Pollution harms the environment and {consequently} affects human health. {consequently}Ռʯ＝as a result ＝as a consequence",
+        "ja": "汚染は環境を害し，その結果，人間の健康にも影響を及ぼす。 consequently「その結果」＝as a result＝as a consequence ○ harm A「Aに害を及ぼす」＝do harm to A＝do A harm ○ affect A「Aに影響する」＝influence A＝have an effect on A",
+        "en": "Pollution harms the environment and {consequently} affects human",
         "answer": "consequently",
-        "explanation": "▶ 結果を表すつなぎの言葉。\nharm AʮA΅͢ʯ＝do harm to A ＝do A harm\naﬀect AʮA͢Δʯ＝in/f_luence A ＝have an eﬀect on A",
-        "question": "Pollution harms the environment and (c      ) affects human health."
+        "explanation": "Tip 「その結果」を表す副詞は？\nhealth.\n▶ 結果を表すつなぎの言葉。",
+        "question": "Pollution harms the environment and (c   ) affects human health."
     },
     {
         "id": "874",
-        "ja": "私は京都が大好きで，特に秋の京都が好きだ。",
-        "en": "I love Kyoto, {especially} in the fall. {especially} particularly    ʮಛʹʯ＝in particular",
-        "answer": "especially",
-        "explanation": "▶ 強調を表すつなぎの言葉。\nin (the) fallʮळʹʯ＝in (the) autumn",
-        "question": "I love Kyoto, (        ) in the fall."
+        "ja": "私は京都が大好きで，特に秋の京都が好きだ。 particularly   「特に」＝in particular ○ in (the) fall「秋に」＝in (the) autumn",
+        "en": "I love Kyoto, {especially} in the fall. {especially}",
+        "answer": "especially, especially",
+        "explanation": "Tip 「特に」を表す副詞は？\n▶ 強調を表すつなぎの言葉。",
+        "question": "I love Kyoto, (    ) in the fall."
     },
     {
         "id": "875",
-        "ja": "私は公園には行かなかった。代わりに，家にいてお気に入りの 1 冊を読んだ。",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "I didn’t go to the park. (        ), I stayed home and read one of my favorite books. I didn’t go to the park. Instead, I stayed home and read one of my favorite books. instead ʮ୅ΘΓʹʯ instead of A ʮA ͷ୅ΘΓʹʯ＝in place of A  ➡1362 stay (at) homeʮՈʹ͍Δʯ⇔⇔ go outʮ֎ग़͢Δʯ"
+        "ja": "私は公園には行かなかった。代わりに，家にいてお気に入りの１冊を読んだ。 instead「代わりに」 ＋ instead of A「Aの代わりに」＝in place of A ➡ 1362 ○ stay (at) home「家にいる」⇔ go out「外出する」",
+        "en": "I didn’t go to the park. {Instead}, I stayed home and read one of my",
+        "answer": "Instead",
+        "explanation": "Tip 「代わりに」を表す副詞は？\nfavorite books.",
+        "question": "I didn’t go to the park. (    ), I stayed home and read one of my favorite books."
     },
     {
         "id": "876",
-        "ja": "子どもには多様な経験が必要だ。そうでないと視 野 が 狭くなる。 （バスに間に合うように早く出発します。さもなければバ ス に 乗 り 遅 れ ま す 。） Otherwise ＝If I don’t leave early …（も し早く出発しなければ…） （あなたはバスに間に合うように早く出発したほうがいい。そうでなければバスに乗り 遅れ る で し ょう 。）［仮定法過去］ Otherwise ＝If you didn’t leave early …（仮に早く出発しないと したら…） （私たちはバスに間に合うように早く出発した。そうでなかったならバスに乗り遅れて い た だ ろ う 。）［仮定法過去完了］ Otherwise ＝If we hadn’t left early …（仮に早く出発しなかったと したら…） （私はそれは不可能だと思ったが，サラはそうではないと［違ったふうに］考 え た 。） （この部屋は狭いが，そのほかの点では申 し 分 な い 。） 復習",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Children need a variety of experiences. (        ) they will have a narrow view of things. Children need a variety of experiences. Otherwise they will have a narrow view of things. otherwise ʮ͞΋ͳ͚Ε͹ʯ have a variety of experiencesΛ͢Δʯ have a narrow view of things͍ʯ ˱˱have a broad view of things͍ʯ ᶃ I will leave early to catch the bus. Otherwise I will miss it. ᶄ You had better leave early to catch the bus. Otherwise you would miss it. ᶅ We left early to catch the bus. Otherwise we would have missed it. ᶆ I thought it was impossible, but Sara thought otherwise. ᶇ This room is small, but otherwise perfect. consequently 336 337 Self Check"
+        "ja": "子どもには多様な経験が必要だ。そうでないと視野が狭くなる。 副詞の語法 ⑧ ● 337 otherwise「さもなければ」 ○ have a variety of experiences「多様な経験をする」 ○ have a narrow view of things「視野が狭い」 ⇔ have a broad view of things「視野が広い」 （バスに間に合うように早く出発します。さもなければバスに乗り遅れます。） Otherwise＝If I don’t leave early …（もし早く出発しなければ…） （あなたはバスに間に合うように早く出発したほうがいい。そうでなければバスに乗り遅れるでしょう。）[仮定法過去] Otherwise＝If you didn’t leave early …（仮に早く出発しないとしたら…） （私たちはバスに間に合うように早く出発した。そうでなかったならバスに乗り遅れていただろう。）[仮定法過去完了] Otherwise＝If we hadn’t left early …（仮に早く出発しなかったとしたら…） （私はそれは不可能だと思ったが，サラはそうではないと[違ったふうに]考えた。） （この部屋は狭いが，そのほかの点では申し分ない。）",
+        "en": "Children need a variety of experiences. {Otherwise} they will have a ① I will leave early to catch the bus. {Otherwise} I will miss it. ② You had better leave early to catch the bus. {Otherwise} you would miss it. ③ We left early to catch the bus. {Otherwise} we would have missed it. ④ I thought it was impossible, but Sara thought {otherwise}. ⑤ This room is small, but {otherwise} perfect.",
+        "answer": "Otherwise, Otherwise, Otherwise, Otherwise, otherwise, otherwise",
+        "explanation": "Tip 「そうでないと＝さもなければ」を表す副詞は？\nnarrow view of things.\n▶ otherwiseには，①「さもなければ」のほかにも，②「そうでなければ」(仮定法過去)，③「(あの時)そうでなかったなら」(仮定法過去完了)，④「違ったふうに」，⑤「そのほかの点では」などの意味がある。",
+        "question": "Children need a variety of experiences. (    ) they will have a narrow view of things."
     }
 ];
 
@@ -617,7 +692,7 @@
             recognition.lang = 'en-US';
             recognition.interimResults = false;
         }
-        
+
         // --- Voice Synthesis Setup ---
         let synthesisVoice = null;
 
@@ -625,10 +700,10 @@
             const voices = speechSynthesis.getVoices();
             // 優先順位: Google US English -> Microsoft Zira/David -> その他英語
             synthesisVoice = voices.find(voice => voice.name === 'Google US English') ||
-                             voices.find(voice => voice.name.includes('Google') && voice.lang.includes('en-US')) ||
-                             voices.find(voice => voice.name.includes('Microsoft') && voice.lang.includes('en-US')) ||
-                             voices.find(voice => voice.lang === 'en-US') ||
-                             voices.find(voice => voice.lang.startsWith('en'));
+                voices.find(voice => voice.name.includes('Google') && voice.lang.includes('en-US')) ||
+                voices.find(voice => voice.name.includes('Microsoft') && voice.lang.includes('en-US')) ||
+                voices.find(voice => voice.lang === 'en-US') ||
+                voices.find(voice => voice.lang.startsWith('en'));
         }
 
         // 音声リストがロードされたら設定を実行
@@ -651,7 +726,7 @@
         const quizModal = document.getElementById('quiz-modal');
         const closeQuizBtn = document.getElementById('close-quiz-btn');
         const quizContent = document.getElementById('quiz-content');
-        
+
         const selectAllCheckbox = document.getElementById('select-all-checkbox');
         const pdfModal = document.getElementById('pdf-modal');
         const openPdfModalBtn = document.getElementById('open-pdf-modal-btn');
@@ -701,7 +776,7 @@
                 `;
                 sentenceList.appendChild(sentenceDiv);
             });
-            
+
             // Add click listener to each sentence item
             document.querySelectorAll('.sentence-item').forEach(item => {
                 item.addEventListener('click', (e) => {
@@ -728,15 +803,15 @@
                     }
                 });
             });
-            
+
             // Select the first sentence by default
             if (sentenceList.firstChild) {
-                 sentenceList.firstChild.click();
+                sentenceList.firstChild.click();
             }
         }
-        
+
         // --- PDF / Print Logic ---
-        
+
         function openPrintWindow(bodyContent, title) {
             const htmlContent = `
                 <!DOCTYPE html>
@@ -788,7 +863,7 @@
             printWindow.document.write(htmlContent);
             printWindow.document.close();
             setTimeout(() => {
-                printWindow.focus(); 
+                printWindow.focus();
                 printWindow.print();
             }, 250);
         }
@@ -803,32 +878,32 @@
                 .map(id => chapterData.find(item => item.id === id))
                 .filter(Boolean)
                 .sort((a, b) => {
-                     // Handle IDs like "1382-1" vs "1382-2"
-                     const aParts = a.id.split('-').map(s => parseInt(s) || 0);
-                     const bParts = b.id.split('-').map(s => parseInt(s) || 0);
-                     if (aParts[0] !== bParts[0]) return aParts[0] - bParts[0];
-                     return (aParts[1] || 0) - (bParts[1] || 0);
+                    // Handle IDs like "1382-1" vs "1382-2"
+                    const aParts = a.id.split('-').map(s => parseInt(s) || 0);
+                    const bParts = b.id.split('-').map(s => parseInt(s) || 0);
+                    if (aParts[0] !== bParts[0]) return aParts[0] - bParts[0];
+                    return (aParts[1] || 0) - (bParts[1] || 0);
                 });
         }
-        
+
         function getUniqueItems(items) {
-             const uniqueMap = new Map();
-             items.forEach(item => {
-                 // Use answer as key to deduplicate same phrases
-                 if (!uniqueMap.has(item.answer)) {
-                     uniqueMap.set(item.answer, item);
-                 }
-             });
-             return Array.from(uniqueMap.values()).sort((a, b) => {
-                 const aId = parseInt(a.id.split('-')[0]);
-                 const bId = parseInt(b.id.split('-')[0]);
-                 return aId - bId;
-             });
+            const uniqueMap = new Map();
+            items.forEach(item => {
+                // Use answer as key to deduplicate same phrases
+                if (!uniqueMap.has(item.answer)) {
+                    uniqueMap.set(item.answer, item);
+                }
+            });
+            return Array.from(uniqueMap.values()).sort((a, b) => {
+                const aId = parseInt(a.id.split('-')[0]);
+                const bId = parseInt(b.id.split('-')[0]);
+                return aId - bId;
+            });
         }
 
 
         // --- Message & Sound Functions ---
-        
+
         function showMessage(htmlContent, duration = null) {
             messageContent.innerHTML = htmlContent;
             messageModal.classList.remove('hidden');
@@ -852,7 +927,7 @@
 
             // 連続再生を防ぐために一度キャンセル
             speechSynthesis.cancel();
-            
+
             let textToSpeak = activeSentenceElement.dataset.fullSentence;
             // 念のため不要な記号を除去
             textToSpeak = textToSpeak.replace(/[{}]/g, '');
@@ -865,7 +940,7 @@
                 utterance.voice = synthesisVoice;
             }
 
-            utterance.rate = 1.0; 
+            utterance.rate = 1.0;
             utterance.pitch = 1.0;
 
             speechSynthesis.speak(utterance);
@@ -882,7 +957,7 @@
             }
 
             showMessage('<p class="text-2xl">マイクに向かって話してください...</p><div class="animate-pulse text-red-500 text-4xl mt-4">●</div>');
-            
+
             recognition.start();
 
             recognition.onresult = (event) => {
@@ -893,20 +968,20 @@
             recognition.onerror = (event) => {
                 showMessage(`<p>エラーが発生しました: ${event.error}</p>`, 3000);
             };
-            
+
             recognition.onend = () => {
-                 if (messageModal.classList.contains('hidden') === false && messageContent.innerHTML.includes('マイクに')) {
+                if (messageModal.classList.contains('hidden') === false && messageContent.innerHTML.includes('マイクに')) {
                     messageModal.classList.add('hidden');
-                 }
+                }
             };
         }
-        
+
         function evaluatePronunciation(transcript) {
             const originalText = activeSentenceElement.dataset.fullSentence;
 
             const cleanOrig = originalText.toLowerCase().replace(/[^\w\s]/g, '').split(' ');
             const cleanTrans = transcript.toLowerCase().replace(/[^\w\s]/g, '').split(' ');
-            
+
             let matches = 0;
             cleanOrig.forEach(word => {
                 if (cleanTrans.includes(word)) {
@@ -915,7 +990,7 @@
             });
 
             const similarity = matches / cleanOrig.length;
-            
+
             let score;
             if (similarity > 0.9) {
                 score = 95 + Math.floor(Math.random() * 5);
@@ -928,7 +1003,7 @@
             } else {
                 score = 70 + Math.floor(Math.random() * 10);
             }
-            
+
             if (score === 100 && Math.random() < 0.3) score = 99;
 
             const messageHtml = `
@@ -945,8 +1020,8 @@
 
         function startQuiz() {
             if (chapterData.length < 10) {
-                 showMessage('<p>クイズを作成するには、文が10個以上必要です。</p>', 3000);
-                 return;
+                showMessage('<p>クイズを作成するには、文が10個以上必要です。</p>', 3000);
+                return;
             }
 
             const shuffled = [...chapterData].sort(() => 0.5 - Math.random());
@@ -971,8 +1046,9 @@
                     .map(item => item.answer);
 
                 const options = [correctAnswer, ...incorrectAnswers].sort(() => 0.5 - Math.random());
-                
-                const questionSentence = question.en.replace(`{${question.answer}}`, ' (______) ');
+
+                // Use regex to replace ALL {answer} parts with (______)
+                const questionSentence = question.en.replace(/\{.*?\}/g, ' (______) ');
 
                 quizContent.innerHTML = `
                     <h3 class="text-2xl font-bold mb-2">問題 ${currentQuestionIndex + 1}/10</h3>
@@ -992,7 +1068,7 @@
                             button.classList.add('bg-red-400', 'text-white');
                             document.querySelector(`.quiz-option[data-answer="${CSS.escape(correctAnswer)}"]`).classList.add('bg-green-400', 'text-white');
                         }
-                        
+
                         setTimeout(() => {
                             currentQuestionIndex++;
                             showQuestion();
@@ -1037,12 +1113,12 @@
                 explanationDiv.style.display = 'block';
             }
         });
-        
+
         playSoundBtn.addEventListener('click', playSound);
         recordBtn.addEventListener('click', handleRecording);
         startQuizBtn.addEventListener('click', startQuiz);
         closeQuizBtn.addEventListener('click', () => quizModal.classList.add('hidden'));
-        
+
         // Select All Logic
         selectAllCheckbox.addEventListener('change', (e) => {
             const isChecked = e.target.checked;
@@ -1056,7 +1132,7 @@
 
         // PDF Modal Logic
         openPdfModalBtn.addEventListener('click', () => {
-             if (selectedSentences.size === 0) {
+            if (selectedSentences.size === 0) {
                 showMessage('<p>PDFを作成する問題を選択してください。</p>', 3000);
                 return;
             }
@@ -1078,10 +1154,10 @@
         // 1. 完全なリスト
         document.getElementById('download-list-btn').addEventListener('click', () => {
             const items = getSelectedItems();
-            if(!items) return;
+            if (!items) return;
             // リスト作成の場合は重複があっても良いが、見やすくするために熟語ベースでユニークにするか、
             // そのままID順で並べるか。ここではID順ですべて表示する。
-            
+
             const listItems = items.map(item => {
                 // Remove { } for clean display
                 const cleanEn = item.en.replace(/[{}]/g, '');
@@ -1090,7 +1166,7 @@
                     <span style="font-size:0.9em; color:#555;">Ex: ${cleanEn} / ${item.ja}</span>
                 </li>`;
             }).join('');
-            
+
             openPrintWindow(`<ul class="list-container">${listItems}</ul>`, '重要熟語リスト');
             pdfModal.classList.add('hidden');
         });
@@ -1098,14 +1174,14 @@
         // 2. 英語を解答
         document.getElementById('download-en-quiz-btn').addEventListener('click', () => {
             const items = getUniqueItems(getSelectedItems());
-            
-            const quizItems = items.map(item => 
+
+            const quizItems = items.map(item =>
                 `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')} : ____________________</span></li>`
             ).join('');
-            const answerItems = items.map(item => 
+            const answerItems = items.map(item =>
                 `<li><span class="inline-content">${item.answer}</span></li>`
             ).join('');
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (英語を解答)');
             pdfModal.classList.add('hidden');
@@ -1114,14 +1190,14 @@
         // 3. 意味を解答
         document.getElementById('download-ja-quiz-btn').addEventListener('click', () => {
             const items = getUniqueItems(getSelectedItems());
-            
-            const quizItems = items.map(item => 
+
+            const quizItems = items.map(item =>
                 `<li><span class="inline-content"><strong>${item.answer}</strong> : ____________________</span></li>`
             ).join('');
-            const answerItems = items.map(item => 
+            const answerItems = items.map(item =>
                 `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')}</span></li>`
             ).join('');
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (意味を解答)');
             pdfModal.classList.add('hidden');
@@ -1132,7 +1208,7 @@
             const items = getUniqueItems(getSelectedItems());
             let quizItems = '';
             let answerItems = '';
-            
+
             items.forEach(item => {
                 if (Math.random() > 0.5) {
                     // 日本語 -> 英語
@@ -1144,7 +1220,7 @@
                     answerItems += `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')}</span></li>`;
                 }
             });
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (混合)');
             pdfModal.classList.add('hidden');
@@ -1153,14 +1229,14 @@
         // 5. 例文穴埋め
         document.getElementById('download-sentence-quiz-btn').addEventListener('click', () => {
             const items = getSelectedItems(); // 例文問題なので重複（文脈違い）も含める
-            
+
             const quizItems = items.map(item => {
                 // Replace {answer} with underscore
                 const blankSentence = item.en.replace(`{${item.answer}}`, '____________________');
                 return `<li>${blankSentence}<br><span style="font-size:0.9em;">(${item.ja})</span></li>`;
             }).join('');
-            
-            const answerItems = items.map(item => 
+
+            const answerItems = items.map(item =>
                 `<li>${item.answer}</li>`
             ).join('');
 
@@ -1174,7 +1250,7 @@
             const items = getSelectedItems();
             let quizItems = '';
             let answerItems = '';
-            
+
             const instruction = '<p style="border:1px solid #ccc; padding:10px; margin-bottom:20px;">指示：空所には適切な語句を補い、下線部がある文は下線部の意味を日本語で答えなさい。</p>';
 
             items.forEach(item => {
@@ -1203,4 +1279,5 @@
         });
     </script>
 </body>
+
 </html>

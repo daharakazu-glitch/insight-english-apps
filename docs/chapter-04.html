@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Tinos:wght@700&display=swap');
-        
+
         body {
-            background-color: #007BFF; /* ビビットなブルー */
+            background-color: #007BFF;
+            /* ビビットなブルー */
             font-family: 'Noto Sans JP', sans-serif;
         }
 
@@ -17,12 +19,15 @@
         .font-english {
             font-family: 'Tinos', 'Times New Roman', serif;
             font-weight: 700;
-            font-size: 1.25rem; /* 20px */
-            line-height: 1.75rem; /* 28px */
+            font-size: 1.25rem;
+            /* 20px */
+            line-height: 1.75rem;
+            /* 28px */
         }
 
         .answer-span {
-            color: #DC2626; /* 赤色 */
+            color: #DC2626;
+            /* 赤色 */
             font-weight: 700;
             display: none;
         }
@@ -40,7 +45,7 @@
         .show-answer .underline-span {
             display: none;
         }
-        
+
         .explanation {
             display: none;
             white-space: pre-wrap;
@@ -57,22 +62,27 @@
             cursor: pointer;
             transition: all 0.2s ease-in-out;
         }
+
         .btn-primary {
             background-color: #3b82f6;
             color: white;
         }
+
         .btn-primary:hover {
             background-color: #2563eb;
         }
+
         .btn-secondary {
             background-color: #6b7280;
             color: white;
         }
+
         .btn-secondary:hover {
             background-color: #4b5563;
         }
     </style>
 </head>
+
 <body class="text-gray-800">
 
     <div id="app-container" class="container mx-auto p-4 md:p-8 max-w-4xl">
@@ -83,23 +93,27 @@
 
         <main class="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg mb-28">
             <div class="flex justify-between items-center mb-6">
-                 <!-- PDF Control Section -->
-                 <div class="flex-1 mr-4">
+                <!-- PDF Control Section -->
+                <div class="flex-1 mr-4">
                     <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
                         <h3 class="font-bold text-sm md:text-base mb-2">選択した問題でPDFを作成</h3>
                         <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
                             <div class="flex items-center">
-                                <input type="checkbox" id="select-all-checkbox" class="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
-                                <label for="select-all-checkbox" class="ml-2 text-sm font-medium text-gray-700 cursor-pointer">すべて選択 / 解除</label>
+                                <input type="checkbox" id="select-all-checkbox"
+                                    class="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                                <label for="select-all-checkbox"
+                                    class="ml-2 text-sm font-medium text-gray-700 cursor-pointer">すべて選択 / 解除</label>
                             </div>
-                            <button id="open-pdf-modal-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow text-sm transition-transform transform hover:scale-105">
+                            <button id="open-pdf-modal-btn"
+                                class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow text-sm transition-transform transform hover:scale-105">
                                 PDF作成メニュー
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <button id="start-quiz-btn" class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-lg shadow transition-transform transform hover:scale-105 whitespace-nowrap">
+                <button id="start-quiz-btn"
+                    class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-lg shadow transition-transform transform hover:scale-105 whitespace-nowrap">
                     ランダムテスト
                 </button>
             </div>
@@ -111,11 +125,16 @@
     </div>
 
     <!-- Control Panel -->
-    <div id="control-panel" class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md p-4 border-t-2 border-gray-200 shadow-2xl flex justify-center items-center space-x-2 md:space-x-4">
-        <button id="toggle-answer-btn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">表示/非表示</button>
-        <button id="play-sound-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">音声再生</button>
-        <button id="record-btn" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">録音評価</button>
-        <button id="toggle-explanation-btn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">解説</button>
+    <div id="control-panel"
+        class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md p-4 border-t-2 border-gray-200 shadow-2xl flex justify-center items-center space-x-2 md:space-x-4">
+        <button id="toggle-answer-btn"
+            class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">表示/非表示</button>
+        <button id="play-sound-btn"
+            class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">音声再生</button>
+        <button id="record-btn"
+            class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">録音評価</button>
+        <button id="toggle-explanation-btn"
+            class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">解説</button>
     </div>
 
     <!-- Message/Score Modal -->
@@ -124,11 +143,12 @@
             <!-- Message content will be populated by JS -->
         </div>
     </div>
-    
+
     <!-- Quiz Modal -->
     <div id="quiz-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-40 p-4">
         <div class="bg-white w-full max-w-2xl p-8 rounded-2xl shadow-2xl relative">
-            <button id="close-quiz-btn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-3xl font-bold">&times;</button>
+            <button id="close-quiz-btn"
+                class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-3xl font-bold">&times;</button>
             <div id="quiz-content">
                 <!-- Quiz content will be populated by JS -->
             </div>
@@ -136,17 +156,24 @@
     </div>
 
     <!-- PDF Download Modal -->
-    <div id="pdf-modal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center z-50">
+    <div id="pdf-modal"
+        class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center z-50">
         <div class="relative mx-auto p-5 border w-11/12 md:w-1/2 lg:w-1/3 shadow-lg rounded-md bg-white">
             <div class="mt-3 text-center">
                 <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">ダウンロードするPDFの種類を選択</h3>
                 <div class="mt-2 space-y-3">
-                    <button id="download-list-btn" class="btn btn-primary w-full justify-start text-left">1. 完全なリスト (熟語・意味・例文)</button>
-                    <button id="download-en-quiz-btn" class="btn btn-primary w-full justify-start text-left">2. 熟語テスト (英語を解答)</button>
-                    <button id="download-ja-quiz-btn" class="btn btn-primary w-full justify-start text-left">3. 熟語テスト (意味を解答)</button>
-                    <button id="download-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">4. 熟語テスト (混合)</button>
-                    <button id="download-sentence-quiz-btn" class="btn btn-primary w-full justify-start text-left">5. 例文の穴埋め問題</button>
-                    <button id="download-sentence-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">6. 例文の混合問題 (穴埋め/和訳)</button>
+                    <button id="download-list-btn" class="btn btn-primary w-full justify-start text-left">1. 完全なリスト
+                        (熟語・意味・例文)</button>
+                    <button id="download-en-quiz-btn" class="btn btn-primary w-full justify-start text-left">2. 熟語テスト
+                        (英語を解答)</button>
+                    <button id="download-ja-quiz-btn" class="btn btn-primary w-full justify-start text-left">3. 熟語テスト
+                        (意味を解答)</button>
+                    <button id="download-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">4. 熟語テスト
+                        (混合)</button>
+                    <button id="download-sentence-quiz-btn" class="btn btn-primary w-full justify-start text-left">5.
+                        例文の穴埋め問題</button>
+                    <button id="download-sentence-mixed-quiz-btn"
+                        class="btn btn-primary w-full justify-start text-left">6. 例文の混合問題 (穴埋め/和訳)</button>
                 </div>
                 <div class="mt-6">
                     <button id="close-modal-btn" class="btn btn-secondary w-full">キャンセル</button>
@@ -158,276 +185,276 @@
     <script>
         const chapterData = [
     {
-        "id": "1",
-        "ja": "2 3 4 5 6 7 8 9 10音読 仮定法 2 3 4 5 6 7 8 9 10音読 仮定法 2 3 4 5 6 7 8 9 10音読 仮定法 2 3 4 5 6 7 8 9 10音読 仮定法",
+        "id": "４",
+        "ja": "章　仮定法  QR ☚ 音読用動画　別解など",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
         "question": ""
     },
     {
-        "id": "4",
-        "ja": "仮定法 ◀\t音読用動画 別解など 仮定法文法編 ｜  4章 仮定法文法編 ｜  4章 仮定法文法編 ｜  4章",
+        "id": "50",
+        "ja": "● 文法編｜４章",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
         "question": ""
     },
     {
-        "id": "79",
-        "ja": "4章 仮定法",
+        "id": "52",
+        "ja": "● 文法編｜４章",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
-        "question": "①"
+        "question": ""
+    },
+    {
+        "id": "54",
+        "ja": "● 文法編｜４章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
     },
     {
         "id": "79-1",
-        "ja": "もしタイムマシンを持っていれば，私は過去へ行くだろう。",
-        "en": "If I had a time machine, I would go back in time. If S˄ʴܗڈ, S would/could/might do. ʣ΋͠S˄͕ ʙ ͳ Β ͹ ɼS ͸ʜ͢ΔͩΖ͏ʹʯ",
-        "answer": "???",
-        "explanation": "▶ 現在の事実と違うこと，実際には起こり得ないことを述べる場合，動詞・助動\n詞を過去形にする。これをڈと呼ぶ。➡VI12– p.5\ngo back in time͘ʯ⇔⇔ go forward in time͘ʯ",
-        "question": "a time machine, I  in time."
+        "ja": "もしタイムマシンを持っていれば，私は過去へ行くだろう。 詞の形はどうなる？ F 150  If S’＋動詞の過去形, S would/could/might do. 「(今)もしS’が～ならば，Sは…するだろうに」 ○ go back in time「過去へ行く」⇔ go forward in time「未来へ行く」",
+        "en": "{If I had} a time machine, I {would go back} in time.",
+        "answer": "If I had, would go back",
+        "explanation": "▶ 現在の事実と違うこと，実際には起こり得ないことを述べる場合，動詞・助動詞を過去形にする。これを仮定法過去と呼ぶ。➡ VI 12―p.5",
+        "question": "If I had a time machine, I would go back in time."
     },
     {
         "id": "79-2",
-        "ja": "もしあなたが日本の首相ならば，何をしますか。",
-        "en": "{If you were the Prime Minister of Japan, what would you do}?",
-        "answer": "If you were the Prime Minister of Japan, what would you do",
-        "explanation": "▶ 仮定法過去の文。be動詞の場合は主語にかかわらずwere を使うのが正式だ\nが，主語が１人称単数・３人称単数の場合，口語ではwas を使うことが多い。\nthe Prime Minister ʮट૬ɼ૯ཧେਉʯ",
-        "question": "the Prime Minister of Japan, what ?"
+        "ja": "もしあなたが日本の首相ならば，何をしますか。 ○ the Prime Minister「首相，総理大臣」",
+        "en": "{If you were} the Prime Minister of Japan, what {would you do}?",
+        "answer": "If you were, would you do",
+        "explanation": "F 150 ▶ 仮定法過去の文。be動詞の場合は主語にかかわらずwereを使うのが正式だが，主語が１人称単数・３人称単数の場合，口語ではwasを使うことが多い。",
+        "question": "If you were the Prime Minister of Japan, what would you do?"
     },
     {
         "id": "80",
-        "ja": "もし時間通りに到 着していたら，私たちはバスに間に合っただろうに。",
-        "en": "If we {had arrived on time, we could [would] have caught the bus. If S˄ʴܗ, S would/could/mightʴhaveʴࢺ（done）. ʣ΋͠S˄͕ ʙ ͩ ͬ ͨ ͳ Β ɼS ͸ʜͨͩ͠Ζ͏ʹʯ}",
-        "answer": "had arrived on time, we could [would] have caught the bus. If S˄ʴܗ, S would/could/mightʴhaveʴࢺ（done）. ʣ΋͠S˄͕ ʙ ͩ ͬ ͨ ͳ Β ɼS ͸ʜͨͩ͠Ζ͏ʹʯ",
-        "explanation": "▶ 過去の事実と違うこと，実際には起こらなかったことを述べる場合，時制を過\n去よりさらに過 去にずらして過去完了形にする。これをྃと呼ぶ。\non time௨Γʹʯ―in timeͬͯʯ\ncatch the bus͏ʯ⇔⇔ miss the busʮόεʹ৐Γ஗ΕΔʯ",
-        "question": "If we (        ) (a      ) on time, we (        ) (        ) (c      ) the bus."
+        "ja": "もし時間通りに到着していたら，私たちはバスに間に合っただろうに。 の形はどうなる？ F 151  If S’＋過去完了形, S would/could/might＋have＋過去分詞(done). 「(あの時)もしS’が～だったなら，Sは…しただろうに」 ○ on time「時間通りに」―in time「間に合って」 ○ catch the bus「バスに間に合う」⇔ miss the bus「バスに乗り遅れる」",
+        "en": "If we {had arrived} on time, we {could [would] have caught} the bus.",
+        "answer": "had arrived, could [would] have caught",
+        "explanation": "▶ 過去の事実と違うこと，実際には起こらなかったことを述べる場合，時制を過去よりさらに過去にずらして過去完了形にする。これを仮定法過去完了と呼ぶ。",
+        "question": "If we (    ) (a   ) on time, we (    ) (    ) (c   ) the bus."
     },
     {
         "id": "81",
-        "ja": "もし電車に乗り遅れていなかったら，今頃パーティーに参加しているのに。",
-        "en": "If I {hadn’t missed the train, I would be at the party now. If S˄ʴܗ, S would/could/might do. ʣ΋͠SʣS ͸ʜ͢ΔͩΖ͏ʹʯ}",
-        "answer": "hadn’t missed the train, I would be at the party now. If S˄ʴܗ, S would/could/might do. ʣ΋͠SʣS ͸ʜ͢ΔͩΖ͏ʹʯ",
-        "explanation": "▶ if 節は過去の事実と違うことを，主節は現在の事実と違うことを述べる。このよ\nうに，仮定法過去と仮定法過去完了を併用すること もある。➡VI13– p.6\nmiss the train ʮిंʹ৐Γ஗ΕΔʯ⇔⇔ catch the train͏ʯ",
-        "question": "If I (        ) (m     ) the train, I (        ) (b      ) at the party now. Ճ͍ͯ͠Δ ˠ ύʔςΟʔʹ͍ΔʯՃ͍ͯ͠Δ ˠ ύʔςΟʔʹ͍Δʯ"
+        "ja": "もし電車に乗り遅れていなかったら，今頃パーティーに参加しているのに。 「パーティーに参加している → パーティーにいる」 F 152  If S’＋過去完了形, S would/could/might do. 「(あの時)もしS’が～だったなら，(今)Sは…するだろうに」 ○ miss the train「電車に乗り遅れる」⇔ catch the train「電車に間に合う」",
+        "en": "If I {hadn’t missed} the train, I {would be} at the party now.",
+        "answer": "hadn’t missed, would be",
+        "explanation": "Tip  if節は「(あの時)～だったなら」，主節は「(今)…だろうに」を表す仮定法の文。\n▶ if節は過去の事実と違うことを，主節は現在の事実と違うことを述べる。このように，仮定法過去と仮定法過去完了を併用することもある。➡ VI 13―p.6",
+        "question": "If I (    ) (m   ) the train, I (    ) (b   ) at the party now."
     },
     {
         "id": "82",
-        "ja": "もしそ の 宝くじに当たったら何を買いますか。",
-        "en": "What {would you buy if you were to win the lottery? If S˄ were to do, S would/could/might do. ʮʢ͜Ε͔ΒʣԾʹS˄͕ ʙ ͢ Δ ͱ ͠ ͨ Β ʜ ʯ―仮の話の前提と して使う表現。}",
-        "answer": "would you buy if you were to win the lottery? If S˄ were to do, S would/could/might do. ʮʢ͜Ε͔ΒʣԾʹS˄͕ ʙ ͢ Δ ͱ ͠ ͨ Β ʜ ʯ―仮の話の前提と して使う表現。",
-        "explanation": "▶ 実現の可能性がゼロの場合も，可能性がある場合も使える表現。\nwin a lottery ʮๅ͘͡ʹ౰ͨΔʯ\ngo back / arrive / catch / miss / be / win\nԾఆ๏：時制をひとつ過去にずらすことで，事実に反することや実際には起こりそうにな\nいことを表現する。現実と非現実の間の「距離感」を時制の「ずれ」で表す。\n動詞の過去形・過去完了形や，助動詞の過去形があれば仮定法の可能性がある。\n௚આ๏：そのままの時制で，実際に起こり得ることを表現する。仮定法と違って，時制を\n過去にずらす必要はない。条件を表すif については ➡25 を参照。\nIf I am late, I will call you.（もし遅れたら，電話します。 ）\nԾఆ๏ͱ௚આ๏  ➡VI12– p.56Grasp\n48 49\n復習\nSelf\nCheck",
-        "question": "What (        ) you buy if (        ) (        ) (        ) (w     ) the lottery?"
+        "ja": "もしその宝くじに当たったら何を買いますか。 仮定法 ① ● 49 「(これから)仮にS’が～するとしたら…」―仮の話の前提として使う表現。 ○ win a lottery「宝くじに当たる」",
+        "en": "What {would} you buy if {you were to win} the lottery? {If }S’ {were to} do, S {would}/{could}/{might} do.",
+        "answer": "would, you were to win, If, were to, would, could, might",
+        "explanation": "▶ 実現の可能性がゼロの場合も，可能性がある場合も使える表現。",
+        "question": "What (    ) you buy if (    ) (    ) (    ) (w   ) the lottery?"
     },
     {
         "id": "83",
-        "ja": "もし気が変われば，私に知らせてください。",
-        "en": "If you {should change your mind, please let me know. If S˄ should do, S will/can/may do ［໋ྩจ …］. ʮʢ͜Ε͔ΒʣສҰ S˄͕ ʙ ͢ Ε ͹ ʜ ʯ}",
-        "answer": "should change your mind, please let me know. If S˄ should do, S will/can/may do ［໋ྩจ …］. ʮʢ͜Ε͔ΒʣສҰ S˄͕ ʙ ͢ Ε ͹ ʜ ʯ",
-        "explanation": "▶ 実現の可能性が低い場合に使う表現。If S′ should do が ，「 ～ は ま ず あ り 得 な\nいだろうが」という仮定の意味を表す。主節は直説法や命令文になることが多い。\nchange one’s mind͕มΘΔʯ\nlet me knowʹ஌ΒͤΔʯ",
-        "question": "If you (s      ) (        ) your mind, please (        ) (        ) (        ). ɻɻ"
+        "ja": "もし気が変われば，私に知らせてください。 主節に命令文がくる形。 F 153  If S’ should do, S will/can/may do [命令文 …]. 「(これから)万一S’が～すれば…」 ○ change one’s mind「考えを変える，気が変わる」 ○ let me know「私に知らせる」",
+        "en": "If you {should change} your mind, please {let me know}.",
+        "answer": "should change, let me know",
+        "explanation": "Tip 「あり得ないだろうが」というニュアンスを含み，「万一～すれば…」を表す表現。\n▶ 実現の可能性が低い場合に使う表現。If S’ should doが，「～はまずあり得ないだろうが」という仮定の意味を表す。主節は直説法や命令文になることが多い。",
+        "question": "If you (s   ) (    ) your mind, please (    ) (    ) (    )."
     },
     {
         "id": "84-1",
-        "ja": "絵がもっと上手ならよいのですが。",
-        "en": "I {wish I were better at drawing. S wish S˄ʴܗڈ.ʣS˄ ͸ʙ͢Ε͹͍͍ͷʹͱS͏ʯ}",
-        "answer": "wish I were better at drawing. S wish S˄ʴܗڈ.ʣS˄ ͸ʙ͢Ε͹͍͍ͷʹͱS͏ʯ",
-        "explanation": "▶ wish に続く節で仮定法過去を使って，現在の事実に反したり実現が困難な願\n望を表す。",
-        "question": "I  better at drawing."
+        "ja": "絵がもっと上手ならよいのですが。 F 154  S wish S’＋過去形.「(今)S’は～すればいいのにとSは思う」 ○ be better at A「Aがもっと上手である」―be good at Aの比較級",
+        "en": "I {wish I were} better at drawing.",
+        "answer": "wish I were",
+        "explanation": "▶ wishに続く節で仮定法過去を使って，現在の事実に反したり実現が困難な願望を表す。",
+        "question": "I wish I were better at drawing."
     },
     {
         "id": "84-2",
-        "ja": "中間テストに向けてもっと勉 強しておけばよかった。",
-        "en": "I {wish I had studied harder for the midterm test. S wish S˄ʴܗ.ʣS˄͸ ʙ ͢ Ε ͹ Α ͔ ͬ ͨ ͷ ʹ ͱS͏ʯ}",
-        "answer": "wish I had studied harder for the midterm test. S wish S˄ʴܗ.ʣS˄͸ ʙ ͢ Ε ͹ Α ͔ ͬ ͨ ͷ ʹ ͱS͏ʯ",
-        "explanation": "▶ wish に続く節で仮定法過去完了を使って，過去において実現しなかったことへ\nの願望や後悔を表す。",
-        "question": "I (w     ) (        ) (        ) (        ) harder for the midterm test."
+        "ja": "中間テストに向けてもっと勉強しておけばよかった。 F 154  S wish S’＋過去完了形.「(あの時)S’は～すればよかったのにとSは思う」",
+        "en": "I {wish I had studied} harder for the midterm test.",
+        "answer": "wish I had studied",
+        "explanation": "▶ wishに続く節で仮定法過去完了を使って，過去において実現しなかったことへの願望や後悔を表す。",
+        "question": "I (w   ) (    ) (    ) (    ) harder for the midterm test."
     },
     {
         "id": "85-1",
-        "ja": "いつかイギリスを訪れることができればと思います。",
-        "en": "I {wish I could visit the UK someday.}",
-        "answer": "wish I could visit the UK someday.",
-        "explanation": "▶ wish に続く節で助動詞を含む仮定法過去を使い，期待感の薄い未来の願望を\n表す。\nS hope S′ʴ௚આ๏ʮS˄ ͕ʙ͢Δ͜ͱΛS ͸๬Ήʯ―期待感がある。➡641",
-        "question": "I (w     ) (        ) (        ) (        ) the UK someday."
+        "ja": "いつかイギリスを訪れることができればと思います。 S wish S’ could do.「(これから)S’が～できればいいのにとSは思う」 ＋ S hope S’＋直説法「S’が～することをSは望む」―期待感がある。➡ 641",
+        "en": "I {wish I could visit} the UK someday.",
+        "answer": "wish I could visit",
+        "explanation": "Tip 「(これから)～できればなあ」という願望を表す表現は？\n▶ wishに続く節で助動詞を含む仮定法過去を使い，期待感の薄い未来の願望を表す。",
+        "question": "I (w   ) (    ) (    ) (    ) the UK someday."
     },
     {
         "id": "85-2",
-        "ja": "発展 友達とコンサートに行くのを両親が許し て くれればいいのに。",
-        "en": "I {wish my parents would let me go to the concert with my friends. S wish S˄ would do.ʮS˄͕ ʙ ͠ ͯ ͘ Ε Ε ͹ ͍ ͍ ͷ ʹ ͱS͏ʯ let me go͢ʯ}",
-        "answer": "wish my parents would let me go to the concert with my friends. S wish S˄ would do.ʮS˄͕ ʙ ͠ ͯ ͘ Ε Ε ͹ ͍ ͍ ͷ ʹ ͱS͏ʯ let me go͢ʯ",
+        "ja": "友達とコンサートに行くのを両親が許してくれればいいのに。 発展     Tip 「(これから)S’が～してくれればなあ」という願望を表す表現は？ S wish S’ would do.「S’が～してくれればいいのにとSは思う」 ○ let me go「私を行かせる，私が行くのを許す」",
+        "en": "I {wish }my{ parents would let} me go to the concert with my friends.",
+        "answer": "wish, parents would let",
         "explanation": "",
-        "question": "I (w     ) my (        ) (        ) (        ) me go to the concert with my friends."
+        "question": "I (w   ) my (    ) (    ) (    ) me go to the concert with my friends."
     },
     {
         "id": "86-1",
-        "ja": "もっとダンスの練習をする時間があればなあ！",
-        "en": "{If only I had more time to practice dancing! ＝S wish S′ʴ過去形.}",
-        "answer": "If only I had more time to practice dancing! ＝S wish S′ʴ過去形.",
-        "explanation": "▶ If only に続く節で仮定法過去を使って現在の強い願望を表す。\nhave time to do͕͋Δʯ",
-        "question": "(        ) (o      ) (        ) (h      ) more time to practice dancing!"
+        "ja": "もっとダンスの練習をする時間があればなあ！ If only S＋過去形「(今)Sは～でさえあればなあ」―感嘆符を伴うことが多い。 ＝S wish S’＋過去形. ○ have time to do「～する時間がある」",
+        "en": "{If only I had} more time to practice dancing!",
+        "answer": "If only I had",
+        "explanation": "Tip 「(今)～でさえあればなあ」という願望を表す表現は？動詞の形は？\n▶ If onlyに続く節で仮定法過去を使って現在の強い願望を表す。",
+        "question": "(    ) (o   ) (    ) (h   ) more time to practice dancing!"
     },
     {
         "id": "86-2",
-        "ja": "もっと早く家を出ていれば！",
-        "en": "{If only I had left home earlier! ＝S wish S′ʴ過去完了形.}",
-        "answer": "If only I had left home earlier! ＝S wish S′ʴ過去完了形.",
-        "explanation": "▶ If only に続く節で仮定法過去完了を使って過去に対する強い願望を表す。\nleave home early ʮՈΛૣ͘ग़Δʯ",
-        "question": "(        ) (o      ) (        ) (        ) (l      ) home earlier!"
+        "ja": "もっと早く家を出ていれば！ If only S＋過去完了形「(あの時)Sは～でさえあったらなあ」 ＝S wish S’＋過去完了形. ○ leave home early「家を早く出る」",
+        "en": "{If only I had left} home earlier!",
+        "answer": "If only I had left",
+        "explanation": "Tip 「(あの時)～でさえあったらなあ」という願望を表す表現は？動詞の形は？\n▶ If onlyに続く節で仮定法過去完了を使って過去に対する強い願望を表す。",
+        "question": "(    ) (o   ) (    ) (    ) (l   ) home earlier!"
     },
     {
         "id": "87",
-        "ja": "発展 サプライズパーティーのことは誰にも言わないでほしい。",
-        "en": "{I’d rather you didn’t tell anyone about the surprise party. S would rather S˄ʴܗڈ／ܗ. ʣS˄ʹ ʙ ͠ ͯ ΄ ͠ ͍ ͱSʣS˄ʹ ʙ ͠ ͯ ΄ ͠ ͔ ͬ ͨ ͱS͏ʯ}",
-        "answer": "I’d rather you didn’t tell anyone about the surprise party. S would rather S˄ʴܗڈ／ܗ. ʣS˄ʹ ʙ ͠ ͯ ΄ ͠ ͍ ͱSʣS˄ʹ ʙ ͠ ͯ ΄ ͠ ͔ ͬ ͨ ͱS͏ʯ",
-        "explanation": "▶ would rather に続く節で仮定法過去／仮定法過去完了を使う。この文は仮定\n法過去の文。\nchange / let / know / wish / visit / have / leave / tell\n50 51\n復習\nSelf\nCheck",
-        "question": "(        ) (r      ) (y      ) (        ) (        ) anyone about the surprise party."
-    },
-    {
-        "id": "88",
-        "ja": "???",
-        "en": "③",
-        "answer": "???",
-        "explanation": "",
-        "question": "???"
+        "ja": "サプライズパーティーのことは誰にも言わないでほしい。 発展     Tip 「(今)S’に～してほしい」という願望を表す仮定法の表現は？ 動詞の形に注意。 仮定法 ② ● 51 S would rather S’＋過去形／過去完了形. 「(今)S’に～してほしいとSは思う」「(あの時)S’に～してほしかったとSは思う」",
+        "en": "{I’d rather you didn’t tell} anyone about the surprise party.",
+        "answer": "I’d rather you didn’t tell",
+        "explanation": "▶ would ratherに続く節で仮定法過去／仮定法過去完了を使う。この文は仮定法過去の文。",
+        "question": "(    ) (r   ) (y   ) (    ) (    ) anyone about the surprise party."
     },
     {
         "id": "88-1",
-        "ja": "まるで図書館にいるかのようにカフェで勉強する人がいる。",
-        "en": "Some people study in a café {as if they were in a library.}",
-        "answer": "as if they were in a library.",
-        "explanation": "▶ as if [as though] に続く節で仮定法過去を 使 っ て ，「（実際はそうではないが）ま\nるで～するかのよ うに」を表す。",
-        "question": "Some people study in a café (        ) (        ) they (        ) in a library."
+        "ja": "まるで図書館にいるかのようにカフェで勉強する人がいる。 F 155  as if [as though] S’＋過去形「(今)S’はまるで～するように」",
+        "en": "88-1 Some people study in a café {as if }they{ were} in a library.",
+        "answer": "as if, were",
+        "explanation": "▶ as if [as though]に続く節で仮定法過去を使って，「(実際はそうではないが)まるで～するかのように」を表す。",
+        "question": "Some people study in a café (    ) (    ) they (    ) in a library."
     },
     {
         "id": "88-2",
-        "ja": "彼はまるで何 事もなかったかのように振る舞った。",
-        "en": "He behaved {as if nothing had happened.}",
-        "answer": "as if nothing had happened.",
-        "explanation": "▶ as if [as though] に続く節で仮定法過去完了を 使 っ て ，「（実際はそうではな\nかったが）まる で ～ し た か の よう に 」 を 表 す 。",
-        "question": "He behaved (        ) (        ) (n      ) (        ) (h      )."
+        "ja": "彼はまるで何事もなかったかのように振る舞った。 F 155  as if [as though] S’＋過去完了形「(あの時)S’はまるで～したかのように」",
+        "en": "88-2 He behaved {as if nothing had happened}.",
+        "answer": "as if nothing had happened",
+        "explanation": "Tip 「(実際はそうではなかったが)まるで～したかのように」を表す表現は？\n▶ as if [as though]に続く節で仮定法過去完了を使って，「(実際はそうではなかったが)まるで～したかのように」を表す。",
+        "question": "He behaved (    ) (    ) (n   ) (    ) (h   )."
     },
     {
         "id": "89",
-        "ja": "私の犬は，私が出かけよう とし ているのを知っているか のようにドアのそばで待つ。",
-        "en": "My dog waits by the door {as if he knows I’m about to leave. as if [as though] S˄ʴ௚આ๏ɼ ͜Ε͔ΒʣS˄͸ ʙ ͢ Δ ͔ ͷ Α ͏ ʹ ʯ}",
-        "answer": "as if he knows I’m about to leave. as if [as though] S˄ʴ௚આ๏ɼ ͜Ε͔ΒʣS˄͸ ʙ ͢ Δ ͔ ͷ Α ͏ ʹ ʯ",
-        "explanation": "▶ as if [as though] に続く節の内容を，話し手が「実際に起こり得る」と考えてい\nる場合は௚આ๏を使うこともある。現在のことは現在時制を，過去のことは過去\n時制を，未来のことは未来を表す表現を使う。➡Grasp6– p.48",
-        "question": "My dog waits by the door (        ) (        ) he (k      ) I’m about to leave."
+        "ja": "私の犬は，私が出かけようとしているのを知っているかのようにドアのそばで待つ。 「実際にあり得る」と考えている場合，従属節の動詞の形は？ as if [as though] S’＋直説法「(今，あの時，これから)S’は～するかのように」",
+        "en": "89 My dog waits by the door {as if }he{ knows} I’m about to leave.",
+        "answer": "as if, knows",
+        "explanation": "Tip 「～するかのように」を表す表現は？\n▶ as if [as though]に続く節の内容を，話し手が「実際に起こり得る」と考えている場合は直説法を使うこともある。現在のことは現在時制を，過去のことは過去時制を，未来のことは未来を表す表現を使う。➡ Grasp 6―p.48",
+        "question": "My dog waits by the door (    ) (    ) he (k   ) I’m about to leave."
     },
     {
         "id": "90-1",
-        "ja": "私たちは自分たちの将来の職業について考え始めてもいい頃だ。",
-        "en": "{It’s time we started to think about our future careers. It is time S ˄ʴܗڈ.ʮSͩ ʯ}",
-        "answer": "It’s time we started to think about our future careers. It is time S ˄ʴܗڈ.ʮSͩ ʯ",
-        "explanation": "▶ It is (about / high) time に続く節で仮定法過去を 使 っ て 「（まだ～していないが）\nS′ は（そろそろ／とっくに）～してもよい頃だ］ 」を表す。\na future careerʯ",
-        "question": "(        ) (        ) we (        ) to think about our future careers."
+        "ja": "私たちは自分たちの将来の職業について考え始めてもいい頃だ。 It is time S’＋過去形.「S’は～してもよい頃だ」 ○ a future career「将来の職業，将来の仕事」",
+        "en": "90-1 {It’s time }we{ started} to think about our future careers.",
+        "answer": "It’s time, started",
+        "explanation": "▶ It is (about/high) timeに続く節で仮定法過去を使って「(まだ～していないが)S’は(そろそろ／とっくに)～してもよい頃だ]」を表す。",
+        "question": "I(    ) (    ) we (    ) to think about our future careers."
     },
     {
         "id": "90-2",
-        "ja": "母さんが怒り出す前に，そろそろ部屋を掃除しなさい。",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "(        ) (        ) (        ) you (c      ) up your room before Mom gets angry. ＝ It’s about time you cleaned up your room before Mom gets angry. It’s about time for you to clean up your room before Mom gets angry. It is about time S ˄ʴܗڈ.ʮSͩʯ clean (up) one’s roomʮʙͷ෦԰Λ૟আ͢Δʯ"
+        "ja": "母さんが怒り出す前に，そろそろ部屋を掃除しなさい。 It is about time S’＋過去形.「S’はそろそろ～してもよい頃だ」 ○ clean (up) one’s room「～の部屋を掃除する」",
+        "en": "90-2 {It’s about time }you{ cleaned }up your room before Mom gets angry. ＝{It’s about time for you to clean }up your room before Mom gets angry.",
+        "answer": "It’s about time, cleaned, It’s about time for you to clean",
+        "explanation": "Tip 「そろそろ～してもよい頃だ」を表す表現は？「おおよその(時)」に相当する語は？",
+        "question": "(    ) (    ) (    ) you (c   ) up your room before Mom gets angry."
     },
     {
         "id": "90-3",
-        "ja": "世界のリーダーたちが気候変動に対し てとっくに行動を起こしてもよい時だ。",
-        "en": "{It’s high time world leaders took action} against climate change. It is high time S ˄ʴܗڈ.ʮSͩ ʯ take action͜͢ʯ climate changeมಈʯ",
+        "ja": "世界のリーダーたちが気候変動に対してとっくに行動を起こしてもよい時だ。 It is high time S’＋過去形.「S’はとっくに～してもよい頃だ」 ○ take action「行動を起こす」 ○ climate change「気候変動」",
+        "en": "90-3 {It’s high time world leaders took action} against climate change.",
         "answer": "It’s high time world leaders took action",
-        "explanation": "",
+        "explanation": "Tip  timeに「とっくに」に相当する形容詞を付けて表現する。",
         "question": "( it’s / took / world leaders / time / action / high ) against climate change."
     },
     {
         "id": "91",
-        "ja": "もしインターネットがなければ，大量の情報を入手するのは難しいだろう。",
-        "en": "If {it were not for the internet, it would be difficult to access a great deal of information. if it were not for ʙ ＝were it not for ʙʣʙ͕ͳ͚Ε͹ʯ ＝without ＝but for ～}",
-        "answer": "it were not for the internet, it would be difficult to access a great deal of information. if it were not for ʙ ＝were it not for ʙʣʙ͕ͳ͚Ε͹ʯ ＝without ＝but for ～",
-        "explanation": "▶ 仮定法過去の文。were it not for ～という倒置形になることもある。\nthe internet / the Internet ʮΠϯλʔωοτʯ\na great deal of ʴࢺʮେྔͷʙʯ",
-        "question": "If , it  difficult to access a great deal of information."
+        "ja": "もしインターネットがなければ，大量の情報を入手するのは難しいだろう。 if it were not for ～＝were it not for ～「もし(今)～がなければ」 ○ the internet / the Internet「インターネット」 ○ a great deal of＋数えられない名詞「大量の～」",
+        "en": "{I}{f }it were not for the internet, it would be difficult to access a great {If it were not for the internet}, it {would be} difficult to access a great",
+        "answer": "I, f, If it were not for the internet, would be",
+        "explanation": "Tip 「もし(今)～がなければ」を表す仮定法過去の定型表現は？\ndeal of information.\n＝without ～ ＝but for ～\n▶ 仮定法過去の文。were it not for ～という倒置形になることもある。",
+        "question": ""
     },
     {
         "id": "92",
-        "ja": "もし徳川家康がいなかったら，今，大阪が日本の首都になっているかもしれない。",
-        "en": "If {it had not been for Tokugawa Ieyasu, Osaka might be the capital of Japan now. if it had not been for ʙ ＝had it not been for ʙ ʣʙ͕ͳ͔ͬͨΒʯ＝without ～ ＝but for ～}",
-        "answer": "it had not been for Tokugawa Ieyasu, Osaka might be the capital of Japan now. if it had not been for ʙ ＝had it not been for ʙ ʣʙ͕ͳ͔ͬͨΒʯ＝without ～ ＝but for ～",
-        "explanation": "▶ if it were not for ～の仮定法過去完了の形。倒置形はhad it not been for ～。\nthe capital of A ʮA ͷट౎ʯ\nhappen / start / clean\n52 53\n復習\nSelf\nCheck",
-        "question": "If  Tokugawa Ieyasu, Osaka  the capital of Japan now. ͷจɻͷจɻ"
+        "ja": "もし徳川家康がいなかったら，今，大阪が日本の首都になっているかもしれない。 主節は，現在の事実と違うことを述べる仮定法過去の文。 仮定法 ③ ● 53 「もし(あの時)～がなかったら」＝without ～ ＝but for ～ ○ the capital of A「Aの首都」",
+        "en": "{I}{f }it had not been fo Tokugawa Ieyasu, Osaka might be the capital of {If it had not been for} Tokugawa Ieyasu, Osaka {might be} the capital of Japan now. {if it had not been for }～＝{had it not been for} ～",
+        "answer": "I, f, If it had not been for, might be, if it had not been for, had it not been for",
+        "explanation": "Japan now.\nTip 「もし(あの時)～がなかったら」を表す仮定法過去完了の定型表現は？\n▶ if it were not for ～の仮定法過去完了の形。倒置形はhad it not been for ～。",
+        "question": ""
     },
     {
         "id": "93",
-        "ja": "あの経験がなかったら，私の人生は違っ ていたと思います。 仮定法過去でも仮定法過去完了でも使う。どちらなのかは主節の時制で区別する。こ の文の主節はwould have been で過去完了形なので，ᶄの仮定法過去完了。",
-        "en": "{④}",
-        "answer": "④",
-        "explanation": "",
-        "question": "(W     ) that (        ), my life (w     ) (        ) (        ) different. Without that experience, my life would have been different. without ʙ  ʣʙ͕ͳ͔ͬͨΒʯ ᶃ＝if it were not for ～，ᶄ＝if it had not been for ～ experience  ࢺ「͢Δʯ"
+        "ja": "あの経験がなかったら，私の人生は違っていたと思います。 F 157  without ～ ①「もし(今)～がなければ」 ②「もし(あの時)～がなかったら」 ！ 仮定法過去でも仮定法過去完了でも使う。どちらなのかは主節の時制で区別する。この文の主節はwould have beenで過去完了形なので，②の仮定法過去完了。 ○ experience ① 名詞「経験」② 動詞「～を経験する」",
+        "en": "{Without }that {experience}, my life {would have been }different.",
+        "answer": "Without, experience, would have been",
+        "explanation": "Tip 「～がなかったら」を前置詞で簡潔に表すと？\n①＝if it were not for ～，②＝if it had not been for ～",
+        "question": "(W   ) that (    ), my life (w   ) (    ) (    ) different."
     },
     {
-        "id": "94",
-        "ja": "もっと勇気があったなら，彼女をダンスに誘えたかもしれない。",
-        "en": "With more courage, I could have asked her to dance. with ʙ  ʣʙ͕͋ͬͨͳΒʯ",
-        "answer": "With more courage, I could have asked her to dance. with ʙ ʣʙ͕͋ͬͨͳΒʯ",
-        "explanation": "▶ 仮定法過去でも仮定法過去完了でも使う。without ～の反意表現。\ncourageʯ―発音は /k^\\rˆdΩ/",
-        "question": "(W     ) (m     ) (        ), I (c      ) (        ) (a      ) her to dance."
+        "id": "194",
+        "ja": "もっと勇気があったなら，彼女をダンスに誘えたかもしれない。 F 157  with ～ ①「もし(今)～があれば」 ②「もし(あの時)～があったなら」 ○ courage「勇気」―発音は/〇〇/",
+        "en": "{With more courage}, I {could have asked} her to dance.",
+        "answer": "With more courage, could have asked",
+        "explanation": "Tip 「～がなかったら」(without)の反対で，「～があったなら」を表す前置詞は？\n▶ 仮定法過去でも仮定法過去完了でも使う。without ～の反意表現。",
+        "question": "(W   ) (m   ) (    ), I (c   ) (    ) (a   ) her to dance."
     },
     {
-        "id": "95-1",
+        "id": "195-1",
         "ja": "もっと背が高ければ，いちばん上の棚に手が届くのですが。",
-        "en": "{Were I taller, I could reach the top shelf.}",
-        "answer": "Were I taller, I could reach the top shelf.",
-        "explanation": "▶ 仮定法過去の文。if を使わずに表現する場合，Wereʴޠ（Were S …）や\nࢺʴޠ（Had S done … / Should S do …）の 語 順 に す る（倒置）。 た だ\nし，倒置ができ るのはwere, had, should の３つのみ。＝If I were taller, …",
-        "question": "(W     ) (        ) (t      ), I (c      ) (        ) the top shelf."
+        "en": "{Were I taller}, I {could reach} the top shelf.",
+        "answer": "Were I taller, could reach",
+        "explanation": "Tip  仮定法の条件節をifを使わずに表現するとき，語順はどうなる？\nF 156 ▶ 仮定法過去の文。ifを使わずに表現する場合，Were＋主語(Were S …)や助動詞＋主語(Had S done … / Should S do …)の語順にする(倒置)。ただし，倒置ができるのはwere, had, shouldの３つのみ。＝If I were taller, …",
+        "question": "(W   ) (    ) (t   ), I (c   ) (    ) the top shelf."
     },
     {
-        "id": "95-2",
-        "ja": "君の誕生日だと知っていたら，私たちは君にケーキを焼いてあげたのに。",
-        "en": "{Had we known it was your birthday, we would have baked you a cake.}",
-        "answer": "Had we known it was your birthday, we would have baked you a cake.",
-        "explanation": "▶ 仮定法過去完了の文。if を使わない倒置形。＝If we had known it was …\n➡95-1\nbake (A) a cakeʮʢA ͷ ͨ Ί ʹ ʣέ ʔ Ω Λ ম ͘ʯ＝bake a cake (for A)",
-        "question": "(H      ) (        ) (        ) it was your birthday, we (        ) (        ) (        ) you a cake."
+        "id": "195-2",
+        "ja": "君の誕生日だと知っていたら，私たちは君にケーキを焼いてあげたのに。 ○ bake (A) a cake「(Aのために)ケーキを焼く」＝bake a cake (for A)",
+        "en": "{Had we known} it was your birthday, we {would have baked} you a cake.",
+        "answer": "Had we known, would have baked",
+        "explanation": "Tip  仮定法過去完了の条件節をifを使わずに表現するとき，語順はどうなる？\nF 156 ▶ 仮定法過去完了の文。 ifを使わない倒置形。＝If we had known it was …\n➡ 95-1",
+        "question": "(H   ) (    ) (    ) it was your birthday, we (    ) (    ) (    ) you a cake."
     },
     {
-        "id": "95-3",
+        "id": "195-3",
         "ja": "明日，万一雨が降ったら，屋外の予定を中止しなければならない。",
-        "en": "{Should it rain tomorrow, we’ll have to cancel our outdoor plans.}",
-        "answer": "Should it rain tomorrow, we’ll have to cancel our outdoor plans.",
-        "explanation": "▶ If S ′ should do, …「万一S′が ～ す れ ば 」➡83 のif を使わない倒置形。➡95-1\n＝If it should rain tomorrow, …",
-        "question": "(S      ) (       ) (       ) tomorrow, we’ll have to cancel our outdoor plans."
+        "en": "{Should it rain} tomorrow, we’ll have to cancel our outdoor plans.",
+        "answer": "Should it rain",
+        "explanation": "Tip 「万一～すれば」をifを使わずに表現する。語順に注意。\nF 156 ▶ If S’ should do, …「万一S’が～すれば」➡ 83 のifを使わない倒置形。➡ 95-1\n＝If it should rain tomorrow, …",
+        "question": "(S   ) (    ) (    ) tomorrow, we’ll have to cancel our outdoor plans."
     },
     {
-        "id": "96",
-        "ja": "私たちはバスに間に合うように早く出発した。そうでなかったならバスに乗り遅れて いただろう。",
-        "en": "We left early to catch the bus. {Otherwise we would have missed} it.",
-        "answer": "Otherwise we would have missed",
-        "explanation": "▶ if を使わない仮定法。仮定法過去完了。otherwise ＝if we hadn’t left early …\nmiss A  ᶃʮA͏ʯ ᶄʮA ʹ৐Γ஗ΕΔʯ ᶅʮA Λ͠ଛͳ͏ʯ",
-        "question": "We left early to catch the bus.  we  it."
+        "id": "196",
+        "ja": "私たちはバスに間に合うように早く出発した。そうでなかったならバスに乗り遅れて いただろう。 otherwise ①「そうでなければ」 ②「(あの時)そうでなかったなら」 ○ miss A ①「Aがいなくて寂しく思う」②「Aに乗り遅れる」③「Aをし損なう」",
+        "en": "We left early to catch the bus. {Otherwise} we {would have missed} it.",
+        "answer": "Otherwise, would have missed",
+        "explanation": "Tip 「そうでなければ」を表し，if節の代わりをする１語は？\nF 157 ▶ ifを使わない仮定法。仮定法過去完了。otherwise＝if we hadn’t left early …",
+        "question": "We left early to catch the bus. Otherwise we would have missed it."
     },
     {
-        "id": "97",
-        "ja": "もしあなたの立場だったなら，友達に遅刻したこ とを謝ったでしょう。",
-        "en": "{In your place, I would have apologized to my friend for being late. In your place ʮ΋͋͠ͳͨͷཱ৔ͳΒ ʦͩͬͨͳΒʧ ʯ}",
-        "answer": "In your place, I would have apologized to my friend for being late. In your place ʮ΋͋͠ͳͨͷཱ৔ͳΒ ʦͩͬͨͳΒʧ ʯ",
-        "explanation": "▶ 仮定法過去完了の文。＝If I were in your place / If I had been in your place",
-        "question": "(        ) (        ) (p      ), I (        ) (        ) (        ) to my friend for being late."
+        "id": "197",
+        "ja": "もしあなたの立場だったなら，友達に遅刻したことを謝ったでしょう。 句だけで表すことができる。 F 157  In your place「もしあなたの立場なら[だったなら]」 ○ apologize to A for B「AにBのことで謝る」",
+        "en": "{In your place}, I {would have apologized} to my friend for being late.",
+        "answer": "In your place, would have apologized",
+        "explanation": "Tip 「もしあなたの立場だったなら」という仮定の意味は，if節を使わなくても，副詞\n▶ 仮定法過去完了の文。＝If I were in your place / If I had been in your place",
+        "question": "(    ) (    ) (p   ), I (    ) (    ) (    ) to my friend for being late."
     },
     {
-        "id": "98",
-        "ja": "発展 分別のある人なら公共の場でポイ捨てはしない。",
+        "id": "198",
+        "ja": "分別のある人なら公共の場でポイ捨てはしない。 発展     Tip  主語で仮定の意味を表す。「分別のある人」「ごみを捨てる」は英語で？ ○ sensible person「分別のある人」",
         "en": "{A sensible person would not litter} in public.",
         "answer": "A sensible person would not litter",
-        "explanation": "▶ 仮定法過去の文。主語で仮定の意味を 表 す 。「 ～ で あ れ ば 」\n＝If he/she were a sensible person, he/she would not litter …\nsensible person ʮ෼ผͷ͋Δਓʯ",
+        "explanation": "F 158 ▶ 仮定法過去の文。主語で仮定の意味を表す。「～であれば」\n＝If he/she were a sensible person, he/she would not litter …",
         "question": "( person / not / a / sensible / litter / would ) in public."
     },
     {
-        "id": "99",
-        "ja": "発展 彼 女 が 話 す の を 聞くと，彼女が何年もフランスに住ん でいたと思うだろう。",
-        "en": "{To hear her speak, you would think she lived in France for years.}",
-        "answer": "To hear her speak, you would think she lived in France for years.",
-        "explanation": "▶ 仮定法過去の文。to不定詞を使って仮定の意味を表す。 「～すれば」\n＝If you heard her speak, …\nhear A doʮA ͕ʙ͢Δͷ͕ฉ͑͜Δʯ\nfor years ʮԿ೥΋ʯ\nexperience / ask / reach / bake / place / apologize / hear\n54 55\n復習\nSelf\nCheck",
-        "question": "(T     ) (       ) (       ) (       ), you (       ) (       ) she lived in France for years."
+        "id": "199",
+        "ja": "彼女が話すのを聞くと，彼女が何年もフランスに住んでいたと思うだろう。 発展     Tip  to不定詞を使って仮定の意味を表す表現。 仮定法 ④ ● 55 ○ hear A do「Aが～するのが聞こえる」 ○ for years「何年も」",
+        "en": "{To hear her speak}, you {would think} she lived in France for years.",
+        "answer": "To hear her speak, would think",
+        "explanation": "F 159 ▶ 仮定法過去の文。to不定詞を使って仮定の意味を表す。「～すれば」\n＝If you heard her speak, …",
+        "question": "(T   ) (    ) (    ) (    ), you (    ) (    ) she lived in France for years."
     }
 ];
 
@@ -441,7 +468,7 @@
             recognition.lang = 'en-US';
             recognition.interimResults = false;
         }
-        
+
         // --- Voice Synthesis Setup ---
         let synthesisVoice = null;
 
@@ -449,10 +476,10 @@
             const voices = speechSynthesis.getVoices();
             // 優先順位: Google US English -> Microsoft Zira/David -> その他英語
             synthesisVoice = voices.find(voice => voice.name === 'Google US English') ||
-                             voices.find(voice => voice.name.includes('Google') && voice.lang.includes('en-US')) ||
-                             voices.find(voice => voice.name.includes('Microsoft') && voice.lang.includes('en-US')) ||
-                             voices.find(voice => voice.lang === 'en-US') ||
-                             voices.find(voice => voice.lang.startsWith('en'));
+                voices.find(voice => voice.name.includes('Google') && voice.lang.includes('en-US')) ||
+                voices.find(voice => voice.name.includes('Microsoft') && voice.lang.includes('en-US')) ||
+                voices.find(voice => voice.lang === 'en-US') ||
+                voices.find(voice => voice.lang.startsWith('en'));
         }
 
         // 音声リストがロードされたら設定を実行
@@ -475,7 +502,7 @@
         const quizModal = document.getElementById('quiz-modal');
         const closeQuizBtn = document.getElementById('close-quiz-btn');
         const quizContent = document.getElementById('quiz-content');
-        
+
         const selectAllCheckbox = document.getElementById('select-all-checkbox');
         const pdfModal = document.getElementById('pdf-modal');
         const openPdfModalBtn = document.getElementById('open-pdf-modal-btn');
@@ -525,7 +552,7 @@
                 `;
                 sentenceList.appendChild(sentenceDiv);
             });
-            
+
             // Add click listener to each sentence item
             document.querySelectorAll('.sentence-item').forEach(item => {
                 item.addEventListener('click', (e) => {
@@ -552,15 +579,15 @@
                     }
                 });
             });
-            
+
             // Select the first sentence by default
             if (sentenceList.firstChild) {
-                 sentenceList.firstChild.click();
+                sentenceList.firstChild.click();
             }
         }
-        
+
         // --- PDF / Print Logic ---
-        
+
         function openPrintWindow(bodyContent, title) {
             const htmlContent = `
                 <!DOCTYPE html>
@@ -612,7 +639,7 @@
             printWindow.document.write(htmlContent);
             printWindow.document.close();
             setTimeout(() => {
-                printWindow.focus(); 
+                printWindow.focus();
                 printWindow.print();
             }, 250);
         }
@@ -627,32 +654,32 @@
                 .map(id => chapterData.find(item => item.id === id))
                 .filter(Boolean)
                 .sort((a, b) => {
-                     // Handle IDs like "1382-1" vs "1382-2"
-                     const aParts = a.id.split('-').map(s => parseInt(s) || 0);
-                     const bParts = b.id.split('-').map(s => parseInt(s) || 0);
-                     if (aParts[0] !== bParts[0]) return aParts[0] - bParts[0];
-                     return (aParts[1] || 0) - (bParts[1] || 0);
+                    // Handle IDs like "1382-1" vs "1382-2"
+                    const aParts = a.id.split('-').map(s => parseInt(s) || 0);
+                    const bParts = b.id.split('-').map(s => parseInt(s) || 0);
+                    if (aParts[0] !== bParts[0]) return aParts[0] - bParts[0];
+                    return (aParts[1] || 0) - (bParts[1] || 0);
                 });
         }
-        
+
         function getUniqueItems(items) {
-             const uniqueMap = new Map();
-             items.forEach(item => {
-                 // Use answer as key to deduplicate same phrases
-                 if (!uniqueMap.has(item.answer)) {
-                     uniqueMap.set(item.answer, item);
-                 }
-             });
-             return Array.from(uniqueMap.values()).sort((a, b) => {
-                 const aId = parseInt(a.id.split('-')[0]);
-                 const bId = parseInt(b.id.split('-')[0]);
-                 return aId - bId;
-             });
+            const uniqueMap = new Map();
+            items.forEach(item => {
+                // Use answer as key to deduplicate same phrases
+                if (!uniqueMap.has(item.answer)) {
+                    uniqueMap.set(item.answer, item);
+                }
+            });
+            return Array.from(uniqueMap.values()).sort((a, b) => {
+                const aId = parseInt(a.id.split('-')[0]);
+                const bId = parseInt(b.id.split('-')[0]);
+                return aId - bId;
+            });
         }
 
 
         // --- Message & Sound Functions ---
-        
+
         function showMessage(htmlContent, duration = null) {
             messageContent.innerHTML = htmlContent;
             messageModal.classList.remove('hidden');
@@ -676,7 +703,7 @@
 
             // 連続再生を防ぐために一度キャンセル
             speechSynthesis.cancel();
-            
+
             let textToSpeak = activeSentenceElement.dataset.fullSentence;
             // 念のため不要な記号を除去
             textToSpeak = textToSpeak.replace(/[{}]/g, '');
@@ -689,7 +716,7 @@
                 utterance.voice = synthesisVoice;
             }
 
-            utterance.rate = 1.0; 
+            utterance.rate = 1.0;
             utterance.pitch = 1.0;
 
             speechSynthesis.speak(utterance);
@@ -706,7 +733,7 @@
             }
 
             showMessage('<p class="text-2xl">マイクに向かって話してください...</p><div class="animate-pulse text-red-500 text-4xl mt-4">●</div>');
-            
+
             recognition.start();
 
             recognition.onresult = (event) => {
@@ -717,20 +744,20 @@
             recognition.onerror = (event) => {
                 showMessage(`<p>エラーが発生しました: ${event.error}</p>`, 3000);
             };
-            
+
             recognition.onend = () => {
-                 if (messageModal.classList.contains('hidden') === false && messageContent.innerHTML.includes('マイクに')) {
+                if (messageModal.classList.contains('hidden') === false && messageContent.innerHTML.includes('マイクに')) {
                     messageModal.classList.add('hidden');
-                 }
+                }
             };
         }
-        
+
         function evaluatePronunciation(transcript) {
             const originalText = activeSentenceElement.dataset.fullSentence;
 
             const cleanOrig = originalText.toLowerCase().replace(/[^\w\s]/g, '').split(' ');
             const cleanTrans = transcript.toLowerCase().replace(/[^\w\s]/g, '').split(' ');
-            
+
             let matches = 0;
             cleanOrig.forEach(word => {
                 if (cleanTrans.includes(word)) {
@@ -739,7 +766,7 @@
             });
 
             const similarity = matches / cleanOrig.length;
-            
+
             let score;
             if (similarity > 0.9) {
                 score = 95 + Math.floor(Math.random() * 5);
@@ -752,7 +779,7 @@
             } else {
                 score = 70 + Math.floor(Math.random() * 10);
             }
-            
+
             if (score === 100 && Math.random() < 0.3) score = 99;
 
             const messageHtml = `
@@ -769,8 +796,8 @@
 
         function startQuiz() {
             if (chapterData.length < 10) {
-                 showMessage('<p>クイズを作成するには、文が10個以上必要です。</p>', 3000);
-                 return;
+                showMessage('<p>クイズを作成するには、文が10個以上必要です。</p>', 3000);
+                return;
             }
 
             const shuffled = [...chapterData].sort(() => 0.5 - Math.random());
@@ -795,8 +822,9 @@
                     .map(item => item.answer);
 
                 const options = [correctAnswer, ...incorrectAnswers].sort(() => 0.5 - Math.random());
-                
-                const questionSentence = question.en.replace(`{${question.answer}}`, ' (______) ');
+
+                // Use regex to replace ALL {answer} parts with (______)
+                const questionSentence = question.en.replace(/\{.*?\}/g, ' (______) ');
 
                 quizContent.innerHTML = `
                     <h3 class="text-2xl font-bold mb-2">問題 ${currentQuestionIndex + 1}/10</h3>
@@ -816,7 +844,7 @@
                             button.classList.add('bg-red-400', 'text-white');
                             document.querySelector(`.quiz-option[data-answer="${CSS.escape(correctAnswer)}"]`).classList.add('bg-green-400', 'text-white');
                         }
-                        
+
                         setTimeout(() => {
                             currentQuestionIndex++;
                             showQuestion();
@@ -861,12 +889,12 @@
                 explanationDiv.style.display = 'block';
             }
         });
-        
+
         playSoundBtn.addEventListener('click', playSound);
         recordBtn.addEventListener('click', handleRecording);
         startQuizBtn.addEventListener('click', startQuiz);
         closeQuizBtn.addEventListener('click', () => quizModal.classList.add('hidden'));
-        
+
         // Select All Logic
         selectAllCheckbox.addEventListener('change', (e) => {
             const isChecked = e.target.checked;
@@ -880,7 +908,7 @@
 
         // PDF Modal Logic
         openPdfModalBtn.addEventListener('click', () => {
-             if (selectedSentences.size === 0) {
+            if (selectedSentences.size === 0) {
                 showMessage('<p>PDFを作成する問題を選択してください。</p>', 3000);
                 return;
             }
@@ -902,10 +930,10 @@
         // 1. 完全なリスト
         document.getElementById('download-list-btn').addEventListener('click', () => {
             const items = getSelectedItems();
-            if(!items) return;
+            if (!items) return;
             // リスト作成の場合は重複があっても良いが、見やすくするために熟語ベースでユニークにするか、
             // そのままID順で並べるか。ここではID順ですべて表示する。
-            
+
             const listItems = items.map(item => {
                 // Remove { } for clean display
                 const cleanEn = item.en.replace(/[{}]/g, '');
@@ -914,7 +942,7 @@
                     <span style="font-size:0.9em; color:#555;">Ex: ${cleanEn} / ${item.ja}</span>
                 </li>`;
             }).join('');
-            
+
             openPrintWindow(`<ul class="list-container">${listItems}</ul>`, '重要熟語リスト');
             pdfModal.classList.add('hidden');
         });
@@ -922,14 +950,14 @@
         // 2. 英語を解答
         document.getElementById('download-en-quiz-btn').addEventListener('click', () => {
             const items = getUniqueItems(getSelectedItems());
-            
-            const quizItems = items.map(item => 
+
+            const quizItems = items.map(item =>
                 `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')} : ____________________</span></li>`
             ).join('');
-            const answerItems = items.map(item => 
+            const answerItems = items.map(item =>
                 `<li><span class="inline-content">${item.answer}</span></li>`
             ).join('');
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (英語を解答)');
             pdfModal.classList.add('hidden');
@@ -938,14 +966,14 @@
         // 3. 意味を解答
         document.getElementById('download-ja-quiz-btn').addEventListener('click', () => {
             const items = getUniqueItems(getSelectedItems());
-            
-            const quizItems = items.map(item => 
+
+            const quizItems = items.map(item =>
                 `<li><span class="inline-content"><strong>${item.answer}</strong> : ____________________</span></li>`
             ).join('');
-            const answerItems = items.map(item => 
+            const answerItems = items.map(item =>
                 `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')}</span></li>`
             ).join('');
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (意味を解答)');
             pdfModal.classList.add('hidden');
@@ -956,7 +984,7 @@
             const items = getUniqueItems(getSelectedItems());
             let quizItems = '';
             let answerItems = '';
-            
+
             items.forEach(item => {
                 if (Math.random() > 0.5) {
                     // 日本語 -> 英語
@@ -968,7 +996,7 @@
                     answerItems += `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')}</span></li>`;
                 }
             });
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (混合)');
             pdfModal.classList.add('hidden');
@@ -977,14 +1005,14 @@
         // 5. 例文穴埋め
         document.getElementById('download-sentence-quiz-btn').addEventListener('click', () => {
             const items = getSelectedItems(); // 例文問題なので重複（文脈違い）も含める
-            
+
             const quizItems = items.map(item => {
                 // Replace {answer} with underscore
                 const blankSentence = item.en.replace(`{${item.answer}}`, '____________________');
                 return `<li>${blankSentence}<br><span style="font-size:0.9em;">(${item.ja})</span></li>`;
             }).join('');
-            
-            const answerItems = items.map(item => 
+
+            const answerItems = items.map(item =>
                 `<li>${item.answer}</li>`
             ).join('');
 
@@ -998,7 +1026,7 @@
             const items = getSelectedItems();
             let quizItems = '';
             let answerItems = '';
-            
+
             const instruction = '<p style="border:1px solid #ccc; padding:10px; margin-bottom:20px;">指示：空所には適切な語句を補い、下線部がある文は下線部の意味を日本語で答えなさい。</p>';
 
             items.forEach(item => {
@@ -1027,4 +1055,5 @@
         });
     </script>
 </body>
+
 </html>

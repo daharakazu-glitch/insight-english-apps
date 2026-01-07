@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Tinos:wght@700&display=swap');
-        
+
         body {
-            background-color: #007BFF; /* ビビットなブルー */
+            background-color: #007BFF;
+            /* ビビットなブルー */
             font-family: 'Noto Sans JP', sans-serif;
         }
 
@@ -17,12 +19,15 @@
         .font-english {
             font-family: 'Tinos', 'Times New Roman', serif;
             font-weight: 700;
-            font-size: 1.25rem; /* 20px */
-            line-height: 1.75rem; /* 28px */
+            font-size: 1.25rem;
+            /* 20px */
+            line-height: 1.75rem;
+            /* 28px */
         }
 
         .answer-span {
-            color: #DC2626; /* 赤色 */
+            color: #DC2626;
+            /* 赤色 */
             font-weight: 700;
             display: none;
         }
@@ -40,7 +45,7 @@
         .show-answer .underline-span {
             display: none;
         }
-        
+
         .explanation {
             display: none;
             white-space: pre-wrap;
@@ -57,22 +62,27 @@
             cursor: pointer;
             transition: all 0.2s ease-in-out;
         }
+
         .btn-primary {
             background-color: #3b82f6;
             color: white;
         }
+
         .btn-primary:hover {
             background-color: #2563eb;
         }
+
         .btn-secondary {
             background-color: #6b7280;
             color: white;
         }
+
         .btn-secondary:hover {
             background-color: #4b5563;
         }
     </style>
 </head>
+
 <body class="text-gray-800">
 
     <div id="app-container" class="container mx-auto p-4 md:p-8 max-w-4xl">
@@ -83,23 +93,27 @@
 
         <main class="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg mb-28">
             <div class="flex justify-between items-center mb-6">
-                 <!-- PDF Control Section -->
-                 <div class="flex-1 mr-4">
+                <!-- PDF Control Section -->
+                <div class="flex-1 mr-4">
                     <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
                         <h3 class="font-bold text-sm md:text-base mb-2">選択した問題でPDFを作成</h3>
                         <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
                             <div class="flex items-center">
-                                <input type="checkbox" id="select-all-checkbox" class="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
-                                <label for="select-all-checkbox" class="ml-2 text-sm font-medium text-gray-700 cursor-pointer">すべて選択 / 解除</label>
+                                <input type="checkbox" id="select-all-checkbox"
+                                    class="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                                <label for="select-all-checkbox"
+                                    class="ml-2 text-sm font-medium text-gray-700 cursor-pointer">すべて選択 / 解除</label>
                             </div>
-                            <button id="open-pdf-modal-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow text-sm transition-transform transform hover:scale-105">
+                            <button id="open-pdf-modal-btn"
+                                class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow text-sm transition-transform transform hover:scale-105">
                                 PDF作成メニュー
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <button id="start-quiz-btn" class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-lg shadow transition-transform transform hover:scale-105 whitespace-nowrap">
+                <button id="start-quiz-btn"
+                    class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-lg shadow transition-transform transform hover:scale-105 whitespace-nowrap">
                     ランダムテスト
                 </button>
             </div>
@@ -111,11 +125,16 @@
     </div>
 
     <!-- Control Panel -->
-    <div id="control-panel" class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md p-4 border-t-2 border-gray-200 shadow-2xl flex justify-center items-center space-x-2 md:space-x-4">
-        <button id="toggle-answer-btn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">表示/非表示</button>
-        <button id="play-sound-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">音声再生</button>
-        <button id="record-btn" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">録音評価</button>
-        <button id="toggle-explanation-btn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">解説</button>
+    <div id="control-panel"
+        class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md p-4 border-t-2 border-gray-200 shadow-2xl flex justify-center items-center space-x-2 md:space-x-4">
+        <button id="toggle-answer-btn"
+            class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">表示/非表示</button>
+        <button id="play-sound-btn"
+            class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">音声再生</button>
+        <button id="record-btn"
+            class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">録音評価</button>
+        <button id="toggle-explanation-btn"
+            class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">解説</button>
     </div>
 
     <!-- Message/Score Modal -->
@@ -124,11 +143,12 @@
             <!-- Message content will be populated by JS -->
         </div>
     </div>
-    
+
     <!-- Quiz Modal -->
     <div id="quiz-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-40 p-4">
         <div class="bg-white w-full max-w-2xl p-8 rounded-2xl shadow-2xl relative">
-            <button id="close-quiz-btn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-3xl font-bold">&times;</button>
+            <button id="close-quiz-btn"
+                class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-3xl font-bold">&times;</button>
             <div id="quiz-content">
                 <!-- Quiz content will be populated by JS -->
             </div>
@@ -136,17 +156,24 @@
     </div>
 
     <!-- PDF Download Modal -->
-    <div id="pdf-modal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center z-50">
+    <div id="pdf-modal"
+        class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center z-50">
         <div class="relative mx-auto p-5 border w-11/12 md:w-1/2 lg:w-1/3 shadow-lg rounded-md bg-white">
             <div class="mt-3 text-center">
                 <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">ダウンロードするPDFの種類を選択</h3>
                 <div class="mt-2 space-y-3">
-                    <button id="download-list-btn" class="btn btn-primary w-full justify-start text-left">1. 完全なリスト (熟語・意味・例文)</button>
-                    <button id="download-en-quiz-btn" class="btn btn-primary w-full justify-start text-left">2. 熟語テスト (英語を解答)</button>
-                    <button id="download-ja-quiz-btn" class="btn btn-primary w-full justify-start text-left">3. 熟語テスト (意味を解答)</button>
-                    <button id="download-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">4. 熟語テスト (混合)</button>
-                    <button id="download-sentence-quiz-btn" class="btn btn-primary w-full justify-start text-left">5. 例文の穴埋め問題</button>
-                    <button id="download-sentence-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">6. 例文の混合問題 (穴埋め/和訳)</button>
+                    <button id="download-list-btn" class="btn btn-primary w-full justify-start text-left">1. 完全なリスト
+                        (熟語・意味・例文)</button>
+                    <button id="download-en-quiz-btn" class="btn btn-primary w-full justify-start text-left">2. 熟語テスト
+                        (英語を解答)</button>
+                    <button id="download-ja-quiz-btn" class="btn btn-primary w-full justify-start text-left">3. 熟語テスト
+                        (意味を解答)</button>
+                    <button id="download-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">4. 熟語テスト
+                        (混合)</button>
+                    <button id="download-sentence-quiz-btn" class="btn btn-primary w-full justify-start text-left">5.
+                        例文の穴埋め問題</button>
+                    <button id="download-sentence-mixed-quiz-btn"
+                        class="btn btn-primary w-full justify-start text-left">6. 例文の混合問題 (穴埋め/和訳)</button>
                 </div>
                 <div class="mt-6">
                     <button id="close-modal-btn" class="btn btn-secondary w-full">キャンセル</button>
@@ -158,188 +185,180 @@
     <script>
         const chapterData = [
     {
-        "id": "1",
-        "ja": "2 3 4 5 6 7 8 9 10音読 2 3 4 5 6 7 8 9 10音読 2 3 4 5 6 7 8 9 10音読",
+        "id": "２",
+        "ja": "章　受動態  QR ☚ 音読用動画　別解など",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
-        "question": "ΉडಈଶFile8 be laughed atʮসΘΕΔʯɹ  be looked up to͞ΕΔʯʹbe respected be spoken toʮ࿩͔͚͠ΒΕΔʯɹ  be taken care ofʮੈ࿩͞ΕΔʯʹbe cared for be run overʮʦंʹʧͻ͔ΕΔʯɹ  be brought upʮҭͯΒΕΔʯʹbe raised be called oﬀ͞ΕΔʯʹbe canceled be put oﬀ͞ΕΔʯʹbe postponed ͷडಈଶFile9 ੍ͱडಈଶͷ·ͱΊFile11 be seatedΔʯ be delayedʮ஗ΕΔʯ be bornʮੜ·ΕΔʯ be [get] hurtʮইͭ͘ɼ͚͕Λ͢Δʯɹ be [get] injuredʮ͚͕Λ͢Δʯ be woundedʮෛই͢Δʯ be killed in AʮA͵ʯ ݱFile10"
+        "question": ""
     },
     {
-        "id": "2",
-        "ja": "受動態 受動態 ◀\t音読用動画 別解など 受動態 文法編 ｜  2章 受動態 受動態 文法編 ｜  2章 受動態",
+        "id": "30",
+        "ja": "● 文法編｜２章",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
         "question": ""
     },
     {
         "id": "32",
-        "ja": "英語は国際語とし て広く使われている。 2章 受動態",
-        "en": "English {is widely used as an international language.}",
-        "answer": "is widely used as an international language.",
-        "explanation": "▶ डಈଶはbeʴࢺ（done）ʴby ～ の形で，「S は～によって…される」\nという受け身の意味を表す。動作主を明示する必要がない場合や，動作主が\nはっきりしない 場 合 は ，by ～を省略する。➡Grasp3, VI8– p.4\nbe widely usedΘΕ͍ͯΔʯ\nan international languageʯ",
-        "question": "English (        ) widely (        ) as an international language. ① call off / catch"
+        "ja": "英語は国際語として広く使われている。 ○ be widely used「広く使われている」 ○ an international language「国際語」 ● 文法編｜２章",
+        "en": "English {is }widely{ used} as an international language.",
+        "answer": "is, used",
+        "explanation": "F 069 ▶ 受動態はbe＋過去分詞(done)＋by ～ の形で，「Sは～によって…される」という受け身の意味を表す。動作主を明示する必要がない場合や，動作主がはっきりしない場合は，by ～を省略する。➡ Grasp 3，VI 8―p.4",
+        "question": "English (    ) widely (    ) as an international language."
     },
     {
         "id": "33-1",
-        "ja": "多くの仕事が人工知能に取って代 わられるだろう。",
+        "ja": "多くの仕事が人工知能に取って代わられるだろう。 will [would] be done「～されるだろう」―wouldはwillより確実性が低い。 ○ replace「～に取って代わる」",
         "en": "Many jobs {will [would] be replaced} by AI.",
         "answer": "will [would] be replaced",
-        "explanation": "▶ Ήडಈଶはࢺʴbeʴࢺ（done）の形にする。➡File8\nwill [would] be doneʮʙ͞ΕΔͩΖ͏ʯ―would はwill よ り確実性が低い。\nreplace ʮʙʹऔͬͯ୅ΘΔʯ",
-        "question": "Many jobs  by AI."
+        "explanation": "F 072 ▶ 助動詞を含む受動態は助動詞＋be＋過去分詞(done)の形にする。➡ File 8",
+        "question": "Many jobs will be replaced by AI."
     },
     {
         "id": "33-2",
-        "ja": "個人情報が盗まれるかもしれない。 might はmay の過去形だが過去の意味はない。might は 「（ ひ ょっ と す る と ）～ か も し れない」の意味を表し，mayよ り も確信度が低い場合に使うが，実際にはmay と同じ 程度の確信度で使うこと も多い。 steal ʮʙΛ౪Ήʯ―活用は steal—stole—stolen",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Personal information . Personal information may [might] be stolen. may [might] be doneʮʙ͞ΕΔ͔΋͠Εͳ͍ʯ"
+        "ja": "個人情報が盗まれるかもしれない。 F 071  may [might] be done「～されるかもしれない」 ！ mightはmayの過去形だが過去の意味はない。mightは「(ひょっとすると)～かもしれない」の意味を表し，mayよりも確信度が低い場合に使うが，実際にはmayと同じ程度の確信度で使うことも多い。 ○ steal「～を盗む」―活用はsteal―stole―stolen",
+        "en": "Personal information {may [might] be stolen}.",
+        "answer": "may [might] be stolen",
+        "explanation": "Tip 「～かもしれない」を表す助動詞と受動態を組み合わせると？",
+        "question": "Personal information might be stolen."
     },
     {
         "id": "33-3",
-        "ja": "プラスチック製品はリサ イクル さ れ る べ きだ。",
-        "en": "Plastics should be recycled. should be done  ᶃ ʮʙ͞ΕΔ΂͖ͩʯᶄ ʮʙ͞ΕΔ͸ͣͩʯ recycle ʮʙΛϦαΠΫϧ͢Δʯ",
-        "answer": "should be recycled. should be done ᶃ ʮʙ͞ΕΔ΂͖ͩʯᶄ ʮʙ͞ΕΔ͸ͣͩʯ recycle ʮʙΛϦαΠΫϧ͢Δʯ",
-        "explanation": "",
-        "question": "Plastics (        ) (        ) (        )."
+        "ja": "プラスチック製品はリサイクルされるべきだ。 F 071  should be done ①「～されるべきだ」 ②「～されるはずだ」 ○ recycle「～をリサイクルする」",
+        "en": "Plastics {should be recycled}.",
+        "answer": "should be recycled",
+        "explanation": "Tip 「～すべき」を表す助動詞と受動態を組み合わせると？",
+        "question": "Plastics (    ) (    ) (    )."
     },
     {
         "id": "34",
-        "ja": "新しいバージョンがリリースされたところだ。",
-        "en": "A new version {has been released.}",
-        "answer": "has been released.",
-        "explanation": "▶ ͷडಈଶはhave beenʴࢺ（done）の形にする。\nrelease ʮʙΛ์͢ɼʙΛϦϦʔε ʦൃചʧ ͢Δʯ",
-        "question": "A new version (        ) (        ) (r      )."
+        "ja": "新しいバージョンがリリースされたところだ。 ○ release「～を放す，～をリリース[発売]する」",
+        "en": "A new version {has} {been released}.",
+        "answer": "has, been released",
+        "explanation": "F 074 ▶ 完了形の受動態はhave been＋過去分詞(done)の形にする。",
+        "question": "A new version (    ) (    ) (r   )."
     },
     {
         "id": "35",
-        "ja": "生徒の生活習慣についての調査が行われている。",
-        "en": "A survey of student lifestyles {is being conducted.}",
-        "answer": "is being conducted.",
-        "explanation": "▶ ͷडಈଶはbeʴbeingʴࢺ（done）の形にする。\nʮʙ͞Ε͍ͯΔͱ͜Ζͩʯ\n▶ A survey が主語なので，be動詞はis となる。\nconduct a survey͏ʯ\nlifestyleʯ\nೳಈଶは「動作をする側（ओ）」を主語にした文。受動態は「動作を受ける側」\nを主語にした文。\n［能動態］   Ken broke the window.（έϯ͸窓ガラスを割った。）\nSʢओʣ V      OʢΛड͚Δଆʣ\n［受動態］   The window was broken by Ken.（૭Ψϥε͸ケンによって割られた。）\nS　　　　　　　　   byʴओ\nೳಈଶͱडಈଶ  ➡VI8– p.43Grasp\n28 29\n復習\nSelf\nCheck",
-        "question": "A survey of student lifestyles (        ) (        ) (c      )."
+        "ja": "生徒の生活習慣についての調査が行われている。 受動態 ① ● 29 「～されているところだ」 ○ conduct a survey「調査を行う」 ○ lifestyle「生活習慣，生活様式」",
+        "en": "A survey of student lifestyles{ is being conducted}.",
+        "answer": "is being conducted",
+        "explanation": "Tip  進行形と受動態を組み合わせると？\nF 073 ▶ 進行形の受動態はbe＋being＋過去分詞(done)の形にする。\n▶ A surveyが主語なので，be動詞はisとなる。",
+        "question": "A survey of student lifestyles (    ) (    ) (c   )."
     },
     {
         "id": "36",
-        "ja": "ケンはサッカーがとても上手なので，友達から尊敬されている。 現在形 Ken is loved by everyone. 過去形 “Imagine” was written by John Lennon. 未来を表す表現 Her new movie will be released in May. 進行形 完了形",
-        "en": "Ken {is looked up to by his friends because he is really good at playing soccer.}",
-        "answer": "is looked up to by his friends because he is really good at playing soccer.",
-        "explanation": "▶ 句動詞［群動詞］は１つの動詞とし て考えて受動態にする。➡Grasp4, File9\nbe looked up to (by A)ʮʢA͞Ε͍ͯΔʯ＝be respected (by A)\n▶ ［能動態］  They look up to Ken.（彼らはケンを尊 敬している。）\n［受動態］  Ken is looked up to by them.（ケンは彼らから尊敬されている。）\nbyʴओ",
-        "question": "Ken ( looked / by / to / up / is ) his friends because he is really good at playing soccer. ② ࡏݱA new building is being built on the corner. ڈThe rocket was being built at that time. ະདྷ This room will be being used at this time tomorrow. ࡏݱThis wall has just been painted. ڈThe car had been repaired by the time I got home. ະདྷ The tickets will have been sold out by noon.widely / know / seat / delay / raise / injure / kill"
+        "ja": "ケンはサッカーがとても上手なので，友達から尊敬されている。 be looked up to (by A)「(Aに)尊敬されている」＝be respected (by A) [受動態] Ken is looked up to by them.（ケンは彼らから尊敬されている。） by＋動作主",
+        "en": "Ken {is looked up to by} his friends because he is really good at playing",
+        "answer": "is looked up to by",
+        "explanation": "Tip 〈動詞＋副詞〉〈動詞＋前置詞〉や〈動詞＋副詞＋前置詞〉などの形で１つの動詞の働きをする形を句動詞と呼ぶ。句動詞を受動態にするときに注意すべきことは？\nsoccer.\n▶ 句動詞[群動詞]は１つの動詞として考えて受動態にする。➡ Grasp 4, File 9\n▶ [能動態] They look up to Ken.（彼らはケンを尊敬している。）",
+        "question": "Ken ( looked / by / to / up / is ) his friends because he is really good at playing soccer."
     },
     {
         "id": "37",
-        "ja": "校庭の草花は児童によって世話されている。",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Plants and flowers in the schoolyard ( care / by / taken/ are / of ) the students. Plants and flowers in the schoolyard are taken care of by the students. be taken care of (by A)ʮʢA ʹ ʣੈ ࿩ ͞ Ε Δ ʯ＝be cared for (by A) ➡Grasp4, 36 plant ʮ২෺ʯ"
+        "ja": "校庭の草花は児童によって世話されている。 F 079  be taken care of (by A)「(Aに)世話される」＝be cared for (by A) ○ plant「植物」",
+        "en": "Plants and flowers in the schoolyard {are taken care of by} the students. ➡ {Grasp 4}, 36",
+        "answer": "are taken care of by, Grasp 4",
+        "explanation": "Tip  句動詞を受動態にするときに注意すべきことは？",
+        "question": "Plants and flowers in the schoolyard ( care / by / taken/ are / of ) the students."
     },
     {
         "id": "38",
-        "ja": "今日の試合は雨のため中止になった。",
-        "en": "Today’s game was called oﬀ because of rain. be called off͞ΕΔʯ＝be canceled  ‎Grasp4, 36 because of rain ʮӍͷͨΊʹʯ",
-        "answer": "was called oﬀ because of rain. be called off͞ΕΔʯ＝be canceled ‎Grasp4, 36 because of rain ʮӍͷͨΊʹʯ",
-        "explanation": "",
-        "question": "Today’s game (        ) (c      ) (        ) because of rain."
+        "ja": "今日の試合は雨のため中止になった。 F 079  be called off「中止される」＝be canceled ➡ Grasp 4, 36 ○ because of rain「雨のために」",
+        "en": "Today’s game {was called off} because of rain.",
+        "answer": "was called off",
+        "explanation": "Tip 「中止になった → 中止された」と表現する。",
+        "question": "Today’s game (    ) (c   ) (    ) because of rain."
     },
     {
         "id": "39-1",
-        "ja": "ハイカーたちは 吹 雪に見舞われ，近くの山小屋に避難しなければならなかった。",
-        "en": "The hikers {were caught in a snowstorm and had to take shelter in a nearby cabin.}",
-        "answer": "were caught in a snowstorm and had to take shelter in a nearby cabin.",
-        "explanation": "▶ by 以外の前置詞が使われる受動態。\nbe [get] caught in AʮA௨ौ଺ͳͲʣʹૺ͏ʯ\ntake shelter ʮආ೉͢Δʯ―shelter は「避難所」の意味。",
-        "question": "The hikers (w     ) (        ) (        ) a snowstorm and had to take shelter in a nearby cabin."
+        "ja": "ハイカーたちは吹雪に見舞われ，近くの山小屋に避難しなければならなかった。 be [get] caught in A「A(雨や交通渋滞など)に遭う」 ○ take shelter「避難する」―shelterは「避難所」の意味。",
+        "en": "The hikers {were caught in} a snowstorm and had to take shelter in a nearby cabin.",
+        "answer": "were caught in",
+        "explanation": "Tip 「吹雪に見舞われ → 吹雪に遭った」。「吹雪の中に捕えられた」と表現する。\n▶ by以外の前置詞が使われる受動態。",
+        "question": "The hikers (w   ) (    ) (    ) a snowstorm and had to take shelter in a nearby cabin."
     },
     {
         "id": "39-2",
-        "ja": "「どう し て遅れたの ？」 「乗っ ていたバスが渋滞に巻き込まれたんだ。」 How come S ʴV ?ʮS ͸Ͳ͏ͯ͠ʙ ͢Δͷ͔ɻʯ―理由や原因を尋ねる表現。",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "“How come you were late?” “My bus (g      ) (        ) (        ) traffic.” “How come you were late?” “My bus got caught in traffic.” be [get] caught in traﬃc·ΕΔʯ➡39-1"
+        "ja": "「どうして遅れたの？」「乗っていたバスが渋滞に巻き込まれたんだ。」 ○ How come S＋V?「Sはどうして～するのか。」―理由や原因を尋ねる表現。 ○ be [get] caught in traffic「渋滞に巻き込まれる」➡ 39-1",
+        "en": "“How come you were late?” “My bus {got caught in} traffic.”",
+        "answer": "got caught in",
+        "explanation": "Tip 「渋滞に巻き込まれる」を表す表現は？",
+        "question": "“How come you were late?” “My bus (g   ) (    ) (    ) traffic.”"
     },
     {
         "id": "40",
-        "ja": "その道は，秋になると落ち葉で覆われて美しく見える。",
-        "en": "The path looks beautiful when it {is covered with fallen leaves in the fall. fallen leaves ʮམͪ༿ʯ}",
-        "answer": "is covered with fallen leaves in the fall. fallen leaves ʮམͪ༿ʯ",
-        "explanation": "",
-        "question": "The path looks beautiful when it  fallen leaves in the fall."
+        "ja": "その道は，秋になると落ち葉で覆われて美しく見える。 F 080  be covered with A「Aで覆われている」 ○ fallen leaves「落ち葉」",
+        "en": "The path looks beautiful when it {is covered with} fallen leaves in the fall.",
+        "answer": "is covered with",
+        "explanation": "Tip 「～で覆われている」を表す表現は？",
+        "question": "The path looks beautiful when it is covered with fallen leaves in the fall."
     },
     {
         "id": "41",
-        "ja": "先生がおもしろい冗談を言う と，教室は笑いに包まれた。 laughter ʮস͍ʯ―発音は /l@ft6R/ 動詞に副詞・前置詞・名詞などが付いて，「１つのまとまり」で動詞の働きをするもの をࢺ［ࢺ］と 呼 ぶ 。call oﬀ AʮA͢Δʯ，look up to AʮA͢Δʯ， take care of AʮA ͷੈ࿩Λ͢Δʯなどが句動詞。 復習",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "The classroom (        ) (        ) (w     ) laughter when the teacher told a funny joke. The classroom was filled with laughter when the teacher told a funny joke. ࢺ4Grasp 30 31 Self Check"
-    },
-    {
-        "id": "42",
-        "ja": "???",
-        "en": "③",
-        "answer": "???",
-        "explanation": "",
-        "question": "???"
+        "ja": "先生がおもしろい冗談を言うと，教室は笑いに包まれた。 受動態 ② ● 31 be filled with A「Aでいっぱいだ」＝be full of A ○ laughter「笑い」―発音は/〇〇/",
+        "en": "The classroom {was filled with} laughter when the teacher told a funny",
+        "answer": "was filled with",
+        "explanation": "Tip 「笑いに包まれた → 笑いでいっぱいだった」と表現する。\njoke.",
+        "question": "The classroom (    ) (    ) (w   ) laughter when the teacher told a funny joke."
     },
     {
         "id": "42-1",
-        "ja": "ブラジルは，その豊かな生物多様性で広く知られている。 A1 is known as A2ʮA1 ͸A2 ͱͯ͠஌ΒΕ͍ͯΔʯ―主語 （A1）＝A2 が成立。 （ケンは才能のあるサッカー選手として知られている。）",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Brazil (        ) (w     ) (        ) (        ) its rich biodiversity. Brazil is widely known for its rich biodiversity. Ken is known as a talented soccer player. rich biodiversity ʮ๛͔ͳੜ෺ଟ༷ੑʯ"
+        "ja": "ブラジルは，その豊かな生物多様性で広く知られている。 S is known for A (理由)「SはAで[Aのために]知られている」 ＋ A1 is known as A2「A1はA2として知られている」―主語(A1)＝A2が成立。 （ケンは才能のあるサッカー選手として知られている。） ○ rich biodiversity「豊かな生物多様性」",
+        "en": "Brazil {is widely known for} its rich biodiversity.",
+        "answer": "is widely known for",
+        "explanation": "Tip 「～で知られている → ～のために知られている」\nKen is known as a talented soccer player.",
+        "question": "Brazil (    ) (w   ) (    ) (    ) its rich biodiversity."
     },
     {
         "id": "42-2",
-        "ja": "ケンはクラスメートに学校でいちばんおもしろい生徒として知られている。 the funniest΋͓΋͠Ζ͍ʯ―funny の最上級",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Ken (       ) (k     ) (       ) his classmates as the funniest student in school. Ken is known to his classmates as the funniest student in school. S is known to AʮS ͸A ʹ஌ΒΕ͍ͯΔʯ"
+        "ja": "ケンはクラスメートに学校でいちばんおもしろい生徒として知られている。 S is known to A「SはAに知られている」 ○ the funniest「最もおもしろい」―funnyの最上級",
+        "en": "Ken {is known to} his classmates as the funniest student in school.",
+        "answer": "is known to",
+        "explanation": "Tip 「(対象)に対して知られている」と表現する。",
+        "question": "Ken (    ) (k   ) (    ) his classmates as the funniest student in school."
     },
     {
         "id": "43",
-        "ja": "間もなく開演です。ご着席ください。",
-        "en": "The show is about to begin. Please {be seated.}",
-        "answer": "be seated.",
-        "explanation": "▶ 日本語では「～される」とはならないが，英語では受動態で表す表現がある。\n➡File10   seat は「～を座らせる」の意味なので， 「～が座る」は受動態になる。\nbe seatedΔʯ",
-        "question": "The show is about to begin. Please (b      ) (        )."
+        "ja": "間もなく開演です。ご着席ください。 ➡ File 10　seatは「～を座らせる」の意味なので，「～が座る」は受動態になる。 be seated「座る」",
+        "en": "The show is about to begin. Please {be seated}.",
+        "answer": "be seated",
+        "explanation": "Tip  Please sit down.よりも丁寧な表現。受動態を使って表す。\n▶ 日本語では「～される」とはならないが，英語では受動態で表す表現がある。",
+        "question": "The show is about to begin. Please (b   ) (    )."
     },
     {
         "id": "44",
-        "ja": "天候不良のため，フライ トが１時間遅れている。 be delayed ʮ஗ΕΔʯ―delay は「～を遅らせる」の意味。",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "The flight (h      ) (        ) (d      ) for an hour due to bad weather. The flight has been delayed for an hour due to bad weather. bad weatherʯ⇔⇔ good weatherʯ"
+        "ja": "天候不良のため，フライトが１時間遅れている。 be delayed「遅れる」―delayは「～を遅らせる」の意味。 ○ bad weather「悪天候」⇔ good weather「よい天気」",
+        "en": "The flight {has been delayed} for an hour due to bad weather.",
+        "answer": "has been delayed",
+        "explanation": "Tip 「遅れる」を表す受動態の表現は？「現在も遅れている」状態を表すには？",
+        "question": "The flight (h   ) (    ) (d   ) for an hour due to bad weather."
     },
     {
         "id": "45",
-        "ja": "私は小さな町で生まれ育ったので ，そこにいる人をみんな 知っていた。 … and raised はアメリカで，… and brought up はイギリスで使うことが多い。",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "I (       ) (b      ) (       ) (       ) in a small town, so I knew everyone there. I was born and raised in a small town, so I knew everyone there. be born and raised ʮੜ·Εҭͭʯ＝be born and brought up"
+        "ja": "私は小さな町で生まれ育ったので，そこにいる人をみんな知っていた。 be born and raised「生まれ育つ」＝be born and brought up ＋ … and raisedはアメリカで，… and brought upはイギリスで使うことが多い。",
+        "en": "I {was born and raised} in a small town, so I knew everyone there.",
+        "answer": "was born and raised",
+        "explanation": "Tip 「産む」「育てる」を受動態で表現する。",
+        "question": "I (    ) (b   ) (    ) (    ) in a small town, so I knew everyone there."
     },
     {
         "id": "46",
-        "ja": "サッカー選手が試合中に，けがをした。",
-        "en": "A soccer player {was [got] injured during the game.}",
-        "answer": "was [got] injured during the game.",
-        "explanation": "▶ 英語では他動詞injure を使って「何らかの原因が人にけがをさせる」と表現す\nるので，人を主語にして「けがをする」を表す場合は受動態になる。動作・行為\nのニュアンスを含むときは〈getʴ過去分詞〉にする。\nbe [get] injuredʮ͚͕Λ͢Δʯ＝be [get] hurt（hurt の活用に注意）\nduring the gameதʹʯ",
-        "question": "A soccer player (        ) (i      ) during the game."
+        "ja": "サッカー選手が試合中に，けがをした。 be [get] injured「けがをする」＝be [get] hurt（hurtの活用に注意） ○ during the game「試合中に」",
+        "en": "A soccer player {was [got] injured} during the game.",
+        "answer": "was [got] injured",
+        "explanation": "Tip  英語では「けがをした → けがをさせられた」と表現する。\nF 080 ▶ 英語では他動詞injureを使って「何らかの原因が人にけがをさせる」と表現するので，人を主語にして「けがをする」を表す場合は受動態になる。動作・行為のニュアンスを含むときは〈get＋過去分詞〉にする。",
+        "question": "A soccer player (    ) (i   ) during the game."
     },
     {
         "id": "47",
-        "ja": "ポール・ウォーカーは2013年に車の事故で 亡くなった。 be killed in A ʮA͵ʯ―by A ではなくin A を使う。 復習",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Paul Walker (        ) (k      ) (        ) a car accident in 2013. Paul Walker was killed in a car accident in 2013. car accidentʯ 32 33 Self Check"
+        "ja": "ポール・ウォーカーは2013年に車の事故で亡くなった。 受動態 ③ ● 33 be killed in A「A(事故や戦争など)で死ぬ」―by Aではなくin Aを使う。 ○ car accident「車の事故」",
+        "en": "Paul Walker {was killed in} a car accident in 2013.",
+        "answer": "was killed in",
+        "explanation": "Tip  事故で死亡した場合，英語では「殺された」と表現する。",
+        "question": "Paul Walker (    ) (k   ) (    ) a car accident in 2013."
     }
 ];
 
@@ -353,7 +372,7 @@
             recognition.lang = 'en-US';
             recognition.interimResults = false;
         }
-        
+
         // --- Voice Synthesis Setup ---
         let synthesisVoice = null;
 
@@ -361,10 +380,10 @@
             const voices = speechSynthesis.getVoices();
             // 優先順位: Google US English -> Microsoft Zira/David -> その他英語
             synthesisVoice = voices.find(voice => voice.name === 'Google US English') ||
-                             voices.find(voice => voice.name.includes('Google') && voice.lang.includes('en-US')) ||
-                             voices.find(voice => voice.name.includes('Microsoft') && voice.lang.includes('en-US')) ||
-                             voices.find(voice => voice.lang === 'en-US') ||
-                             voices.find(voice => voice.lang.startsWith('en'));
+                voices.find(voice => voice.name.includes('Google') && voice.lang.includes('en-US')) ||
+                voices.find(voice => voice.name.includes('Microsoft') && voice.lang.includes('en-US')) ||
+                voices.find(voice => voice.lang === 'en-US') ||
+                voices.find(voice => voice.lang.startsWith('en'));
         }
 
         // 音声リストがロードされたら設定を実行
@@ -387,7 +406,7 @@
         const quizModal = document.getElementById('quiz-modal');
         const closeQuizBtn = document.getElementById('close-quiz-btn');
         const quizContent = document.getElementById('quiz-content');
-        
+
         const selectAllCheckbox = document.getElementById('select-all-checkbox');
         const pdfModal = document.getElementById('pdf-modal');
         const openPdfModalBtn = document.getElementById('open-pdf-modal-btn');
@@ -437,7 +456,7 @@
                 `;
                 sentenceList.appendChild(sentenceDiv);
             });
-            
+
             // Add click listener to each sentence item
             document.querySelectorAll('.sentence-item').forEach(item => {
                 item.addEventListener('click', (e) => {
@@ -464,15 +483,15 @@
                     }
                 });
             });
-            
+
             // Select the first sentence by default
             if (sentenceList.firstChild) {
-                 sentenceList.firstChild.click();
+                sentenceList.firstChild.click();
             }
         }
-        
+
         // --- PDF / Print Logic ---
-        
+
         function openPrintWindow(bodyContent, title) {
             const htmlContent = `
                 <!DOCTYPE html>
@@ -524,7 +543,7 @@
             printWindow.document.write(htmlContent);
             printWindow.document.close();
             setTimeout(() => {
-                printWindow.focus(); 
+                printWindow.focus();
                 printWindow.print();
             }, 250);
         }
@@ -539,32 +558,32 @@
                 .map(id => chapterData.find(item => item.id === id))
                 .filter(Boolean)
                 .sort((a, b) => {
-                     // Handle IDs like "1382-1" vs "1382-2"
-                     const aParts = a.id.split('-').map(s => parseInt(s) || 0);
-                     const bParts = b.id.split('-').map(s => parseInt(s) || 0);
-                     if (aParts[0] !== bParts[0]) return aParts[0] - bParts[0];
-                     return (aParts[1] || 0) - (bParts[1] || 0);
+                    // Handle IDs like "1382-1" vs "1382-2"
+                    const aParts = a.id.split('-').map(s => parseInt(s) || 0);
+                    const bParts = b.id.split('-').map(s => parseInt(s) || 0);
+                    if (aParts[0] !== bParts[0]) return aParts[0] - bParts[0];
+                    return (aParts[1] || 0) - (bParts[1] || 0);
                 });
         }
-        
+
         function getUniqueItems(items) {
-             const uniqueMap = new Map();
-             items.forEach(item => {
-                 // Use answer as key to deduplicate same phrases
-                 if (!uniqueMap.has(item.answer)) {
-                     uniqueMap.set(item.answer, item);
-                 }
-             });
-             return Array.from(uniqueMap.values()).sort((a, b) => {
-                 const aId = parseInt(a.id.split('-')[0]);
-                 const bId = parseInt(b.id.split('-')[0]);
-                 return aId - bId;
-             });
+            const uniqueMap = new Map();
+            items.forEach(item => {
+                // Use answer as key to deduplicate same phrases
+                if (!uniqueMap.has(item.answer)) {
+                    uniqueMap.set(item.answer, item);
+                }
+            });
+            return Array.from(uniqueMap.values()).sort((a, b) => {
+                const aId = parseInt(a.id.split('-')[0]);
+                const bId = parseInt(b.id.split('-')[0]);
+                return aId - bId;
+            });
         }
 
 
         // --- Message & Sound Functions ---
-        
+
         function showMessage(htmlContent, duration = null) {
             messageContent.innerHTML = htmlContent;
             messageModal.classList.remove('hidden');
@@ -588,7 +607,7 @@
 
             // 連続再生を防ぐために一度キャンセル
             speechSynthesis.cancel();
-            
+
             let textToSpeak = activeSentenceElement.dataset.fullSentence;
             // 念のため不要な記号を除去
             textToSpeak = textToSpeak.replace(/[{}]/g, '');
@@ -601,7 +620,7 @@
                 utterance.voice = synthesisVoice;
             }
 
-            utterance.rate = 1.0; 
+            utterance.rate = 1.0;
             utterance.pitch = 1.0;
 
             speechSynthesis.speak(utterance);
@@ -618,7 +637,7 @@
             }
 
             showMessage('<p class="text-2xl">マイクに向かって話してください...</p><div class="animate-pulse text-red-500 text-4xl mt-4">●</div>');
-            
+
             recognition.start();
 
             recognition.onresult = (event) => {
@@ -629,20 +648,20 @@
             recognition.onerror = (event) => {
                 showMessage(`<p>エラーが発生しました: ${event.error}</p>`, 3000);
             };
-            
+
             recognition.onend = () => {
-                 if (messageModal.classList.contains('hidden') === false && messageContent.innerHTML.includes('マイクに')) {
+                if (messageModal.classList.contains('hidden') === false && messageContent.innerHTML.includes('マイクに')) {
                     messageModal.classList.add('hidden');
-                 }
+                }
             };
         }
-        
+
         function evaluatePronunciation(transcript) {
             const originalText = activeSentenceElement.dataset.fullSentence;
 
             const cleanOrig = originalText.toLowerCase().replace(/[^\w\s]/g, '').split(' ');
             const cleanTrans = transcript.toLowerCase().replace(/[^\w\s]/g, '').split(' ');
-            
+
             let matches = 0;
             cleanOrig.forEach(word => {
                 if (cleanTrans.includes(word)) {
@@ -651,7 +670,7 @@
             });
 
             const similarity = matches / cleanOrig.length;
-            
+
             let score;
             if (similarity > 0.9) {
                 score = 95 + Math.floor(Math.random() * 5);
@@ -664,7 +683,7 @@
             } else {
                 score = 70 + Math.floor(Math.random() * 10);
             }
-            
+
             if (score === 100 && Math.random() < 0.3) score = 99;
 
             const messageHtml = `
@@ -681,8 +700,8 @@
 
         function startQuiz() {
             if (chapterData.length < 10) {
-                 showMessage('<p>クイズを作成するには、文が10個以上必要です。</p>', 3000);
-                 return;
+                showMessage('<p>クイズを作成するには、文が10個以上必要です。</p>', 3000);
+                return;
             }
 
             const shuffled = [...chapterData].sort(() => 0.5 - Math.random());
@@ -707,8 +726,9 @@
                     .map(item => item.answer);
 
                 const options = [correctAnswer, ...incorrectAnswers].sort(() => 0.5 - Math.random());
-                
-                const questionSentence = question.en.replace(`{${question.answer}}`, ' (______) ');
+
+                // Use regex to replace ALL {answer} parts with (______)
+                const questionSentence = question.en.replace(/\{.*?\}/g, ' (______) ');
 
                 quizContent.innerHTML = `
                     <h3 class="text-2xl font-bold mb-2">問題 ${currentQuestionIndex + 1}/10</h3>
@@ -728,7 +748,7 @@
                             button.classList.add('bg-red-400', 'text-white');
                             document.querySelector(`.quiz-option[data-answer="${CSS.escape(correctAnswer)}"]`).classList.add('bg-green-400', 'text-white');
                         }
-                        
+
                         setTimeout(() => {
                             currentQuestionIndex++;
                             showQuestion();
@@ -773,12 +793,12 @@
                 explanationDiv.style.display = 'block';
             }
         });
-        
+
         playSoundBtn.addEventListener('click', playSound);
         recordBtn.addEventListener('click', handleRecording);
         startQuizBtn.addEventListener('click', startQuiz);
         closeQuizBtn.addEventListener('click', () => quizModal.classList.add('hidden'));
-        
+
         // Select All Logic
         selectAllCheckbox.addEventListener('change', (e) => {
             const isChecked = e.target.checked;
@@ -792,7 +812,7 @@
 
         // PDF Modal Logic
         openPdfModalBtn.addEventListener('click', () => {
-             if (selectedSentences.size === 0) {
+            if (selectedSentences.size === 0) {
                 showMessage('<p>PDFを作成する問題を選択してください。</p>', 3000);
                 return;
             }
@@ -814,10 +834,10 @@
         // 1. 完全なリスト
         document.getElementById('download-list-btn').addEventListener('click', () => {
             const items = getSelectedItems();
-            if(!items) return;
+            if (!items) return;
             // リスト作成の場合は重複があっても良いが、見やすくするために熟語ベースでユニークにするか、
             // そのままID順で並べるか。ここではID順ですべて表示する。
-            
+
             const listItems = items.map(item => {
                 // Remove { } for clean display
                 const cleanEn = item.en.replace(/[{}]/g, '');
@@ -826,7 +846,7 @@
                     <span style="font-size:0.9em; color:#555;">Ex: ${cleanEn} / ${item.ja}</span>
                 </li>`;
             }).join('');
-            
+
             openPrintWindow(`<ul class="list-container">${listItems}</ul>`, '重要熟語リスト');
             pdfModal.classList.add('hidden');
         });
@@ -834,14 +854,14 @@
         // 2. 英語を解答
         document.getElementById('download-en-quiz-btn').addEventListener('click', () => {
             const items = getUniqueItems(getSelectedItems());
-            
-            const quizItems = items.map(item => 
+
+            const quizItems = items.map(item =>
                 `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')} : ____________________</span></li>`
             ).join('');
-            const answerItems = items.map(item => 
+            const answerItems = items.map(item =>
                 `<li><span class="inline-content">${item.answer}</span></li>`
             ).join('');
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (英語を解答)');
             pdfModal.classList.add('hidden');
@@ -850,14 +870,14 @@
         // 3. 意味を解答
         document.getElementById('download-ja-quiz-btn').addEventListener('click', () => {
             const items = getUniqueItems(getSelectedItems());
-            
-            const quizItems = items.map(item => 
+
+            const quizItems = items.map(item =>
                 `<li><span class="inline-content"><strong>${item.answer}</strong> : ____________________</span></li>`
             ).join('');
-            const answerItems = items.map(item => 
+            const answerItems = items.map(item =>
                 `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')}</span></li>`
             ).join('');
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (意味を解答)');
             pdfModal.classList.add('hidden');
@@ -868,7 +888,7 @@
             const items = getUniqueItems(getSelectedItems());
             let quizItems = '';
             let answerItems = '';
-            
+
             items.forEach(item => {
                 if (Math.random() > 0.5) {
                     // 日本語 -> 英語
@@ -880,7 +900,7 @@
                     answerItems += `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')}</span></li>`;
                 }
             });
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (混合)');
             pdfModal.classList.add('hidden');
@@ -889,14 +909,14 @@
         // 5. 例文穴埋め
         document.getElementById('download-sentence-quiz-btn').addEventListener('click', () => {
             const items = getSelectedItems(); // 例文問題なので重複（文脈違い）も含める
-            
+
             const quizItems = items.map(item => {
                 // Replace {answer} with underscore
                 const blankSentence = item.en.replace(`{${item.answer}}`, '____________________');
                 return `<li>${blankSentence}<br><span style="font-size:0.9em;">(${item.ja})</span></li>`;
             }).join('');
-            
-            const answerItems = items.map(item => 
+
+            const answerItems = items.map(item =>
                 `<li>${item.answer}</li>`
             ).join('');
 
@@ -910,7 +930,7 @@
             const items = getSelectedItems();
             let quizItems = '';
             let answerItems = '';
-            
+
             const instruction = '<p style="border:1px solid #ccc; padding:10px; margin-bottom:20px;">指示：空所には適切な語句を補い、下線部がある文は下線部の意味を日本語で答えなさい。</p>';
 
             items.forEach(item => {
@@ -939,4 +959,5 @@
         });
     </script>
 </body>
+
 </html>

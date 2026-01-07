@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Tinos:wght@700&display=swap');
-        
+
         body {
-            background-color: #007BFF; /* ビビットなブルー */
+            background-color: #007BFF;
+            /* ビビットなブルー */
             font-family: 'Noto Sans JP', sans-serif;
         }
 
@@ -17,12 +19,15 @@
         .font-english {
             font-family: 'Tinos', 'Times New Roman', serif;
             font-weight: 700;
-            font-size: 1.25rem; /* 20px */
-            line-height: 1.75rem; /* 28px */
+            font-size: 1.25rem;
+            /* 20px */
+            line-height: 1.75rem;
+            /* 28px */
         }
 
         .answer-span {
-            color: #DC2626; /* 赤色 */
+            color: #DC2626;
+            /* 赤色 */
             font-weight: 700;
             display: none;
         }
@@ -40,7 +45,7 @@
         .show-answer .underline-span {
             display: none;
         }
-        
+
         .explanation {
             display: none;
             white-space: pre-wrap;
@@ -57,22 +62,27 @@
             cursor: pointer;
             transition: all 0.2s ease-in-out;
         }
+
         .btn-primary {
             background-color: #3b82f6;
             color: white;
         }
+
         .btn-primary:hover {
             background-color: #2563eb;
         }
+
         .btn-secondary {
             background-color: #6b7280;
             color: white;
         }
+
         .btn-secondary:hover {
             background-color: #4b5563;
         }
     </style>
 </head>
+
 <body class="text-gray-800">
 
     <div id="app-container" class="container mx-auto p-4 md:p-8 max-w-4xl">
@@ -83,23 +93,27 @@
 
         <main class="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg mb-28">
             <div class="flex justify-between items-center mb-6">
-                 <!-- PDF Control Section -->
-                 <div class="flex-1 mr-4">
+                <!-- PDF Control Section -->
+                <div class="flex-1 mr-4">
                     <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
                         <h3 class="font-bold text-sm md:text-base mb-2">選択した問題でPDFを作成</h3>
                         <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
                             <div class="flex items-center">
-                                <input type="checkbox" id="select-all-checkbox" class="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
-                                <label for="select-all-checkbox" class="ml-2 text-sm font-medium text-gray-700 cursor-pointer">すべて選択 / 解除</label>
+                                <input type="checkbox" id="select-all-checkbox"
+                                    class="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                                <label for="select-all-checkbox"
+                                    class="ml-2 text-sm font-medium text-gray-700 cursor-pointer">すべて選択 / 解除</label>
                             </div>
-                            <button id="open-pdf-modal-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow text-sm transition-transform transform hover:scale-105">
+                            <button id="open-pdf-modal-btn"
+                                class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow text-sm transition-transform transform hover:scale-105">
                                 PDF作成メニュー
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <button id="start-quiz-btn" class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-lg shadow transition-transform transform hover:scale-105 whitespace-nowrap">
+                <button id="start-quiz-btn"
+                    class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-lg shadow transition-transform transform hover:scale-105 whitespace-nowrap">
                     ランダムテスト
                 </button>
             </div>
@@ -111,11 +125,16 @@
     </div>
 
     <!-- Control Panel -->
-    <div id="control-panel" class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md p-4 border-t-2 border-gray-200 shadow-2xl flex justify-center items-center space-x-2 md:space-x-4">
-        <button id="toggle-answer-btn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">表示/非表示</button>
-        <button id="play-sound-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">音声再生</button>
-        <button id="record-btn" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">録音評価</button>
-        <button id="toggle-explanation-btn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">解説</button>
+    <div id="control-panel"
+        class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md p-4 border-t-2 border-gray-200 shadow-2xl flex justify-center items-center space-x-2 md:space-x-4">
+        <button id="toggle-answer-btn"
+            class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">表示/非表示</button>
+        <button id="play-sound-btn"
+            class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">音声再生</button>
+        <button id="record-btn"
+            class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">録音評価</button>
+        <button id="toggle-explanation-btn"
+            class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">解説</button>
     </div>
 
     <!-- Message/Score Modal -->
@@ -124,11 +143,12 @@
             <!-- Message content will be populated by JS -->
         </div>
     </div>
-    
+
     <!-- Quiz Modal -->
     <div id="quiz-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-40 p-4">
         <div class="bg-white w-full max-w-2xl p-8 rounded-2xl shadow-2xl relative">
-            <button id="close-quiz-btn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-3xl font-bold">&times;</button>
+            <button id="close-quiz-btn"
+                class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-3xl font-bold">&times;</button>
             <div id="quiz-content">
                 <!-- Quiz content will be populated by JS -->
             </div>
@@ -136,17 +156,24 @@
     </div>
 
     <!-- PDF Download Modal -->
-    <div id="pdf-modal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center z-50">
+    <div id="pdf-modal"
+        class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center z-50">
         <div class="relative mx-auto p-5 border w-11/12 md:w-1/2 lg:w-1/3 shadow-lg rounded-md bg-white">
             <div class="mt-3 text-center">
                 <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">ダウンロードするPDFの種類を選択</h3>
                 <div class="mt-2 space-y-3">
-                    <button id="download-list-btn" class="btn btn-primary w-full justify-start text-left">1. 完全なリスト (熟語・意味・例文)</button>
-                    <button id="download-en-quiz-btn" class="btn btn-primary w-full justify-start text-left">2. 熟語テスト (英語を解答)</button>
-                    <button id="download-ja-quiz-btn" class="btn btn-primary w-full justify-start text-left">3. 熟語テスト (意味を解答)</button>
-                    <button id="download-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">4. 熟語テスト (混合)</button>
-                    <button id="download-sentence-quiz-btn" class="btn btn-primary w-full justify-start text-left">5. 例文の穴埋め問題</button>
-                    <button id="download-sentence-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">6. 例文の混合問題 (穴埋め/和訳)</button>
+                    <button id="download-list-btn" class="btn btn-primary w-full justify-start text-left">1. 完全なリスト
+                        (熟語・意味・例文)</button>
+                    <button id="download-en-quiz-btn" class="btn btn-primary w-full justify-start text-left">2. 熟語テスト
+                        (英語を解答)</button>
+                    <button id="download-ja-quiz-btn" class="btn btn-primary w-full justify-start text-left">3. 熟語テスト
+                        (意味を解答)</button>
+                    <button id="download-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">4. 熟語テスト
+                        (混合)</button>
+                    <button id="download-sentence-quiz-btn" class="btn btn-primary w-full justify-start text-left">5.
+                        例文の穴埋め問題</button>
+                    <button id="download-sentence-mixed-quiz-btn"
+                        class="btn btn-primary w-full justify-start text-left">6. 例文の混合問題 (穴埋め/和訳)</button>
                 </div>
                 <div class="mt-6">
                     <button id="close-modal-btn" class="btn btn-secondary w-full">キャンセル</button>
@@ -158,412 +185,460 @@
     <script>
         const chapterData = [
     {
-        "id": "1",
-        "ja": "2 3 4 5 6 7 8 9 10音読 不定詞 2 3 4 5 6 7 8 9 10音読 不定詞 2 3 4 5 6 7 8 9 10音読 不定詞 2 3 4 5 6 7 8 9 10音読 get A to doʮ ʢઆಘ͠ ͯʣA ʹ ʙ ͞ ͤ Δʦ ͠ ͯ ΋ Β ͏ ʧʯ   get はto不定詞を使う。 不定詞 2 3 4 5 6 7 8 9 10音読 ೉қ，ݥة・҆શ，շ・ࢺʴOʴࢺ 不定詞 2 3 4 5 6 7 8 9 10音読 不定詞 2 3 4 5 6 7 8 9 10音読 不定詞",
+        "id": "５",
+        "ja": "章　不定詞  QR ☚ 音読用動画　別解など",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
-        "question": "File16 be glad / happy / delighted / pleased to doʮʙͯ͠͏Ε͍͠ʯ be sorry to do೦ͩʯɹ  be excited to doʮʙͯ͠Θ͘Θ͘͢Δʯ be surprised to do͘ʯɹ  be relieved to doʮ ʙͯ͠΄ͬͱ͢Δʯ be disappointed to doʮʙ͕͔ͯͬ͠Γ͢Δʯɹ  be sad to doʮʙͯ͠൵͍͠ʯ be proud to do͏ʯ beʴ ʴto doࢺ ݱFile17 grow up to be Aʮ੒ ௕ͯ͠A ʹͳΔʯ live to be Aʮੜ͖ͯA ʹͳΔʯ …, never to doʮʜͯ͠ɼೋ౓ͱʙ͠ͳ͍ʯ File19File18 kind / good / niceʮ਌੾ͳʯɹ  stupid / foolish / silly͔ͳʯ smart / wise / clever໌ͳʯɹ  carelessʮෆ஫ҙͳʯ thoughtless͚͍ͯΔʯɹ  badʮͻͲ͍ʯɹ  wrongҧ͍ͬͯΔʯ braveͳʯɹ  politeਖ਼͍͠ʯɹ  rude / impoliteྱͳɼແྱͳʯ selfishʮ਎উखͳʯɹ  cruelͳʯɹ  considerate͍΍Γͷ͋Δʯ what to doʮԿΛʙ͢΂͖͔ʯɹ  which to doʮͲͪΒΛʙ͢΂͖͔ʯ who [whom] to doʮ୭ Λʦ ୭ ʹ ʧʙ ͢ ΂ ͖ ͔ʯ when to doʮ͍ͭʙ͢΂͖͔ʯɹ  where to doʮͲ͜΁ʙ͢΂͖͔ʯ how to doʮͲͷΑ͏ʹʙ͢΂͖͔ɼʙ͢Δํ๏ʯ It isʴ ʴofʴʧʴto doࢺʴtoࢺ File20 make A do੍తʹʣA ʹʙͤ͞Δʯ have A doʮʢA ͕͢΂͖͜ͱΛʣA ʹ ͞ ͤ Δʦ ͠ ͯ ΋ Β ͏ ʧʯ let A doʮA͢ɼA ʹʙͤͯ͞΍Δʯ ࢺʴOʴࢺ／ࢺʴOʴtoࢺ File22File21 easy୯ͳʯɹ  diﬃcult / hard / toughʮ೉͍͠ʯ safeʮ҆શͳʯɹ  dangerousͳʯ impossibleʮෆՄೳͳʯ pleasant /plézAnt/͍͠ʯɹ  unpleasantʮෆշͳʯ comfortableʮշదͳʯɹ  uncomfortableʮෆշͳʯ convenientʮศརͳʯ see A doʮA͑Δʯɹ  look at A doʮAΔʯ watch A doʮAΔʯ hear A doʮA ͕ʙ͢Δͷ͕ฉ͑͜Δʯɹ  listen to A doʮA ͕ʙ͢ΔͷΛฉ͘ʯ feel A doʮA͡Δʯ notice A do ＝observe A doʮAͮ͘ʯ File23 to be sure͔ʹʢʜ͕ͩʣʯɹ  to be brief͏ͱʯ to be honest (with you)ͬͯʯ to be frank with you͏ͱʯɹ  to do A justiceʮA Λਖ਼͘͠ධՁ͢Ε͹ʯ to say the leastͬͯ΋ʯɹ  to begin [start] withʮॳΊʹʯ‎1311-2 ࢺ"
+        "question": ""
     },
     {
-        "id": "5",
-        "ja": "不定詞 ◀\t音読用動画 別解など 不定詞文法編 ｜  5章 不定詞文法編 ｜  5章 不定詞文法編 ｜  5章 不定詞文法編 ｜  5章 不定詞文法編 ｜  5章 不定詞文法編 ｜  5章",
+        "id": "60",
+        "ja": "● 文法編｜５章",
         "en": "???",
-        "answer": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "62",
+        "ja": "● 文法編｜５章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "64",
+        "ja": "● 文法編｜５章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "66",
+        "ja": "● 文法編｜５章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "68",
+        "ja": "● 文法編｜５章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "70",
+        "ja": "● 文法編｜５章",
+        "en": "???",
+        "answer": "",
         "explanation": "",
         "question": ""
     },
     {
         "id": "100",
-        "ja": "私の夢はIT エンジニアになることだ。 5章 不定詞",
-        "en": "{My dream is to become [be] an IT engineer.}",
-        "answer": "My dream is to become [be] an IT engineer.",
-        "explanation": "▶ toʴܗݪ［to do］の形で，文の中で名詞・形容詞・副詞の働きをする\nものをࢺ［toࢺ］と呼ぶ。➡VI14– p.6\n▶ 不定詞が名詞の働きをして「～すること」という意味を表す場合，文の中で主語・\n補語・目的語になる。これをత༻๏と呼ぶ。この文の不定詞は補語。",
-        "question": "(        ) (d      ) (        ) (        ) (        ) an IT engineer. ① see / wake up / realize / post / leave"
+        "ja": "私の夢はITエンジニアになることだ。",
+        "en": "{My dream is to become [be]} an IT engineer.",
+        "answer": "My dream is to become [be]",
+        "explanation": "F 083 ▶ to＋動詞の原形[to do]の形で，文の中で名詞・形容詞・副詞の働きをするものを不定詞[to不定詞]と呼ぶ。➡ VI 14―p.6\n▶ 不定詞が名詞の働きをして「～すること」という意味を表す場合，文の中で主語・補語・目的語になる。これを不定詞の名詞的用法と呼ぶ。この文の不定詞は補語。",
+        "question": "(    ) (d   ) (    ) (    ) (    ) an IT engineer."
     },
     {
         "id": "101",
-        "ja": "生徒が勉強と部活を両立させるのは簡単ではない。",
-        "en": "{It is not easy for students to balance their studies and club activities.}",
-        "answer": "It is not easy for students to balance their studies and club activities.",
-        "explanation": "▶ 不定詞の名詞的用法。to 以下が「～すること」という意味の名詞句で，形式\n主語 it の真の主語になっている。➡Grasp7\n▶ for students が不定詞 to balance の意味上の主語（➡114-1）になっている。\nbalance A and [with] BʮA ͱB Λཱ྆ͤ͞Δʯ―このbalance は動詞",
-        "question": "(I       ) (        ) (        ) (        ) for students (        ) (b      ) their studies and club activities."
+        "ja": "生徒が勉強と部活を両立させるのは簡単ではない。 「AとBを両立させる」を表す表現は？ ○ balance A and [with] B「AとBを両立させる」―このbalanceは動詞",
+        "en": "{It} {is not easy} for students{ to balance} their studies and club activities.",
+        "answer": "It, is not easy, to balance",
+        "explanation": "Tip  主語が不定詞で長くなるときは形式主語のitを使う。\nF 083 ▶ 不定詞の名詞的用法。to以下が「～すること」という意味の名詞句で，形式主語itの真の主語になっている。➡ Grasp 7\n▶ for studentsが不定詞to balanceの意味上の主語（➡ 114-1）になっている。",
+        "question": "(I   ) (    ) (    ) (    ) for students (    ) (b   ) their studies"
     },
     {
         "id": "102",
-        "ja": "翻訳アプリは外国人とのコミュニケーションをより簡単にしてくれる。",
-        "en": "Translation apps {make it easier to communicate with people from other countries.}",
-        "answer": "make it easier to communicate with people from other countries.",
-        "explanation": "▶ 不定詞の名詞的用法。to 以下が「～すること」という意味の名詞句で，形式目\n的語it に対する真の目的語になっている。➡Grasp8   easier はeasy の比較級。\nmake it easy (for A) to doʮʢA୯ʹ͢Δʯ\nmake it possible (for A) to do「ʢA ͕ʣ ʙ͢ΔͷΛՄೳʹ͢Δʯ\na translation app ʮ຋༁ΞϓϦʯ\ncommunicate with A ʮA ͱίϛϡχέʔγϣϯΛͱΔʯ\npeople from other countriesਓʯ",
-        "question": "Translation apps (m     ) (        ) (e      ) (        ) (        ) with people from other countries. ਓͱͷίϛϡχέʔγϣϯ ˠ ਓͱίϛϡχέʔγϣϯΛͱΔ ਓͱͷίϛϡχέʔγϣϯ ˠ ਓͱίϛϡχέʔγϣϯΛͱΔ ͜ͱʯ͜ͱʯ"
+        "ja": "翻訳アプリは外国人とのコミュニケーションをより簡単にしてくれる。 make it easy (for A) to do「(Aが)～するのを簡単にする」 ＋ make it possible (for A) to do「(Aが)～するのを可能にする」 ○ a translation app「翻訳アプリ」 ○ communicate with A「Aとコミュニケーションをとる」 ○ people from other countries「外国人」",
+        "en": "Translation apps {make it easier to communicate} with people from",
+        "answer": "make it easier to communicate",
+        "explanation": "Tip 「SはOをCにする」というSVOCの文で表すが，この文ではOが長くなるので形式目的語を使う。「外国人とのコミュニケーション → 外国人とコミュニケーションをとること」\nother countries.\n▶ 不定詞の名詞的用法。to以下が「～すること」という意味の名詞句で，形式目的語itに対する真の目的語になっている。➡ Grasp 8　easierはeasyの比較級。",
+        "question": "Translation apps (m   ) (    ) (e   ) (    ) (    ) with people from other countries."
     },
     {
         "id": "103",
-        "ja": "困ったときには，相談する誰かが必要だ。",
+        "ja": "困ったときには，相談する誰かが必要だ。 ○ be in trouble「困っている」 ○ talk to A / talk with A「Aと話をする，Aと相談する」",
         "en": "When you are in trouble, you need {someone to talk to [with]}.",
         "answer": "someone to talk to [with]",
-        "explanation": "▶ 不定詞は直前の名詞や代名詞を後ろから修飾する。これをత\n༻๏と呼ぶ。この文ではto talk to [with] が someone を修飾している。talk\nto [with] someone（誰かと話す） という関係が前提にあるので前置詞to [with]\nは省略しない。\nbe in trouble͍ͬͯΔʯ\ntalk to A / talk with A ʮA ͱ࿩Λ͢ΔɼA ͱ૬ஊ͢Δʯ",
-        "question": "When you are in trouble, you need ."
+        "explanation": "F 084 ▶ 不定詞は直前の名詞や代名詞を後ろから修飾する。これを不定詞の形容詞的用法と呼ぶ。この文ではto talk to [with]がsomeoneを修飾している。talk to [with] someone（誰かと話す）という関係が前提にあるので前置詞to [with]は省略しない。",
+        "question": "When you are in trouble, you need someone to talk to."
     },
     {
         "id": "104",
-        "ja": "私は情報を得るためにインターネットを 使う。",
-        "en": "I use the internet {to get information.}",
-        "answer": "to get information.",
-        "explanation": "▶ 不定詞が名詞以外の語句 （動詞・形容詞・副詞な ど ）や文全体を修飾する用\n法をత༻๏と呼ぶ。\n▶ 目的「～するために」を表す不定詞の副詞的用法。動詞use を修飾。\n不定詞が主語の場合，主語 （S） の位置に形式的にit を置き，ޠである不定詞\nを後に回すことがある。このit をޠのit と呼ぶ。\nTo get enough sleep is important.（十分な睡眠をとることは 大 切 だ 。）\n⭢                                    It is important to get enough sleep.\n形式主語                               ޠ\nSVOC の第５文型で目的語が不定詞の場合，目的語 （O） の位置に形式的にit を置き，\nޠは 補 語（C）の 後 ろ に 置 く。 こ のit をޠのit と呼ぶ。\nI found to book a hotel easy.（ホテルを予約することは 簡 単 だ と わ か っ た 。）\n⭢ I found              it              easy to book a hotel.\n形式目的語         C         ޠ\nʣ7 8Grasp Grasp\n58 59\n復習\nSelf\nCheck",
-        "question": "I use the internet (        ) (        ) (        )."
+        "ja": "私は情報を得るためにインターネットを使う。 不定詞 ① ● 59 を不定詞の副詞的用法と呼ぶ。",
+        "en": "I use the internet {to get information}.",
+        "answer": "to get information",
+        "explanation": "F 085 ▶ 不定詞が名詞以外の語句(動詞・形容詞・副詞など)や文全体を修飾する用法\n▶ 目的「～するために」を表す不定詞の副詞的用法。動詞useを修飾。",
+        "question": "I use the internet (    ) (    ) (    )."
     },
     {
         "id": "105",
-        "ja": "元気そうで何よりです。",
-        "en": "{I’m glad to see you looking so well.}",
-        "answer": "I’m glad to see you looking so well.",
-        "explanation": "▶ 感情の原因「～して…」を表す不定詞の副詞的用法。➡File16\nbe glad to do ʮʙͯ͠͏Ε͍͠ʯ\nsee A doingʮAΔʯ",
-        "question": "(        ) (g      ) (        ) (        ) you looking so well."
+        "ja": "元気そうで何よりです。 be glad to do「～してうれしい」 ○ see A doing「Aが～しているのを見る」",
+        "en": "{I’m glad to see} you looking so well.",
+        "answer": "I’m glad to see",
+        "explanation": "F 085 ▶ 感情の原因「～して…」を表す不定詞の副詞的用法。➡ File 16",
+        "question": "(    ) (g   ) (    ) (    ) you looking so well."
     },
     {
         "id": "106",
-        "ja": "ハンバーガー１個のためにこんなに長く待つなんて，私たちどうかしているね。",
-        "en": "We must {be crazy to wait this long for a burger.}",
-        "answer": "be crazy to wait this long for a burger.",
-        "explanation": "▶ 判断の根拠「～するなんて…，～するとは…」を表す不定詞の副詞的用法。\nbe crazy to do ʮʙ͢ΔͳΜͯͲ͏͔͍ͯ͠Δʯ\nwait (this) longʮʢ ͜ Μ ͳ ʹ ʣ௕ ͘଴ ͭʯ",
-        "question": "We must (        ) (c      ) (        ) (        ) this long for a burger."
+        "ja": "ハンバーガー１個のためにこんなに長く待つなんて，私たちどうかしているね。 be crazy to do「～するなんてどうかしている」 ○ wait (this) long「(こんなに)長く待つ」",
+        "en": "We must {be crazy to wait} this long for a burger.",
+        "answer": "be crazy to wait",
+        "explanation": "Tip 「どうかしているね → 正気ではないに違いない」と表現する。\nF 085 ▶ 判断の根拠「～するなんて…，～するとは…」を表す不定詞の副詞的用法。",
+        "question": "We must (    ) (c   ) (    ) (    ) this long for a burger."
     },
     {
         "id": "107",
-        "ja": "目が覚めると，道向かいの公園はす っかり雪に覆われていた。",
-        "en": "I {woke up to find that snow had completely covered the park across the street.}",
-        "answer": "woke up to find that snow had completely covered the park across the street.",
-        "explanation": "▶ 結果「…してՌʣ～」を表す不定詞の副詞的用法。➡File17\nwake up [awake] to /f_ind ʙͮ͘ʯ",
-        "question": "I (        ) (        ) (        ) (f      ) that snow had completely covered the park across the street."
+        "ja": "目が覚めると，道向かいの公園はすっかり雪に覆われていた。 wake up [awake] to find ～「目を覚ますと～に気づく」",
+        "en": "I {woke up to find} that snow had completely covered the park across",
+        "answer": "woke up to find",
+        "explanation": "Tip 「目が覚めて，その結果…ということがわかる」を表す表現は？\nthe street.\n▶ 結果「…して(その結果)～」を表す不定詞の副詞的用法。➡ File 17",
+        "question": "I (    ) (    ) (    ) (f   ) that snow had completely covered the park across the street."
     },
     {
         "id": "108",
-        "ja": "学校に急いで行ったが，休日だと気づいただけだった。",
-        "en": "I rushed to school, {only to realize it was a holiday.}",
-        "answer": "only to realize it was a holiday.",
-        "explanation": "▶ 結果を表す不定詞の副詞的用法。➡File17\n…, only to doʙ͚ͨͩͩͬͨ͠ʯ\nrush to A ʮA͘ʯ",
-        "question": "I rushed to school, (        ) (        ) (r      ) it was a holiday."
+        "ja": "学校に急いで行ったが，休日だと気づいただけだった。 …, only to do「…したが，結局～しただけだった」 ○ rush to A「Aへ急いで行く」",
+        "en": "I rushed to school, {only to realize }it was a holiday.",
+        "answer": "only to realize",
+        "explanation": "Tip 「結局…ということがわかっただけだった」と表現する。\nF 085 ▶ 結果を表す不定詞の副詞的用法。➡ File 17",
+        "question": "I rushed to school, (    ) (    ) (r   ) it was a holiday."
     },
     {
         "id": "109",
-        "ja": "ネッ ト上に個人情報を投稿しないように気をつけなさい。",
-        "en": "Be careful {not to post personal information online.}",
-        "answer": "not to post personal information online.",
-        "explanation": "▶ ܗは，不定詞の直前にnot や never を置いて，not to do や\nnever to do で表す。\nbe careful not to doΛ͚ͭΔʯ\npost͢Δʯ\nnot to do 単独で「目的」の意味の「～しないよ うに」は表せない。 「～しないよ うに」\nは，in order not to do や so as not to do を使って表す。➡130-2",
-        "question": "Be careful (        ) (        ) (p      ) personal information online."
+        "ja": "ネット上に個人情報を投稿しないように気をつけなさい。 ○ be careful not to do「～しないように気をつける」 ○ post「～を投稿する」 ！ not to do単独で「目的」の意味の「～しないように」は表せない。「～しないように」は，in order not to doやso as not to doを使って表す。➡ 130-2",
+        "en": "Be careful {not to post} personal information online.",
+        "answer": "not to post",
+        "explanation": "F 088 ▶ 不定詞の否定形は，不定詞の直前にnotやneverを置いて，not to doやnever to doで表す。",
+        "question": "Be careful (    ) (    ) (p   ) personal information online."
     },
     {
         "id": "110",
-        "ja": "傘をどこかに置き忘れてきたようだ。",
-        "en": "I seem {to have left my umbrella somewhere.}",
-        "answer": "to have left my umbrella somewhere.",
-        "explanation": "▶ 不定詞は完了形にすることができる。to haveʴࢺはࢺと呼ばれ，\n〈述語動詞よ り も前の動作・出来事〉 や 〈過去から現在まで続く動作・出来事〉 を\n表す。この文のto have left は述語動詞 （seem） よりも前の動作・出来事を表す。\n不定詞・動名詞・分詞の３つをࢺという。これら３つは動詞が形を変えたものであ\nる。動詞に準ずるものなので準動詞と呼ぶ。\n文には通常，文の動詞（述語動詞）が 少 なくとも１つ ある。しかし ，１文 の 中 に 「２つ の\n動作」を入れたいときにはどう表現するか。それを解決するのが準動詞。\nI feel like going out.［動名詞］（ग़͔͚たい෼ͩ。）\nKen came running.［分詞］（ケンは૸ͬͯ΍ͬͯདྷͨ。）\nཧ༝9Grasp\n60 61\n復習\nSelf\nCheck",
-        "question": "I seem (        ) (        ) (l      ) my umbrella somewhere. ʹʹͷ͜ͱΛද͢ʹ͸ɼෆఆͷ͜ͱΛද͢ʹ͸ɼෆఆ"
+        "ja": "傘をどこかに置き忘れてきたようだ。 不定詞 ② ● 61 ○ somewhere「どこかで，どこかに」",
+        "en": "I seem {to have left }my umbrella somewhere.",
+        "answer": "to have left",
+        "explanation": "F 091 ▶ 不定詞は完了形にすることができる。to have＋過去分詞は完了不定詞と呼ばれ，〈述語動詞よりも前の動作・出来事〉や〈過去から現在まで続く動作・出来事〉を表す。この文のto have leftは述語動詞(seem)よりも前の動作・出来事を表す。",
+        "question": "I seem (    ) (    ) (l   ) my umbrella somewhere."
     },
     {
         "id": "111",
-        "ja": "発展 将来の仕事はまだ決めていませんが，近いうちに決めたいと思っています。",
-        "en": "I haven’t decided on my future career yet, but {I hope to soon.}",
-        "answer": "I hope to soon.",
-        "explanation": "▶ 不定詞のto の 後 に ， 前 に 出 て き た も の と 同 じ 動 詞（ 句 ）が くる 場 合 ， 繰 り 返 し を 避\nけるためにto だけを残して動詞以下を省略することがある。このto をࢺと\n呼ぶ。…, but I hope to (decide on my future career) soon. と同じ意味を表す。\nhope to do͏ʧʯ",
-        "question": "I haven’t decided on my future career yet, but (        ) (h      ) (        ) soon."
+        "ja": "将来の仕事はまだ決めていませんが，近いうちに決めたいと思っています。 発展     Tip  不定詞のtoの後の動詞句の繰り返しを避ける表現方法は？ ○ hope to do「～することを望む[願う]」",
+        "en": "I haven’t decided on my future career yet, but {I hope to} soon.",
+        "answer": "I hope to",
+        "explanation": "F 095 ▶ 不定詞のtoの後に，前に出てきたものと同じ動詞(句)がくる場合，繰り返しを避けるためにtoだけを残して動詞以下を省略することがある。このtoを代不定詞と呼ぶ。…, but I hope to (decide on my future career) soon. と同じ意味を表す。",
+        "question": "I haven’t decided on my future career yet, but (    ) (h   ) (    ) soon."
     },
     {
         "id": "112",
-        "ja": "その男性は何を着ようか考えている。",
-        "en": "The man is thinking about {what to wear.}",
-        "answer": "what to wear.",
-        "explanation": "▶ ࢺʴtoࢺは名詞句となり，文の中で主語・目的語・補語になる。こ\nの文では前置詞about の目的語になっている。➡File18\nwhat to do ʮԿΛʙ͢΂͖͔ʯ",
-        "question": "The man is thinking about (        ) (        ) (        )."
+        "ja": "その男性は何を着ようか考えている。 what to do「何を～すべきか」",
+        "en": "The man is thinking about {what to wear}.",
+        "answer": "what to wear",
+        "explanation": "F 090 ▶ 疑問詞＋to不定詞は名詞句となり，文の中で主語・目的語・補語になる。この文では前置詞aboutの目的語になっている。➡ File 18",
+        "question": "The man is thinking about (    ) (    ) (    )."
     },
     {
         "id": "113",
-        "ja": "ほとんどの生徒はコンピューターの使い方を知っている。",
+        "ja": "ほとんどの生徒はコンピューターの使い方を知っている。 how to do「どのように～すべきか，～する方法」",
         "en": "Most students know {how to use} computers.",
         "answer": "how to use",
-        "explanation": "▶ 不定詞句のhow to use computers が know の目的語。\nhow to do ʮͲͷΑ͏ʹʙ͢΂͖͔ɼʙ͢Δํ๏ʯ",
-        "question": "Most students know  computers."
+        "explanation": "F 090 ▶ 不定詞句のhow to use computersがknowの目的語。",
+        "question": "Most students know how to use computers."
     },
     {
         "id": "114-1",
-        "ja": "子どもがスマ ートフォンを持つのはいい考えだ。",
-        "en": "It is a good idea {for children to have} a smartphone.",
-        "answer": "for children to have",
-        "explanation": "▶ 不定詞は動詞の性質を持っており，その動作の主語にあたるものをͷҙ\nޠと呼ぶ。意味上の主語を明示する場合は，forʴࢺ［ࢺ］を\n不定詞の直前に置く。\nIt is a good idea                       to have a smartphone.\n⭢ It is a good idea for children to have a smartphone.\nޠ",
-        "question": "It is a good idea  a smartphone."
+        "ja": "子どもがスマートフォンを持つのはいい考えだ。 意味上の主語",
+        "en": "It is a good idea {for children to have} a smartphone. → It is a good idea {for children} to have a smartphone.",
+        "answer": "for children to have, for children",
+        "explanation": "F 086 ▶ 不定詞は動詞の性質を持っており，その動作の主語にあたるものを不定詞の意味上の主語と呼ぶ。意味上の主語を明示する場合は，for＋名詞[代名詞]を不定詞の直前に置く。\nIt is a good idea 　　　　 　to have a smartphone.",
+        "question": "It is a good idea for children to have a smartphone."
     },
     {
         "id": "114-2",
-        "ja": "インターンシップとは学生が会社で働く機会のことだ。",
-        "en": "An internship is {an opportunity for a student to work} for a company.",
-        "answer": "an opportunity for a student to work",
-        "explanation": "▶ for A to do 「A が～する」が直前の名詞 （an opportunity） を修飾。➡114-1\nopportunity for A to do ʮAձʯ",
+        "ja": "インターンシップとは学生が会社で働く機会のことだ。 ○ opportunity for A to do「Aが～する機会」",
+        "en": "An internship is {an opportunity} {for a student to work} for a company.",
+        "answer": "an opportunity, for a student to work",
+        "explanation": "Tip 「Aが～する機会」の「Aが～する」を不定詞で表現するには？\nF 086 ▶ for A to do「Aが～する」が直前の名詞（an opportunity）を修飾。➡ 114-1",
         "question": "An internship is ( a student / for / an opportunity / to / work ) for a company."
     },
     {
         "id": "115-1",
-        "ja": "親切にも友達が試験前にノートを貸し て くれた。",
+        "ja": "親切にも友達が試験前にノートを貸してくれた。 主語はどう表す？ ○ lend A B「AにBを貸す」⇔ borrow B from A「AからBを借りる」",
         "en": "It was {kind of my friend} to lend me her notebook before the exam.",
         "answer": "kind of my friend",
-        "explanation": "▶ It is の後に人の性質や人柄などを表す形容詞がく る場合，ofʴࢺ［ࢺ］\nで不定詞の意味上の主語を表す。➡File19\nlend A BʮA ʹB Λି͢ʯ⇔⇔ borrow B from AʮA ͔ΒB ΛआΓΔʯ",
-        "question": "It was  to lend me her notebook before the exam."
+        "explanation": "Tip 〈It is＋人の性質や人柄などを表す形容詞〉の後に不定詞を続ける場合，意味上の\nF 086 ▶ It isの後に人の性質や人柄などを表す形容詞がくる場合，of＋名詞[代名詞]で不定詞の意味上の主語を表す。➡ File 19",
+        "question": "It was kind of my friend to lend me her notebook before the exam."
     },
     {
         "id": "115-2",
-        "ja": "身体障害者用駐車場に駐車するなん て，その運転手は配慮に欠けている。",
-        "en": "It is {thoughtless of the driver to park in the disabled parking spot.}",
-        "answer": "thoughtless of the driver to park in the disabled parking spot.",
-        "explanation": "▶ the driver が不定詞の意味上の主語。thoughtless は人の性質を表す形容詞\nなのでof を使う。➡115-1, File19\npark  ʮறं͢ΔɼʙΛறं͢Δʯ\ndisabledͷʯ＝physically challenged\n62 63\n復習\nSelf\nCheck",
-        "question": "It is (t      ) (        ) the (        ) to park in the disabled parking spot."
-    },
-    {
-        "id": "116",
-        "ja": "???",
-        "en": "④ see / enter / line up / carry",
-        "answer": "???",
-        "explanation": "",
-        "question": "???"
+        "ja": "身体障害者用駐車場に駐車するなんて，その運転手は配慮に欠けている。 不定詞 ③ ● 63 ○ park ① 名詞「公園」② 動詞「駐車する，～を駐車する」 ○ disabled「身体障害の」＝physically challenged",
+        "en": "It is {thoughtless of }the {driver} to park in the disabled parking spot.",
+        "answer": "thoughtless of, driver",
+        "explanation": "Tip 「配慮に欠けている」は人の性質を表す形容詞だから，意味上の主語はどう表す？\n▶ the driverが不定詞の意味上の主語。thoughtlessは人の性質を表す形容詞なのでofを使う。➡ 115-1，File 19",
+        "question": "It is (t   ) (    ) the (    ) to park in the disabled parking spot."
     },
     {
         "id": "116-1",
-        "ja": "日本の企業は従業員に忠誠心を求める。",
-        "en": "Japanese companies {want their employees to be loyal}.",
-        "answer": "want their employees to be loyal",
-        "explanation": "▶ SVOʴtoࢺでは，O とto不定詞の間に意味上のSV 関係（O が～する）\nが 隠 れ て お り ，「S はO が～することをV する」という意味になる。\nwant A to doʮA ʹʙͯ͠΄͍͠ ʯ―A は 目 的 語（O）\n⇧「 ～ す る こ と（to do）をA に 望 む（want A）」\nI want          to help him.（͸彼を助けたい。）\nI want you to help him.（私は͋ͳͨʹ彼を助けてほしい。）\nO",
+        "ja": "日本の企業は従業員に忠誠心を求める。 隠れており，「SはOが～することをVする」という意味になる。 want A to do「Aに～してほしい」―Aは目的語(O) ⇧「～すること(to do)をAに望む(want A)」 I want     to help him.（私は彼を助けたい。） I want you to help him.（私はあなたに彼を助けてほしい。）",
+        "en": "Japanese companies {want their employees to be} {loyal}. {O}",
+        "answer": "want their employees to be, loyal, O",
+        "explanation": "F 087 ▶ SVO＋to不定詞では，Oとto不定詞の間に意味上のSV関係(Oが～する)が",
         "question": "Japanese companies ( their / loyal / be / employees / want / to )."
     },
     {
         "id": "116-2",
-        "ja": "食堂で私たちと一緒に昼食をいかがでしょうか。",
-        "en": "We {would like you to join us} for lunch in the cafeteria.",
-        "answer": "would like you to join us",
-        "explanation": "▶ want A to do よ り も控えめで丁寧な表現。➡116-1",
-        "question": "We ( join / you / to / like / us / would ) for lunch in the cafeteria."
+        "ja": "食堂で私たちと一緒に昼食をいかがでしょうか。 would like A to do「Aに～してほしいのですが」",
+        "en": "We {would like you to join} {us} for lunch in the cafeteria.",
+        "answer": "would like you to join, us",
+        "explanation": "Tip 「一緒にいかがでしょうか → 私たちに加わってほしいのですが」と表現する。\n▶ want A to doよりも控えめで丁寧な表現。➡ 116-1",
+        "question": "We ( join / you / to / like / us / would ) us for lunch in the cafeteria."
     },
     {
         "id": "117-1",
-        "ja": "今日では，生徒に給食を全部食べさせる教師はほとんどいない。",
-        "en": "Today, few teachers {make students eat all of their school meals.}",
-        "answer": "make students eat all of their school meals.",
-        "explanation": "▶ to を付けずに動詞の原形で不定詞の働きをするものをࢺと呼ぶ。\nSVOʴࢺでは，O と原形不定詞の間に意味上のSV 関係（O が～す\nる ）が 隠 れ て お り ，「S はO が～することをV する」という意味になる。使役動\n詞や知覚動詞と共に使う。\n▶ make, have, let はSVOʴ原形不定詞の形で「S はO に～させる」という意味\nを表し，ࢺと呼ばれる。➡VI15– p.6, File20\nmake A do੍తʹʣA ʹʙͤ͞Δʯ―使役動詞\n＝force A to do ＝compel A to do",
-        "question": "Today, few teachers (m     ) (        ) (e      ) all of their school meals."
+        "ja": "今日では，生徒に給食を全部食べさせる教師はほとんどいない。 SVO＋原形不定詞では，Oと原形不定詞の間に意味上のSV関係(Oが～する)が隠れており，「SはOが～することをVする」という意味になる。使役動詞や知覚動詞と共に使う。 make A do「(強制的に)Aに～させる」―使役動詞",
+        "en": "Today, few teachers {make students eat} all of their school meals.",
+        "answer": "make students eat",
+        "explanation": "F 089 ▶ toを付けずに動詞の原形で不定詞の働きをするものを原形不定詞と呼ぶ。\n▶ make, have, letはSVO＋原形不定詞の形で「SはOに～させる」という意味を表し，使役動詞と呼ばれる。➡ VI 15―p.6，File 20\n＝force A to do＝compel A to do",
+        "question": "Today, few teachers (m   ) (    ) (e   ) all of their school meals."
     },
     {
         "id": "117-2",
-        "ja": "君の冗談はいつも笑える。 無生物 （＝物事） が主語 （S） のとき，使役動詞のmake は強制の意味を持たない。",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Your jokes always (m     ) (        ) (l      ). Your jokes always make me laugh."
+        "ja": "君の冗談はいつも笑える。 F 183  S make A do「S(物事)が原因でAは～する」―使役動詞 ＝cause A to do ！ 無生物(＝物事)が主語(S)のとき，使役動詞のmakeは強制の意味を持たない。",
+        "en": "Your jokes always {make me laugh}.",
+        "answer": "make me laugh",
+        "explanation": "Tip 「いつも笑える → いつも私を笑わせる」と表現する。",
+        "question": "Your jokes always (m   ) (    ) (l   )."
     },
     {
         "id": "118",
-        "ja": "その女性はウエイター に一杯の水を持ってきてもらった。 have A doʮʢA ͕͢΂͖͜ͱΛʣA ʹ ͞ ͤ Δʦ ͠ ͯ ΋ Β ͏ ʧʯ―使役動詞",
-        "en": "???",
-        "answer": "???",
+        "ja": "その女性はウエイターに一杯の水を持ってきてもらった。 F 089  have A do「(Aがすべきことを)Aにさせる[してもらう]」―使役動詞 ○ bring A B「AにBを持ってくる」",
+        "en": "The woman {had }a{ waiter bring} her a glass of water.",
+        "answer": "had, waiter bring",
         "explanation": "",
-        "question": "The woman (        ) a (        ) (b      ) her a glass of water. The woman had a waiter bring her a glass of water. bring A BʮA ʹBͬͯ͘Δʯ"
+        "question": "The woman (    ) a (    ) (b   ) her a glass of water."
     },
     {
         "id": "119",
-        "ja": "２つの理由があります。説明いたします。 let A doʮA͢ɼA ʹʙͤͯ͞΍Δʯ―使役動詞",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "There are two reasons. (        ) (m     ) (        ) . There are two reasons. Let me explain. ＝allow A to do Let me explain. ʮઆ໌͠·͢ɻʯ"
+        "ja": "２つの理由があります。説明いたします。 F 089  let A do「Aが～するのを許す，Aに～させてやる」―使役動詞 ○ Let me explain.「説明します。」",
+        "en": "There are two reasons. {Let me explain}.",
+        "answer": "Let me explain",
+        "explanation": "＝allow A to do",
+        "question": "There are two reasons. (    ) (m   ) (    )."
     },
     {
         "id": "120",
-        "ja": "母はいつも弟に野菜を食べさせる。 使役動詞のmake, have, let は原形不定詞を使うが，get はto不定詞を使う。 復習",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "My mother always (g      ) my (        ) (        ) (        ) vegetables. My mother always gets my brother to eat vegetables. get A to doʮʢઆಘ͠ ͯʣA ʹ ʙ ͞ ͤ Δʦ ͠ ͯ ΋ Β ͏ ʧʯ 64 65 Self Check"
+        "ja": "母はいつも弟に野菜を食べさせる。 不定詞 ④ ● 65 get A to do「(説得して)Aに～させる[してもらう]」 ！ 使役動詞のmake, have, letは原形不定詞を使うが，getはto不定詞を使う。",
+        "en": "My mother always {gets }my {brother to eat} vegetables.",
+        "answer": "gets, brother to eat",
+        "explanation": "Tip  強制ではなく，説得して「～するように仕向ける[させる]」を表す使役動詞は？",
+        "question": "My mother always (g   ) my (    ) (    ) (    ) vegetables."
     },
     {
         "id": "121",
-        "ja": "ケンはサラが学校の図書館に入るのを見た。",
-        "en": "Ken {saw Sara enter the school library.}",
-        "answer": "saw Sara enter the school library.",
-        "explanation": "▶ ࢺはSVOʴ原形不定詞の形で「O が～するのを…する」という意味を\n表す。➡File21, VI19– p.8\nsee A doʮA͑Δʯ―知覚動詞",
-        "question": "Ken (        ) (        ) (        ) the school library."
+        "ja": "ケンはサラが学校の図書館に入るのを見た。 see A do「Aが～するのが見える」―知覚動詞",
+        "en": "Ken {saw Sara enter} the school library. ➡ {File 21}，VI 19―p.8",
+        "answer": "saw Sara enter, File 21",
+        "explanation": "F 089 ▶ 知覚動詞はSVO＋原形不定詞の形で「Oが～するのを…する」という意味を表す。",
+        "question": "Ken (    ) (    ) (    ) the school library."
     },
     {
         "id": "122",
-        "ja": "肩に何 か が 触 れたような 気 がして，私は悲鳴を上げた。 feel A doʮA͡Δʯ―知覚動詞",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "I (        ) (s      ) (t      ) my shoulder, and I screamed. I felt something touch my shoulder, and I screamed. scream ʮ൵໐Λ্͛Δʯ"
+        "ja": "肩に何かが触れたような気がして，私は悲鳴を上げた。 feel A do「Aが～するのを感じる」―知覚動詞 ○ scream「悲鳴を上げる」",
+        "en": "I {felt something touch} my shoulder, and I screamed.",
+        "answer": "felt something touch",
+        "explanation": "Tip 「何かが触れたような気がして → 何かが触れるのを感じて」と表現する。",
+        "question": "I (    ) (s   ) (t   ) my shoulder, and I screamed."
     },
     {
         "id": "123",
-        "ja": "発展 子どもたちは美術館の前に並ばされた。",
-        "en": "The children {were made to line up in front of the museum.}",
-        "answer": "were made to line up in front of the museum.",
-        "explanation": "▶ 〈使役動詞 make＋O＋原形不定詞〉 や 〈知覚動詞see/ hear＋O＋原形不定\n詞 〉を受動態で使う場合は，to不定詞を使ってそれぞれbe made to do / be\nseen to do / be heard to do の形にする。使役動詞と知覚動詞の中でこの形\nになるのはmake, see, hear の３つだけ。この問題文はmake A do 「A が～さ\nせる」の受動態。\nbe made to do੍తʹʣʙͤ͞ΒΕΔʯ\nline up ʮ੔ྻ͢Δʯ",
-        "question": "The children (        ) (m     ) (        ) (l      ) (u      ) in front of the museum."
+        "ja": "子どもたちは美術館の前に並ばされた。 発展    museum. be made to do「(強制的に)～させられる」 ○ line up「整列する」",
+        "en": "The children {were made to line up} in front of the museum.",
+        "answer": "were made to line up",
+        "explanation": "Tip 「(強制的に)～させる」の受動態の形は？\n▶〈使役動詞make＋O＋原形不定詞〉や〈知覚動詞see/hear＋O＋原形不定詞〉を受動態で使う場合は，to不定詞を使ってそれぞれbe made to do / be seen to do / be heard to doの形にする。使役動詞と知覚動詞の中でこの形になるのはmake, see, hearの３つだけ。この問題文はmake A do「Aが～させる」の受動態。",
+        "question": "The children (    ) (m   ) (    ) (l   ) (u   ) in front of the"
     },
     {
         "id": "124",
-        "ja": "容疑者が混雑した公園に入るのが目撃された。",
-        "en": "The suspect {was seen to enter the crowded park. be seen to doΒΕΔʯ}",
-        "answer": "was seen to enter the crowded park. be seen to doΒΕΔʯ",
-        "explanation": "▶ see A do「A が～するのが見える」の受動態。原形不定詞をto不定詞に変える。",
-        "question": "The suspect (        ) (        ) (        ) (        ) the crowded park."
+        "ja": "容疑者が混雑した公園に入るのが目撃された。 be seen to do「～するのを見られる」",
+        "en": "The suspect {was seen to enter} the crowded park.",
+        "answer": "was seen to enter",
+        "explanation": "Tip  知覚動詞の受動態の形は？「目撃された → 見られた」\n▶ see A do「Aが～するのが見える」の受動態。原形不定詞をto不定詞に変える。",
+        "question": "The suspect (    ) (    ) (    ) (    ) the crowded park."
     },
     {
         "id": "125-1",
-        "ja": "タブレットは持ち運びやすく使いやすい。",
-        "en": "F 093  ＝ Tablets are easy to carry and use. It is easy to carry and use tablets.",
-        "answer": "F 093 ＝ Tablets are easy to carry and use. It is easy to carry and use tablets",
-        "explanation": "▶ easy や difficult のような難易などを表す形容詞は，後に不定詞を続けて，「S\nは～するには…だ」という意味を表す。➡File22\ncarry and use の意味上の目的語はtablets。主語が不定詞の目的語の働きをしてお\nり，不定詞の後は目的語のない不完全な形となる。\ntablets ͸carry ͱuseޠ\nTablets  are easy to carry and use .\nTablets are easy to carry and use them. は誤り。",
-        "question": "Tablets  and use."
+        "ja": "タブレットは持ち運びやすく使いやすい。 ！ carry and useの意味上の目的語はtablets。主語が不定詞の目的語の働きをしており，不定詞の後は目的語のない不完全な形となる。 tabletsはcarryとuseの目的語 ×Tablets are easy to carry and use them. は誤り。",
+        "en": "Tablets {are easy to carry} and use. ＝It {is easy to} {carry} and use tablets. Tablets are {easy} to carry and use .",
+        "answer": "are easy to carry, is easy to, carry, easy",
+        "explanation": "Tip 「Sは～するには簡単だ＝Sは～しやすい」を表す表現は？\n▶ easyやdifficultのような難易などを表す形容詞は，後に不定詞を続けて，「Sは～するには…だ」という意味を表す。➡ File 22",
+        "question": "Tablets are easy to carry and use."
     },
     {
         "id": "125-2",
-        "ja": "数学の問題は練習しないと解くのが難しい。 復習",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Math problems  without practice. ＝ Math problems are diﬃcult [hard] to solve without practice. It is diﬃcult [hard] to solve math problems without practice. ➡125-1 66 67 Self Check"
+        "ja": "数学の問題は練習しないと解くのが難しい。 不定詞 ⑤ ● 67 ○ without A「Aなしで」",
+        "en": "Math problems {are difficult [hard] to solve} without practice. ＝It {is difficult }[{hard}]{ to solve} math problems without practice.",
+        "answer": "are difficult [hard] to solve, is difficult, hard, to solve",
+        "explanation": "Tip 「Sは～するのが難しい」を表す表現は？\n➡ 125-1",
+        "question": "Math problems are difficult to solve without practice."
     },
     {
         "id": "126",
-        "ja": "発展 本日，G7の首脳が広島を訪 問 することになっている。",
-        "en": "The G7 leaders {are to visit Hiroshima today.}",
-        "answer": "are to visit Hiroshima today.",
-        "explanation": "▶ beࢺʴtoࢺを〈助動詞ʴ動詞の原形〉のように使うことができる。\nbeࢺʴtoࢺʮʙ͢Δ͜ͱʹͳ͍ͬͯΔʯ―予定\n▶ はっき りと予定が決まっている「公的な計画や行事」について使う。",
-        "question": "The G7 leaders (a      ) (        ) (v      ) Hiroshima today."
+        "ja": "本日，G7の首脳が広島を訪問することになっている。 発展     Tip  はっきりと決まっている公的な計画や行事について使う予定の表現は？ be動詞＋to不定詞「～することになっている」―予定",
+        "en": "The G7 leaders {are to visit} Hiroshima today.",
+        "answer": "are to visit",
+        "explanation": "F 096 ▶ be動詞＋to不定詞を〈助動詞＋動詞の原形〉のように使うことができる。\n▶ はっきりと予定が決まっている「公的な計画や行事」について使う。",
+        "question": "The G7 leaders (a   ) (    ) (v   ) Hiroshima today."
     },
     {
         "id": "127",
-        "ja": "発展 目標を達成するためには，きちんと計画を立てなければならない。",
-        "en": "If you {are to achieve your goals, you have to plan properly.}",
-        "answer": "are to achieve your goals, you have to plan properly.",
-        "explanation": "▶ 条件を表すif節の中で使う。\n〈be動詞＋to不定詞〉 は，ほかに義務・命令「 ～ し な け れ ば な ら な い 」，運命「～す\nる運命にある」などの意味を表すこともある。",
-        "question": "If you (a      ) (        ) (a      ) your goals, you have to plan properly."
+        "ja": "目標を達成するためには，きちんと計画を立てなければならない。 発展     Tip  条件を表すif節の中で「～するためには → ～するつもりなら」という意図を表 す表現は？ F 096  be動詞＋to不定詞「～するつもりである」―意図 ＋〈be動詞＋to不定詞〉は，ほかに義務・命令「～しなければならない」，運命「～する運命にある」などの意味を表すこともある。",
+        "en": "If you {are to achieve} your goals, you have to plan properly.",
+        "answer": "are to achieve",
+        "explanation": "▶ 条件を表すif節の中で使う。",
+        "question": "If you (a   ) (    ) (a   ) your goals, you have to plan properly."
     },
     {
         "id": "128",
-        "ja": "その少年が公園に着く と，友達の姿はどこにもなかった。 主に否定文で使い，to不定詞は受動態にすることが多い。",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "When the boy arrived at the park, his friends (w     ) (n      ) (        ) (        ) (        ). ͢ Δ ɻ͢ Δ ɻ When the boy arrived at the park, his friends were nowhere to be seen [found]. be nowhere to be seen [found]ΒΕͳ͍ ͔ͭΒͳ͍ʧʯ"
+        "ja": "その少年が公園に着くと，友達の姿はどこにもなかった。 be動詞＋to be done「～されることができる」―可能 ！ 主に否定文で使い，to不定詞は受動態にすることが多い。 ○ be nowhere to be seen [found]「どこにも見られない[見つからない]」",
+        "en": "When the boy arrived at the park, his friends {were nowhere to be} {seen } {[found]}.",
+        "answer": "were nowhere to be, seen, [found]",
+        "explanation": "Tip 「友達の姿はどこにもなかった → 友達はどこにも見られなかった[見つからなかった]」と表現する。",
+        "question": "When the boy arrived at the park, his friends (w   ) (n   ) (    ) (    ) (    )."
     },
     {
         "id": "129",
-        "ja": "「あなたは日本国外で暮らしたいですか。」「 ど ち ら と も 言 え ま せ ん 。」",
-        "en": "“{Would you like to live outside Japan?” “Yes and no.” would like to do ʮʙ͍ͨ͠ʯ}",
-        "answer": "Would you like to live outside Japan?” “Yes and no.” would like to do ʮʙ͍ͨ͠ʯ",
-        "explanation": "▶ want to do よ り も控えめで丁寧な表現。\nyes and no͑ͳ͍ʯ",
-        "question": "“(W     ) (        ) (        ) (        ) (        ) outside Japan?” “Yes and no.”"
+        "ja": "「あなたは日本国外で暮らしたいですか。」「どちらとも言えません。」 would like to do「～したい」 ＋ would like A to do「Aに～してほしいのですが」➡ 116-2 ○ outside Japan「日本国外で」⇔ in Japan「日本国内で」 ○ yes and no「どちらとも言えない」",
+        "en": "“{Would you like to live} outside Japan?” “Yes and no.”",
+        "answer": "Would you like to live",
+        "explanation": "▶ want to doよりも控えめで丁寧な表現。",
+        "question": "“(W   ) (    ) (    ) (    ) (    ) outside Japan?” “Yes and no.”"
     },
     {
         "id": "130-1",
-        "ja": "健康でいるにはバランスのとれた食事をとるこ とが重要だ。",
-        "en": "It is important to eat a balanced diet {in order to stay healthy. in order to do ＝so as to doʮʙ͢ΔͨΊʹʯ}",
-        "answer": "in order to stay healthy. in order to do ＝so as to doʮʙ͢ΔͨΊʹʯ",
-        "explanation": "▶ 不定詞の副詞的用法のto do「 ～ するために」よりも「 目 的 」の 意 味を明 確 に 表 す。\nso ＋形容詞 ［副詞］ ＋as to do「～なので…する」と混同しないこと。➡131-2\neat a balanced dietΛͱΔʯ",
-        "question": "It is important to eat a balanced diet (        ) (        ) (        ) (s      ) (h      )."
+        "ja": "健康でいるにはバランスのとれた食事をとることが重要だ。 in order to do＝so as to do「～するために」 ！ so＋形容詞[副詞]＋as to do「～なので…する」と混同しないこと。➡ 131-2 ○ eat a balanced diet「バランスのとれた食事をとる」 ○ stay healthy「健康でいる」",
+        "en": "It is important to eat a balanced diet {in order to stay healthy}.",
+        "answer": "in order to stay healthy",
+        "explanation": "Tip 「～でいるために」という「目的」の意味を，より明確に表す表現は？\n▶ 不定詞の副詞的用法のto do「～するために」よりも「目的」の意味を明確に表す。",
+        "question": "It is important to eat a balanced diet (    ) (    ) (    ) (s   )"
     },
     {
         "id": "130-2",
-        "ja": "他人の気持ちを傷つけないように，言葉を慎重に選ぶべきだ。 in order や so as を付けずに，not to do だけで「目的」の意味の「～しないよ うに」 は表せない。in order not to do や so as not to do を使うこと。",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "We should choose our words carefully ( to / hurt / in / not / the feelings / order ) of others. We should choose our words carefully in order not to hurt the feelings of others. in order not to do ＝so as not to doʮʙ͠ͳ͍Α͏ʹʯ the feelings of othersͪʯ"
+        "ja": "他人の気持ちを傷つけないように，言葉を慎重に選ぶべきだ。 in order not to do＝so as not to do「～しないように」 ！ in orderやso asを付けずに，not to doだけで「目的」の意味の「～しないように」は表せない。in order not to doやso as not to doを使うこと。 ○ the feelings of others「他人の気持ち」",
+        "en": "We should choose our words carefully {in order not to hurt} {the feelings} of others.",
+        "answer": "in order not to hurt, the feelings",
+        "explanation": "Tip 「～しないように」を表す表現は？",
+        "question": "We should choose our words carefully ( to / hurt / in / not / the feelings / order ) of others."
     },
     {
         "id": "131",
         "ja": "彼は親切にも年配の女性のためにドアを開けておいた。",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
-        "question": "-1 -2＝ He was (k     ) (       ) (       ) (h     ) the door open for the elderly woman. He was (       ) (k     ) (       ) (       ) (h     ) the door open for the elderly woman."
+        "question": ""
     },
     {
         "id": "131-1",
-        "ja": "???",
-        "en": "-2＝ He was kind enough to hold the door open for the elderly woman. He was so kind as to hold the door open for the elderly woman. ʧʴenough to do      ʮʜ͢Δ΄Ͳʙʯ",
-        "answer": "???",
-        "explanation": "▶ 形容詞・副詞はenough の直前，so の直後に置く。\nhold the door open ʮυΞΛ։͚͓ͯ͘ʯ\nachieve / nowhere / see / stay / healthy / hold\n68 69\n復習\nSelf\nCheck",
-        "question": "???"
+        "ja": "",
+        "en": "He was {kind enough to hold} the door open for the elderly woman.",
+        "answer": "kind enough to hold",
+        "explanation": "",
+        "question": "He was (k   ) (    ) (    ) (h   ) the door open for the elderly woman."
+    },
+    {
+        "id": "131-2",
+        "ja": "不定詞 ⑥ ● 69 形容詞[副詞]＋enough to do     「…するほど～」 so＋形容詞[副詞]＋as to do　　　「(十分／とても)～なので…する」 ＝so＋形容詞[副詞]＋that …「とても～なので…」➡ 262 ○ hold the door open「ドアを開けておく」",
+        "en": "＝He was {so kind as to hold} the door open for the elderly woman.",
+        "answer": "so kind as to hold",
+        "explanation": "▶ 形容詞・副詞はenoughの直前，soの直後に置く。",
+        "question": "＝He was (    ) (k   ) (    ) (    ) (h   ) the door open for the elderly woman."
     },
     {
         "id": "131-3",
-        "ja": "彼女は強いので簡単にはあきらめない。",
-        "en": "She is {strong enough not to give up easily.}",
-        "answer": "strong enough not to give up easily.",
-        "explanation": "▶ to 不定詞の直前にnot を置く。",
-        "question": "She is (        ) (e      ) (        ) (        ) (g      ) (        ) easily."
+        "ja": "彼女は強いので簡単にはあきらめない。 形容詞[副詞]＋enough not to do「…しないほど～，(十分)～なので…しない」",
+        "en": "She is {strong enough not to give up} easily.",
+        "answer": "strong enough not to give up",
+        "explanation": "Tip 「(十分)～なので…しない」を表す表現は？\n▶ to不定詞の直前にnotを置く。",
+        "question": "She is (    ) (e   ) (    ) (    ) (g   ) (    ) easily."
     },
     {
         "id": "132",
-        "ja": "今週はあまりに忙しくてプ ロジェクトの手伝いができない。",
-        "en": "＝ I’m {too busy to help with the project this week. I’m so busy that I can’t help with the project this week.}",
-        "answer": "too busy to help with the project this week. I’m so busy that I can’t help with the project this week.",
-        "explanation": "▶ 肯定文だが否定の内容を表す。形容詞・副詞はtoo の直後に置く。\nhelp with A ʮAʣΛख఻͏ʯ",
-        "question": "I’m (t      ) (        ) (        ) (h      ) (        ) the project this week."
+        "ja": "今週はあまりに忙しくてプロジェクトの手伝いができない。 too＋形容詞[副詞]＋to do「…するには～すぎる，あまりに～なので…できない」 ＝so＋形容詞[副詞]＋that S’ can’t …「とても～なのでS’は…できない」 ○ help with A「A(物事)を手伝う」",
+        "en": "I’m {too busy to help} {with} the project this week. ＝I’m {so busy that I can’t help} {with} the project this week.",
+        "answer": "too busy to help, with, so busy that I can’t help, with",
+        "explanation": "▶ 肯定文だが否定の内容を表す。形容詞・副詞はtooの直後に置く。",
+        "question": "I’m (t   ) (    ) (    ) (h   ) (    ) the project this week."
     },
     {
         "id": "133",
-        "ja": "発展 チャットを 始 めるにはアイコンをクリックするだけでいい。",
+        "ja": "チャットを始めるにはアイコンをクリックするだけでいい。",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
-        "question": "-1 -2＝ ( you / click on / all / to / have / do / is ) the icon to start chatting. You (o      ) (        ) (        ) (        ) (        ) the icon to start chatting. ͢Δɻ͢Δɻ"
+        "question": ""
     },
     {
         "id": "133-1",
-        "ja": "???",
-        "en": "-2＝ All you have to do is click on the icon to start chatting. You only have to click on the icon to start chatting. All S have to do is (to) do S only have to do                   ʮS ͸ʙ͑͢͠͞Ε͹Α͍ʯ",
-        "answer": "???",
-        "explanation": "▶ 〈All S have to do is＋補語〉 の補語はto不定詞よ り も原形不定詞のほうが普通。\nclick on an icon ʮΞΠίϯΛΫϦοΫ͢Δʯ",
-        "question": "???"
+        "ja": "",
+        "en": "{All you have to do is click on} the icon to start chatting.",
+        "answer": "All you have to do is click on",
+        "explanation": "",
+        "question": "( you / click on / all / to / have / do / is ) the icon to start chatting."
+    },
+    {
+        "id": "133-2",
+        "ja": "発展           しなければならない」と表現する。 S only have to do           「Sは～しさえすればよい」 ○ click on an icon「アイコンをクリックする」",
+        "en": "＝You {only have to click on} the icon to start chatting.",
+        "answer": "only have to click on",
+        "explanation": "Tip  ２通りの言い方で，それぞれ「しなければならないすべてのことは～だ」「～だけ\n▶〈All S have to do is＋補語〉の補語はto不定詞よりも原形不定詞のほうが普通。",
+        "question": "＝You (o   ) (    ) (    ) (    ) (    ) the icon to start chatting. All S have to do is (to) do"
     },
     {
         "id": "134",
-        "ja": "実を言うと，私は歌があまり得意ではない。",
-        "en": "To {tell (you) the truth}, I’m not very good at singing.",
-        "answer": "tell (you) the truth",
-        "explanation": "▶ 不定詞が文全体を修飾することがある。この不定詞の副詞的用法をࢺ\nと呼ぶ。➡File23\nto tell (you) the truth͏ͱʯ",
-        "question": "To , I’m not very good at singing."
+        "ja": "実を言うと，私は歌があまり得意ではない。 to tell (you) the truth「実を言うと」",
+        "en": "???",
+        "answer": "",
+        "explanation": "Tip 「実を言うと」を表す定型表現は？\nF 097 ▶ 不定詞が文全体を修飾することがある。この不定詞の副詞的用法を独立不定詞と呼ぶ。➡ File 23",
+        "question": "To tell (you) the truth, I’m not very good at singing. To tell (you) the truth, I’m not very good at singing."
     },
     {
         "id": "135",
-        "ja": "さらに悪いことに，その女性はバスに乗り遅れた。 to make matters worse ʮ͞Βʹѱ͍͜ͱʹ͸ʯ―文頭または文中で使わ れる。＝what is [was] worse",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "(        ) (        ) (m     ) (        ), the woman missed her bus. To make matters worse, the woman missed her bus."
+        "ja": "さらに悪いことに，その女性はバスに乗り遅れた。 to make matters worse「さらに悪いことには」―文頭または文中で使われる。",
+        "en": "{To make matters worse}, the woman missed her bus.",
+        "answer": "To make matters worse",
+        "explanation": "Tip 「さらに悪いことに」を表す定型表現は？\n＝what is [was] worse",
+        "question": "(    ) (    ) (m   ) (    ), the woman missed her bus."
     },
     {
         "id": "136",
-        "ja": "貧困が子どもの教育に影響を与えるこ とは言うまでもない。",
-        "en": "{Needless to say, poverty affects children’s education. aﬀect AʮA͢Δʯ＝influence A ʹhave an eﬀect on A}",
-        "answer": "Needless to say, poverty affects children’s education. aﬀect AʮA͢Δʯ＝influence A ʹhave an eﬀect on A",
-        "explanation": "",
-        "question": "(        ) (        ) (s      ), poverty affects children’s education."
+        "ja": "貧困が子どもの教育に影響を与えることは言うまでもない。 needless to say「言うまでもなく」―文頭または文中で使われる。 ○ affect A「Aに影響する」＝influence A＝have an effect on A",
+        "en": "{Needless to say}, poverty affects children’s education.",
+        "answer": "Needless to say",
+        "explanation": "Tip 「言うまでもなく」を表す定型表現は？",
+        "question": "(    ) (    ) (s   ), poverty affects children’s education."
     },
     {
         "id": "137",
-        "ja": "インターネットは ，いわば，異文化への入り口だ。 so to speak ＝as it wereʮ͍Θ͹ʯ―文中または文末で使われる。",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "The internet is, (        ) (        ) (        ), a gateway to different cultures. The internet is, so to speak, a gateway to different cultures. a diﬀerent culture ʮҟจԽʯ"
+        "ja": "インターネットは，いわば，異文化への入り口だ。 so to speak＝as it were「いわば」―文中または文末で使われる。 ○ a different culture「異文化」",
+        "en": "The internet is, {so to speak}, a gateway to different cultures.",
+        "answer": "so to speak",
+        "explanation": "Tip 「いわば」を表す定型表現は？",
+        "question": "The internet is, (    ) (    ) (    ), a gateway to different cultures."
     },
     {
         "id": "138",
-        "ja": "母国語の英語はもちろんのこと，ナオミはフランス語も流ちょうに話す。 復習",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Naomi speaks French fluently, (        ) (        ) (n      ) (        ) her native English. Naomi speaks French fluently, to say nothing of her native English. ＝not to speak of A ＝not to mention A 70 71 Self Check"
+        "ja": "母国語の英語はもちろんのこと，ナオミはフランス語も流ちょうに話す。 不定詞 ⑦ ● 71 to say nothing of A「Aは言うまでもなく」",
+        "en": "Naomi speaks French fluently, {to say nothing of} her native English. ＝{not to speak of} A＝{not to mention} A",
+        "answer": "to say nothing of, not to speak of, not to mention",
+        "explanation": "Tip 「～は言うまでもなく」を表す定型表現は？",
+        "question": "Naomi speaks French fluently, (    ) (    ) (n   ) (    ) her native English."
     }
 ];
 
@@ -577,7 +652,7 @@
             recognition.lang = 'en-US';
             recognition.interimResults = false;
         }
-        
+
         // --- Voice Synthesis Setup ---
         let synthesisVoice = null;
 
@@ -585,10 +660,10 @@
             const voices = speechSynthesis.getVoices();
             // 優先順位: Google US English -> Microsoft Zira/David -> その他英語
             synthesisVoice = voices.find(voice => voice.name === 'Google US English') ||
-                             voices.find(voice => voice.name.includes('Google') && voice.lang.includes('en-US')) ||
-                             voices.find(voice => voice.name.includes('Microsoft') && voice.lang.includes('en-US')) ||
-                             voices.find(voice => voice.lang === 'en-US') ||
-                             voices.find(voice => voice.lang.startsWith('en'));
+                voices.find(voice => voice.name.includes('Google') && voice.lang.includes('en-US')) ||
+                voices.find(voice => voice.name.includes('Microsoft') && voice.lang.includes('en-US')) ||
+                voices.find(voice => voice.lang === 'en-US') ||
+                voices.find(voice => voice.lang.startsWith('en'));
         }
 
         // 音声リストがロードされたら設定を実行
@@ -611,7 +686,7 @@
         const quizModal = document.getElementById('quiz-modal');
         const closeQuizBtn = document.getElementById('close-quiz-btn');
         const quizContent = document.getElementById('quiz-content');
-        
+
         const selectAllCheckbox = document.getElementById('select-all-checkbox');
         const pdfModal = document.getElementById('pdf-modal');
         const openPdfModalBtn = document.getElementById('open-pdf-modal-btn');
@@ -661,7 +736,7 @@
                 `;
                 sentenceList.appendChild(sentenceDiv);
             });
-            
+
             // Add click listener to each sentence item
             document.querySelectorAll('.sentence-item').forEach(item => {
                 item.addEventListener('click', (e) => {
@@ -688,15 +763,15 @@
                     }
                 });
             });
-            
+
             // Select the first sentence by default
             if (sentenceList.firstChild) {
-                 sentenceList.firstChild.click();
+                sentenceList.firstChild.click();
             }
         }
-        
+
         // --- PDF / Print Logic ---
-        
+
         function openPrintWindow(bodyContent, title) {
             const htmlContent = `
                 <!DOCTYPE html>
@@ -748,7 +823,7 @@
             printWindow.document.write(htmlContent);
             printWindow.document.close();
             setTimeout(() => {
-                printWindow.focus(); 
+                printWindow.focus();
                 printWindow.print();
             }, 250);
         }
@@ -763,32 +838,32 @@
                 .map(id => chapterData.find(item => item.id === id))
                 .filter(Boolean)
                 .sort((a, b) => {
-                     // Handle IDs like "1382-1" vs "1382-2"
-                     const aParts = a.id.split('-').map(s => parseInt(s) || 0);
-                     const bParts = b.id.split('-').map(s => parseInt(s) || 0);
-                     if (aParts[0] !== bParts[0]) return aParts[0] - bParts[0];
-                     return (aParts[1] || 0) - (bParts[1] || 0);
+                    // Handle IDs like "1382-1" vs "1382-2"
+                    const aParts = a.id.split('-').map(s => parseInt(s) || 0);
+                    const bParts = b.id.split('-').map(s => parseInt(s) || 0);
+                    if (aParts[0] !== bParts[0]) return aParts[0] - bParts[0];
+                    return (aParts[1] || 0) - (bParts[1] || 0);
                 });
         }
-        
+
         function getUniqueItems(items) {
-             const uniqueMap = new Map();
-             items.forEach(item => {
-                 // Use answer as key to deduplicate same phrases
-                 if (!uniqueMap.has(item.answer)) {
-                     uniqueMap.set(item.answer, item);
-                 }
-             });
-             return Array.from(uniqueMap.values()).sort((a, b) => {
-                 const aId = parseInt(a.id.split('-')[0]);
-                 const bId = parseInt(b.id.split('-')[0]);
-                 return aId - bId;
-             });
+            const uniqueMap = new Map();
+            items.forEach(item => {
+                // Use answer as key to deduplicate same phrases
+                if (!uniqueMap.has(item.answer)) {
+                    uniqueMap.set(item.answer, item);
+                }
+            });
+            return Array.from(uniqueMap.values()).sort((a, b) => {
+                const aId = parseInt(a.id.split('-')[0]);
+                const bId = parseInt(b.id.split('-')[0]);
+                return aId - bId;
+            });
         }
 
 
         // --- Message & Sound Functions ---
-        
+
         function showMessage(htmlContent, duration = null) {
             messageContent.innerHTML = htmlContent;
             messageModal.classList.remove('hidden');
@@ -812,7 +887,7 @@
 
             // 連続再生を防ぐために一度キャンセル
             speechSynthesis.cancel();
-            
+
             let textToSpeak = activeSentenceElement.dataset.fullSentence;
             // 念のため不要な記号を除去
             textToSpeak = textToSpeak.replace(/[{}]/g, '');
@@ -825,7 +900,7 @@
                 utterance.voice = synthesisVoice;
             }
 
-            utterance.rate = 1.0; 
+            utterance.rate = 1.0;
             utterance.pitch = 1.0;
 
             speechSynthesis.speak(utterance);
@@ -842,7 +917,7 @@
             }
 
             showMessage('<p class="text-2xl">マイクに向かって話してください...</p><div class="animate-pulse text-red-500 text-4xl mt-4">●</div>');
-            
+
             recognition.start();
 
             recognition.onresult = (event) => {
@@ -853,20 +928,20 @@
             recognition.onerror = (event) => {
                 showMessage(`<p>エラーが発生しました: ${event.error}</p>`, 3000);
             };
-            
+
             recognition.onend = () => {
-                 if (messageModal.classList.contains('hidden') === false && messageContent.innerHTML.includes('マイクに')) {
+                if (messageModal.classList.contains('hidden') === false && messageContent.innerHTML.includes('マイクに')) {
                     messageModal.classList.add('hidden');
-                 }
+                }
             };
         }
-        
+
         function evaluatePronunciation(transcript) {
             const originalText = activeSentenceElement.dataset.fullSentence;
 
             const cleanOrig = originalText.toLowerCase().replace(/[^\w\s]/g, '').split(' ');
             const cleanTrans = transcript.toLowerCase().replace(/[^\w\s]/g, '').split(' ');
-            
+
             let matches = 0;
             cleanOrig.forEach(word => {
                 if (cleanTrans.includes(word)) {
@@ -875,7 +950,7 @@
             });
 
             const similarity = matches / cleanOrig.length;
-            
+
             let score;
             if (similarity > 0.9) {
                 score = 95 + Math.floor(Math.random() * 5);
@@ -888,7 +963,7 @@
             } else {
                 score = 70 + Math.floor(Math.random() * 10);
             }
-            
+
             if (score === 100 && Math.random() < 0.3) score = 99;
 
             const messageHtml = `
@@ -905,8 +980,8 @@
 
         function startQuiz() {
             if (chapterData.length < 10) {
-                 showMessage('<p>クイズを作成するには、文が10個以上必要です。</p>', 3000);
-                 return;
+                showMessage('<p>クイズを作成するには、文が10個以上必要です。</p>', 3000);
+                return;
             }
 
             const shuffled = [...chapterData].sort(() => 0.5 - Math.random());
@@ -931,8 +1006,9 @@
                     .map(item => item.answer);
 
                 const options = [correctAnswer, ...incorrectAnswers].sort(() => 0.5 - Math.random());
-                
-                const questionSentence = question.en.replace(`{${question.answer}}`, ' (______) ');
+
+                // Use regex to replace ALL {answer} parts with (______)
+                const questionSentence = question.en.replace(/\{.*?\}/g, ' (______) ');
 
                 quizContent.innerHTML = `
                     <h3 class="text-2xl font-bold mb-2">問題 ${currentQuestionIndex + 1}/10</h3>
@@ -952,7 +1028,7 @@
                             button.classList.add('bg-red-400', 'text-white');
                             document.querySelector(`.quiz-option[data-answer="${CSS.escape(correctAnswer)}"]`).classList.add('bg-green-400', 'text-white');
                         }
-                        
+
                         setTimeout(() => {
                             currentQuestionIndex++;
                             showQuestion();
@@ -997,12 +1073,12 @@
                 explanationDiv.style.display = 'block';
             }
         });
-        
+
         playSoundBtn.addEventListener('click', playSound);
         recordBtn.addEventListener('click', handleRecording);
         startQuizBtn.addEventListener('click', startQuiz);
         closeQuizBtn.addEventListener('click', () => quizModal.classList.add('hidden'));
-        
+
         // Select All Logic
         selectAllCheckbox.addEventListener('change', (e) => {
             const isChecked = e.target.checked;
@@ -1016,7 +1092,7 @@
 
         // PDF Modal Logic
         openPdfModalBtn.addEventListener('click', () => {
-             if (selectedSentences.size === 0) {
+            if (selectedSentences.size === 0) {
                 showMessage('<p>PDFを作成する問題を選択してください。</p>', 3000);
                 return;
             }
@@ -1038,10 +1114,10 @@
         // 1. 完全なリスト
         document.getElementById('download-list-btn').addEventListener('click', () => {
             const items = getSelectedItems();
-            if(!items) return;
+            if (!items) return;
             // リスト作成の場合は重複があっても良いが、見やすくするために熟語ベースでユニークにするか、
             // そのままID順で並べるか。ここではID順ですべて表示する。
-            
+
             const listItems = items.map(item => {
                 // Remove { } for clean display
                 const cleanEn = item.en.replace(/[{}]/g, '');
@@ -1050,7 +1126,7 @@
                     <span style="font-size:0.9em; color:#555;">Ex: ${cleanEn} / ${item.ja}</span>
                 </li>`;
             }).join('');
-            
+
             openPrintWindow(`<ul class="list-container">${listItems}</ul>`, '重要熟語リスト');
             pdfModal.classList.add('hidden');
         });
@@ -1058,14 +1134,14 @@
         // 2. 英語を解答
         document.getElementById('download-en-quiz-btn').addEventListener('click', () => {
             const items = getUniqueItems(getSelectedItems());
-            
-            const quizItems = items.map(item => 
+
+            const quizItems = items.map(item =>
                 `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')} : ____________________</span></li>`
             ).join('');
-            const answerItems = items.map(item => 
+            const answerItems = items.map(item =>
                 `<li><span class="inline-content">${item.answer}</span></li>`
             ).join('');
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (英語を解答)');
             pdfModal.classList.add('hidden');
@@ -1074,14 +1150,14 @@
         // 3. 意味を解答
         document.getElementById('download-ja-quiz-btn').addEventListener('click', () => {
             const items = getUniqueItems(getSelectedItems());
-            
-            const quizItems = items.map(item => 
+
+            const quizItems = items.map(item =>
                 `<li><span class="inline-content"><strong>${item.answer}</strong> : ____________________</span></li>`
             ).join('');
-            const answerItems = items.map(item => 
+            const answerItems = items.map(item =>
                 `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')}</span></li>`
             ).join('');
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (意味を解答)');
             pdfModal.classList.add('hidden');
@@ -1092,7 +1168,7 @@
             const items = getUniqueItems(getSelectedItems());
             let quizItems = '';
             let answerItems = '';
-            
+
             items.forEach(item => {
                 if (Math.random() > 0.5) {
                     // 日本語 -> 英語
@@ -1104,7 +1180,7 @@
                     answerItems += `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')}</span></li>`;
                 }
             });
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (混合)');
             pdfModal.classList.add('hidden');
@@ -1113,14 +1189,14 @@
         // 5. 例文穴埋め
         document.getElementById('download-sentence-quiz-btn').addEventListener('click', () => {
             const items = getSelectedItems(); // 例文問題なので重複（文脈違い）も含める
-            
+
             const quizItems = items.map(item => {
                 // Replace {answer} with underscore
                 const blankSentence = item.en.replace(`{${item.answer}}`, '____________________');
                 return `<li>${blankSentence}<br><span style="font-size:0.9em;">(${item.ja})</span></li>`;
             }).join('');
-            
-            const answerItems = items.map(item => 
+
+            const answerItems = items.map(item =>
                 `<li>${item.answer}</li>`
             ).join('');
 
@@ -1134,7 +1210,7 @@
             const items = getSelectedItems();
             let quizItems = '';
             let answerItems = '';
-            
+
             const instruction = '<p style="border:1px solid #ccc; padding:10px; margin-bottom:20px;">指示：空所には適切な語句を補い、下線部がある文は下線部の意味を日本語で答えなさい。</p>';
 
             items.forEach(item => {
@@ -1163,4 +1239,5 @@
         });
     </script>
 </body>
+
 </html>

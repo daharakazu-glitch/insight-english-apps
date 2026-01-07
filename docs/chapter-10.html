@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Tinos:wght@700&display=swap');
-        
+
         body {
-            background-color: #007BFF; /* ビビットなブルー */
+            background-color: #007BFF;
+            /* ビビットなブルー */
             font-family: 'Noto Sans JP', sans-serif;
         }
 
@@ -17,12 +19,15 @@
         .font-english {
             font-family: 'Tinos', 'Times New Roman', serif;
             font-weight: 700;
-            font-size: 1.25rem; /* 20px */
-            line-height: 1.75rem; /* 28px */
+            font-size: 1.25rem;
+            /* 20px */
+            line-height: 1.75rem;
+            /* 28px */
         }
 
         .answer-span {
-            color: #DC2626; /* 赤色 */
+            color: #DC2626;
+            /* 赤色 */
             font-weight: 700;
             display: none;
         }
@@ -40,7 +45,7 @@
         .show-answer .underline-span {
             display: none;
         }
-        
+
         .explanation {
             display: none;
             white-space: pre-wrap;
@@ -57,22 +62,27 @@
             cursor: pointer;
             transition: all 0.2s ease-in-out;
         }
+
         .btn-primary {
             background-color: #3b82f6;
             color: white;
         }
+
         .btn-primary:hover {
             background-color: #2563eb;
         }
+
         .btn-secondary {
             background-color: #6b7280;
             color: white;
         }
+
         .btn-secondary:hover {
             background-color: #4b5563;
         }
     </style>
 </head>
+
 <body class="text-gray-800">
 
     <div id="app-container" class="container mx-auto p-4 md:p-8 max-w-4xl">
@@ -83,23 +93,27 @@
 
         <main class="bg-white/90 backdrop-blur-sm p-6 rounded-xl shadow-lg mb-28">
             <div class="flex justify-between items-center mb-6">
-                 <!-- PDF Control Section -->
-                 <div class="flex-1 mr-4">
+                <!-- PDF Control Section -->
+                <div class="flex-1 mr-4">
                     <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
                         <h3 class="font-bold text-sm md:text-base mb-2">選択した問題でPDFを作成</h3>
                         <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
                             <div class="flex items-center">
-                                <input type="checkbox" id="select-all-checkbox" class="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
-                                <label for="select-all-checkbox" class="ml-2 text-sm font-medium text-gray-700 cursor-pointer">すべて選択 / 解除</label>
+                                <input type="checkbox" id="select-all-checkbox"
+                                    class="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                                <label for="select-all-checkbox"
+                                    class="ml-2 text-sm font-medium text-gray-700 cursor-pointer">すべて選択 / 解除</label>
                             </div>
-                            <button id="open-pdf-modal-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow text-sm transition-transform transform hover:scale-105">
+                            <button id="open-pdf-modal-btn"
+                                class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow text-sm transition-transform transform hover:scale-105">
                                 PDF作成メニュー
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <button id="start-quiz-btn" class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-lg shadow transition-transform transform hover:scale-105 whitespace-nowrap">
+                <button id="start-quiz-btn"
+                    class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-lg shadow transition-transform transform hover:scale-105 whitespace-nowrap">
                     ランダムテスト
                 </button>
             </div>
@@ -111,11 +125,16 @@
     </div>
 
     <!-- Control Panel -->
-    <div id="control-panel" class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md p-4 border-t-2 border-gray-200 shadow-2xl flex justify-center items-center space-x-2 md:space-x-4">
-        <button id="toggle-answer-btn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">表示/非表示</button>
-        <button id="play-sound-btn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">音声再生</button>
-        <button id="record-btn" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">録音評価</button>
-        <button id="toggle-explanation-btn" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">解説</button>
+    <div id="control-panel"
+        class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md p-4 border-t-2 border-gray-200 shadow-2xl flex justify-center items-center space-x-2 md:space-x-4">
+        <button id="toggle-answer-btn"
+            class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">表示/非表示</button>
+        <button id="play-sound-btn"
+            class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">音声再生</button>
+        <button id="record-btn"
+            class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">録音評価</button>
+        <button id="toggle-explanation-btn"
+            class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition-transform transform hover:scale-105">解説</button>
     </div>
 
     <!-- Message/Score Modal -->
@@ -124,11 +143,12 @@
             <!-- Message content will be populated by JS -->
         </div>
     </div>
-    
+
     <!-- Quiz Modal -->
     <div id="quiz-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-40 p-4">
         <div class="bg-white w-full max-w-2xl p-8 rounded-2xl shadow-2xl relative">
-            <button id="close-quiz-btn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-3xl font-bold">&times;</button>
+            <button id="close-quiz-btn"
+                class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-3xl font-bold">&times;</button>
             <div id="quiz-content">
                 <!-- Quiz content will be populated by JS -->
             </div>
@@ -136,17 +156,24 @@
     </div>
 
     <!-- PDF Download Modal -->
-    <div id="pdf-modal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center z-50">
+    <div id="pdf-modal"
+        class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center z-50">
         <div class="relative mx-auto p-5 border w-11/12 md:w-1/2 lg:w-1/3 shadow-lg rounded-md bg-white">
             <div class="mt-3 text-center">
                 <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">ダウンロードするPDFの種類を選択</h3>
                 <div class="mt-2 space-y-3">
-                    <button id="download-list-btn" class="btn btn-primary w-full justify-start text-left">1. 完全なリスト (熟語・意味・例文)</button>
-                    <button id="download-en-quiz-btn" class="btn btn-primary w-full justify-start text-left">2. 熟語テスト (英語を解答)</button>
-                    <button id="download-ja-quiz-btn" class="btn btn-primary w-full justify-start text-left">3. 熟語テスト (意味を解答)</button>
-                    <button id="download-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">4. 熟語テスト (混合)</button>
-                    <button id="download-sentence-quiz-btn" class="btn btn-primary w-full justify-start text-left">5. 例文の穴埋め問題</button>
-                    <button id="download-sentence-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">6. 例文の混合問題 (穴埋め/和訳)</button>
+                    <button id="download-list-btn" class="btn btn-primary w-full justify-start text-left">1. 完全なリスト
+                        (熟語・意味・例文)</button>
+                    <button id="download-en-quiz-btn" class="btn btn-primary w-full justify-start text-left">2. 熟語テスト
+                        (英語を解答)</button>
+                    <button id="download-ja-quiz-btn" class="btn btn-primary w-full justify-start text-left">3. 熟語テスト
+                        (意味を解答)</button>
+                    <button id="download-mixed-quiz-btn" class="btn btn-primary w-full justify-start text-left">4. 熟語テスト
+                        (混合)</button>
+                    <button id="download-sentence-quiz-btn" class="btn btn-primary w-full justify-start text-left">5.
+                        例文の穴埋め問題</button>
+                    <button id="download-sentence-mixed-quiz-btn"
+                        class="btn btn-primary w-full justify-start text-left">6. 例文の混合問題 (穴埋め/和訳)</button>
                 </div>
                 <div class="mt-6">
                     <button id="close-modal-btn" class="btn btn-secondary w-full">キャンセル</button>
@@ -158,636 +185,724 @@
     <script>
         const chapterData = [
     {
-        "id": "1",
-        "ja": "2 3 4 5 6 7 8 9 10音読 比 較 2 3 4 5 6 7 8 9 10音読 文法編 ｜  10章 比 較 2 3 4 5 6 7 8 9 10音読 ڃֱ・ݱFile37 文法編 ｜  10章 比 較 2 3 4 5 6 7 8 9 10音読 ࢺ・ࢺ②ࢺ・ࢺ① File39File38 文法編 ｜  10章 比 較 2 3 4 5 6 7 8 9 10音読 文法編 ｜  10章 比 較 2 3 4 5 6 7 8 9 10音読 文法編 ｜  10章 比 較 2 3 4 5 6 7 8 9 10音読 文法編 ｜  10章 比 較 2 3 4 5 6 7 8 9 10音読 文法編 ｜  10章 比 較 2 3 4 5 6 7 8 9 10音読 文法編 ｜  10章 比 較",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "ݱʴtheʴCʣʴof BʫͷCࢺFile36"
-    },
-    {
         "id": "10",
-        "ja": "比 較 ◀\t音読用動画 別解など 比 較 比 較 比 較 比 較 比 較 比 較 比 較 比 較",
+        "ja": "章　比 較  QR ☚ 音読用動画　別解など",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
         "question": ""
     },
     {
-        "id": "20",
-        "ja": "復習",
+        "id": "144",
+        "ja": "● 文法編｜10章",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
-        "question": "Grasp Grasp 142 143 Self Check"
+        "question": ""
+    },
+    {
+        "id": "146",
+        "ja": "● 文法編｜10章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "148",
+        "ja": "● 文法編｜10章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "150",
+        "ja": "● 文法編｜10章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "152",
+        "ja": "● 文法編｜10章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "154",
+        "ja": "● 文法編｜10章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "156",
+        "ja": "● 文法編｜10章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
+    },
+    {
+        "id": "158",
+        "ja": "● 文法編｜10章",
+        "en": "???",
+        "answer": "",
+        "explanation": "",
+        "question": ""
     },
     {
         "id": "275",
-        "ja": "定期的に運動するこ とはバランスのとれた食事をとるこ とと 同じくらい 重 要だ。 10章 比 較",
-        "en": "Getting regular exercise is {as important as eating a balanced diet. A … asʴC（ڃݪ）ʴas BʮA ͸B ͱಉ͘͡Β͍Cʯ}",
-        "answer": "as important as eating a balanced diet. A … asʴC（ڃݪ）ʴas BʮA ͸B ͱಉ͘͡Β͍Cʯ",
-        "explanation": "▶ 形容詞のڃݪを使った比較表現。 〈as＋原級＋as〉の 形 。➡Grasp19",
-        "question": "Getting regular exercise is (        ) (        ) (        ) eating a balanced diet. ①"
+        "ja": "定期的に運動することはバランスのとれた食事をとることと同じくらい重要だ。 F 134  A … as＋C(原級)＋as B「AはBと同じくらいC」",
+        "en": "Getting regular exercise is {as important as} eating a balanced diet.",
+        "answer": "as important as",
+        "explanation": "▶ 形容詞の原級を使った比較表現。〈as＋原級＋as〉の形。➡ Grasp 19",
+        "question": "Getting regular exercise is (    ) (    ) (    ) eating a balanced diet."
     },
     {
         "id": "276-1",
-        "ja": "君の部屋は私の部屋の 2 倍広い。",
-        "en": "Your room is {twice as large [big] as mine. A … twice asʴC（ڃݪ）ʴas BʮA ͸B ͷ̎ഒCʯ}",
-        "answer": "twice as large [big] as mine. A … twice asʴC（ڃݪ）ʴas BʮA ͸B ͷ̎ഒCʯ",
-        "explanation": "▶ 〈as＋原級＋as〉の 前 にtwice というݱを置く。\nA … half asʴC（ڃݪ）ʴas BʮA ͸B ͷ൒෼Cʯ",
-        "question": "Your room is (        ) (        ) (        ) (a      ) mine."
+        "ja": "君の部屋は私の部屋の2倍広い。 F 135  A … twice as＋C(原級)＋as B「AはBの２倍C」 ＋ A … half as＋C(原級)＋as B「AはBの半分C」",
+        "en": "Your room is {twice as large [big] as} mine.",
+        "answer": "twice as large [big] as",
+        "explanation": "▶〈as＋原級＋as〉の前にtwiceという倍数表現を置く。",
+        "question": "Your room is (    ) (    ) (    ) (a   ) mine."
     },
     {
         "id": "276-2",
-        "ja": "中国の人口は日本の人口の約11倍だ。",
-        "en": "The population of China is about {eleven times as large as that of Japan. A … X times asʴC（ڃݪ）ʴas BʮA ͸B ͷX ഒ Cʯ}",
-        "answer": "eleven times as large as that of Japan. A … X times asʴC（ڃݪ）ʴas BʮA ͸B ͷX ഒ Cʯ",
-        "explanation": "▶ 〈as＋原級＋as〉の 前 にX times というݱを置く。 「約～」はabout ～。\n… that of Japan のthat はthe population の代用。➡329  比較を表す構文で\nは，比較する対象を揃える必要があるため，that of は必要。\npopulation 「人口」の多い⇔少ないはlarge ⇔ small で表す。",
-        "question": "The population of China is about (        ) (        ) (        ) (        ) (        ) that of Japan."
+        "ja": "中国の人口は日本の人口の約11倍だ。 A … X times as＋C(原級)＋as B「AはBのX倍C」 … that of Japanのthatはthe populationの代用。➡ 329 比較を表す構文では， 比較する対象を揃える必要があるため，that ofは必要。 ！ population「人口」の多い⇔少ないはlarge⇔smallで表す。",
+        "en": "The population of China is about {eleven times as large as }that",
+        "answer": "eleven times as large as",
+        "explanation": "Tip 「X倍～」は〈as＋原級＋as〉の前に何を置く？\nof Japan.\n▶〈as＋原級＋as〉の前にX timesという倍数表現を置く。「約～」はabout ～。",
+        "question": "The population of China is about (    ) (    ) (    ) (    ) (    )"
     },
     {
         "id": "277",
-        "ja": "バスケットの 中 には ， オレンジと 同じくらいリンゴがある。",
-        "en": "There are {as many apples as oranges in the basket. A … as manyʴC（ࢺ）ʴas BʮA ͸B ͱಉ͘͡Β͍ ͷʢ਺ͷʣCʯ}",
-        "answer": "as many apples as oranges in the basket. A … as manyʴC（ࢺ）ʴas BʮA ͸B ͱಉ͘͡Β͍ ͷʢ਺ͷʣCʯ",
-        "explanation": "▶ 〈many＋複数名詞〉 の前後にas を入れる。many は原級。➡Grasp20\nas many apples as …   apples as many as … は誤り。",
-        "question": "There are (        ) (        ) (        ) (        ) oranges in the basket."
+        "ja": "バスケットの中には，オレンジと同じくらいリンゴがある。 F 135  A … as many＋C(複数名詞)＋as B「AはBと同じくらいの(数の)C」 as many apples as …  × apples as many as … は誤り。",
+        "en": "There are {as many apples} {as} oranges in the basket.",
+        "answer": "as many apples, as",
+        "explanation": "Tip 「同じくらい(の数)の～」はasとasの間に何を入れる？\n▶〈many＋複数名詞〉の前後にasを入れる。manyは原級。➡ Grasp 20",
+        "question": "There are (    ) (    ) (    ) (    ) oranges in the basket."
     },
     {
         "id": "278",
-        "ja": "私は英語と 同じくらい数学の勉強に時間を 費 やしている。",
-        "en": "I spend {as much time studying math as I do English. A … as muchʴC（ࢺ）ʴas BʮA ͸B ͱಉ͘͡Β͍ ͷʢྔͷʣCʯ}",
-        "answer": "as much time studying math as I do English. A … as muchʴC（ࢺ）ʴas BʮA ͸B ͱಉ͘͡Β͍ ͷʢྔͷʣCʯ",
-        "explanation": "▶ 〈much＋数えられない名詞＋α〉 の前後にas を入れる。much は原級。\nI spend as much time studying math as I do English.\nspend A doingʮʙͯ͠Aɾ࿑ྗʣΛඅ΍͢ʯ",
-        "question": "I spend (a      ) (        ) (        ) studying math (        ) I do English."
+        "ja": "私は英語と同じくらい数学の勉強に時間を費やしている。 F 135  A … as much＋C(数えられない名詞)＋as B「AはBと同じくらいの(量の)C」 ○ spend A doing「～してA(時間・金・労力)を費やす」",
+        "en": "I spend {as much time }studying math {as} I do English. I spend {as} much time studying math {as} I do English.",
+        "answer": "as much time, as, as, as",
+        "explanation": "Tip 「同じくらい(の量)の～」はasとasの間に何を入れる？\n▶〈much＋数えられない名詞＋α〉の前後にasを入れる。muchは原級。",
+        "question": "I spend (a   ) (    ) (    ) studying math (    ) I do English."
     },
     {
         "id": "279",
-        "ja": "講堂のいすの数は教室の5倍 だ。",
-        "en": "There are {five times as many chairs in the auditorium as in the classroom. A … X times as manyʴC（ࢺ）ʴas BʮA ͸B ͷX ഒͷʢ਺ͷʣCʯ}",
-        "answer": "five times as many chairs in the auditorium as in the classroom. A … X times as manyʴC（ࢺ）ʴas BʮA ͸B ͷX ഒͷʢ਺ͷʣCʯ",
-        "explanation": "▶ 〈many＋複数名詞＋α〉 の前後にas を入れ，その前にX times を置く。\nauditoriumಊʯ\nڃݪを使った比較表現は文と文をつないでつく る。ポイン トは３つ。\nᶃ 何と何を比較するのか\nᶄ 比較の基準となる形容詞・副詞は何か\nᶅ ２つめのas（接続詞） に続く節の中の重複する語句を省略\nHappiness is      important. ʴ Success is important.\n比較対象                    基 準        ↓   比較対象            基 準\n⭢ Happiness is as important as success is important.\n（幸福は成功と同じく らい大切だ。 ）                  重複する語を省略\n〈many＋ࢺ〉 を使った比較表現は，as とas の 間 に〈many＋複数名詞〉 を入れ\nてつくる。２つ め のas は接続詞で，元となる ２つの文を接続している。\nMy brother has      many books. ʴ My sister has many books.\n比較対象                           基 準          ↓   比較対象                   基 準\n⭢ My brother has as many books as my sister has many books.\n（兄 ［弟］ は姉 ［妹］ と同じく らいの数の本を持っている。 ）重複する語を省略\nͷͭ͘Γํ\nʪmanyʴͷͭ͘Γํ",
-        "question": "There are (        ) (        ) (        ) (        ) (        ) in the auditorium (        ) in the classroom."
+        "ja": "講堂のいすの数は教室の5倍だ。 比 較 ① ● 143 A … X times as many＋C(複数名詞)＋as B「AはBのX倍の(数の)C 」 ○ auditorium「講堂」",
+        "en": "There are {five times as many chairs} in the auditorium {as} in the",
+        "answer": "five times as many chairs, as",
+        "explanation": "Tip 「X倍の(数の)～」を表す表現は？\nclassroom.\n▶〈many＋複数名詞＋α〉の前後にasを入れ，その前にX timesを置く。",
+        "question": "There are (    ) (    ) (    ) (    ) (    ) in the auditorium (    ) in the classroom."
     },
     {
         "id": "280",
-        "ja": "発展 ＝ 君の部屋は私の部屋の2 倍の大きさだ。",
-        "en": "Your room is {twice the size of mine. A … twice theʴC（ࢺ）ʴof BʮA ͸B ͷ̎ഒͷCʯ➡File36}",
-        "answer": "twice the size of mine. A … twice theʴC（ࢺ）ʴof BʮA ͸B ͷ̎ഒͷCʯ➡File36",
-        "explanation": "▶ twice と名詞の間にthe を置く。＝A … twice as＋C（原級） ＋as B\nA … half theʴC（ࢺ）ʴof BʮA ͸B ͷ൒෼ͷCʯ\nA … X times theʴC（ࢺ）ʴof BʮA ͸B ͷX ഒͷCʯ",
-        "question": "Your room is (t      ) (        ) (s      ) (        ) mine. Your room is twice as large as mine."
+        "ja": "君の部屋は私の部屋の2倍の大きさだ。 発展  ＝Your room is twice as large as mine. A … twice the＋C(名詞)＋of B「AはBの２倍のC」➡ File 36 ＋ A … half the＋C(名詞)＋of B「AはBの半分のC」 ＋ A … X times the＋C(名詞)＋of B「AはBのX倍のC」",
+        "en": "Your room is {twice the size of} mine.",
+        "answer": "twice the size of",
+        "explanation": "Tip 「大きさ」という名詞を使って表現すると？\n▶ twiceと名詞の間にtheを置く。＝A … twice as＋C(原級)＋as B",
+        "question": "Your room is (t   ) (    ) (s   ) (    ) mine."
     },
     {
         "id": "281",
         "ja": "できるだけ早くご連絡いたします。",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
-        "question": "-1 -2＝ We’ll contact you (        ) (s      ) (        ) (        ). We’ll contact you (        ) (s      ) (        ) (        ) (c      )."
+        "question": ""
     },
     {
         "id": "281-1",
-        "ja": "???",
-        "en": "-2＝ We’ll contact you as soon as possible. We’ll contact you as soon as we can. as soon as possible",
-        "answer": "???",
+        "ja": "",
+        "en": "We’ll contact you {as soon as possible}.",
+        "answer": "as soon as possible",
         "explanation": "",
-        "question": "???"
+        "question": "I try to read (    ) (    ) (    ) (    ) (    )."
     },
     {
         "id": "282",
-        "ja": "私はできるだけ多くの本を 読 むようにしている。",
+        "ja": "私はできるだけ多くの本を読むようにしている。",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
-        "question": "-1 -2 I try to read (        ) (        ) (        ) (        ) (        ). I try to read (        ) (        ) (        ) (        ) (        ) (c      ). ʮଟ͘ͷຊʯΛʮଟ͘ͷຊʯΛasas ͱͱasasʹೖΕΔɻʹೖΕΔɻ"
+        "question": ""
     },
     {
         "id": "282-1",
-        "ja": "???",
-        "en": "-2＝ I try to read as many books as possible. I try to read as many books as I can. as ʴڃݪʴas possible",
-        "answer": "???",
-        "explanation": "▶ 〈as＋many＋複数名詞＋as〉の 形 。〈as＋原級＋as〉 の応用形。",
-        "question": "???"
+        "ja": "",
+        "en": "I try to read {as many books as possible}.",
+        "answer": "as many books as possible",
+        "explanation": "",
+        "question": "We’ll contact you (    ) (s   ) (    ) (    )."
     },
     {
         "id": "283",
-        "ja": "ス ト リーミングサービスが台頭し てきたとはいえ，映画を見に行く こ とは相変わらず 人気だ。 ⇧「 ず っ と（ever）同 じくら い（as ～ as）」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Despite the rise of streaming services, going to the movies remains (        ) (        ) (        ) (        ). Despite the rise of streaming services, going to the movies remains as popular as ever. as ʴڃݪʴas everʮ૬มΘΒͣʙʯ despite AʮA ʹ΋͔͔ΘΒͣʯ"
+        "ja": "ストリーミングサービスが台頭してきたとはいえ，映画を見に行くことは相変わらず人 気だ。 as＋原級＋as ever「相変わらず～」 ⇧「ずっと(ever)同じくらい(as ～ as)」 ○ despite A「Aにもかかわらず」",
+        "en": "{as} {popular as ever}.",
+        "answer": "as, popular as ever",
+        "explanation": "Tip 「相変わらず～」を表す表現は？",
+        "question": "Despite the rise of streaming services, going to the movies remains (    ) (    ) (    ) (    ). Despite the rise of streaming services, going to the movies remains"
+    },
+    {
+        "id": "283-2",
+        "ja": "as＋原級＋as possible as＋原級＋as S’ can　　　「できるだけ～」",
+        "en": "＝I try to read {as many books as I can}.",
+        "answer": "as many books as I can",
+        "explanation": "Tip 「できるだけ～」を表す２つの表現は？\n▶〈as＋many＋複数名詞＋as〉の形。〈as＋原級＋as〉の応用形。",
+        "question": "I try to read (    ) (    ) (    ) (    ) (    ) (c   )."
     },
     {
         "id": "284",
-        "ja": "発展 先週はとても体調が悪く て，死んだも同然の状態だった。 ⇧「A と 同 じくら い（as ～ as A）当 て は ま る（good）」 good を使った構文だが，as good as の後によい意味の語句がく るとは限らない。",
-        "en": "???",
-        "answer": "???",
+        "ja": "先週はとても体調が悪くて，死んだも同然の状態だった。 発展     Tip 「死んだも同然の状態だった → 死んでいるのと同様に感じた」と表す。 as good as A「ほとんどAと同様，Aも同然」＝almost A ⇧「Aと同じくらい(as ～ as A)当てはまる(good)」 ！ goodを使った構文だが，as good asの後によい意味の語句がくるとは限らない。",
+        "en": "I was so sick last week that I felt {as good as dead}. ＝I was so sick last week that I felt {almost} {dead}.",
+        "answer": "as good as dead, almost, dead",
         "explanation": "",
-        "question": "I was so sick last week that I felt (        ) (        ) (        ) (d      ). ＝ I was so sick last week that I felt as good as dead. I was so sick last week that I felt almost dead. as good as A ʮ΄ͱΜͲA ͱಉ༷ɼA ΋ಉવʯ＝almost A"
+        "question": "I was so sick last week that I felt (    ) (    ) (    ) (d   )."
+    },
+    {
+        "id": "284-2",
+        "ja": "as soon as S’ can　　　 「できるだけ早く」",
+        "en": "＝We’ll contact you {as soon as we can}. {as soon as possible}",
+        "answer": "as soon as we can, as soon as possible",
+        "explanation": "Tip 「できるだけ早く」を表す２つの表現は？",
+        "question": "＝We’ll contact you (    ) (s   ) (    ) (    ) (c   )."
     },
     {
         "id": "285",
-        "ja": "リサ イクル は ， ご み を 減 らすだけでなく，環境を守るためにも重要だ。 ⇧「B はA と 同 じくら い（as ～ as A）十 分（well）～ だ 」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Recycling is important for protecting the environment reducing waste. ද͢ɻද͢ɻreducingreducing  wastewaste ͕ ̖ɼ͕ ̖ɼprotectingprotecting  thethe  environmentenvironment ͕ ̗ʹ͋ͨΔɻ͕ ̗ʹ͋ͨΔɻ ＝ Recycling is important for protecting the environment as well as reducing waste. Recycling is important not only for reducing waste but (also) for protecting the environment. B as well as AʮA ͱಉ༷B ΋ʯ＝not only A but (also) B"
+        "ja": "リサイクルは，ごみを減らすだけでなく，環境を守るためにも重要だ。 B as well as A「Aと同様Bも」＝not only A but (also) B ⇧「BはAと同じくらい(as ～ as A)十分(well)～だ」",
+        "en": "Recycling is important for protecting the environment {as well as }reducing waste.",
+        "answer": "as well as",
+        "explanation": "Tip 「A（のため）だけでなくBのためにも重要だ」を，「Aと同様Bも」の表現を使って表す。reducing wasteがA，protecting the environmentがBにあたる。\nprotecting the environment.",
+        "question": "Recycling is important for protecting the environment as well as ＝Recycling is important not only for reducing waste but (also) for"
     },
     {
         "id": "286",
-        "ja": "科学者たちは早くも1950年代には人工知能について考え始めていた。 as early as A ʮૣ͘΋A ʹ͸ʯ―A に は 時を 表 す 語 がくる。 復習",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Scientists began to think about artificial intelligence (        ) (        ) (        ) the 1950s. Scientists began to think about artificial intelligence as early as the 1950s. size / ever / dead / early sizeʮେ͖͞ʯɹ  numberʮ਺ʯɹ  amountʮྔʯɹ  lengthʮ௕͞ʯ widthʮ෯ʯɹ  height /haˆt/͞ʯɹ  depthʮਂ͞ʯ  weightʮॏ͞ʯ speedʮ଎͞ʯɹ  priceʮ஋ஈʯ 144 145 Self Check"
-    },
-    {
-        "id": "287",
-        "ja": "???",
-        "en": "③",
-        "answer": "???",
-        "explanation": "",
-        "question": "???"
+        "ja": "科学者たちは早くも1950年代には人工知能について考え始めていた。 比 較 ② ● 145",
+        "en": "Scientists began to think about artificial intelligence {as early as }the",
+        "answer": "as early as",
+        "explanation": "Tip 「早くも～には」を表す表現は？",
+        "question": "Scientists began to think about artificial intelligence (    ) (    ) (    ) the 1950s."
     },
     {
         "id": "287-1",
-        "ja": "田舎は都会よりも空気がきれいだ。",
-        "en": "The air in the countryside i{s cleaner than (that) in the city. A … C（ڃֱ）ʴthan BʮA ͸B ΑΓ΋Cʯ}",
-        "answer": "s cleaner than (that) in the city. A … C（ڃֱ）ʴthan BʮA ͸B ΑΓ΋Cʯ",
-        "explanation": "▶ 形容詞 clean のڃֱを使った比較表現。➡Grasp21, ࣝ12– p.515\n「田舎の空気」と「都会の空気」という異なる ２つのものの比較。名詞の繰り返\nしを避けるため，２つめのthe air はthat で表すが，この場合は省略可能。in\nthe city のほうが重要な情報で，than in the city という表現が自然であるため。",
-        "question": "The air in the countryside  in the city. Γฦ͠͸ආ͚ΔɻΓฦ͠͸ආ͚Δɻ"
+        "ja": "田舎は都会よりも空気がきれいだ。 F 136  A … C(比較級)＋than B「AはBよりもC」 「田舎の空気」と「都会の空気」という異なる２つのものの比較。名詞の繰り返しを避けるため，２つめのthe airはthatで表すが，この場合は省略可能。in the cityのほうが重要な情報で，than in the cityという表現が自然であるため。",
+        "en": "???",
+        "answer": "",
+        "explanation": "▶ 形容詞cleanの比較級を使った比較表現。➡ Grasp 21，基礎知識 12―p.515",
+        "question": "The air in the countryside is cleaner than in the city. The air in the countryside is cleaner than (that) in the city."
     },
     {
         "id": "287-2",
-        "ja": "現代の生活は過去における生 活よりストレスが 多 い。",
-        "en": "Life {is more stressful today than (it was) in the past.}",
-        "answer": "is more stressful today than (it was) in the past.",
-        "explanation": "▶ 形容詞 stressful のڃֱを使った比較表現。➡Grasp21, ࣝ12– p.515\n生活という同じものの「過去」と「現在」の比較。この場合，it was は省略可\n能。in the past のほうが重要な情報で，than in the past という表現が自然で\nあるため。",
-        "question": "Life  today  in the past. ͸ ʙ ʯʢ͸ ʙ ʯʢlifelife  waswas ʙ  ʙ inin  thethe  pastpastΓฦ͠͸ආ͚ΔɻΓฦ͠͸ආ͚Δɻ"
+        "ja": "現代の生活は過去における生活よりストレスが多い。 生活という同じものの「過去」と「現在」の比較。この場合，it wasは省略可能。in the pastのほうが重要な情報で，than in the pastという表現が自然であるため。",
+        "en": "???",
+        "answer": "",
+        "explanation": "F 136 ▶ 形容詞stressfulの比較級を使った比較表現。➡ Grasp 21，基礎知識 12―p.515",
+        "question": "Life is more stressful today than in the past. Life is more stressful today than (it was) in the past."
     },
     {
         "id": "288",
-        "ja": "中古車は新車よりもずっと安 い。",
-        "en": "Used cars {are much cheaper than new ones. A … much [far, a lot]ʴC（ڃֱ）ʴthan B ʮA ͸B Α Γ ΋ ͣ ͬ ͱʦ ͸ Δ ͔ ʹ ʧCʯ➡File37}",
-        "answer": "are much cheaper than new ones. A … much [far, a lot]ʴC（ڃֱ）ʴthan B ʮA ͸B Α Γ ΋ ͣ ͬ ͱʦ ͸ Δ ͔ ʹ ʧCʯ➡File37",
+        "ja": "中古車は新車よりもずっと安い。 F 137  A … much [far, a lot]＋C(比較級)＋than B 「AはBよりもずっと[はるかに]C」➡ File 37",
+        "en": "Used cars {are much cheaper than} new ones.",
+        "answer": "are much cheaper than",
         "explanation": "",
-        "question": "Used cars (        ) (        ) (        ) (        ) new ones."
+        "question": "Used cars (    ) (    ) (    ) (    ) new ones."
     },
     {
         "id": "289",
-        "ja": "姉は私より3歳年上だ。",
-        "en": "F 137 ＝ My sister is {three years older than me. My sister is older than me by three years. A … ࢺʴ୯ҐʴC（ڃֱ）ʴthan BʮA ͸B ΑΓ΋ʙ͚ͩCʯ}",
-        "answer": "three years older than me. My sister is older than me by three years. A … ࢺʴ୯ҐʴC（ڃֱ）ʴthan BʮA ͸B ΑΓ΋ʙ͚ͩCʯ",
-        "explanation": "▶ 具体的な差を数値で示すときは，比較級の前に〈数詞ʴ単位〉を置く。あるい\nは〈比較級ʴthan Bʴbyʴ数詞ʴ単位〉の形にする。",
-        "question": "My sister is (        ) (        ) (        ) (        ) me."
+        "ja": "姉は私より3歳年上だ。 A … 数詞＋単位＋C(比較級)＋than B「AはBよりも～だけC」",
+        "en": "My sister is {three years older than} me. ＝My sister is {older than} me{ by three years}.",
+        "answer": "three years older than, older than, by three years",
+        "explanation": "Tip 「３歳＝３年」を表す語句をどの位置に置く？\n▶ 具体的な差を数値で示すときは，比較級の前に〈数詞＋単位〉を置く。あるいは〈比較級＋than B＋by＋数詞＋単位〉の形にする。",
+        "question": "My sister is (    ) (    ) (    ) (    ) me."
     },
     {
         "id": "290-1",
-        "ja": "発展 ＝ この映画は前作より 2 倍長い。 twice＋比較級＋than の形には，通例しない。",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "This movie is (t      ) (        ) (        ) (t      ) the previous one. This movie is twice as long as the previous one. This movie is two times longer than the previous one. A … two timesʴC（ڃֱ）ʴthan BʮA ͸B ΑΓ΋̎ഒCʯ A … twice asʴC（ڃݪ）ʴas BʮA ͸B ͷ̎ഒCʯ➡276-1"
+        "ja": "この映画は前作より2倍長い。 発展   ＝This movie is twice as long as the previous one. A … two times＋C(比較級)＋than B「AはBよりも２倍C」 ！ × twice＋比較級＋thanの形には，通例しない。 ＋ A … twice as＋C(原級)＋as B「AはBの２倍C」➡ 276-1",
+        "en": "This movie is {two times longer than} the previous one.",
+        "answer": "two times longer than",
+        "explanation": "Tip  比較級の「２倍」の表し方は，〈as＋原級＋as〉の「２倍」の表し方とは異なる。",
+        "question": "This movie is (t   ) (    ) (    ) (t   ) the previous one."
     },
     {
         "id": "290-2",
-        "ja": "横浜市の人口はさいたま市の人口の約3倍だ。",
-        "en": "＝ The population of Yokohama City is about {three times larger than that of Saitama City. The population of Yokohama City is about three times as large as that of Saitama City. A … X timesʴC（ڃֱ）ʴthan BʮA ͸B ΑΓ΋X ഒ Cʯ}",
-        "answer": "three times larger than that of Saitama City. The population of Yokohama City is about three times as large as that of Saitama City. A … X timesʴC（ڃֱ）ʴthan BʮA ͸B ΑΓ΋X ഒ Cʯ",
-        "explanation": "▶ 比較級の前にݱX times を置く。\n＝A … X times asʴC（原級）ʴas B\n▶ population 「人口」の多い⇔少ないはlarge ⇔ small で表す。\na large populationʯ，a small populationʯ。\n▶ … that of Saitama City のthat については ➡329 を参照。that は省略不可。\nclean / stressful / cheap / two / large\nڃֱを使った比較表現は文と文をつないでつく る。ポイン トは３つ。\n① 何と何を比較するのかを明確にし，A ＞B の関係を確認\n② 比較の基準となる形容詞・副詞は何か\n③ than の節の中の重複する語句を省略 （形容詞・副詞は必ず省略）\nHappiness is            important.   ʴ   money is important.\n比較対象                           基 準         ↓  比較対象         基 準\n⭢ Happiness is more important than money is important.\n（幸福はお金よ り も大切だ。 ）                                    重複する語を省略\nͷͭ͘Γํ21Grasp\n比較級ʮʙ Α Γ ͣ ͬ ͱʦ ͸ Δ ͔ ʹ ʧʜʯ 最上級ʮஅવʙʯ\nmuchʴ比較級\nfarʴ比較級\na lotʴ比較級\nby far theʴ最上級\nmuch theʴ最上級\n146 147\n復習\nSelf\nCheck",
-        "question": "The population of Yokohama City is about (        ) (        ) (        ) (        ) that of Saitama City."
+        "ja": "横浜市の人口はさいたま市の人口の約3倍だ。 比 較 ③ ● 147 A … X times＋C(比較級)＋than B「AはBよりもX倍C」 ＝A … X times as＋C(原級)＋as B a large population「多い人口」，a small population「少ない人口」。",
+        "en": "The population of Yokohama City is about{ three times larger than} ＝The population of Yokohama City is about{ three times as large as} that of Saitama City.",
+        "answer": "three times larger than, three times as large as",
+        "explanation": "Tip  原級を使って同じ意味を表せるが，ここでは比較級を使って表してみよう。\nthat of Saitama City.\n▶ 比較級の前に倍数表現X timesを置く。\n▶ population「人口」の多い⇔少ないはlarge⇔smallで表す。\n▶ … that of Saitama Cityのthatについては ➡ 329 を参照。thatは省略不可。",
+        "question": "The population of Yokohama City is about (    ) (    ) (    ) (    )"
     },
     {
         "id": "291",
-        "ja": "北極の氷は科学者たちの予想を上回る速さで溶けている。",
-        "en": "The Arctic ice is melting {faster than scientists expected. A … C（ڃֱ）ʴthan S˄ expectʮA ͸S˄͕ ༧ ૝ ͢ Δ Α Γ ΋Cʯ}",
-        "answer": "faster than scientists expected. A … C（ڃֱ）ʴthan S˄ expectʮA ͸S˄͕ ༧ ૝ ͢ Δ Α Γ ΋Cʯ",
-        "explanation": "▶ 「予想したよ り も…」の意味で，than S′ expected / than S′ had expected / than\nexpected の形で使うことが多い。 than scientistsʼ expectations とはならない。\nthe Arctic iceͷණʯ",
-        "question": "The Arctic ice is melting (        ) (        ) (s      ) (e      )."
+        "ja": "北極の氷は科学者たちの予想を上回る速さで溶けている。 A … C(比較級)＋than S’ expect「AはS’が予想するよりもC」 ○ the Arctic ice「北極の氷」",
+        "en": "The Arctic ice is melting {faster than scientists expected}.",
+        "answer": "faster than scientists expected",
+        "explanation": "Tip 「科学者たちの予想を上回る速さで → 科学者たちが予想したよりも速く」と表現する。\n▶「予想したよりも…」の意味で，than S’ expected / than S’ had expected / than expectedの形で使うことが多い。× than scientists’ expectationsとはならない。",
+        "question": "The Arctic ice is melting (    ) (    ) (s   ) (e   )."
     },
     {
         "id": "292-1",
-        "ja": "発展 私は 10 分も走れない。ましてマラソンを完走するのは無理だ。",
-        "en": "I can’t run for ten minutes, much less complete a marathon. ൱ఆจ, much less A ൱ఆจ, still less A           ʮ·ͯ͠A ͸ͳ͍ɼͳ͓͞ΒA ͸ͳ͍ʯ ൱ఆจ, let alone A",
-        "answer": "can’t run for ten minutes, much less complete a marathon. ൱ఆจ, much less A ൱ఆจ, still less A ʮ·ͯ͠A ͸ͳ͍ɼͳ͓͞ΒA ͸ͳ͍ʯ ൱ఆจ, let alone A",
-        "explanation": "▶ A には動詞・名詞・形容詞などがく る。less については ➡File38",
-        "question": "I (        ) run for ten minutes, (m     ) (        ) complete a marathon."
+        "ja": "私は10分も走れない。ましてマラソンを完走するのは無理だ。 発展     Tip 「まして…ない」を表す表現は？ 前半の文は否定文になる。 否定文, much less A 否定文, still less A     　「ましてAはない，なおさらAはない」 否定文, let alone A",
+        "en": "I {can’t} run for ten minutes, {much less} complete a marathon.",
+        "answer": "can’t, much less",
+        "explanation": "▶ Aには動詞・名詞・形容詞などがくる。lessについては ➡ File 38",
+        "question": "I (    ) run for ten minutes, (m   ) (    ) complete a marathon."
     },
     {
         "id": "292-2",
-        "ja": "発展 私は泳げないし，まして海 でサ ーフィンはできない。",
-        "en": "I {can’t swim, let alone surf in the ocean.}",
-        "answer": "can’t swim, let alone surf in the ocean.",
-        "explanation": "▶ 〈否定文，let alone A〉「 ま し てA はない」➡292-1",
-        "question": "I (        ) swim, (l      ) (        ) surf in the ocean."
+        "ja": "私は泳げないし，まして海でサーフィンはできない。 発展     Tip 「まして…ない」の「まして」を表す別の表現は？ ○ surf in the ocean「海でサーフィンする」",
+        "en": "I {can’t} swim, {let alone} surf in the ocean.",
+        "answer": "can’t, let alone",
+        "explanation": "▶〈否定文，let alone A〉「ましてAはない」➡ 292-1",
+        "question": "I (    ) swim, (l   ) (    ) surf in the ocean."
     },
     {
         "id": "293",
-        "ja": "発展 大事なテス トの前に朝食を抜くほど愚かではない。 ⇧「 ～ す るより 良く知 って い る 」",
-        "en": "???",
-        "answer": "???",
+        "ja": "大事なテストの前に朝食を抜くほど愚かではない。 発展     Tip 「～するほど愚かではない → ～するよりもより良く知っている」と表現する。 know better than to do「～するほど愚かではない」 ⇧「～するより良く知っている」 ○ skip breakfast「朝食を抜く」",
+        "en": "I {know better than to skip} breakfast before a big test.",
+        "answer": "know better than to skip",
         "explanation": "",
-        "question": "I (k      ) (        ) (        ) (        ) (s      ) breakfast before a big test. I know better than to skip breakfast before a big test. skip breakfast ʮே৯Λൈ͘ʯ"
+        "question": "I (k   ) (    ) (    ) (    ) (s   ) breakfast before a big test."
     },
     {
         "id": "294",
-        "ja": "そこに着くまでだいたい20 分かかるだろう。",
-        "en": "It will take twenty minutes, {more or less, to get there. more or less ʮଟ͔Εগͳ͔Εɼ͍͍ͩͨʢ＝approximately, roughlyʣʯ It will take ʴؒ࣌ʴto doʣ͕͔͔ΔͩΖ͏ʯ}",
-        "answer": "more or less, to get there. more or less ʮଟ͔Εগͳ͔Εɼ͍͍ͩͨʢ＝approximately, roughlyʣʯ It will take ʴؒ࣌ʴto doʣ͕͔͔ΔͩΖ͏ʯ",
-        "explanation": "",
-        "question": "It will take twenty minutes, (        ) (        ) (        ), to get there."
+        "ja": "そこに着くまでだいたい20分かかるだろう。 more or less「多かれ少なかれ，だいたい (＝approximately, roughly）」 ○ It will take＋時間＋to do「～するのに(時間)がかかるだろう」",
+        "en": "It will take twenty minutes, {more or less}, to get there.",
+        "answer": "more or less",
+        "explanation": "Tip 「だいたい＝多かれ少なかれ」を表す表現は？",
+        "question": "It will take twenty minutes, (    ) (    ) (    ), to get there."
     },
     {
         "id": "295",
-        "ja": "鍵はそのうち見つかるから，心配しないで。",
-        "en": "You’ll find the keys {sooner or later, so don’t worry. sooner or later ʮ஗͔Εૣ͔Εɼ͍ͣΕʢʹeventuallyʣʯ}",
-        "answer": "sooner or later, so don’t worry. sooner or later ʮ஗͔Εૣ͔Εɼ͍ͣΕʢʹeventuallyʣʯ",
-        "explanation": "",
-        "question": "You’ll find the keys (        ) (        ) (        ), so don’t worry."
+        "ja": "鍵はそのうち見つかるから，心配しないで。 sooner or later「遅かれ早かれ，いずれ (＝eventually）」",
+        "en": "You’ll find the keys {sooner or later}, so don’t worry.",
+        "answer": "sooner or later",
+        "explanation": "Tip 「そのうち＝遅かれ早かれ」を表す表現は？",
+        "question": "You’ll find the keys (    ) (    ) (    ), so don’t worry."
     },
     {
         "id": "296-1",
-        "ja": "ますます多くの生徒がコンピュータープログラミングを習っている。",
-        "en": "{More and more students are learning computer programming. more and more A（ࢺ）ʮ·͢·͢ଟ͘ͷAʯ}",
-        "answer": "More and more students are learning computer programming. more and more A（ࢺ）ʮ·͢·͢ଟ͘ͷAʯ",
-        "explanation": "▶ A が数えられる名詞の場合は複数形にする。\nexpect / alone / skip / later\n原 級 比較級 最上級\nold\n新旧͍ʯ\n年齢ʮ೥Λऔͬͨʯ  older  oldest\n長幼ʮ೥্ͷʯ  elderʮ೥্ͷʯ  eldest೥௕ͷʯ\nlate\nfar\n距離ʮԕ͍ɼԕ͘ʹʯ  farther  farthest\n程度ʮ͸Δ͔ʹʯ  further  furthest\n原 級 比較級 最上級\ngoodʮྑ͍ʯ\nbadʮѱ͍ʯ\nbadlyʮͻͲ͘ʯ\nworse  worst\nmanyʮଟ਺ͷʯ\nmuchʮଟྔͷɼͱͯ΋ʯ  more  most\nlittleʮগྔͷɼগ͠ʯ  less  least\n148 149\n復習\nSelf\nCheck",
-        "question": "(M     ) (        ) (        ) (        ) are learning computer programming."
+        "ja": "ますます多くの生徒がコンピュータープログラミングを習っている。 比 較 ④ ● 149 more and more A(名詞)「ますます多くのA」",
+        "en": "{More and more students} are learning computer programming.",
+        "answer": "More and more students",
+        "explanation": "Tip 「ますます多くの～」を主語にする。\n▶ Aが数えられる名詞の場合は複数形にする。",
+        "question": "(M   ) (    ) (    ) (    ) are learning computer programming."
     },
     {
         "id": "296-2",
-        "ja": "日本ではますます少子化が進ん でいる。",
-        "en": "Japanese people are having {fewer and fewer children. ڃֱʴandʴڃֱʮ·͢·͢ʙɼͩΜͩΜʙʯ}",
-        "answer": "fewer and fewer children. ڃֱʴandʴڃֱʮ·͢·͢ʙɼͩΜͩΜʙʯ",
-        "explanation": "▶ 〈比較級＋and＋比較級〉 の後に名詞が続く こと も多い。後に続く名詞が複数形\nのchildren なので，little の比較級less ではなく，few の比較級fewer を使う。",
-        "question": "Japanese people are having (        ) (        ) (        ) children."
+        "ja": "日本ではますます少子化が進んでいる。 比較級＋and＋比較級「ますます～，だんだん～」",
+        "en": "Japanese people are having {fewer and fewer }children.",
+        "answer": "fewer and fewer",
+        "explanation": "Tip 「ますます少子化が進んでいる → ますます少ししか子どもを持たなくなりつつある」\n▶〈比較級＋and＋比較級〉の後に名詞が続くことも多い。後に続く名詞が複数形のchildrenなので，littleの比較級lessではなく，fewの比較級fewerを使う。",
+        "question": "Japanese people are having (    ) (    ) (    ) children."
     },
     {
         "id": "296-3",
-        "ja": "気候変動の影響を無視するこ とはますます難しくなっている。",
-        "en": "It is becoming {more and more diﬃcult to ignore the effects of climate change. more and more ʴڃݪʮ·͢·͢ʙɼͩΜͩΜʙʯ}",
-        "answer": "more and more diﬃcult to ignore the effects of climate change. more and more ʴڃݪʮ·͢·͢ʙɼͩΜͩΜʙʯ",
-        "explanation": "▶ more を使う比較級の場合は 〈more and more＋原級〉 にする。\nignore͢Δʯ\nthe eﬀects of climate changeʯ",
-        "question": "It is becoming (        ) (        ) (        ) (d      ) to ignore the effects of climate change."
+        "ja": "気候変動の影響を無視することはますます難しくなっている。 more and more＋原級「ますます～，だんだん～」 ○ ignore「～を無視する」 ○ the effects of climate change「気候変動の影響」",
+        "en": "It is becoming {more and more difficult} to ignore the effects of climate change.",
+        "answer": "more and more difficult",
+        "explanation": "Tip  moreを使う比較級の場合の「ますます～」を表す形は？\n▶ moreを使う比較級の場合は〈more and more＋原級〉にする。",
+        "question": "It is becoming (    ) (    ) (    ) (d   ) to ignore the effects of climate change."
     },
     {
         "id": "297-1",
-        "ja": "年を取れば取るほど，ますます他の言語の習得が難しくなる。 ʮʜ͢Ε͹͢Δ΄Ͳɼ·͢·͢ʙ͢Δʯ―比較級の前に the を付ける。",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "( you / older / the / it / get, / more / the / difficult ) becomes to learn another language. The older you get, the more diﬃcult it becomes to learn another language. the ʴڃֱʴS˄ʴV˄ …, theʴڃֱʴSʴV ʙ You get old.  ʴ  It becomes diﬃcult to learn another language. ⭢ The older you get, the more diﬃcult it becomes to learn another language. get old ʮ೥ΛऔΔʯ learn a languageΛशಘ͢Δʯ"
+        "ja": "年を取れば取るほど，ますます他の言語の習得が難しくなる。 S’＋V’やS＋Vの置く位置は？ the＋比較級＋S’＋V’ …, the＋比較級＋S＋V ～ 「…すればするほど，ますます～する」―比較級の前にtheを付ける。 ○ get old「年を取る」 ○ learn a language「言語を習得する」",
+        "en": "{The older you get}, {the more difficult it }becomes to learn another language. You get {old}. ＋ It becomes {difficult} to learn another language. → {The older} you get, {the more difficult} it becomes to learn another language.",
+        "answer": "The older you get, the more difficult it, old, difficult, The older, the more difficult",
+        "explanation": "Tip 「…すればするほど，ますます～する」を表す構文は？",
+        "question": "( you / older / the / it / get, / more / the / difficult ) becomes to learn"
     },
     {
         "id": "297-2",
-        "ja": "読む時間が増えれば増えるほど，英語は上達する。",
-        "en": "{The more time you spend reading, the better your English will become.}",
-        "answer": "The more time you spend reading, the better your English will become.",
-        "explanation": "▶ ➡297-1 〈形容詞の比較級＋名詞〉 の場合は，セッ トで文頭に移動する。\nThe more time you spend reading …  The more you spend time reading …\nspend time doingΛඅ΍͢ʯ",
-        "question": "(        ) (        ) (t      ) (        ) spend reading, (        ) (        ) (        ) (        ) will become. ͑Δɻ͑Δɻ"
+        "ja": "読む時間が増えれば増えるほど，英語は上達する。 ○ spend time doing「～するのに時間を費やす」",
+        "en": "{The more time you }spend reading, {the better your English} will become. {The more time} you spend reading … × The more you spend time reading …",
+        "answer": "The more time you, the better your English, The more time",
+        "explanation": "Tip「読む時間が増える → より多くの時間を読書に費やす」「英語は上達する → あなたの英語はより良くなるだろう」と考える。\n▶ ➡ 297-1〈形容詞の比較級＋名詞〉の場合は，セットで文頭に移動する。",
+        "question": "(    ) (    ) (t   ) (    ) spend reading, (    ) (    ) (    ) (    )"
     },
     {
         "id": "298",
-        "ja": "２つのバッグのうち，安いほうをお願いします。 「より～なほう」は１つに特定されるので，比較級の前にthe を付ける。",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "I’ll take (        ) (        ) (        ) (        ) (t      ) (b      ), please. I’ll take the cheaper of the two bags, please. the ʴڃֱʴof the two（ʴࢺ） ʮ̎ͭʦ̎ਓʧͷʢʜͷʣ ͏ͪɼΑΓʙͳ΄͏ʯ"
+        "ja": "2つのバッグのうち，安いほうをお願いします。 F 146  the＋比較級＋of the two(＋複数名詞) 「２つ[２人]の(…の)うち，より～なほう」 ！「より～なほう」は１つに特定されるので，比較級の前にtheを付ける。",
+        "en": "I’ll take {the cheaper of the two bags}, please.",
+        "answer": "the cheaper of the two bags",
+        "explanation": "Tip 「２つの…のうち，より～なほう」を表す表現は？",
+        "question": "I’ll take (    ) (    ) (    ) (    ) (t   ) (b   ), please."
     },
     {
         "id": "299-1",
-        "ja": "発展 その場にいる全員が知り合いだったので，よりいっそうパーティーを楽しめた。",
-        "en": "???",
-        "answer": "???",
+        "ja": "その場にいる全員が知り合いだったので，よりいっそうパーティーを楽しめた。 発展     Tip 「知り合いだったので → 知っていたことのために(よりいっそう)」と表す。 (all) the＋比較級＋for A(名詞／動名詞) 「Aのためにそれだけ～[ますます～]」",
+        "en": "I enjoyed the party {all the more for }knowing everyone there. ＝I enjoyed the party {all the more because} I knew everyone there.",
+        "answer": "all the more for, all the more because",
         "explanation": "",
-        "question": "I enjoyed the party (       ) (       ) (       ) (       ) knowing everyone there. ＝ I enjoyed the party all the more for knowing everyone there. I enjoyed the party all the more because I knew everyone there. (all) theʴڃֱʴfor A（ࢺʗࢺ） ʮA ͷͨΊʹͦΕ͚ͩʙ ʦ·͢·͢ʙʧ ʯ"
+        "question": "I enjoyed the party (    ) (    ) (    ) (    ) knowing everyone there."
     },
     {
         "id": "299-2",
-        "ja": "発展 私たちのプロジェクトはチームとして協力し合ったからこそ，より良いものになった。",
-        "en": "Our project is {all the better because we worked together as a team. work togetherྗ͢Δʯ＝cooperate}",
-        "answer": "all the better because we worked together as a team. work togetherྗ͢Δʯ＝cooperate",
+        "ja": "私たちのプロジェクトはチームとして協力し合ったからこそ，より良いものになった。 発展     Tip 「協力し合ったからこそ，より～ → 協力したので，よりいっそう～」と表す。 (all) the＋比較級＋because S’＋V’「…なのでそれだけ～[ますます～]」 ○ work together「協力する」＝cooperate",
+        "en": "Our project is {all the better because }we worked together as a team.",
+        "answer": "all the better because",
         "explanation": "",
-        "question": "Our project is (       ) (       ) (       ) (b     ) we worked together as a team."
+        "question": "Our project is (    ) (    ) (    ) (b   ) we worked together as a team."
     },
     {
         "id": "300",
-        "ja": "発展 彼女は勝利しても少しもうれしくなかった。 復習",
-        "en": "???",
-        "answer": "???",
+        "ja": "彼女は勝利しても少しもうれしくなかった。 発展     Tip 「勝利しても → 勝利だからといって(少しも～ない)」と表現する。 比 較 ⑤ ● 151 none the＋比較級＋for A(名詞)「Aだからといって少しも～ない」 ○ victory「勝利」⇔ defeat「敗北」",
+        "en": "She was {none the happier for} her victory.",
+        "answer": "none the happier for",
         "explanation": "",
-        "question": "She was (        ) (        ) (h      ) (        ) her victory. She was none the happier for her victory. none the ʴڃֱʴfor A（ࢺ）ʮA ͔ͩΒͱ͍ͬͯগ͠΋ʙͳ͍ʯ victory ʮউརʯ⇔⇔ defeatʮഊ๺ʯ few / happy 150 151 Self Check"
+        "question": "She was (    ) (    ) (h   ) (    ) her victory."
     },
     {
         "id": "301",
         "ja": "中古品は新品ほど高くない。",
-        "en": "{⑥}",
-        "answer": "⑥",
+        "en": "???",
+        "answer": "",
         "explanation": "",
-        "question": "-1 -2＝ Used products (        ) (        ) (a      ) (e      ) (        ) new ones. Used products (        ) (        ) (e      ) (        ) new ones. ͕͋Δɻ͕͋Δɻ"
+        "question": ""
     },
     {
         "id": "301-1",
-        "ja": "???",
-        "en": "-2＝ Used products are not as expensive as new ones. Used products are less expensive than new ones. A … not asʴC（ڃݪ）ʴas B used product඼ʯ⇔⇔ new productʮ৽඼ʯ",
-        "answer": "???",
+        "ja": "",
+        "en": "Used products {are not as expensive as} new ones.",
+        "answer": "are not as expensive as",
         "explanation": "",
-        "question": "???"
+        "question": "Used products (    ) (    ) (a   ) (e   ) (    ) new ones."
     },
     {
         "id": "302",
         "ja": "彼は教師というよりはむしろテレビタレントだ。",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
-        "question": "-1 -2＝ He is ( so / teacher / as / not / a / much ) a TV personality. He is a TV personality (r      ) (        ) (        ) (t      )."
+        "question": ""
     },
     {
         "id": "302-1",
-        "ja": "⇧「C よ り も（than C）か な り（rather）B ⭢ C というよりむしろB」",
-        "en": "???",
-        "answer": "???",
+        "ja": "",
+        "en": "He is {not so much a teacher as} a TV personality.",
+        "answer": "not so much a teacher as",
         "explanation": "",
-        "question": "-2＝ He is not so much a teacher as a TV personality. He is a TV personality rather than a teacher. A … not so much C as B A … B rather than C           ʮA ͸C ͱ͍͏ΑΓΉ͠ΖBʯ"
+        "question": "He is ( so / teacher / as / not / a / much ) a TV personality."
     },
     {
         "id": "303",
-        "ja": "このスーツケースは学校のリュックほどの大きさしかない。 ⇧ 差がまったくないことを表すno。 「B よりもC ということはまったくない ⭢ B ほどのC しかない」",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "This suitcase is (        ) (b      ) (        ) a school backpack. This suitcase is no bigger than a school backpack. A … noʴC（ڃֱ）ʴthan BʮA ͸B ΄ͲͷC ͔͠ͳ͍ʯ"
+        "ja": "このスーツケースは学校のリュックほどの大きさしかない。 A … no＋C(比較級)＋than B「AはBほどのCしかない」 ⇧ 差がまったくないことを表すno。 「BよりもCということはまったくない → BほどのCしかない」",
+        "en": "This suitcase is {no bigger than} a school backpack.",
+        "answer": "no bigger than",
+        "explanation": "Tip 「～よりも大きいということはまったくない → ～ほどの大きさしかない」",
+        "question": "This suitcase is (    ) (b   ) (    ) a school backpack."
+    },
+    {
+        "id": "303-2",
+        "ja": "F 134  A … not as＋C(原級)＋as B F 136    A … less＋C(原級)＋than B     「AはBほどCではない」 ○ used product「中古品」⇔ new product「新品」",
+        "en": "＝Used products {are less expensive than} new ones.",
+        "answer": "are less expensive than",
+        "explanation": "Tip 「AはBほどCではない」を表す２つの表現は？",
+        "question": "＝Used products (    ) (    ) (e   ) (    ) new ones."
     },
     {
         "id": "304",
-        "ja": "発展 私が宇宙飛行士ではないのと同様，ケンは医者ではない。 ⇧ 差がまったくないことを表すno。 「もっとB であるということはまったくない ⭢ 決してB ではない」 C … D は否定文にはならない。B, D には形容詞・名詞・動詞などがく る。",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Ken is (        ) (        ) a doctor (        ) (        ) (        ) an astronaut. ͸ͳ͍ʯ͸ͳ͍ʯ Ken is no more a doctor than I am an astronaut. ＝A … not B any more than C … D"
+        "ja": "私が宇宙飛行士ではないのと同様，ケンは医者ではない。 発展     Tip 「～であることよりもっと…であるということはまったくない → ～でないのと同様…ではない」 A … no more B than C … D「CがDでないのと同様にAはBではない」 ⇧ 差がまったくないことを表すno。 「もっとBであるということはまったくない → 決してBではない」 ！ C … Dは否定文にはならない。B, Dには形容詞・名詞・動詞などがくる。",
+        "en": "Ken is {no more} a doctor {than}{ I} {am} an astronaut.",
+        "answer": "no more, than, I, am",
+        "explanation": "＝A … not B any more than C … D",
+        "question": "Ken is (    ) (    ) a doctor (    ) (    ) (    ) an astronaut."
+    },
+    {
+        "id": "304-2",
+        "ja": "A … B rather than C        「AはCというよりむしろB」 ⇧「Cよりも(than C)かなり(rather)B → CというよりむしろB」",
+        "en": "＝He is a TV personality {rather than a teacher}. A … {not so much }C{ as }B",
+        "answer": "rather than a teacher, not so much, as",
+        "explanation": "Tip 「AはCというよりむしろB」を表す２つの表現は？",
+        "question": "＝He is a TV personality (r   ) (    ) (    ) (t   )."
     },
     {
         "id": "305",
-        "ja": "発展 姉と同様，彼女にもピ アノを 弾 く才 能がある。 ⇧ 差がまったくないことを表すno。 「よりB ではないということはまったくない ⭢ B である」 no とless を使った二重否定で，肯定的な意味合いになる。 B, D には形容詞・名詞・動詞などがく る。この問題文では，D にあたる is talented at playing the piano は，繰り返しを避けるため省略されている。",
-        "en": "???",
-        "answer": "???",
+        "ja": "姉と同様，彼女にもピアノを弾く才能がある。 発展     Tip 「～であることより…でないということはまったくない → ～と同様…だ」と表現する。２つの否定語を使って，否定×否定で肯定の意味になる。 A … no less B than C … D「CがDであるのと同様にAはBである」 ⇧ 差がまったくないことを表すno。 「よりBではないということはまったくない → Bである」 noとlessを使った二重否定で，肯定的な意味合いになる。 B, Dには形容詞・名詞・動詞などがくる。この問題文では，Dにあたる is talented at playing the pianoは，繰り返しを避けるため省略されている。",
+        "en": "She is {no less} talented at playing the piano{ than} her sister.",
+        "answer": "no less, than",
         "explanation": "",
-        "question": "She is (n      ) (        ) talented at playing the piano (        ) her sister. ఆͷҙຯʹͳΔɻఆͷҙຯʹͳΔɻ She is no less talented at playing the piano than her sister."
+        "question": "She is (n   ) (    ) talented at playing the piano (    ) her sister."
     },
     {
         "id": "306",
-        "ja": "私は田舎よりも都会に住みたい。",
-        "en": "I {prefer living in the city to living in the country. prefer A to BʮB ΑΓ΋AΉʯ}",
-        "answer": "prefer living in the city to living in the country. prefer A to BʮB ΑΓ΋AΉʯ",
-        "explanation": "▶ 日本語では「～よ り」だが，英語ではthan ではなくto を使う表現。A, B に\nは名詞または動名詞がく る。\nA is preferable to BʮB ΑΓ΋A·͍͠ʯ",
-        "question": "I (        ) (l      ) in the city (        ) (l      ) in the country."
+        "ja": "私は田舎よりも都会に住みたい。 thanを使わず「BよりAを好む」を表す比較表現は？ F 144  prefer A to B「BよりもAを好む」 A, Bには名詞または動名詞がくる。 ＋ A is preferable to B「BよりもAが好ましい」 ○ in the city「都会で，都会の」⇔ in the country「田舎で，田舎の」",
+        "en": "I {prefer living} in the city {to living} in the country.",
+        "answer": "prefer living, to living",
+        "explanation": "▶ 日本語では「～より」だが，英語ではthanではなくtoを使う表現。",
+        "question": "I (    ) (l   ) in the city (    ) (l   ) in the country."
     },
     {
         "id": "307",
-        "ja": "若いけれど，彼は多くの社員より先輩だ。 be senior /junior to A を「～よ り年上 ［年下］ だ」の意味で使うこと もでき るが，普通 はbe older/younger than A で表す。 復習",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "Although he is young, he (        ) (        ) (        ) many employees. Although he is young, he is senior to many employees. be senior to A ʮA ΑΓઌഐͩɼA͍ʯ ⇔ be junior to AʮAഐͩɼA ΑΓ஍Ґ͕௿͍ʯ expensive / so / rather / big / prefer 152 153 Self Check"
-    },
-    {
-        "id": "308",
-        "ja": "???",
-        "en": "⑦",
-        "answer": "???",
-        "explanation": "",
-        "question": "???"
+        "ja": "若いけれど，彼は多くの社員より先輩だ。 比 較 ⑥ ● 153 F 144  be senior to A「Aより先輩だ，Aより地位が高い」 ⇔ be junior to A「Aより後輩だ，Aより地位が低い」 ＋ be senior/junior to Aを「～より年上[年下]だ」の意味で使うこともできるが， 普通はbe older/younger than Aで表す。",
+        "en": "Although he is young, he {is senior to} many employees.",
+        "answer": "is senior to",
+        "explanation": "Tip 「～より先輩だ」を表す表現は？",
+        "question": "Although he is young, he (    ) (    ) (    ) many employees."
     },
     {
         "id": "308-1",
-        "ja": "母 は ペットとして猫よりも犬のほうが優れていると考えている。",
-        "en": "My mother thinks that dogs {are superior to cats as pets. be superior to A ʮA ΑΓ༏Ε͍ͯΔʯ ⇔ be inferior to AʮA ΑΓྼ͍ͬͯΔʯ➡308-2}",
-        "answer": "are superior to cats as pets. be superior to A ʮA ΑΓ༏Ε͍ͯΔʯ ⇔ be inferior to AʮA ΑΓྼ͍ͬͯΔʯ➡308-2",
-        "explanation": "",
-        "question": "My mother thinks that dogs (        ) (        ) (        ) cats as pets."
+        "ja": "母はペットとして猫よりも犬のほうが優れていると考えている。 F 144  be superior to A「Aより優れている」 ⇔ be inferior to A「Aより劣っている」➡ 308-2",
+        "en": "My mother thinks that dogs {are superior to} cats as pets.",
+        "answer": "are superior to",
+        "explanation": "Tip 「～より優れている」を表す表現は？",
+        "question": "My mother thinks that dogs (    ) (    ) (    ) cats as pets."
     },
     {
         "id": "308-2",
-        "ja": "サラの意見では，電子書籍は従来の紙の本より劣っている。",
-        "en": "In Sara’s opinion, ebooks {are inferior to traditional paper books. be inferior to AʮA ΑΓྼ͍ͬͯΔʯ⇔ be superior to AʮA ΑΓ༏Ε͍ͯΔʯ ebookॻ੶ʯ⇔⇔ printed bookͷຊʯ}",
-        "answer": "are inferior to traditional paper books. be inferior to AʮA ΑΓྼ͍ͬͯΔʯ⇔ be superior to AʮA ΑΓ༏Ε͍ͯΔʯ ebookॻ੶ʯ⇔⇔ printed bookͷຊʯ",
-        "explanation": "",
-        "question": "In Sara’s opinion, ebooks (        ) (        ) (        ) traditional paper books."
+        "ja": "サラの意見では，電子書籍は従来の紙の本より劣っている。 be inferior to A「Aより劣っている」⇔ be superior to A「Aより優れている」 ○ ebook「電子書籍」⇔ printed book「紙の本」",
+        "en": "In Sara’s opinion, ebooks {are inferior to} traditional paper books.",
+        "answer": "are inferior to",
+        "explanation": "Tip 「～より劣っている」を表す表現は？",
+        "question": "In Sara’s opinion, ebooks (    ) (    ) (    ) traditional paper books."
     },
     {
         "id": "309-1",
-        "ja": "50人以 上のボランティアが必要だ。 more than ʴࢺʴࢺʮʙΑΓଟ͍ʯ⇦「（数や量が）～より多い」 日本語の「５ ０人以上」は５ ０ も含むが，この表現では，厳密には５ ０は含まない。",
-        "en": "???",
-        "answer": "???",
+        "ja": "50人以上のボランティアが必要だ。 more than＋数詞＋名詞「～より多い」⇦「(数や量が)～より多い」 ！ 日本語の「50人以上」は50も含むが，この表現では，厳密には50は含まない。",
+        "en": "{More than }50 {volunteers} are needed.",
+        "answer": "More than, volunteers",
         "explanation": "",
-        "question": "(        ) (        ) 50 (        ) are needed. More than 50 volunteers are needed."
+        "question": "(    ) (    ) 50 (    ) are needed."
     },
     {
         "id": "309-2",
-        "ja": "1,000円未満しか持っていないので，その本は買えない。 ⇧「（数や量が）～より少ない」",
-        "en": "???",
-        "answer": "???",
+        "ja": "1,000円未満しか持っていないので，その本は買えない。 less than＋数詞＋名詞「～より少ない，～未満」 ⇧「(数や量が)～より少ない」",
+        "en": "I have {less than }1,000 yen, so I can’t buy that book.",
+        "answer": "less than",
         "explanation": "",
-        "question": "I have (        ) (        ) 1,000 yen, so I can’t buy that book. I have less than 1,000 yen, so I can’t buy that book. less than ʴࢺʴࢺʮʙΑΓগͳ͍ɼʙະຬʯ"
+        "question": "I have (    ) (    ) 1,000 yen, so I can’t buy that book."
     },
     {
         "id": "310",
         "ja": "図書館では最大10冊まで借りることができる。",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
-        "question": "-1 -2＝ You can borrow (        ) (        ) ten (        ) from the library. You can borrow (n      ) (        ) (        ) ten (        ) from the library."
+        "question": ""
     },
     {
         "id": "310-1",
-        "ja": "⇧「 ～ より 多 いことはない ⭢ 多くて～」",
-        "en": "???",
-        "answer": "???",
+        "ja": "",
+        "en": "You can borrow {at most }ten {books} from the library.",
+        "answer": "at most, books",
         "explanation": "",
-        "question": "-2＝ You can borrow at most ten books from the library. You can borrow not more than ten books from the library. at most ʴࢺʴࢺ not more than ʴࢺʴࢺ     ʮଟͯ͘ʙʯ"
+        "question": "You can borrow (    ) (    ) ten (    ) from the library."
     },
     {
         "id": "311",
-        "ja": "昨日のミーティングには少 なくとも15人が来ていた。",
+        "ja": "昨日のミーティングには少なくとも15人が来ていた。",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
-        "question": "-1 -2＝ (        ) (        ) 15 (        ) came to yesterday’s meeting. (N      ) (        ) (        ) 15 (        ) came to yesterday’s meeting."
+        "question": ""
     },
     {
         "id": "311-1",
-        "ja": "⇧「 ～ より 少 な いことはない ⭢ 少なくとも～ 」",
-        "en": "???",
-        "answer": "???",
+        "ja": "",
+        "en": "{At least }15 {people} came to yesterday’s meeting.",
+        "answer": "At least, people",
         "explanation": "",
-        "question": "-2＝ At least 15 people came to yesterday’s meeting. Not less than 15 people came to yesterday’s meeting. at leastʴࢺʴࢺ not less than ʴࢺʴࢺ    ʮগͳ͘ͱ΋ʙʯ"
+        "question": "(    ) (    ) 15 (    ) came to yesterday’s meeting."
     },
     {
         "id": "312",
         "ja": "昨年は100万人もの人がその市を訪れた。",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
-        "question": "-1 -2＝ (        ) (        ) (        ) one million (        ) visited the city last year. (N      ) (        ) (        ) one million (        ) visited the city last year. ͑Δ਺ྔʣ ͱಉ͡ ͘ Β͍ͨ͘ ͞Μͷ ˠ ʙ΋ͷʯ ͑Δ਺ྔʣ ͱಉ͡ ͘ Β͍ͨ͘ ͞Μͷ ˠ ʙ΋ͷʯ ͑Δ਺ྔʣ ΑΓ΋গͳ͍ͱ͍͏͜ͱ͸·ͬͨ͘ ͳ͍ ˠ ʙ΋ͷʯ͑Δ਺ྔʣ ΑΓ΋গͳ͍ͱ͍͏͜ͱ͸·ͬͨ͘ ͳ͍ ˠ ʙ΋ͷʯ"
+        "question": ""
     },
     {
         "id": "312-1",
-        "ja": "⇧「（大きいと考える数量）よりも少ないということはまったくない ⭢ ～もの」",
-        "en": "???",
-        "answer": "???",
+        "ja": "",
+        "en": "{As many as }one million{ people} visited the city last year.",
+        "answer": "As many as, people",
         "explanation": "",
-        "question": "-2＝ As many as one million people visited the city last year. No fewer [less] than one million people visited the city last year. as many as ʴࢺʴࢺʮʙ΋ͷʢ਺ʣɼʙ΄Ͳ΋ଟ͘ʢͷ਺ʣʯ as much as ʴࢺʴࢺʮʙ΋ͷʢྔʣɼʙ΄Ͳ΋ଟ͘ʢͷྔʣʯ no fewer than ʴࢺʴࢺʮʙ΋ͷʢ਺ʣɼʙ΄Ͳ΋ଟ͘ʢͷ਺ʣʯ no less than ʴࢺʴࢺʮʙ΋ͷʢྔɾ਺ʣɼʙ΄Ͳ΋ଟ͘ʢͷྔɾ਺ʣʯ"
+        "question": "(    ) (    ) (    ) one million (    ) visited the city last year."
+    },
+    {
+        "id": "312-2",
+        "ja": "「最大で → 多くて」，「より多いことはない → 多くて」と表現する。 at most＋数詞＋名詞 not more than＋数詞＋名詞     「多くて～」 ⇧「～より多いことはない → 多くて～」",
+        "en": "＝You can borrow {not more than }ten {books} from the library.",
+        "answer": "not more than, books",
+        "explanation": "Tip  ２通りの表現が可能。",
+        "question": "＝You can borrow (n   ) (    ) (    ) ten (    ) from the library."
     },
     {
         "id": "313",
         "ja": "昼食にたった500円しか使わなかった。",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
-        "question": "-1 -2＝ ＝ I spent (        ) (        ) (        ) 500 yen on lunch. I spent (n      ) (        ) (        ) 500 yen on lunch. I spent only 500 yen on lunch. ͑Δ਺ྔʣ ͱಉ͡ ͘ Β͍গྔͷ ˠ ͨͬͨͷʙʯ ͑Δ਺ྔʣ ͱಉ͡ ͘ Β͍গྔͷ ˠ ͨͬͨͷʙʯ ͑Δ਺ྔʣ ΑΓ΋ଟ͍ͱ͍͏͜ͱ͸·ͬͨ͘ ͳ͍ ˠ ͨͬͨͷʙʯ͑Δ਺ྔʣ ΑΓ΋ଟ͍ͱ͍͏͜ͱ͸·ͬͨ͘ ͳ͍ ˠ ͨͬͨͷʙʯ"
+        "question": ""
     },
     {
         "id": "313-1",
-        "ja": "⇧「（少ないと考える数量）よりも多いということはまったくない ⭢ たったの～」 ＝onlyʴ数詞ʴ名詞 この文では500 yen を少ない数量と考えているが，大きい数量と考える場合もある。 I spent no less than 500 yen on the game.（そのゲームに５ ０ ０円も使 っ た 。） 復習",
-        "en": "???",
-        "answer": "???",
+        "ja": "",
+        "en": "I spent {as little as }500 yen on lunch.",
+        "answer": "as little as",
         "explanation": "",
-        "question": "-2＝ I spent as little as 500 yen on lunch. I spent no more than 500 yen on lunch. as few as ʴࢺʴࢺʮʢ਺͕ʣͨͬͨͷʙɼΘ͔ͣʙ͔͠ʯ as little as ʴࢺʴࢺʮʢྔ͕ʣͨͬͨͷʙɼΘ͔ͣʙ͔͠ʯ no more than ʴࢺʴࢺʮʢ਺ɾྔ͕ʣͨͬͨͷʙɼΘ͔ͣʙ͔͠ʯ superior / volunteer 154 155 Self Check"
+        "question": "I spent (    ) (    ) (    ) 500 yen on lunch."
     },
     {
-        "id": "314",
-        "ja": "???",
-        "en": "⑧",
-        "answer": "???",
-        "explanation": "",
-        "question": "???"
+        "id": "313-2",
+        "ja": "「最小で → 少なくとも」，「より少ないことはない → 少なくとも」と表現する。 at least＋数詞＋名詞 not less than＋数詞＋名詞     「少なくとも～」 ⇧「～より少ないことはない → 少なくとも～」",
+        "en": "＝{Not less than }15 {people} came to yesterday’s meeting.",
+        "answer": "Not less than, people",
+        "explanation": "Tip  ２通りの表現が可能。",
+        "question": "＝(N   ) (    ) (    ) 15 (    ) came to yesterday’s meeting."
     },
     {
         "id": "314-1",
-        "ja": "法隆寺は世界で最も古い木造建築だ。",
-        "en": "Horyu-ji Temple is the oldest wooden building in the world. A … (the)ʴڃ（ʴࢺ）ʴin/of BʮA ͸B΋ʙʯ",
-        "answer": "the oldest wooden building in the world. A … theʴڃ（ʴࢺ）ʴin/of BʮA ͸B΋ʙʯ",
-        "explanation": "▶ ڃは３つ以上の物や人を比べて「最も～だ」を表すときに使う。\n最上級のつく り方 ➡ࣝ12– p.515\n▶ 形容詞の最上級には原則the を付ける。副詞の最上級では付けても付けなくて\nもよい。\nin B のB には場所・範囲を表す単数名詞がくる。",
-        "question": "Horyu-ji Temple is (        ) (        ) (w     ) (b      ) (        ) the world."
+        "ja": "法隆寺は世界で最も古い木造建築だ。 F 139  A … (the)＋最上級(＋名詞)＋in/of B「AはBの中で最も～」 最上級のつくり方 ➡ 基礎知識 12―p.515 ！ in BのBには場所・範囲を表す単数名詞がくる。",
+        "en": "Horyu-ji Temple is {the oldest wooden building in} the world.",
+        "answer": "the oldest wooden building in",
+        "explanation": "▶ 最上級は３つ以上の物や人を比べて「最も～だ」を表すときに使う。\n▶ 形容詞の最上級には原則theを付ける。副詞の最上級では付けても付けなくてもよい。",
+        "question": "Horyu-ji Temple is (    ) (    ) (w   ) (b   ) (    ) the world."
     },
     {
         "id": "314-2",
-        "ja": "ナナはグループのメンバ ーの中でいちばん歌がうまい。",
-        "en": "Nana is {the best singer of} all the group members.",
-        "answer": "the best singer of",
-        "explanation": "▶ A … (the)＋最上級 （＋名詞） ＋of B「A はB の中で最も～」➡314-1\nof B のB には同類を表す複数名詞がくる。",
-        "question": "Nana is  all the group members."
+        "ja": "「(大きいと考える数量)と同じくらいたくさんの → ～もの」 「(大きいと考える数量)よりも少ないということはまったくない → ～もの」 as many as＋数詞＋複数名詞「～もの(数)，～ほども多く(の数)」 as much as＋数詞＋名詞「～もの(量)，～ほども多く(の量)」 no fewer than＋数詞＋複数名詞「～もの(数)，～ほども多く(数)」 no less than＋数詞＋名詞「～もの(量・数)，～ほども多く(の量・数)」 ⇧「(大きいと考える数量)よりも少ないということはまったくない → ～もの」 ナナはグループのメンバーの中でいちばん歌がうまい。 ！ of BのBには同類を表す複数名詞がくる。",
+        "en": "＝{No fewer [less] than }one million{ people} visited the city last year. Nana is {the best singer of} all the group members.",
+        "answer": "No fewer [less] than, people, the best singer of",
+        "explanation": "Tip  原級を使った表現と比較級を使った２通りの表現が可能。\nNana is the best singer of all the group members.\nF 139 ▶ A … (the)＋最上級(＋名詞)＋of B「AはBの中で最も～」➡ 314-1",
+        "question": "＝(N   ) (    ) (    ) one million (    ) visited the city last year."
     },
     {
         "id": "315",
-        "ja": "神奈川は日本で2番目に人口が多い。",
-        "en": "Kanagawa has {the second largest population in Japan. A … theʴং਺ʴڃʴࢺʮA ͸ʜ൪໨ʹʙʯ}",
-        "answer": "the second largest population in Japan. A … theʴং਺ʴڃʴࢺʮA ͸ʜ൪໨ʹʙʯ",
-        "explanation": "▶ the と最上級の間にsecond, third, fourth などの序数を置く。\na large populationʯ―  many [much] population は誤り。",
-        "question": "Kanagawa has (        ) (        ) (        ) (        ) in Japan."
+        "ja": "神奈川は日本で２番目に人口が多い。 「２番目」を表す語をどの位置に置く？ 人口が「多い」を表す形容詞は？ F 140  A … the＋序数＋最上級＋名詞「Aは…番目に～」 ○ a large population「多い人口」― × many [much] populationは誤り。",
+        "en": "Kanagawa has {the second largest population} in Japan.",
+        "answer": "the second largest population",
+        "explanation": "Tip 「神奈川は日本で２番目に多い人口を持っている」と表現する。\n▶ theと最上級の間にsecond, third, fourthなどの序数を置く。",
+        "question": "Kanagawa has (    ) (    ) (    ) (    ) in Japan."
+    },
+    {
+        "id": "315-2",
+        "ja": "「(少ないと考える数量)と同じくらい少量の → たったの～」 「(少ないと考える数量)よりも多いということはまったくない → たったの～」 比 較 ⑦ ● 155 as few as＋数詞＋複数名詞「(数が)たったの～，わずか～しか」 as little as＋数詞＋名詞「(量が)たったの～，わずか～しか」 no more than＋数詞＋名詞「(数・量が)たったの～，わずか～しか」 ⇧「(少ないと考える数量)よりも多いということはまったくない → たったの～」 ＝only＋数詞＋名詞 ！ この文では500 yenを少ない数量と考えているが，大きい数量と考える場合もある。I spent no less than 500 yen on the game.（そのゲームに500円も使った。）",
+        "en": "＝I spent {only }500 yen on lunch. ＝I spent {no more than }500 yen on lunch.",
+        "answer": "only, no more than",
+        "explanation": "Tip  原級を使った表現と比較級を使った２通りの表現が可能。",
+        "question": "＝I spent (n   ) (    ) (    ) 500 yen on lunch."
     },
     {
         "id": "316",
-        "ja": "図書館は静かに勉強するにはまさに最適な場所だ。",
-        "en": "The library is {the very best place to study quietly. A … the veryʴڃʴࢺʮA ͸·͞ʹʙʯ}",
-        "answer": "the very best place to study quietly. A … the veryʴڃʴࢺʮA ͸·͞ʹʙʯ",
-        "explanation": "▶ the と最上級の間にvery を置く。",
-        "question": "The library is (        ) (        ) (b      ) (        ) to study quietly."
+        "ja": "図書館は静かに勉強するにはまさに最適な場所だ。 A … the very＋最上級＋名詞「Aはまさに～」",
+        "en": "The library is {the very best place} to study quietly.",
+        "answer": "the very best place",
+        "explanation": "Tip 「まさに」を表す語をどの位置に置く？\n▶ theと最上級の間にveryを置く。",
+        "question": "The library is (    ) (    ) (b   ) (    ) to study quietly."
     },
     {
         "id": "317",
-        "ja": "京都は日本文化を体験するには圧倒的にエキサイティ ングな場所だ。",
-        "en": "Kyoto is by far the most exciting place to experience Japanese culture. A … by far theʴڃ A … much theʴڃ     ʮA ͸அવʙʯ",
-        "answer": "by far the most exciting place to experience Japanese culture. A … by far theʴڃ A … much theʴڃ ʮA ͸அવʙʯ",
-        "explanation": "▶ by far や much を〈the＋最上級〉 の前に置く。➡File37– p.147\nexperience  ͢Δʯ",
-        "question": "Kyoto is ( exciting / by / the / far / place / most ) to experience Japanese culture. ͷҐஔʹ஫ҙɻͷҐஔʹ஫ҙɻ"
+        "ja": "京都は日本文化を体験するには圧倒的にエキサイティングな場所だ。 F 140  A … by far the＋最上級 A … much the＋最上級　 　「Aは断然～」 ○ experience ① 名詞「経験」② 動詞「～を経験する」",
+        "en": "Kyoto is {by far the most exciting place} to experience Japanese culture.",
+        "answer": "by far the most exciting place",
+        "explanation": "Tip  形容詞の最上級を使って「圧倒的にエキサイティングな場所 → 断然エキサイティングな場所」と表現する。「断然」を表す語句の位置に注意。\n▶ by farやmuchを〈the＋最上級〉の前に置く。➡ File 37―p.147",
+        "question": "Kyoto is ( exciting / by / the / far / place / most ) to experience Japanese culture."
     },
     {
         "id": "318",
-        "ja": "旅は私の人生における最も大きな喜びの 1 つだ。",
-        "en": "Traveling is {one of the greatest pleasures in my life. A … one of theʴڃʴB（ࢺ）ʮA΋ʙͳB ͷ ̍ ਓʦ ̍ ͭ ʧʯ}",
-        "answer": "one of the greatest pleasures in my life. A … one of theʴڃʴB（ࢺ）ʮA΋ʙͳB ͷ ̍ ਓʦ ̍ ͭ ʧʯ",
-        "explanation": "▶ 複数ある中の１つなので，最上級の後の名詞は複数名詞。",
-        "question": "Traveling is (        ) (        ) (        ) (g      ) (p      ) in my life."
+        "ja": "旅は私の人生における最も大きな喜びの１つだ。 F 140  A … one of the＋最上級＋B(複数名詞)「Aは最も～なBの１人[１つ]」",
+        "en": "Traveling is {one of the greatest pleasures} in my life.",
+        "answer": "one of the greatest pleasures",
+        "explanation": "Tip 「最も～な…の１つ」を表す表現は？\n▶ 複数ある中の１つなので，最上級の後の名詞は複数名詞。",
+        "question": "Traveling is (    ) (    ) (    ) (g   ) (p   ) in my life."
     },
     {
         "id": "319",
-        "ja": "それは私が今まで見た中で最も笑える映画だ。 ʮA ͸S΋ʙʯ―関係代名詞that は省略することが多い。",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "It is ( the / movie / have ever / funniest / I / seen ). It is the funniest movie I have ever seen. A … theʴڃʴࢺʴ(that) S˄ have ever done"
+        "ja": "それは私が今まで見た中で最も笑える映画だ。 F 139  A … the＋最上級＋名詞＋(that) S’ have ever done 「AはS’が今まで…した中で最も～」―関係代名詞thatは省略することが多い。",
+        "en": "It is {the funniest movie I have ever seen}.",
+        "answer": "the funniest movie I have ever seen",
+        "explanation": "Tip 「私が今まで見た中で～」は関係詞を使って表現する。",
+        "question": "It is ( the / movie / have ever / funniest / I / seen )."
     },
     {
         "id": "320",
-        "ja": "自分の能力を最大限に発揮したい。 （私たちはこの困難な状況を最大限に活用し な け れ ば な ら な い 。）",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "I want to ( my / most / abilities / of / the / make ). ΔΔofof ͸͸fromfromେΛҾ͖ग़͢ʯͱ͍͏͜ͱɻେΛҾ͖ग़͢ʯͱ͍͏͜ͱɻ I want to make the most of my abilities. make the most of A ʮA༻͢Δʯ make the best of A ʮA༻͢Δʯ We must make the best of this difficult situation."
+        "ja": "自分の能力を最大限に発揮したい。 make the most of A「A(有利な条件)を最大限に活用する」 ＋ make the best of A「A(不利な条件)を最大限に活用する」 （私たちはこの困難な状況を最大限に活用しなければならない。）",
+        "en": "I want to {make the most of my abilities}. We must {make the best of} this difficult situation.",
+        "answer": "make the most of my abilities, make the best of",
+        "explanation": "Tip 「自分の能力を最大限に発揮する → 私の能力から最大をつくる」。この表現で使用するofはfromの意味。「自分の能力から最大を引き出す」ということ。",
+        "question": "I want to ( my / most / abilities / of / the / make )."
     },
     {
         "id": "321",
-        "ja": "私の知る限り，彼女はまだカナダに留学中だ。 復習",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "To , she’s still studying in Canada. ＝ To the best of my knowledge, she’s still studying in Canada. As far as I know, she’s still studying in Canada. study in ʴ໊［໊］͢Δʯ wooden / building / very / great / pleasure 156 157 Self Check"
+        "ja": "私の知る限り，彼女はまだカナダに留学中だ。 比 較 ⑧ ● 157 to the best of A’s knowledge「Aの知る限りでは」＝as far as A know ○ study in＋国名[都市名]「(国・都市)に留学する」",
+        "en": "{To} the best of my knowledge, she’s still studying in Canada. {To the best of my knowledge}, she’s still studying in Canada. ＝{As far as I know}, she’s still studying in Canada.",
+        "answer": "To, To the best of my knowledge, As far as I know",
+        "explanation": "Tip 「私の知る限り → 私の知識の最善に向かって」",
+        "question": ""
     },
     {
         "id": "322",
-        "ja": "喫煙は最もよい場合でも健康に悪く，最悪の場合は死に至る。",
-        "en": "Smoking is unhealthy {at best and fatal at worst. at best ʮΑͯ͘΋ɼ ͤ ͍ ͍ͥʯ ⇔ at worstʯ fatal ʮக໋తͳʯ}",
-        "answer": "at best and fatal at worst. at best ʮΑͯ͘΋ɼ ͤ ͍ ͍ͥʯ ⇔ at worstʯ fatal ʮக໋తͳʯ",
-        "explanation": "",
-        "question": "Smoking is unhealthy (        ) (        ) and fatal (        ) (        )."
+        "ja": "喫煙は最もよい場合でも健康に悪く，最悪の場合は死に至る。 at best「よくても，せいぜい」 ⇔ at worst「最悪の場合」 ○ fatal「致命的な」",
+        "en": "Smoking is unhealthy {at best} and fatal {at worst}.",
+        "answer": "at best, at worst",
+        "explanation": "Tip 「最もよい場合でも＝よくても」「最悪の場合」を表す，最上級を使った表現は？",
+        "question": "Smoking is unhealthy (    ) (    ) and fatal (    ) (    )."
     },
     {
         "id": "323-1",
-        "ja": "命ほど大切なものはない。 （私の姉 ［妹］ほど上手にピアノを弾く人はいない。）",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "(        ) is (a      ) (        ) (        ) life. Nothing is as precious as life. Nothing … asʴڃݪʴas AʮA ΄Ͳʙͳ΋ͷ͸ͳ͍ʯ➡Grasp22 Nobody [No one] … asʴڃݪʴas AʮA ΄Ͳʙͳਓ͸͍ͳ͍ʯ Nobody plays the piano as well as my sister."
+        "ja": "命ほど大切なものはない。 F 142  Nothing … as＋原級＋as A「Aほど～なものはない」➡ Grasp 22 ＋ Nobody [No one] … as＋原級＋as A「Aほど～な人はいない」 （私の姉[妹]ほど上手にピアノを弾く人はいない。）",
+        "en": "{Nothing} is {as precious as} life. {Nobody} plays the piano {as well as} my sister.",
+        "answer": "Nothing, as precious as, Nobody, as well as",
+        "explanation": "Tip  否定語で文を始め，原級を使う。",
+        "question": "(    ) is (a   ) (    ) (    ) life."
     },
     {
         "id": "323-2",
-        "ja": "命より大切なものはない。 （私の姉 ［妹］よりも上手にピアノを弾く人はいない。）",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "(        ) is (m     ) (        ) (        ) life. Nothing is more precious than life. Nothing … ڃֱʴthan AʮA ΑΓʙͳ΋ͷ͸ͳ͍ʯ➡Grasp22 Nobody [No one] … ڃֱʴthan AʮA ΑΓ΋ʙͳਓ͸͍ͳ͍ʯ Nobody plays the piano better than my sister."
+        "ja": "命より大切なものはない。 F 142  Nothing … 比較級＋than A「Aより～なものはない」➡ Grasp 22 ＋ Nobody [No one] … 比較級＋than A「Aよりも～な人はいない」 （私の姉[妹]よりも上手にピアノを弾く人はいない。）",
+        "en": "{Nothing} is {more precious than} life. {Nobody} plays the piano {better than} my sister.",
+        "answer": "Nothing, more precious than, Nobody, better than",
+        "explanation": "Tip  否定語で文を始め，比較級を使う。",
+        "question": "(    ) is (m   ) (    ) (    ) life."
     },
     {
         "id": "324-1",
-        "ja": "日本には富士山ほど高い山はない。 No (other) の後は単数名詞。",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "(N      ) (        ) (        ) in Japan is (a      ) (        ) (        ) Mt. Fuji. No other mountain in Japan is as high as Mt. Fuji. No (other) B（ࢺ）… asʴڃݪʴas AʮA ΄ͲʙͳB ͸ͳ͍ʯ"
+        "ja": "日本には富士山ほど高い山はない。 F 141  No (other) B(単数名詞) … as＋原級＋as A「Aほど～なBはない」 ！ No (other)の後は単数名詞。",
+        "en": "{No other mountain} in Japan is {as high as} Mt. Fuji.",
+        "answer": "No other mountain, as high as",
+        "explanation": "Tip  否定語を含む主語で文を始め，原級を使う。",
+        "question": "(N   ) (    ) (    ) in Japan is (a   ) (    ) (    ) Mt. Fuji."
     },
     {
         "id": "324-2",
-        "ja": "日本には富士山より高い山はない。 No (other) の後は単数名詞。",
-        "en": "???",
-        "answer": "???",
-        "explanation": "",
-        "question": "(N      ) (        ) (        ) in Japan is (        ) (        ) Mt. Fuji. No other mountain in Japan is higher than Mt. Fuji. No (other) B（ࢺ）… ڃֱʴthan AʮA ΑΓʙͳB ͸ͳ͍ʯ"
+        "ja": "日本には富士山より高い山はない。 F 141  No (other) B(単数名詞) … 比較級＋than A「Aより～なBはない」 ！ No (other)の後は単数名詞。",
+        "en": "{No other mountain} in Japan is {higher than} Mt. Fuji.",
+        "answer": "No other mountain, higher than",
+        "explanation": "Tip  否定語を含む主語で文を始め，比較級を使う。",
+        "question": "(N   ) (    ) (    ) in Japan is (    ) (    ) Mt. Fuji."
     },
     {
         "id": "325-1",
-        "ja": "ケンは何よりもサッカーに興味がある。",
-        "en": "Ken is {more interested in soccer than anything else. A … ڃֱʴthan anything elseʮA ͸΄͔ͷͲΜͳ΋ͷΑΓʙʯ A … ڃֱʴthan anybody [anyone] elseʮA ͸΄͔ͷ୭ΑΓ΋ʙʯ}",
-        "answer": "more interested in soccer than anything else. A … ڃֱʴthan anything elseʮA ͸΄͔ͷͲΜͳ΋ͷΑΓʙʯ A … ڃֱʴthan anybody [anyone] elseʮA ͸΄͔ͷ୭ΑΓ΋ʙʯ",
-        "explanation": "",
-        "question": "Ken is (        ) (        ) in soccer (        ) (        ) (        )."
+        "ja": "ケンは何よりもサッカーに興味がある。 F 143  A … 比較級＋than anything else「Aはほかのどんなものより～」 ＋ A … 比較級＋than anybody [anyone] else「Aはほかの誰よりも～」",
+        "en": "Ken is {more interested} in soccer {than anything else}.",
+        "answer": "more interested, than anything else",
+        "explanation": "Tip 「何よりも → ほかのどんなものより」と表現する。",
+        "question": "Ken is (    ) (    ) in soccer (    ) (    ) (    )."
     },
     {
         "id": "325-2",
-        "ja": "ケンは私たちの学校のどの生徒よりも速く走ることができる。 any other の後は単数名詞。 ᶃ Russia is the largest country in the world.［最上級］ （ロシアは世界で最も大きな国だ 。） ＝ No (other) country in the world is as large as Russia.［原級］ ＝ No (other) country in the world is larger than Russia.［比較級］ ＝ Russia is larger than any other country in the world.［比較級］ ᶄ Light travels (the) fastest.［最上級］（光は最も速く進 む 。） ＝ Nothing travels as fast as light.［原級］ ＝ Nothing travels faster than light.［比較級］ ＝ Light travels faster than anything else.［比較級］ ڃݪ・ͷҙຯΛද͢22Grasp 復習",
+        "ja": "ケンは私たちの学校のどの生徒よりも速く走ることができる。 比 較 ⑨ ● 159 F 141  A … 比較級＋than any other B(単数名詞)「AはほかのどのBよりも～」 ！ any otherの後は単数名詞。",
+        "en": "Ken can run {faster than any other student} in our school.",
+        "answer": "faster than any other student",
+        "explanation": "Tip 「どの生徒より → ほかのどんな生徒より」と表現する。",
+        "question": "Ken can run (    ) (    ) (a   ) (    ) (    ) in our school."
+    },
+    {
+        "id": "1950",
+        "ja": "as early as A「早くもAには」―Aには時を表す語がくる。 ＋ as late as A / as recently as A「ほんのA(時)まで，つい(最近の)Aまで」",
         "en": "???",
-        "answer": "???",
+        "answer": "",
         "explanation": "",
-        "question": "Ken can run (        ) (        ) (a      ) (        ) (        ) in our school. Ken can run faster than any other student in our school. A … ڃֱʴthan any other B（ࢺ）ʮA ͸΄͔ͷͲͷB ΑΓ΋ʙʯ precious / high 158 159 Self Check"
+        "question": "s."
     }
 ];
 
@@ -801,7 +916,7 @@
             recognition.lang = 'en-US';
             recognition.interimResults = false;
         }
-        
+
         // --- Voice Synthesis Setup ---
         let synthesisVoice = null;
 
@@ -809,10 +924,10 @@
             const voices = speechSynthesis.getVoices();
             // 優先順位: Google US English -> Microsoft Zira/David -> その他英語
             synthesisVoice = voices.find(voice => voice.name === 'Google US English') ||
-                             voices.find(voice => voice.name.includes('Google') && voice.lang.includes('en-US')) ||
-                             voices.find(voice => voice.name.includes('Microsoft') && voice.lang.includes('en-US')) ||
-                             voices.find(voice => voice.lang === 'en-US') ||
-                             voices.find(voice => voice.lang.startsWith('en'));
+                voices.find(voice => voice.name.includes('Google') && voice.lang.includes('en-US')) ||
+                voices.find(voice => voice.name.includes('Microsoft') && voice.lang.includes('en-US')) ||
+                voices.find(voice => voice.lang === 'en-US') ||
+                voices.find(voice => voice.lang.startsWith('en'));
         }
 
         // 音声リストがロードされたら設定を実行
@@ -835,7 +950,7 @@
         const quizModal = document.getElementById('quiz-modal');
         const closeQuizBtn = document.getElementById('close-quiz-btn');
         const quizContent = document.getElementById('quiz-content');
-        
+
         const selectAllCheckbox = document.getElementById('select-all-checkbox');
         const pdfModal = document.getElementById('pdf-modal');
         const openPdfModalBtn = document.getElementById('open-pdf-modal-btn');
@@ -885,7 +1000,7 @@
                 `;
                 sentenceList.appendChild(sentenceDiv);
             });
-            
+
             // Add click listener to each sentence item
             document.querySelectorAll('.sentence-item').forEach(item => {
                 item.addEventListener('click', (e) => {
@@ -912,15 +1027,15 @@
                     }
                 });
             });
-            
+
             // Select the first sentence by default
             if (sentenceList.firstChild) {
-                 sentenceList.firstChild.click();
+                sentenceList.firstChild.click();
             }
         }
-        
+
         // --- PDF / Print Logic ---
-        
+
         function openPrintWindow(bodyContent, title) {
             const htmlContent = `
                 <!DOCTYPE html>
@@ -972,7 +1087,7 @@
             printWindow.document.write(htmlContent);
             printWindow.document.close();
             setTimeout(() => {
-                printWindow.focus(); 
+                printWindow.focus();
                 printWindow.print();
             }, 250);
         }
@@ -987,32 +1102,32 @@
                 .map(id => chapterData.find(item => item.id === id))
                 .filter(Boolean)
                 .sort((a, b) => {
-                     // Handle IDs like "1382-1" vs "1382-2"
-                     const aParts = a.id.split('-').map(s => parseInt(s) || 0);
-                     const bParts = b.id.split('-').map(s => parseInt(s) || 0);
-                     if (aParts[0] !== bParts[0]) return aParts[0] - bParts[0];
-                     return (aParts[1] || 0) - (bParts[1] || 0);
+                    // Handle IDs like "1382-1" vs "1382-2"
+                    const aParts = a.id.split('-').map(s => parseInt(s) || 0);
+                    const bParts = b.id.split('-').map(s => parseInt(s) || 0);
+                    if (aParts[0] !== bParts[0]) return aParts[0] - bParts[0];
+                    return (aParts[1] || 0) - (bParts[1] || 0);
                 });
         }
-        
+
         function getUniqueItems(items) {
-             const uniqueMap = new Map();
-             items.forEach(item => {
-                 // Use answer as key to deduplicate same phrases
-                 if (!uniqueMap.has(item.answer)) {
-                     uniqueMap.set(item.answer, item);
-                 }
-             });
-             return Array.from(uniqueMap.values()).sort((a, b) => {
-                 const aId = parseInt(a.id.split('-')[0]);
-                 const bId = parseInt(b.id.split('-')[0]);
-                 return aId - bId;
-             });
+            const uniqueMap = new Map();
+            items.forEach(item => {
+                // Use answer as key to deduplicate same phrases
+                if (!uniqueMap.has(item.answer)) {
+                    uniqueMap.set(item.answer, item);
+                }
+            });
+            return Array.from(uniqueMap.values()).sort((a, b) => {
+                const aId = parseInt(a.id.split('-')[0]);
+                const bId = parseInt(b.id.split('-')[0]);
+                return aId - bId;
+            });
         }
 
 
         // --- Message & Sound Functions ---
-        
+
         function showMessage(htmlContent, duration = null) {
             messageContent.innerHTML = htmlContent;
             messageModal.classList.remove('hidden');
@@ -1036,7 +1151,7 @@
 
             // 連続再生を防ぐために一度キャンセル
             speechSynthesis.cancel();
-            
+
             let textToSpeak = activeSentenceElement.dataset.fullSentence;
             // 念のため不要な記号を除去
             textToSpeak = textToSpeak.replace(/[{}]/g, '');
@@ -1049,7 +1164,7 @@
                 utterance.voice = synthesisVoice;
             }
 
-            utterance.rate = 1.0; 
+            utterance.rate = 1.0;
             utterance.pitch = 1.0;
 
             speechSynthesis.speak(utterance);
@@ -1066,7 +1181,7 @@
             }
 
             showMessage('<p class="text-2xl">マイクに向かって話してください...</p><div class="animate-pulse text-red-500 text-4xl mt-4">●</div>');
-            
+
             recognition.start();
 
             recognition.onresult = (event) => {
@@ -1077,20 +1192,20 @@
             recognition.onerror = (event) => {
                 showMessage(`<p>エラーが発生しました: ${event.error}</p>`, 3000);
             };
-            
+
             recognition.onend = () => {
-                 if (messageModal.classList.contains('hidden') === false && messageContent.innerHTML.includes('マイクに')) {
+                if (messageModal.classList.contains('hidden') === false && messageContent.innerHTML.includes('マイクに')) {
                     messageModal.classList.add('hidden');
-                 }
+                }
             };
         }
-        
+
         function evaluatePronunciation(transcript) {
             const originalText = activeSentenceElement.dataset.fullSentence;
 
             const cleanOrig = originalText.toLowerCase().replace(/[^\w\s]/g, '').split(' ');
             const cleanTrans = transcript.toLowerCase().replace(/[^\w\s]/g, '').split(' ');
-            
+
             let matches = 0;
             cleanOrig.forEach(word => {
                 if (cleanTrans.includes(word)) {
@@ -1099,7 +1214,7 @@
             });
 
             const similarity = matches / cleanOrig.length;
-            
+
             let score;
             if (similarity > 0.9) {
                 score = 95 + Math.floor(Math.random() * 5);
@@ -1112,7 +1227,7 @@
             } else {
                 score = 70 + Math.floor(Math.random() * 10);
             }
-            
+
             if (score === 100 && Math.random() < 0.3) score = 99;
 
             const messageHtml = `
@@ -1129,8 +1244,8 @@
 
         function startQuiz() {
             if (chapterData.length < 10) {
-                 showMessage('<p>クイズを作成するには、文が10個以上必要です。</p>', 3000);
-                 return;
+                showMessage('<p>クイズを作成するには、文が10個以上必要です。</p>', 3000);
+                return;
             }
 
             const shuffled = [...chapterData].sort(() => 0.5 - Math.random());
@@ -1155,8 +1270,9 @@
                     .map(item => item.answer);
 
                 const options = [correctAnswer, ...incorrectAnswers].sort(() => 0.5 - Math.random());
-                
-                const questionSentence = question.en.replace(`{${question.answer}}`, ' (______) ');
+
+                // Use regex to replace ALL {answer} parts with (______)
+                const questionSentence = question.en.replace(/\{.*?\}/g, ' (______) ');
 
                 quizContent.innerHTML = `
                     <h3 class="text-2xl font-bold mb-2">問題 ${currentQuestionIndex + 1}/10</h3>
@@ -1176,7 +1292,7 @@
                             button.classList.add('bg-red-400', 'text-white');
                             document.querySelector(`.quiz-option[data-answer="${CSS.escape(correctAnswer)}"]`).classList.add('bg-green-400', 'text-white');
                         }
-                        
+
                         setTimeout(() => {
                             currentQuestionIndex++;
                             showQuestion();
@@ -1221,12 +1337,12 @@
                 explanationDiv.style.display = 'block';
             }
         });
-        
+
         playSoundBtn.addEventListener('click', playSound);
         recordBtn.addEventListener('click', handleRecording);
         startQuizBtn.addEventListener('click', startQuiz);
         closeQuizBtn.addEventListener('click', () => quizModal.classList.add('hidden'));
-        
+
         // Select All Logic
         selectAllCheckbox.addEventListener('change', (e) => {
             const isChecked = e.target.checked;
@@ -1240,7 +1356,7 @@
 
         // PDF Modal Logic
         openPdfModalBtn.addEventListener('click', () => {
-             if (selectedSentences.size === 0) {
+            if (selectedSentences.size === 0) {
                 showMessage('<p>PDFを作成する問題を選択してください。</p>', 3000);
                 return;
             }
@@ -1262,10 +1378,10 @@
         // 1. 完全なリスト
         document.getElementById('download-list-btn').addEventListener('click', () => {
             const items = getSelectedItems();
-            if(!items) return;
+            if (!items) return;
             // リスト作成の場合は重複があっても良いが、見やすくするために熟語ベースでユニークにするか、
             // そのままID順で並べるか。ここではID順ですべて表示する。
-            
+
             const listItems = items.map(item => {
                 // Remove { } for clean display
                 const cleanEn = item.en.replace(/[{}]/g, '');
@@ -1274,7 +1390,7 @@
                     <span style="font-size:0.9em; color:#555;">Ex: ${cleanEn} / ${item.ja}</span>
                 </li>`;
             }).join('');
-            
+
             openPrintWindow(`<ul class="list-container">${listItems}</ul>`, '重要熟語リスト');
             pdfModal.classList.add('hidden');
         });
@@ -1282,14 +1398,14 @@
         // 2. 英語を解答
         document.getElementById('download-en-quiz-btn').addEventListener('click', () => {
             const items = getUniqueItems(getSelectedItems());
-            
-            const quizItems = items.map(item => 
+
+            const quizItems = items.map(item =>
                 `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')} : ____________________</span></li>`
             ).join('');
-            const answerItems = items.map(item => 
+            const answerItems = items.map(item =>
                 `<li><span class="inline-content">${item.answer}</span></li>`
             ).join('');
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (英語を解答)');
             pdfModal.classList.add('hidden');
@@ -1298,14 +1414,14 @@
         // 3. 意味を解答
         document.getElementById('download-ja-quiz-btn').addEventListener('click', () => {
             const items = getUniqueItems(getSelectedItems());
-            
-            const quizItems = items.map(item => 
+
+            const quizItems = items.map(item =>
                 `<li><span class="inline-content"><strong>${item.answer}</strong> : ____________________</span></li>`
             ).join('');
-            const answerItems = items.map(item => 
+            const answerItems = items.map(item =>
                 `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')}</span></li>`
             ).join('');
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (意味を解答)');
             pdfModal.classList.add('hidden');
@@ -1316,7 +1432,7 @@
             const items = getUniqueItems(getSelectedItems());
             let quizItems = '';
             let answerItems = '';
-            
+
             items.forEach(item => {
                 if (Math.random() > 0.5) {
                     // 日本語 -> 英語
@@ -1328,7 +1444,7 @@
                     answerItems += `<li><span class="inline-content">${item.explanation.replace(/\n/g, ' ')}</span></li>`;
                 }
             });
-            
+
             const body = `<h2>${subtitleText}</h2><ol class="list-container">${quizItems}</ol><div class="answer-key"><h2>解答</h2><ol class="list-container">${answerItems}</ol></div>`;
             openPrintWindow(body, '熟語テスト (混合)');
             pdfModal.classList.add('hidden');
@@ -1337,14 +1453,14 @@
         // 5. 例文穴埋め
         document.getElementById('download-sentence-quiz-btn').addEventListener('click', () => {
             const items = getSelectedItems(); // 例文問題なので重複（文脈違い）も含める
-            
+
             const quizItems = items.map(item => {
                 // Replace {answer} with underscore
                 const blankSentence = item.en.replace(`{${item.answer}}`, '____________________');
                 return `<li>${blankSentence}<br><span style="font-size:0.9em;">(${item.ja})</span></li>`;
             }).join('');
-            
-            const answerItems = items.map(item => 
+
+            const answerItems = items.map(item =>
                 `<li>${item.answer}</li>`
             ).join('');
 
@@ -1358,7 +1474,7 @@
             const items = getSelectedItems();
             let quizItems = '';
             let answerItems = '';
-            
+
             const instruction = '<p style="border:1px solid #ccc; padding:10px; margin-bottom:20px;">指示：空所には適切な語句を補い、下線部がある文は下線部の意味を日本語で答えなさい。</p>';
 
             items.forEach(item => {
@@ -1387,4 +1503,5 @@
         });
     </script>
 </body>
+
 </html>
