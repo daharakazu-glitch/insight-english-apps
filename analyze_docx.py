@@ -11,8 +11,8 @@ def analyze_docx(path):
     print(f"Total Tables: {len(doc.tables)}")
     print(f"Total Paragraphs: {len(doc.paragraphs)}")
     
-    print("\n--- Paragraph Dump (First 300) ---")
-    for i, p in enumerate(doc.paragraphs[:300]):
+    print("\n--- Paragraph Dump (First 100) ---")
+    for i, p in enumerate(doc.paragraphs[:100]):
         text = p.text.strip()
         if not text: continue
         

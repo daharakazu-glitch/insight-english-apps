@@ -124,7 +124,14 @@ def extract_items_from_docx(docx_path):
                 continue
             
             if is_japanese(clean_line):
+                # Filter specific keywords
                 if "基本" in clean_line: continue
+                if "発展" in clean_line: continue
+                if clean_line.startswith("○"): continue # Vocab notes
+                
+                # Check for "Words to Use" context?
+                if "Words to Use" in clean_line: continue
+                
                 ja_lines.append(clean_line)
                 continue
             
@@ -177,7 +184,19 @@ def extract_items_from_docx(docx_path):
                      expl_lines.append(clean_line)
 
         # Assemble
-        ja_text = " ".join(ja_lines)
+        ja_text = " ".join(ja_lines).strip()
+        
+        # Post-process Japanese: Keep only first sentence?
+        # If it contains '。', keep up to the first '。'.
+        if "。" in ja_text:
+            parts = ja_text.split("。")
+            ja_text = parts[0] + "。"
+            # If the remainder had useful info? Usually it's hints.
+        
+        # Remove any remaining "○" or bracketed hints if they were inline?
+        # e.g. "Translation (Hint)" -> "Translation"
+        # Be careful not to remove grammar brackets or parens in math? (English app, so ok).
+        
         q_text = " ".join(q_lines)
         en_text_with_brackets = " ".join(ans_sentence_parts) if ans_sentence_parts else "???"
         
